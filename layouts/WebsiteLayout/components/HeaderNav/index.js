@@ -2,6 +2,36 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 
+/**
+ * Fixed top header component with main site navigation
+ * Prefetches nav route links https://nextjs.org/docs#prefetching-pages
+ */
+export default () => (
+  <HeaderStyled>
+    <Link prefetch href="/">
+      <StyledLink>Logo...</StyledLink>
+    </Link>
+
+    <RightSideMenu>
+      <Link prefetch href="/portfolio">
+        <StyledLink>Portfolio</StyledLink>
+      </Link>
+
+      <Link prefetch href="/contact">
+        <StyledLink>Contact</StyledLink>
+      </Link>
+
+      <Link prefetch href="/store">
+        <StyledLink>Store</StyledLink>
+      </Link>
+
+      <Link prefetch href="/blog">
+        <StyledLink>Blog</StyledLink>
+      </Link>
+    </RightSideMenu>
+  </HeaderStyled>
+);
+
 const HeaderStyled = styled.header`
   position: absolute;
   top: 0;
@@ -63,29 +93,3 @@ const StyledLink = styled.a`
     transform: scale(1, 1);
   }
 `;
-
-export default () => (
-  <HeaderStyled>
-    <Link href="/">
-      <StyledLink>Logo...</StyledLink>
-    </Link>
-
-    <RightSideMenu>
-      <Link href="/portfolio">
-        <StyledLink>Portfolio</StyledLink>
-      </Link>
-
-      <Link href="/contact">
-        <StyledLink>Contact</StyledLink>
-      </Link>
-
-      <Link href="/store">
-        <StyledLink>Store</StyledLink>
-      </Link>
-
-      <Link href="/blog">
-        <StyledLink>Blog</StyledLink>
-      </Link>
-    </RightSideMenu>
-  </HeaderStyled>
-);
