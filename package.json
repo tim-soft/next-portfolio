@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "author": "Tim Ellenberger <timellenberger@gmail.com>",
   "license": "MIT",
-  "main": "index.js",
   "dependencies": {
     "@zeit/next-less": "^1.0.1",
     "antd": "^3.13.5",
