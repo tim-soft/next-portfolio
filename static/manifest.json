@@ -1,6 +1,7 @@
 {
   "name": "Tim Ellenberger | Consulting",
-  "short_name": "Consulting",
+  "short_name": "Tim Ellenberger",
+  "start_url": "/",
   "icons": [
     {
       "src": "/static/android-chrome-192x192.png",
