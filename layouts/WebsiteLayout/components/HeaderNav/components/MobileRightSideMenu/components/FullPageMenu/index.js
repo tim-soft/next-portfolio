@@ -44,8 +44,12 @@ FullPageMenu.propTypes = {
 
 export default FullPageMenu;
 
-const MenuContainer = styled.div.attrs(props => ({
-  style: { opacity: props.opacity }
+const MenuContainer = styled.div.attrs(({ opacity }) => ({
+  style: {
+    opacity,
+    // If mobile menu is closed, remove from DOM
+    ...(opacity === 0 && { display: 'none' })
+  }
 }))`
   position: fixed;
   top: 0;
