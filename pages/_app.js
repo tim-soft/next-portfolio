@@ -10,6 +10,7 @@ import WebsiteLayout from '../layouts/WebsiteLayout';
 
 /**
  * Custom Next.js App that wraps all Next.js pages, adds global styles and animates route changes
+ *
  * https://nextjs.org/docs/#custom-app
  */
 class WebApp extends App {
@@ -45,6 +46,7 @@ class WebApp extends App {
         <GlobalStyles />
         <ThemeProvider theme={theme}>
           <WebsiteLayout>
+            {/* Animate route changes */}
             <Transition
               native
               unique

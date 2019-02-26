@@ -57,6 +57,7 @@ const HamburgerMenuIcon = ({ menuIsOpen, toggleMenu, theme }) => (
 HamburgerMenuIcon.propTypes = {
   menuIsOpen: PropTypes.bool.isRequired,
   toggleMenu: PropTypes.func.isRequired,
+  /* App theme variables from styled-components <ThemeProvider /> */
   theme: PropTypes.shape({
     headerNavHamburgerIconColor: PropTypes.string.isRequired,
     headerNavMobileMenuFontColor: PropTypes.string.isRequired
@@ -71,4 +72,9 @@ const StyledSVG = styled.svg`
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 `;
 
+/**
+ * The withTheme HOC adds any parent <ThemeProvider /> theme variables as props
+ *
+ * https://www.styled-components.com/docs/advanced#getting-the-theme-without-styled-components
+ */
 export default withTheme(HamburgerMenuIcon);

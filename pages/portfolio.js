@@ -2,9 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import PortfolioList from '../components/Portfolio';
 
-// todo
-// add param to allow WebsiteLayout to scroll specifically for this page
-// add param to change header nav font
 const PortfolioPage = () => (
   <Container>
     <SpacerFromTop />
