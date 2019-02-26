@@ -11,4 +11,5 @@ export default () => (
 
 const Logo = styled(StyledLogo)`
   z-index: 21;
+  color: ${({ theme }) => theme.headerNavMobileMenuFontColor};
 `;

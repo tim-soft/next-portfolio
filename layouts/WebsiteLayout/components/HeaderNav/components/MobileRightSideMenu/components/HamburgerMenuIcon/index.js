@@ -1,29 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 import { Spring, config } from 'react-spring/renderprops.cjs';
 
-const HamburgerMenuIcon = ({ menuIsOpen, toggleMenu }) => (
-  <StyledSVG
-    viewBox="0 0 96 96"
-    height="2em"
-    onClick={() => toggleMenu()}
-    style={{
-      height: '100%',
-      overflow: 'visible',
-      cursor: 'pointer',
-      WebkitTapHighlightColor: 'rgba(0,0,0,0)'
-    }}
-  >
+const HamburgerMenuIcon = ({ menuIsOpen, toggleMenu, theme }) => (
+  <StyledSVG viewBox="0 0 96 96" height="2em" onClick={() => toggleMenu()}>
     <Spring
-      to={{ x: menuIsOpen ? 1 : 0, y: menuIsOpen ? 0 : 1 }}
+      to={{
+        x: menuIsOpen ? 1 : 0,
+        y: menuIsOpen ? 0 : 1,
+        strokeColor: menuIsOpen
+          ? theme.headerNavMobileMenuFontColor
+          : theme.headerNavHamburgerIconColor
+      }}
       config={config.wobbly}
     >
-      {({ x, y }) => (
+      {({ x, y, strokeColor }) => (
         <g
           id="navicon"
           fill="none"
-          stroke="currentColor"
+          stroke={strokeColor}
           strokeWidth="7"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -60,7 +56,11 @@ const HamburgerMenuIcon = ({ menuIsOpen, toggleMenu }) => (
 
 HamburgerMenuIcon.propTypes = {
   menuIsOpen: PropTypes.bool.isRequired,
-  toggleMenu: PropTypes.func.isRequired
+  toggleMenu: PropTypes.func.isRequired,
+  theme: PropTypes.shape({
+    headerNavHamburgerIconColor: PropTypes.string.isRequired,
+    headerNavMobileMenuFontColor: PropTypes.string.isRequired
+  }).isRequired
 };
 
 const StyledSVG = styled.svg`
@@ -71,4 +71,4 @@ const StyledSVG = styled.svg`
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 `;
 
-export default HamburgerMenuIcon;
+export default withTheme(HamburgerMenuIcon);

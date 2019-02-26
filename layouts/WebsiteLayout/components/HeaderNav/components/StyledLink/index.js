@@ -4,14 +4,14 @@ export default styled.a`
   position: relative;
   font-family: 'Montserrat', sans-serif;
   white-space: nowrap;
-  color: white;
+  color: ${({ theme }) => theme.headerNavFontColor};
   font-size: 2em;
   margin: 0 20px;
   padding: 15px 0;
   transition: color 0.2s linear;
   :hover {
     cursor: pointer;
-    color: #ff6054;
+    color: ${({ theme }) => theme.headerNavHoverFontColor};
   }
   ::before {
     content: '';
@@ -20,7 +20,7 @@ export default styled.a`
     top: 105%;
     height: 3px;
     width: 100%;
-    background-color: cyan;
+    background-color: ${({ theme }) => theme.headerNavTextUnderlineColor};
     -webkit-transform-origin: center top;
     transform-origin: center top;
     -webkit-transform: scale(0, 1);

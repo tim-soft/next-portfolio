@@ -6,11 +6,7 @@ import Link from 'next/link';
 import StyledLink from '../../../StyledLink';
 
 const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
-  <Spring
-    to={{
-      opacity: menuIsOpen ? 1 : 0
-    }}
-  >
+  <Spring to={{ opacity: menuIsOpen ? 1 : 0 }}>
     {({ opacity }) => (
       <MenuContainer opacity={opacity}>
         <Link prefetch href="/">
@@ -67,4 +63,5 @@ const MenuContainer = styled.div.attrs(({ opacity }) => ({
 const MobileStyledLink = styled(StyledLink)`
   margin: 20px 20px;
   padding: 15px 0;
+  color: ${({ theme }) => theme.headerNavMobileMenuFontColor};
 `;
