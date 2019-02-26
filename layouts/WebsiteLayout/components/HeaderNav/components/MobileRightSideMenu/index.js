@@ -1,33 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { HamburgerMenuIcon, FullPageMenu } from './components';
 
-export default class MobileMenu extends React.Component {
-  constructor(props) {
-    super(props);
+const MobileMenu = ({ menuIsOpen, toggleMenu }) => (
+  <MobileRightSideMenu>
+    <HamburgerMenuIcon
+      menuIsOpen={menuIsOpen}
+      toggleMenu={() => toggleMenu()}
+    />
+    <FullPageMenu menuIsOpen={menuIsOpen} toggleMenu={() => toggleMenu()} />
+  </MobileRightSideMenu>
+);
 
-    this.state = {
-      menuIsOpen: false
-    };
-  }
+MobileMenu.propTypes = {
+  menuIsOpen: PropTypes.bool.isRequired,
+  toggleMenu: PropTypes.func.isRequired
+};
 
-  render() {
-    const { menuIsOpen } = this.state;
-
-    return (
-      <MobileRightSideMenu>
-        <HamburgerMenuIcon
-          menuIsOpen={menuIsOpen}
-          toggleMenu={() => this.setState({ menuIsOpen: !menuIsOpen })}
-        />
-        <FullPageMenu
-          menuIsOpen={menuIsOpen}
-          toggleMenu={() => this.setState({ menuIsOpen: !menuIsOpen })}
-        />
-      </MobileRightSideMenu>
-    );
-  }
-}
+export default MobileMenu;
 
 const MobileRightSideMenu = styled.div`
   width: 100%;

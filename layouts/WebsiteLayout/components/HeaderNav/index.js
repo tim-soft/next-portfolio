@@ -6,14 +6,34 @@ import { LeftSideLogo, RightSideMenu, MobileRightSideMenu } from './components';
  * Fixed top header component with main site navigation
  * Prefetches nav route links https://nextjs.org/docs#prefetching-pages
  */
-export default () => (
-  <HeaderStyled>
-    <LeftSideLogo />
+export default class HeaderNav extends React.Component {
+  constructor(props) {
+    super(props);
 
-    <RightSideMenu />
-    <MobileRightSideMenu />
-  </HeaderStyled>
-);
+    this.state = {
+      menuIsOpen: false
+    };
+  }
+
+  render() {
+    const { menuIsOpen } = this.state;
+
+    return (
+      <HeaderStyled>
+        <LeftSideLogo
+          menuIsOpen={menuIsOpen}
+          toggleMenu={() => this.setState({ menuIsOpen: !menuIsOpen })}
+        />
+
+        <RightSideMenu />
+        <MobileRightSideMenu
+          menuIsOpen={menuIsOpen}
+          toggleMenu={() => this.setState({ menuIsOpen: !menuIsOpen })}
+        />
+      </HeaderStyled>
+    );
+  }
+}
 
 const HeaderStyled = styled.header`
   position: absolute;
