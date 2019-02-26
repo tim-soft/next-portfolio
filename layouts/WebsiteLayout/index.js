@@ -4,12 +4,8 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import HeaderNav from './components/HeaderNav';
 
-const StyledContainer = styled.div`
-  overflow: hidden;
-`;
-
 // eslint-disable-next-line react/prefer-stateless-function
-class WebsiteLayout extends React.Component {
+export default class WebsiteLayout extends React.Component {
   static propTypes = {
     children: PropTypes.element.isRequired
   };
@@ -30,4 +26,6 @@ class WebsiteLayout extends React.Component {
   }
 }
 
-export default WebsiteLayout;
+const StyledContainer = styled.div`
+  overflow: hidden;
+`;
