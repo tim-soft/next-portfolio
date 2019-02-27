@@ -1,5 +1,6 @@
 const withLess = require('@zeit/next-less');
 const withOffline = require('next-offline');
+const path = require('path');
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -9,6 +10,15 @@ if (typeof require !== 'undefined') {
 }
 
 const nextConfig = {
+  // Alias the /components and /layouts folders for imports
+  // e.g. import xyz from 'components/xyz'
+  webpack(config) {
+    const newConfig = config;
+    newConfig.resolve.alias.components = path.join(__dirname, 'components');
+    newConfig.resolve.alias.layouts = path.join(__dirname, 'layouts');
+
+    return newConfig;
+  },
   // Less loader for ant-design
   // http://lesscss.org/usage/#less-options
   lessLoaderOptions: {
