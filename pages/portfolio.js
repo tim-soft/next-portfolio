@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import PageScrollWrapper from '../components/PageScrollWrapper';
 import PortfolioList from '../components/Portfolio';
 
 const PortfolioPage = () => (
-  <Container>
-    <SpacerFromTop />
+  <PageScrollWrapper>
     <Title>Portfolio</Title>
     <PortfolioList />
-  </Container>
+  </PageScrollWrapper>
 );
 
+// _app.js level theme variable overrides
 PortfolioPage.theme = {
   headerNavFontColor: 'black',
   headerNavHamburgerIconColor: 'black'
@@ -17,21 +18,7 @@ PortfolioPage.theme = {
 
 export default PortfolioPage;
 
-const SpacerFromTop = styled.span`
-  margin-top: 125px;
-`;
-
 const Title = styled.h1`
   color: black;
   font-size: 50px;
-`;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  overflow: hidden;
-  height: 100vh;
-  background: #9e9e9e;
 `;
