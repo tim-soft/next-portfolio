@@ -32,8 +32,6 @@ const nextConfig = {
   // https://developers.google.com/web/tools/workbox/guides/configure-workbox
   workboxOpts: {
     swDest: 'static/service-worker.js',
-    clientsClaim: true,
-    skipWaiting: true,
     runtimeCaching: [
       // Always pull images from cache if available
       {
