@@ -36,8 +36,6 @@ export default class StyledDocument extends Document {
     return (
       <html lang="en">
         <Head>
-          {/* Add ant-design styles to document */}
-          {this.props.styleTags}
           <meta charSet="utf-8" />
           <meta name="viewport" content="initial-scale=1, width=device-width" />
           <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />

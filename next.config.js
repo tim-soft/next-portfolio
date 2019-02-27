@@ -1,13 +1,8 @@
-const withLess = require('@zeit/next-less');
+const withCSS = require('@zeit/next-css');
 const withOffline = require('next-offline');
 const path = require('path');
 
 const isDev = process.env.NODE_ENV === 'development';
-
-// fix: prevents error when .less files are required by node
-if (typeof require !== 'undefined') {
-  require.extensions['.less'] = () => {};
-}
 
 const nextConfig = {
   // Alias the /components and /layouts folders for imports
@@ -18,11 +13,6 @@ const nextConfig = {
     newConfig.resolve.alias.layouts = path.join(__dirname, 'layouts');
 
     return newConfig;
-  },
-  // Less loader for ant-design
-  // http://lesscss.org/usage/#less-options
-  lessLoaderOptions: {
-    javascriptEnabled: true
   },
   // Now 2.0 Build Type
   // https://nextjs.org/blog/next-8#serverless-nextjs
@@ -66,9 +56,9 @@ const nextConfig = {
 
 // Compose next-offline and next-less plugins
 const offlinePlugin = withOffline(nextConfig);
-const lessPlugin = withLess(nextConfig);
-const lessPluginWithServiceWorker = withLess(offlinePlugin);
+const cssPlugin = withCSS(nextConfig);
+const cssPluginWithServiceWorker = withCSS(offlinePlugin);
 
 // https://nextjs.org/docs/#production-deployment
 // Don't include Service Worker in dev
-module.exports = isDev ? lessPlugin : lessPluginWithServiceWorker;
+module.exports = isDev ? cssPlugin : cssPluginWithServiceWorker;
