@@ -48,7 +48,6 @@ const ScrollbarContentContainer = styled.div`
 
 const StyledScrollbar = styled(Scrollbar)`
   width: 100%;
-  min-height: 300px;
   height: calc(100% - 90px);
 `;
 
