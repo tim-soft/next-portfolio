@@ -1657,6 +1657,11 @@ bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.8.tgz#2cde09eb5ee341f484746bb0309b3253b1b1442f"
   integrity sha512-ItfYfPLkWHUjckQCk8xC+LwxgK8NYcXywGigJgSwOP8Y2iyWT4f2vsZnoOXTTbo+o5yXmIUJ4gn5538SO5S3gA==
 
+bowser@^2.0.0-beta.3:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/bowser/-/bowser-2.1.0.tgz#76cc094f97578ba4858fb4359445ee1317d1be6f"
+  integrity sha512-tP90ci4QY8PRBQjU0+iTsoO3DMNYtXCM0aVxeKhjxXF8IH9xTXUmjcTECPN+y5v0BGeRDfMcSLeohPiUZuz37g==
+
 brace-expansion@^1.1.7:
   version "1.1.11"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.11.tgz#3c7fcbf529d87226f3d2f52b966ff5271eb441dd"
@@ -6060,6 +6065,13 @@ react-particles-js@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/react-particles-js/-/react-particles-js-2.4.2.tgz#34a4d1ea15eaebcbb068f7b6a7c43b18792fcf65"
   integrity sha512-/rfpLRYUA4JFEBBM8cN3X+kEr9P7J2lXktJi81ugcK6B9H69xNlDFKXOUYe+YizW8E5NapxNgubAcKYt0Co7TQ==
+
+react-scrollbars-custom@^3.1.5:
+  version "3.1.5"
+  resolved "https://registry.yarnpkg.com/react-scrollbars-custom/-/react-scrollbars-custom-3.1.5.tgz#4bc9f3f66110e8adc55b99863dd7fb021454ba5b"
+  integrity sha512-4/TUh2aHx8jANsdA2NLxUfsuvmxhO3u02B3j/sYjOxAX6/Ptyl9ZvEwwqvi7KEVTCwOKPSOzqKj5eogC7Shzlw==
+  dependencies:
+    bowser "^2.0.0-beta.3"
 
 react-slick@~0.23.2:
   version "0.23.2"
