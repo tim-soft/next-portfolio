@@ -26,7 +26,7 @@ const MobileRightSideMenu = styled.div`
   display: flex;
   justify-content: flex-end;
   z-index: inherit;
-  @media (min-width: 1061px) {
+  @media (${({ theme }) => theme.breakpoints.mobileNav}) {
     display: none;
   }
 `;

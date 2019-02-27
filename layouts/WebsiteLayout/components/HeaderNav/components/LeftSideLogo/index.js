@@ -25,4 +25,7 @@ const Logo = styled(StyledLogo)`
     menuIsOpen
       ? theme.headerNavMobileMenuFontColor
       : theme.headerNavHamburgerIconColor};
+  @media (${({ theme }) => theme.breakpoints.desktopNav}) {
+    margin: 0;
+  }
 `;
