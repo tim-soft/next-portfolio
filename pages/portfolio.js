@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
-import PageScrollWrapper from '../components/PageScrollWrapper';
-import PortfolioList from '../components/Portfolio';
+import PageScrollWrapper from 'components/PageScrollWrapper';
+import PortfolioList from 'components/PortfolioList';
 
 const PortfolioPage = () => (
   <>

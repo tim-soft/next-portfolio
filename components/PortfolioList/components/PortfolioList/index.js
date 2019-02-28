@@ -17,7 +17,7 @@ export default PortfolioList;
 
 const PortfolioListContainer = styled.ul`
   width: 100%;
-  max-width: 1080px;
+  max-width: 1400px;
   list-style-type: none;
   padding-inline-start: unset;
 `;
