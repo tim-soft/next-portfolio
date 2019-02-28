@@ -1,4 +1,3 @@
-const withCSS = require('@zeit/next-css');
 const withOffline = require('next-offline');
 const path = require('path');
 
@@ -54,11 +53,9 @@ const nextConfig = {
   }
 };
 
-// Compose next-offline and next-less plugins
+// Compose next-offline plugin with next config
 const offlinePlugin = withOffline(nextConfig);
-const cssPlugin = withCSS(nextConfig);
-const cssPluginWithServiceWorker = withCSS(offlinePlugin);
 
 // https://nextjs.org/docs/#production-deployment
 // Don't include Service Worker in dev
-module.exports = isDev ? cssPlugin : cssPluginWithServiceWorker;
+module.exports = isDev ? nextConfig : offlinePlugin;

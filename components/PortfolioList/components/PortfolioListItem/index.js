@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import ImageGallery from 'react-image-gallery';
+import ImageGallery from './components/ImageGallery';
 
-const PortfolioListItem = ({ projectTitle, images, description }) => (
+const PortfolioListItem = ({ projectTitle, photos, description }) => (
   <PortfolioListItemContainer>
     <div>
       <ProjectTitle>{projectTitle}</ProjectTitle>
@@ -11,13 +11,7 @@ const PortfolioListItem = ({ projectTitle, images, description }) => (
     </div>
 
     <GalleryContainer>
-      <ImageGallery
-        items={images}
-        showThumbnails
-        thumbnailPosition="right"
-        showPlayButton={false}
-        showBullets
-      />
+      <ImageGallery photos={photos} />
     </GalleryContainer>
   </PortfolioListItemContainer>
 );
@@ -25,11 +19,12 @@ const PortfolioListItem = ({ projectTitle, images, description }) => (
 PortfolioListItem.propTypes = {
   projectTitle: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  images: PropTypes.arrayOf(
+  photos: PropTypes.arrayOf(
     PropTypes.shape({
-      original: PropTypes.string.isRequired,
-      thumbnail: PropTypes.string.isRequired,
-      description: PropTypes.string
+      src: PropTypes.string.isRequired,
+      caption: PropTypes.string.isRequired,
+      width: PropTypes.number,
+      height: PropTypes.number
     })
   ).isRequired
 };
@@ -40,20 +35,6 @@ const mobileBreakpoint = '1000px';
 
 const GalleryContainer = styled.div`
   max-width: 700px;
-
-  .image-gallery-content:not(.fullscreen) .image-gallery-slide-wrapper.right {
-    width: 100%;
-  }
-  .image-gallery-content:not(.fullscreen) .image-gallery-thumbnails {
-    display: none;
-  }
-  .image-gallery-content:not(.fullscreen) .image-gallery-thumbnails-wrapper {
-    display: none;
-  }
-
-  .image-gallery-slide img {
-    max-height: 100vh;
-  }
 `;
 
 const ProjectDescription = styled.div`

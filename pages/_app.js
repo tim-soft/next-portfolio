@@ -7,8 +7,6 @@ import { ThemeProvider } from 'styled-components';
 import AppTheme from '../components/AppTheme';
 import GlobalStyles from '../components/GlobalStyles';
 import WebsiteLayout from '../layouts/WebsiteLayout';
-// Import stylesheet for image gallery
-import 'react-image-gallery/styles/css/image-gallery.css';
 
 /**
  * Custom Next.js App that wraps all Next.js pages, adds global styles and animates route changes
