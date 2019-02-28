@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Gallery from 'react-photo-gallery';
-import Lightbox from 'react-images';
+import Lightbox from './Lightbox';
 
 export default class ImageGallery extends React.Component {
   static propTypes = {
     projectTitle: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
     photos: PropTypes.arrayOf(
       PropTypes.shape({
         src: PropTypes.string.isRequired,
         caption: PropTypes.string.isRequired,
+        alt: PropTypes.string.isRequired,
         width: PropTypes.number,
         height: PropTypes.number
       })
@@ -20,7 +20,7 @@ export default class ImageGallery extends React.Component {
   constructor() {
     super();
 
-    this.state = { currentImage: 0 };
+    this.state = { currentImage: 0, lightboxIsOpen: false };
   }
 
   openLightbox = (event, obj) => {
@@ -55,21 +55,21 @@ export default class ImageGallery extends React.Component {
 
   render() {
     const { currentImage, lightboxIsOpen } = this.state;
-    const { photos } = this.props;
+    const { photos, projectTitle } = this.props;
 
     return (
-      <div>
-        <Gallery photos={photos} onClick={this.openLightbox} />
+      <>
+        <Gallery photos={photos} onClick={this.openLightbox} margin={3} />
         <Lightbox
-          images={photos}
-          backdropClosesModal
+          isOpen={lightboxIsOpen}
           onClose={this.closeLightbox}
           onClickPrev={this.gotoPrevious}
           onClickNext={this.gotoNext}
-          currentImage={currentImage}
-          isOpen={lightboxIsOpen}
+          images={photos}
+          currentIndex={currentImage}
+          projectTitle={projectTitle}
         />
-      </div>
+      </>
     );
   }
 }

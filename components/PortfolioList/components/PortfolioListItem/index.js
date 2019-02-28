@@ -11,7 +11,7 @@ const PortfolioListItem = ({ projectTitle, photos, description }) => (
     </div>
 
     <GalleryContainer>
-      <ImageGallery photos={photos} />
+      <ImageGallery photos={photos} projectTitle={projectTitle} />
     </GalleryContainer>
   </PortfolioListItemContainer>
 );
@@ -23,6 +23,7 @@ PortfolioListItem.propTypes = {
     PropTypes.shape({
       src: PropTypes.string.isRequired,
       caption: PropTypes.string.isRequired,
+      alt: PropTypes.string.isRequired,
       width: PropTypes.number,
       height: PropTypes.number
     })
