@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Gallery from 'react-photo-gallery';
-import Lightbox from './Lightbox';
+import Lightbox from 'components/Lightbox';
 
 export default class ImageGallery extends React.Component {
   static propTypes = {
@@ -32,7 +32,6 @@ export default class ImageGallery extends React.Component {
 
   closeLightbox = () => {
     this.setState({
-      currentImage: 0,
       lightboxIsOpen: false
     });
   };
@@ -60,6 +59,7 @@ export default class ImageGallery extends React.Component {
     return (
       <>
         <Gallery photos={photos} onClick={this.openLightbox} margin={3} />
+
         <Lightbox
           isOpen={lightboxIsOpen}
           onClose={this.closeLightbox}
