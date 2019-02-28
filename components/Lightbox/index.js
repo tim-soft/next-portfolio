@@ -1,7 +1,5 @@
-/* eslint-disable no-shadow */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Transition, animated } from 'react-spring/renderprops.cjs';
 import CreatePortal from 'components/CreatePortal';
 import {
   HeaderBar,
@@ -19,52 +17,20 @@ const Lightbox = ({
   projectTitle
 }) => (
   <CreatePortal>
-    <Transition
-      native
-      items={isOpen}
-      from={{
-        opacity: 0,
-        transform: 'scale(0.85) translate3d(0px, 40px, 0px)'
-      }}
-      enter={{ opacity: 1, transform: 'scale(1) translate3d(0px, 0px, 0px)' }}
-      leave={{
-        opacity: 0,
-        transform: 'scale(0.85) translate3d(0px, 40px, 0px)'
-      }}
-      config={{ mass: 1, tension: 320, friction: 32 }}
-    >
-      {isOpen =>
-        isOpen &&
-        (props => (
-          <animated.div
-            style={{
-              ...props,
-              position: 'fixed',
-              top: 0,
-              bottom: 0,
-              left: 0,
-              right: 0,
-              zIndex: 400
-            }}
-          >
-            <PageContainer>
-              <HeaderBar
-                projectTitle={projectTitle}
-                images={images}
-                currentIndex={currentIndex}
-                onClose={onClose}
-              />
-              <ImageStage
-                images={images}
-                currentIndex={currentIndex}
-                onClickPrev={onClickPrev}
-                onClickNext={onClickNext}
-              />
-            </PageContainer>
-          </animated.div>
-        ))
-      }
-    </Transition>
+    <PageContainer isOpen={isOpen}>
+      <HeaderBar
+        projectTitle={projectTitle}
+        images={images}
+        currentIndex={currentIndex}
+        onClose={onClose}
+      />
+      <ImageStage
+        images={images}
+        currentIndex={currentIndex}
+        onClickPrev={onClickPrev}
+        onClickNext={onClickNext}
+      />
+    </PageContainer>
   </CreatePortal>
 );
 
