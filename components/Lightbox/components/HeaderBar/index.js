@@ -47,6 +47,7 @@ const LeftSideDescriptionContainer = styled.div`
   h2,
   h4 {
     margin: 0;
+    font-weight: normal;
   }
 `;
 
