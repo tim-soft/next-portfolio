@@ -51,6 +51,7 @@ const LeftSideDescriptionContainer = styled.div`
 `;
 
 const FixedHeaderBar = styled.header`
+  z-index: 10;
   position: absolute;
   top: 0;
   left: 0;

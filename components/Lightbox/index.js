@@ -26,6 +26,7 @@ const Lightbox = ({
       />
       <ImageStage
         images={images}
+        onClose={onClose}
         currentIndex={currentIndex}
         onClickPrev={onClickPrev}
         onClickNext={onClickNext}

@@ -1,10 +1,18 @@
+/* eslint-disable no-shadow */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import ButtonControl from '../ButtonControl';
+import ImagePager from './components/ImagePager';
 
-const ImageStage = ({ images, currentIndex, onClickPrev, onClickNext }) => (
+const ImageStage = ({
+  images,
+  currentIndex,
+  onClickPrev,
+  onClickNext,
+  onClose
+}) => (
   <ImageContainer>
     <ArrowButton
       onClick={() => currentIndex > 0 && onClickPrev()}
@@ -13,7 +21,15 @@ const ImageStage = ({ images, currentIndex, onClickPrev, onClickNext }) => (
     >
       <IoIosArrowBack />
     </ArrowButton>
-    <Image src={images[currentIndex].src} alt={images[currentIndex].alt} />
+
+    <ImagePager
+      images={images}
+      currentIndex={currentIndex}
+      onClose={onClose}
+      onClickNext={onClickNext}
+      onClickPrev={onClickPrev}
+    />
+
     <ArrowButton
       onClick={() => currentIndex + 1 < images.length && onClickNext()}
       type="button"
@@ -25,6 +41,7 @@ const ImageStage = ({ images, currentIndex, onClickPrev, onClickNext }) => (
 );
 
 ImageStage.propTypes = {
+  onClose: PropTypes.func.isRequired,
   onClickPrev: PropTypes.func.isRequired,
   onClickNext: PropTypes.func.isRequired,
   currentIndex: PropTypes.number.isRequired,
@@ -47,15 +64,13 @@ const ArrowButton = styled(ButtonControl)`
   right: ${({ right }) => (right ? 0 : 'unset')};
 `;
 
-const Image = styled.img`
-  max-width: 100%;
-  max-height: 100%;
-`;
-
 const ImageContainer = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: url('https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png')
+      39 39,
+    auto;
 `;
