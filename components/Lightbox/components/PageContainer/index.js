@@ -51,7 +51,7 @@ Page.propTypes = {
 export default Page;
 
 const PageContainer = styled.div`
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(68, 68, 68, 0.94);
   height: 100%;
   width: 100%;
 `;
