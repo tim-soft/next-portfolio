@@ -1,6 +1,8 @@
+/* eslint-disable no-shadow */
 import React from 'react';
 import styled from 'styled-components';
 import Particles from 'react-particles-js';
+import { Spring, animated, interpolate } from 'react-spring/renderprops.cjs';
 import particleProps from './particlesConfig';
 
 export default class IntroBanner extends React.Component {
@@ -49,16 +51,40 @@ export default class IntroBanner extends React.Component {
 
     return (
       <BannerContainer>
-        <Particles
-          {...particleProps}
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%'
+        <Spring
+          native
+          from={{
+            opacity: 0,
+            translateY: 0,
+            scale: 0.85
           }}
-        />
+          to={{
+            opacity: 1,
+            translateY: 1,
+            scale: 1
+          }}
+        >
+          {({ opacity, translateY, scale }) => (
+            <animated.div
+              style={{
+                opacity,
+                transform: interpolate(
+                  [translateY, scale],
+                  (translateY, scale) =>
+                    `scale(${scale}) translate3d(0, ${translateY}px, 0)`
+                ),
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                height: '100%',
+                width: '100%'
+              }}
+            >
+              <Particles {...particleProps} />
+            </animated.div>
+          )}
+        </Spring>
+
         <SpaceBackgroundImg webpSupport={webpSupport} />
       </BannerContainer>
     );

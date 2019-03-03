@@ -2,7 +2,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import App, { Container } from 'next/app';
-import { Transition, animated } from 'react-spring/renderprops.cjs';
+import {
+  Transition,
+  animated,
+  interpolate
+} from 'react-spring/renderprops.cjs';
 import { ThemeProvider } from 'styled-components';
 import AppTheme from '../components/AppTheme';
 import GlobalStyles from '../components/GlobalStyles';
@@ -55,18 +59,33 @@ class WebApp extends App {
               initial={{ opacity: 1 }}
               from={{
                 opacity: 0,
-                transform: 'scale(0.9) translate3d(0,-200px,0)'
+                translateY: -200,
+                scale: 0.9
               }}
-              enter={{ opacity: 1, transform: 'scale(1) translate3d(0,0px,0)' }}
+              enter={{
+                opacity: 1,
+                translateY: 0,
+                scale: 1
+              }}
               leave={{
                 opacity: 0,
-                transform: 'scale(0.9) translate3d(0,-200px,0)'
+                translateY: -200,
+                scale: 0.9
               }}
             >
-              {({ Component, pageProps }) => styles => (
+              {({ Component, pageProps }) => ({
+                opacity,
+                translateY,
+                scale
+              }) => (
                 <animated.div
                   style={{
-                    ...styles,
+                    opacity,
+                    transform: interpolate(
+                      [translateY, scale],
+                      (translateY, scale) =>
+                        `scale(${scale}) translate3d(0, ${translateY}px, 0)`
+                    ),
                     width: '100%',
                     overflow: 'hidden',
                     position: 'absolute'
