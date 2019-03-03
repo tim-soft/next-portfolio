@@ -85,7 +85,8 @@ class ImagePager extends React.Component {
                     width: '100%',
                     height: '100%',
                     willChange: 'transform',
-                    userSelect: 'none'
+                    userSelect: 'none',
+                    touchAction: 'none'
                   }}
                 >
                   <animated.div
