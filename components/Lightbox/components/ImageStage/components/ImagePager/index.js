@@ -52,7 +52,7 @@ class ImagePager extends React.Component {
           if (
             currentIndex === i &&
             down &&
-            (distance > window.innerWidth / 3 || velocity > 4)
+            (distance > window.innerWidth / 3 || velocity > 3.5)
           ) {
             cancel(
               this.clamp(
@@ -120,7 +120,12 @@ class ImagePager extends React.Component {
                       src={image.src}
                       alt={image.alt}
                       draggable="false"
+                      onDragStart={e => {
+                        // Disable image ghost dragging in firefox
+                        e.preventDefault();
+                      }}
                       onClick={e => {
+                        // Don't close lighbox when clicking image
                         e.stopPropagation();
                         e.nativeEvent.stopImmediatePropagation();
                       }}
@@ -142,6 +147,5 @@ const Image = styled.img`
   max-width: 100%;
   max-height: 100%;
   user-select: none;
-  pointer-events: none;
   box-shadow: 0 22px 70px 4px rgba(0, 0, 0, 0.56);
 `;
