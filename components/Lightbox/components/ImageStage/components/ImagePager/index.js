@@ -142,5 +142,6 @@ const Image = styled.img`
   max-width: 100%;
   max-height: 100%;
   user-select: none;
+  pointer-events: none;
   box-shadow: 0 22px 70px 4px rgba(0, 0, 0, 0.56);
 `;
