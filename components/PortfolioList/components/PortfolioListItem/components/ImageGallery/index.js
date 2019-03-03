@@ -6,7 +6,7 @@ import Lightbox from 'components/Lightbox';
 export default class ImageGallery extends React.Component {
   static propTypes = {
     projectTitle: PropTypes.string.isRequired,
-    photos: PropTypes.arrayOf(
+    images: PropTypes.arrayOf(
       PropTypes.shape({
         src: PropTypes.string.isRequired,
         caption: PropTypes.string.isRequired,
@@ -39,33 +39,39 @@ export default class ImageGallery extends React.Component {
   gotoPrevious = () => {
     const { currentImage } = this.state;
 
-    this.setState({
-      currentImage: currentImage - 1
-    });
+    // If the current image isn't the first in the list, go to the previous
+    if (currentImage > 0) {
+      this.setState({
+        currentImage: currentImage - 1
+      });
+    }
   };
 
   gotoNext = () => {
+    const { images } = this.props;
     const { currentImage } = this.state;
 
-    this.setState({
-      currentImage: currentImage + 1
-    });
+    // If the current image isn't the list in the list, go to the next
+    if (currentImage + 1 < images.length) {
+      this.setState({
+        currentImage: currentImage + 1
+      });
+    }
   };
 
   render() {
     const { currentImage, lightboxIsOpen } = this.state;
-    const { photos, projectTitle } = this.props;
+    const { images, projectTitle } = this.props;
 
     return (
       <>
-        <Gallery photos={photos} onClick={this.openLightbox} margin={3} />
-
+        <Gallery photos={images} onClick={this.openLightbox} margin={3} />
         <Lightbox
           isOpen={lightboxIsOpen}
           onClose={this.closeLightbox}
           onClickPrev={this.gotoPrevious}
           onClickNext={this.gotoNext}
-          images={photos}
+          images={images}
           currentIndex={currentImage}
           projectTitle={projectTitle}
         />

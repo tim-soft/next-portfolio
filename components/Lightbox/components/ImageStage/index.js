@@ -12,33 +12,31 @@ const ImageStage = ({
   onClickPrev,
   onClickNext,
   onClose
-}) => (
-  <ImageContainer>
-    <ArrowButton
-      onClick={() => currentIndex > 0 && onClickPrev()}
-      type="button"
-      left
-    >
-      <IoIosArrowBack />
-    </ArrowButton>
+}) => {
+  // Extra sanity check that the next/prev image exists for moving to it
+  const next = () => currentIndex + 1 < images.length && onClickNext();
+  const prev = () => currentIndex > 0 && onClickPrev();
 
-    <ImagePager
-      images={images}
-      currentIndex={currentIndex}
-      onClose={onClose}
-      onClickNext={onClickNext}
-      onClickPrev={onClickPrev}
-    />
+  return (
+    <ImageContainer>
+      <ArrowButton onClick={prev} type="button" left>
+        <IoIosArrowBack />
+      </ArrowButton>
 
-    <ArrowButton
-      onClick={() => currentIndex + 1 < images.length && onClickNext()}
-      type="button"
-      right
-    >
-      <IoIosArrowForward />
-    </ArrowButton>
-  </ImageContainer>
-);
+      <ImagePager
+        images={images}
+        currentIndex={currentIndex}
+        onClose={onClose}
+        onClickNext={next}
+        onClickPrev={prev}
+      />
+
+      <ArrowButton onClick={next} type="button" right>
+        <IoIosArrowForward />
+      </ArrowButton>
+    </ImageContainer>
+  );
+};
 
 ImageStage.propTypes = {
   onClose: PropTypes.func.isRequired,

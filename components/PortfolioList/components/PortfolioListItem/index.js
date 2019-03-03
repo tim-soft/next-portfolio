@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ImageGallery from './components/ImageGallery';
 
-const PortfolioListItem = ({ projectTitle, photos, description }) => (
+const PortfolioListItem = ({ projectTitle, images, description }) => (
   <PortfolioListItemContainer>
     <div>
       <ProjectTitle>{projectTitle}</ProjectTitle>
@@ -11,7 +11,7 @@ const PortfolioListItem = ({ projectTitle, photos, description }) => (
     </div>
 
     <GalleryContainer>
-      <ImageGallery photos={photos} projectTitle={projectTitle} />
+      <ImageGallery images={images} projectTitle={projectTitle} />
     </GalleryContainer>
   </PortfolioListItemContainer>
 );
@@ -19,7 +19,7 @@ const PortfolioListItem = ({ projectTitle, photos, description }) => (
 PortfolioListItem.propTypes = {
   projectTitle: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  photos: PropTypes.arrayOf(
+  images: PropTypes.arrayOf(
     PropTypes.shape({
       src: PropTypes.string.isRequired,
       caption: PropTypes.string.isRequired,
