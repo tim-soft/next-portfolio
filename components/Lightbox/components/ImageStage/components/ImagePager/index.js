@@ -40,9 +40,20 @@ class ImagePager extends React.Component {
 
     return images.map((image, i) => (
       <Gesture key={i}>
-        {({ down, delta: [xDelta], direction: [xDir], distance, cancel }) => {
-          // Animate over to the next image if it has been dragged more than 33% of screen width
-          if (currentIndex === i && down && distance > window.innerWidth / 3) {
+        {({
+          down,
+          delta: [xDelta],
+          direction: [xDir],
+          distance,
+          cancel,
+          velocity
+        }) => {
+          // Animate over to the next image if it has been dragged far enough or fast enough
+          if (
+            currentIndex === i &&
+            down &&
+            (distance > window.innerWidth / 3 || velocity > 4)
+          ) {
             cancel(
               this.clamp(
                 currentIndex + (xDir > 0 ? -1 : 1),
@@ -61,7 +72,7 @@ class ImagePager extends React.Component {
             // Update current image position
             const x =
               (i - currentIndex) * window.innerWidth + (down ? xDelta : 0);
-            const sc = down ? 1 - distance / window.innerWidth / 3 : 1;
+            const sc = down ? 1 - distance / window.innerWidth / 1.9 : 1;
 
             gestureConfig = { x, sc, display: 'block' };
           }
