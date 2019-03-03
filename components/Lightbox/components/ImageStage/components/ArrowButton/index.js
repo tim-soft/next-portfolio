@@ -20,7 +20,11 @@ const ArrowButton = ({ position, onClick, disabled }) => {
         // eslint-disable-next-line react/prop-types
         (({ opacity }) => (
           <animated.div
-            style={{ opacity, ...(opacity === 1 && { display: 'none' }) }}
+            style={{
+              opacity,
+              ...(opacity === 1 && { display: 'none' }),
+              zIndex: 10
+            }}
           >
             <Button position={position} type="button" onClick={onClick}>
               {position === 'left' && <IoIosArrowBack />}
