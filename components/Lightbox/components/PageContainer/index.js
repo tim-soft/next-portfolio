@@ -2,7 +2,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Transition, animated } from 'react-spring/renderprops.cjs';
+import {
+  Transition,
+  animated,
+  interpolate
+} from 'react-spring/renderprops.cjs';
 
 const Page = ({ children, isOpen }) => (
   <Transition
@@ -10,21 +14,29 @@ const Page = ({ children, isOpen }) => (
     items={isOpen}
     from={{
       opacity: 0,
-      transform: 'scale(0.85) translate3d(0px, 40px, 0px)'
+      translateY: 0,
+      scale: 0.85
     }}
-    enter={{ opacity: 1, transform: 'scale(1) translate3d(0px, 0px, 0px)' }}
+    enter={{ opacity: 1, translateY: 1, scale: 1 }}
     leave={{
       opacity: 0,
-      transform: 'scale(0.85) translate3d(0px, 40px, 0px)'
+      translateY: 0,
+      scale: 0.85
     }}
     config={{ mass: 1, tension: 320, friction: 32 }}
   >
     {isOpen =>
       isOpen &&
-      (props => (
+      // eslint-disable-next-line react/prop-types
+      (({ opacity, translateY, scale }) => (
         <animated.div
           style={{
-            ...props,
+            opacity,
+            transform: interpolate(
+              [translateY, scale],
+              (translateY, scale) =>
+                `scale(${scale}) translate3d(0, ${translateY}px, 0)`
+            ),
             position: 'fixed',
             top: 0,
             bottom: 0,
