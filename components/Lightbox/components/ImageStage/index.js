@@ -2,9 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import ButtonControl from '../ButtonControl';
 import ImagePager from './components/ImagePager';
+import ArrowButton from './components/ArrowButton';
 
 const ImageStage = ({
   images,
@@ -13,15 +12,15 @@ const ImageStage = ({
   onClickNext,
   onClose
 }) => {
-  // Extra sanity check that the next/prev image exists for moving to it
-  const next = () => currentIndex + 1 < images.length && onClickNext();
-  const prev = () => currentIndex > 0 && onClickPrev();
+  // Extra sanity check that the next/prev image exists before moving to it
+  const canPrev = currentIndex > 0;
+  const canNext = currentIndex + 1 < images.length;
+  const prev = () => canPrev && onClickPrev();
+  const next = () => canNext && onClickNext();
 
   return (
     <ImageContainer>
-      <ArrowButton onClick={prev} type="button" left>
-        <IoIosArrowBack />
-      </ArrowButton>
+      <ArrowButton onClick={prev} position="left" disabled={!canPrev} />
 
       <ImagePager
         images={images}
@@ -31,9 +30,7 @@ const ImageStage = ({
         onClickPrev={prev}
       />
 
-      <ArrowButton onClick={next} type="button" right>
-        <IoIosArrowForward />
-      </ArrowButton>
+      <ArrowButton onClick={next} position="right" disabled={!canNext} />
     </ImageContainer>
   );
 };
@@ -55,12 +52,6 @@ ImageStage.propTypes = {
 };
 
 export default ImageStage;
-
-const ArrowButton = styled(ButtonControl)`
-  position: absolute;
-  left: ${({ left }) => (left ? 0 : 'unset')};
-  right: ${({ right }) => (right ? 0 : 'unset')};
-`;
 
 const ImageContainer = styled.div`
   height: 100%;

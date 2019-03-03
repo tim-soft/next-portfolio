@@ -15,5 +15,6 @@ export default styled.button`
   }
   :focus {
     outline: none;
+    color: white;
   }
 `;
