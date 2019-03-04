@@ -45,7 +45,7 @@ const HeaderBar = ({
 
             <RightSideContainer>
               <PageIndicator>
-                {currentIndex + 1} / {images.length + 1}
+                {currentIndex + 1} / {images.length}
               </PageIndicator>
               <CloseButton onClick={onClose} type="button">
                 <IoIosClose size={60} />
