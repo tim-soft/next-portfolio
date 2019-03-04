@@ -34,6 +34,78 @@ export default class Lightbox extends React.Component {
     };
   }
 
+  componentDidMount() {
+    // Listen for keyboard events to control Lightbox
+    document.addEventListener('keyup', this.handleKeyboardInput);
+    document.addEventListener('keydown', this.preventBackgroundScroll);
+  }
+
+  componentWillUnmount() {
+    // Remove event listeners when the component unmounts
+    document.removeEventListener('keyup', this.handleKeyboardInput);
+    document.removeEventListener('keydown', this.preventBackgroundScroll);
+  }
+
+  /**
+   * Prevent keyboard from controlling background page
+   * when lightbox is open
+   */
+  preventBackgroundScroll = e => {
+    const { isOpen } = this.props;
+
+    if (isOpen) {
+      switch (e.key) {
+        case 'ArrowUp':
+          e.preventDefault();
+          break;
+        case 'ArrowDown':
+          e.preventDefault();
+          break;
+        case 'End':
+          e.preventDefault();
+          break;
+        case 'Home':
+          e.preventDefault();
+          break;
+        case 'PageUp':
+          e.preventDefault();
+          break;
+        case 'PageDown':
+          e.preventDefault();
+          break;
+        default:
+          break;
+      }
+    }
+  };
+
+  /**
+   * Navigate images with arrow keys, close on Esc key
+   */
+  handleKeyboardInput = e => {
+    const { isOpen, onClickPrev, onClickNext, onClose } = this.props;
+
+    if (isOpen) {
+      switch (e.key) {
+        case 'ArrowLeft':
+          onClickPrev();
+          break;
+        case 'ArrowRight':
+          onClickNext();
+          break;
+        case 'Escape':
+          onClose();
+          break;
+        default:
+          e.preventDefault();
+          break;
+      }
+    }
+  };
+
+  /**
+   * Toggles whether the lightbox controls are hidden or not
+   */
   toggleControls = () => {
     const { controlsAreHidden } = this.state;
 
