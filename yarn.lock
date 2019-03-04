@@ -4886,10 +4886,10 @@ react-scrollbars-custom@^3.1.5:
   dependencies:
     bowser "^2.0.0-beta.3"
 
-react-spring@^8.0.10:
-  version "8.0.10"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.10.tgz#65f0c50e6ec6b2a6466cc267dd1597ddbe18e37b"
-  integrity sha512-ZPiXFNEg2r8hQ+LEbXjvyN/cPIk5hcjk1+BehBGjTZoF5VNTc8igtCtSxSzHpSo+dZr2lYm8HEY+w+Jf+5mGCw==
+react-spring@^8.0.11:
+  version "8.0.11"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.11.tgz#73b11e04bb61b3c297d2a92364fb32d6c9c34c32"
+  integrity sha512-CCW4Nj6pWJyZrBp/PWF1PopI9x0lj+6imx4sWzzPLXYoLuhUQbbYQgcNRh6KvshwiGJJABlVREUIB/Tm8/36/g==
   dependencies:
     "@babel/runtime" "^7.3.1"
 
