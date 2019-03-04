@@ -62,7 +62,5 @@ const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: url('https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png')
-      39 39,
-    auto;
+  cursor: url('/static/touch-cursor.png'), auto;
 `;
