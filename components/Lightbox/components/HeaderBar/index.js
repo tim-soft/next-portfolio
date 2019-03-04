@@ -103,6 +103,9 @@ const LeftSideDescriptionContainer = styled.div`
   justify-content: space-around;
   flex-direction: column;
   height: 100%;
+  h2 {
+    margin-bottom: 5px !important;
+  }
 `;
 
 const FixedHeaderBar = styled.header`
