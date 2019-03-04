@@ -52,31 +52,16 @@ export default class Lightbox extends React.Component {
    */
   preventBackgroundScroll = e => {
     const { isOpen } = this.props;
+    const keysToIgnore = [
+      'ArrowUp',
+      'ArrowDown',
+      'End',
+      'Home',
+      'PageUp',
+      'PageDown'
+    ];
 
-    if (isOpen) {
-      switch (e.key) {
-        case 'ArrowUp':
-          e.preventDefault();
-          break;
-        case 'ArrowDown':
-          e.preventDefault();
-          break;
-        case 'End':
-          e.preventDefault();
-          break;
-        case 'Home':
-          e.preventDefault();
-          break;
-        case 'PageUp':
-          e.preventDefault();
-          break;
-        case 'PageDown':
-          e.preventDefault();
-          break;
-        default:
-          break;
-      }
-    }
+    if (isOpen && keysToIgnore.includes(e.key)) e.preventDefault();
   };
 
   /**
