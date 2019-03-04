@@ -1,23 +1,56 @@
+/* eslint-disable no-shadow */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { IoIosClose } from 'react-icons/io';
+import { Transition, animated } from 'react-spring/renderprops.cjs';
 import ButtonControl from '../ButtonControl';
 
-const HeaderBar = ({ projectTitle, images, currentIndex, onClose }) => (
-  <FixedHeaderBar>
-    <LeftSideDescriptionContainer>
-      <h2>{projectTitle}</h2>
-      <h4>{images[currentIndex].caption}</h4>
-    </LeftSideDescriptionContainer>
+const HeaderBar = ({
+  projectTitle,
+  images,
+  currentIndex,
+  onClose,
+  controlsAreHidden
+}) => (
+  <Transition
+    native
+    items={!controlsAreHidden}
+    // initial={{ opacity: 1 }}
+    from={{ opacity: 1, transform: 'translate(0,-40px)' }}
+    enter={{ opacity: 1, transform: 'translate(0,0)' }}
+    leave={{ opacity: 0, transform: 'translate(0,-40px)' }}
+  >
+    {controlsAreHidden =>
+      controlsAreHidden &&
+      // eslint-disable-next-line react/prop-types
+      (({ opacity, transform }) => (
+        <animated.div
+          style={{
+            opacity,
+            transform,
+            ...(opacity === 1 && { display: 'none' }),
+            zIndex: 10
+          }}
+        >
+          <FixedHeaderBar>
+            <LeftSideDescriptionContainer>
+              <h2>{projectTitle}</h2>
+              <h4>{images[currentIndex].caption}</h4>
+            </LeftSideDescriptionContainer>
 
-    <CloseButton onClick={onClose} type="button">
-      <IoIosClose size={60} />
-    </CloseButton>
-  </FixedHeaderBar>
+            <CloseButton onClick={onClose} type="button">
+              <IoIosClose size={60} />
+            </CloseButton>
+          </FixedHeaderBar>
+        </animated.div>
+      ))
+    }
+  </Transition>
 );
 
 HeaderBar.propTypes = {
+  controlsAreHidden: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   projectTitle: PropTypes.string.isRequired,
   currentIndex: PropTypes.number.isRequired,

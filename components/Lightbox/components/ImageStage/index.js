@@ -10,7 +10,8 @@ const ImageStage = ({
   currentIndex,
   onClickPrev,
   onClickNext,
-  onClose
+  onClose,
+  toggleControls
 }) => {
   // Extra sanity check that the next/prev image exists before moving to it
   const canPrev = currentIndex > 0;
@@ -28,6 +29,7 @@ const ImageStage = ({
         onClose={onClose}
         onClickNext={next}
         onClickPrev={prev}
+        toggleControls={toggleControls}
       />
 
       <ArrowButton onClick={next} position="right" disabled={!canNext} />
@@ -36,6 +38,7 @@ const ImageStage = ({
 };
 
 ImageStage.propTypes = {
+  toggleControls: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   onClickPrev: PropTypes.func.isRequired,
   onClickNext: PropTypes.func.isRequired,

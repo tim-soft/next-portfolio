@@ -8,6 +8,7 @@ import { Spring, animated } from 'react-spring/renderprops.cjs';
 
 class ImagePager extends React.Component {
   static propTypes = {
+    toggleControls: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
     onClickPrev: PropTypes.func.isRequired,
     onClickNext: PropTypes.func.isRequired,
@@ -36,7 +37,7 @@ class ImagePager extends React.Component {
   };
 
   render() {
-    const { images, currentIndex, onClose } = this.props;
+    const { images, currentIndex, onClose, toggleControls } = this.props;
 
     return images.map((image, i) => (
       <Gesture key={i}>
@@ -48,6 +49,8 @@ class ImagePager extends React.Component {
           cancel,
           velocity
         }) => {
+          const clickNotDrag = i === currentIndex && xDelta === 0;
+
           // Animate over to the next image if it has been dragged far enough or fast enough
           if (
             currentIndex === i &&
@@ -113,7 +116,7 @@ class ImagePager extends React.Component {
                     }}
                     // If the background is clicked close the lightbox
                     onClick={() => {
-                      if (i === currentIndex && xDelta === 0) onClose();
+                      if (clickNotDrag) onClose();
                     }}
                   >
                     <Image
@@ -128,6 +131,9 @@ class ImagePager extends React.Component {
                         // Don't close lighbox when clicking image
                         e.stopPropagation();
                         e.nativeEvent.stopImmediatePropagation();
+
+                        // Show/Hide controls when image is clicked
+                        if (clickNotDrag) toggleControls();
                       }}
                     />
                   </animated.div>
