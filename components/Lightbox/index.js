@@ -110,6 +110,9 @@ export default class Lightbox extends React.Component {
 
     const { controlsAreHidden } = this.state;
 
+    // Controls should always be visible when opening lightbox
+    if (!isOpen && controlsAreHidden) this.toggleControls();
+
     return (
       <CreatePortal>
         <PageContainer isOpen={isOpen}>
