@@ -43,9 +43,14 @@ const HeaderBar = ({
               <h4>{images[currentIndex].caption}</h4>
             </LeftSideDescriptionContainer>
 
-            <CloseButton onClick={onClose} type="button">
-              <IoIosClose size={60} />
-            </CloseButton>
+            <RightSideContainer>
+              <PageIndicator>
+                {currentIndex + 1} / {images.length + 1}
+              </PageIndicator>
+              <CloseButton onClick={onClose} type="button">
+                <IoIosClose size={60} />
+              </CloseButton>
+            </RightSideContainer>
           </FixedHeaderBar>
         </animated.div>
       ))
@@ -71,8 +76,25 @@ HeaderBar.propTypes = {
 
 export default HeaderBar;
 
+const PageIndicator = styled.h3`
+  white-space: nowrap;
+`;
+
+const RightSideContainer = styled.div`
+  width: 117px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 20px;
+`;
+
 const CloseButton = styled(ButtonControl)`
   height: 100%;
+  display: flex;
+  @media (min-width: 500px) {
+    border-left-style: solid;
+    border-left-width: 1px;
+  }
 `;
 
 const LeftSideDescriptionContainer = styled.div`
@@ -81,19 +103,20 @@ const LeftSideDescriptionContainer = styled.div`
   justify-content: space-around;
   flex-direction: column;
   height: 100%;
-  h2,
-  h4 {
-    margin: 0;
-    font-weight: normal;
-  }
 `;
 
 const FixedHeaderBar = styled.header`
-  height: 60px;
+  min-height: 70px;
   /* background: rgba(25, 25, 25, 0.36); */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5px 20px;
   color: white;
+  h2,
+  h3,
+  h4 {
+    margin: 0;
+    font-weight: normal;
+  }
 `;
