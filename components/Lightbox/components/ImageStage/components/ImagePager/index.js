@@ -24,6 +24,25 @@ class ImagePager extends React.Component {
     ).isRequired
   };
 
+  constructor() {
+    super();
+
+    this.state = {
+      /* Maintain accurate measure of window width, even during resize events */
+      windowWidth: window.innerWidth
+    };
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.updateWindowWidth);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowWidth);
+  }
+
+  updateWindowWidth = () => this.setState({ windowWidth: window.innerWidth });
+
   // Determine whether to slide to next or previous image
   clamp = (num, clamp, higher) => {
     const { currentIndex, onClickPrev, onClickNext } = this.props;
@@ -38,6 +57,7 @@ class ImagePager extends React.Component {
 
   render() {
     const { images, currentIndex, onClose, toggleControls } = this.props;
+    const { windowWidth } = this.state;
 
     return images.map((image, i) => (
       <Gesture key={i}>
@@ -55,7 +75,7 @@ class ImagePager extends React.Component {
           if (
             currentIndex === i &&
             down &&
-            (distance > window.innerWidth / 3 || velocity > 3.5)
+            (distance > windowWidth / 3 || velocity > 3.0)
           ) {
             cancel(
               this.clamp(
@@ -73,9 +93,8 @@ class ImagePager extends React.Component {
             gestureConfig = { display: 'none' };
           else {
             // Update current image position
-            const x =
-              (i - currentIndex) * window.innerWidth + (down ? xDelta : 0);
-            const sc = down ? 1 - distance / window.innerWidth / 1.9 : 1;
+            const x = (i - currentIndex) * windowWidth + (down ? xDelta : 0);
+            const sc = down ? 1 - distance / windowWidth / 1.9 : 1;
 
             gestureConfig = { x, sc, display: 'block' };
           }
@@ -84,7 +103,7 @@ class ImagePager extends React.Component {
             <Spring
               native
               to={{
-                x: (i - currentIndex) * window.innerWidth,
+                x: (i - currentIndex) * windowWidth,
                 sc: 1,
                 display: 'block',
                 ...gestureConfig

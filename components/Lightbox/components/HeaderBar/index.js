@@ -16,8 +16,8 @@ const HeaderBar = ({
   <Transition
     native
     items={!controlsAreHidden}
-    // initial={{ opacity: 1 }}
-    from={{ opacity: 1, transform: 'translate(0,-40px)' }}
+    // initial={{ opacity: 1, transform: 'translate(0,-40px)' }}
+    from={{ opacity: 0, transform: 'translate(0,-40px)' }}
     enter={{ opacity: 1, transform: 'translate(0,0)' }}
     leave={{ opacity: 0, transform: 'translate(0,-40px)' }}
   >
@@ -30,7 +30,11 @@ const HeaderBar = ({
             opacity,
             transform,
             ...(opacity === 1 && { display: 'none' }),
-            zIndex: 10
+            zIndex: 10,
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0
           }}
         >
           <FixedHeaderBar>
@@ -85,12 +89,8 @@ const LeftSideDescriptionContainer = styled.div`
 `;
 
 const FixedHeaderBar = styled.header`
-  z-index: 10;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   height: 60px;
+  /* background: rgba(25, 25, 25, 0.36); */
   display: flex;
   justify-content: space-between;
   align-items: center;
