@@ -62,5 +62,5 @@ const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: url('/static/touch-cursor.png'), auto;
+  cursor: url('/static/touch-cursor.png') 39 39, auto;
 `;
