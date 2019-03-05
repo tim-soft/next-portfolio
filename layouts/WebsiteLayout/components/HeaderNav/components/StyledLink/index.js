@@ -21,23 +21,16 @@ export default styled.a`
     height: 3px;
     width: 100%;
     background-color: ${({ theme }) => theme.headerNavTextUnderlineColor};
-    -webkit-transform-origin: center top;
     transform-origin: center top;
-    -webkit-transform: scale(0, 1);
     transform: scale(0, 1);
-    transition: color 0.1s, -webkit-transform 0.2s ease-out;
     transition: color 0.1s, transform 0.2s ease-out;
-    transition: color 0.1s, transform 0.2s ease-out,
-      -webkit-transform 0.2s ease-out;
   }
   :active::before {
     background-color: cyan;
   }
   :focus::before,
   :hover::before {
-    -webkit-transform-origin: center top;
     transform-origin: center top;
-    -webkit-transform: scale(1, 1);
     transform: scale(1, 1);
   }
 `;
