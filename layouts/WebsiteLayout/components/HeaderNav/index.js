@@ -48,4 +48,8 @@ const HeaderStyled = styled.header`
   display: flex;
   align-items: center;
   overflow: hidden;
+  @media (max-width: 500px) {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 `;

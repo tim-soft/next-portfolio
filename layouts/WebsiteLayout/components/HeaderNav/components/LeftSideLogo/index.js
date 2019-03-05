@@ -55,4 +55,10 @@ const Logo = styled(StyledLogo)`
   @media (${({ theme }) => theme.breakpoints.desktopNav}) {
     margin: 0;
   }
+  @media (max-width: 400px) {
+    font-size: 2em;
+  }
+  @media (max-width: 350px) {
+    font-size: 1.9em;
+  }
 `;
