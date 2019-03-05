@@ -55,37 +55,49 @@ class ImagePager extends React.Component {
     else if (currentIndex < nextIndex) onClickNext();
   };
 
+  /**
+   * Callback function for <Gesture {...} />
+   *
+   * If swipe is successful, call clamp() to set state of next index
+   */
+  onAction = ({
+    down,
+    distance,
+    direction: [xDir],
+    cancel,
+    velocity,
+    i,
+    ...props
+  }) => {
+    const { images, currentIndex } = this.props;
+    const { windowWidth } = this.state;
+
+    // Animate over to the next image if it has been dragged far enough or fast enough
+    if (
+      currentIndex === i &&
+      down &&
+      (distance > windowWidth / 3 || velocity > 3.0)
+    ) {
+      cancel(
+        this.clamp(currentIndex + (xDir > 0 ? -1 : 1), 0, images.length - 1)
+      );
+    }
+
+    // Always return props back to <Gesture />
+    return props;
+  };
+
   render() {
     const { images, currentIndex, onClose, toggleControls } = this.props;
     const { windowWidth } = this.state;
 
     return images.map((image, i) => (
-      <Gesture key={i}>
-        {({
-          down,
-          delta: [xDelta],
-          direction: [xDir],
-          distance,
-          cancel,
-          velocity
-        }) => {
+      <Gesture key={i} onAction={props => this.onAction({ ...props, i })}>
+        {({ down, delta: [xDelta], distance }) => {
+          // Flag to differentiate a click versus a drag
+          // Useful for showing/hiding controls
           const clickNotDrag = i === currentIndex && xDelta === 0;
-
-          // Animate over to the next image if it has been dragged far enough or fast enough
-          if (
-            currentIndex === i &&
-            down &&
-            (distance > windowWidth / 3 || velocity > 3.0)
-          ) {
-            cancel(
-              this.clamp(
-                currentIndex + (xDir > 0 ? -1 : 1),
-                0,
-                images.length - 1
-              )
-            );
-          }
-
+          // Override <Spring /> styles with these if applicable to the current image
           let gestureConfig = {};
 
           // Hide image if not the current image
