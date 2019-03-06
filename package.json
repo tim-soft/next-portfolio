@@ -6,9 +6,9 @@
   "dependencies": {
     "next": "^8.0.3",
     "next-offline": "^3.3.6",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "react-icons": "^3.4.0",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-icons": "^3.5.0",
     "react-particles-js": "^2.4.2",
     "react-photo-gallery": "^6.3.2",
     "react-scrollbars-custom": "^3.1.5",
