@@ -4886,17 +4886,17 @@ react-scrollbars-custom@^3.1.5:
   dependencies:
     bowser "^2.0.0-beta.3"
 
-react-spring@^8.0.12:
-  version "8.0.12"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.12.tgz#30a526825d40da7441c05aa2085ad09169f5c37b"
-  integrity sha512-HuSIcZZ5QYC0thVLl56Q4mf1+fZ4/eqZJaPtFKmASmgIRmfbeH9hYwz7xcy88OhdsC4BP9fxFyNLy2j9CI+MHw==
+react-spring@^8.0.14:
+  version "8.0.14"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.14.tgz#d6162f90dfca259f7f0cc42bca4977a84917901a"
+  integrity sha512-/x4D5BNlJxtyBCB+ov57CymSLwHGV1v37OVVMFrJmnIthGSmR71BBFxPqD635sy/UDgw7p6mww7FygE5f2slJg==
   dependencies:
     "@babel/runtime" "^7.3.1"
 
-react-with-gesture@^4.0.5:
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/react-with-gesture/-/react-with-gesture-4.0.5.tgz#8268f1c0cf77cde14b73130ec35ccbee480900b8"
-  integrity sha512-5M27P31u9Kl3wJro4oWlBd007kxoBCDknzZv1McdkXTiSL1FgQO3v7zNA3dsjdiMsg/9eBlor6Loip2npxp1wQ==
+react-with-gesture@^4.0.6:
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/react-with-gesture/-/react-with-gesture-4.0.6.tgz#d264cfc9076506471c3ea0d8789869f3b6af75c9"
+  integrity sha512-hThnKyqGpPhH95mxHtzCH5mz/JPArErAHGnDi21VHIgKhZaxqCT5KHuUnc13MRt8g1F7YTx1OrgP9gCYFdZOWg==
 
 react@^16.8.4:
   version "16.8.4"
