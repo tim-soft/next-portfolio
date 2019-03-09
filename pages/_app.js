@@ -8,9 +8,9 @@ import {
   interpolate
 } from 'react-spring/renderprops.cjs';
 import { ThemeProvider } from 'styled-components';
-import AppTheme from '../components/AppTheme';
-import GlobalStyles from '../components/GlobalStyles';
-import WebsiteLayout from '../layouts/WebsiteLayout';
+import AppTheme from 'components/AppTheme';
+import GlobalStyles from 'components/GlobalStyles';
+import WebsiteLayout from 'layouts/WebsiteLayout';
 
 /**
  * Custom Next.js App that wraps all Next.js pages, adds global styles and animates route changes
@@ -91,7 +91,10 @@ class WebApp extends App {
                     position: 'absolute'
                   }}
                 >
-                  <Component {...pageProps} />
+                  <Component
+                    {...pageProps}
+                    routeIsAnimating={opacity.value !== 1}
+                  />
                 </animated.div>
               )}
             </Transition>

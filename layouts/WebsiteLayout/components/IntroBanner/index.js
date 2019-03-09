@@ -1,11 +1,17 @@
 /* eslint-disable no-shadow */
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Particles from 'react-particles-js';
 import { Spring, animated, interpolate } from 'react-spring/renderprops.cjs';
 import particleProps from './particlesConfig';
 
 export default class IntroBanner extends React.Component {
+  static propTypes = {
+    /* True if the current page transition animation is in progress */
+    routeIsAnimating: PropTypes.bool.isRequired
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -48,21 +54,28 @@ export default class IntroBanner extends React.Component {
 
   render() {
     const { webpSupport } = this.state;
+    const { routeIsAnimating } = this.props;
+
+    // Starting position of stars
+    const from = {
+      opacity: 0,
+      translateY: 0,
+      scale: 0.5
+    };
+
+    // Expand starfield to fill background
+    const to = {
+      opacity: 1,
+      translateY: 1,
+      scale: 1
+    };
 
     return (
       <BannerContainer>
         <Spring
           native
-          from={{
-            opacity: 0,
-            translateY: 0,
-            scale: 0.85
-          }}
-          to={{
-            opacity: 1,
-            translateY: 1,
-            scale: 1
-          }}
+          from={routeIsAnimating ? to : from}
+          to={routeIsAnimating ? from : to}
         >
           {({ opacity, translateY, scale }) => (
             <animated.div
@@ -80,7 +93,7 @@ export default class IntroBanner extends React.Component {
                 width: '100%'
               }}
             >
-              <Particles {...particleProps} />
+              <StyledParticles {...particleProps} />
             </animated.div>
           )}
         </Spring>
@@ -90,6 +103,11 @@ export default class IntroBanner extends React.Component {
     );
   }
 }
+
+const StyledParticles = styled(Particles)`
+  height: 100%;
+  width: 100%;
+`;
 
 const BannerContainer = styled.div`
   display: flex;
