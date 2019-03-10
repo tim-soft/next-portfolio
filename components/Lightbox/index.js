@@ -46,6 +46,15 @@ export default class Lightbox extends React.Component {
     document.removeEventListener('keydown', this.preventBackgroundScroll);
   }
 
+  static getDerivedStateFromProps(props, state) {
+    const { isOpen } = props;
+    const { controlsAreHidden } = state;
+
+    // Always display the controls when opening the lightbox
+    if (!isOpen && controlsAreHidden) return { controlsAreHidden: false };
+    return null;
+  }
+
   /**
    * Prevent keyboard from controlling background page
    * when lightbox is open
@@ -109,9 +118,6 @@ export default class Lightbox extends React.Component {
     } = this.props;
 
     const { controlsAreHidden } = this.state;
-
-    // Controls should always be visible when opening lightbox
-    if (!isOpen && controlsAreHidden) this.toggleControls();
 
     return (
       <CreatePortal>
