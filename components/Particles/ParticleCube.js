@@ -5,7 +5,7 @@
 import React, { useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import * as THREE from 'three';
-import { useRender, useThree } from 'react-three-fiber/dist';
+import { useRender, useThree } from 'react-three-fiber';
 import OrbitControls from 'three-orbitcontrols';
 
 const maxParticleCount = 1000;

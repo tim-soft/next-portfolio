@@ -1,5 +1,5 @@
 import React from 'react';
-import { Canvas } from 'react-three-fiber/dist';
+import { Canvas } from 'react-three-fiber';
 import DatGui, { DatBoolean, DatNumber } from 'react-dat-gui';
 import DatContainer from './DatContainer';
 import ParticleCube from './ParticleCube';

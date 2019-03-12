@@ -4140,11 +4140,6 @@ next-server@8.0.3:
     send "0.16.1"
     url "0.11.0"
 
-next-transpile-modules@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/next-transpile-modules/-/next-transpile-modules-2.2.0.tgz#1cd4b8b3e8bc22107c31ba38cbc889bc483bbae9"
-  integrity sha512-AY2Rw5lYjWJgpTTA+cfhakTcaG32PpMqpCjqA0DsfHZXXPPIPUjONVXEHcliENKo3H7mdlDgJM8Imy4+Hz96Tw==
-
 next@^8.0.3:
   version "8.0.3"
   resolved "https://registry.yarnpkg.com/next/-/next-8.0.3.tgz#7f27172e9441aacb21b04aaaaa663af43aceea3b"
