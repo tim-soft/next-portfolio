@@ -7,6 +7,7 @@
     "@weco/next-plugin-transpile-modules": "^2.2.0",
     "next": "^8.0.3",
     "next-offline": "^3.3.6",
+    "prop-types": "^15.7.2",
     "react": "^16.8.4",
     "react-dat-gui": "^2.2.0",
     "react-dom": "^16.8.4",
