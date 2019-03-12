@@ -4,9 +4,9 @@
 /* eslint-disable no-param-reassign */
 import React, { useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import * as THREE from 'three/src/Three';
+import * as THREE from 'three';
 import { useRender, useThree } from 'react-three-fiber/dist';
-import OrbitControls from './OrbitControls';
+import OrbitControls from 'three-orbitcontrols';
 
 const maxParticleCount = 1000;
 const r = 800;
@@ -97,7 +97,10 @@ const ParticleCube = ({
   const animation = useRef(0);
   const group = useRef();
 
-  const { canvas, camera } = useThree();
+  const { gl, canvas, camera } = useThree();
+  // Scale rendering automatically to window DPI
+  // https://threejs.org/docs/#api/en/renderers/WebGLRenderer.setPixelRatio
+  gl.setPixelRatio(window.devicePixelRatio);
 
   // Setup camera
   const [controls] = useMemo(() => {
@@ -263,7 +266,7 @@ ParticleCube.propTypes = {
   showParticles: PropTypes.bool.isRequired,
   showLines: PropTypes.bool.isRequired,
   minDistance: PropTypes.number.isRequired,
-  limitConnections: PropTypes.number.isRequired,
+  limitConnections: PropTypes.bool.isRequired,
   maxConnections: PropTypes.number.isRequired,
   particleCount: PropTypes.number.isRequired
 };

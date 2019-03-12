@@ -1,25 +1,32 @@
 const withOffline = require('next-offline');
 const path = require('path');
-const withTM = require('@weco/next-plugin-transpile-modules');
+const withTM = require('next-transpile-modules');
 
 const isDev = process.env.NODE_ENV === 'development';
 
 const nextConfig = {
-  // Three.js must be transpiled
-  // https://github.com/wellcometrust/next-plugin-transpile-modules
-  transpileModules: ['three'],
   // Alias the /components and /layouts folders for imports
   // e.g. import xyz from 'components/xyz'
   webpack(config) {
     const newConfig = config;
     newConfig.resolve.alias.components = path.join(__dirname, 'components');
     newConfig.resolve.alias.layouts = path.join(__dirname, 'layouts');
+    newConfig.resolve.alias.three = path.join(
+      __dirname,
+      'node_modules',
+      'three/src/Three'
+    );
     // Allow proper tree shaking for react-icons lib
     // https://github.com/react-icons/react-icons/issues/154#issuecomment-412774515
     newConfig.resolve.extensions = ['.mjs', '.js', '.jsx', '.json'];
 
     return newConfig;
   },
+
+  // Three.js must be transpiled
+  // https://github.com/wellcometrust/next-plugin-transpile-modules
+  transpileModules: ['three'],
+
   // Now 2.0 Build Type
   // https://nextjs.org/blog/next-8#serverless-nextjs
   target: 'serverless',
@@ -61,8 +68,8 @@ const nextConfig = {
 };
 
 // Compose next-offline plugin with next config
-const offlinePlugin = withOffline(nextConfig);
+const offlinePlugin = withOffline(withTM(nextConfig));
 
 // https://nextjs.org/docs/#production-deployment
 // Don't include Service Worker in dev
-module.exports = isDev ? withTM(nextConfig) : withTM(offlinePlugin);
+module.exports = isDev ? withTM(nextConfig) : offlinePlugin;

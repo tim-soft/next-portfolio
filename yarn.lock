@@ -1050,11 +1050,6 @@
     "@webassemblyjs/wast-parser" "1.8.5"
     "@xtuc/long" "4.2.2"
 
-"@weco/next-plugin-transpile-modules@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@weco/next-plugin-transpile-modules/-/next-plugin-transpile-modules-2.2.0.tgz#df7d78a61a3afd248b756816d72a5495d593b60d"
-  integrity sha512-d9XrTE2m2hruQ+CCvXokiAJMpvezpgKw/GeciFfL/qD2CV9ytYOntVF2AsGVQo7WdcX2FtipE46KJcfUegpRpQ==
-
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@xtuc/ieee754/-/ieee754-1.2.0.tgz#eef014a3145ae477a1cbc00cd1e552336dceb790"
@@ -4145,6 +4140,11 @@ next-server@8.0.3:
     send "0.16.1"
     url "0.11.0"
 
+next-transpile-modules@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/next-transpile-modules/-/next-transpile-modules-2.2.0.tgz#1cd4b8b3e8bc22107c31ba38cbc889bc483bbae9"
+  integrity sha512-AY2Rw5lYjWJgpTTA+cfhakTcaG32PpMqpCjqA0DsfHZXXPPIPUjONVXEHcliENKo3H7mdlDgJM8Imy4+Hz96Tw==
+
 next@^8.0.3:
   version "8.0.3"
   resolved "https://registry.yarnpkg.com/next/-/next-8.0.3.tgz#7f27172e9441aacb21b04aaaaa663af43aceea3b"
@@ -4973,17 +4973,17 @@ react-scrollbars-custom@^3.1.5:
   dependencies:
     bowser "^2.0.0-beta.3"
 
-react-spring@^8.0.14:
-  version "8.0.14"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.14.tgz#d6162f90dfca259f7f0cc42bca4977a84917901a"
-  integrity sha512-/x4D5BNlJxtyBCB+ov57CymSLwHGV1v37OVVMFrJmnIthGSmR71BBFxPqD635sy/UDgw7p6mww7FygE5f2slJg==
+react-spring@^8.0.15:
+  version "8.0.15"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.15.tgz#050d54edc334582c858bc100182d37bd7ab61d59"
+  integrity sha512-VXeqy7FCaNPiIPe1Yk4R4yfQn+BwJEofJ1Jkib7iAFouJJE7eUMhiReszYWYztCekmCAQvmsCxlOEKGK8J2O1w==
   dependencies:
     "@babel/runtime" "^7.3.1"
 
-react-three-fiber@^1.3.4:
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/react-three-fiber/-/react-three-fiber-1.3.4.tgz#1b9e213a4a619c819ba1c8dec92dcc229b0355b1"
-  integrity sha512-nKFW0B6WXiemx/7Ohh8F099M/6RDY84zerfIFPvIeLwAA2GGRh+s1dF4EAkhFtuzZn+Ebtej1p3E0CtLRcw5mw==
+react-three-fiber@^1.3.6:
+  version "1.3.6"
+  resolved "https://registry.yarnpkg.com/react-three-fiber/-/react-three-fiber-1.3.6.tgz#6a05ad050cea6c5f5fb9061a78dcc58635433422"
+  integrity sha512-ncXDH7j1EFDj1L94/iH0pZbqJ1DUPT/Kn/51+lVRFldslNfTs/iau9COw3RWD6k489rWWqDsPTO9Pe6B5WzA+g==
   dependencies:
     "@babel/runtime" "^7.3.4"
     react-reconciler "^0.20.1"
@@ -5844,6 +5844,11 @@ text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
+
+three-orbitcontrols@^2.102.1:
+  version "2.102.1"
+  resolved "https://registry.yarnpkg.com/three-orbitcontrols/-/three-orbitcontrols-2.102.1.tgz#f4071e79f1c12e2b7668992cb06cfa29a816629d"
+  integrity sha512-mp5qc5mooCtjgSloMFzIEI2VQVkvBDWDMYtbxY3TFB/BCCYpR6NV7/dD5+EUyzR90/a9H356s9QR+2PhH48f6w==
 
 three@^0.102.1:
   version "0.102.1"
