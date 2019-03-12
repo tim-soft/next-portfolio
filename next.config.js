@@ -1,9 +1,13 @@
 const withOffline = require('next-offline');
 const path = require('path');
+const withTM = require('@weco/next-plugin-transpile-modules');
 
 const isDev = process.env.NODE_ENV === 'development';
 
 const nextConfig = {
+  // Three.js must be transpiled
+  // https://github.com/wellcometrust/next-plugin-transpile-modules
+  transpileModules: ['three'],
   // Alias the /components and /layouts folders for imports
   // e.g. import xyz from 'components/xyz'
   webpack(config) {
@@ -61,4 +65,4 @@ const offlinePlugin = withOffline(nextConfig);
 
 // https://nextjs.org/docs/#production-deployment
 // Don't include Service Worker in dev
-module.exports = isDev ? nextConfig : offlinePlugin;
+module.exports = isDev ? withTM(nextConfig) : withTM(offlinePlugin);
