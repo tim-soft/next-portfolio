@@ -7,8 +7,7 @@ import DatGui, {
   DatSelect,
   DatPresets
 } from 'react-dat-gui';
-import DatContainer from './DatContainer';
-import ParticleCube from './ParticleCube';
+import { DatContainer, ParticleCube, PerformanceStats } from './components';
 
 export default class Particles extends React.Component {
   constructor() {
@@ -43,6 +42,7 @@ export default class Particles extends React.Component {
 
     return (
       <>
+        <PerformanceStats />
         <DatContainer>
           <DatGui data={datConfig} onUpdate={this.handleDatUpdate}>
             <DatPresets
