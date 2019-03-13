@@ -6,6 +6,11 @@
 const r = 700;
 const rHalf = r / 2;
 
+/**
+ * Animates an array of particles over a three dimensional space
+ *
+ * Calculates the positions of lines between particles
+ */
 const animate = ({
   minDistance,
   limitConnections,
@@ -55,8 +60,7 @@ const animate = ({
       if (dist < minDistance) {
         particleData.numConnections += 1;
         particleDataB.numConnections += 1;
-        let alpha = 1.0 - dist / minDistance;
-        if (alpha < 0.17) alpha = 0.17;
+        const alpha = 1.0 - dist / minDistance;
         linePositions[vertexpos++] = particlePositions[i * 3];
         linePositions[vertexpos++] = particlePositions[i * 3 + 1];
         linePositions[vertexpos++] = particlePositions[i * 3 + 2];

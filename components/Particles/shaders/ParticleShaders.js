@@ -4,7 +4,7 @@
  * This shader uses the position of particles to determine their color
  * and change them as they move
  */
-export const getVertexShader = () => `
+export const getParticleVertexShader = () => `
 // Size attribute for particle geometry
 attribute float size;
 
@@ -37,7 +37,7 @@ if (r > 1.0) {
  *
  * @param {String} particleShape Either 'circle' or 'square'
  */
-export const getFragmentShader = ({ particleShape }) => `
+export const getParticleFragmentShader = ({ particleShape }) => `
 // Color from uniforms arg
 uniform vec3 color;
 

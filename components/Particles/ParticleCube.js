@@ -4,7 +4,14 @@ import PropTypes from 'prop-types';
 import * as THREE from 'three';
 import { useRender, useThree } from 'react-three-fiber';
 import OrbitControls from 'three-orbitcontrols';
-import { getVertexShader, getFragmentShader } from './ParticleShaders';
+import {
+  getParticleVertexShader,
+  getParticleFragmentShader
+} from './shaders/ParticleShaders';
+import {
+  getLineVertexShader,
+  getLineFragmentShader
+} from './shaders/LineShaders';
 import animate from './Animate';
 
 // Cube dimensions
@@ -58,11 +65,21 @@ const ParticleCube = ({
     lineColors
   ] = useMemo(() => {
     // Line material
-    const lineMeshMaterial = new THREE.LineBasicMaterial({
-      vertexColors: THREE.VertexColors,
-      blending: THREE.AdditiveBlending,
+    // const lineMeshMaterial = new THREE.LineBasicMaterial({
+    //   vertexColors: THREE.VertexColors,
+    //   blending: THREE.AdditiveBlending,
+    //   transparent: true,
+    //   visible: showLines
+    // });
+    const lineMeshMaterial = new THREE.ShaderMaterial({
+      uniforms: {
+        color: { value: new THREE.Color(Math.random() * 0xffffff) }
+      },
+      vertexShader: getLineVertexShader(),
+      fragmentShader: getLineFragmentShader(),
       transparent: true,
-      visible: showLines
+      blending: THREE.AdditiveBlending,
+      visible: showParticles
     });
 
     // Line mesh geometry
@@ -141,8 +158,8 @@ const ParticleCube = ({
       uniforms: {
         color: { value: new THREE.Color(Math.random() * 0xffffff) }
       },
-      vertexShader: getVertexShader(),
-      fragmentShader: getFragmentShader({ particleShape }),
+      vertexShader: getParticleVertexShader(),
+      fragmentShader: getParticleFragmentShader({ particleShape }),
       transparent: true,
       blending: THREE.AdditiveBlending,
       visible: showParticles
