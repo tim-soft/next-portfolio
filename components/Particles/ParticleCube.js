@@ -8,7 +8,7 @@ import * as THREE from 'three';
 import { useRender, useThree } from 'react-three-fiber';
 import OrbitControls from 'three-orbitcontrols';
 
-const r = 800;
+const r = 700;
 const rHalf = r / 2;
 
 const animate = ({
@@ -161,16 +161,6 @@ const ParticleCube = ({
     particlesData,
     particlePositions
   ] = useMemo(() => {
-    // Material for particle
-    // const pointMaterial = new THREE.PointsMaterial({
-    //   color: 0xffffff,
-    //   size: 6,
-    //   blending: THREE.AdditiveBlending,
-    //   transparent: true,
-    //   sizeAttenuation: false,
-    //   visible: showParticles
-    // });
-
     // Add particles to geometry
     // Maintain two arrays
     // particlePositions contains random x,y,z coords for each particle
@@ -212,6 +202,7 @@ const ParticleCube = ({
       new THREE.BufferAttribute(particleSizes, 1).setDynamic(true)
     );
 
+    // Material for particle, use shaders to morph shape and color
     const pointMaterial = new THREE.ShaderMaterial({
       uniforms: {
         color: { value: new THREE.Color(Math.random() * 0xffffff) }
@@ -244,6 +235,7 @@ const ParticleCube = ({
         }
       `,
       transparent: true,
+      blending: THREE.AdditiveBlending,
       visible: showParticles
     });
 
