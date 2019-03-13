@@ -93,12 +93,14 @@ const ParticleCube = ({
   maxConnections,
   particleCount,
   minParticleSize,
-  maxParticleSize
+  maxParticleSize,
+  boundingBox,
+  showCube
 }) => {
   const animation = useRef(0);
   const group = useRef();
 
-  const { gl, canvas, camera } = useThree();
+  const { gl, canvas, camera, size } = useThree();
   // Scale rendering automatically to window DPI
   // https://threejs.org/docs/#api/en/renderers/WebGLRenderer.setPixelRatio
   gl.setPixelRatio(window.devicePixelRatio);
@@ -106,7 +108,7 @@ const ParticleCube = ({
   // Setup camera
   const [controls] = useMemo(() => {
     camera.fov = 45;
-    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.aspect = size.width / size.height;
     camera.near = 1;
     camera.far = 4000;
     camera.position.z = 1750;
@@ -170,10 +172,13 @@ const ParticleCube = ({
     const particleSizes = new Float32Array(particleCount);
     const particlesData = [];
 
+    let particleBounds = r;
+    if (boundingBox === 'canvas') particleBounds = size.width;
+    if (boundingBox === 'cube') particleBounds = r;
     for (let i = 0; i < particleCount; i += 1) {
-      const x = Math.random() * r - r / 2;
-      const y = Math.random() * r - r / 2;
-      const z = Math.random() * r - r / 2;
+      const x = Math.random() * particleBounds - particleBounds / 2;
+      const y = Math.random() * particleBounds - particleBounds / 2;
+      const z = Math.random() * particleBounds - particleBounds / 2;
       particlePositions[i * 3] = x;
       particlePositions[i * 3 + 1] = y;
       particlePositions[i * 3 + 2] = z;
@@ -245,7 +250,14 @@ const ParticleCube = ({
       particlesData,
       particlePositions
     ];
-  }, [particleCount, showParticles, minParticleSize, maxParticleSize]);
+  }, [
+    particleCount,
+    showParticles,
+    minParticleSize,
+    maxParticleSize,
+    boundingBox,
+    showCube
+  ]);
 
   const animationState = {
     minDistance,
@@ -278,18 +290,20 @@ const ParticleCube = ({
     <scene>
       <group ref={group}>
         {/* Bounding box that particles exist inside of */}
-        <boxHelper>
-          <mesh name="object">
-            <meshBasicMaterial
-              name="material"
-              color="white"
-              blending={THREE.AdditiveBlending}
-              wireframe
-              transparent
-            />
-            <boxBufferGeometry name="geometry" args={[r, r, r]} />
-          </mesh>
-        </boxHelper>
+        {showCube && (
+          <boxHelper>
+            <mesh name="object">
+              <meshBasicMaterial
+                name="material"
+                color="white"
+                blending={THREE.AdditiveBlending}
+                wireframe
+                transparent
+              />
+              <boxBufferGeometry name="geometry" args={[r, r, r]} />
+            </mesh>
+          </boxHelper>
+        )}
         {/* Lines connecting particles */}
         <lineSegments geometry={lineMeshGeometry} material={lineMeshMaterial} />
         {/* Particles */}
@@ -302,12 +316,14 @@ const ParticleCube = ({
 ParticleCube.propTypes = {
   showParticles: PropTypes.bool.isRequired,
   showLines: PropTypes.bool.isRequired,
+  showCube: PropTypes.bool.isRequired,
   minDistance: PropTypes.number.isRequired,
   limitConnections: PropTypes.bool.isRequired,
   maxConnections: PropTypes.number.isRequired,
   particleCount: PropTypes.number.isRequired,
   minParticleSize: PropTypes.number.isRequired,
-  maxParticleSize: PropTypes.number.isRequired
+  maxParticleSize: PropTypes.number.isRequired,
+  boundingBox: PropTypes.oneOf(['canvas', 'cube']).isRequired
 };
 
 export default ParticleCube;
