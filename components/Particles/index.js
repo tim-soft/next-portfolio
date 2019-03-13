@@ -4,7 +4,8 @@ import DatGui, {
   DatBoolean,
   DatNumber,
   DatFolder,
-  DatSelect
+  DatSelect,
+  DatPresets
 } from 'react-dat-gui';
 import DatContainer from './DatContainer';
 import ParticleCube from './ParticleCube';
@@ -44,6 +45,22 @@ export default class Particles extends React.Component {
       <>
         <DatContainer>
           <DatGui data={datConfig} onUpdate={this.handleDatUpdate}>
+            <DatPresets
+              label="Presets"
+              options={[
+                {
+                  'Oort Cloud Stress Test': {
+                    ...datConfig,
+                    particleCount: 1000,
+                    minDistance: 300,
+                    maxParticleSize: 125,
+                    showLines: true,
+                    particleShape: 'circle'
+                  }
+                }
+              ]}
+              onUpdate={this.handleDatUpdate}
+            />
             <DatBoolean path="showParticles" label="Show Particles" />
             <DatBoolean path="showLines" label="Show Lines" />
             <DatBoolean path="showCube" label="Show Cube" />
