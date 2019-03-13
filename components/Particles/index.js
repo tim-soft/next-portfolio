@@ -1,6 +1,6 @@
 import React from 'react';
 import { Canvas } from 'react-three-fiber';
-import DatGui, { DatBoolean, DatNumber } from 'react-dat-gui';
+import DatGui, { DatBoolean, DatNumber, DatFolder } from 'react-dat-gui';
 import DatContainer from './DatContainer';
 import ParticleCube from './ParticleCube';
 
@@ -11,11 +11,13 @@ export default class Particles extends React.Component {
       clientLoaded: false,
       datConfig: {
         showParticles: true,
-        showLines: true,
+        showLines: false,
         minDistance: 150,
         limitConnections: true,
         maxConnections: 20,
-        particleCount: 100
+        particleCount: 270,
+        minParticleSize: 10,
+        maxParticleSize: 100
       }
     };
   }
@@ -51,13 +53,30 @@ export default class Particles extends React.Component {
               max={30}
               step={1}
             />
-            <DatNumber
-              path="particleCount"
-              label="Particle Count"
-              min={0}
-              max={1000}
-              step={1}
-            />
+
+            <DatFolder title="Particles" closed={false}>
+              <DatNumber
+                path="particleCount"
+                label="Particle Count"
+                min={0}
+                max={1000}
+                step={1}
+              />
+              <DatNumber
+                path="minParticleSize"
+                label="Min Size"
+                min={0}
+                max={400}
+                step={1}
+              />
+              <DatNumber
+                path="maxParticleSize"
+                label="Max Size"
+                min={0}
+                max={400}
+                step={1}
+              />
+            </DatFolder>
           </DatGui>
         </DatContainer>
         <Canvas>

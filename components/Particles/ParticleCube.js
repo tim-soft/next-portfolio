@@ -8,7 +8,6 @@ import * as THREE from 'three';
 import { useRender, useThree } from 'react-three-fiber';
 import OrbitControls from 'three-orbitcontrols';
 
-const maxParticleCount = 1000;
 const r = 800;
 const rHalf = r / 2;
 
@@ -92,7 +91,9 @@ const ParticleCube = ({
   minDistance,
   limitConnections,
   maxConnections,
-  particleCount
+  particleCount,
+  minParticleSize,
+  maxParticleSize
 }) => {
   const animation = useRef(0);
   const group = useRef();
@@ -135,7 +136,7 @@ const ParticleCube = ({
 
     // Line mesh geometry
     const lineMeshGeometry = new THREE.BufferGeometry();
-    const segments = maxParticleCount * maxParticleCount;
+    const segments = particleCount * particleCount;
     const positions = new Float32Array(segments * 3);
     const colors = new Float32Array(segments * 3);
 
@@ -161,30 +162,35 @@ const ParticleCube = ({
     particlePositions
   ] = useMemo(() => {
     // Material for particle
-    const pointMaterial = new THREE.PointsMaterial({
-      color: 0xffffff,
-      size: 3,
-      blending: THREE.AdditiveBlending,
-      transparent: true,
-      sizeAttenuation: false,
-      visible: showParticles
-    });
+    // const pointMaterial = new THREE.PointsMaterial({
+    //   color: 0xffffff,
+    //   size: 6,
+    //   blending: THREE.AdditiveBlending,
+    //   transparent: true,
+    //   sizeAttenuation: false,
+    //   visible: showParticles
+    // });
 
     // Add particles to geometry
     // Maintain two arrays
     // particlePositions contains random x,y,z coords for each particle
     // particlesData contains a random x,y,z velocity vector for each particle
     const pointCloudGeometry = new THREE.BufferGeometry();
-    const particlePositions = new Float32Array(maxParticleCount * 3);
+    const particlePositions = new Float32Array(particleCount * 3);
+    const particleSizes = new Float32Array(particleCount);
     const particlesData = [];
 
-    for (let i = 0; i < maxParticleCount; i += 1) {
+    for (let i = 0; i < particleCount; i += 1) {
       const x = Math.random() * r - r / 2;
       const y = Math.random() * r - r / 2;
       const z = Math.random() * r - r / 2;
       particlePositions[i * 3] = x;
       particlePositions[i * 3 + 1] = y;
       particlePositions[i * 3 + 2] = z;
+
+      // Choose size of each particle
+      particleSizes[i] =
+        Math.random() * (maxParticleSize - minParticleSize) + minParticleSize;
 
       particlesData.push({
         velocity: new THREE.Vector3(
@@ -201,6 +207,45 @@ const ParticleCube = ({
       'position',
       new THREE.BufferAttribute(particlePositions, 3).setDynamic(true)
     );
+    pointCloudGeometry.addAttribute(
+      'size',
+      new THREE.BufferAttribute(particleSizes, 1).setDynamic(true)
+    );
+
+    const pointMaterial = new THREE.ShaderMaterial({
+      uniforms: {
+        color: { value: new THREE.Color(Math.random() * 0xffffff) }
+      },
+      vertexShader: `
+        // Size attribute for particle geometry
+        attribute float size;
+
+        // Calculate color based on particle position
+        varying vec3 vColor;
+
+        void main() {
+          vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+          gl_PointSize = size * ( 300.0 / -mvPosition.z );
+          gl_Position = projectionMatrix * mvPosition;
+
+          vec4 worldPosition = modelMatrix * vec4( position, 1.0 );
+          vColor = normalize( abs( worldPosition.xyz ) );
+        }
+      `,
+      fragmentShader: `
+        // Color from uniforms arg
+        uniform vec3 color;
+
+        // Color calculated from vertex shader, based on particle position
+        varying vec3 vColor;
+
+        void main() {
+          gl_FragColor = vec4( vColor, 1.0 );
+        }
+      `,
+      transparent: true,
+      visible: showParticles
+    });
 
     return [
       pointCloudGeometry,
@@ -208,7 +253,7 @@ const ParticleCube = ({
       particlesData,
       particlePositions
     ];
-  }, [particleCount, showParticles]);
+  }, [particleCount, showParticles, minParticleSize, maxParticleSize]);
 
   const animationState = {
     minDistance,
@@ -268,7 +313,9 @@ ParticleCube.propTypes = {
   minDistance: PropTypes.number.isRequired,
   limitConnections: PropTypes.bool.isRequired,
   maxConnections: PropTypes.number.isRequired,
-  particleCount: PropTypes.number.isRequired
+  particleCount: PropTypes.number.isRequired,
+  minParticleSize: PropTypes.number.isRequired,
+  maxParticleSize: PropTypes.number.isRequired
 };
 
 export default ParticleCube;
