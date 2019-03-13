@@ -24,7 +24,8 @@ export default class Particles extends React.Component {
         particleCount: 300,
         minParticleSize: 10,
         maxParticleSize: 75,
-        boundingBox: 'canvas'
+        boundingBox: 'canvas',
+        particleShape: 'square'
       }
     };
   }
@@ -88,6 +89,11 @@ export default class Particles extends React.Component {
                 label="Bounding Box"
                 path="boundingBox"
                 options={['canvas', 'cube']}
+              />
+              <DatSelect
+                label="Shape"
+                path="particleShape"
+                options={['circle', 'square']}
               />
             </DatFolder>
           </DatGui>
