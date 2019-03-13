@@ -65,21 +65,12 @@ const ParticleCube = ({
     lineColors
   ] = useMemo(() => {
     // Line material
-    // const lineMeshMaterial = new THREE.LineBasicMaterial({
-    //   vertexColors: THREE.VertexColors,
-    //   blending: THREE.AdditiveBlending,
-    //   transparent: true,
-    //   visible: showLines
-    // });
     const lineMeshMaterial = new THREE.ShaderMaterial({
-      uniforms: {
-        color: { value: new THREE.Color(Math.random() * 0xffffff) }
-      },
       vertexShader: getLineVertexShader(),
       fragmentShader: getLineFragmentShader(),
       transparent: true,
       blending: THREE.AdditiveBlending,
-      visible: showParticles
+      visible: showLines
     });
 
     // Line mesh geometry
