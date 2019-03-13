@@ -9,8 +9,8 @@ export default () => (
       <StyledLink>Portfolio</StyledLink>
     </Link>
 
-    <Link prefetch href="/contact">
-      <StyledLink>Contact</StyledLink>
+    <Link prefetch href="/particles">
+      <StyledLink>ParticlesGL</StyledLink>
     </Link>
 
     <Link prefetch href="/store">

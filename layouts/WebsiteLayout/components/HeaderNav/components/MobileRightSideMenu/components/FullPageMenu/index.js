@@ -36,8 +36,10 @@ const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
               </MobileStyledLink>
             </Link>
 
-            <Link prefetch href="/contact">
-              <MobileStyledLink onClick={toggleMenu}>Contact</MobileStyledLink>
+            <Link prefetch href="/particles">
+              <MobileStyledLink onClick={toggleMenu}>
+                ParticlesGL
+              </MobileStyledLink>
             </Link>
 
             <Link prefetch href="/store">
