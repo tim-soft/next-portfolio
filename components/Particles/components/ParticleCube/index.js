@@ -49,11 +49,11 @@ const ParticleCube = ({
     camera.aspect = size.width / size.height;
     camera.near = 1;
     camera.far = 4000;
-    camera.position.set(0, 0, 1750);
 
     // Remove event listeners from previous controls if they exist
-    // Allows changing of control settings
+    // Set initial camera position if controls haven't taken over yet
     if (controlsRef.current) controlsRef.current.dispose();
+    else camera.position.set(0, 0, 1750);
 
     // Setup movement controls for mouse/touch to manipulate camera position
     // https://threejs.org/docs/#examples/controls/OrbitControls
