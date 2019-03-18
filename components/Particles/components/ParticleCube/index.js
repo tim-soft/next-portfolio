@@ -31,8 +31,10 @@ const ParticleCube = ({
   maxParticleSize,
   boundingBox,
   showCube,
-  particleShape
+  particleShape,
+  cameraControls
 }) => {
+  const controlsRef = useRef(0);
   const animation = useRef(0);
   const group = useRef();
 
@@ -42,20 +44,28 @@ const ParticleCube = ({
   gl.setPixelRatio(window.devicePixelRatio);
 
   // Setup camera
-  const [controls] = useMemo(() => {
+  controlsRef.current = useMemo(() => {
     camera.fov = 45;
     camera.aspect = size.width / size.height;
     camera.near = 1;
     camera.far = 4000;
-    camera.position.z = 1750;
+    camera.position.set(0, 0, 1750);
 
+    // Remove event listeners from previous controls if they exist
+    // Allows changing of control settings
+    if (controlsRef.current) controlsRef.current.dispose();
+
+    // Setup movement controls for mouse/touch to manipulate camera position
+    // https://threejs.org/docs/#examples/controls/OrbitControls
     const controls = new OrbitControls(camera, canvas);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.2;
-    controls.enableZoom = true;
 
-    return [controls];
-  }, []);
+    // Apply given settings to camera controls
+    Object.entries(cameraControls).forEach(([key, value]) => {
+      controls[key] = value;
+    });
+
+    return controls;
+  }, [cameraControls]);
 
   // Compute lines between points
   const [
@@ -189,12 +199,8 @@ const ParticleCube = ({
 
   // Modify via refs
   useRender(() => {
-    // Spins the cube slowly
-    const time = Date.now() * 0.001;
-    group.current.rotation.y = time * 0.1;
-
     // Enables damping of OrbitControls
-    requestAnimationFrame(() => controls.update());
+    requestAnimationFrame(() => controlsRef.current.update());
     // Animate current state of particles
     requestAnimationFrame(() => animate(animation.current));
   });
@@ -218,9 +224,17 @@ const ParticleCube = ({
           </boxHelper>
         )}
         {/* Lines connecting particles */}
-        <lineSegments geometry={lineMeshGeometry} material={lineMeshMaterial} />
+        {showLines && (
+          <lineSegments
+            geometry={lineMeshGeometry}
+            material={lineMeshMaterial}
+          />
+        )}
+
         {/* Particles */}
-        <points geometry={pointCloudGeometry} material={pointMaterial} />
+        {showParticles && (
+          <points geometry={pointCloudGeometry} material={pointMaterial} />
+        )}
       </group>
     </scene>
   );
@@ -237,7 +251,15 @@ ParticleCube.propTypes = {
   minParticleSize: PropTypes.number,
   maxParticleSize: PropTypes.number,
   boundingBox: PropTypes.oneOf(['canvas', 'cube']),
-  particleShape: PropTypes.oneOf(['circle', 'square'])
+  particleShape: PropTypes.oneOf(['circle', 'square']),
+  cameraControls: PropTypes.shape({
+    enabled: PropTypes.bool,
+    enableDamping: PropTypes.bool,
+    dampingFactor: PropTypes.number,
+    enableZoom: PropTypes.bool,
+    autoRotate: PropTypes.bool,
+    autoRotateSpeed: PropTypes.number
+  })
 };
 
 ParticleCube.defaultProps = {
@@ -251,7 +273,15 @@ ParticleCube.defaultProps = {
   minParticleSize: 10,
   maxParticleSize: 75,
   boundingBox: 'canvas',
-  particleShape: 'square'
+  particleShape: 'square',
+  cameraControls: {
+    enabled: true,
+    enableDamping: true,
+    dampingFactor: 0.2,
+    enableZoom: true,
+    autoRotate: true,
+    autoRotateSpeed: 0.5
+  }
 };
 
 export default ParticleCube;

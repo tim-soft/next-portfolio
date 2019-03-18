@@ -25,7 +25,15 @@ export default class Particles extends React.Component {
         minParticleSize: 10,
         maxParticleSize: 75,
         boundingBox: 'canvas',
-        particleShape: 'square'
+        particleShape: 'square',
+        cameraControls: {
+          enabled: true,
+          enableDamping: true,
+          dampingFactor: 0.2,
+          enableZoom: true,
+          autoRotate: true,
+          autoRotateSpeed: 0.3
+        }
       }
     };
   }
@@ -111,6 +119,30 @@ export default class Particles extends React.Component {
                 label="Shape"
                 path="particleShape"
                 options={['circle', 'square']}
+              />
+            </DatFolder>
+
+            <DatFolder title="Camera Controls" closed={false}>
+              <DatBoolean path="cameraControls.enabled" label="Enable" />
+              <DatBoolean path="cameraControls.enableDamping" label="Damping" />
+              <DatNumber
+                path="cameraControls.dampingFactor"
+                label="Damping Factor"
+                min={0}
+                max={5}
+                step={0.1}
+              />
+              <DatBoolean path="cameraControls.enableZoom" label="Zoom" />
+              <DatBoolean
+                path="cameraControls.autoRotate"
+                label="Auto Rotate"
+              />
+              <DatNumber
+                path="cameraControls.autoRotateSpeed"
+                label="Rotate Speed"
+                min={0}
+                max={5}
+                step={0.1}
               />
             </DatFolder>
           </DatGui>
