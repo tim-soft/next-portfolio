@@ -36,10 +36,10 @@ const ParticleCube = ({
   // Scale rendering automatically to window DPI
   // https://threejs.org/docs/#api/en/renderers/WebGLRenderer.setPixelRatio
   gl.setPixelRatio(window.devicePixelRatio);
+  const distToParticles = 1750;
 
   // Setup camera
   controlsRef.current = useMemo(() => {
-    const distToParticles = 1750;
     const aspectRatio = size.width / size.height;
     // Calculates the proper FOV for 2D particle field to
     // perfectly fill canvas
@@ -47,6 +47,7 @@ const ParticleCube = ({
       2 *
       Math.atan(size.width / aspectRatio / (2 * distToParticles)) *
       (180 / Math.PI);
+
     camera.fov = cameraFOV;
     camera.aspect = aspectRatio;
     camera.near = 1;
@@ -69,6 +70,14 @@ const ParticleCube = ({
 
     return controls;
   }, [cameraControls]);
+
+  // When the resetCameraFlag option is toggled to 'true', reset camera position
+  useMemo(() => {
+    if (cameraControls.resetCameraFlag === true) {
+      console.log('resetting camera...');
+      camera.position.set(0, 0, 1750);
+    }
+  }, [cameraControls.resetCameraFlag]);
 
   // Compute lines between points
   const [
@@ -134,8 +143,8 @@ const ParticleCube = ({
       // Adjust size of particle field contstraints based on
       // whether field is 2D or 3D
       xBounds = dimension === '2D' ? size.width : size.width;
-      yBounds = dimension === '2D' ? size.height : size.height;
-      zBounds = dimension === '2D' ? 0 : size.height;
+      yBounds = dimension === '2D' ? size.height : size.height * 1.5;
+      zBounds = dimension === '2D' ? 0 : size.width;
     }
     if (boundingBox === 'cube') {
       xBounds = r;
@@ -297,7 +306,8 @@ ParticleCube.propTypes = {
     dampingFactor: PropTypes.number,
     enableZoom: PropTypes.bool,
     autoRotate: PropTypes.bool,
-    autoRotateSpeed: PropTypes.number
+    autoRotateSpeed: PropTypes.number,
+    resetCameraFlag: PropTypes.bool
   })
 };
 
@@ -327,7 +337,8 @@ ParticleCube.defaultProps = {
     dampingFactor: 0.2,
     enableZoom: true,
     autoRotate: true,
-    autoRotateSpeed: 0.5
+    autoRotateSpeed: 0.5,
+    resetCameraFlag: false
   }
 };
 

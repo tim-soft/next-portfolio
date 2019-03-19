@@ -40,8 +40,9 @@ export default class Particles extends React.Component {
           enableDamping: true,
           dampingFactor: 0.2,
           enableZoom: true,
-          autoRotate: false,
-          autoRotateSpeed: 0.3
+          autoRotate: true,
+          autoRotateSpeed: 0.3,
+          resetCameraFlag: false
         }
       }
     };
@@ -78,6 +79,11 @@ export default class Particles extends React.Component {
                       count: 1000,
                       maxSize: 125,
                       shape: 'circle'
+                    },
+                    cameraControls: {
+                      ...datConfig.cameraControls,
+                      autoRotate: true,
+                      resetCameraFlag: false
                     }
                   },
                   ParticlesJS: {
@@ -100,7 +106,8 @@ export default class Particles extends React.Component {
                     },
                     cameraControls: {
                       ...datConfig.cameraControls,
-                      autoRotate: false
+                      autoRotate: false,
+                      resetCameraFlag: true
                     }
                   }
                 }
@@ -202,6 +209,10 @@ export default class Particles extends React.Component {
                 min={0}
                 max={10}
                 step={0.1}
+              />
+              <DatBoolean
+                path="cameraControls.resetCameraFlag"
+                label="Reset Cam Flag"
               />
             </DatFolder>
           </DatGui>
