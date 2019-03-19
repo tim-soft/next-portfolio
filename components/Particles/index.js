@@ -109,6 +109,26 @@ export default class Particles extends React.Component {
                       autoRotate: false,
                       resetCameraFlag: true
                     }
+                  },
+                  Whirlpool: {
+                    ...datConfig,
+                    velocity: 10,
+                    lines: {
+                      ...datConfig.lines,
+                      visible: false
+                    },
+                    particles: {
+                      ...datConfig.particles,
+                      count: 1500,
+                      maxSize: 140,
+                      shape: 'circle'
+                    },
+                    cameraControls: {
+                      ...datConfig.cameraControls,
+                      autoRotate: true,
+                      autoRotateSpeed: 3,
+                      resetCameraFlag: false
+                    }
                   }
                 }
               ]}
