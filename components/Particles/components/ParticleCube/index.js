@@ -72,12 +72,9 @@ const ParticleCube = ({
   }, [cameraControls]);
 
   // When the resetCameraFlag option is toggled to 'true', reset camera position
-  useMemo(() => {
-    if (cameraControls.resetCameraFlag === true) {
-      console.log('resetting camera...');
-      camera.position.set(0, 0, 1750);
-    }
-  }, [cameraControls.resetCameraFlag]);
+  if (cameraControls.resetCameraFlag === true) {
+    camera.position.set(0, 0, 1750);
+  }
 
   // Compute lines between points
   const [
