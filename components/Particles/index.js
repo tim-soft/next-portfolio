@@ -5,6 +5,7 @@ import DatGui, {
   DatNumber,
   DatFolder,
   DatSelect,
+  DatString,
   DatPresets
 } from 'react-dat-gui';
 import { DatContainer, ParticleCube, PerformanceStats } from './components';
@@ -15,17 +16,24 @@ export default class Particles extends React.Component {
     this.state = {
       clientLoaded: false,
       datConfig: {
-        showParticles: true,
-        showLines: false,
         showCube: true,
         minDistance: 150,
         limitConnections: true,
         maxConnections: 20,
-        particleCount: 300,
-        minParticleSize: 10,
-        maxParticleSize: 75,
-        boundingBox: 'canvas',
-        particleShape: 'square',
+        lines: {
+          visible: true,
+          minDistance: 150
+        },
+        particles: {
+          colorMode: 'rainbow',
+          color: '#ffffff',
+          shape: 'square',
+          boundingBox: 'canvas',
+          count: 300,
+          minSize: 10,
+          maxSize: 75,
+          visible: true
+        },
         cameraControls: {
           enabled: true,
           enableDamping: true,
@@ -59,52 +67,65 @@ export default class Particles extends React.Component {
                 {
                   'Oort Cloud Stress Test': {
                     ...datConfig,
-                    particleCount: 1000,
-                    minDistance: 300,
-                    maxParticleSize: 125,
-                    showLines: true,
-                    particleShape: 'circle'
+                    lines: {
+                      minDistance: 300,
+                      visible: true
+                    },
+                    particles: {
+                      count: 1000,
+                      maxSize: 125,
+                      shape: 'circle'
+                    }
                   }
                 }
               ]}
               onUpdate={this.handleDatUpdate}
             />
-            <DatBoolean path="showParticles" label="Show Particles" />
-            <DatBoolean path="showLines" label="Show Lines" />
+            <DatBoolean path="particles.visible" label="Show Particles" />
+            <DatBoolean path="lines.visible" label="Show Lines" />
             <DatBoolean path="showCube" label="Show Cube" />
-            <DatNumber
-              path="minDistance"
-              label="Min Distance"
-              min={10}
-              max={300}
-              step={1}
-            />
-            <DatBoolean path="limitConnections" label="Limit Connections" />
-            <DatNumber
-              path="maxConnections"
-              label="Max Connections"
-              min={0}
-              max={30}
-              step={1}
-            />
+
+            <DatFolder title="Lines" closed={false}>
+              <DatNumber
+                path="lines.minDistance"
+                label="Min Distance"
+                min={10}
+                max={300}
+                step={1}
+              />
+              <DatBoolean path="limitConnections" label="Limit Connections" />
+              <DatNumber
+                path="maxConnections"
+                label="Max Connections"
+                min={0}
+                max={30}
+                step={1}
+              />
+            </DatFolder>
 
             <DatFolder title="Particles" closed={false}>
+              <DatSelect
+                path="particles.colorMode"
+                label="Color Mode"
+                options={['rainbow', 'solid']}
+              />
+              <DatString path="color" label="Solid Color" />
               <DatNumber
-                path="particleCount"
+                path="particles.count"
                 label="Particle Count"
                 min={0}
                 max={1000}
                 step={1}
               />
               <DatNumber
-                path="minParticleSize"
+                path="particles.minSize"
                 label="Min Size"
                 min={0}
                 max={400}
                 step={1}
               />
               <DatNumber
-                path="maxParticleSize"
+                path="particles.maxSize"
                 label="Max Size"
                 min={0}
                 max={400}
@@ -112,12 +133,12 @@ export default class Particles extends React.Component {
               />
               <DatSelect
                 label="Bounding Box"
-                path="boundingBox"
+                path="particles.boundingBox"
                 options={['canvas', 'cube']}
               />
               <DatSelect
                 label="Shape"
-                path="particleShape"
+                path="particles.shape"
                 options={['circle', 'square']}
               />
             </DatFolder>
@@ -141,7 +162,7 @@ export default class Particles extends React.Component {
                 path="cameraControls.autoRotateSpeed"
                 label="Rotate Speed"
                 min={0}
-                max={5}
+                max={10}
                 step={0.1}
               />
             </DatFolder>

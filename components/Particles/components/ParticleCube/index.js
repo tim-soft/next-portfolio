@@ -20,20 +20,7 @@ const r = 700;
 /**
  * Creates a particle cloud with various config options
  */
-const ParticleCube = ({
-  showParticles,
-  showLines,
-  minDistance,
-  limitConnections,
-  maxConnections,
-  particleCount,
-  minParticleSize,
-  maxParticleSize,
-  boundingBox,
-  showCube,
-  particleShape,
-  cameraControls
-}) => {
+const ParticleCube = ({ particles, lines, showCube, cameraControls }) => {
   const controlsRef = useRef(0);
   const animation = useRef(0);
   const group = useRef();
@@ -74,18 +61,21 @@ const ParticleCube = ({
     linePositions,
     lineColors
   ] = useMemo(() => {
+    const { count } = particles;
+    const { visible } = lines;
+
     // Line material
     const lineMeshMaterial = new THREE.ShaderMaterial({
       vertexShader: getLineVertexShader(),
       fragmentShader: getLineFragmentShader(),
       transparent: true,
       blending: THREE.AdditiveBlending,
-      visible: showLines
+      visible
     });
 
     // Line mesh geometry
     const lineMeshGeometry = new THREE.BufferGeometry();
-    const segments = particleCount * particleCount;
+    const segments = count * count;
     const positions = new Float32Array(segments * 3);
     const colors = new Float32Array(segments * 3);
 
@@ -101,7 +91,7 @@ const ParticleCube = ({
     lineMeshGeometry.setDrawRange(0, 0);
 
     return [lineMeshGeometry, lineMeshMaterial, positions, colors];
-  }, [showLines]);
+  }, [particles.count, lines.visible]);
 
   // Compute point cloud
   const [
@@ -110,19 +100,20 @@ const ParticleCube = ({
     particlesData,
     particlePositions
   ] = useMemo(() => {
+    const { boundingBox, count, shape, minSize, maxSize, visible } = particles;
     // Add particles to geometry
     // Maintain two arrays
     // particlePositions contains random x,y,z coords for each particle
     // particlesData contains a random x,y,z velocity vector for each particle
     const pointCloudGeometry = new THREE.BufferGeometry();
-    const particlePositions = new Float32Array(particleCount * 3);
-    const particleSizes = new Float32Array(particleCount);
+    const particlePositions = new Float32Array(count * 3);
+    const particleSizes = new Float32Array(count);
     const particlesData = [];
 
     let particleBounds = r;
     if (boundingBox === 'canvas') particleBounds = size.width;
     if (boundingBox === 'cube') particleBounds = r;
-    for (let i = 0; i < particleCount; i += 1) {
+    for (let i = 0; i < count; i += 1) {
       const x = Math.random() * particleBounds - particleBounds / 2;
       const y = Math.random() * particleBounds - particleBounds / 2;
       const z = Math.random() * particleBounds - particleBounds / 2;
@@ -131,8 +122,7 @@ const ParticleCube = ({
       particlePositions[i * 3 + 2] = z;
 
       // Choose size of each particle
-      particleSizes[i] =
-        Math.random() * (maxParticleSize - minParticleSize) + minParticleSize;
+      particleSizes[i] = Math.random() * (maxSize - minSize) + minSize;
 
       particlesData.push({
         velocity: new THREE.Vector3(
@@ -144,7 +134,7 @@ const ParticleCube = ({
       });
     }
 
-    pointCloudGeometry.setDrawRange(0, particleCount);
+    pointCloudGeometry.setDrawRange(0, count);
     pointCloudGeometry.addAttribute(
       'position',
       new THREE.BufferAttribute(particlePositions, 3).setDynamic(true)
@@ -156,14 +146,11 @@ const ParticleCube = ({
 
     // Material for particle, use shaders to morph shape and color
     const pointMaterial = new THREE.ShaderMaterial({
-      uniforms: {
-        color: { value: new THREE.Color(Math.random() * 0xffffff) }
-      },
       vertexShader: getParticleVertexShader(),
-      fragmentShader: getParticleFragmentShader({ particleShape }),
+      fragmentShader: getParticleFragmentShader({ particleShape: shape }),
       transparent: true,
       blending: THREE.AdditiveBlending,
-      visible: showParticles
+      visible
     });
 
     return [
@@ -173,20 +160,20 @@ const ParticleCube = ({
       particlePositions
     ];
   }, [
-    particleCount,
-    showParticles,
-    minParticleSize,
-    maxParticleSize,
-    boundingBox,
-    showCube,
-    particleShape
+    particles.count,
+    particles.minSize,
+    particles.maxSize,
+    particles.shape,
+    particles.visible,
+    particles.boundingBox,
+    showCube
   ]);
 
   const animationState = {
-    minDistance,
-    limitConnections,
-    maxConnections,
-    particleCount,
+    minDistance: lines.minDistance,
+    limitConnections: lines.limitConnections,
+    maxConnections: lines.maxConnections,
+    particleCount: particles.count,
     lineMeshGeometry,
     pointCloudGeometry,
     particlesData,
@@ -224,7 +211,7 @@ const ParticleCube = ({
           </boxHelper>
         )}
         {/* Lines connecting particles */}
-        {showLines && (
+        {lines.visible && (
           <lineSegments
             geometry={lineMeshGeometry}
             material={lineMeshMaterial}
@@ -232,7 +219,7 @@ const ParticleCube = ({
         )}
 
         {/* Particles */}
-        {showParticles && (
+        {particles.visible && (
           <points geometry={pointCloudGeometry} material={pointMaterial} />
         )}
       </group>
@@ -241,17 +228,23 @@ const ParticleCube = ({
 };
 
 ParticleCube.propTypes = {
-  showParticles: PropTypes.bool,
-  showLines: PropTypes.bool,
   showCube: PropTypes.bool,
-  minDistance: PropTypes.number,
-  limitConnections: PropTypes.bool,
-  maxConnections: PropTypes.number,
-  particleCount: PropTypes.number,
-  minParticleSize: PropTypes.number,
-  maxParticleSize: PropTypes.number,
-  boundingBox: PropTypes.oneOf(['canvas', 'cube']),
-  particleShape: PropTypes.oneOf(['circle', 'square']),
+  lines: PropTypes.shape({
+    maxConnections: PropTypes.number,
+    limitConnections: PropTypes.bool,
+    minDistance: PropTypes.number,
+    visible: PropTypes.bool
+  }),
+  particles: PropTypes.shape({
+    count: PropTypes.number,
+    minSize: PropTypes.number,
+    maxSize: PropTypes.number,
+    boundingBox: PropTypes.oneOf(['canvas', 'cube']),
+    shape: PropTypes.oneOf(['circle', 'square']),
+    colorMode: PropTypes.oneOf(['rainbow', 'solid']),
+    color: PropTypes.string,
+    visible: PropTypes.bool
+  }),
   cameraControls: PropTypes.shape({
     enabled: PropTypes.bool,
     enableDamping: PropTypes.bool,
@@ -263,17 +256,24 @@ ParticleCube.propTypes = {
 };
 
 ParticleCube.defaultProps = {
-  showParticles: true,
-  showLines: false,
   showCube: true,
-  minDistance: 150,
-  limitConnections: true,
-  maxConnections: 20,
-  particleCount: 300,
-  minParticleSize: 10,
-  maxParticleSize: 75,
-  boundingBox: 'canvas',
-  particleShape: 'square',
+
+  lines: {
+    limitConnections: true,
+    maxConnections: 20,
+    minDistance: 150,
+    visible: false
+  },
+  particles: {
+    count: 300,
+    color: '#ffffff',
+    colorMode: 'rainbow',
+    boundingBox: 'canvas',
+    minSize: 10,
+    maxSize: 75,
+    shape: 'square',
+    visible: true
+  },
   cameraControls: {
     enabled: true,
     enableDamping: true,
