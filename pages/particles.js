@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
-import Particles from 'components/Particles';
+import ParticlesDemo from 'components/ParticlesDemo';
 
 const ThreeParticles = () => (
   <>
@@ -9,7 +9,7 @@ const ThreeParticles = () => (
       <title>Tim Ellenberger | Buffer Geometry</title>
     </Head>
     <Container>
-      <Particles />
+      <ParticlesDemo />
     </Container>
   </>
 );

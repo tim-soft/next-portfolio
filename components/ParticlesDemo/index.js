@@ -1,5 +1,4 @@
 import React from 'react';
-import { Canvas } from 'react-three-fiber';
 import DatGui, {
   DatBoolean,
   DatNumber,
@@ -8,9 +7,9 @@ import DatGui, {
   DatString,
   DatPresets
 } from 'react-dat-gui';
-import { DatContainer, ParticleCube, PerformanceStats } from './components';
+import { DatContainer, ParticleField, PerformanceStats } from './components';
 
-export default class Particles extends React.Component {
+export default class ParticlesDemo extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -237,9 +236,7 @@ export default class Particles extends React.Component {
             </DatFolder>
           </DatGui>
         </DatContainer>
-        <Canvas>
-          <ParticleCube {...datConfig} />
-        </Canvas>
+        <ParticleField {...datConfig} />
       </>
     );
   }

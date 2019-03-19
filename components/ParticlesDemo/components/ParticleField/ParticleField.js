@@ -20,7 +20,7 @@ const r = 400;
 /**
  * Creates a particle cloud with various config options
  */
-const ParticleCube = ({
+const ParticleField = ({
   particles,
   lines,
   showCube,
@@ -277,7 +277,7 @@ const ParticleCube = ({
   );
 };
 
-ParticleCube.propTypes = {
+ParticleField.propTypes = {
   showCube: PropTypes.bool,
   dimension: PropTypes.oneOf(['2D', '3D']),
   velocity: PropTypes.number,
@@ -308,7 +308,7 @@ ParticleCube.propTypes = {
   })
 };
 
-ParticleCube.defaultProps = {
+ParticleField.defaultProps = {
   showCube: true,
   dimension: '3D',
   velocity: 2,
@@ -339,4 +339,4 @@ ParticleCube.defaultProps = {
   }
 };
 
-export default ParticleCube;
+export default ParticleField;
