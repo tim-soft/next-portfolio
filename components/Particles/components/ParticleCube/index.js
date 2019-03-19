@@ -25,7 +25,8 @@ const ParticleCube = ({
   lines,
   showCube,
   cameraControls,
-  dimension
+  dimension,
+  velocity
 }) => {
   const controlsRef = useRef(0);
   const animation = useRef(0);
@@ -148,9 +149,9 @@ const ParticleCube = ({
 
       particlesData.push({
         velocity: new THREE.Vector3(
-          -1 + Math.random() * 2,
-          -1 + Math.random() * 2,
-          -1 + Math.random() * 2
+          -1 + Math.random() * velocity,
+          -1 + Math.random() * velocity,
+          -1 + Math.random() * velocity
         ),
         numConnections: 0
       });
@@ -198,7 +199,8 @@ const ParticleCube = ({
     particles.visible,
     particles.boundingBox,
     showCube,
-    dimension
+    dimension,
+    velocity
   ]);
 
   const animationState = {
@@ -263,6 +265,7 @@ const ParticleCube = ({
 ParticleCube.propTypes = {
   showCube: PropTypes.bool,
   dimension: PropTypes.oneOf(['2D', '3D']),
+  velocity: PropTypes.number,
   lines: PropTypes.shape({
     maxConnections: PropTypes.number,
     limitConnections: PropTypes.bool,
@@ -292,6 +295,7 @@ ParticleCube.propTypes = {
 ParticleCube.defaultProps = {
   showCube: true,
   dimension: '3D',
+  velocity: 2,
   lines: {
     limitConnections: true,
     maxConnections: 20,

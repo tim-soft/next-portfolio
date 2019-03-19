@@ -18,6 +18,7 @@ export default class Particles extends React.Component {
       datConfig: {
         showCube: true,
         dimension: '3D',
+        velocity: 2,
         lines: {
           limitConnections: true,
           maxConnections: 20,
@@ -89,6 +90,14 @@ export default class Particles extends React.Component {
               path="dimension"
               options={['2D', '3D']}
             />
+            <DatNumber
+              path="velocity"
+              label="Velocity"
+              min={0}
+              max={30}
+              step={0.1}
+            />
+
             <DatFolder title="Lines" closed={false}>
               <DatNumber
                 path="lines.minDistance"
