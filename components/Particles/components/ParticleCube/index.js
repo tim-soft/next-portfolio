@@ -15,7 +15,7 @@ import {
 import animate from './Animate';
 
 // Default Cube dimensions
-const r = 600;
+const r = 400;
 
 /**
  * Creates a particle cloud with various config options
@@ -39,15 +39,24 @@ const ParticleCube = ({
 
   // Setup camera
   controlsRef.current = useMemo(() => {
-    camera.fov = 45;
-    camera.aspect = size.width / size.height;
+    const distToParticles = 1750;
+    const aspectRatio = size.width / size.height;
+    // Calculates the proper FOV for 2D particle field to
+    // perfectly fill canvas
+    const cameraFOV =
+      2 *
+      Math.atan(size.width / aspectRatio / (2 * distToParticles)) *
+      (180 / Math.PI);
+    camera.fov = cameraFOV;
+    camera.aspect = aspectRatio;
     camera.near = 1;
-    camera.far = 4000;
+    // Allow field to stay in view while zooming really far out
+    camera.far = 10000;
 
     // Remove event listeners from previous controls if they exist
     // Set initial camera position if controls haven't taken over yet
     if (controlsRef.current) controlsRef.current.dispose();
-    else camera.position.set(0, 0, 1750);
+    else camera.position.set(0, 0, distToParticles);
 
     // Setup movement controls for mouse/touch to manipulate camera position
     // https://threejs.org/docs/#examples/controls/OrbitControls
@@ -124,9 +133,9 @@ const ParticleCube = ({
     if (boundingBox === 'canvas') {
       // Adjust size of particle field contstraints based on
       // whether field is 2D or 3D
-      xBounds = dimension === '2D' ? size.width : size.width * 1.5;
-      yBounds = dimension === '2D' ? size.height : size.width * 1.5;
-      zBounds = dimension === '2D' ? 0 : size.height * 1.5;
+      xBounds = dimension === '2D' ? size.width : size.width;
+      yBounds = dimension === '2D' ? size.height : size.height;
+      zBounds = dimension === '2D' ? 0 : size.height;
     }
     if (boundingBox === 'cube') {
       xBounds = r;

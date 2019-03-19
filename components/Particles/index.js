@@ -40,7 +40,7 @@ export default class Particles extends React.Component {
           enableDamping: true,
           dampingFactor: 0.2,
           enableZoom: true,
-          autoRotate: true,
+          autoRotate: false,
           autoRotateSpeed: 0.3
         }
       }
