@@ -17,12 +17,12 @@ export default class Particles extends React.Component {
       clientLoaded: false,
       datConfig: {
         showCube: true,
-        minDistance: 150,
-        limitConnections: true,
-        maxConnections: 20,
+        dimension: '3D',
         lines: {
-          visible: true,
-          minDistance: 150
+          limitConnections: true,
+          maxConnections: 20,
+          minDistance: 150,
+          visible: true
         },
         particles: {
           colorMode: 'rainbow',
@@ -39,7 +39,7 @@ export default class Particles extends React.Component {
           enableDamping: true,
           dampingFactor: 0.2,
           enableZoom: true,
-          autoRotate: true,
+          autoRotate: false,
           autoRotateSpeed: 0.3
         }
       }
@@ -84,13 +84,17 @@ export default class Particles extends React.Component {
             <DatBoolean path="particles.visible" label="Show Particles" />
             <DatBoolean path="lines.visible" label="Show Lines" />
             <DatBoolean path="showCube" label="Show Cube" />
-
+            <DatSelect
+              label="Dimsion"
+              path="dimension"
+              options={['2D', '3D']}
+            />
             <DatFolder title="Lines" closed={false}>
               <DatNumber
                 path="lines.minDistance"
                 label="Min Distance"
                 min={10}
-                max={300}
+                max={1000}
                 step={1}
               />
               <DatBoolean path="limitConnections" label="Limit Connections" />

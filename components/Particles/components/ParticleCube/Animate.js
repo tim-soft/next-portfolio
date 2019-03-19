@@ -3,8 +3,8 @@
 /* eslint-disable no-continue */
 /* eslint-disable no-param-reassign */
 
-const r = 700;
-const rHalf = r / 2;
+// const r = 700;
+// const rHalf = r / 2;
 
 /**
  * Animates an array of particles over a three dimensional space
@@ -21,8 +21,11 @@ const animate = ({
   particlesData,
   particlePositions,
   linePositions,
-  lineColors
+  lineColors,
+  bounds
 }) => {
+  const { xBounds, yBounds, zBounds } = bounds;
+
   let vertexpos = 0;
   let colorpos = 0;
   let numConnected = 0;
@@ -35,15 +38,18 @@ const animate = ({
     particlePositions[i * 3 + 1] += particleData.velocity.y;
     particlePositions[i * 3 + 2] += particleData.velocity.z;
     if (
-      particlePositions[i * 3 + 1] < -rHalf ||
-      particlePositions[i * 3 + 1] > rHalf
+      particlePositions[i * 3 + 1] < -yBounds / 2 ||
+      particlePositions[i * 3 + 1] > yBounds / 2
     )
       particleData.velocity.y = -particleData.velocity.y;
-    if (particlePositions[i * 3] < -rHalf || particlePositions[i * 3] > rHalf)
+    if (
+      particlePositions[i * 3] < -xBounds / 2 ||
+      particlePositions[i * 3] > xBounds / 2
+    )
       particleData.velocity.x = -particleData.velocity.x;
     if (
-      particlePositions[i * 3 + 2] < -rHalf ||
-      particlePositions[i * 3 + 2] > rHalf
+      particlePositions[i * 3 + 2] < -zBounds / 2 ||
+      particlePositions[i * 3 + 2] > zBounds / 2
     )
       particleData.velocity.z = -particleData.velocity.z;
     if (limitConnections && particleData.numConnections >= maxConnections)

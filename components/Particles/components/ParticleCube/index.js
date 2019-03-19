@@ -20,7 +20,13 @@ const r = 700;
 /**
  * Creates a particle cloud with various config options
  */
-const ParticleCube = ({ particles, lines, showCube, cameraControls }) => {
+const ParticleCube = ({
+  particles,
+  lines,
+  showCube,
+  cameraControls,
+  dimension
+}) => {
   const controlsRef = useRef(0);
   const animation = useRef(0);
   const group = useRef();
@@ -98,7 +104,8 @@ const ParticleCube = ({ particles, lines, showCube, cameraControls }) => {
     pointCloudGeometry,
     pointMaterial,
     particlesData,
-    particlePositions
+    particlePositions,
+    bounds
   ] = useMemo(() => {
     const { boundingBox, count, shape, minSize, maxSize, visible } = particles;
     // Add particles to geometry
@@ -110,13 +117,28 @@ const ParticleCube = ({ particles, lines, showCube, cameraControls }) => {
     const particleSizes = new Float32Array(count);
     const particlesData = [];
 
-    let particleBounds = r;
-    if (boundingBox === 'canvas') particleBounds = size.width;
-    if (boundingBox === 'cube') particleBounds = r;
+    let xBounds;
+    let yBounds;
+    let zBounds;
+    if (boundingBox === 'canvas') {
+      // Adjust size of particle field contstraints based on
+      // whether field is 2D or 3D
+      xBounds = dimension === '2D' ? size.width : size.width * 1.5;
+      yBounds = dimension === '2D' ? size.height : size.height * 1.5;
+      zBounds = dimension === '2D' ? 0 : size.width * 1.5;
+    }
+    if (boundingBox === 'cube') {
+      xBounds = r;
+      yBounds = r;
+      zBounds = dimension === '2D' ? 0 : r;
+    }
+
     for (let i = 0; i < count; i += 1) {
-      const x = Math.random() * particleBounds - particleBounds / 2;
-      const y = Math.random() * particleBounds - particleBounds / 2;
-      const z = Math.random() * particleBounds - particleBounds / 2;
+      // Calculate possible (x, y, z) location of particle
+      // within the size of the canvas or cube size
+      const x = Math.random() * xBounds - xBounds / 2;
+      const y = Math.random() * yBounds - yBounds / 2;
+      const z = Math.random() * zBounds - zBounds / 2;
       particlePositions[i * 3] = x;
       particlePositions[i * 3 + 1] = y;
       particlePositions[i * 3 + 2] = z;
@@ -153,11 +175,20 @@ const ParticleCube = ({ particles, lines, showCube, cameraControls }) => {
       visible
     });
 
+    // The x,y,z bounds of possible particle positions
+    // needed for Animate function
+    const bounds = {
+      xBounds,
+      yBounds,
+      zBounds
+    };
+
     return [
       pointCloudGeometry,
       pointMaterial,
       particlesData,
-      particlePositions
+      particlePositions,
+      bounds
     ];
   }, [
     particles.count,
@@ -166,7 +197,8 @@ const ParticleCube = ({ particles, lines, showCube, cameraControls }) => {
     particles.shape,
     particles.visible,
     particles.boundingBox,
-    showCube
+    showCube,
+    dimension
   ]);
 
   const animationState = {
@@ -174,6 +206,7 @@ const ParticleCube = ({ particles, lines, showCube, cameraControls }) => {
     limitConnections: lines.limitConnections,
     maxConnections: lines.maxConnections,
     particleCount: particles.count,
+    bounds,
     lineMeshGeometry,
     pointCloudGeometry,
     particlesData,
@@ -229,6 +262,7 @@ const ParticleCube = ({ particles, lines, showCube, cameraControls }) => {
 
 ParticleCube.propTypes = {
   showCube: PropTypes.bool,
+  dimension: PropTypes.oneOf(['2D', '3D']),
   lines: PropTypes.shape({
     maxConnections: PropTypes.number,
     limitConnections: PropTypes.bool,
@@ -257,7 +291,7 @@ ParticleCube.propTypes = {
 
 ParticleCube.defaultProps = {
   showCube: true,
-
+  dimension: '3D',
   lines: {
     limitConnections: true,
     maxConnections: 20,
