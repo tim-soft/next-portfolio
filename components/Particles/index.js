@@ -40,7 +40,7 @@ export default class Particles extends React.Component {
           enableDamping: true,
           dampingFactor: 0.2,
           enableZoom: true,
-          autoRotate: false,
+          autoRotate: true,
           autoRotateSpeed: 0.3
         }
       }
@@ -69,13 +69,38 @@ export default class Particles extends React.Component {
                   'Oort Cloud Stress Test': {
                     ...datConfig,
                     lines: {
+                      ...datConfig.lines,
                       minDistance: 300,
                       visible: true
                     },
                     particles: {
+                      ...datConfig.particles,
                       count: 1000,
                       maxSize: 125,
                       shape: 'circle'
+                    }
+                  },
+                  ParticlesJS: {
+                    ...datConfig,
+                    dimension: '2D',
+                    showCube: false,
+                    lines: {
+                      ...datConfig.lines,
+                      minDistance: 110,
+                      visible: true
+                    },
+                    particles: {
+                      ...datConfig.particles,
+                      count: 300,
+                      maxSize: 50,
+                      minSize: 20,
+                      shape: 'circle',
+                      boundingBox: 'canvas',
+                      visible: true
+                    },
+                    cameraControls: {
+                      ...datConfig.cameraControls,
+                      autoRotate: false
                     }
                   }
                 }

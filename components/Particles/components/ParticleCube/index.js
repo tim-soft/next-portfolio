@@ -14,8 +14,8 @@ import {
 } from './shaders/LineShaders';
 import animate from './Animate';
 
-// Cube dimensions
-const r = 700;
+// Default Cube dimensions
+const r = 600;
 
 /**
  * Creates a particle cloud with various config options

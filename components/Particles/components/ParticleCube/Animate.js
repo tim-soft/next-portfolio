@@ -3,9 +3,6 @@
 /* eslint-disable no-continue */
 /* eslint-disable no-param-reassign */
 
-// const r = 700;
-// const rHalf = r / 2;
-
 /**
  * Animates an array of particles over a three dimensional space
  *
