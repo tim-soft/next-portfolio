@@ -150,8 +150,8 @@ export default class Particles extends React.Component {
                 path="cameraControls.dampingFactor"
                 label="Damping Factor"
                 min={0}
-                max={5}
-                step={0.1}
+                max={1}
+                step={0.05}
               />
               <DatBoolean path="cameraControls.enableZoom" label="Zoom" />
               <DatBoolean
