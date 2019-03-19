@@ -125,8 +125,8 @@ const ParticleCube = ({
       // Adjust size of particle field contstraints based on
       // whether field is 2D or 3D
       xBounds = dimension === '2D' ? size.width : size.width * 1.5;
-      yBounds = dimension === '2D' ? size.height : size.height * 1.5;
-      zBounds = dimension === '2D' ? 0 : size.width * 1.5;
+      yBounds = dimension === '2D' ? size.height : size.width * 1.5;
+      zBounds = dimension === '2D' ? 0 : size.height * 1.5;
     }
     if (boundingBox === 'cube') {
       xBounds = r;

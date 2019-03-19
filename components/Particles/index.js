@@ -152,7 +152,7 @@ export default class Particles extends React.Component {
                 path="particles.count"
                 label="Particle Count"
                 min={0}
-                max={1000}
+                max={1500}
                 step={1}
               />
               <DatNumber
