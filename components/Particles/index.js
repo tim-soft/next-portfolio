@@ -30,7 +30,7 @@ export default class Particles extends React.Component {
           color: '#ffffff',
           shape: 'square',
           boundingBox: 'canvas',
-          count: 300,
+          count: 500,
           minSize: 10,
           maxSize: 75,
           visible: true
