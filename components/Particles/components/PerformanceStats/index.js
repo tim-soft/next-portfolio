@@ -3,13 +3,16 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-const GRAPH_HEIGHT = 29;
-const GRAPH_WIDTH = 70;
-
+/**
+ * Component that displays an FPS indicator
+ *
+ * The FPS measurement comes from requestAnimationFrame and performance.now()
+ * https://developer.mozilla.org/en-US/docs/Web/API/Performance/now
+ */
 class FPSStats extends Component {
   constructor(props) {
     super(props);
-    const currentTime = +new Date();
+    const currentTime = performance.now();
     this.state = {
       frames: 0,
       prevTime: currentTime,
@@ -36,15 +39,20 @@ class FPSStats extends Component {
   calcFPS = () => {
     const { frames, prevTime } = this.state;
 
-    const currentTime = +new Date();
+    // Snapshot current time
+    const currentTime = performance.now();
+
+    // Add frame for perf snapshot
     this.setState(state => ({
       frames: state.frames + 1
     }));
+
+    // Calculate FPS every second
     if (currentTime > prevTime + 1000) {
-      let fps = Math.round((frames * 1000) / (currentTime - prevTime));
+      let fps = ((frames * 1000) / (currentTime - prevTime)).toFixed(1);
       fps = this.state.fps.concat(fps);
-      const sliceStart = Math.min(fps.length - GRAPH_WIDTH, 0);
-      fps = fps.slice(sliceStart, fps.length);
+
+      // Set new frame time
       this.setState({
         fps,
         frames: 0,
@@ -55,20 +63,10 @@ class FPSStats extends Component {
 
   render() {
     const { fps } = this.state;
-    // const maxFps = Math.max.apply(Math.max, fps);
 
     return (
       <GraphContainer>
         <GraphTitle>{fps[fps.length - 1]} FPS</GraphTitle>
-        {/* <Graph>
-          {fps.map((fps, i) => (
-            <GraphBar
-              key={`fps-${i}`}
-              height={(76 * fps) / maxFps}
-              fps={fps.length - 1 - i}
-            />
-          ))}
-        </Graph> */}
       </GraphContainer>
     );
   }
@@ -77,26 +75,8 @@ class FPSStats extends Component {
 export default FPSStats;
 
 const GraphTitle = styled.h2`
-  font-size: 14px;
+  font-size: 18px;
 `;
-
-// const Graph = styled.div`
-//   position: relative;
-//   height: 76px;
-//   width: 100px;
-//   background-color: #282844;
-//   box-sizing: border-box;
-// `;
-
-// const GraphBar = styled.div`
-//   position: absolute;
-//   bottom: 0;
-//   right: ${({ fps }) => fps}px;
-//   height: ${({ height }) => height}px;
-//   width: 1px;
-//   background-color: #00ffff;
-//   box-sizing: border-box;
-// `;
 
 const GraphContainer = styled.div`
   display: flex;
@@ -108,7 +88,8 @@ const GraphContainer = styled.div`
   max-height: 100%;
   max-width: 100%;
   padding: 3px;
-  background-color: #000;
+  background: #4d18ab80;
+  min-width: 85px;
   color: #00ffff;
   box-sizing: border-box;
   pointer-events: none;
