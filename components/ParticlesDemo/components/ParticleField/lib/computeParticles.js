@@ -87,6 +87,7 @@ export default ({ particles, dimension, size, r, velocity }) => {
       particleShape: shape,
       transparency
     }),
+    transparent: transparency < 1,
     blending: AdditiveBlending,
     visible
   });
