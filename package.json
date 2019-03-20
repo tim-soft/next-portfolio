@@ -4,6 +4,8 @@
   "author": "Tim Ellenberger <timellenberger@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "hex-rgb": "^4.0.0",
+    "is-hexcolor": "^1.0.0",
     "next": "^8.0.3",
     "next-offline": "^3.3.6",
     "prop-types": "^15.7.2",

@@ -80,7 +80,10 @@ const ParticleField = ({
     lineColors
   ] = useMemo(() => computeLines({ particles, lines }), [
     particles.count,
-    lines.visible
+    lines.visible,
+    lines.colorMode,
+    lines.color,
+    lines.transparency
   ]);
 
   // Compute point cloud
@@ -99,6 +102,9 @@ const ParticleField = ({
       particles.shape,
       particles.visible,
       particles.boundingBox,
+      particles.colorMode,
+      particles.color,
+      particles.transparency,
       showCube,
       dimension,
       velocity,
@@ -122,11 +128,12 @@ const ParticleField = ({
     lineColors
   };
 
-  // Modify via refs
+  // Direct access to render loop, executes on each frame
+  // State changes must be passed into hook via refs
   useRender(() => {
     // Enables damping of OrbitControls
     requestAnimationFrame(() => controlsRef.current.update());
-    // Animate current state of particles
+    // Animate current state of particles + lines
     requestAnimationFrame(() => animate(animation.current));
   });
 
@@ -170,6 +177,9 @@ ParticleField.propTypes = {
   dimension: PropTypes.oneOf(['2D', '3D']),
   velocity: PropTypes.number,
   lines: PropTypes.shape({
+    colorMode: PropTypes.oneOf(['rainbow', 'solid']),
+    color: PropTypes.string,
+    transparency: PropTypes.number,
     maxConnections: PropTypes.number,
     limitConnections: PropTypes.bool,
     minDistance: PropTypes.number,
@@ -183,6 +193,7 @@ ParticleField.propTypes = {
     shape: PropTypes.oneOf(['circle', 'square']),
     colorMode: PropTypes.oneOf(['rainbow', 'solid']),
     color: PropTypes.string,
+    transparency: PropTypes.number,
     visible: PropTypes.bool
   }),
   cameraControls: PropTypes.shape({
@@ -201,6 +212,9 @@ ParticleField.defaultProps = {
   dimension: '3D',
   velocity: 2,
   lines: {
+    color: '#FFFFFF',
+    colorMode: 'rainbow',
+    transparency: 0.9,
     limitConnections: true,
     maxConnections: 20,
     minDistance: 150,
@@ -208,8 +222,9 @@ ParticleField.defaultProps = {
   },
   particles: {
     count: 300,
-    color: '#ffffff',
+    color: '#FFFFFF',
     colorMode: 'rainbow',
+    transparency: 1.0,
     boundingBox: 'canvas',
     minSize: 10,
     maxSize: 75,

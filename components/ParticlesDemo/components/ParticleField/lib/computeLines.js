@@ -11,12 +11,12 @@ import {
 
 export default ({ particles, lines }) => {
   const { count } = particles;
-  const { visible } = lines;
+  const { color, colorMode, transparency, visible } = lines;
 
   // Line material
   const lineMeshMaterial = new ShaderMaterial({
-    vertexShader: getLineVertexShader(),
-    fragmentShader: getLineFragmentShader(),
+    vertexShader: getLineVertexShader({ colorMode, color }),
+    fragmentShader: getLineFragmentShader({ transparency }),
     transparent: true,
     blending: AdditiveBlending,
     visible

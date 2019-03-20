@@ -15,6 +15,9 @@ export default class ParticlesDemo extends React.Component {
         dimension: '3D',
         velocity: 2,
         lines: {
+          colorMode: 'rainbow',
+          color: '#3f51b5',
+          transparency: 0.9,
           limitConnections: true,
           maxConnections: 20,
           minDistance: 150,
@@ -22,7 +25,8 @@ export default class ParticlesDemo extends React.Component {
         },
         particles: {
           colorMode: 'rainbow',
-          color: '#ffffff',
+          color: '#3f51b5',
+          transparency: 0.9,
           shape: 'square',
           boundingBox: 'canvas',
           count: 500,

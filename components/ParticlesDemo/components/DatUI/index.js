@@ -5,10 +5,10 @@ import DatGui, {
   DatNumber,
   DatFolder,
   DatSelect,
-  DatString,
-  DatPresets
+  DatPresets,
+  DatColor
 } from 'react-dat-gui';
-import DatContainer from './DatContainer';
+import DatContainer from './components/DatContainer';
 
 /**
  * A DatGUI for tweaking the ParticleField settings
@@ -97,6 +97,19 @@ const DatUI = ({ datConfig, handleDatUpdate }) => (
       <DatNumber path="velocity" label="Velocity" min={0} max={30} step={0.1} />
 
       <DatFolder title="Lines" closed={false}>
+        <DatSelect
+          path="lines.colorMode"
+          label="Color Mode"
+          options={['rainbow', 'solid']}
+        />
+        <DatColor path="lines.color" label="Solid Color" />
+        <DatNumber
+          path="lines.transparency"
+          label="Transparency"
+          min={0.1}
+          max={0.9}
+          step={0.1}
+        />
         <DatNumber
           path="lines.minDistance"
           label="Min Distance"
@@ -120,7 +133,14 @@ const DatUI = ({ datConfig, handleDatUpdate }) => (
           label="Color Mode"
           options={['rainbow', 'solid']}
         />
-        <DatString path="color" label="Solid Color" />
+        <DatColor path="particles.color" label="Solid Color" />
+        <DatNumber
+          path="particles.transparency"
+          label="Transparency"
+          min={0}
+          max={1}
+          step={0.1}
+        />
         <DatNumber
           path="particles.count"
           label="Particle Count"

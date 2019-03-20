@@ -11,7 +11,17 @@ import {
 } from '../shaders/ParticleShaders';
 
 export default ({ particles, dimension, size, r, velocity }) => {
-  const { boundingBox, count, shape, minSize, maxSize, visible } = particles;
+  const {
+    boundingBox,
+    count,
+    colorMode,
+    color,
+    shape,
+    transparency,
+    minSize,
+    maxSize,
+    visible
+  } = particles;
   // Add particles to geometry
   // Maintain two arrays
   // particlePositions contains random x,y,z coords for each particle
@@ -72,9 +82,11 @@ export default ({ particles, dimension, size, r, velocity }) => {
 
   // Material for particle, use shaders to morph shape and color
   const pointMaterial = new ShaderMaterial({
-    vertexShader: getParticleVertexShader(),
-    fragmentShader: getParticleFragmentShader({ particleShape: shape }),
-    transparent: true,
+    vertexShader: getParticleVertexShader({ colorMode, color }),
+    fragmentShader: getParticleFragmentShader({
+      particleShape: shape,
+      transparency
+    }),
     blending: AdditiveBlending,
     visible
   });
