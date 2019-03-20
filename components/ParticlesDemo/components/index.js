@@ -1,5 +1,5 @@
-import DatContainer from './DatContainer';
+import DatUI from './DatUI';
 import ParticleField from './ParticleField';
 import PerformanceStats from './PerformanceStats';
 
-export { DatContainer, ParticleField, PerformanceStats };
+export { DatUI, ParticleField, PerformanceStats };
