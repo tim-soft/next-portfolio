@@ -261,10 +261,10 @@ const StyledScrollWrapper = styled.div`
   position: absolute;
   right: 16px;
   top: 100px;
-  width: 310px;
+  width: 400px;
 `;
 
 const StyledScrollbar = styled(Scrollbar)`
   width: 100%;
-  height: calc(100vh - 130px);
+  height: calc(100vh - 140px);
 `;

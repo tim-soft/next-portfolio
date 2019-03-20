@@ -5,8 +5,7 @@ export default styled.div`
     height: 100%;
     z-index: 20;
     width: 100%;
-    font-size: 12px;
-    font-family: 'Lucida Grande', sans-serif;
+    font-size: 14px;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
