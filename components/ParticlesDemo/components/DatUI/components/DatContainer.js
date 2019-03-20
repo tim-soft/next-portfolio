@@ -2,11 +2,9 @@ import styled from 'styled-components';
 
 export default styled.div`
   .react-dat-gui {
+    height: 100%;
     z-index: 20;
-    position: fixed;
-    right: 16px;
-    top: 100px;
-    width: 280px;
+    width: 100%;
     font-size: 12px;
     font-family: 'Lucida Grande', sans-serif;
     box-sizing: border-box;
