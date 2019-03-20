@@ -1,18 +1,12 @@
 /* eslint-disable no-shadow */
 import React, { useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import * as THREE from 'three';
+import { AdditiveBlending } from 'three';
 import { useRender, useThree } from 'react-three-fiber';
 import OrbitControls from 'three-orbitcontrols';
-import {
-  getParticleVertexShader,
-  getParticleFragmentShader
-} from './shaders/ParticleShaders';
-import {
-  getLineVertexShader,
-  getLineFragmentShader
-} from './shaders/LineShaders';
 import animate from './Animate';
+import computeLines from './lib/computeLines';
+import computeParticles from './lib/computeParticles';
 
 // Default Cube dimensions
 const r = 400;
@@ -36,6 +30,8 @@ const ParticleField = ({
   // Scale rendering automatically to window DPI
   // https://threejs.org/docs/#api/en/renderers/WebGLRenderer.setPixelRatio
   gl.setPixelRatio(window.devicePixelRatio);
+
+  // Default distance from camera to particle field
   const distToParticles = 1750;
 
   // Setup camera
@@ -82,38 +78,10 @@ const ParticleField = ({
     lineMeshMaterial,
     linePositions,
     lineColors
-  ] = useMemo(() => {
-    const { count } = particles;
-    const { visible } = lines;
-
-    // Line material
-    const lineMeshMaterial = new THREE.ShaderMaterial({
-      vertexShader: getLineVertexShader(),
-      fragmentShader: getLineFragmentShader(),
-      transparent: true,
-      blending: THREE.AdditiveBlending,
-      visible
-    });
-
-    // Line mesh geometry
-    const lineMeshGeometry = new THREE.BufferGeometry();
-    const segments = count * count;
-    const positions = new Float32Array(segments * 3);
-    const colors = new Float32Array(segments * 3);
-
-    lineMeshGeometry.addAttribute(
-      'position',
-      new THREE.BufferAttribute(positions, 3).setDynamic(true)
-    );
-    lineMeshGeometry.addAttribute(
-      'color',
-      new THREE.BufferAttribute(colors, 3).setDynamic(true)
-    );
-    lineMeshGeometry.computeBoundingSphere();
-    lineMeshGeometry.setDrawRange(0, 0);
-
-    return [lineMeshGeometry, lineMeshMaterial, positions, colors];
-  }, [particles.count, lines.visible]);
+  ] = useMemo(() => computeLines({ particles, lines }), [
+    particles.count,
+    lines.visible
+  ]);
 
   // Compute point cloud
   const [
@@ -122,103 +90,25 @@ const ParticleField = ({
     particlesData,
     particlePositions,
     bounds
-  ] = useMemo(() => {
-    const { boundingBox, count, shape, minSize, maxSize, visible } = particles;
-    // Add particles to geometry
-    // Maintain two arrays
-    // particlePositions contains random x,y,z coords for each particle
-    // particlesData contains a random x,y,z velocity vector for each particle
-    const pointCloudGeometry = new THREE.BufferGeometry();
-    const particlePositions = new Float32Array(count * 3);
-    const particleSizes = new Float32Array(count);
-    const particlesData = [];
+  ] = useMemo(
+    () => computeParticles({ particles, dimension, size, r, velocity }),
+    [
+      particles.count,
+      particles.minSize,
+      particles.maxSize,
+      particles.shape,
+      particles.visible,
+      particles.boundingBox,
+      showCube,
+      dimension,
+      velocity,
+      size
+    ]
+  );
 
-    let xBounds;
-    let yBounds;
-    let zBounds;
-    if (boundingBox === 'canvas') {
-      // Adjust size of particle field contstraints based on
-      // whether field is 2D or 3D
-      xBounds = dimension === '2D' ? size.width : size.width;
-      yBounds = dimension === '2D' ? size.height : size.height * 1.5;
-      zBounds = dimension === '2D' ? 0 : size.width;
-    }
-    if (boundingBox === 'cube') {
-      xBounds = r;
-      yBounds = r;
-      zBounds = dimension === '2D' ? 0 : r;
-    }
-
-    for (let i = 0; i < count; i += 1) {
-      // Calculate possible (x, y, z) location of particle
-      // within the size of the canvas or cube size
-      const x = Math.random() * xBounds - xBounds / 2;
-      const y = Math.random() * yBounds - yBounds / 2;
-      const z = Math.random() * zBounds - zBounds / 2;
-      particlePositions[i * 3] = x;
-      particlePositions[i * 3 + 1] = y;
-      particlePositions[i * 3 + 2] = z;
-
-      // Choose size of each particle
-      particleSizes[i] = Math.random() * (maxSize - minSize) + minSize;
-
-      particlesData.push({
-        velocity: new THREE.Vector3(
-          -1 + Math.random() * velocity,
-          -1 + Math.random() * velocity,
-          -1 + Math.random() * velocity
-        ),
-        numConnections: 0
-      });
-    }
-
-    pointCloudGeometry.setDrawRange(0, count);
-    pointCloudGeometry.addAttribute(
-      'position',
-      new THREE.BufferAttribute(particlePositions, 3).setDynamic(true)
-    );
-    pointCloudGeometry.addAttribute(
-      'size',
-      new THREE.BufferAttribute(particleSizes, 1).setDynamic(true)
-    );
-
-    // Material for particle, use shaders to morph shape and color
-    const pointMaterial = new THREE.ShaderMaterial({
-      vertexShader: getParticleVertexShader(),
-      fragmentShader: getParticleFragmentShader({ particleShape: shape }),
-      transparent: true,
-      blending: THREE.AdditiveBlending,
-      visible
-    });
-
-    // The x,y,z bounds of possible particle positions
-    // needed for Animate function
-    const bounds = {
-      xBounds,
-      yBounds,
-      zBounds
-    };
-
-    return [
-      pointCloudGeometry,
-      pointMaterial,
-      particlesData,
-      particlePositions,
-      bounds
-    ];
-  }, [
-    particles.count,
-    particles.minSize,
-    particles.maxSize,
-    particles.shape,
-    particles.visible,
-    particles.boundingBox,
-    showCube,
-    dimension,
-    velocity
-  ]);
-
-  const animationState = {
+  // Assign state to animation ref
+  // This object is passed to Animation.js in render loop
+  animation.current = {
     minDistance: lines.minDistance,
     limitConnections: lines.limitConnections,
     maxConnections: lines.maxConnections,
@@ -231,8 +121,6 @@ const ParticleField = ({
     linePositions,
     lineColors
   };
-
-  animation.current = animationState;
 
   // Modify via refs
   useRender(() => {
@@ -252,7 +140,7 @@ const ParticleField = ({
               <meshBasicMaterial
                 name="material"
                 color="white"
-                blending={THREE.AdditiveBlending}
+                blending={AdditiveBlending}
                 wireframe
                 transparent
               />

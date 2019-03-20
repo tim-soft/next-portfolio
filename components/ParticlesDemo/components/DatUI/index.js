@@ -10,6 +10,12 @@ import DatGui, {
 } from 'react-dat-gui';
 import DatContainer from './DatContainer';
 
+/**
+ * A DatGUI for tweaking the ParticleField settings
+ *
+ * @param {object} datConfig current configuration for particle field
+ * @param {function} handleDatUpdate a function for writing the current state of config UI to ParticleField
+ */
 const DatUI = ({ datConfig, handleDatUpdate }) => (
   <DatContainer>
     <DatGui data={datConfig} onUpdate={handleDatUpdate}>
