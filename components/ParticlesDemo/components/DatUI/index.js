@@ -52,7 +52,6 @@ class DatUI extends React.Component {
           from={{ opacity: 0 }}
           enter={{ opacity: 1 }}
           leave={{ opacity: 0 }}
-          config={{ mass: 1, tension: 320, friction: 32 }}
         >
           {isOpen =>
             isOpen &&
@@ -85,7 +84,6 @@ class DatUI extends React.Component {
                       from={{ position: 'absolute', opacity: 0 }}
                       enter={{ opacity: 1 }}
                       leave={{ opacity: 0 }}
-                      config={{ mass: 1, tension: 320, friction: 32 }}
                     >
                       {showConfig =>
                         showConfig
