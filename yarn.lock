@@ -5012,17 +5012,17 @@ react-scrollbars-custom@^3.1.5:
   dependencies:
     bowser "^2.0.0-beta.3"
 
-react-spring@^8.0.15:
-  version "8.0.15"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.15.tgz#050d54edc334582c858bc100182d37bd7ab61d59"
-  integrity sha512-VXeqy7FCaNPiIPe1Yk4R4yfQn+BwJEofJ1Jkib7iAFouJJE7eUMhiReszYWYztCekmCAQvmsCxlOEKGK8J2O1w==
+react-spring@^8.0.18:
+  version "8.0.18"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.18.tgz#f6fa09ab5acdeb37618c0e340d59830171b95c33"
+  integrity sha512-gb1Rtsnez2gxIHtbrbwQsAjE4ir/62m+gI+eT+1E0Uky5L1PbLccbywRIdIpK3W5jiNmU6OlEazVk0tfI8pZrA==
   dependencies:
     "@babel/runtime" "^7.3.1"
 
-react-three-fiber@^1.3.10:
-  version "1.3.10"
-  resolved "https://registry.yarnpkg.com/react-three-fiber/-/react-three-fiber-1.3.10.tgz#3e114c26ccbf5506d3dd22e2a1c74b185fdcd153"
-  integrity sha512-+T63LCrTRChfPUp5pE92c3p2mnnMf/Ee8n5bpwcLA1ckkTtAmihQV2k0H7U859c96b5u03aZ5YtS/MaUn8Cvcg==
+react-three-fiber@^1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/react-three-fiber/-/react-three-fiber-1.5.2.tgz#340b1772cbad346666be8f4119a6fbc53c6ec839"
+  integrity sha512-SXStHOifgxe6gZ1xfcTwPBhN7kfuRpHchrC/jDfwzguPhdyLOMfPp+mDO6vJP4suYqcjZCfATZ2vhXE021JF9w==
   dependencies:
     "@babel/runtime" "^7.3.4"
     lodash-es "^4.17.11"
@@ -5030,10 +5030,10 @@ react-three-fiber@^1.3.10:
     resize-observer-polyfill "^1.5.1"
     scheduler "^0.13.3"
 
-react-with-gesture@^4.0.6:
-  version "4.0.6"
-  resolved "https://registry.yarnpkg.com/react-with-gesture/-/react-with-gesture-4.0.6.tgz#d264cfc9076506471c3ea0d8789869f3b6af75c9"
-  integrity sha512-hThnKyqGpPhH95mxHtzCH5mz/JPArErAHGnDi21VHIgKhZaxqCT5KHuUnc13MRt8g1F7YTx1OrgP9gCYFdZOWg==
+react-with-gesture@^4.0.8:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/react-with-gesture/-/react-with-gesture-4.0.8.tgz#ce6db9e667ef13120797e641f1a00f934aed6c36"
+  integrity sha512-VIJ1K2/UT67m+OnqYIgJUdYEqVmJDPfbZBoqUMYKts6WA0EbEC7YRMBEzxgy/jvVdafg9L2GSuFtUokpskKHag==
 
 react@^16.0.0, react@^16.8.4:
   version "16.8.4"
