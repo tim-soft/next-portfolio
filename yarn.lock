@@ -5019,10 +5019,10 @@ react-spring@^8.0.18:
   dependencies:
     "@babel/runtime" "^7.3.1"
 
-react-three-fiber@^1.5.2:
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/react-three-fiber/-/react-three-fiber-1.5.2.tgz#340b1772cbad346666be8f4119a6fbc53c6ec839"
-  integrity sha512-SXStHOifgxe6gZ1xfcTwPBhN7kfuRpHchrC/jDfwzguPhdyLOMfPp+mDO6vJP4suYqcjZCfATZ2vhXE021JF9w==
+react-three-fiber@^1.5.3:
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/react-three-fiber/-/react-three-fiber-1.5.3.tgz#5e9284e3f21c9c7c9530c8cef39d4e3c630c7b33"
+  integrity sha512-9GJEuTwIEPRS/zCHqKAs8IUvnFT8qMOxV4ORdMY5wHgU4Od1xxRfiVwZqKf0X2bTX6HqLSnBOJXYmGHPYgLM/Q==
   dependencies:
     "@babel/runtime" "^7.3.4"
     lodash-es "^4.17.11"
