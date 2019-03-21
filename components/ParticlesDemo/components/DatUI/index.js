@@ -1,18 +1,11 @@
 /* eslint-disable no-shadow */
 import React from 'react';
 import PropTypes from 'prop-types';
-import DatGui, {
-  DatBoolean,
-  DatNumber,
-  DatFolder,
-  DatSelect,
-  DatPresets,
-  DatColor
-} from 'react-dat-gui';
 import styled from 'styled-components';
 import Scrollbar from 'react-scrollbars-custom';
 import { Transition, animated } from 'react-spring/renderprops.cjs';
-import DatContainer from './components/DatContainer';
+import ConfigViewer from './components/ConfigViewer';
+import DatUIPane from './components/DatUIPane';
 
 /**
  * A DatGUI for tweaking the ParticleField settings
@@ -30,18 +23,25 @@ class DatUI extends React.Component {
     super(props);
 
     this.state = {
-      isOpen: true
+      isOpen: true,
+      showConfig: false
     };
   }
 
   render() {
-    const { isOpen } = this.state;
+    const { isOpen, showConfig } = this.state;
     const { datConfig, handleDatUpdate } = this.props;
 
     return (
       <StyledScrollWrapper>
         <ControlContainer>
-          <ControlButton>Config</ControlButton>
+          <ControlButton
+            onClick={() =>
+              this.setState({ showConfig: !showConfig, isOpen: true })
+            }
+          >
+            Config
+          </ControlButton>
           <ControlButton onClick={() => this.setState({ isOpen: !isOpen })}>
             Show/Hide
           </ControlButton>
@@ -78,220 +78,44 @@ class DatUI extends React.Component {
                   )}
                 >
                   <ScrollbarContentContainer>
-                    <DatContainer>
-                      <DatGui data={datConfig} onUpdate={handleDatUpdate}>
-                        <DatPresets
-                          label="Presets"
-                          options={[
-                            {
-                              'Oort Cloud Stress Test': {
-                                ...datConfig,
-                                lines: {
-                                  ...datConfig.lines,
-                                  minDistance: 300,
-                                  visible: true
-                                },
-                                particles: {
-                                  ...datConfig.particles,
-                                  count: 1000,
-                                  maxSize: 125,
-                                  shape: 'circle'
-                                },
-                                cameraControls: {
-                                  ...datConfig.cameraControls,
-                                  autoRotate: true,
-                                  resetCameraFlag: false
-                                }
-                              },
-                              ParticlesJS: {
-                                ...datConfig,
-                                dimension: '2D',
-                                showCube: false,
-                                lines: {
-                                  ...datConfig.lines,
-                                  minDistance: 110,
-                                  visible: true
-                                },
-                                particles: {
-                                  ...datConfig.particles,
-                                  count: 300,
-                                  maxSize: 50,
-                                  minSize: 20,
-                                  shape: 'circle',
-                                  boundingBox: 'canvas',
-                                  visible: true
-                                },
-                                cameraControls: {
-                                  ...datConfig.cameraControls,
-                                  autoRotate: false,
-                                  resetCameraFlag: true
-                                }
-                              },
-                              Whirlpool: {
-                                ...datConfig,
-                                velocity: 10,
-                                lines: {
-                                  ...datConfig.lines,
-                                  visible: false
-                                },
-                                particles: {
-                                  ...datConfig.particles,
-                                  count: 1500,
-                                  maxSize: 140,
-                                  shape: 'circle'
-                                },
-                                cameraControls: {
-                                  ...datConfig.cameraControls,
-                                  autoRotate: true,
-                                  autoRotateSpeed: 3,
-                                  resetCameraFlag: false
-                                }
-                              }
-                            }
-                          ]}
-                          onUpdate={handleDatUpdate}
-                        />
-                        <DatBoolean
-                          path="particles.visible"
-                          label="Show Particles"
-                        />
-                        <DatBoolean path="lines.visible" label="Show Lines" />
-                        <DatBoolean path="showCube" label="Show Cube" />
-                        <DatSelect
-                          label="Dimsion"
-                          path="dimension"
-                          options={['2D', '3D']}
-                        />
-                        <DatNumber
-                          path="velocity"
-                          label="Velocity"
-                          min={0}
-                          max={30}
-                          step={0.1}
-                        />
-
-                        <DatFolder title="Lines" closed={false}>
-                          <DatSelect
-                            path="lines.colorMode"
-                            label="Color Mode"
-                            options={['rainbow', 'solid']}
-                          />
-                          <DatColor path="lines.color" label="Solid Color" />
-                          <DatNumber
-                            path="lines.transparency"
-                            label="Transparency"
-                            min={0.1}
-                            max={0.9}
-                            step={0.1}
-                          />
-                          <DatNumber
-                            path="lines.minDistance"
-                            label="Min Distance"
-                            min={10}
-                            max={1000}
-                            step={1}
-                          />
-                          <DatBoolean
-                            path="limitConnections"
-                            label="Limit Connections"
-                          />
-                          <DatNumber
-                            path="maxConnections"
-                            label="Max Connections"
-                            min={0}
-                            max={30}
-                            step={1}
-                          />
-                        </DatFolder>
-
-                        <DatFolder title="Particles" closed={false}>
-                          <DatSelect
-                            path="particles.colorMode"
-                            label="Color Mode"
-                            options={['rainbow', 'solid']}
-                          />
-                          <DatColor
-                            path="particles.color"
-                            label="Solid Color"
-                          />
-                          <DatNumber
-                            path="particles.transparency"
-                            label="Transparency"
-                            min={0}
-                            max={1}
-                            step={0.1}
-                          />
-                          <DatNumber
-                            path="particles.count"
-                            label="Particle Count"
-                            min={0}
-                            max={1500}
-                            step={1}
-                          />
-                          <DatNumber
-                            path="particles.minSize"
-                            label="Min Size"
-                            min={0}
-                            max={400}
-                            step={1}
-                          />
-                          <DatNumber
-                            path="particles.maxSize"
-                            label="Max Size"
-                            min={0}
-                            max={400}
-                            step={1}
-                          />
-                          <DatSelect
-                            label="Bounding Box"
-                            path="particles.boundingBox"
-                            options={['canvas', 'cube']}
-                          />
-                          <DatSelect
-                            label="Shape"
-                            path="particles.shape"
-                            options={['circle', 'square']}
-                          />
-                        </DatFolder>
-
-                        <DatFolder title="Camera Controls" closed={false}>
-                          <DatBoolean
-                            path="cameraControls.enabled"
-                            label="Enable"
-                          />
-                          <DatBoolean
-                            path="cameraControls.enableDamping"
-                            label="Damping"
-                          />
-                          <DatNumber
-                            path="cameraControls.dampingFactor"
-                            label="Damping Factor"
-                            min={0}
-                            max={1}
-                            step={0.05}
-                          />
-                          <DatBoolean
-                            path="cameraControls.enableZoom"
-                            label="Zoom"
-                          />
-                          <DatBoolean
-                            path="cameraControls.autoRotate"
-                            label="Auto Rotate"
-                          />
-                          <DatNumber
-                            path="cameraControls.autoRotateSpeed"
-                            label="Rotate Speed"
-                            min={0}
-                            max={10}
-                            step={0.1}
-                          />
-                          <DatBoolean
-                            path="cameraControls.resetCameraFlag"
-                            label="Reset Cam Flag"
-                          />
-                        </DatFolder>
-                      </DatGui>
-                    </DatContainer>
+                    <Transition
+                      native
+                      items={showConfig}
+                      initial={{ position: 'absolute', opacity: 1 }}
+                      from={{ position: 'absolute', opacity: 0 }}
+                      enter={{ opacity: 1 }}
+                      leave={{ opacity: 0 }}
+                      config={{ mass: 1, tension: 320, friction: 32 }}
+                    >
+                      {showConfig =>
+                        showConfig
+                          ? ({ opacity, position }) => (
+                              <animated.div
+                                style={{
+                                  position,
+                                  opacity,
+                                  width: '100%'
+                                }}
+                              >
+                                <ConfigViewer datConfig={datConfig} />
+                              </animated.div>
+                            )
+                          : ({ opacity, position }) => (
+                              <animated.div
+                                style={{
+                                  position,
+                                  opacity,
+                                  width: '100%'
+                                }}
+                              >
+                                <DatUIPane
+                                  datConfig={datConfig}
+                                  handleDatUpdate={handleDatUpdate}
+                                />
+                              </animated.div>
+                            )
+                      }
+                    </Transition>
                   </ScrollbarContentContainer>
                 </StyledScrollbar>
               </animated.div>
@@ -340,7 +164,7 @@ const ScrollbarContentContainer = styled.div`
   align-items: center;
   flex-direction: column;
   min-height: 100%;
-  padding: 0 10px;
+  margin: 0 10px;
 `;
 
 const StyledScrollWrapper = styled.div`
