@@ -3067,6 +3067,11 @@ hex-rgb@^4.0.0:
   resolved "https://registry.yarnpkg.com/hex-rgb/-/hex-rgb-4.0.0.tgz#9df2123d4c37fe2600bbba0047fed7c53dffab90"
   integrity sha512-7z7WxdbS99/vesuH/I4FkJJ+tX/CTipjbQeQ/qqLe2I2XT64f7FsDd3EtJiz4NFczaCjOvYIMJL0fJLHnJQKcg==
 
+highlight.js@^9.11.0:
+  version "9.15.6"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.15.6.tgz#72d4d8d779ec066af9a17cb14360c3def0aa57c4"
+  integrity sha512-zozTAWM1D6sozHo8kqhfYgsac+B+q0PmsjXeyDrYIHHcBN0zTVT66+s2GW1GZv7DbyaROdLXKdabwS/WqPyIdQ==
+
 hmac-drbg@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"
@@ -4952,6 +4957,13 @@ react-error-overlay@4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
   integrity sha512-FlsPxavEyMuR6TjVbSSywovXSEyOg6ZDj5+Z8nbsRl9EkOzAhEIcS+GLoQDC5fz/t9suhUXWmUrOBrgeUvrMxw==
+
+react-highlight@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/react-highlight/-/react-highlight-0.12.0.tgz#34de986a0bfdf228904d0c269b69538d95b35802"
+  integrity sha512-j04EWbYOFM0PryhF5Vvl0FDa/dD3M6q0Sl+nFN9kTvWQ9hFkfISNNs85+ssL4TSkDM+4pQTpMdxlDRi8yfIxjw==
+  dependencies:
+    highlight.js "^9.11.0"
 
 react-icons@^3.5.0:
   version "3.5.0"
