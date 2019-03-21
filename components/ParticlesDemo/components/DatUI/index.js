@@ -177,4 +177,8 @@ const StyledScrollWrapper = styled.div`
 const StyledScrollbar = styled(Scrollbar)`
   width: 100%;
   height: calc(100vh - 180px);
+
+  @media (max-width: 512px) {
+    height: calc(100vh - 260px);
+  }
 `;
