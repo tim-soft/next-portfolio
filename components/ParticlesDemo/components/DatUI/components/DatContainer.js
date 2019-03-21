@@ -50,7 +50,7 @@ export default styled.div`
 
   .react-dat-gui .cr {
     display: block;
-    background-color: #1a1a1a;
+    background-color: #1a1a1ad4;
     user-select: none;
   }
 
