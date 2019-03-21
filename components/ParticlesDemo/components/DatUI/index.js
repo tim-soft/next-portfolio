@@ -128,18 +128,19 @@ class DatUI extends React.Component {
 export default DatUI;
 
 const ControlContainer = styled.div`
-  width: 372px;
+  max-width: 370px;
   display: flex;
   align-items: center;
   justify-content: space-around;
   background: #1a1a1ad4;
   height: 34px;
-  margin: 0 10px 10px 10px;
+  margin: 0 18px 10px 10px;
   border: 1px solid #dad5cb;
+  overflow: hidden;
 `;
 
 const ControlButton = styled.button`
-  background: inherit;
+  background: none;
   color: #eeeeee;
   font-size: 1.4em;
   transition: color 0.2s linear;
@@ -156,11 +157,6 @@ const ControlButton = styled.button`
 const ScrollbarContentContainer = styled.div`
   position: relative;
   height: 100%;
-  width: 100%
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   min-height: 100%;
   margin: 0 10px;
 `;
@@ -170,7 +166,12 @@ const StyledScrollWrapper = styled.div`
   position: absolute;
   right: 10px;
   top: 100px;
-  width: 400px;
+  max-width: 400px;
+  width: 100%;
+
+  @media (max-width: 512px) {
+    top: 180px;
+  }
 `;
 
 const StyledScrollbar = styled(Scrollbar)`
