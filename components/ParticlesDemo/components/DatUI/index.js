@@ -312,7 +312,7 @@ const ScrollbarContentContainer = styled.div`
 const StyledScrollWrapper = styled.div`
   z-index: 20;
   position: absolute;
-  right: 16px;
+  right: 10px;
   top: 100px;
   width: 400px;
 `;
