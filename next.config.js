@@ -1,5 +1,6 @@
 const withOffline = require('next-offline');
 const path = require('path');
+const webpack = require('webpack');
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -18,6 +19,14 @@ const nextConfig = {
     // Allow proper tree shaking for react-icons lib
     // https://github.com/react-icons/react-icons/issues/154#issuecomment-412774515
     newConfig.resolve.extensions = ['.mjs', '.js', '.jsx', '.json'];
+    // Optimize react-highlight bundle
+    // https://react-highlight.neostack.com/docs/optimisation
+    newConfig.plugins.push(
+      new webpack.ContextReplacementPlugin(
+        /highlight\.js[/\\]lib[/\\]languages$/,
+        new RegExp(`^./(javascript)$`)
+      )
+    );
 
     return newConfig;
   },

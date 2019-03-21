@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Highlight from 'react-highlight';
+import Highlight from 'react-highlight/lib/optimized';
 
 /**
  * A code viewer which pretty prints the current ParticleField config
