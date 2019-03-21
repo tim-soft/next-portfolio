@@ -4,6 +4,11 @@ const webpack = require('webpack');
 
 const isDev = process.env.NODE_ENV === 'development';
 
+/**
+ * Configure Next.js
+ *
+ * https://nextjs.org/docs/#custom-configuration
+ */
 const nextConfig = {
   // Alias the /components and /layouts folders for imports
   // e.g. import xyz from 'components/xyz'
