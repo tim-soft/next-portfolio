@@ -7,7 +7,7 @@ import DatGui, {
   DatSelect,
   DatPresets,
   DatColor
-} from 'react-dat-gui';
+} from '@tim-soft/react-dat-gui';
 import DatContainer from './DatContainer';
 import initialConfig from '../../../config';
 

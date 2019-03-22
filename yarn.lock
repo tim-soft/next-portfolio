@@ -761,6 +761,21 @@
   dependencies:
     any-observable "^0.3.0"
 
+"@tim-soft/react-dat-gui@^2.2.2":
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@tim-soft/react-dat-gui/-/react-dat-gui-2.2.2.tgz#70336b3db7f6d1b23815711e3855f26027ec621e"
+  integrity sha512-VfwiCimTOI9QJIDLScCKAFKWBVOqhZfW+0vD54YRnwpdjSB/xBwpQJS0LGSh1cy33BTAt1AQChJXQ9cTqIoCbA==
+  dependencies:
+    classnames "2.2.5"
+    lodash.clamp "^4.0.2"
+    lodash.clonedeep "^4.3.2"
+    lodash.isfinite "^3.3.1"
+    lodash.isstring "^4.0.1"
+    lodash.isundefined "^3.0.1"
+    lodash.result "^4.4.0"
+    lodash.set "^4.2.0"
+    react-color "^2.13.8"
+
 "@webassemblyjs/ast@1.7.11":
   version "1.7.11"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.7.11.tgz#b988582cafbb2b095e8b556526f30c90d057cace"
@@ -4789,7 +4804,7 @@ prop-types@15.6.2:
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@~15.7.2:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@~15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -4917,25 +4932,7 @@ react-color@^2.13.8:
     reactcss "^1.2.0"
     tinycolor2 "^1.4.1"
 
-react-dat-gui@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/react-dat-gui/-/react-dat-gui-2.2.0.tgz#1c735573efe38c16f53e60d10329b5b9c8271f44"
-  integrity sha512-jVS418omPSQGUASlGVBGevvD5+dUPXvR1F+YsvcO0FAlNAu0vrtX+ZOmLVs+7GSKblMFcBo5o2x4DvOwUjFtoA==
-  dependencies:
-    classnames "2.2.5"
-    lodash.clamp "^4.0.2"
-    lodash.clonedeep "^4.3.2"
-    lodash.isfinite "^3.3.1"
-    lodash.isstring "^4.0.1"
-    lodash.isundefined "^3.0.1"
-    lodash.result "^4.4.0"
-    lodash.set "^4.2.0"
-    prop-types "^15.6.0"
-    react "^16.0.0"
-    react-color "^2.13.8"
-    react-dom "^16.0.0"
-
-react-dom@^16.0.0, react-dom@^16.8.4:
+react-dom@^16.8.4:
   version "16.8.4"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.8.4.tgz#1061a8e01a2b3b0c8160037441c3bf00a0e3bc48"
   integrity sha512-Ob2wK7XG2tUDt7ps7LtLzGYYB6DXMCLj0G5fO6WeEICtT4/HdpOi7W/xLzZnR6RCG1tYza60nMdqtxzA8FaPJQ==
@@ -5027,7 +5024,7 @@ react-with-gesture@^4.0.8:
   resolved "https://registry.yarnpkg.com/react-with-gesture/-/react-with-gesture-4.0.8.tgz#ce6db9e667ef13120797e641f1a00f934aed6c36"
   integrity sha512-VIJ1K2/UT67m+OnqYIgJUdYEqVmJDPfbZBoqUMYKts6WA0EbEC7YRMBEzxgy/jvVdafg9L2GSuFtUokpskKHag==
 
-react@^16.0.0, react@^16.8.4:
+react@^16.8.4:
   version "16.8.4"
   resolved "https://registry.yarnpkg.com/react/-/react-16.8.4.tgz#fdf7bd9ae53f03a9c4cd1a371432c206be1c4768"
   integrity sha512-0GQ6gFXfUH7aZcjGVymlPOASTuSjlQL4ZtVC5YKH+3JL6bBLCVO21DknzmaPlI90LN253ojj02nsapy+j7wIjg==
