@@ -761,10 +761,10 @@
   dependencies:
     any-observable "^0.3.0"
 
-"@tim-soft/react-dat-gui@2.2.2":
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/@tim-soft/react-dat-gui/-/react-dat-gui-2.2.2.tgz#70336b3db7f6d1b23815711e3855f26027ec621e"
-  integrity sha512-VfwiCimTOI9QJIDLScCKAFKWBVOqhZfW+0vD54YRnwpdjSB/xBwpQJS0LGSh1cy33BTAt1AQChJXQ9cTqIoCbA==
+"@tim-soft/react-dat-gui@^2.2.5":
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/@tim-soft/react-dat-gui/-/react-dat-gui-2.2.5.tgz#2a0e463f3db3de1d408fdf79fe5a6d488cf92c09"
+  integrity sha512-kbKgz7p9LfWcw0ordhm5Sng/WfNsEI97WfjY5UK6Km+VSX5OlPxAcmk4NjlsdSQ2mXhyWS18JQSFUVNO32gohA==
   dependencies:
     classnames "2.2.5"
     lodash.clamp "^4.0.2"

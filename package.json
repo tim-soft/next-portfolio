@@ -4,7 +4,7 @@
   "author": "Tim Ellenberger <timellenberger@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@tim-soft/react-dat-gui": "2.2.2",
+    "@tim-soft/react-dat-gui": "^2.2.5",
     "hex-rgb": "^4.0.0",
     "is-hexcolor": "^1.0.0",
     "next": "^8.0.3",
