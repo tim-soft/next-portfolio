@@ -776,6 +776,11 @@
     lodash.set "^4.2.0"
     react-color "^2.13.8"
 
+"@tim-soft/react-with-gesture@^4.0.9":
+  version "4.0.9"
+  resolved "https://registry.yarnpkg.com/@tim-soft/react-with-gesture/-/react-with-gesture-4.0.9.tgz#c50c52b9a3a51ef6bce1414b3fd8b09e1252a17e"
+  integrity sha512-pNi6uxheaHAoApEjp4agWCRx7VJLsQgDN7q3CH9FUS8bioyrr4mx1jgVgAcRGkt23K+q1sgLJq8L0WB/9ZrOqA==
+
 "@webassemblyjs/ast@1.7.11":
   version "1.7.11"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.7.11.tgz#b988582cafbb2b095e8b556526f30c90d057cace"
@@ -5018,11 +5023,6 @@ react-three-fiber@^1.5.3:
     react-reconciler "^0.20.1"
     resize-observer-polyfill "^1.5.1"
     scheduler "^0.13.3"
-
-react-with-gesture@^4.0.8:
-  version "4.0.8"
-  resolved "https://registry.yarnpkg.com/react-with-gesture/-/react-with-gesture-4.0.8.tgz#ce6db9e667ef13120797e641f1a00f934aed6c36"
-  integrity sha512-VIJ1K2/UT67m+OnqYIgJUdYEqVmJDPfbZBoqUMYKts6WA0EbEC7YRMBEzxgy/jvVdafg9L2GSuFtUokpskKHag==
 
 react@^16.8.5:
   version "16.8.5"

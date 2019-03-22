@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Gesture } from 'react-with-gesture';
+import { Gesture } from '@tim-soft/react-with-gesture';
 import { Spring, animated } from 'react-spring/renderprops.cjs';
 
 class ImagePager extends React.Component {
@@ -60,15 +60,17 @@ class ImagePager extends React.Component {
    *
    * If swipe is successful, call clamp() to set state of next index
    */
-  onAction = ({
+  onMove = ({
     down,
     distance,
     direction: [xDir],
     cancel,
     velocity,
     i,
+    // pinch: [pinchDistance, pinchScale],
     ...props
   }) => {
+    // console.log({ pinchDistance, pinchDirection, pinchScale });
     const { images, currentIndex } = this.props;
     const { windowWidth } = this.state;
 
@@ -92,8 +94,8 @@ class ImagePager extends React.Component {
     const { windowWidth } = this.state;
 
     return images.map((image, i) => (
-      <Gesture key={i} onAction={props => this.onAction({ ...props, i })}>
-        {({ down, delta: [xDelta], distance }) => {
+      <Gesture key={i} onMove={props => this.onMove({ ...props, i })}>
+        {({ down, delta: [xDelta], distance, pinch: [, pinchScale] }) => {
           // Flag to differentiate a click versus a drag
           // Useful for showing/hiding controls
           const clickNotDrag = i === currentIndex && xDelta === 0;
@@ -115,6 +117,7 @@ class ImagePager extends React.Component {
             <Spring
               native
               to={{
+                pinchScale,
                 x: (i - currentIndex) * windowWidth,
                 sc: 1,
                 display: 'block',
@@ -136,7 +139,10 @@ class ImagePager extends React.Component {
                 >
                   <animated.div
                     style={{
-                      transform: sc.interpolate(s => `scale(${s})`),
+                      // transform: sc.interpolate(
+                      //   s => `scale(${(s + pinchScale) / 2})`
+                      // ),
+                      transform: `scale(${pinchScale})`,
                       width: '100%',
                       height: '100%',
                       display: 'flex',

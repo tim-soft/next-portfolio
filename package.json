@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "@tim-soft/react-dat-gui": "^2.2.5",
+    "@tim-soft/react-with-gesture": "^4.0.9",
     "hex-rgb": "^4.0.0",
     "is-hexcolor": "^1.0.0",
     "next": "^8.0.3",
@@ -19,7 +20,6 @@
     "react-scrollbars-custom": "^3.1.5",
     "react-spring": "^8.0.18",
     "react-three-fiber": "^1.5.3",
-    "react-with-gesture": "^4.0.8",
     "styled-components": "^4.1.3",
     "styled-normalize": "^8.0.6",
     "three": "^0.102.1",
