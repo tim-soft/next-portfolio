@@ -1,10 +1,15 @@
+/**
+ * The default configuation for the ParticleField component
+ *
+ * Any option passed in via props will overwrite the default config
+ */
 export default {
   showCube: true,
   dimension: '3D',
   velocity: 2,
   lines: {
     colorMode: 'rainbow',
-    color: '#3f51b5',
+    color: '#351CCB',
     transparency: 0.9,
     limitConnections: true,
     maxConnections: 20,
@@ -13,7 +18,7 @@ export default {
   },
   particles: {
     colorMode: 'rainbow',
-    color: '#3f51b5',
+    color: '#3FB568',
     transparency: 0.9,
     shape: 'square',
     boundingBox: 'canvas',

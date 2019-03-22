@@ -1,6 +1,10 @@
 import React from 'react';
-import { DatUI, ParticleField, PerformanceStats } from './components';
-import initialConfig from './config';
+import {
+  DatUI,
+  ParticleField,
+  PerformanceStats,
+  defaultConfig
+} from './components';
 
 /**
  * A demo showcasing react-particles-webgl
@@ -11,7 +15,7 @@ export default class ParticlesDemo extends React.Component {
   constructor() {
     super();
     this.state = {
-      datConfig: initialConfig
+      datConfig: defaultConfig
     };
   }
 

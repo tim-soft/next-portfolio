@@ -173,9 +173,9 @@ const ParticleField = ({
 };
 
 ParticleField.propTypes = {
-  showCube: PropTypes.bool,
-  dimension: PropTypes.oneOf(['2D', '3D']),
-  velocity: PropTypes.number,
+  showCube: PropTypes.bool.isRequired,
+  dimension: PropTypes.oneOf(['2D', '3D']).isRequired,
+  velocity: PropTypes.number.isRequired,
   lines: PropTypes.shape({
     colorMode: PropTypes.oneOf(['rainbow', 'solid']),
     color: PropTypes.string,
@@ -184,7 +184,7 @@ ParticleField.propTypes = {
     limitConnections: PropTypes.bool,
     minDistance: PropTypes.number,
     visible: PropTypes.bool
-  }),
+  }).isRequired,
   particles: PropTypes.shape({
     count: PropTypes.number,
     minSize: PropTypes.number,
@@ -195,7 +195,7 @@ ParticleField.propTypes = {
     color: PropTypes.string,
     transparency: PropTypes.number,
     visible: PropTypes.bool
-  }),
+  }).isRequired,
   cameraControls: PropTypes.shape({
     enabled: PropTypes.bool,
     enableDamping: PropTypes.bool,
@@ -204,42 +204,7 @@ ParticleField.propTypes = {
     autoRotate: PropTypes.bool,
     autoRotateSpeed: PropTypes.number,
     resetCameraFlag: PropTypes.bool
-  })
-};
-
-ParticleField.defaultProps = {
-  showCube: true,
-  dimension: '3D',
-  velocity: 2,
-  lines: {
-    color: '#FFFFFF',
-    colorMode: 'rainbow',
-    transparency: 0.9,
-    limitConnections: true,
-    maxConnections: 20,
-    minDistance: 150,
-    visible: false
-  },
-  particles: {
-    count: 300,
-    color: '#FFFFFF',
-    colorMode: 'rainbow',
-    transparency: 1.0,
-    boundingBox: 'canvas',
-    minSize: 10,
-    maxSize: 75,
-    shape: 'square',
-    visible: true
-  },
-  cameraControls: {
-    enabled: true,
-    enableDamping: true,
-    dampingFactor: 0.2,
-    enableZoom: true,
-    autoRotate: true,
-    autoRotateSpeed: 0.5,
-    resetCameraFlag: false
-  }
+  }).isRequired
 };
 
 export default ParticleField;

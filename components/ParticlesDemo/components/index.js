@@ -1,5 +1,5 @@
 import DatUI from './DatUI';
-import ParticleField from './ParticleField';
+import ParticleField, { defaultConfig } from './ParticleField';
 import PerformanceStats from './PerformanceStats';
 
-export { DatUI, ParticleField, PerformanceStats };
+export { DatUI, ParticleField, PerformanceStats, defaultConfig };

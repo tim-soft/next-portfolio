@@ -9,7 +9,7 @@ import DatGui, {
   DatColor
 } from '@tim-soft/react-dat-gui';
 import DatContainer from './DatContainer';
-import initialConfig from '../../../config';
+import defaultConfig from '../../ParticleField/config';
 
 /**
  * The DatUI config window
@@ -25,35 +25,35 @@ const DatUIPane = ({ datConfig, handleDatUpdate }) => (
         options={[
           {
             'Oort Cloud Stress Test': {
-              ...initialConfig,
+              ...defaultConfig,
               lines: {
                 ...datConfig.lines,
                 minDistance: 300,
                 visible: true
               },
               particles: {
-                ...initialConfig.particles,
+                ...defaultConfig.particles,
                 count: 1000,
                 maxSize: 125,
                 shape: 'circle'
               },
               cameraControls: {
-                ...initialConfig.cameraControls,
+                ...defaultConfig.cameraControls,
                 autoRotate: true,
                 resetCameraFlag: false
               }
             },
             ParticlesJS: {
-              ...initialConfig,
+              ...defaultConfig,
               dimension: '2D',
               showCube: false,
               lines: {
-                ...initialConfig.lines,
+                ...defaultConfig.lines,
                 minDistance: 110,
                 visible: true
               },
               particles: {
-                ...initialConfig.particles,
+                ...defaultConfig.particles,
                 count: 300,
                 maxSize: 50,
                 minSize: 20,
@@ -62,26 +62,26 @@ const DatUIPane = ({ datConfig, handleDatUpdate }) => (
                 visible: true
               },
               cameraControls: {
-                ...initialConfig.cameraControls,
+                ...defaultConfig.cameraControls,
                 autoRotate: false,
                 resetCameraFlag: true
               }
             },
             Whirlpool: {
-              ...initialConfig,
+              ...defaultConfig,
               velocity: 10,
               lines: {
-                ...initialConfig.lines,
+                ...defaultConfig.lines,
                 visible: false
               },
               particles: {
-                ...initialConfig.particles,
+                ...defaultConfig.particles,
                 count: 1500,
                 maxSize: 140,
                 shape: 'circle'
               },
               cameraControls: {
-                ...initialConfig.cameraControls,
+                ...defaultConfig.cameraControls,
                 autoRotate: true,
                 autoRotateSpeed: 3,
                 resetCameraFlag: false
