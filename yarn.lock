@@ -4981,6 +4981,16 @@ react-particles-js@^2.5.1:
   dependencies:
     lodash "^4.17.11"
 
+react-particles-webgl@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/react-particles-webgl/-/react-particles-webgl-0.1.6.tgz#150c0c31a16988a1277bc28f778454af869b94e7"
+  integrity sha512-9VdZblJWCR7OlpkYOWXn0N/mge3Eqo67j5KAenNOWJQ3SMfhO+8O2fUBsYKLWAalu5H3AzJeif/eRKW8NCOong==
+  dependencies:
+    hex-rgb "^4.0.0"
+    is-hexcolor "^1.0.0"
+    react-three-fiber "^1.5.3"
+    three-orbitcontrols "^2.102.1"
+
 react-photo-gallery@^6.3.2:
   version "6.3.2"
   resolved "https://registry.yarnpkg.com/react-photo-gallery/-/react-photo-gallery-6.3.2.tgz#b4cf7671693e63cdf85927b8419bdeb44ba5a0e3"

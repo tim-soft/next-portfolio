@@ -8,8 +8,8 @@ import DatGui, {
   DatPresets,
   DatColor
 } from '@tim-soft/react-dat-gui';
+import { defaultConfig } from 'react-particles-webgl';
 import DatContainer from './DatContainer';
-import defaultConfig from '../../ParticleField/config';
 
 /**
  * The DatUI config window

@@ -1,11 +1,6 @@
 import React from 'react';
-import {
-  DatUI,
-  ParticleField,
-  PerformanceStats,
-  defaultConfig,
-  RepoTag
-} from './components';
+import ParticleField, { defaultConfig } from 'react-particles-webgl';
+import { DatUI, PerformanceStats, RepoTag } from './components';
 
 /**
  * A demo showcasing react-particles-webgl
