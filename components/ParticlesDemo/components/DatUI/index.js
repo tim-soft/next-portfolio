@@ -181,4 +181,12 @@ const StyledScrollbar = styled(Scrollbar)`
   @media (max-width: 512px) {
     height: calc(100vh - 260px);
   }
+
+  @media (min-width: 512px) {
+    height: calc(100vh - 260px);
+  }
+
+  @media (min-width: 1050px) {
+    height: calc(100vh - 180px);
+  }
 `;

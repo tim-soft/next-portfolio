@@ -3,7 +3,8 @@ import {
   DatUI,
   ParticleField,
   PerformanceStats,
-  defaultConfig
+  defaultConfig,
+  RepoTag
 } from './components';
 
 /**
@@ -32,6 +33,9 @@ export default class ParticlesDemo extends React.Component {
         <DatUI datConfig={datConfig} handleDatUpdate={this.handleDatUpdate} />
         {/* Particle Canvas */}
         <ParticleField {...datConfig} />
+
+        {/* Repo tag */}
+        <RepoTag />
       </>
     );
   }
