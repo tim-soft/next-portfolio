@@ -41,10 +41,17 @@
     "prettier": "1.16.4"
   },
   "lint-staged": {
-    "*.{js}": [
-      "eslint --no-ignore --fix",
-      "git add --force"
-    ]
+    "linters": {
+      "*.{json,md}": [
+        "prettier --write",
+        "git add --force"
+      ],
+      "*.{js, jsx}": [
+        "prettier --write",
+        "eslint --no-ignore --fix",
+        "git add --force"
+      ]
+    }
   },
   "scripts": {
     "dev": "next",
