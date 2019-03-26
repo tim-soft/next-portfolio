@@ -4981,10 +4981,10 @@ react-particles-js@^2.5.1:
   dependencies:
     lodash "^4.17.11"
 
-react-particles-webgl@^0.1.10:
-  version "0.1.10"
-  resolved "https://registry.yarnpkg.com/react-particles-webgl/-/react-particles-webgl-0.1.10.tgz#fe4d8be72c70916b95574f3b0fd2c7527a1f6afc"
-  integrity sha512-5ySpEgj7U8fsjUmyBhn5mjSNojAcbvf79jVWDCwph3DXNWCPVQxxLGsEHgfaRJOBJY3S/TUCjcnxls9go/4A2g==
+react-particles-webgl@^0.1.12:
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/react-particles-webgl/-/react-particles-webgl-0.1.12.tgz#b424011d1fea45a991280cd9e06e0adbe37d9cd5"
+  integrity sha512-vpUx6bUFveYYZsipd35rM1FQqa3THd/QcG24DClYX+/A7lrNTh+pr9HkBfgmS9grN5AugXittrTjOmTWiT7qdQ==
   dependencies:
     hex-rgb "^4.0.0"
     is-hexcolor "^1.0.0"
