@@ -16,7 +16,7 @@
     "react-highlight": "^0.12.0",
     "react-icons": "^3.5.0",
     "react-particles-js": "^2.5.1",
-    "react-particles-webgl": "^0.5.0",
+    "react-particles-webgl": "^0.5.2",
     "react-photo-gallery": "^6.3.2",
     "react-scrollbars-custom": "^3.1.5",
     "react-spring": "^8.0.18",
