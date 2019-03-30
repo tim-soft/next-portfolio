@@ -6,7 +6,7 @@ import IntroBanner from 'layouts/WebsiteLayout/components/IntroBanner';
 const HomePage = ({ routeIsAnimating }) => (
   <>
     <Head>
-      <title>Tim Ellenberger | Home</title>
+      <title>Home | Tim Ellenberger</title>
     </Head>
 
     <IntroBanner routeIsAnimating={routeIsAnimating} />

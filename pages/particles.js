@@ -6,7 +6,7 @@ import ParticlesDemo from 'components/ParticlesDemo';
 const ThreeParticles = () => (
   <>
     <Head>
-      <title>Tim Ellenberger | React Particles WebGL</title>
+      <title>React Particles WebGL | Tim Ellenberger</title>
     </Head>
     <Container>
       <ParticlesDemo />

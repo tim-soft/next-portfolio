@@ -2,30 +2,27 @@ import React from 'react';
 import styled from 'styled-components';
 import Head from 'next/head';
 import PageScrollWrapper from 'components/PageScrollWrapper';
-import PortfolioList from 'components/PortfolioList';
 
-const PortfolioPage = () => (
+const CoursesPage = () => (
   <>
     <Head>
-      <title>Portfolio | Tim Ellenberger</title>
+      <title>React and GraphQL Courses | Tim Ellenberger</title>
     </Head>
     <PageScrollWrapper>
-      <Title>Portfolio</Title>
-      <PortfolioList />
+      <Title>Courses: Under Construction</Title>
     </PageScrollWrapper>
   </>
 );
 
 // _app.js level theme variable overrides
-PortfolioPage.theme = {
+CoursesPage.theme = {
   headerNavFontColor: 'black',
   headerNavHoverFontColor: '#00e5e5',
   headerNavHamburgerIconColor: 'black'
 };
 
-export default PortfolioPage;
+export default CoursesPage;
 
 const Title = styled.h1`
-  color: black;
   font-size: 50px;
 `;
