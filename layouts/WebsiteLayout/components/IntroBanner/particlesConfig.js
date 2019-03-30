@@ -1,15 +1,15 @@
 export default {
   showCube: false,
   dimension: '3D',
-  velocity: 1.1,
+  velocity: 1,
   boundaryType: 'passthru',
   direction: {
-    xMin: 0,
+    xMin: 0.2,
     xMax: 0.9,
-    yMin: -0.05,
-    yMax: 0.15,
-    zMin: -0.05,
-    zMax: 0.05
+    yMin: 0.2,
+    yMax: 0.4,
+    zMin: 0,
+    zMax: 0
   },
   lines: {
     colorMode: 'rainbow',
@@ -23,10 +23,10 @@ export default {
   particles: {
     colorMode: 'solid',
     color: '#ffffff',
-    transparency: 0.5,
+    transparency: 0.7,
     shape: 'circle',
     boundingBox: 'canvas',
-    count: 1500,
+    count: 1000,
     minSize: 3,
     maxSize: 30,
     visible: true
