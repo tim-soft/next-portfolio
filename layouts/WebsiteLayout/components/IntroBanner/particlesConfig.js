@@ -1,101 +1,43 @@
 export default {
-  params: {
-    particles: {
-      number: {
-        value: 160,
-        density: {
-          enable: true,
-          value_area: 800
-        }
-      },
-      color: {
-        value: '#ffffff'
-      },
-      shape: {
-        type: 'circle',
-        stroke: {
-          width: 0,
-          color: '#000000'
-        },
-        polygon: {
-          nb_sides: 5
-        }
-      },
-      opacity: {
-        anim: {
-          enable: true,
-          speed: 1,
-          opacity_min: 0.05,
-          sync: false
-        }
-      },
-      size: {
-        value: 3,
-        random: true,
-        anim: {
-          enable: false,
-          speed: 4,
-          size_min: 0.2,
-          sync: false
-        }
-      },
-      line_linked: {
-        enable: false,
-        distance: 150,
-        color: '#ffffff',
-        opacity: 0.4,
-        width: 1
-      },
-      move: {
-        enable: true,
-        speed: 1,
-        direction: 'top-right',
-        random: false,
-        straight: true,
-        out_mode: 'out',
-        bounce: false,
-        attract: {
-          enable: false,
-          rotateX: 600,
-          rotateY: 600
-        }
-      }
-    },
-    interactivity: {
-      detect_on: 'window',
-      events: {
-        onhover: {
-          enable: false,
-          mode: 'bubble'
-        },
-        resize: true
-      },
-      modes: {
-        grab: {
-          distance: 400,
-          line_linked: {
-            opacity: 1
-          }
-        },
-        bubble: {
-          distance: 250,
-          size: 0,
-          duration: 2,
-          opacity: 0,
-          speed: 3
-        },
-        repulse: {
-          distance: 400,
-          duration: 0.4
-        },
-        push: {
-          particles_nb: 4
-        },
-        remove: {
-          particles_nb: 2
-        }
-      }
-    },
-    retina_detect: true
+  showCube: false,
+  dimension: '3D',
+  velocity: 1.1,
+  boundaryType: 'passthru',
+  direction: {
+    xMin: 0,
+    xMax: 0.9,
+    yMin: -0.05,
+    yMax: 0.15,
+    zMin: -0.05,
+    zMax: 0.05
+  },
+  lines: {
+    colorMode: 'rainbow',
+    color: '#351CCB',
+    transparency: 0.6,
+    limitConnections: true,
+    maxConnections: 20,
+    minDistance: 150,
+    visible: false
+  },
+  particles: {
+    colorMode: 'solid',
+    color: '#ffffff',
+    transparency: 0.5,
+    shape: 'circle',
+    boundingBox: 'canvas',
+    count: 1500,
+    minSize: 3,
+    maxSize: 30,
+    visible: true
+  },
+  cameraControls: {
+    enabled: true,
+    enableDamping: true,
+    dampingFactor: 0.15,
+    enableZoom: true,
+    autoRotate: false,
+    autoRotateSpeed: 0.3,
+    resetCameraFlag: true
   }
 };

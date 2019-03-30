@@ -25,16 +25,11 @@ const HeaderBar = ({
       controlsAreHidden &&
       // eslint-disable-next-line react/prop-types
       (({ opacity, transform }) => (
-        <animated.div
+        <AnimatedContainer
           style={{
             opacity,
             transform,
-            ...(opacity === 1 && { display: 'none' }),
-            zIndex: 10,
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0
+            ...(opacity === 1 && { display: 'none' })
           }}
         >
           <FixedHeaderBar>
@@ -52,7 +47,7 @@ const HeaderBar = ({
               </CloseButton>
             </RightSideContainer>
           </FixedHeaderBar>
-        </animated.div>
+        </AnimatedContainer>
       ))
     }
   </Transition>
@@ -75,6 +70,14 @@ HeaderBar.propTypes = {
 };
 
 export default HeaderBar;
+
+const AnimatedContainer = animated(styled.div`
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+`);
 
 const PageIndicator = styled.h3`
   white-space: nowrap;

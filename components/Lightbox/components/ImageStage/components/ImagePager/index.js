@@ -124,7 +124,7 @@ class ImagePager extends React.Component {
                 ...gestureConfig
               }}
             >
-              {({ x, display, sc }) => (
+              {({ x, display /* , sc */ }) => (
                 <animated.div
                   style={{
                     display,

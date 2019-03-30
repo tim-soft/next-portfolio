@@ -2,9 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Particles from 'react-particles-js';
 import { Spring, animated, interpolate } from 'react-spring/renderprops.cjs';
-import particleProps from './particlesConfig';
+import ParticleField from 'react-particles-webgl';
+import particlesConfig from './particlesConfig';
 
 export default class IntroBanner extends React.Component {
   static propTypes = {
@@ -93,7 +93,7 @@ export default class IntroBanner extends React.Component {
                 width: '100%'
               }}
             >
-              <StyledParticles {...particleProps} />
+              <ParticleField config={particlesConfig} />
             </animated.div>
           )}
         </Spring>
@@ -103,11 +103,6 @@ export default class IntroBanner extends React.Component {
     );
   }
 }
-
-const StyledParticles = styled(Particles)`
-  height: 100%;
-  width: 100%;
-`;
 
 const BannerContainer = styled.div`
   display: flex;
@@ -133,6 +128,7 @@ const BannerContainer = styled.div`
 `;
 
 const SpaceBackgroundImg = styled.div`
+  pointer-events: none;
   position: absolute;
   bottom: 0;
   top: 0;
