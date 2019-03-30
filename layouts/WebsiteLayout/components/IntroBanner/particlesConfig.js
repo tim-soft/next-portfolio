@@ -6,8 +6,8 @@ export default {
   direction: {
     xMin: 0.2,
     xMax: 0.9,
-    yMin: 0.2,
-    yMax: 0.4,
+    yMin: 0.1,
+    yMax: 0.3,
     zMin: 0,
     zMax: 0
   },
