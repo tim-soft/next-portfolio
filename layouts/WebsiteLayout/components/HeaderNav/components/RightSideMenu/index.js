@@ -13,8 +13,8 @@ export default () => (
       <StyledLink>ParticlesGL</StyledLink>
     </Link>
 
-    <Link prefetch href="/store">
-      <StyledLink>Store</StyledLink>
+    <Link prefetch href="/courses">
+      <StyledLink>Courses</StyledLink>
     </Link>
 
     <Link prefetch href="/blog">
