@@ -16,7 +16,7 @@
     "react-highlight": "^0.12.0",
     "react-icons": "^3.5.0",
     "react-particles-js": "^2.5.1",
-    "react-particles-webgl": "^0.5.2",
+    "react-particles-webgl": "^1.0.0",
     "react-photo-gallery": "^6.3.2",
     "react-scrollbars-custom": "^3.1.5",
     "react-spring": "^8.0.18",
@@ -29,7 +29,7 @@
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "babel-plugin-styled-components": "^1.10.0",
-    "eslint": "^5.15.3",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-import": "^2.16.0",
