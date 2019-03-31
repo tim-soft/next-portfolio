@@ -23,7 +23,7 @@ export default {
   particles: {
     colorMode: 'solid',
     color: '#ffffff',
-    transparency: 0.7,
+    transparency: 0.5,
     shape: 'circle',
     boundingBox: 'canvas',
     count: 1000,
