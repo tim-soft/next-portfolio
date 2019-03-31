@@ -3,6 +3,7 @@ export default {
   dimension: '3D',
   velocity: 1,
   boundaryType: 'passthru',
+  antialias: false,
   direction: {
     xMin: 0.2,
     xMax: 0.9,
