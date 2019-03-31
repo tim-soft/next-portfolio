@@ -4982,10 +4982,10 @@ react-is@^16.3.2, react-is@^16.6.0, react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
 
-react-particles-webgl@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-particles-webgl/-/react-particles-webgl-1.0.0.tgz#0d37bb7b07c22ef536160032d3955572461abb44"
-  integrity sha512-e1vxdm99j6ZJT2SGu17d1TUnaVX4YSffsFHR0xYzyOru0r68Lpwb3vhVoFHTcNCHQDC8MGg4l56UcOyJ6U3ZqQ==
+react-particles-webgl@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-particles-webgl/-/react-particles-webgl-1.0.1.tgz#2f8857c4c19383de67171761a644a787f3deaa88"
+  integrity sha512-MhugDlj4TI+efzzoi6KuDcvD3w7atCSlL/hzINvTW++kmBactYoWOQrubkpS1YyQyufipmVtYkQml1MrHk6VvA==
   dependencies:
     hex-rgb "^4.0.0"
     is-hexcolor "^1.0.0"
