@@ -11,5 +11,5 @@
     }
   ],
   "builds": [{ "src": "next.config.js", "use": "@now/next" }],
-  "alias": "tim-soft.now.sh"
+  "alias": ["tim-soft.now.sh", "tim.now.sh"]
 }
