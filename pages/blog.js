@@ -1,13 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
-import Head from 'next/head';
+import NextSEO, { BlogJsonLd } from 'next-seo';
 import PageScrollWrapper from 'components/PageScrollWrapper';
 
 const BlogPage = () => (
   <>
-    <Head>
-      <title>Coding, Musings and Adventures of Tim Ellenberger</title>
-    </Head>
+    <NextSEO
+      config={{
+        title: 'Coding, Musings and Adventures of Tim Ellenberger',
+        openGraph: {
+          title: 'Coding, Musings and Adventures of Tim Ellenberger'
+        }
+      }}
+    />
+    <BlogJsonLd
+      url="https://timellenberger.now.sh/blog"
+      title="Coding, Musings and Adventures of Tim Ellenberger"
+      images={['https://timellenberger.now.sh/avatar.png']}
+      datePublished="2019-03-31T08:00:00+08:00"
+      dateModified="2019-03-31T09:00:00+08:00"
+      authorName="Tim Ellenberger"
+      description="Coding, Musings and Adventures of Tim Ellenberger"
+    />
     <PageScrollWrapper>
       <Title>Blog: Under Construction</Title>
     </PageScrollWrapper>

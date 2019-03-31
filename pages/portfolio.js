@@ -1,14 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-import Head from 'next/head';
+import NextSEO from 'next-seo';
 import PageScrollWrapper from 'components/PageScrollWrapper';
 import PortfolioList from 'components/PortfolioList';
 
 const PortfolioPage = () => (
   <>
-    <Head>
-      <title>Portfolio | Tim Ellenberger</title>
-    </Head>
+    <NextSEO
+      config={{
+        title: 'Portfolio | Tim Ellenberger',
+        openGraph: {
+          title: 'Portfolio | Tim Ellenberger'
+        }
+      }}
+    />
     <PageScrollWrapper>
       <Title>Portfolio</Title>
       <PortfolioList />

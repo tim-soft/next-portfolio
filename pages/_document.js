@@ -45,10 +45,6 @@ export default class StyledDocument extends Document {
             content="CINNC3dOk4o4wlk7uIE7GZm1dxbG-UfQMAkzdpypoog"
           />
           <meta name="theme-color" content="#032566" />
-          <meta
-            name="Description"
-            content="Tim Ellenberger | Javascript, React and GraphQL Consulting and Blog"
-          />
           <link
             href="https://fonts.googleapis.com/css?family=Montserrat"
             rel="stylesheet"

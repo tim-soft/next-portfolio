@@ -1,13 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
-import Head from 'next/head';
+import NextSEO from 'next-seo';
 import ParticlesDemo from 'components/ParticlesDemo';
 
 const ThreeParticles = () => (
   <>
-    <Head>
-      <title>React Particles WebGL | Tim Ellenberger</title>
-    </Head>
+    <NextSEO
+      config={{
+        title: 'React Particles WebGL | Tim Ellenberger',
+        openGraph: {
+          title: 'React Particles WebGL | Tim Ellenberger'
+        }
+      }}
+    />
     <Container>
       <ParticlesDemo />
     </Container>

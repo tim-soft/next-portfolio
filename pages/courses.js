@@ -1,13 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
-import Head from 'next/head';
+import NextSEO from 'next-seo';
 import PageScrollWrapper from 'components/PageScrollWrapper';
 
 const CoursesPage = () => (
   <>
-    <Head>
-      <title>React and GraphQL Courses | Tim Ellenberger</title>
-    </Head>
+    <NextSEO
+      config={{
+        title: 'React and GraphQL Courses | Tim Ellenberger',
+        openGraph: {
+          title: 'React and GraphQL Courses | Tim Ellenberger'
+        }
+      }}
+    />
     <PageScrollWrapper>
       <Title>Courses: Under Construction</Title>
     </PageScrollWrapper>

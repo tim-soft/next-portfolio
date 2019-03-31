@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import App, { Container } from 'next/app';
 import Router from 'next/router';
 import withGA from 'next-ga';
+import NextSeo from 'next-seo';
 import {
   Transition,
   animated,
@@ -13,6 +14,7 @@ import { ThemeProvider } from 'styled-components';
 import AppTheme from 'components/AppTheme';
 import GlobalStyles from 'components/GlobalStyles';
 import WebsiteLayout from 'layouts/WebsiteLayout';
+import defaultSEO from 'components/DefaultSEO';
 
 /**
  * Custom Next.js App that wraps all Next.js pages, adds global styles and animates route changes
@@ -49,6 +51,7 @@ class WebApp extends App {
 
     return (
       <Container>
+        <NextSeo config={defaultSEO} />
         <GlobalStyles />
         <ThemeProvider theme={theme}>
           <WebsiteLayout>
@@ -107,4 +110,6 @@ class WebApp extends App {
   }
 }
 
+// Apply Google Analytics to entire app
+// https://github.com/sergiodxa/next-ga
 export default withGA('UA-137363397-1', Router)(WebApp);
