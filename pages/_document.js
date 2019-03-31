@@ -40,6 +40,10 @@ export default class StyledDocument extends Document {
           <meta name="viewport" content="initial-scale=1, width=device-width" />
           <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
           <link rel="manifest" href="/static/manifest.json" />
+          <meta
+            name="google-site-verification"
+            content="CINNC3dOk4o4wlk7uIE7GZm1dxbG-UfQMAkzdpypoog"
+          />
           <meta name="theme-color" content="#032566" />
           <meta
             name="Description"
