@@ -2,6 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import App, { Container } from 'next/app';
+import Router from 'next/router';
+import withGA from 'next-ga';
 import {
   Transition,
   animated,
@@ -105,4 +107,4 @@ class WebApp extends App {
   }
 }
 
-export default WebApp;
+export default withGA('UA-137363397-1', Router)(WebApp);
