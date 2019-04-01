@@ -7,9 +7,11 @@ const ThreeParticles = () => (
   <>
     <NextSEO
       config={{
-        title: 'React Particles WebGL | Tim Ellenberger',
+        title:
+          '🔆 A 2D/3D particle library built on React, Three.js and WebGL | Tim Ellenberger',
         openGraph: {
-          title: 'React Particles WebGL | Tim Ellenberger'
+          title:
+            '🔆 A 2D/3D particle library built on React, Three.js and WebGL | Tim Ellenberger'
         }
       }}
     />
