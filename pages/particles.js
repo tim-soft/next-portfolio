@@ -1,10 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import Head from 'next/head';
 import NextSEO from 'next-seo';
 import ParticlesDemo from 'components/ParticlesDemo';
 
 const ThreeParticles = () => (
   <>
+    <Head>
+      <meta name="theme-color" content="#1D1E1F" />
+    </Head>
     <NextSEO
       config={{
         title:
