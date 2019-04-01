@@ -21,4 +21,8 @@ HomePage.propTypes = {
   routeIsAnimating: PropTypes.bool.isRequired
 };
 
+HomePage.layoutProps = {
+  showBio: true
+};
+
 export default HomePage;

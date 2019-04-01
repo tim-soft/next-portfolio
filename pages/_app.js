@@ -54,7 +54,7 @@ class WebApp extends App {
         <NextSeo config={defaultSEO} />
         <GlobalStyles />
         <ThemeProvider theme={theme}>
-          <WebsiteLayout>
+          <WebsiteLayout {...Component.layoutProps}>
             {/* Animate route changes */}
             <Transition
               native

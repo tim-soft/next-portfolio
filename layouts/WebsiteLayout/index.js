@@ -7,11 +7,16 @@ import HeaderNav from './components/HeaderNav';
 // eslint-disable-next-line react/prefer-stateless-function
 export default class WebsiteLayout extends React.Component {
   static propTypes = {
-    children: PropTypes.element.isRequired
+    children: PropTypes.element.isRequired,
+    showBio: PropTypes.bool
+  };
+
+  static defaultProps = {
+    showBio: false
   };
 
   render() {
-    const { children } = this.props;
+    const { children, showBio } = this.props;
 
     return (
       <StyledContainer>
@@ -19,7 +24,7 @@ export default class WebsiteLayout extends React.Component {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta charSet="utf-8" />
         </Head>
-        <HeaderNav />
+        <HeaderNav showBio={showBio} />
         {children}
       </StyledContainer>
     );

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { LeftSideLogo, RightSideMenu, MobileRightSideMenu } from './components';
 
@@ -7,6 +8,10 @@ import { LeftSideLogo, RightSideMenu, MobileRightSideMenu } from './components';
  * Prefetches nav route links https://nextjs.org/docs#prefetching-pages
  */
 export default class HeaderNav extends React.Component {
+  static propTypes = {
+    showBio: PropTypes.bool.isRequired
+  };
+
   constructor(props) {
     super(props);
 
@@ -16,6 +21,7 @@ export default class HeaderNav extends React.Component {
   }
 
   render() {
+    const { showBio } = this.props;
     const { menuIsOpen } = this.state;
 
     return (
@@ -23,6 +29,7 @@ export default class HeaderNav extends React.Component {
         <LeftSideLogo
           menuIsOpen={menuIsOpen}
           toggleMenu={() => this.setState({ menuIsOpen: !menuIsOpen })}
+          showBio={showBio}
         />
 
         <RightSideMenu />
