@@ -16,7 +16,7 @@ const BlogPage = () => (
     <BlogJsonLd
       url="https://timellenberger.now.sh/blog"
       title="Coding, Musings and Adventures of Tim Ellenberger"
-      images={['https://timellenberger.now.sh/avatar.png']}
+      images={['https://timellenberger.now.sh/static/avatar.png']}
       datePublished="2019-03-31T08:00:00+08:00"
       dateModified="2019-03-31T09:00:00+08:00"
       authorName="Tim Ellenberger"
