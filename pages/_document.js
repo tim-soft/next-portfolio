@@ -61,7 +61,7 @@ export default class StyledDocument extends Document {
             name="google-site-verification"
             content="CINNC3dOk4o4wlk7uIE7GZm1dxbG-UfQMAkzdpypoog"
           />
-          <meta name="theme-color" content="#032566" />
+          <meta name="theme-color" content="#1d1e1f" />
           <link
             href="https://fonts.googleapis.com/css?family=Montserrat"
             rel="stylesheet"
