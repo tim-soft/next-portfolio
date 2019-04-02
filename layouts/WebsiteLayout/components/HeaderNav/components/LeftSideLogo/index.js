@@ -37,7 +37,7 @@ const LeftSideLogo = ({ menuIsOpen, toggleMenu, showBio }) => (
         // eslint-disable-next-line react/prop-types
         (({ opacity, height }) => (
           <AnimatedContainer style={{ opacity, height }}>
-            <AvatarImage src="/static/avatar.png" />
+            <AvatarImage src="/static/avatar.png" alt="avatar" />
             <StyledLink href="https://github.com/tim-soft" target="__blank">
               GitHub: @tim-soft
             </StyledLink>
