@@ -5,68 +5,93 @@ import styled from 'styled-components';
 import { Transition, animated } from 'react-spring/renderprops.cjs';
 import StyledLogo from '../StyledLink';
 
-const LeftSideLogo = ({ menuIsOpen, toggleMenu, showBio }) => (
-  <LogoProfileContainer menuIsOpen={menuIsOpen}>
-    <LogoProfile>
-      <Link prefetch href="/">
-        <Logo
-          menuIsOpen={menuIsOpen}
-          onClick={() => menuIsOpen && toggleMenu()}
-        >
-          <MainHeading>Tim Ellenberger</MainHeading>
-          <SubheadingContainer menuIsOpen={menuIsOpen}>
-            <SubHeading>React</SubHeading>
-            <SubHeading> | </SubHeading>
-            <SubHeading>GraphQL</SubHeading>
-            <SubHeading> | </SubHeading>
-            <SubHeading>Consulting</SubHeading>
-          </SubheadingContainer>
-        </Logo>
-      </Link>
-    </LogoProfile>
-    <Transition
-      native
-      items={showBio && !menuIsOpen}
-      initial={{ opacity: 0, height: '0px' }}
-      from={{ opacity: 0, height: '0px' }}
-      enter={{ opacity: 1, height: '400px' }}
-      leave={{ opacity: 0, height: '0px' }}
-    >
-      {isOpen =>
-        isOpen &&
-        // eslint-disable-next-line react/prop-types
-        (({ opacity, height }) => (
-          <AnimatedContainer style={{ opacity, height }}>
-            <AvatarImage src="/static/avatar.png" alt="avatar" />
-            <StyledLink href="https://github.com/tim-soft" target="__blank">
-              GitHub: @tim-soft
-            </StyledLink>
-            <StyledLink href="mailto:timellenberger@gmail.com">
-              Email: Click to view
-            </StyledLink>
-            <BioParagraph>
-              I create super fast web apps with React and GraphQL
-            </BioParagraph>
-            {/* Emoji found with https://emojipedia.org/ */}
-            <BioParagraph>
-              Made with{' '}
-              <span role="img" aria-label="love">
-                💚
-              </span>{' '}
-              in Seattle
-            </BioParagraph>
-          </AnimatedContainer>
-        ))
-      }
-    </Transition>
-  </LogoProfileContainer>
-);
+class LeftSideLogo extends React.Component {
+  static propTypes = {
+    menuIsOpen: PropTypes.bool.isRequired,
+    toggleMenu: PropTypes.func.isRequired,
+    showBio: PropTypes.bool.isRequired
+  };
 
-LeftSideLogo.propTypes = {
-  menuIsOpen: PropTypes.bool.isRequired,
-  toggleMenu: PropTypes.func.isRequired,
-  showBio: PropTypes.bool.isRequired
-};
+  constructor() {
+    super();
+    this.state = {
+      isHovering: false
+    };
+  }
+
+  handleHover = isHovering => this.setState({ isHovering });
+
+  render() {
+    const { isHovering } = this.state;
+    const { menuIsOpen, toggleMenu, showBio } = this.props;
+
+    return (
+      <LogoProfileContainer
+        menuIsOpen={menuIsOpen}
+        onMouseEnter={() => this.handleHover(true)}
+        onMouseLeave={() => this.handleHover(false)}
+        onFocus={() => this.handleHover(true)}
+      >
+        <LogoProfile>
+          <Link prefetch href="/">
+            <Logo
+              menuIsOpen={menuIsOpen}
+              onClick={() => menuIsOpen && toggleMenu()}
+              isHovering={isHovering}
+            >
+              <MainHeading>Tim Ellenberger</MainHeading>
+              <SubheadingContainer
+                menuIsOpen={menuIsOpen}
+                isHovering={isHovering}
+              >
+                <SubHeading>React</SubHeading>
+                <SubHeading> | </SubHeading>
+                <SubHeading>GraphQL</SubHeading>
+                <SubHeading> | </SubHeading>
+                <SubHeading>Consulting</SubHeading>
+              </SubheadingContainer>
+            </Logo>
+          </Link>
+        </LogoProfile>
+        <Transition
+          native
+          items={(showBio && !menuIsOpen) || isHovering}
+          initial={{ opacity: 0, height: '0px' }}
+          from={{ opacity: 0, height: '0px' }}
+          enter={{ opacity: 1, height: '400px' }}
+          leave={{ opacity: 0, height: '0px' }}
+        >
+          {isOpen =>
+            isOpen &&
+            // eslint-disable-next-line react/prop-types
+            (({ opacity, height }) => (
+              <AnimatedContainer style={{ opacity, height }}>
+                <AvatarImage src="/static/avatar.png" alt="avatar" />
+                <StyledLink href="https://github.com/tim-soft" target="__blank">
+                  GitHub: @tim-soft
+                </StyledLink>
+                <StyledLink href="mailto:timellenberger@gmail.com">
+                  Email: Click to view
+                </StyledLink>
+                <BioParagraph>
+                  I create super fast web apps with React and GraphQL
+                </BioParagraph>
+                {/* Emoji found with https://emojipedia.org/ */}
+                <BioParagraph>
+                  Made with{' '}
+                  <span role="img" aria-label="love">
+                    💚
+                  </span>{' '}
+                  in Seattle
+                </BioParagraph>
+              </AnimatedContainer>
+            ))
+          }
+        </Transition>
+      </LogoProfileContainer>
+    );
+  }
+}
 
 export default LeftSideLogo;
 
@@ -122,10 +147,12 @@ const SubheadingContainer = styled.div`
   margin: 0;
   padding: 0 12px;
   transition: color 0.2s linear;
-  color: ${({ theme, menuIsOpen }) =>
-    menuIsOpen
-      ? theme.headerNavMobileMenuFontColor
-      : theme.headerNavHamburgerIconColor};
+  color: ${({ theme, menuIsOpen, isHovering }) => {
+    if (menuIsOpen) return theme.headerNavMobileMenuFontColor;
+    if (isHovering) return 'white';
+
+    return theme.headerNavHamburgerIconColor;
+  }};
 `;
 
 const Logo = styled(StyledLogo)`
@@ -136,10 +163,12 @@ const Logo = styled(StyledLogo)`
   ::before {
     top: 110%;
   }
-  color: ${({ theme, menuIsOpen }) =>
-    menuIsOpen
-      ? theme.headerNavMobileMenuFontColor
-      : theme.headerNavHamburgerIconColor};
+  color: ${({ theme, menuIsOpen, isHovering }) => {
+    if (menuIsOpen) return theme.headerNavMobileMenuFontColor;
+    if (isHovering) return 'white';
+
+    return theme.headerNavHamburgerIconColor;
+  }};
   @media (${({ theme }) => theme.breakpoints.desktopNav}) {
     margin: 0;
   }
