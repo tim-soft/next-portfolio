@@ -13,14 +13,14 @@ const LeftSideLogo = ({ menuIsOpen, toggleMenu, showBio }) => (
           menuIsOpen={menuIsOpen}
           onClick={() => menuIsOpen && toggleMenu()}
         >
-          Tim Ellenberger
-          <Subheading menuIsOpen={menuIsOpen}>
-            <span>React</span>
-            <span> | </span>
-            <span>GraphQL</span>
-            <span> | </span>
-            <span>Consulting</span>
-          </Subheading>
+          <MainHeading>Tim Ellenberger</MainHeading>
+          <SubheadingContainer menuIsOpen={menuIsOpen}>
+            <SubHeading>React</SubHeading>
+            <SubHeading> | </SubHeading>
+            <SubHeading>GraphQL</SubHeading>
+            <SubHeading> | </SubHeading>
+            <SubHeading>Consulting</SubHeading>
+          </SubheadingContainer>
         </Logo>
       </Link>
     </LogoProfile>
@@ -70,6 +70,18 @@ LeftSideLogo.propTypes = {
 
 export default LeftSideLogo;
 
+const MainHeading = styled.h1`
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+`;
+
+const SubHeading = styled.h2`
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+`;
+
 const BioParagraph = styled.div`
   color: white;
   margin: 10px;
@@ -102,7 +114,7 @@ const LogoProfile = styled.div`
   flex-direction: column;
 `;
 
-const Subheading = styled.div`
+const SubheadingContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -157,7 +169,7 @@ const AnimatedContainer = animated(styled.div`
   }
 `);
 
-const LogoProfileContainer = styled.div`
+const LogoProfileContainer = styled.main`
   position: absolute;
   top: 0;
   left: 0;
