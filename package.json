@@ -8,7 +8,7 @@
     "@tim-soft/react-with-gesture": "^4.0.9",
     "hex-rgb": "^4.0.0",
     "is-hexcolor": "^1.0.0",
-    "next": "^8.0.3",
+    "next": "^8.0.4",
     "next-ga": "^2.3.4",
     "next-offline": "^3.3.7",
     "next-seo": "^1.11.1",
