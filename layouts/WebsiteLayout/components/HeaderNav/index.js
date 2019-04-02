@@ -26,21 +26,32 @@ export default class HeaderNav extends React.Component {
 
     return (
       <HeaderStyled>
-        <LeftSideLogo
-          menuIsOpen={menuIsOpen}
-          toggleMenu={() => this.setState({ menuIsOpen: !menuIsOpen })}
-          showBio={showBio}
-        />
+        <HeaderItemContainer>
+          <LeftSideLogo
+            menuIsOpen={menuIsOpen}
+            toggleMenu={() => this.setState({ menuIsOpen: !menuIsOpen })}
+            showBio={showBio}
+          />
 
-        <RightSideMenu />
-        <MobileRightSideMenu
-          menuIsOpen={menuIsOpen}
-          toggleMenu={() => this.setState({ menuIsOpen: !menuIsOpen })}
-        />
+          <RightSideMenu />
+          <MobileRightSideMenu
+            menuIsOpen={menuIsOpen}
+            toggleMenu={() => this.setState({ menuIsOpen: !menuIsOpen })}
+          />
+        </HeaderItemContainer>
       </HeaderStyled>
     );
   }
 }
+
+const HeaderItemContainer = styled.div`
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: inherit;
+`;
 
 const HeaderStyled = styled.header`
   position: absolute;
@@ -52,9 +63,7 @@ const HeaderStyled = styled.header`
   background: none;
   color: white;
   z-index: 20;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
+  overflow: visible;
   @media (max-width: 500px) {
     padding-left: 5px;
     padding-right: 5px;

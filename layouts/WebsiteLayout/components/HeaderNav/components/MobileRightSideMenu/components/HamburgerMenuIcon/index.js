@@ -65,6 +65,7 @@ HamburgerMenuIcon.propTypes = {
 };
 
 const StyledSVG = styled.svg`
+  position: relative;
   height: 100%;
   overflow: visible;
   cursor: pointer;

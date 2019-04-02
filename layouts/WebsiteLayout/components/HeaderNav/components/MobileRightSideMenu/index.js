@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { HamburgerMenuIcon, FullPageMenu } from './components';
 
 const MobileMenu = ({ menuIsOpen, toggleMenu }) => (
-  <MobileRightSideMenu>
+  <MobileRightSideMenu menuIsOpen={menuIsOpen}>
     <HamburgerMenuIcon
       menuIsOpen={menuIsOpen}
       toggleMenu={() => toggleMenu()}
@@ -21,11 +21,16 @@ MobileMenu.propTypes = {
 export default MobileMenu;
 
 const MobileRightSideMenu = styled.div`
-  width: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 60px;
   height: 100%;
-  display: flex;
-  justify-content: flex-end;
-  z-index: inherit;
+  padding: 10px;
+  z-index: ${({ menuIsOpen }) => (menuIsOpen ? 21 : 'inherit')};
+  @media (max-width: 500px) {
+    right: 5px;
+  }
   @media (${({ theme }) => theme.breakpoints.mobileNav}) {
     display: none;
   }

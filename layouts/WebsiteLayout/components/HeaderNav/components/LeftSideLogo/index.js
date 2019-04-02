@@ -151,22 +151,24 @@ const Logo = styled(StyledLogo)`
 `;
 
 const LogoProfileContainer = styled.div`
-  position: fixed;
-  z-index: ${({ menuIsOpen }) => (menuIsOpen ? 21 : 'inherit')};
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: ${({ menuIsOpen }) => (menuIsOpen ? 22 : 'inherit')};
   width: 300px;
-  top: 15px;
   transition: background-color 0.3s linear;
   background-color: ${({ showBio }) => (showBio ? '#1a1a1aba' : 'unset')};
   padding: 10px;
   border-radius: 2%;
 
   @media (max-width: 420px) {
-    width: calc(100%);
+    width: 100%;
     top: 0;
     left: 0;
     right: 0;
     ${Logo} {
       align-self: flex-start;
+      max-width: calc(100% - 60px);
     }
   }
 `;
