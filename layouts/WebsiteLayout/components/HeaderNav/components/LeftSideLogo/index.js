@@ -6,10 +6,7 @@ import { Transition, animated } from 'react-spring/renderprops.cjs';
 import StyledLogo from '../StyledLink';
 
 const LeftSideLogo = ({ menuIsOpen, toggleMenu, showBio }) => (
-  <LogoProfileContainer
-    showBio={showBio && !menuIsOpen}
-    menuIsOpen={menuIsOpen}
-  >
+  <LogoProfileContainer menuIsOpen={menuIsOpen}>
     <LogoProfile>
       <Link prefetch href="/">
         <Logo
@@ -39,12 +36,7 @@ const LeftSideLogo = ({ menuIsOpen, toggleMenu, showBio }) => (
         isOpen &&
         // eslint-disable-next-line react/prop-types
         (({ opacity, height }) => (
-          <AnimatedContainer
-            style={{
-              opacity,
-              height
-            }}
-          >
+          <AnimatedContainer style={{ opacity, height }}>
             <AvatarImage src="/static/avatar.png" />
             <StyledLink href="https://github.com/tim-soft" target="__blank">
               GitHub: @tim-soft
@@ -102,8 +94,9 @@ const LogoProfile = styled.div`
   position: absolute;
   top: 0;
   left: 0;
+  padding-top: 5px;
   width: 100%;
-  height: 100%;
+  height: inherit;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -155,9 +148,13 @@ const AnimatedContainer = animated(styled.div`
   align-items: center;
   flex-direction: column;
   overflow: hidden;
-  background-color: #1a1a1aba;
   padding-top: 66px;
   border-radius: 2%;
+  background-color: #1a1a1aba;
+  @media (max-width: 420px) {
+    width: calc(100% - 10px);
+    border-radius: 0;
+  }
 `);
 
 const LogoProfileContainer = styled.div`
@@ -166,8 +163,6 @@ const LogoProfileContainer = styled.div`
   left: 0;
   z-index: ${({ menuIsOpen }) => (menuIsOpen ? 22 : 'inherit')};
   width: 300px;
-  /* transition: background-color 0.3s linear;
-  background-color: ${({ showBio }) => (showBio ? '#1a1a1aba' : 'unset')}; */
   padding: 10px;
 
   @media (max-width: 420px) {
@@ -178,7 +173,14 @@ const LogoProfileContainer = styled.div`
     right: 0;
     ${Logo} {
       align-self: flex-start;
-      max-width: calc(100% - 60px);
+    }
+    ${LogoProfile} {
+      max-width: 256px;
+      padding: 15px 5px;
+    }
+    ${AnimatedContainer} {
+      width: calc(100% - 10px);
+      border-radius: 0;
     }
   }
 `;
