@@ -30,6 +30,26 @@ class WebApp extends App {
     pageProps: PropTypes.object.isRequired
   };
 
+  componentDidMount() {
+    // eslint-disable-next-line no-console
+    console.log(
+      '%c ',
+      "background: url('https://timellenberger.now.sh/static/avatar.png') 0 0 no-repeat; padding: 66px; border-radius: 50%;"
+    );
+
+    // eslint-disable-next-line no-console
+    console.log(
+      '%cGreetings!',
+      'color: green; font-size: 35px; font-family: monospace;'
+    );
+
+    // eslint-disable-next-line no-console
+    console.log(
+      '%cThis website was built with React and Next.js',
+      'color: black; font-size: 18px;'
+    );
+  }
+
   render() {
     const { Component, pageProps } = this.props;
 
