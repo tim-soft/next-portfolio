@@ -26,53 +26,47 @@ const LeftSideLogo = ({ menuIsOpen, toggleMenu, showBio }) => (
           </Subheading>
         </Logo>
       </Link>
-      <Transition
-        native
-        items={showBio && !menuIsOpen}
-        initial={{ opacity: 0, height: '0px' }}
-        from={{ opacity: 0, height: '0px' }}
-        enter={{ opacity: 1, height: '400px' }}
-        leave={{ opacity: 0, height: '0px' }}
-      >
-        {isOpen =>
-          isOpen &&
-          // eslint-disable-next-line react/prop-types
-          (({ opacity, height }) => (
-            <animated.div
-              style={{
-                opacity,
-                height,
-                position: 'relative',
-                width: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                flexDirection: 'column',
-                overflow: 'hidden'
-              }}
-            >
-              <AvatarImage src="/static/avatar.png" />
-              <StyledLink href="https://github.com/tim-soft" target="__blank">
-                GitHub: @tim-soft
-              </StyledLink>
-              <StyledLink href="mailto:timellenberger@gmail.com">
-                Email: Click to view
-              </StyledLink>
-              <BioParagraph>
-                I create super fast web apps with React and GraphQL
-              </BioParagraph>
-              {/* Emoji found with https://emojipedia.org/ */}
-              <BioParagraph>
-                Made with{' '}
-                <span role="img" aria-label="love">
-                  💚
-                </span>{' '}
-                in Seattle
-              </BioParagraph>
-            </animated.div>
-          ))
-        }
-      </Transition>
     </LogoProfile>
+    <Transition
+      native
+      items={showBio && !menuIsOpen}
+      initial={{ opacity: 0, height: '0px' }}
+      from={{ opacity: 0, height: '0px' }}
+      enter={{ opacity: 1, height: '400px' }}
+      leave={{ opacity: 0, height: '0px' }}
+    >
+      {isOpen =>
+        isOpen &&
+        // eslint-disable-next-line react/prop-types
+        (({ opacity, height }) => (
+          <AnimatedContainer
+            style={{
+              opacity,
+              height
+            }}
+          >
+            <AvatarImage src="/static/avatar.png" />
+            <StyledLink href="https://github.com/tim-soft" target="__blank">
+              GitHub: @tim-soft
+            </StyledLink>
+            <StyledLink href="mailto:timellenberger@gmail.com">
+              Email: Click to view
+            </StyledLink>
+            <BioParagraph>
+              I create super fast web apps with React and GraphQL
+            </BioParagraph>
+            {/* Emoji found with https://emojipedia.org/ */}
+            <BioParagraph>
+              Made with{' '}
+              <span role="img" aria-label="love">
+                💚
+              </span>{' '}
+              in Seattle
+            </BioParagraph>
+          </AnimatedContainer>
+        ))
+      }
+    </Transition>
   </LogoProfileContainer>
 );
 
@@ -105,7 +99,9 @@ const AvatarImage = styled.img`
 `;
 
 const LogoProfile = styled.div`
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   display: flex;
@@ -150,19 +146,33 @@ const Logo = styled(StyledLogo)`
   }
 `;
 
+const AnimatedContainer = animated(styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #1a1a1aba;
+  padding-top: 66px;
+  border-radius: 2%;
+`);
+
 const LogoProfileContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
   z-index: ${({ menuIsOpen }) => (menuIsOpen ? 22 : 'inherit')};
   width: 300px;
-  transition: background-color 0.3s linear;
-  background-color: ${({ showBio }) => (showBio ? '#1a1a1aba' : 'unset')};
+  /* transition: background-color 0.3s linear;
+  background-color: ${({ showBio }) => (showBio ? '#1a1a1aba' : 'unset')}; */
   padding: 10px;
-  border-radius: 2%;
 
   @media (max-width: 420px) {
     width: 100%;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;

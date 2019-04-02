@@ -28,9 +28,9 @@ const MobileRightSideMenu = styled.div`
   height: 100%;
   padding: 10px;
   z-index: ${({ menuIsOpen }) => (menuIsOpen ? 21 : 'inherit')};
-  @media (max-width: 500px) {
+  /* @media (max-width: 500px) {
     right: 5px;
-  }
+  } */
   @media (${({ theme }) => theme.breakpoints.mobileNav}) {
     display: none;
   }
