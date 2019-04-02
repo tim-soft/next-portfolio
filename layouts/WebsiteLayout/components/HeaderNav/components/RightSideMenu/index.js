@@ -6,24 +6,38 @@ import StyledLink from '../StyledLink';
 export default () => (
   <RightSideMenu>
     <Link prefetch href="/portfolio">
-      <StyledLink>Portfolio</StyledLink>
+      <StyledLink>
+        <LinkHeading>Portfolio</LinkHeading>
+      </StyledLink>
     </Link>
 
     <Link prefetch href="/particles">
-      <StyledLink>ParticlesGL</StyledLink>
+      <StyledLink>
+        <LinkHeading>ParticlesGL</LinkHeading>
+      </StyledLink>
     </Link>
 
     <Link prefetch href="/courses">
-      <StyledLink>Courses</StyledLink>
+      <StyledLink>
+        <LinkHeading>Courses</LinkHeading>
+      </StyledLink>
     </Link>
 
     <Link prefetch href="/blog">
-      <StyledLink>Blog</StyledLink>
+      <StyledLink>
+        <LinkHeading>Blog</LinkHeading>
+      </StyledLink>
     </Link>
   </RightSideMenu>
 );
 
-const RightSideMenu = styled.div`
+const LinkHeading = styled.h1`
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+`;
+
+const RightSideMenu = styled.header`
   width: 100%;
   display: flex;
   justify-content: flex-end;

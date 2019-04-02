@@ -27,27 +27,33 @@ const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
         >
           <ScrollbarContentContainer>
             <Link prefetch href="/">
-              <MobileStyledLink onClick={toggleMenu}>Home</MobileStyledLink>
+              <MobileStyledLink onClick={toggleMenu}>
+                <LinkHeading>Home</LinkHeading>
+              </MobileStyledLink>
             </Link>
 
             <Link prefetch href="/portfolio">
               <MobileStyledLink onClick={toggleMenu}>
-                Portfolio
+                <LinkHeading>Portfolio</LinkHeading>
               </MobileStyledLink>
             </Link>
 
             <Link prefetch href="/particles">
               <MobileStyledLink onClick={toggleMenu}>
-                ParticlesGL
+                <LinkHeading>ParticlesGL</LinkHeading>
               </MobileStyledLink>
             </Link>
 
             <Link prefetch href="/courses">
-              <MobileStyledLink onClick={toggleMenu}>Courses</MobileStyledLink>
+              <MobileStyledLink onClick={toggleMenu}>
+                <LinkHeading>Courses</LinkHeading>
+              </MobileStyledLink>
             </Link>
 
             <Link prefetch href="/blog">
-              <MobileStyledLink onClick={toggleMenu}>Blog</MobileStyledLink>
+              <MobileStyledLink onClick={toggleMenu}>
+                <LinkHeading>Blog</LinkHeading>
+              </MobileStyledLink>
             </Link>
           </ScrollbarContentContainer>
         </StyledScrollbar>
@@ -62,6 +68,12 @@ FullPageMenu.propTypes = {
 };
 
 export default FullPageMenu;
+
+const LinkHeading = styled.h1`
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+`;
 
 const ScrollbarContentContainer = styled.div`
   display: flex;
