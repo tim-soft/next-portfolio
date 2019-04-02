@@ -75,7 +75,7 @@ const LinkHeading = styled.h1`
   font-weight: inherit;
 `;
 
-const ScrollbarContentContainer = styled.div`
+const ScrollbarContentContainer = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;

@@ -37,7 +37,7 @@ const LinkHeading = styled.h1`
   font-weight: inherit;
 `;
 
-const RightSideMenu = styled.header`
+const RightSideMenu = styled.nav`
   width: 100%;
   display: flex;
   justify-content: flex-end;
