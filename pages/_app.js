@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import App, { Container } from 'next/app';
+import { version } from 'next/package.json';
 import Router from 'next/router';
 import withGA from 'next-ga';
 import NextSeo from 'next-seo';
@@ -45,7 +46,9 @@ class WebApp extends App {
 
     // eslint-disable-next-line no-console
     console.log(
-      '%cThis website was built with React and Next.js',
+      `%cThis website was built with React@${
+        React.version
+      } and Next.js@${version}`,
       'color: black; font-size: 18px;'
     );
   }
