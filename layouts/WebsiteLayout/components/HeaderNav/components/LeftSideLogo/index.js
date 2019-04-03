@@ -191,10 +191,10 @@ const AnimatedContainer = animated(styled.div`
   overflow: hidden;
   border-radius: 2%;
   background-color: #1a1a1aba;
+  max-height: 100vh;
   @media (max-width: 420px) {
     width: calc(100% - 10px);
     border-radius: 0;
-    max-height: 100vh;
   }
 `);
 
