@@ -58,7 +58,7 @@ class LeftSideLogo extends React.Component {
           items={(showBio && !menuIsOpen) || isHovering}
           initial={{ opacity: 0, height: '0px' }}
           from={{ opacity: 0, height: '0px' }}
-          enter={{ opacity: 1, height: '400px' }}
+          enter={{ opacity: 1, height: '500px' }}
           leave={{ opacity: 0, height: '0px' }}
         >
           {isOpen =>
@@ -124,7 +124,7 @@ const StyledLink = styled.a`
 const AvatarImage = styled.img`
   width: 90px;
   border-radius: 50%;
-  margin: 20px;
+  margin: 100px 0 20px 0;
 `;
 
 const LogoProfile = styled.div`
@@ -189,12 +189,12 @@ const AnimatedContainer = animated(styled.div`
   align-items: center;
   flex-direction: column;
   overflow: hidden;
-  padding-top: 66px;
   border-radius: 2%;
   background-color: #1a1a1aba;
   @media (max-width: 420px) {
     width: calc(100% - 10px);
     border-radius: 0;
+    max-height: 100vh;
   }
 `);
 
