@@ -4689,6 +4689,11 @@ please-upgrade-node@^3.0.2, please-upgrade-node@^3.1.1:
   dependencies:
     semver-compare "^1.0.0"
 
+pointer-events-polyfill@^0.4.4-pre:
+  version "0.4.4-pre"
+  resolved "https://registry.yarnpkg.com/pointer-events-polyfill/-/pointer-events-polyfill-0.4.4-pre.tgz#d745eb0cef8aa3f661cdba1364b9728b46d0872f"
+  integrity sha512-t7iitVY5jW9mGOFZEHphJOzB8eMhoYaE6I5HqsUX14rjsPa9F6OlMOCj3EpqDzNb/8XtMk2BxMpOyePPyuefHw==
+
 posix-character-classes@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
@@ -4947,14 +4952,14 @@ react-is@^16.6.0, react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
 
-react-particles-webgl@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/react-particles-webgl/-/react-particles-webgl-1.0.2.tgz#06d7639f9bbe745a4fd97588c4b42eccb4d49074"
-  integrity sha512-wGjeEgVFty+e/HhD75amYl1aBEOyp/HWk0840IGPdb8zPxQERsZfzFX8+dUwpuRc5Ljj6azMb8/NaklMKSsFow==
+react-particles-webgl@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-particles-webgl/-/react-particles-webgl-1.0.3.tgz#f5c3093dc7c3ae9ed14cfc42da807ae8d05d5b89"
+  integrity sha512-OcbPV5qEy+U/ciUWasQcjmkylyOSvZhwcKx35ztSh4HbX/e2lMwG3iKXLSc9/XrbPysTRkWLcRvajXNbIyQWLw==
   dependencies:
     hex-rgb "^4.0.0"
     is-hexcolor "^1.0.0"
-    react-three-fiber "^1.5.3"
+    react-three-fiber "^2.0.0"
     three-orbitcontrols "^2.102.1"
 
 react-photo-gallery@^6.3.2:
@@ -4989,13 +4994,14 @@ react-spring@^8.0.19:
   dependencies:
     "@babel/runtime" "^7.3.1"
 
-react-three-fiber@^1.5.3:
-  version "1.5.3"
-  resolved "https://registry.yarnpkg.com/react-three-fiber/-/react-three-fiber-1.5.3.tgz#5e9284e3f21c9c7c9530c8cef39d4e3c630c7b33"
-  integrity sha512-9GJEuTwIEPRS/zCHqKAs8IUvnFT8qMOxV4ORdMY5wHgU4Od1xxRfiVwZqKf0X2bTX6HqLSnBOJXYmGHPYgLM/Q==
+react-three-fiber@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-three-fiber/-/react-three-fiber-2.0.0.tgz#311da5f12f7cb7a6a53646c92f1394e8b69e9d78"
+  integrity sha512-EcPk9tlRPxzNaVq7ooVv42RvzTfs5OnkqKd89uoL+kBfwMc38Q57uqjDmz4go4CFcY+soMxA6u+XhhGOgQd3Aw==
   dependencies:
     "@babel/runtime" "^7.3.4"
     lodash-es "^4.17.11"
+    pointer-events-polyfill "^0.4.4-pre"
     react-reconciler "^0.20.1"
     resize-observer-polyfill "^1.5.1"
     scheduler "^0.13.3"
