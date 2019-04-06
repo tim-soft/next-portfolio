@@ -1,41 +1,35 @@
 import React from 'react';
 import styled from 'styled-components';
-import Link from 'next/link';
-import StyledLink from '../StyledLink';
+import MenuItem from './MenuItem';
+import CourseMenuContent from './MenuContent/Courses';
 
 export default () => (
   <RightSideMenu>
-    <Link prefetch href="/portfolio">
-      <StyledLink>
-        <LinkHeading>Portfolio</LinkHeading>
-      </StyledLink>
-    </Link>
+    <MenuItem link="/portfolio" text="Portfolio" />
 
-    <Link prefetch href="/particles">
-      <StyledLink>
-        <LinkHeading>ParticlesGL</LinkHeading>
-      </StyledLink>
-    </Link>
+    <MenuItem link="/particles" text="ParticlesGL" />
 
-    <Link prefetch href="/courses">
-      <StyledLink>
-        <LinkHeading>Courses</LinkHeading>
-      </StyledLink>
-    </Link>
+    <MenuItem
+      link="/courses"
+      text="Courses"
+      menuWidth={350}
+      menuHeight={500}
+      useScroll
+    >
+      <CourseMenuContent />
+    </MenuItem>
 
-    <Link prefetch href="/blog">
-      <StyledLink>
-        <LinkHeading>Blog</LinkHeading>
-      </StyledLink>
-    </Link>
+    <MenuItem
+      link="/blog"
+      text="Blog"
+      menuWidth={350}
+      menuHeight={500}
+      useScroll
+    >
+      <CourseMenuContent />
+    </MenuItem>
   </RightSideMenu>
 );
-
-const LinkHeading = styled.h1`
-  margin: 0;
-  font-size: inherit;
-  font-weight: inherit;
-`;
 
 const RightSideMenu = styled.nav`
   width: 100%;
