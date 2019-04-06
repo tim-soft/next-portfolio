@@ -8,12 +8,21 @@ import StyledLink from '../../StyledLink';
 
 class MenuItem extends React.Component {
   static propTypes = {
+    /* URL to redirect when clicking menu item */
     link: PropTypes.string.isRequired,
+    /* Text of menu item */
     text: PropTypes.string.isRequired,
+    /* Width of popout menu */
     menuWidth: PropTypes.number,
+    /* Height of popout menu */
     menuHeight: PropTypes.number,
+    /* If true, wrap popout menu content in a scrollable container */
     useScroll: PropTypes.bool,
+    /* If true, popout menu is visible at all times */
     alwaysShowMenu: PropTypes.bool,
+    /** (Optional) Child elements will be used as content of popout menu.
+     * If no children are provided, popout menu won't be rendered.
+     */
     children: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.element),
       PropTypes.element
@@ -101,7 +110,6 @@ class MenuItem extends React.Component {
           >
             {isOpen =>
               isOpen &&
-              // eslint-disable-next-line react/prop-types
               (animatedStyles => (
                 <AnimatedContainer
                   style={animatedStyles}

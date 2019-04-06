@@ -1,70 +1,53 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const data = [
+  {
+    title: 'React',
+    description: 'Coming Soon...',
+    logoSrc: 'https://cdn.svgporn.com/logos/react.svg',
+    logoAlt: 'React'
+  },
+  {
+    title: 'GraphQL',
+    description: 'Coming Soon...',
+    logoSrc: 'https://cdn.svgporn.com/logos/graphql.svg',
+    logoAlt: 'GraphQL'
+  },
+  {
+    title: 'Next.js',
+    description: 'Coming Soon...',
+    logoSrc: 'https://cdn.svgporn.com/logos/nextjs.svg',
+    logoAlt: 'Next.js'
+  },
+  {
+    title: 'Publishing to NPM',
+    description: 'Coming Soon...',
+    logoSrc: 'https://cdn.svgporn.com/logos/npm.svg',
+    logoAlt: 'NPM'
+  },
+  {
+    title: 'JavaScript ES6+',
+    description: 'Coming Soon...',
+    logoSrc: 'https://cdn.svgporn.com/logos/javascript.svg',
+    logoAlt: 'JavaScript'
+  }
+];
+
 const CourseList = () => (
   <MenuContent>
     <MenuList>
-      <MenuListItem>
-        <LogoContainer>
-          <CourseLogo
-            src="https://cdn.svgporn.com/logos/react.svg"
-            alt="React"
-          />
-        </LogoContainer>
-        <CourseContent>
-          <CourseTitle>React</CourseTitle>
-          <p>Coming Soon...</p>
-        </CourseContent>
-      </MenuListItem>
-
-      <MenuListItem>
-        <LogoContainer>
-          <CourseLogo
-            src="https://cdn.svgporn.com/logos/graphql.svg"
-            alt="GraphQL"
-          />
-        </LogoContainer>
-        <CourseContent>
-          <CourseTitle>GraphQL</CourseTitle>
-          <p>Coming Soon...</p>
-        </CourseContent>
-      </MenuListItem>
-
-      <MenuListItem>
-        <LogoContainer>
-          <CourseLogo
-            src="https://cdn.svgporn.com/logos/nextjs.svg"
-            alt="Next.js"
-          />
-        </LogoContainer>
-        <CourseContent>
-          <CourseTitle>Next.js</CourseTitle>
-          <p>Coming Soon...</p>
-        </CourseContent>
-      </MenuListItem>
-
-      <MenuListItem>
-        <LogoContainer>
-          <CourseLogo src="https://cdn.svgporn.com/logos/npm.svg" alt="NPM" />
-        </LogoContainer>
-        <CourseContent>
-          <CourseTitle>Publishing to NPM</CourseTitle>
-          <p>Coming Soon...</p>
-        </CourseContent>
-      </MenuListItem>
-
-      <MenuListItem>
-        <LogoContainer>
-          <CourseLogo
-            src="https://cdn.svgporn.com/logos/javascript.svg"
-            alt="JavaScript"
-          />
-        </LogoContainer>
-        <CourseContent>
-          <CourseTitle>JavaScript ES6+</CourseTitle>
-          <p>Coming Soon...</p>
-        </CourseContent>
-      </MenuListItem>
+      {data.map(({ title, description, logoSrc, logoAlt }) => (
+        <MenuListItem key={title}>
+          <LogoContainer>
+            <CourseLogo src={logoSrc} alt={logoAlt} />
+          </LogoContainer>
+          <CourseContent>
+            <CourseTitle>{title}</CourseTitle>
+            <p>{description}</p>
+          </CourseContent>
+        </MenuListItem>
+      ))}
     </MenuList>
     {/* Emoji found with https://emojipedia.org/ */}
     <BioParagraph>
