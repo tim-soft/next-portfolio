@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { Transition, animated } from 'react-spring/renderprops.cjs';
-import { DiGithubBadge } from 'react-icons/di';
+import { GoMarkGithub } from 'react-icons/go';
 import StyledLogo from '../StyledLink';
 
 class LeftSideLogo extends React.Component {
@@ -69,8 +69,8 @@ class LeftSideLogo extends React.Component {
               <AnimatedContainer style={{ opacity, height }}>
                 <AvatarImage src="/static/avatar.png" alt="avatar" />
                 <StyledLink href="https://github.com/tim-soft" target="__blank">
-                  <DiGithubBadge size="3em" />
-                  <span>GitHub@tim-soft</span>
+                  <GoMarkGithub size="2.5em" />
+                  <GitHubUsername>GitHub@tim-soft</GitHubUsername>
                 </StyledLink>
                 <StyledLink href="mailto:timellenberger@gmail.com">
                   <span>Email: Click to view</span>
@@ -96,6 +96,10 @@ class LeftSideLogo extends React.Component {
 }
 
 export default LeftSideLogo;
+
+const GitHubUsername = styled.span`
+  margin-left: 6px;
+`;
 
 const MainHeading = styled.h1`
   margin: 0;

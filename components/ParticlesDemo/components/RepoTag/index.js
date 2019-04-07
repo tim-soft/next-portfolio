@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { DiGithubBadge } from 'react-icons/di';
+import { GoMarkGithub } from 'react-icons/go';
 
 export default () => (
   <Container>
@@ -10,7 +10,7 @@ export default () => (
     >
       <RepoTitleContainer>
         <Text>react-particles-webgl</Text>
-        <DiGithubBadge size="2.5em" />
+        <GoMarkGithub size="2em" />
       </RepoTitleContainer>
 
       <ShieldContainer>
@@ -65,6 +65,9 @@ const RepoTitleContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 5px;
+  svg {
+    margin-left: 6px;
+  }
 `;
 
 const ShieldContainer = styled.div`
