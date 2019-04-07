@@ -111,6 +111,11 @@ const MenuListItem = styled.li`
   border-bottom-style: solid;
   border-bottom-color: black;
   border-bottom-width: 1px;
+  transition: background-color 0.3s linear;
+  :hover {
+    background-color: #9e9e9e;
+    cursor: pointer;
+  }
 `;
 
 const BioParagraph = styled.div`
