@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { Transition, animated } from 'react-spring/renderprops.cjs';
 import Scrollbar from 'react-scrollbars-custom';
+import { FiChevronDown } from 'react-icons/fi';
 import StyledLink from '../../StyledLink';
 
 class MenuItem extends React.Component {
@@ -94,7 +95,9 @@ class MenuItem extends React.Component {
             ref={this.menuOverlay}
             showUnderline={children === null}
           >
-            <LinkHeading>{text}</LinkHeading>
+            <LinkHeading>
+              {text} {children && <FiChevronDown />}
+            </LinkHeading>
           </MenuLink>
         </Link>
 
@@ -184,6 +187,12 @@ const LinkHeading = styled.h1`
   margin: 0 15px;
   font-size: inherit;
   font-weight: inherit;
+  display: flex;
+  align-items: center;
+  > svg {
+    font-size: 22px;
+    margin-left: 7px;
+  }
 `;
 
 const AnimatedContainer = animated(styled.div`
