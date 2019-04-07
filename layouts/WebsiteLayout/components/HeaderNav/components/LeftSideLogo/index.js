@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { Transition, animated } from 'react-spring/renderprops.cjs';
+import { DiGithubBadge } from 'react-icons/di';
 import StyledLogo from '../StyledLink';
 
 class LeftSideLogo extends React.Component {
@@ -68,10 +69,11 @@ class LeftSideLogo extends React.Component {
               <AnimatedContainer style={{ opacity, height }}>
                 <AvatarImage src="/static/avatar.png" alt="avatar" />
                 <StyledLink href="https://github.com/tim-soft" target="__blank">
-                  GitHub: @tim-soft
+                  <DiGithubBadge size="3em" />
+                  <span>GitHub@tim-soft</span>
                 </StyledLink>
                 <StyledLink href="mailto:timellenberger@gmail.com">
-                  Email: Click to view
+                  <span>Email: Click to view</span>
                 </StyledLink>
                 <BioParagraph>
                   I create super fast web apps with React and GraphQL
@@ -119,6 +121,12 @@ const StyledLink = styled.a`
   color: white;
   text-decoration: none;
   margin: 10px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s linear;
+  :hover {
+    color: cyan;
+  }
 `;
 
 const AvatarImage = styled.img`
