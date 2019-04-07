@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { DiGithubBadge } from 'react-icons/di';
 
 export default () => (
   <Container>
@@ -7,7 +8,11 @@ export default () => (
       href="https://github.com/tim-soft/react-particles-webgl#readme"
       target="__blank"
     >
-      <Text>react-particles-webgl</Text>
+      <RepoTitleContainer>
+        <Text>react-particles-webgl</Text>
+        <DiGithubBadge size="2.5em" />
+      </RepoTitleContainer>
+
       <ShieldContainer>
         <NpmShield
           alt="npm"
@@ -27,6 +32,14 @@ const Container = styled.div`
   bottom: 20px;
   width: auto;
   background: #1a1a1ad4;
+  color: #eeeeee;
+  border: 1px solid #1a1a1ad4;
+  transition: all 0.3s linear;
+  transition-property: color, border;
+  :hover {
+    color: cyan;
+    border: 1px solid cyan;
+  }
 
   @media (max-width: 512px) {
     display: none;
@@ -40,12 +53,17 @@ const StyledLink = styled.a`
   justify-content: center;
   text-decoration: none;
   padding: 10px;
+  color: inherit;
 `;
 
 const Text = styled.h3`
-  color: #eeeeee;
   margin: 0;
   font-weight: normal;
+`;
+
+const RepoTitleContainer = styled.div`
+  display: flex;
+  align-items: center;
   margin-bottom: 5px;
 `;
 
