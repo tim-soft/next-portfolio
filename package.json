@@ -61,7 +61,9 @@
   "scripts": {
     "dev": "next",
     "now-build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint-js": "eslint --ignore-path .gitignore --ignore-pattern \"!**/.*\" .",
+    "lint-styles": "stylelint \"./**/*.{js,jsx}\""
   },
   "husky": {
     "hooks": {

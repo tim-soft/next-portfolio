@@ -165,7 +165,7 @@ const HighlightStyles = styled.div`
   }
 
   .hljs-code {
-    font-family: 'Monospace';
+    font-family: Monospace;
   }
 
   .hljs-bullet,

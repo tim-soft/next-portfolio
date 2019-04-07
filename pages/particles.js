@@ -38,6 +38,5 @@ const Container = styled.div`
   overflow: hidden;
   height: 100vh;
   user-select: none;
-  overflow: hidden;
   background: #272727;
 `;

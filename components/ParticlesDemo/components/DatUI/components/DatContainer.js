@@ -85,6 +85,11 @@ export default styled.div`
     font-size: inherit;
   }
 
+  .react-dat-gui .cr input[type='text']::-ms-clear,
+  .react-dat-gui .cr input[type='number']::-ms-clear {
+    display: none;
+  }
+
   .react-dat-gui .cr input[type='text']:hover,
   .react-dat-gui .cr input[type='number']:hover {
     background: #3c3c3c;
@@ -94,11 +99,6 @@ export default styled.div`
   .react-dat-gui .cr input[type='number']:focus {
     background: #494949;
     color: #fff;
-  }
-
-  .react-dat-gui .cr input[type='text']::-ms-clear,
-  .react-dat-gui .cr input[type='number']::-ms-clear {
-    display: none;
   }
 
   .react-dat-gui .cr.boolean {
@@ -238,7 +238,7 @@ export default styled.div`
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.3);
     box-sizing: initial;
     width: auto;
-    font-family: 'Menlo';
+    font-family: Menlo, sans-serif;
     margin-top: -3px;
   }
 
@@ -260,7 +260,7 @@ export default styled.div`
   }
 
   .react-dat-gui .cr.color .picker .body .controls .toggles .hue-wrap .hue {
-    radius: 2px;
+    border-radius: 2px;
   }
 
   .react-dat-gui .cr.color .picker .saturation-wrap {
@@ -271,7 +271,7 @@ export default styled.div`
   }
 
   .react-dat-gui .cr.color .picker .saturation-wrap .saturation {
-    radius: 2px 2px 0 0;
+    border-radius: 2px 2px 0 0;
   }
 
   .react-dat-gui .cr.color .fields-wrap {
@@ -301,6 +301,10 @@ export default styled.div`
 
   .react-dat-gui .cr.color .fields-wrap .fields .field input:focus {
     outline: none;
+  }
+
+  .react-dat-gui .cr.presets label {
+    padding: 6px 2px 6px 8px;
   }
 
   .react-dat-gui .cr.color .fields-wrap .fields .field label {
@@ -334,10 +338,6 @@ export default styled.div`
 
   .react-dat-gui .cr.presets {
     border-left: 5px solid #dad5cb;
-  }
-
-  .react-dat-gui .cr.presets label {
-    padding: 6px 2px 6px 8px;
   }
 
   .react-dat-gui .cr.presets label select {
