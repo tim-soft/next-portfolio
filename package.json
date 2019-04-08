@@ -1,8 +1,14 @@
 {
   "name": "next-portfolio",
-  "version": "0.0.1",
+  "version": "0.5.0",
+  "description": "My personal website, blog and library demo playground, built from scratch with Next.js",
   "author": "Tim Ellenberger <timellenberger@gmail.com>",
   "license": "MIT",
+  "repository": "tim-soft/react-portfolio",
+  "bugs": {
+    "url": "https://github.com/tim-soft/react-portfolio/issues"
+  },
+  "homepage": "https://timellenberger.now.sh",
   "dependencies": {
     "@tim-soft/react-dat-gui": "^2.2.5",
     "@tim-soft/react-with-gesture": "^4.0.9",
