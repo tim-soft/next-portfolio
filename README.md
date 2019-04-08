@@ -1,16 +1,19 @@
-# next-portfolio
+# Next Portfolio
 
-## Features
+**next-portfolio** Is my personal website, blog and library demo playground, built from scratch with Next.js
 
-- ***SSR React with [Next.js](https://github.com/zeit/next.js/)***
+[**https://timellenberger.now.sh**](https://timellenberger.now.sh)
 
-- ***Dynamic Themes and Styles via [Styled-Components](https://github.com/styled-components/styled-components)***
+![GitHub package.json version](https://img.shields.io/github/package-json/v/tim-soft/next-portfolio.svg?color=brightgreen&style=popout-square)
+[![NPM](https://img.shields.io/npm/l/react-particles-webgl.svg?color=brightgreen&style=popout-square)](https://github.com/tim-soft/next-portfolio/blob/master/LICENSE)
 
-- ***Offline Ready via [Workbox](https://github.com/GoogleChrome/workbox)***
+## ✨ Features
 
-- ***One Click Production Serverless Deploy to [Now](https://zeit.co/now)***
-
-- ***[Prettier](https://github.com/prettier/prettier) and [ESLint](https://github.com/eslint/eslint) Integration***
+- SSR React with [Next.js](https://github.com/zeit/next.js/)
+- Dynamic Theming and Styles via [Styled-Components](https://github.com/styled-components/styled-components)
+- Offline Ready via [Workbox](https://github.com/GoogleChrome/workbox)
+- One Click Production Serverless Deploy to [Now](https://zeit.co/now)
+- [Prettier](https://github.com/prettier/prettier), [ESLint](https://github.com/eslint/eslint) and [StyleLint](https://stylelint.io/)  Integration
 
 ## How to use
 
@@ -22,16 +25,19 @@ cd next-portfolio
 ```
 
 Install dependencies
+
 ```bash
 yarn install
 ```
 
 Run locally with hot module reloading
+
 ```bash
 yarn dev
 ```
 
 Deploy to Now
+
 ```
 yarn global add now
 now
