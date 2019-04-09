@@ -49,7 +49,7 @@ class FPSStats extends Component {
 
     // Calculate FPS every second
     if (currentTime > prevTime + 1000) {
-      let fps = ((frames * 1000) / (currentTime - prevTime)).toFixed(1);
+      let fps = (frames * 1000) / (currentTime - prevTime);
       fps = this.state.fps.concat(fps);
 
       // Set new frame time
@@ -66,7 +66,7 @@ class FPSStats extends Component {
 
     return (
       <GraphContainer>
-        <GraphTitle>{fps[fps.length - 1]} FPS</GraphTitle>
+        <GraphTitle>{(fps[fps.length - 1] + 1).toFixed(1)} FPS</GraphTitle>
       </GraphContainer>
     );
   }
