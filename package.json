@@ -22,7 +22,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-highlight": "^0.12.0",
-    "react-icons": "^3.5.0",
+    "react-icons": "^3.6.1",
     "react-particles-webgl": "^1.0.3",
     "react-photo-gallery": "^6.3.4",
     "react-scrollbars-custom": "^3.1.5",
@@ -45,7 +45,7 @@
     "husky": "^1.3.1",
     "lint-staged": "^8.1.5",
     "prettier": "1.17.0",
-    "stylelint": "^9.10.1",
+    "stylelint": "^10.0.1",
     "stylelint-config-recommended": "^2.2.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.6.0"
