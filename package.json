@@ -30,7 +30,7 @@
     "stringify-object": "^3.3.0",
     "styled-components": "^4.2.0",
     "styled-normalize": "^8.0.6",
-    "three": "^0.103.0"
+    "three": "^0.104.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",

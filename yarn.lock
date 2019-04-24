@@ -6884,10 +6884,10 @@ three-orbitcontrols@^2.102.1:
   resolved "https://registry.yarnpkg.com/three-orbitcontrols/-/three-orbitcontrols-2.102.1.tgz#f4071e79f1c12e2b7668992cb06cfa29a816629d"
   integrity sha512-mp5qc5mooCtjgSloMFzIEI2VQVkvBDWDMYtbxY3TFB/BCCYpR6NV7/dD5+EUyzR90/a9H356s9QR+2PhH48f6w==
 
-three@^0.103.0:
-  version "0.103.0"
-  resolved "https://registry.yarnpkg.com/three/-/three-0.103.0.tgz#63b3dbccc861caad93269618061a73dadebae71b"
-  integrity sha512-4WKRHTMt96sp+lX+Hx/eHtN9CWFyejDqr1ikgxZUJIkKEHVglSE7FY8n81NC6yWXqVSjUIQQppaxsoUe26Zi9g==
+three@^0.104.0:
+  version "0.104.0"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.104.0.tgz#9ad1da492153b753a89e0df066631215bd9d9087"
+  integrity sha512-q617IMBC5k40U2E9UC4/LtmhzTOOLB1jGMIooUL+QrhZ7abiGCSDrKrpCDt9V8RTl6xw+0FYfA1PYsIPKbQOgg==
 
 through2@^2.0.0:
   version "2.0.5"
