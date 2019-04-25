@@ -5751,10 +5751,10 @@ react-particles-webgl@^1.0.3:
     react-three-fiber "^2.0.0"
     three-orbitcontrols "^2.102.1"
 
-react-photo-gallery@^6.3.4:
-  version "6.3.4"
-  resolved "https://registry.yarnpkg.com/react-photo-gallery/-/react-photo-gallery-6.3.4.tgz#0bda4d9060fe08bc350066a84c7854e636dabcf6"
-  integrity sha512-G3Trhk/DiGWQHV3ZtP9cNdaIT9ujybp/nNpzHrQLd3nijWaJqqGuGp73y+S3H5zx3DxQKlaOraTX9mdkXC08eA==
+react-photo-gallery@^7.0.2:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/react-photo-gallery/-/react-photo-gallery-7.0.2.tgz#5b2def1ede9767018f72651133f289ea8d835de4"
+  integrity sha512-s94SZ62RCRMiA+LN22iXG8xlzg/sEZQHXZmH24HxjOB0W1BLID8wSTSemq/6Q9B/MaowmanZRI3YdErooa8xZg==
   dependencies:
     prop-types "~15.7.2"
     resize-observer-polyfill "^1.5.0"
