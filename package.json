@@ -16,7 +16,7 @@
     "is-hexcolor": "^1.0.0",
     "next": "^8.1.0",
     "next-ga": "^2.3.4",
-    "next-offline": "^3.3.8",
+    "next-offline": "^4.0.0",
     "next-seo": "^1.11.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
