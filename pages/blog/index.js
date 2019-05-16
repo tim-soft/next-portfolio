@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import styled from 'styled-components';
 import NextSEO, { BlogJsonLd } from 'next-seo';
 import PageScrollWrapper from 'components/PageScrollWrapper';
@@ -24,6 +25,9 @@ const BlogPage = () => (
     />
     <PageScrollWrapper>
       <Title>Blog: Under Construction</Title>
+      <Link href="/blog/test-blog-entry">
+        <a>Test Blog Entry</a>
+      </Link>
     </PageScrollWrapper>
   </>
 );

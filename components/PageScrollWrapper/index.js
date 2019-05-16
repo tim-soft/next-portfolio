@@ -6,8 +6,8 @@ import Scrollbar from 'react-scrollbars-custom';
 /**
  * A full page component that allows scrolling and proper positioning under the WebsiteLayout fixed header
  */
-const PageScrollWrapper = ({ children }) => (
-  <Container>
+const PageScrollWrapper = ({ children, backgroundColor }) => (
+  <Container backgroundColor={backgroundColor}>
     <StyledScrollbar
       trackYRenderer={({ elementRef, style, ...restProps }) => (
         <span
@@ -32,7 +32,12 @@ PageScrollWrapper.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element),
     PropTypes.element
-  ]).isRequired
+  ]).isRequired,
+  backgroundColor: PropTypes.string
+};
+
+PageScrollWrapper.defaultProps = {
+  backgroundColor: null
 };
 
 export default PageScrollWrapper;
@@ -58,5 +63,6 @@ const Container = styled.div`
   justify-content: flex-end;
   overflow: hidden;
   height: 100vh;
-  background: #9e9e9e;
+  background: ${({ theme, backgroundColor }) =>
+    backgroundColor || theme.pageBackgroundColor};
 `;

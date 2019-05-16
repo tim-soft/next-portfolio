@@ -11,6 +11,8 @@ export default {
   headerNavTextUnderlineColor: 'cyan',
   headerNavHamburgerIconColor: 'white',
   headerNavMobileMenuFontColor: 'white',
+  // Page colors
+  pageBackgroundColor: '#9e9e9e',
   // Media Query Breakpoints
   breakpoints: {
     mobileNav: 'min-width: 1060px',
