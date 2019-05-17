@@ -1,44 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import Color from 'color';
-
-const data = [
-  {
-    title: 'React',
-    description: 'Coming Soon...',
-    logoSrc: '/static/course-logos/react.svg',
-    logoAlt: 'React'
-  },
-  {
-    title: 'GraphQL',
-    description: 'Coming Soon...',
-    logoSrc: '/static/course-logos/graphql.svg',
-    logoAlt: 'GraphQL'
-  },
-  {
-    title: 'Next.js',
-    description: 'Coming Soon...',
-    logoSrc: '/static/course-logos/nextjs.svg',
-    logoAlt: 'Next.js'
-  },
-  {
-    title: 'Publishing to NPM',
-    description: 'Coming Soon...',
-    logoSrc: '/static/course-logos/npm.svg',
-    logoAlt: 'NPM'
-  },
-  {
-    title: 'JavaScript ES6+',
-    description: 'Coming Soon...',
-    logoSrc: '/static/course-logos/javascript.svg',
-    logoAlt: 'JavaScript'
-  }
-];
+import CourseData from 'data/Courses';
 
 const CourseList = () => (
   <MenuContent>
     <MenuList>
-      {data.map(({ title, description, logoSrc, logoAlt }) => (
+      {CourseData.map(({ title, description, logoSrc, logoAlt }) => (
         <MenuListItem key={title}>
           <LogoContainer>
             <CourseLogo src={logoSrc} alt={logoAlt} />
