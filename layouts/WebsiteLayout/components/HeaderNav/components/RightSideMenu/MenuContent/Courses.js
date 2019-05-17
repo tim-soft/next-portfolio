@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Color from 'color';
 
 const data = [
   {
@@ -113,7 +114,21 @@ const MenuListItem = styled.li`
   border-bottom-width: 1px;
   transition: background-color 0.3s linear;
   :hover {
-    background-color: #9e9e9e;
+    background: ${({ theme }) => {
+      // Calculate a hover color lighter or darker than background
+      // based on how bright the background color is
+      const color = Color(theme.pageBackgroundColor);
+      const luminosity = color.luminosity();
+
+      if (luminosity < 0.3)
+        return Color(theme.pageBackgroundColor)
+          .darken(0.05)
+          .hex();
+
+      return Color(theme.pageBackgroundColor)
+        .lighten(0.1)
+        .hex();
+    }};
     cursor: pointer;
   }
 `;

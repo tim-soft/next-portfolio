@@ -100,7 +100,7 @@ BlogPage.theme = {
   headerNavFontColor: 'black',
   headerNavHoverFontColor: '#00e5e5',
   headerNavHamburgerIconColor: 'black',
-  pageBackgroundColor: 'brown'
+  pageBackgroundColor: 'green'
 };
 
 export default BlogPage;
