@@ -51,5 +51,16 @@ export default [
   penatibus et magnis dis.`,
     logo: '/static/avatar.png',
     date: 'Mon May 7 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
+  },
+  {
+    href: '/blog/test-blog-entry-5',
+    title: 'Test Blog Entry 5',
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+  tempor incididunt ut labore et dolore magna aliqua. Eu sem integer vitae
+  justo eget magna fermentum iaculis. Tristique senectus et netus et
+  malesuada fames ac turpis egestas. Elit eget gravida cum sociis natoque
+  penatibus et magnis dis.`,
+    logo: '/static/avatar.png',
+    date: 'Mon May 9 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
   }
 ];
