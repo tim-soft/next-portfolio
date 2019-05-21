@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import MenuItem from './MenuItem';
 import CourseMenuContent from './MenuContent/Courses';
+import BlogPostMenuContent from './MenuContent/Blogs';
 
 export default () => (
   <RightSideMenu>
@@ -22,11 +23,11 @@ export default () => (
     <MenuItem
       link="/blog"
       text="Blog"
-      menuWidth={350}
+      menuWidth={450}
       menuHeight={500}
       useScroll
     >
-      <CourseMenuContent />
+      <BlogPostMenuContent />
     </MenuItem>
   </RightSideMenu>
 );

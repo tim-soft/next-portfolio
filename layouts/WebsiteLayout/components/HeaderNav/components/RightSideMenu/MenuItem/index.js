@@ -210,6 +210,7 @@ const AnimatedContainer = animated(styled.div`
   border-color: black;
   border-width: 1px;
   border-style: solid;
+  transition: background-color 0.3s linear;
   background-color: ${({ theme }) => {
     // Calculate a hover color lighter or darker than background
     // based on how bright the background color is
