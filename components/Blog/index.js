@@ -4,6 +4,8 @@ import BlogArticleBanner from './BlogArticleBanner';
 import BlogCodeSandboxEmbed from './BlogCodeSandboxEmbed';
 import IndexListItem from './IndexListItem';
 import BlogArticleContainer from './BlogArticleContainer';
+import BlogNavigation from './BlogNavigation';
+import BlogLink from './BlogLink';
 
 export {
   BlogArticleBanner,
@@ -11,5 +13,7 @@ export {
   BlogCodeBlock,
   BlogCodeSandboxEmbed,
   IndexListItem,
-  BlogArticleContainer
+  BlogArticleContainer,
+  BlogNavigation,
+  BlogLink
 };

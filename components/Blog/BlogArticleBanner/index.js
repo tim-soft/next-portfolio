@@ -1,24 +1,41 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import Link from 'next/link';
+import { withRouter } from 'next/router';
+import BlogData from 'data/BlogPosts';
+import BlogLink from '../BlogLink';
 
-const BlogArticleBanner = ({ title, publishDate }) => (
-  <BannerContainer>
-    <AvatarImage src="/static/avatar.png" alt="avatar" />
-    <Link href="/blog">
-      <StyledLink>Go Back</StyledLink>
-    </Link>
+const BlogArticleBanner = ({ router }) => {
+  const currHref = router.route;
 
-    <Title>{title}</Title>
-    <PublishDate>{publishDate}</PublishDate>
-  </BannerContainer>
-);
+  // Get index of current blog post
+  const blogPost = BlogData.find(post => post.href === currHref);
 
-export default BlogArticleBanner;
+  return (
+    <BannerContainer>
+      <AvatarImage src="/static/avatar.png" alt="avatar" />
+      <StyledBlogLink href="/blog">Go Back</StyledBlogLink>
+      {blogPost && (
+        <>
+          <Title>{blogPost.title}</Title>
+          <PublishDate>
+            {new Date(blogPost.date).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric'
+            })}
+          </PublishDate>
+        </>
+      )}
+    </BannerContainer>
+  );
+};
+
+export default withRouter(BlogArticleBanner);
 
 BlogArticleBanner.propTypes = {
-  title: PropTypes.string.isRequired,
-  publishDate: PropTypes.string.isRequired
+  router: PropTypes.shape({
+    route: PropTypes.string.isRequired
+  }).isRequired
 };
 
 const BannerContainer = styled.div`
@@ -33,16 +50,10 @@ const BannerContainer = styled.div`
   border-radius: 8px;
 `;
 
-const StyledLink = styled.a`
+const StyledBlogLink = styled(BlogLink)`
   position: absolute;
   right: 0;
   top: 15px;
-  text-decoration: none;
-  transition: color 0.2s linear;
-  :hover {
-    cursor: pointer;
-    color: cyan;
-  }
 `;
 
 const AvatarImage = styled.img`
