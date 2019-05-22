@@ -1,9 +1,14 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 
 const BlogArticleBanner = ({ title, publishDate }) => (
   <BannerContainer>
     <AvatarImage src="/static/avatar.png" alt="avatar" />
+    <Link href="/blog">
+      <StyledLink>Go Back</StyledLink>
+    </Link>
+
     <Title>{title}</Title>
     <PublishDate>{publishDate}</PublishDate>
   </BannerContainer>
@@ -17,7 +22,7 @@ BlogArticleBanner.propTypes = {
 };
 
 const BannerContainer = styled.div`
-  height: 250px;
+  position: relative;
   width: 100%;
   max-width: calc(900px - 25px * 2);
   background: ${({ theme }) => theme.pageBackgroundColor};
@@ -26,6 +31,18 @@ const BannerContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   border-radius: 8px;
+`;
+
+const StyledLink = styled.a`
+  position: absolute;
+  right: 0;
+  top: 15px;
+  text-decoration: none;
+  transition: color 0.2s linear;
+  :hover {
+    cursor: pointer;
+    color: cyan;
+  }
 `;
 
 const AvatarImage = styled.img`
