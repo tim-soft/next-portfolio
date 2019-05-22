@@ -42,7 +42,8 @@ const BlogPage = () => (
 BlogPage.theme = {
   headerNavFontColor: 'black',
   headerNavHoverFontColor: '#00e5e5',
-  headerNavHamburgerIconColor: 'black'
+  headerNavHamburgerIconColor: 'black',
+  pageBackgroundColor: 'grey'
 };
 
 export default BlogPage;
