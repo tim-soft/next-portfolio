@@ -55,7 +55,7 @@ BlogNavigation.propTypes = {
 
 export default withRouter(BlogNavigation);
 
-const NavContainer = styled.div`
+const NavContainer = styled.nav`
   width: 100%;
   display: flex;
   flex-direction: row;

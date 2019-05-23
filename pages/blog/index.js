@@ -61,7 +61,7 @@ BlogPage.theme = {
 
 export default BlogPage;
 
-const BioContainer = styled.div`
+const BioContainer = styled.aside`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -73,7 +73,7 @@ const BioMetaContainer = styled.div`
 
 const StyledBlogLink = styled(BlogLink)`
   font-weight: normal;
-  font-size: 1.2em;
+  font-size: inherit;
 `;
 
 const Title = styled.h1`
@@ -81,7 +81,7 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-const Container = styled.div`
+const Container = styled.main`
   width: 100%;
   max-width: 700px;
   display: flex;

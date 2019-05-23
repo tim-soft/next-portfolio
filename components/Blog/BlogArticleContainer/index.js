@@ -7,10 +7,14 @@ import BlogNavigation from '../BlogNavigation';
 const BlogArticleContainer = ({ children }) => (
   <PageScrollWrapper>
     <Container>
-      <BlogArticleBanner />
-      <BlogNavigation />
-      {children}
-      <BlogNavigation />
+      <article>
+        <header>
+          <BlogArticleBanner />
+          <BlogNavigation />
+        </header>
+        {children}
+        <BlogNavigation />
+      </article>
     </Container>
   </PageScrollWrapper>
 );
@@ -24,7 +28,7 @@ BlogArticleContainer.propTypes = {
 
 export default BlogArticleContainer;
 
-const Container = styled.div`
+const Container = styled.main`
   width: 100%;
   max-width: 700px;
   display: flex;

@@ -4,16 +4,18 @@ import Link from 'next/link';
 
 const IndexListItem = ({ title, description, href, date }) => (
   <BlogItem>
-    <Link href={href}>
-      <BlogTitle>{title}</BlogTitle>
-    </Link>
-    <p>
-      {new Date(date).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric'
-      })}
-    </p>
+    <header>
+      <Link href={href}>
+        <BlogTitle>{title}</BlogTitle>
+      </Link>
+      <small>
+        {new Date(date).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric'
+        })}
+      </small>
+    </header>
     <BlogDescription>{description}</BlogDescription>
   </BlogItem>
 );
@@ -27,7 +29,7 @@ IndexListItem.propTypes = {
 
 export default IndexListItem;
 
-const BlogItem = styled.div`
+const BlogItem = styled.article`
   display: flex;
   align-items: 'flex-start';
   flex-direction: column;
@@ -35,6 +37,9 @@ const BlogItem = styled.div`
   width: 100%;
   > * {
     margin: 0.4em 0;
+  }
+  header > small {
+    font-size: 85%;
   }
 `;
 
