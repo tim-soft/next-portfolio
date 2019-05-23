@@ -32,8 +32,8 @@ const StyledLink = styled.a`
   color: black;
   font-weight: bold;
   font-size: 1.2em;
+  cursor: pointer;
   :hover {
-    cursor: pointer;
     color: cyan;
   }
 `;
