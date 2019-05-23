@@ -19,7 +19,9 @@ const BlogNavigation = ({ router }) => {
   const PrevPost = () => {
     if (currPostIndex > 0) {
       const prevPost = sortedPosts[currPostIndex - 1];
-      return <BlogLink href={prevPost.href}>{prevPost.title}</BlogLink>;
+      return (
+        <BlogLink href={prevPost.href}>&#10229; {prevPost.title}</BlogLink>
+      );
     }
 
     return <span />;
@@ -29,7 +31,9 @@ const BlogNavigation = ({ router }) => {
   const NextPost = () => {
     if (currPostIndex < sortedPosts.length - 1) {
       const nextPost = sortedPosts[currPostIndex + 1];
-      return <BlogLink href={nextPost.href}>{nextPost.title}</BlogLink>;
+      return (
+        <BlogLink href={nextPost.href}>{nextPost.title} &#10230;</BlogLink>
+      );
     }
 
     return <span />;

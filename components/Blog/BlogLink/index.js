@@ -24,8 +24,11 @@ BlogLink.defaultProps = {
 export default BlogLink;
 
 const StyledLink = styled.a`
-  text-decoration: none;
+  text-decoration: underline;
   transition: color 0.2s linear;
+  color: black;
+  font-weight: bold;
+  font-size: 1.2em;
   :hover {
     cursor: pointer;
     color: cyan;

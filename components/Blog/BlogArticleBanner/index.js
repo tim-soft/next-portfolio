@@ -13,7 +13,7 @@ const BlogArticleBanner = ({ router }) => {
   return (
     <BannerContainer>
       <AvatarImage src="/static/avatar.png" alt="avatar" />
-      <StyledBlogLink href="/blog">Go Back</StyledBlogLink>
+      <StyledBlogLink href="/blog">&#10226; Go Back</StyledBlogLink>
       {blogPost && (
         <>
           <Title>{blogPost.title}</Title>
