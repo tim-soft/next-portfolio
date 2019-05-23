@@ -37,6 +37,7 @@ const BlogItem = styled.div`
 
 const BlogTitle = styled.h2`
   font-weight: normal;
+  text-decoration: underline;
   transition: color 0.2s linear;
   :hover {
     color: cyan;
@@ -45,5 +46,21 @@ const BlogTitle = styled.h2`
 `;
 
 const BlogDescription = styled.p`
-  font-weight: normal;
+  display: block;
+  /* stylelint-disable-next-line value-no-vendor-prefix */
+  display: -webkit-box;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-box-orient: vertical;
+  position: relative;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 !important;
+  -webkit-line-clamp: 5;
+  height: calc(1em * 1.2 * 5);
+  @supports (-webkit-line-clamp: 1) {
+    .line-clamp:after {
+      display: none !important;
+    }
+  }
 `;
