@@ -7,7 +7,7 @@
  * @logo {string} image used in dropdown list of articles
  * @date {string} used to sort and filter articles
  */
-export default [
+const BlogData = [
   {
     href: '/blog/test-blog-entry',
     title: 'Test Blog Entry',
@@ -64,3 +64,22 @@ export default [
     date: 'Mon May 9 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
   }
 ];
+
+export default BlogData;
+
+const getOldestToNewestPosts = () =>
+  [...BlogData].sort((a, b) => new Date(a.date) - new Date(b.date));
+
+const getNewestToOldestPosts = () =>
+  [...BlogData].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+export const getSortedPosts = ({ order }) => {
+  switch (order) {
+    case 'asc':
+      return getOldestToNewestPosts();
+    case 'desc':
+      return getNewestToOldestPosts();
+    default:
+      return getNewestToOldestPosts();
+  }
+};

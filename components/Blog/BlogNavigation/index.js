@@ -1,19 +1,17 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { withRouter } from 'next/router';
-import BlogData from 'data/BlogPosts';
+import { getSortedPosts } from 'data/BlogPosts';
 import BlogLink from '../BlogLink';
 
 const BlogNavigation = ({ router }) => {
   const currHref = router.route;
 
-  // Sort posts oldest to newest
-  const sortedPosts = BlogData.sort(
-    (a, b) => new Date(a.date) - new Date(b.date)
-  );
+  // Get blog posts, sorted oldest to newest
+  const sortedPosts = getSortedPosts({ order: 'asc' });
 
   // Get index of current blog post
-  const currPostIndex = BlogData.findIndex(post => post.href === currHref);
+  const currPostIndex = sortedPosts.findIndex(post => post.href === currHref);
 
   // Get prev post
   const PrevPost = () => {

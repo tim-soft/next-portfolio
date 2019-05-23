@@ -1,36 +1,41 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import BlogPostsData from 'data/BlogPosts';
+import { getSortedPosts } from 'data/BlogPosts';
 import { MenuContent, MenuList, MenuListItem, MenuFooter } from './components';
 
-const BlogList = () => (
-  <MenuContent>
-    <MenuList>
-      {BlogPostsData.map(({ title, description, logo, href }) => (
-        <Link href={href} key={title}>
-          <MenuListItem>
-            <LogoContainer>
-              <PostLogo src={logo} alt="Blog post logo" />
-            </LogoContainer>
-            <PostContent>
-              <PostTitle>{title}</PostTitle>
-              <PostDescription>{description}</PostDescription>
-            </PostContent>
-          </MenuListItem>
-        </Link>
-      ))}
-    </MenuList>
-    {/* Emoji found with https://emojipedia.org/ */}
-    <MenuFooter>
-      Made with{' '}
-      <span role="img" aria-label="love">
-        💚
-      </span>{' '}
-      in Seattle
-    </MenuFooter>
-  </MenuContent>
-);
+const BlogList = () => {
+  // Get blog posts, sorted newest to oldest
+  const sortedPosts = getSortedPosts({ order: 'desc' });
+
+  return (
+    <MenuContent>
+      <MenuList>
+        {sortedPosts.map(({ title, description, logo, href }) => (
+          <Link href={href} key={title}>
+            <MenuListItem>
+              <LogoContainer>
+                <PostLogo src={logo} alt="Blog post logo" />
+              </LogoContainer>
+              <PostContent>
+                <PostTitle>{title}</PostTitle>
+                <PostDescription>{description}</PostDescription>
+              </PostContent>
+            </MenuListItem>
+          </Link>
+        ))}
+      </MenuList>
+      {/* Emoji found with https://emojipedia.org/ */}
+      <MenuFooter>
+        Made with{' '}
+        <span role="img" aria-label="love">
+          💚
+        </span>{' '}
+        in Seattle
+      </MenuFooter>
+    </MenuContent>
+  );
+};
 
 export default BlogList;
 
