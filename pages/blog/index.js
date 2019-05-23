@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import NextSEO, { BlogJsonLd } from 'next-seo';
 import PageScrollWrapper from 'components/PageScrollWrapper';
-import { IndexListItem } from 'components/Blog';
+import { IndexListItem, BlogLink } from 'components/Blog';
 import { getSortedPosts } from 'data/BlogPosts';
 
 const BlogPage = () => {
@@ -29,10 +29,23 @@ const BlogPage = () => {
         description="Coding, Musings and Adventures of Tim Ellenberger"
       />
       <PageScrollWrapper>
-        <Title>Blog: Under Construction</Title>
-        {sortedPosts.map(post => (
-          <IndexListItem key={post.href} {...post} />
-        ))}
+        <Container>
+          <Title>Blog</Title>
+          <BioContainer>
+            <AvatarImage src="/static/avatar.png" alt="avatar" />
+            <BioMetaContainer>
+              <p>
+                A personal blog by{' '}
+                <StyledBlogLink href="/">Tim Ellenberger</StyledBlogLink>.
+              </p>
+              <p>Building new webs out of the old ones.</p>
+            </BioMetaContainer>
+          </BioContainer>
+
+          {sortedPosts.map(post => (
+            <IndexListItem key={post.href} {...post} />
+          ))}
+        </Container>
       </PageScrollWrapper>
     </>
   );
@@ -48,7 +61,37 @@ BlogPage.theme = {
 
 export default BlogPage;
 
+const BioContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const BioMetaContainer = styled.div`
+  margin: 15px;
+`;
+
+const StyledBlogLink = styled(BlogLink)`
+  font-weight: normal;
+  font-size: 1.2em;
+`;
+
 const Title = styled.h1`
   font-size: 50px;
   text-align: center;
+`;
+
+const Container = styled.div`
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1.5em;
+`;
+
+const AvatarImage = styled.img`
+  width: 90px;
+  border-radius: 50%;
+  margin: 20px 0;
 `;

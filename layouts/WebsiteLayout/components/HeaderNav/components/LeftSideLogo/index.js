@@ -76,7 +76,7 @@ class LeftSideLogo extends React.Component {
                   <span>Email: Click to view</span>
                 </StyledLink>
                 <BioParagraph>
-                  I create super fast web apps with React and GraphQL
+                  I build super fast web apps with React and GraphQL.
                 </BioParagraph>
                 {/* Emoji found with https://emojipedia.org/ */}
                 <BioParagraph>

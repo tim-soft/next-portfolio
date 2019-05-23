@@ -31,8 +31,11 @@ const BlogItem = styled.div`
   display: flex;
   align-items: 'flex-start';
   flex-direction: column;
+  margin: 1em 0;
   width: 100%;
-  max-width: 400px;
+  > * {
+    margin: 0.4em 0;
+  }
 `;
 
 const BlogTitle = styled.h2`
