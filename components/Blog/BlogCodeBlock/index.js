@@ -19,6 +19,7 @@ export default BlogCodeBlock;
 const CodeBlockContainer = styled.div`
   width: 100%;
   max-width: 550px;
+  margin: auto;
 `;
 
 const HighlightStyles = styled.div`
