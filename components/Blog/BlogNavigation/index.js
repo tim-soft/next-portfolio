@@ -32,7 +32,9 @@ const BlogNavigation = ({ router }) => {
     if (currPostIndex < sortedPosts.length - 1) {
       const nextPost = sortedPosts[currPostIndex + 1];
       return (
-        <BlogLink href={nextPost.href}>{nextPost.title} &#10230;</BlogLink>
+        <BlogLink href={nextPost.href} rtl>
+          &#10230; {nextPost.title}
+        </BlogLink>
       );
     }
 

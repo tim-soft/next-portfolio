@@ -2,9 +2,11 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Link from 'next/link';
 
-const BlogLink = ({ href, children, className }) => (
+const BlogLink = ({ href, children, className, ...props }) => (
   <Link href={href}>
-    <StyledLink className={className}>{children}</StyledLink>
+    <StyledLink className={className} {...props}>
+      {children}
+    </StyledLink>
   </Link>
 );
 
@@ -24,6 +26,7 @@ BlogLink.defaultProps = {
 export default BlogLink;
 
 const StyledLink = styled.a`
+  direction: ${({ rtl }) => (rtl ? 'rtl' : 'inherit')};
   text-decoration: underline;
   transition: color 0.2s linear;
   color: black;
