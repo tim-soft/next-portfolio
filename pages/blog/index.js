@@ -30,13 +30,8 @@ const BlogPage = () => {
       />
       <PageScrollWrapper>
         <Title>Blog: Under Construction</Title>
-        {sortedPosts.map(({ href, title, description }) => (
-          <IndexListItem
-            href={href}
-            title={title}
-            description={description}
-            key={href}
-          />
+        {sortedPosts.map(post => (
+          <IndexListItem key={post.href} {...post} />
         ))}
       </PageScrollWrapper>
     </>

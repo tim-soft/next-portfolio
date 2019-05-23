@@ -2,11 +2,18 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Link from 'next/link';
 
-const IndexListItem = ({ title, description, href }) => (
+const IndexListItem = ({ title, description, href, date }) => (
   <BlogItem>
     <Link href={href}>
       <BlogTitle>{title}</BlogTitle>
     </Link>
+    <p>
+      {new Date(date).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      })}
+    </p>
     <BlogDescription>{description}</BlogDescription>
   </BlogItem>
 );
@@ -14,7 +21,8 @@ const IndexListItem = ({ title, description, href }) => (
 IndexListItem.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  href: PropTypes.string.isRequired
+  href: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired
 };
 
 export default IndexListItem;
