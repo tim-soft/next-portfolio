@@ -5,6 +5,7 @@
  * @title {string} long title text shown above article
  * @description {string} long description shown in article list
  * @logo {string} image used in dropdown list of articles
+ * @readTime {number} duration (in minutes) of article reading length
  * @date {string} used to sort and filter articles
  */
 const BlogData = [
@@ -17,6 +18,7 @@ const BlogData = [
   malesuada fames ac turpis egestas. Elit eget gravida cum sociis natoque
   penatibus et magnis dis.`,
     logo: '/static/avatar.png',
+    readTime: 4,
     date: 'Mon May 1 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
   },
   {
@@ -28,6 +30,7 @@ const BlogData = [
   malesuada fames ac turpis egestas. Elit eget gravida cum sociis natoque
   penatibus et magnis dis.`,
     logo: '/static/avatar.png',
+    readTime: 25,
     date: 'Mon May 3 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
   },
   {
@@ -39,6 +42,7 @@ const BlogData = [
   malesuada fames ac turpis egestas. Elit eget gravida cum sociis natoque
   penatibus et magnis dis.`,
     logo: '/static/avatar.png',
+    readTime: 15,
     date: 'Mon May 5 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
   },
   {
@@ -50,6 +54,7 @@ const BlogData = [
   malesuada fames ac turpis egestas. Elit eget gravida cum sociis natoque
   penatibus et magnis dis.`,
     logo: '/static/avatar.png',
+    readTime: 35,
     date: 'Mon May 7 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
   },
   {
@@ -61,6 +66,7 @@ const BlogData = [
   malesuada fames ac turpis egestas. Elit eget gravida cum sociis natoque
   penatibus et magnis dis.`,
     logo: '/static/avatar.png',
+    readTime: 13,
     date: 'Mon May 9 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
   }
 ];

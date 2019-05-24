@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
 import BlogData from 'data/BlogPosts';
 import BlogLink from '../BlogLink';
+import DateAndDuration from '../DateAndDuration';
 
 const BlogArticleBanner = ({ router }) => {
   const currHref = router.route;
@@ -18,11 +19,10 @@ const BlogArticleBanner = ({ router }) => {
         <>
           <Title>{blogPost.title}</Title>
           <PublishDate>
-            {new Date(blogPost.date).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'short',
-              day: 'numeric'
-            })}
+            <DateAndDuration
+              date={blogPost.date}
+              readTime={blogPost.readTime}
+            />
           </PublishDate>
         </>
       )}

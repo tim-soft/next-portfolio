@@ -6,6 +6,7 @@ import IndexListItem from './IndexListItem';
 import BlogArticleContainer from './BlogArticleContainer';
 import BlogNavigation from './BlogNavigation';
 import BlogLink from './BlogLink';
+import DateAndDuration from './DateAndDuration';
 
 export {
   BlogArticleBanner,
@@ -15,5 +16,6 @@ export {
   IndexListItem,
   BlogArticleContainer,
   BlogNavigation,
-  BlogLink
+  BlogLink,
+  DateAndDuration
 };

@@ -1,19 +1,16 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Link from 'next/link';
+import DateAndDuration from '../DateAndDuration';
 
-const IndexListItem = ({ title, description, href, date }) => (
+const IndexListItem = ({ title, description, href, date, readTime }) => (
   <BlogItem>
     <header>
       <Link href={href}>
         <BlogTitle>{title}</BlogTitle>
       </Link>
       <small>
-        {new Date(date).toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric'
-        })}
+        <DateAndDuration date={date} readTime={readTime} />
       </small>
     </header>
     <BlogDescription>{description}</BlogDescription>
@@ -24,7 +21,8 @@ IndexListItem.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired
+  date: PropTypes.string.isRequired,
+  readTime: PropTypes.number.isRequired
 };
 
 export default IndexListItem;
