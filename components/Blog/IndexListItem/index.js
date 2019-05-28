@@ -42,6 +42,8 @@ const BlogItem = styled.article`
 `;
 
 const BlogTitle = styled.h2`
+  font-size: 1.7em;
+  margin: 13px 0;
   font-weight: normal;
   text-decoration: underline;
   transition: color 0.2s linear;

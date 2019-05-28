@@ -69,6 +69,7 @@ const BioContainer = styled.aside`
 
 const BioMetaContainer = styled.div`
   margin: 15px;
+  font-size: 1.1em;
 `;
 
 const StyledBlogLink = styled(BlogLink)`
