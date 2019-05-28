@@ -49,6 +49,10 @@ class MenuItem extends React.Component {
   }
 
   componentDidMount() {
+    this.calculateRightOffestForMenu();
+  }
+
+  calculateRightOffestForMenu = () => {
     const { menuWidth } = this.props;
     const { x, width } = this.menuOverlay.current.getBoundingClientRect();
     const windowWidth = window.innerWidth;
@@ -65,7 +69,7 @@ class MenuItem extends React.Component {
         rightOffset: menuRightSpace * -2
       });
     }
-  }
+  };
 
   handleHover = isHovering => {
     this.setState({ isHovering });
