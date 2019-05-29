@@ -29,7 +29,7 @@ const StyledLink = styled.a`
   direction: ${({ rtl }) => (rtl ? 'rtl' : 'inherit')};
   text-decoration: underline;
   transition: color 0.2s linear;
-  color: black;
+  color: ${({ theme }) => theme.pageContentFontColor};
   font-weight: bold;
   font-size: 1.2em;
   cursor: pointer;

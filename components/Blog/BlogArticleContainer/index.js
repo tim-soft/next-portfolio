@@ -29,6 +29,7 @@ BlogArticleContainer.propTypes = {
 export default BlogArticleContainer;
 
 const Container = styled.main`
+  color: ${({ theme }) => theme.pageContentFontColor};
   width: 100%;
   max-width: 700px;
   display: flex;

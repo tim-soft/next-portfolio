@@ -90,12 +90,19 @@ export default SomeComponent;
   </>
 );
 
+// const fontColor = '#BAE7DC'; // Chalky White
+// const fontColor = '#28A9C5'; // Blue
+const fontColor = '#202629';
+// const fontColor = '#B5B69D';
+// const fontColor = '#aaf0d1'; // Mint Magic
+
 // _app.js level theme variable overrides
 BlogPage.theme = {
-  headerNavFontColor: 'black',
+  headerNavFontColor: fontColor,
   headerNavHoverFontColor: '#00e5e5',
-  headerNavHamburgerIconColor: 'black',
-  pageBackgroundColor: 'yellow'
+  headerNavHamburgerIconColor: fontColor,
+  pageBackgroundColor: '#2dbad8',
+  pageContentFontColor: fontColor
 };
 
 export default BlogPage;

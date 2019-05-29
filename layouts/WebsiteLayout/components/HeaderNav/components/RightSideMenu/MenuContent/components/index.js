@@ -19,7 +19,7 @@ export const MenuList = styled.ul`
 
 export const MenuListItem = styled.li`
   display: flex;
-  color: black;
+  color: ${({ theme }) => theme.pageContentFontColor};
   align-items: center;
   justify-content: space-between;
   height: 80px;

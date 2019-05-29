@@ -13,6 +13,7 @@ export default {
   headerNavMobileMenuFontColor: 'white',
   // Page colors
   pageBackgroundColor: '#9e9e9e',
+  pageContentFontColor: 'black',
   // Media Query Breakpoints
   breakpoints: {
     mobileNav: 'min-width: 1060px',

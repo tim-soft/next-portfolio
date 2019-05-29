@@ -90,12 +90,15 @@ export default SomeComponent;
   </>
 );
 
+const fontColor = '#D3D3D3';
+
 // _app.js level theme variable overrides
 BlogPage.theme = {
-  headerNavFontColor: 'black',
+  headerNavFontColor: fontColor,
   headerNavHoverFontColor: '#00e5e5',
-  headerNavHamburgerIconColor: 'black',
-  pageBackgroundColor: 'brown'
+  headerNavHamburgerIconColor: fontColor,
+  pageBackgroundColor: 'brown',
+  pageContentFontColor: fontColor
 };
 
 export default BlogPage;

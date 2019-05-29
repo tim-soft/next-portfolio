@@ -51,12 +51,19 @@ const BlogPage = () => {
   );
 };
 
+// const fontColor = '#BAE7DC'; // Chalky White
+// const fontColor = '#28A9C5'; // Blue
+const fontColor = '#2dbad8';
+// const fontColor = '#B5B69D';
+// const fontColor = '#aaf0d1'; // Mint Magic
+
 // _app.js level theme variable overrides
 BlogPage.theme = {
-  headerNavFontColor: 'black',
+  headerNavFontColor: fontColor,
   headerNavHoverFontColor: '#00e5e5',
-  headerNavHamburgerIconColor: 'black',
-  pageBackgroundColor: 'grey'
+  headerNavHamburgerIconColor: fontColor,
+  pageBackgroundColor: '#202629',
+  pageContentFontColor: fontColor
 };
 
 export default BlogPage;
@@ -73,6 +80,7 @@ const BioMetaContainer = styled.div`
 `;
 
 const StyledBlogLink = styled(BlogLink)`
+  color: ${({ theme }) => theme.pageContentFontColor};
   font-weight: normal;
   font-size: inherit;
 `;
@@ -83,6 +91,7 @@ const Title = styled.h1`
 `;
 
 const Container = styled.main`
+  color: ${({ theme }) => theme.pageContentFontColor};
   width: 100%;
   max-width: 700px;
   display: flex;
