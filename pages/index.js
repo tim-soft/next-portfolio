@@ -25,4 +25,20 @@ HomePage.layoutProps = {
   showBio: true
 };
 
+const fontColor = '#2dbad8';
+const navFontColor = 'gainsboro';
+const highlightFontColor = 'springgreen';
+const backgroundColor = '#202629';
+
+// _app.js level theme variable overrides
+HomePage.theme = {
+  headerNavFontColor: navFontColor,
+  headerNavTextUnderlineColor: highlightFontColor,
+  headerNavHoverFontColor: highlightFontColor,
+  headerNavHamburgerIconColor: navFontColor,
+  pageBackgroundColor: backgroundColor,
+  pageContentFontColor: fontColor,
+  pageContentLinkHoverColor: highlightFontColor
+};
+
 export default HomePage;
