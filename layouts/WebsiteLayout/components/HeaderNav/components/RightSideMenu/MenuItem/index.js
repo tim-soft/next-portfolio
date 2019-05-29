@@ -100,7 +100,7 @@ class MenuItem extends React.Component {
             ref={this.menuOverlay}
             showUnderline={children === null}
           >
-            <LinkHeading>
+            <LinkHeading isHovering={isHovering}>
               {text} {children && <FiChevronDown />}
             </LinkHeading>
           </MenuLink>
@@ -194,9 +194,11 @@ const LinkHeading = styled.h1`
   font-weight: inherit;
   display: flex;
   align-items: center;
-  > svg {
+  svg {
     font-size: 22px;
     margin-left: 7px;
+    transition: transform 0.4s;
+    transform: rotate(${({ isHovering }) => (isHovering ? 180 : 0)}deg);
   }
 `;
 
