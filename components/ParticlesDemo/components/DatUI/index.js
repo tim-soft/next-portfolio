@@ -147,7 +147,7 @@ const ControlButton = styled.button`
   border: none;
   :hover {
     cursor: pointer;
-    color: cyan;
+    color: ${({ theme }) => theme.pageContentLinkHoverColor};
   }
   :focus {
     outline: none;

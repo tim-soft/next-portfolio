@@ -14,6 +14,7 @@ export default {
   // Page colors
   pageBackgroundColor: '#9e9e9e',
   pageContentFontColor: 'black',
+  pageContentLinkHoverColor: 'cyan',
   // Media Query Breakpoints
   breakpoints: {
     mobileNav: 'min-width: 1060px',

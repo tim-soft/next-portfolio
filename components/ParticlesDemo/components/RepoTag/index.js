@@ -35,10 +35,12 @@ const Container = styled.div`
   color: #eeeeee;
   border: 1px solid #1a1a1ad4;
   transition: all 0.3s linear;
-  transition-property: color, border;
+  transition-property: color, border-color;
   :hover {
-    color: cyan;
-    border: 1px solid cyan;
+    color: ${({ theme }) => theme.pageContentLinkHoverColor};
+    border-width: 1px;
+    border-style: solid;
+    border-color: ${({ theme }) => theme.pageContentLinkHoverColor};
   }
 
   @media (max-width: 512px) {

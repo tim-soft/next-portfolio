@@ -48,7 +48,7 @@ const BlogTitle = styled.h2`
   text-decoration: underline;
   transition: color 0.2s linear;
   :hover {
-    color: cyan;
+    color: ${({ theme }) => theme.pageContentLinkHoverColor};
     cursor: pointer;
   }
 `;

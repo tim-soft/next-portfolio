@@ -26,7 +26,7 @@ export default styled.a`
     transition: color 0.1s, transform 0.2s ease-out;
   }
   :active::before {
-    background-color: cyan;
+    background-color: ${({ theme }) => theme.headerNavHoverFontColor};
   }
   :focus::before,
   :hover::before {

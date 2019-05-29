@@ -28,8 +28,10 @@ export const MenuListItem = styled.li`
   border-bottom-style: solid;
   border-bottom-color: black;
   border-bottom-width: 1px;
-  transition: background-color 0.3s linear;
+  transition: all 0.3s linear;
+  transition-property: color, background-color;
   :hover {
+    color: ${({ theme }) => theme.pageContentLinkHoverColor};
     background-color: ${({ theme }) => {
       // Calculate a hover color lighter or darker than background
       // based on how bright the background color is

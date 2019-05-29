@@ -34,6 +34,6 @@ const StyledLink = styled.a`
   font-size: 1.2em;
   cursor: pointer;
   :hover {
-    color: cyan;
+    color: ${({ theme }) => theme.pageContentLinkHoverColor};
   }
 `;
