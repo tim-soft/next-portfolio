@@ -25,7 +25,7 @@ HomePage.layoutProps = {
   showBio: true
 };
 
-const fontColor = '#29c4e5';
+const fontColor = '#31d7f9';
 const navFontColor = 'gainsboro';
 const highlightFontColor = 'springgreen';
 const backgroundColor = '#3b3f45';

@@ -21,11 +21,20 @@ const ThreeParticles = () => (
   </>
 );
 
+const fontColor = '#31d7f9';
+const navFontColor = 'gainsboro';
+const highlightFontColor = 'springgreen';
+const backgroundColor = '#3b3f45';
+
 // _app.js level theme variable overrides
 ThreeParticles.theme = {
-  headerNavFontColor: 'white',
-  headerNavHoverFontColor: 'cyan',
-  headerNavHamburgerIconColor: 'white'
+  headerNavFontColor: navFontColor,
+  headerNavTextUnderlineColor: highlightFontColor,
+  headerNavHoverFontColor: highlightFontColor,
+  headerNavHamburgerIconColor: navFontColor,
+  pageBackgroundColor: backgroundColor,
+  pageContentFontColor: fontColor,
+  pageContentLinkHoverColor: highlightFontColor
 };
 
 export default ThreeParticles;

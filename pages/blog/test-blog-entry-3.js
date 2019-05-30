@@ -92,17 +92,22 @@ export default SomeComponent;
 
 // const fontColor = '#BAE7DC'; // Chalky White
 // const fontColor = '#28A9C5'; // Blue
-const fontColor = '#202629';
 // const fontColor = '#B5B69D';
 // const fontColor = '#aaf0d1'; // Mint Magic
+
+const fontColor = '#202629';
+const highlightFontColor = '#EDE4C4';
+const backgroundColor = '#119ebb';
 
 // _app.js level theme variable overrides
 BlogPage.theme = {
   headerNavFontColor: fontColor,
-  headerNavHoverFontColor: '#00e5e5',
+  headerNavTextUnderlineColor: highlightFontColor,
+  headerNavHoverFontColor: highlightFontColor,
   headerNavHamburgerIconColor: fontColor,
-  pageBackgroundColor: '#2dbad8',
-  pageContentFontColor: fontColor
+  pageBackgroundColor: backgroundColor,
+  pageContentFontColor: fontColor,
+  pageContentLinkHoverColor: highlightFontColor
 };
 
 export default BlogPage;
