@@ -37,12 +37,58 @@ const BlogPage = () => (
         ultrices vitae auctor.
       </BlogParagraph>
       <BlogCodeBlock
+        language="graphql"
+        code={`
+query {
+  superCoolGraphQLQuery({ number: 5 }) {
+    id
+    name
+    date
+  }
+}
+      `}
+      />
+      <BlogCodeBlock
+        language="jsx"
         code={`
 import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Highlight, { defaultProps } from 'prism-react-renderer';
+import theme from 'prism-react-renderer/themes/vsDark';
 
-const SomeComponent = () => <div />;
+const BlogCodeBlock = ({ code, language }) => (
+  <Highlight
+    {...defaultProps}
+    theme={theme}
+    code={code.trim()}
+    language={language}
+  >
+    {({ className, style, tokens, getLineProps, getTokenProps }) => (
+      <Pre className={className} style={style}>
+        {tokens.map((line, i) => (
+          <div {...getLineProps({ line, key: i })}>
+            <LineNumber>{i + 1}</LineNumber>
+            {line.map((token, key) => (
+              <span {...getTokenProps({ token, key })} />
+            ))}
+          </div>
+        ))}
+      </Pre>
+    )}
+  </Highlight>
+);
 
-export default SomeComponent;
+BlogCodeBlock.propTypes = {
+  code: PropTypes.string.isRequired,
+  language: PropTypes.string
+};
+
+BlogCodeBlock.defaultProps = {
+  language: 'jsx'
+};
+
+export default BlogCodeBlock;
       `}
       />
       <BlogParagraph>

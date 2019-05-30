@@ -5564,6 +5564,11 @@ pretty-bytes@^5.1.0:
   resolved "https://registry.yarnpkg.com/pretty-bytes/-/pretty-bytes-5.2.0.tgz#96c92c6e95a0b35059253fb33c03e260d40f5a1f"
   integrity sha512-ujANBhiUsl9AhREUDUEY1GPOharMGm8x8juS7qOHybcLi7XsKfrYQ88hSly1l2i0klXHTDYrlL8ihMCG55Dc3w==
 
+prism-react-renderer@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/prism-react-renderer/-/prism-react-renderer-0.1.6.tgz#c9216baa234fab1c234209fcdaf0cd23a01c50a9"
+  integrity sha512-uZJn5wrygCH0ZMue+2JRd0qJharrmpxa6/uK7deKgvCtJFFE+VsyvJ49LS8/ATt0mlAJS6vFQTDvhXBEXsda+A==
+
 private@^0.1.6:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/private/-/private-0.1.8.tgz#2381edb3689f7a53d653190060fcf822d2f368ff"
