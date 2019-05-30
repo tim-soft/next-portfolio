@@ -182,9 +182,9 @@ const Logo = styled(StyledLogo)`
 
     return theme.headerNavHamburgerIconColor;
   }};
-  ${({ active, isHovering, theme }) => {
+  ${({ active, isHovering, menuIsOpen, theme }) => {
     // If the Bio pane is open, highlight and underline link
-    if (active || isHovering)
+    if ((active || isHovering) && !menuIsOpen)
       return css`
         color: ${theme.headerNavHoverFontColor};
         ::before {
