@@ -28,6 +28,10 @@ const BlogCodeBlock = ({ code, language }) => (
 
 BlogCodeBlock.propTypes = {
   code: PropTypes.string.isRequired,
+  /**
+   * See here for all supported languages for syntax highlighting
+   * https://github.com/FormidableLabs/prism-react-renderer/blob/master/src/vendor/prism/includeLangs.js
+   */
   language: PropTypes.string
 };
 
