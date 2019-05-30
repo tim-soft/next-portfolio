@@ -25,10 +25,10 @@ HomePage.layoutProps = {
   showBio: true
 };
 
-const fontColor = '#2dbad8';
+const fontColor = '#29c4e5';
 const navFontColor = 'gainsboro';
 const highlightFontColor = 'springgreen';
-const backgroundColor = '#202629';
+const backgroundColor = '#3b3f45';
 
 // _app.js level theme variable overrides
 HomePage.theme = {
