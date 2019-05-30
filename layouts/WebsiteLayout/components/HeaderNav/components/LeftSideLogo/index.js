@@ -204,7 +204,7 @@ const Logo = styled(StyledLogo)`
   }
 `;
 
-const AnimatedContainer = animated(styled.div`
+const AnimatedContainer = styled(animated.div)`
   position: absolute;
   top: 0;
   left: 0;
@@ -222,7 +222,7 @@ const AnimatedContainer = animated(styled.div`
     border-radius: 0;
     max-height: 100vh;
   }
-`);
+`;
 
 const LogoProfileContainer = styled.main`
   position: absolute;
