@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { getSortedPosts } from 'data/BlogPosts';
+import { DateAndDuration } from 'components/Blog';
 import { MenuContent, MenuList, MenuListItem, MenuFooter } from './components';
 
 const BlogList = () => {
@@ -11,19 +12,26 @@ const BlogList = () => {
   return (
     <MenuContent>
       <MenuList>
-        {sortedPosts.map(({ title, description, logo, href }) => (
-          <Link href={href} key={title}>
-            <MenuListItem>
-              <LogoContainer>
-                <PostLogo src={logo} alt="Blog post logo" />
-              </LogoContainer>
-              <PostContent>
-                <PostTitle>{title}</PostTitle>
-                <PostDescription>{description}</PostDescription>
-              </PostContent>
-            </MenuListItem>
-          </Link>
-        ))}
+        {sortedPosts.map(
+          ({ title, description, logo, href, date, readTime }) => (
+            <Link href={href} key={title}>
+              <MenuListItem height={100}>
+                <LogoContainer>
+                  <PostLogo src={logo} alt="Blog post logo" />
+                </LogoContainer>
+                <PostContent>
+                  <TitleContainer>
+                    <PostTitle>{title}</PostTitle>
+                    <DateContainer>
+                      <DateAndDuration date={date} readTime={readTime} />
+                    </DateContainer>
+                  </TitleContainer>
+                  <PostDescription>{description}</PostDescription>
+                </PostContent>
+              </MenuListItem>
+            </Link>
+          )
+        )}
       </MenuList>
       {/* Emoji found with https://emojipedia.org/ */}
       <MenuFooter>
@@ -39,6 +47,12 @@ const BlogList = () => {
 
 export default BlogList;
 
+const TitleContainer = styled.div``;
+
+const DateContainer = styled.span`
+  font-size: 0.8em;
+`;
+
 const LogoContainer = styled.div`
   width: 100px;
 `;
@@ -52,6 +66,9 @@ const PostContent = styled.div`
   width: 100%;
   height: 100%;
   padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 const PostDescription = styled.p`
@@ -65,6 +82,7 @@ const PostDescription = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 0 !important;
+  margin: 0;
   -webkit-line-clamp: 2;
   height: calc(1em * 1.2 * 2);
   @supports (-webkit-line-clamp: 1) {

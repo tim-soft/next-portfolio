@@ -13,6 +13,7 @@ const CourseList = () => (
           </LogoContainer>
           <CourseContent>
             <CourseTitle>{title}</CourseTitle>
+
             <p>{description}</p>
           </CourseContent>
         </MenuListItem>

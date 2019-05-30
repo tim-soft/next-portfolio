@@ -22,7 +22,7 @@ export const MenuListItem = styled.li`
   color: ${({ theme }) => theme.pageContentFontColor};
   align-items: center;
   justify-content: space-between;
-  height: 80px;
+  height: ${({ height }) => `${height}px` || '80px'};
   padding: 15px;
   overflow: hidden;
   border-bottom-style: solid;
