@@ -214,6 +214,7 @@ const AnimatedContainer = animated(styled.div`
   flex-direction: column;
   overflow: hidden;
   border-radius: 2%;
+  border: 1px black solid;
   background-color: #1a1a1aba;
   max-height: calc(100vh - 15px);
   @media (max-width: 420px) {
