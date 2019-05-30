@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Transition, animated } from 'react-spring/renderprops.cjs';
 import { GoMarkGithub } from 'react-icons/go';
 import StyledLogo from '../StyledLink';
@@ -39,6 +39,7 @@ class LeftSideLogo extends React.Component {
               menuIsOpen={menuIsOpen}
               onClick={() => menuIsOpen && toggleMenu()}
               isHovering={isHovering}
+              active={showBio}
             >
               <MainHeading>Tim Ellenberger</MainHeading>
               <SubheadingContainer
@@ -180,6 +181,17 @@ const Logo = styled(StyledLogo)`
     if (isHovering) return 'white';
 
     return theme.headerNavHamburgerIconColor;
+  }};
+  ${({ active, isHovering, theme }) => {
+    // If the Bio pane is open, highlight and underline link
+    if (active || isHovering)
+      return css`
+        color: ${theme.headerNavHoverFontColor};
+        ::before {
+          transform-origin: center top;
+          transform: scale(1, 1);
+        }
+      `;
   }};
   @media (${({ theme }) => theme.breakpoints.desktopNav}) {
     margin: 0;
