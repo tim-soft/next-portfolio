@@ -80,7 +80,7 @@ const BioContainer = styled.aside`
 `;
 
 const BioMetaContainer = styled.div`
-  margin: 15px;
+  margin: 15px 0 15px 15px;
   font-size: 1.1em;
 `;
 
