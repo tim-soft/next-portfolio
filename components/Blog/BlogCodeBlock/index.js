@@ -83,6 +83,10 @@ const Pre = styled.pre`
   & .token-line {
     line-height: 1.3em;
     height: 1.3em;
+    :hover {
+      border-top: 2px #0e8a13 dotted;
+      border-bottom: 2px #0e8a13 dotted;
+    }
     * ::selection {
       background: #0e8a13;
     }
