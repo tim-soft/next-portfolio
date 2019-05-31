@@ -62,19 +62,26 @@ class DatUI extends React.Component {
                 }}
               >
                 <StyledScrollbar
-                  trackYRenderer={({ elementRef, style, ...restProps }) => (
-                    <span
-                      {...restProps}
-                      style={{
-                        ...style,
-                        background: '#9E9E9E',
-                        width: '9px',
-                        height: '100%',
-                        top: 0
-                      }}
-                      ref={elementRef}
-                    />
-                  )}
+                  trackYProps={{
+                    renderer: props => {
+                      // eslint-disable-next-line react/prop-types
+                      const { elementRef, style, ...restProps } = props;
+
+                      return (
+                        <span
+                          {...restProps}
+                          style={{
+                            ...style,
+                            background: '#9E9E9E',
+                            width: '11px',
+                            height: '100%',
+                            top: 0
+                          }}
+                          ref={elementRef}
+                        />
+                      );
+                    }
+                  }}
                 >
                   <ScrollbarContentContainer>
                     <Transition
@@ -176,17 +183,17 @@ const StyledScrollWrapper = styled.div`
 
 const StyledScrollbar = styled(Scrollbar)`
   width: 100%;
-  height: calc(100vh - 180px);
+  height: calc(100vh - 180px) !important;
 
   @media (max-width: 512px) {
-    height: calc(100vh - 260px);
+    height: calc(100vh - 260px) !important;
   }
 
   @media (min-width: 512px) {
-    height: calc(100vh - 260px);
+    height: calc(100vh - 260px) !important;
   }
 
   @media (min-width: 1050px) {
-    height: calc(100vh - 180px);
+    height: calc(100vh - 180px) !important;
   }
 `;

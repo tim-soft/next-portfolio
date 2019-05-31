@@ -10,23 +10,27 @@ import Color from 'color';
 const PageScrollWrapper = ({ children, backgroundColor }) => (
   <Container backgroundColor={backgroundColor}>
     <StyledScrollbar
-      trackYRenderer={({ elementRef, style, ...restProps }) => {
-        const background = Color('#9E9E9E').darken(0.5);
+      trackYProps={{
+        renderer: props => {
+          // eslint-disable-next-line react/prop-types
+          const { elementRef, style, ...restProps } = props;
+          const background = Color('#9E9E9E').darken(0.5);
 
-        return (
-          <span
-            {...restProps}
-            style={{
-              ...style,
-              background,
-              // background: '#9E9E9E',
-              width: '9px',
-              height: '100%',
-              top: 0
-            }}
-            ref={elementRef}
-          />
-        );
+          return (
+            <span
+              {...restProps}
+              style={{
+                ...style,
+                background,
+                // background: '#9E9E9E',
+                width: '11px',
+                height: '100%',
+                top: 0
+              }}
+              ref={elementRef}
+            />
+          );
+        }
       }}
     >
       <ScrollbarContentContainer>{children}</ScrollbarContentContainer>
@@ -58,8 +62,7 @@ const ScrollbarContentContainer = styled.div`
 `;
 
 const StyledScrollbar = styled(Scrollbar)`
-  width: 100%;
-  height: calc(100% - 90px);
+  max-height: calc(100% - 90px);
 `;
 
 const Container = styled.div`

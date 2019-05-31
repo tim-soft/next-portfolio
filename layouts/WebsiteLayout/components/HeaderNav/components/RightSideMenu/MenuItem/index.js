@@ -126,19 +126,26 @@ class MenuItem extends React.Component {
                 >
                   {useScroll ? (
                     <StyledScrollbar
-                      trackYRenderer={({ elementRef, style, ...restProps }) => (
-                        <span
-                          {...restProps}
-                          style={{
-                            ...style,
-                            background: '#9E9E9E',
-                            width: '9px',
-                            height: '100%',
-                            top: 0
-                          }}
-                          ref={elementRef}
-                        />
-                      )}
+                      trackYProps={{
+                        renderer: props => {
+                          // eslint-disable-next-line react/prop-types
+                          const { elementRef, style, ...restProps } = props;
+
+                          return (
+                            <span
+                              {...restProps}
+                              style={{
+                                ...style,
+                                background: '#9E9E9E',
+                                width: '11px',
+                                height: '100%',
+                                top: 0
+                              }}
+                              ref={elementRef}
+                            />
+                          );
+                        }
+                      }}
                     >
                       {children}
                     </StyledScrollbar>

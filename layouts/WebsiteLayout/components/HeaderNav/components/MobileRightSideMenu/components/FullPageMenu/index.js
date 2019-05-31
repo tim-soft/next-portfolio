@@ -11,19 +11,44 @@ const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
     {({ opacity }) => (
       <MenuContainer opacity={opacity}>
         <StyledScrollbar
-          trackYRenderer={({ elementRef, style, ...restProps }) => (
-            <span
-              {...restProps}
-              style={{
-                ...style,
-                background: '#9E9E9E',
-                width: '9px',
-                height: '100%',
-                top: 0
-              }}
-              ref={elementRef}
-            />
-          )}
+          trackYProps={{
+            renderer: props => {
+              // eslint-disable-next-line react/prop-types
+              const { elementRef, style, ...restProps } = props;
+
+              return (
+                <span
+                  {...restProps}
+                  style={{
+                    ...style,
+                    background: '#9E9E9E',
+                    width: '11px',
+                    height: '100%',
+                    top: 0
+                  }}
+                  ref={elementRef}
+                />
+              );
+            }
+          }}
+          contentProps={{
+            renderer: props => {
+              // eslint-disable-next-line react/prop-types
+              const { elementRef, style, ...restProps } = props;
+              return (
+                <span
+                  {...restProps}
+                  style={{
+                    ...style,
+                    display: 'flex',
+                    justifyContent: 'center'
+                  }}
+                  ref={elementRef}
+                  className="Content"
+                />
+              );
+            }
+          }}
         >
           <ScrollbarContentContainer>
             <Link prefetch href="/">
@@ -80,12 +105,11 @@ const ScrollbarContentContainer = styled.nav`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  min-height: 100%;
+  max-height: 100%;
 `;
 
 const StyledScrollbar = styled(Scrollbar)`
-  width: 100%;
-  height: calc(100% - 90px);
+  height: calc(100vh - 90px) !important;
 `;
 
 const MenuContainer = styled.div.attrs(({ opacity }) => ({
