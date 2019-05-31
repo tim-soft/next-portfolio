@@ -86,6 +86,9 @@ const Pre = styled.pre`
     :hover {
       border-top: 2px #0e8a13 dotted;
       border-bottom: 2px #0e8a13 dotted;
+      & .token {
+        background: #401d7d;
+      }
     }
     * ::selection {
       background: #0e8a13;
