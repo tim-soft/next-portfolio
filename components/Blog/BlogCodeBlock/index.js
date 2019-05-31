@@ -5,27 +5,29 @@ import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/vsDark';
 
 const BlogCodeBlock = ({ code, language }) => (
-  <ScrollingContainer>
-    <Highlight
-      {...defaultProps}
-      theme={theme}
-      code={code.trim()}
-      language={language}
-    >
-      {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <Pre className={className} style={style}>
-          {tokens.map((line, i) => (
-            <div {...getLineProps({ line, key: i })}>
-              <LineNumber>{i + 1}</LineNumber>
-              {line.map((token, key) => (
-                <span {...getTokenProps({ token, key })} />
-              ))}
-            </div>
-          ))}
-        </Pre>
-      )}
-    </Highlight>
-  </ScrollingContainer>
+  <ParentScrollingContainer>
+    <ScrollingContentContainer>
+      <Highlight
+        {...defaultProps}
+        theme={theme}
+        code={code.trim()}
+        language={language}
+      >
+        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+          <Pre className={className} style={style}>
+            {tokens.map((line, i) => (
+              <div {...getLineProps({ line, key: i })}>
+                <LineNumber>{i + 1}</LineNumber>
+                {line.map((token, key) => (
+                  <span {...getTokenProps({ token, key })} />
+                ))}
+              </div>
+            ))}
+          </Pre>
+        )}
+      </Highlight>
+    </ScrollingContentContainer>
+  </ParentScrollingContainer>
 );
 
 BlogCodeBlock.propTypes = {
@@ -43,8 +45,7 @@ BlogCodeBlock.defaultProps = {
 
 export default BlogCodeBlock;
 
-const ScrollingContainer = styled.div`
-  width: auto;
+const ParentScrollingContainer = styled.div`
   max-width: calc(100vw - 40px);
   overflow: hidden;
   overflow-x: auto;
@@ -52,10 +53,14 @@ const ScrollingContainer = styled.div`
   margin: 2em 0;
 `;
 
+const ScrollingContentContainer = styled.div`
+  width: 700px;
+`;
+
 const Pre = styled.pre`
   text-align: left;
-  /* margin: 2em 0; */
-  padding: 0.5em 1em;
+  margin: 0;
+  padding: 1em;
   font-size: 1.05em;
   cursor: text;
 
