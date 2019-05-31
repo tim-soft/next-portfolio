@@ -3,31 +3,53 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/vsDark';
+import Scrollbar from 'react-scrollbars-custom';
 
 const BlogCodeBlock = ({ code, language }) => (
-  <ParentScrollingContainer>
-    <ScrollingContentContainer>
-      <Highlight
-        {...defaultProps}
-        theme={theme}
-        code={code.trim()}
-        language={language}
-      >
-        {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <Pre className={className} style={style}>
-            {tokens.map((line, i) => (
-              <div {...getLineProps({ line, key: i })}>
-                <LineNumber>{i + 1}</LineNumber>
-                {line.map((token, key) => (
-                  <span {...getTokenProps({ token, key })} />
-                ))}
-              </div>
-            ))}
-          </Pre>
-        )}
-      </Highlight>
-    </ScrollingContentContainer>
-  </ParentScrollingContainer>
+  <StyledScrollbar
+    translateContentSizesToHolder
+    noScrollY
+    trackXProps={{
+      renderer: props => {
+        // eslint-disable-next-line react/prop-types
+        const { elementRef, style, ...restProps } = props;
+
+        return (
+          <span
+            {...restProps}
+            style={{
+              ...style,
+              background: '#9E9E9E',
+              height: '11px',
+              width: '100%',
+              left: 0
+            }}
+            ref={elementRef}
+          />
+        );
+      }
+    }}
+  >
+    <Highlight
+      {...defaultProps}
+      theme={theme}
+      code={code.trim()}
+      language={language}
+    >
+      {({ className, style, tokens, getLineProps, getTokenProps }) => (
+        <Pre className={className} style={style}>
+          {tokens.map((line, i) => (
+            <div {...getLineProps({ line, key: i })}>
+              <LineNumber>{i + 1}</LineNumber>
+              {line.map((token, key) => (
+                <span {...getTokenProps({ token, key })} />
+              ))}
+            </div>
+          ))}
+        </Pre>
+      )}
+    </Highlight>
+  </StyledScrollbar>
 );
 
 BlogCodeBlock.propTypes = {
@@ -45,19 +67,13 @@ BlogCodeBlock.defaultProps = {
 
 export default BlogCodeBlock;
 
-const ParentScrollingContainer = styled.div`
+const StyledScrollbar = styled(Scrollbar)`
   max-width: calc(100vw - 40px);
-  overflow: hidden;
-  overflow-x: auto;
-  background: #1e1e1e;
   margin: 2em 0;
 `;
 
-const ScrollingContentContainer = styled.div`
-  width: 700px;
-`;
-
 const Pre = styled.pre`
+  width: 700px;
   text-align: left;
   margin: 0;
   padding: 1em;
