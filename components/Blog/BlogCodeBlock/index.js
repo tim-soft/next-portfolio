@@ -5,6 +5,39 @@ import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/vsDark';
 import Scrollbar from 'react-scrollbars-custom';
 
+/**
+ * Splits first token of line at any leading whitespace
+ *
+ * The purpose of the split is to solve the problem of the leading
+ * whitespace getting highlighted on hover
+ *
+ * @param {array} line Tokenized line of code
+ */
+const splitLineIndent = line => {
+  const { content } = line[0];
+  const hasIndent = content.charAt(0) === ' ';
+
+  // If the first token of line has a leading space, it'll need to be split
+  if (content && hasIndent) {
+    // Get leading whitespace
+    const lineIndent = content.split(/^(\s+)/)[1];
+    // Get the code portion of token
+    const codeStart = content.split(/^(\s+)/)[2];
+
+    // If token isn't only whitespace, insert split tokens back into line
+    if (codeStart !== '') {
+      const newIndent = { ...line[0], content: lineIndent };
+      const newCodeStart = { ...line[0], content: codeStart };
+
+      // Delete first token
+      line.shift();
+
+      // Replace with two tokens
+      line.unshift(newIndent, newCodeStart);
+    }
+  }
+};
+
 const BlogCodeBlock = ({ code, language }) => (
   <StyledScrollbar
     translateContentSizesToHolder
@@ -38,22 +71,26 @@ const BlogCodeBlock = ({ code, language }) => (
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Pre className={className} style={style}>
-          {tokens.map((line, i) => (
-            <div {...getLineProps({ line, key: i })}>
-              <LineNumber>{i + 1}</LineNumber>
-              {line.map((token, key) => {
-                const props = getTokenProps({ token, key });
+          {tokens.map((line, i) => {
+            splitLineIndent(line);
 
-                // if first span is empty, add empty classname
-                // eslint-disable-next-line react/prop-types
-                if (key === 0 && !/\S/.test(props.children)) {
-                  props.className += ' whitespace';
-                }
+            return (
+              <div {...getLineProps({ line, key: i })}>
+                <LineNumber>{i + 1}</LineNumber>
+                {line.map((token, key) => {
+                  const props = getTokenProps({ token, key });
 
-                return <span {...props} />;
-              })}
-            </div>
-          ))}
+                  // if first span is empty, add empty classname
+                  // eslint-disable-next-line react/prop-types
+                  if (key === 0 && !/\S/.test(props.children)) {
+                    props.className += ' whitespace';
+                  }
+
+                  return <span {...props} />;
+                })}
+              </div>
+            );
+          })}
         </Pre>
       )}
     </Highlight>
