@@ -41,9 +41,17 @@ const BlogCodeBlock = ({ code, language }) => (
           {tokens.map((line, i) => (
             <div {...getLineProps({ line, key: i })}>
               <LineNumber>{i + 1}</LineNumber>
-              {line.map((token, key) => (
-                <span {...getTokenProps({ token, key })} />
-              ))}
+              {line.map((token, key) => {
+                const props = getTokenProps({ token, key });
+
+                // if first span is empty, add empty classname
+                // eslint-disable-next-line react/prop-types
+                if (key === 0 && !/\S/.test(props.children)) {
+                  props.className += ' whitespace';
+                }
+
+                return <span {...props} />;
+              })}
             </div>
           ))}
         </Pre>
@@ -86,8 +94,8 @@ const Pre = styled.pre`
     :hover {
       border-top: 2px #0e8a13 dotted;
       border-bottom: 2px #0e8a13 dotted;
-      & .token {
-        background: #401d7d;
+      & .token:not(.whitespace) {
+        background: darkmagenta;
       }
     }
     * ::selection {
