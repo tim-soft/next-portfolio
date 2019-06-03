@@ -13,13 +13,13 @@ export default ({ ...props }) => (
     trackXProps={{
       // eslint-disable-next-line react/prop-types
       renderer: ({ elementRef, ...restProps }) => (
-        <ScrollTrackX {...restProps} trackX ref={elementRef} />
+        <ScrollTrackX {...restProps} ref={elementRef} />
       )
     }}
     trackYProps={{
       // eslint-disable-next-line react/prop-types
       renderer: ({ elementRef, ...restProps }) => (
-        <ScrollTrackY {...restProps} trackY ref={elementRef} />
+        <ScrollTrackY {...restProps} ref={elementRef} />
       )
     }}
   />
