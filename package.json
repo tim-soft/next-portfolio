@@ -12,7 +12,7 @@
   "dependencies": {
     "@tim-soft/react-dat-gui": "^2.2.5",
     "@tim-soft/react-with-gesture": "^4.0.9",
-    "color": "^3.1.1",
+    "color": "^3.1.2",
     "hex-rgb": "^4.1.0",
     "is-hexcolor": "^1.0.0",
     "next": "^8.1.0",
