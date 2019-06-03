@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Scrollbar from 'react-scrollbars-custom';
+import Scrollbar from 'components/Scrollbar';
 import { Transition, animated } from 'react-spring/renderprops.cjs';
 import ConfigViewer from './components/ConfigViewer';
 import DatUIPane from './components/DatUIPane';
@@ -61,28 +61,7 @@ class DatUI extends React.Component {
                   opacity
                 }}
               >
-                <StyledScrollbar
-                  trackYProps={{
-                    renderer: props => {
-                      // eslint-disable-next-line react/prop-types
-                      const { elementRef, style, ...restProps } = props;
-
-                      return (
-                        <span
-                          {...restProps}
-                          style={{
-                            ...style,
-                            background: '#9E9E9E',
-                            width: '11px',
-                            height: '100%',
-                            top: 0
-                          }}
-                          ref={elementRef}
-                        />
-                      );
-                    }
-                  }}
-                >
+                <StyledScrollbar>
                   <ScrollbarContentContainer>
                     <Transition
                       native

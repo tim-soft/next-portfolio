@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { Transition, animated } from 'react-spring/renderprops.cjs';
-import Scrollbar from 'react-scrollbars-custom';
+import Scrollbar from 'components/Scrollbar';
 import Color from 'color';
 import { FiChevronDown } from 'react-icons/fi';
 import StyledLink from '../../StyledLink';
@@ -124,34 +124,7 @@ class MenuItem extends React.Component {
                   rightOffset={rightOffset}
                   width={menuWidth}
                 >
-                  {useScroll ? (
-                    <StyledScrollbar
-                      trackYProps={{
-                        renderer: props => {
-                          // eslint-disable-next-line react/prop-types
-                          const { elementRef, style, ...restProps } = props;
-
-                          return (
-                            <span
-                              {...restProps}
-                              style={{
-                                ...style,
-                                background: '#9E9E9E',
-                                width: '11px',
-                                height: '100%',
-                                top: 0
-                              }}
-                              ref={elementRef}
-                            />
-                          );
-                        }
-                      }}
-                    >
-                      {children}
-                    </StyledScrollbar>
-                  ) : (
-                    children
-                  )}
+                  {useScroll ? <Scrollbar>{children}</Scrollbar> : children}
                 </AnimatedContainer>
               ))
             }
@@ -163,11 +136,6 @@ class MenuItem extends React.Component {
 }
 
 export default MenuItem;
-
-const StyledScrollbar = styled(Scrollbar)`
-  width: 100%;
-  height: 100%;
-`;
 
 const MenuLink = styled(StyledLink)`
   display: flex;

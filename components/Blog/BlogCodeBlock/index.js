@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/vsDark';
-import Scrollbar from 'react-scrollbars-custom';
+import Scrollbar from 'components/Scrollbar';
 
 /**
  * Splits first token of line at any leading whitespace
@@ -39,30 +39,7 @@ const splitLineIndent = line => {
 };
 
 const BlogCodeBlock = ({ code, language }) => (
-  <StyledScrollbar
-    translateContentSizesToHolder
-    noScrollY
-    trackXProps={{
-      renderer: props => {
-        // eslint-disable-next-line react/prop-types
-        const { elementRef, style, ...restProps } = props;
-
-        return (
-          <span
-            {...restProps}
-            style={{
-              ...style,
-              background: '#9E9E9E',
-              height: '11px',
-              width: '100%',
-              left: 0
-            }}
-            ref={elementRef}
-          />
-        );
-      }
-    }}
-  >
+  <StyledScrollbar translateContentSizesToHolder noScrollY>
     <Highlight
       {...defaultProps}
       theme={theme}
@@ -70,12 +47,12 @@ const BlogCodeBlock = ({ code, language }) => (
       language={language}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <Pre className={className} style={style}>
+        <CodeBlock className={className} style={style}>
           {tokens.map((line, i) => {
             splitLineIndent(line);
 
             return (
-              <div {...getLineProps({ line, key: i })}>
+              <BlockLine {...getLineProps({ line, key: i })}>
                 <LineNumber>{i + 1}</LineNumber>
                 {line.map((token, key) => {
                   const props = getTokenProps({ token, key });
@@ -88,10 +65,10 @@ const BlogCodeBlock = ({ code, language }) => (
 
                   return <span {...props} />;
                 })}
-              </div>
+              </BlockLine>
             );
           })}
-        </Pre>
+        </CodeBlock>
       )}
     </Highlight>
   </StyledScrollbar>
@@ -117,28 +94,28 @@ const StyledScrollbar = styled(Scrollbar)`
   margin: 2em 0;
 `;
 
-const Pre = styled.pre`
+const BlockLine = styled.div`
+  line-height: 1.3em;
+  height: 1.3em;
+  :hover {
+    border-top: 2px #0e8a13 dotted;
+    border-bottom: 2px #0e8a13 dotted;
+    .token:not(.whitespace) {
+      background: darkmagenta;
+    }
+  }
+  * ::selection {
+    background: #0e8a13;
+  }
+`;
+
+const CodeBlock = styled.pre`
   width: 700px;
   text-align: left;
   margin: 0;
   padding: 1em;
   font-size: 1.05em;
   cursor: text;
-
-  & .token-line {
-    line-height: 1.3em;
-    height: 1.3em;
-    :hover {
-      border-top: 2px #0e8a13 dotted;
-      border-bottom: 2px #0e8a13 dotted;
-      & .token:not(.whitespace) {
-        background: darkmagenta;
-      }
-    }
-    * ::selection {
-      background: #0e8a13;
-    }
-  }
 `;
 
 const LineNumber = styled.span`

@@ -1,38 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Scrollbar from 'react-scrollbars-custom';
-import Color from 'color';
+import Scrollbar from 'components/Scrollbar';
 
 /**
  * A full page component that allows scrolling and proper positioning under the WebsiteLayout fixed header
  */
 const PageScrollWrapper = ({ children, backgroundColor }) => (
   <Container backgroundColor={backgroundColor}>
-    <StyledScrollbar
-      trackYProps={{
-        renderer: props => {
-          // eslint-disable-next-line react/prop-types
-          const { elementRef, style, ...restProps } = props;
-          const background = Color('#9E9E9E').darken(0.5);
-
-          return (
-            <span
-              {...restProps}
-              style={{
-                ...style,
-                background,
-                // background: '#9E9E9E',
-                width: '11px',
-                height: '100%',
-                top: 0
-              }}
-              ref={elementRef}
-            />
-          );
-        }
-      }}
-    >
+    <StyledScrollbar>
       <ScrollbarContentContainer>{children}</ScrollbarContentContainer>
     </StyledScrollbar>
   </Container>

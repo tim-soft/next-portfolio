@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Spring } from 'react-spring/renderprops.cjs';
 import Link from 'next/link';
-import Scrollbar from 'react-scrollbars-custom';
+import Scrollbar from 'components/Scrollbar';
 import StyledLink from '../../../StyledLink';
 
 const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
@@ -11,26 +11,6 @@ const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
     {({ opacity }) => (
       <MenuContainer opacity={opacity}>
         <StyledScrollbar
-          trackYProps={{
-            renderer: props => {
-              // eslint-disable-next-line react/prop-types
-              const { elementRef, style, ...restProps } = props;
-
-              return (
-                <span
-                  {...restProps}
-                  style={{
-                    ...style,
-                    background: '#9E9E9E',
-                    width: '11px',
-                    height: '100%',
-                    top: 0
-                  }}
-                  ref={elementRef}
-                />
-              );
-            }
-          }}
           contentProps={{
             renderer: props => {
               // eslint-disable-next-line react/prop-types
