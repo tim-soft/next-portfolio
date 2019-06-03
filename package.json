@@ -17,7 +17,7 @@
     "is-hexcolor": "^1.0.0",
     "next": "^8.1.0",
     "next-ga": "^2.3.4",
-    "next-offline": "^4.0.1",
+    "next-offline": "^4.0.2",
     "next-seo": "^1.11.2",
     "prism-react-renderer": "^0.1.6",
     "prop-types": "^15.7.2",
