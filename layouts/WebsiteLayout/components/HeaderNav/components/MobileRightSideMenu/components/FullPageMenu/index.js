@@ -71,7 +71,7 @@ const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
                 <FooterLinkText>@tim-soft</FooterLinkText>
               </MenuFooterLink>
               <MenuFooterLink href="mailto:timellenberger@gmail.com" right>
-                <GoMail size="1.7em" />
+                <GoMail size="1.5em" />
                 <FooterLinkText>@gmail</FooterLinkText>
               </MenuFooterLink>
             </MenuFooter>
@@ -101,6 +101,7 @@ const ScrollbarContentContainer = styled.nav`
   align-items: center;
   flex-direction: column;
   max-height: 100%;
+  padding-top: 15px;
 `;
 
 const StyledScrollbar = styled(Scrollbar)`
@@ -139,12 +140,12 @@ const MenuFooter = styled.div`
   justify-content: space-between;
   width: 100%;
   max-width: 500px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 `;
 
 const FooterLinkText = styled.h2`
   font-weight: normal;
-  font-size: 0.8em;
+  font-size: 0.75em;
   margin: ${({ right }) => (right ? '0 0 5px 0' : '0 0 0 5px')};
 `;
 
