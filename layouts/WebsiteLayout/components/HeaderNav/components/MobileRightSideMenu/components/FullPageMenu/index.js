@@ -13,27 +13,13 @@ const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
       <MenuContainer opacity={opacity}>
         <StyledScrollbar
           contentProps={{
-            renderer: props => {
-              // eslint-disable-next-line react/prop-types
-              const { elementRef, style, ...restProps } = props;
-              return (
-                <span
-                  {...restProps}
-                  style={{
-                    ...style,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    flexDirection: 'column'
-                  }}
-                  ref={elementRef}
-                  className="Content"
-                />
-              );
-            }
+            // eslint-disable-next-line react/prop-types
+            renderer: ({ elementRef, ...restProps }) => (
+              <ScrollbarContent {...restProps} ref={elementRef} />
+            )
           }}
         >
-          <ScrollbarContentContainer>
+          <NavMenuContainer>
             <Link prefetch href="/">
               <MobileStyledLink onClick={toggleMenu}>
                 <LinkHeading>Home</LinkHeading>
@@ -63,14 +49,14 @@ const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
                 <LinkHeading>Blog</LinkHeading>
               </MobileStyledLink>
             </Link>
-          </ScrollbarContentContainer>
+          </NavMenuContainer>
           <MenuFooter>
             <MenuFooterLink href="https://github.com/tim-soft" target="__blank">
-              <GoMarkGithub size="1.3em" />
+              <GoMarkGithub size="1.1em" />
               <FooterLinkText>@tim-soft</FooterLinkText>
             </MenuFooterLink>
             <MenuFooterLink href="mailto:timellenberger@gmail.com" right>
-              <GoMail size="1.3em" />
+              <GoMail size="1.1em" />
               <FooterLinkText>@gmail</FooterLinkText>
             </MenuFooterLink>
           </MenuFooter>
@@ -87,13 +73,20 @@ FullPageMenu.propTypes = {
 
 export default FullPageMenu;
 
+const ScrollbarContent = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
 const LinkHeading = styled.h1`
   margin: 0;
   font-size: inherit;
   font-weight: inherit;
 `;
 
-const ScrollbarContentContainer = styled.nav`
+const NavMenuContainer = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -144,7 +137,7 @@ const MenuFooter = styled.div`
 
 const FooterLinkText = styled.h2`
   font-weight: normal;
-  font-size: 0.65em;
+  font-size: 0.5em;
   margin: ${({ right }) => (right ? '0 0 5px 0' : '0 0 0 5px')};
 `;
 
