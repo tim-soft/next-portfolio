@@ -50,16 +50,21 @@ const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
               </MobileStyledLink>
             </Link>
           </NavMenuContainer>
-          <MenuFooter>
-            <MenuFooterLink href="https://github.com/tim-soft" target="__blank">
-              <GoMarkGithub size="1.1em" />
-              <FooterLinkText>@tim-soft</FooterLinkText>
-            </MenuFooterLink>
-            <MenuFooterLink href="mailto:timellenberger@gmail.com" right>
-              <GoMail size="1.1em" />
-              <FooterLinkText>@gmail</FooterLinkText>
-            </MenuFooterLink>
-          </MenuFooter>
+          <MenuFooterContainer>
+            <MenuFooter>
+              <MenuFooterLink
+                href="https://github.com/tim-soft"
+                target="__blank"
+              >
+                <GoMarkGithub size="1.1em" />
+                <FooterLinkText>@tim-soft</FooterLinkText>
+              </MenuFooterLink>
+              <MenuFooterLink href="mailto:timellenberger@gmail.com" right>
+                <GoMail size="1.1em" />
+                <FooterLinkText>@gmail</FooterLinkText>
+              </MenuFooterLink>
+            </MenuFooter>
+          </MenuFooterContainer>
         </StyledScrollbar>
       </MenuContainer>
     )}
@@ -92,7 +97,6 @@ const NavMenuContainer = styled.nav`
   align-items: center;
   flex-direction: column;
   max-height: 100%;
-  padding-top: 15px;
   margin: auto;
 `;
 
@@ -126,13 +130,20 @@ const MobileStyledLink = styled(StyledLink)`
   color: ${({ theme }) => theme.headerNavMobileMenuFontColor};
 `;
 
+const MenuFooterContainer = styled.div`
+  width: 100%;
+  margin: auto 0 0 0;
+  padding: 10px 0;
+  background: ${({ theme }) => theme.pageBackgroundColor};
+`;
+
 const MenuFooter = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   max-width: 500px;
-  margin: auto auto 7px auto;
+  margin: 0 auto;
 `;
 
 const FooterLinkText = styled.h2`
@@ -142,7 +153,7 @@ const FooterLinkText = styled.h2`
 `;
 
 const MenuFooterLink = styled(StyledLink)`
-  color: ${({ theme }) => theme.headerNavMobileMenuFontColor};
+  color: ${({ theme }) => theme.pageContentFontColor};
   display: flex;
   align-items: center;
   text-decoration: none;
