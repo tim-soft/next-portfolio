@@ -102,10 +102,21 @@ const StyledScrollbar = styled(Scrollbar)`
   margin: 2em auto;
 `;
 
+const LineNumber = styled.span`
+  display: inline-block;
+  width: 2em;
+  user-select: none;
+  opacity: 0.5;
+`;
+
 const BlockLine = styled.div`
   line-height: 1.3em;
   height: 1.3em;
   :hover {
+    ${LineNumber} {
+      color: white;
+      opacity: 1;
+    }
     border-top: 2px #0e8a13 dotted;
     border-bottom: 2px #0e8a13 dotted;
     .token:not(.whitespace) {
@@ -127,11 +138,4 @@ const CodeBlock = styled.pre`
   padding: 1em;
   font-size: 1.05em;
   cursor: text;
-`;
-
-const LineNumber = styled.span`
-  display: inline-block;
-  width: 2em;
-  user-select: none;
-  opacity: 0.5;
 `;
