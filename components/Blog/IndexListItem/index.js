@@ -34,7 +34,7 @@ const BlogItem = styled.article`
   margin: 1em 0;
   width: 100%;
   > * {
-    margin: 0.4em 0;
+    margin: 0.4em 0 0.7em 0;
   }
   header > small {
     font-size: 85%;
@@ -43,7 +43,7 @@ const BlogItem = styled.article`
 
 const BlogTitle = styled.h2`
   font-size: 1.7em;
-  margin: 13px 0;
+  margin: 13px 0 4px 0;
   font-weight: normal;
   text-decoration: underline;
   transition: color 0.2s linear;
