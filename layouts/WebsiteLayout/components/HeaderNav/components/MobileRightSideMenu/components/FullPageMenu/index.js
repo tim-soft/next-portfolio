@@ -97,7 +97,7 @@ const NavMenuContainer = styled.nav`
 `;
 
 const StyledScrollbar = styled(Scrollbar)`
-  height: calc(100vh - 90px) !important;
+  height: calc(100% - 90px) !important;
 `;
 
 const MenuContainer = styled.div.attrs(({ opacity }) => ({
