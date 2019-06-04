@@ -98,7 +98,7 @@ const Title = styled.h1`
 const Container = styled.main`
   color: ${({ theme }) => theme.pageContentFontColor};
   width: 100%;
-  max-width: 700px;
+  max-width: ${({ theme, width }) => width || theme.blogArticleWidth}px;
   display: flex;
   flex-direction: column;
   align-items: center;

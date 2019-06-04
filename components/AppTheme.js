@@ -15,6 +15,8 @@ export default {
   pageBackgroundColor: '#9e9e9e',
   pageContentFontColor: 'black',
   pageContentLinkHoverColor: 'cyan',
+  // Blog vars
+  blogArticleWidth: 700,
   // Media Query Breakpoints
   breakpoints: {
     mobileNav: 'min-width: 1060px',

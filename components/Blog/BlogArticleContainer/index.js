@@ -4,9 +4,9 @@ import PageScrollWrapper from 'components/PageScrollWrapper';
 import BlogArticleBanner from '../BlogArticleBanner';
 import BlogNavigation from '../BlogNavigation';
 
-const BlogArticleContainer = ({ children }) => (
+const BlogArticleContainer = ({ children, width }) => (
   <PageScrollWrapper>
-    <Container>
+    <Container width={width}>
       <article>
         <header>
           <BlogArticleBanner />
@@ -23,7 +23,12 @@ BlogArticleContainer.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ]).isRequired
+  ]).isRequired,
+  width: PropTypes.number
+};
+
+BlogArticleContainer.defaultProps = {
+  width: null
 };
 
 export default BlogArticleContainer;
@@ -31,7 +36,7 @@ export default BlogArticleContainer;
 const Container = styled.main`
   color: ${({ theme }) => theme.pageContentFontColor};
   width: 100%;
-  max-width: 700px;
+  max-width: ${({ theme, width }) => width || theme.blogArticleWidth}px;
   display: flex;
   flex-direction: column;
   align-items: center;

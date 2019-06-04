@@ -2,14 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Highlight, { defaultProps } from 'prism-react-renderer';
-import theme from 'prism-react-renderer/themes/vsDark';
+import codeTheme from 'prism-react-renderer/themes/vsDark';
 import Scrollbar from 'components/Scrollbar';
 
 /**
- * Splits first token of line at any leading whitespace
+ * Splits the first token of a code line at any leading whitespace
  *
- * The purpose of the split is to solve the problem of the leading
- * whitespace getting highlighted on hover
+ * The purpose of the split is to easily highlight code on hover without
+ * including the indenting whitespace
+ *
+ * So if the beginning of a line looks like this exists:
+ *    <span>{`      <div />`}</span>
+ * break into two parts:
+ *    <span>{`      `}</span>
+ *    <span>{`<div />`}</span>
  *
  * @param {array} line Tokenized line of code
  */
@@ -18,11 +24,9 @@ const splitLineIndent = line => {
   const hasIndent = content.charAt(0) === ' ';
 
   // If the first token of line has a leading space, it'll need to be split
-  if (content && hasIndent) {
-    // Get leading whitespace
-    const lineIndent = content.split(/^(\s+)/)[1];
-    // Get the code portion of token
-    const codeStart = content.split(/^(\s+)/)[2];
+  if (hasIndent) {
+    // Separate leading whitespace and code portion of token
+    const [, lineIndent, codeStart] = content.split(/^(\s+)/);
 
     // If token isn't only whitespace, insert split tokens back into line
     if (codeStart !== '') {
@@ -38,17 +42,18 @@ const splitLineIndent = line => {
   }
 };
 
-const BlogCodeBlock = ({ code, language }) => (
-  <StyledScrollbar translateContentSizesToHolder noScrollY>
+const BlogCodeBlock = ({ code, language, width }) => (
+  <StyledScrollbar translateContentSizesToHolder noScrollY width={width}>
     <Highlight
       {...defaultProps}
-      theme={theme}
+      theme={codeTheme}
       code={code.trim()}
       language={language}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <CodeBlock className={className} style={style}>
+        <CodeBlock className={className} style={style} width={width}>
           {tokens.map((line, i) => {
+            // Split left-most tokens with leading whitespace
             splitLineIndent(line);
 
             return (
@@ -80,18 +85,21 @@ BlogCodeBlock.propTypes = {
    * See here for all supported languages for syntax highlighting
    * https://github.com/FormidableLabs/prism-react-renderer/blob/master/src/vendor/prism/includeLangs.js
    */
-  language: PropTypes.string
+  language: PropTypes.string,
+  width: PropTypes.number
 };
 
 BlogCodeBlock.defaultProps = {
-  language: 'jsx'
+  language: 'jsx',
+  width: null
 };
 
 export default BlogCodeBlock;
 
 const StyledScrollbar = styled(Scrollbar)`
   max-width: calc(100vw - 40px);
-  margin: 2em 0;
+  width: ${({ theme, width }) => width || theme.blogArticleWidth}px !important;
+  margin: 2em auto;
 `;
 
 const BlockLine = styled.div`
@@ -110,7 +118,10 @@ const BlockLine = styled.div`
 `;
 
 const CodeBlock = styled.pre`
-  width: 700px;
+  width: 100%;
+  min-width: calc(
+    ${({ theme, width }) => width || theme.blogArticleWidth}px - 4em - 1px
+  );
   text-align: left;
   margin: 0;
   padding: 1em;
