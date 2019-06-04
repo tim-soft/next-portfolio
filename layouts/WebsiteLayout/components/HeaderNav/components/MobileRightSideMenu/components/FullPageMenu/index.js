@@ -23,6 +23,7 @@ const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
                     ...style,
                     display: 'flex',
                     justifyContent: 'center',
+                    alignItems: 'center',
                     flexDirection: 'column'
                   }}
                   ref={elementRef}
@@ -62,20 +63,17 @@ const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
                 <LinkHeading>Blog</LinkHeading>
               </MobileStyledLink>
             </Link>
-            <MenuFooter>
-              <MenuFooterLink
-                href="https://github.com/tim-soft"
-                target="__blank"
-              >
-                <GoMarkGithub size="1.5em" />
-                <FooterLinkText>@tim-soft</FooterLinkText>
-              </MenuFooterLink>
-              <MenuFooterLink href="mailto:timellenberger@gmail.com" right>
-                <GoMail size="1.5em" />
-                <FooterLinkText>@gmail</FooterLinkText>
-              </MenuFooterLink>
-            </MenuFooter>
           </ScrollbarContentContainer>
+          <MenuFooter>
+            <MenuFooterLink href="https://github.com/tim-soft" target="__blank">
+              <GoMarkGithub size="1.3em" />
+              <FooterLinkText>@tim-soft</FooterLinkText>
+            </MenuFooterLink>
+            <MenuFooterLink href="mailto:timellenberger@gmail.com" right>
+              <GoMail size="1.3em" />
+              <FooterLinkText>@gmail</FooterLinkText>
+            </MenuFooterLink>
+          </MenuFooter>
         </StyledScrollbar>
       </MenuContainer>
     )}
@@ -102,6 +100,7 @@ const ScrollbarContentContainer = styled.nav`
   flex-direction: column;
   max-height: 100%;
   padding-top: 15px;
+  margin: auto;
 `;
 
 const StyledScrollbar = styled(Scrollbar)`
@@ -140,12 +139,12 @@ const MenuFooter = styled.div`
   justify-content: space-between;
   width: 100%;
   max-width: 500px;
-  margin-bottom: 5px;
+  margin: auto auto 7px auto;
 `;
 
 const FooterLinkText = styled.h2`
   font-weight: normal;
-  font-size: 0.75em;
+  font-size: 0.65em;
   margin: ${({ right }) => (right ? '0 0 5px 0' : '0 0 0 5px')};
 `;
 
