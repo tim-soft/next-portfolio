@@ -216,7 +216,8 @@ const AnimatedContainer = styled(animated.div)`
   border-radius: 2%;
   border: 1px black solid;
   background-color: #1a1a1aba;
-  max-height: calc(100vh - 15px);
+  /* Viewport Height - body margin - border width */
+  max-height: calc(100vh - 15px - 2px);
   @media (max-width: 420px) {
     width: calc(100% - 10px);
     border-radius: 0;
