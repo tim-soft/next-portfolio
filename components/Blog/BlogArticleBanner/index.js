@@ -64,8 +64,10 @@ const AvatarImage = styled.img`
 
 const Title = styled.h1`
   font-weight: normal;
+  margin-bottom: 0;
 `;
 
 const PublishDate = styled.h4`
   font-weight: normal;
+  margin-top: 3px;
 `;
