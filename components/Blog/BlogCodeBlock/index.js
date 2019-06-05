@@ -112,7 +112,9 @@ const LineNumber = styled.span`
 const BlockLine = styled.div`
   line-height: 1.3em;
   height: 1.3em;
+  transition: padding 0.1s ease;
   :hover {
+    padding: 2px 0;
     ${LineNumber} {
       color: white;
       opacity: 1;
