@@ -157,5 +157,5 @@ const MenuFooterLink = styled(StyledLink)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  margin: 0 15px;
+  margin: 0 20px;
 `;
