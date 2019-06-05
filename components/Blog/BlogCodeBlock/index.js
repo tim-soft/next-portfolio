@@ -42,11 +42,11 @@ const splitLineIndent = line => {
   }
 };
 
-const BlogCodeBlock = ({ code, language, width }) => (
+const BlogCodeBlock = ({ code, language, theme, width }) => (
   <StyledScrollbar translateContentSizesToHolder noScrollY width={width}>
     <Highlight
       {...defaultProps}
-      theme={codeTheme}
+      theme={theme || codeTheme}
       code={code.trim()}
       language={language}
     >
@@ -68,8 +68,9 @@ const BlogCodeBlock = ({ code, language, width }) => (
                     props.className += ' whitespace';
                   }
 
-                  // Color const + let + var tokens blue
+                  // Color const + let + var tokens blue when using default dark theme
                   if (
+                    !theme &&
                     props.children === ('const' || 'let' || 'var') &&
                     // eslint-disable-next-line react/prop-types
                     props.className === 'token keyword'
@@ -95,12 +96,14 @@ BlogCodeBlock.propTypes = {
    * https://github.com/FormidableLabs/prism-react-renderer/blob/master/src/vendor/prism/includeLangs.js
    */
   language: PropTypes.string,
-  width: PropTypes.number
+  width: PropTypes.number,
+  theme: PropTypes.object
 };
 
 BlogCodeBlock.defaultProps = {
   language: 'jsx',
-  width: null
+  width: null,
+  theme: null
 };
 
 export default BlogCodeBlock;
