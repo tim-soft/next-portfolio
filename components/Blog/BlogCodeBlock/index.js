@@ -128,6 +128,14 @@ const BlockLine = styled.div`
   * ::selection {
     background: #0e8a13;
   }
+  /* Update punctuation colors not accessible through prism theme */
+  span.token.tag.spread.punctuation,
+  span.token.tag.script.punctuation {
+    color: rgb(86, 156, 214) !important;
+  }
+  span.token.tag.punctuation {
+    color: rgb(128, 128, 128) !important;
+  }
 `;
 
 const CodeBlock = styled.pre`
