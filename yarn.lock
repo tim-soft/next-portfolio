@@ -5847,10 +5847,10 @@ react-scrollbars-custom@^4.0.4:
     react-draggable "^3.3.0"
     zoom-level "^1.1.0"
 
-react-spring@^8.0.20:
-  version "8.0.20"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.20.tgz#e25967f6059364b09cf0339168d73014e87c9d17"
-  integrity sha512-40ZUQ5uI5YHsoQWLPchWNcEUh6zQ6qvcVDeTI2vW10ldoCN3PvDsII9wBH2xEbMl+BQvYmHzGdfLTQxPxJWGnQ==
+react-spring@^8.0.21:
+  version "8.0.21"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.21.tgz#06c751c0c2019ac2aecf0d65da6d3a9a2e81d1a1"
+  integrity sha512-WDOd6dTWtA6x+1S4Jm3sxuergyZt6k9EXqM2kf4S0XJoTs/l8CDS65N9sB2YfCQWXYwHnrXx1E/Q2hZ5eAjfKg==
   dependencies:
     "@babel/runtime" "^7.3.1"
     prop-types "^15.5.8"
