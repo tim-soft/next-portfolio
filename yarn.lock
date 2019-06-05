@@ -2100,7 +2100,7 @@ clone-regexp@^1.0.0:
     is-regexp "^1.0.0"
     is-supported-regexp-flag "^1.0.0"
 
-cnbuilder@^1.0.14:
+cnbuilder@^1.0.0:
   version "1.0.14"
   resolved "https://registry.yarnpkg.com/cnbuilder/-/cnbuilder-1.0.14.tgz#849f323f0b054b084b35560e40ef446ef9eea8a4"
   integrity sha512-Lna83KYpzRZjp/Kox64m4McIY1GfC9iD587kEKOPXFj6cyM2EToElEQkBbaTBkp3UY1Svi8Q3oj+++/1VCXORA==
@@ -5838,13 +5838,14 @@ react-reconciler@^0.20.1:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
-react-scrollbars-custom@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/react-scrollbars-custom/-/react-scrollbars-custom-4.0.1.tgz#81a77f808b75a6f3ba6b66414f5cc29d6c9e76aa"
-  integrity sha512-f+gkFtw2tDQ3xSCOMr7iDf8kQYNEH7I+FeajpL8SxDp/mjIjExG6Cx1K6xBJAEXfw505rSFnw/qx2G5i2CuvfQ==
+react-scrollbars-custom@^4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/react-scrollbars-custom/-/react-scrollbars-custom-4.0.4.tgz#7c52396350da017d9da9ab7c87cf27183959c4a5"
+  integrity sha512-AuLnlFpYPdBR9BBLlZrsdn1FU50ESXUvr3R1JQETCzH10oGt7HBchshr3eckW6ypOj8JuHu9GKfDnXlyqEht0Q==
   dependencies:
-    cnbuilder "^1.0.14"
+    cnbuilder "^1.0.0"
     react-draggable "^3.3.0"
+    zoom-level "^1.1.0"
 
 react-spring@^8.0.20:
   version "8.0.20"
@@ -7696,3 +7697,8 @@ yup@^0.27.0:
     property-expr "^1.5.0"
     synchronous-promise "^2.0.6"
     toposort "^2.0.2"
+
+zoom-level@^1.1.0:
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/zoom-level/-/zoom-level-1.1.10.tgz#34c8179c559421de651e01db43fbd2c404095d6d"
+  integrity sha512-VCnVXdYp6WoUFjgMjBl/xEJA9pIopPd1BM5bRby7Cq+1m+7r+Mq1/H2I41oUTbGg2zxbTXRTaMLrF4a1zhGqGA==
