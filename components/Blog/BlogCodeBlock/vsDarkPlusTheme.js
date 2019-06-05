@@ -26,6 +26,13 @@ const theme = {
       }
     },
     {
+      types: ['keyword'],
+      languages: ['graphql'],
+      style: {
+        color: 'rgb(86, 156, 214)'
+      }
+    },
+    {
       types: ['operator', 'builtin', 'changed'],
       style: {
         color: 'rgb(86, 156, 214)'

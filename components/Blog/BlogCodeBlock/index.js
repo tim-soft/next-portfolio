@@ -68,6 +68,15 @@ const BlogCodeBlock = ({ code, language, width }) => (
                     props.className += ' whitespace';
                   }
 
+                  // Color const + let + var tokens blue
+                  if (
+                    props.children === ('const' || 'let' || 'var') &&
+                    // eslint-disable-next-line react/prop-types
+                    props.className === 'token keyword'
+                  ) {
+                    props.className += ' js-darkblue';
+                  }
+
                   return <span {...props} />;
                 })}
               </BlockLine>
@@ -130,7 +139,8 @@ const BlockLine = styled.div`
   }
   /* Update punctuation colors not accessible through prism theme */
   span.token.tag.spread.punctuation,
-  span.token.tag.script.punctuation {
+  span.token.tag.script.punctuation,
+  .js-darkblue {
     color: rgb(86, 156, 214) !important;
   }
   span.token.tag.punctuation {
