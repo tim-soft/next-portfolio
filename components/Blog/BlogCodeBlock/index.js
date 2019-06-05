@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Highlight, { defaultProps } from 'prism-react-renderer';
-import codeTheme from 'prism-react-renderer/themes/vsDark';
 import Scrollbar from 'components/Scrollbar';
+import codeTheme from './vsDarkPlusTheme';
 
 /**
  * Splits the first token of a code line at any leading whitespace
