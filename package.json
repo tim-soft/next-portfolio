@@ -27,7 +27,7 @@
     "react-icons": "^3.7.0",
     "react-particles-webgl": "^1.0.3",
     "react-photo-gallery": "^7.0.2",
-    "react-scrollbars-custom": "^4.0.1",
+    "react-scrollbars-custom": "^4.0.5",
     "react-spring": "^8.0.20",
     "stringify-object": "^3.3.0",
     "styled-components": "^4.2.1",
