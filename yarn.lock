@@ -5846,7 +5846,7 @@ react-scrollbars-custom@^4.0.1:
     cnbuilder "^1.0.14"
     react-draggable "^3.3.0"
 
-react-spring@^8.0.21:
+react-spring@^8.0.20:
   version "8.0.21"
   resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.21.tgz#06c751c0c2019ac2aecf0d65da6d3a9a2e81d1a1"
   integrity sha512-WDOd6dTWtA6x+1S4Jm3sxuergyZt6k9EXqM2kf4S0XJoTs/l8CDS65N9sB2YfCQWXYwHnrXx1E/Q2hZ5eAjfKg==
