@@ -31,7 +31,7 @@ const BlogItem = styled.article`
   display: flex;
   align-items: 'flex-start';
   flex-direction: column;
-  margin: 1em 0;
+  margin: 1em 0 3em 0;
   width: 100%;
   > * {
     margin: 0.4em 0 0.7em 0;
@@ -65,7 +65,7 @@ const BlogDescription = styled.p`
   text-overflow: ellipsis;
   padding: 0 !important;
   -webkit-line-clamp: 5;
-  height: calc(1em * 1.2 * 5);
+  max-height: calc(1em * 1.2 * 5);
   @supports (-webkit-line-clamp: 1) {
     .line-clamp:after {
       display: none !important;
