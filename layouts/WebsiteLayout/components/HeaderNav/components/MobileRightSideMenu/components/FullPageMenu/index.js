@@ -153,7 +153,13 @@ const FooterLinkText = styled.h2`
 `;
 
 const MenuFooterLink = styled(StyledLink)`
-  color: ${({ theme }) => theme.pageContentFontColor};
+  color: ${({ theme }) => theme.pageContentLinkHoverColor};
+  :hover {
+    color: ${({ theme }) => theme.pageContentFontColor};
+  }
+  ::before {
+    background-color: ${({ theme }) => theme.pageContentFontColor};
+  }
   display: flex;
   align-items: center;
   text-decoration: none;
