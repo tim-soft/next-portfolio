@@ -124,15 +124,15 @@ const LineNumber = styled.span`
 const BlockLine = styled.div`
   line-height: 1.3em;
   height: 1.3em;
-  transition: padding 0.1s ease;
+  transition: padding 0.1s ease-in-out;
   :hover {
-    padding: 2px 0;
+    padding: 4px 0;
     ${LineNumber} {
       color: white;
       opacity: 1;
     }
-    border-top: 2px #0e8a13 dotted;
-    border-bottom: 2px #0e8a13 dotted;
+    border-top: 1px ${({ theme }) => theme.pageContentLinkHoverColor} dotted;
+    border-bottom: 1px ${({ theme }) => theme.pageContentLinkHoverColor} dotted;
     .token:not(.whitespace) {
       background: darkmagenta;
     }
