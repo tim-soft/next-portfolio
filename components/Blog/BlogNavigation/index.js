@@ -17,9 +17,7 @@ const BlogNavigation = ({ router }) => {
   const PrevPost = () => {
     if (currPostIndex > 0) {
       const prevPost = sortedPosts[currPostIndex - 1];
-      return (
-        <BlogLink href={prevPost.href}>&#10229; {prevPost.title}</BlogLink>
-      );
+      return <NavLink href={prevPost.href}>&#10229; {prevPost.title}</NavLink>;
     }
 
     return <span />;
@@ -30,9 +28,9 @@ const BlogNavigation = ({ router }) => {
     if (currPostIndex < sortedPosts.length - 1) {
       const nextPost = sortedPosts[currPostIndex + 1];
       return (
-        <BlogLink href={nextPost.href} rtl>
+        <NavLink href={nextPost.href} rtl>
           &#10230; {nextPost.title}
-        </BlogLink>
+        </NavLink>
       );
     }
 
@@ -62,4 +60,8 @@ const NavContainer = styled.nav`
   align-items: center;
   justify-content: space-between;
   margin: 1em 0;
+`;
+
+const NavLink = styled(BlogLink)`
+  width: 45%;
 `;
