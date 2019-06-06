@@ -31,11 +31,15 @@ BlogLink.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]).isRequired,
-  className: PropTypes.string
+  className: PropTypes.string,
+  inverted: PropTypes.bool,
+  paragraph: PropTypes.bool
 };
 
 BlogLink.defaultProps = {
-  className: null
+  className: null,
+  inverted: true,
+  paragraph: null
 };
 
 export default BlogLink;
@@ -44,12 +48,14 @@ const StyledLink = styled.a`
   direction: ${({ rtl }) => (rtl ? 'rtl' : 'inherit')};
   text-decoration: underline;
   transition: color 0.2s linear;
-  color: ${({ theme }) => theme.pageContentFontColor};
+  color: ${({ theme, inverted }) =>
+    inverted ? theme.pageContentLinkHoverColor : theme.pageContentFontColor};
   font-weight: bold;
   font-size: 1.2em;
   cursor: pointer;
   :hover {
-    color: ${({ theme }) => theme.pageContentLinkHoverColor};
+    color: ${({ theme, inverted }) =>
+      inverted ? theme.pageContentFontColor : theme.pageContentLinkHoverColor};
   }
   ${({ paragraph }) =>
     paragraph &&
