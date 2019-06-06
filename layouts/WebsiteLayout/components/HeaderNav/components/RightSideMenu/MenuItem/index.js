@@ -207,7 +207,7 @@ const AnimatedContainer = animated(styled.div`
       .lighten(0.1)
       .hex();
   }};
-  max-height: calc(100vh - 15px);
+  max-height: calc(100vh - 90px);
   font-size: 15px;
   z-index: 11;
   @media (max-width: 420px) {

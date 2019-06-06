@@ -23,8 +23,8 @@ export default () => (
     <MenuItem
       link="/blog"
       text="Blog"
-      menuWidth={450}
-      menuHeight={500}
+      menuWidth={480}
+      menuHeight={600}
       useScroll
     >
       <BlogPostMenuContent />

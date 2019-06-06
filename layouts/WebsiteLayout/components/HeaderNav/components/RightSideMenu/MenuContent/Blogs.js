@@ -15,7 +15,7 @@ const BlogList = () => {
         {sortedPosts.map(
           ({ title, description, logo, href, date, readTime }) => (
             <Link href={href} key={title}>
-              <MenuListItem height={100}>
+              <MenuListItem>
                 <LogoContainer>
                   <PostLogo src={logo} alt="Blog post logo" />
                 </LogoContainer>
@@ -82,7 +82,7 @@ const PostDescription = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 0 !important;
-  margin: 0;
+  margin: 25px 0 0 0;
   -webkit-line-clamp: 2;
   height: calc(1em * 1.2 * 2);
   @supports (-webkit-line-clamp: 1) {
