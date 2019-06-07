@@ -43,50 +43,55 @@ const splitLineIndent = line => {
 };
 
 const BlogCodeBlock = ({ code, language, theme, width }) => (
-  <StyledScrollbar translateContentSizesToHolder noScrollY width={width}>
-    <Highlight
-      {...defaultProps}
-      theme={theme || codeTheme}
-      code={code.trim()}
-      language={language}
-    >
-      {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <CodeBlock className={className} style={style} width={width}>
-          {tokens.map((line, i) => {
-            // Split left-most tokens with leading whitespace
-            splitLineIndent(line);
+  <CodeBlockContainer width={width}>
+    <CodeTitleContainer>
+      <CodeTitle>components &#x2023; Blog &#x2023; BlogCodeBlock.js</CodeTitle>
+    </CodeTitleContainer>
+    <StyledScrollbar translateContentSizesToHolder noScrollY width={width}>
+      <Highlight
+        {...defaultProps}
+        theme={theme || codeTheme}
+        code={code.trim()}
+        language={language}
+      >
+        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+          <CodeBlock className={className} style={style} width={width}>
+            {tokens.map((line, i) => {
+              // Split left-most tokens with leading whitespace
+              splitLineIndent(line);
 
-            return (
-              <BlockLine {...getLineProps({ line, key: i })}>
-                <LineNumber>{i + 1}</LineNumber>
-                {line.map((token, key) => {
-                  const props = getTokenProps({ token, key });
+              return (
+                <BlockLine {...getLineProps({ line, key: i })}>
+                  <LineNumber>{i + 1}</LineNumber>
+                  {line.map((token, key) => {
+                    const props = getTokenProps({ token, key });
 
-                  // if first span is empty, add empty classname
-                  // eslint-disable-next-line react/prop-types
-                  if (key === 0 && !/\S/.test(props.children)) {
-                    props.className += ' whitespace';
-                  }
-
-                  // Color const + let + var tokens blue when using default dark theme
-                  if (
-                    !theme &&
-                    props.children === ('const' || 'let' || 'var') &&
+                    // if first span is empty, add empty classname
                     // eslint-disable-next-line react/prop-types
-                    props.className === 'token keyword'
-                  ) {
-                    props.className += ' js-darkblue';
-                  }
+                    if (key === 0 && !/\S/.test(props.children)) {
+                      props.className += ' whitespace';
+                    }
 
-                  return <span {...props} />;
-                })}
-              </BlockLine>
-            );
-          })}
-        </CodeBlock>
-      )}
-    </Highlight>
-  </StyledScrollbar>
+                    // Color const + let + var tokens blue when using default dark theme
+                    if (
+                      !theme &&
+                      props.children === ('const' || 'let' || 'var') &&
+                      // eslint-disable-next-line react/prop-types
+                      props.className === 'token keyword'
+                    ) {
+                      props.className += ' js-darkblue';
+                    }
+
+                    return <span {...props} />;
+                  })}
+                </BlockLine>
+              );
+            })}
+          </CodeBlock>
+        )}
+      </Highlight>
+    </StyledScrollbar>
+  </CodeBlockContainer>
 );
 
 BlogCodeBlock.propTypes = {
@@ -108,10 +113,32 @@ BlogCodeBlock.defaultProps = {
 
 export default BlogCodeBlock;
 
-const StyledScrollbar = styled(Scrollbar)`
-  max-width: calc(100vw - 40px);
-  width: ${({ theme, width }) => width || theme.blogArticleWidth}px !important;
+const CodeBlockContainer = styled.div`
   margin: 2em auto;
+  width: 100%;
+  max-width: ${({ theme, width }) =>
+    width || theme.blogArticleWidth}px !important;
+`;
+
+const CodeTitle = styled.h2`
+  margin: 1em;
+  font-weight: normal;
+  font-size: 1.3em;
+  font-family: monospace;
+  color: ${({ theme }) => theme.pageContentLinkHoverColor};
+`;
+
+const CodeTitleContainer = styled.div`
+  background-color: rgb(30, 30, 30);
+  width: 100%;
+  display: flex;
+  border-bottom: 1px ${({ theme }) => theme.pageContentLinkHoverColor} solid;
+  margin: auto;
+`;
+
+const StyledScrollbar = styled(Scrollbar)`
+  width: 100% !important;
+  margin: 0 auto;
 `;
 
 const LineNumber = styled.span`
@@ -152,10 +179,16 @@ const BlockLine = styled.div`
 `;
 
 const CodeBlock = styled.pre`
-  width: 100%;
-  min-width: calc(
-    ${({ theme, width }) => width || theme.blogArticleWidth}px - 4em - 1px
-  );
+  min-width: ${({ width, theme }) => {
+    if (width) return `calc(${width}px - 2em)`;
+
+    return `calc(${theme.blogArticleWidth}px - 2em)`;
+  }};
+  width: ${({ width }) => {
+    if (width) return `calc(${width}px - 2em)`;
+
+    return `calc(100% - 2em)`;
+  }};
   text-align: left;
   margin: 0;
   padding: 1em;

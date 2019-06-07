@@ -41,4 +41,7 @@ const Container = styled.main`
   flex-direction: column;
   align-items: center;
   padding-bottom: 1.5em;
+  article {
+    width: inherit;
+  }
 `;
