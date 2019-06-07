@@ -3,54 +3,17 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import Scrollbar from 'components/Scrollbar';
-import codeTheme from './vsDarkPlusTheme';
+import defaultTheme from './components/vsDarkPlusTheme';
+import splitLineIndent from './components/splitLineIndent';
+import CodeBlockTitle from './components/CodeBlockTitle';
 
-/**
- * Splits the first token of a code line at any leading whitespace
- *
- * The purpose of the split is to easily highlight code on hover without
- * including the indenting whitespace
- *
- * So if the beginning of a line looks like this exists:
- *    <span>{`      <div />`}</span>
- * break into two parts:
- *    <span>{`      `}</span>
- *    <span>{`<div />`}</span>
- *
- * @param {array} line Tokenized line of code
- */
-const splitLineIndent = line => {
-  const { content } = line[0];
-  const hasIndent = content.charAt(0) === ' ';
-
-  // If the first token of line has a leading space, it'll need to be split
-  if (hasIndent) {
-    // Separate leading whitespace and code portion of token
-    const [, lineIndent, codeStart] = content.split(/^(\s+)/);
-
-    // If token isn't only whitespace, insert split tokens back into line
-    if (codeStart !== '') {
-      const newIndent = { ...line[0], content: lineIndent };
-      const newCodeStart = { ...line[0], content: codeStart };
-
-      // Delete first token
-      line.shift();
-
-      // Replace with two tokens
-      line.unshift(newIndent, newCodeStart);
-    }
-  }
-};
-
-const BlogCodeBlock = ({ code, language, theme, width }) => (
+const BlogCodeBlock = ({ code, language, theme, width, title, path }) => (
   <CodeBlockContainer width={width}>
-    <CodeTitleContainer>
-      <CodeTitle>components &#x2023; Blog &#x2023; BlogCodeBlock.js</CodeTitle>
-    </CodeTitleContainer>
+    <CodeBlockTitle title={title} path={path} />
     <StyledScrollbar translateContentSizesToHolder noScrollY width={width}>
       <Highlight
         {...defaultProps}
-        theme={theme || codeTheme}
+        theme={theme || defaultTheme}
         code={code.trim()}
         language={language}
       >
@@ -102,13 +65,20 @@ BlogCodeBlock.propTypes = {
    */
   language: PropTypes.string,
   width: PropTypes.number,
-  theme: PropTypes.object
+  theme: PropTypes.object,
+  title: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
+  path: PropTypes.string
 };
 
 BlogCodeBlock.defaultProps = {
   language: 'jsx',
   width: null,
-  theme: null
+  theme: null,
+  title: null,
+  path: null
 };
 
 export default BlogCodeBlock;
@@ -118,22 +88,6 @@ const CodeBlockContainer = styled.div`
   width: 100%;
   max-width: ${({ theme, width }) =>
     width || theme.blogArticleWidth}px !important;
-`;
-
-const CodeTitle = styled.h2`
-  margin: 1em;
-  font-weight: normal;
-  font-size: 1.3em;
-  font-family: monospace;
-  color: ${({ theme }) => theme.pageContentLinkHoverColor};
-`;
-
-const CodeTitleContainer = styled.div`
-  background-color: rgb(30, 30, 30);
-  width: 100%;
-  display: flex;
-  border-bottom: 1px ${({ theme }) => theme.pageContentLinkHoverColor} solid;
-  margin: auto;
 `;
 
 const StyledScrollbar = styled(Scrollbar)`
