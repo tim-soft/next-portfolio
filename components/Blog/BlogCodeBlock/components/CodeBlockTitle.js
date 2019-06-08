@@ -23,7 +23,7 @@ const CodeBlockTitle = ({ title, path }) => (
             .map((token, i) => (
               // eslint-disable-next-line react/no-array-index-key
               <span key={`${token}-${i}`}>
-                {token === '/' ? <RightTriangleIcon /> : token}
+                {token === '/' ? <RightTriangleIcon size="0.60em" /> : token}
               </span>
             ))}
         </CodeTitle>
@@ -64,6 +64,5 @@ const CodeTitleContainer = styled.div`
 `;
 
 const RightTriangleIcon = styled(GoTriangleRight)`
-  height: 50%;
-  margin: 0 4px;
+  margin: 0 8px;
 `;
