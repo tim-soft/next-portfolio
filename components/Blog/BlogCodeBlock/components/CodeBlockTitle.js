@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { GoTriangleRight } from 'react-icons/go';
 
 const CodeBlockTitle = ({ title, path }) => (
   <>
@@ -22,7 +23,7 @@ const CodeBlockTitle = ({ title, path }) => (
             .map((token, i) => (
               // eslint-disable-next-line react/no-array-index-key
               <span key={`${token}-${i}`}>
-                {token === '/' ? <> &#8227; </> : token}
+                {token === '/' ? <RightTriangleIcon /> : token}
               </span>
             ))}
         </CodeTitle>
@@ -60,4 +61,9 @@ const CodeTitleContainer = styled.div`
   display: flex;
   border-bottom: 1px ${({ theme }) => theme.pageContentLinkHoverColor} solid;
   margin: auto;
+`;
+
+const RightTriangleIcon = styled(GoTriangleRight)`
+  height: 50%;
+  margin: 0 4px;
 `;
