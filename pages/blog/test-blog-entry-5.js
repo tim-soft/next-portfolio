@@ -3,7 +3,6 @@ import NextSEO, { BlogJsonLd } from 'next-seo';
 import {
   BlogParagraph,
   BlogCodeBlock,
-  BlogCodeSandboxEmbed,
   BlogArticleContainer
 } from 'components/Blog';
 
@@ -37,7 +36,38 @@ const BlogPage = () => (
         ultrices vitae auctor.
       </BlogParagraph>
       <BlogCodeBlock
+        language="jsx"
+        title="This is a test"
+        path="/components/Blog/BlogCodeBlock.js"
+        code={`
+const BlogCodeBlock = ({ code, language, theme }) => (
+  <Highlight
+    {...defaultProps}
+    theme={theme}
+    code={code.trim()}
+    language={language}
+  >
+    {({ className, style, tokens, getLineProps, getTokenProps }) => (
+      <CodeBlock className={className} style={style}>
+        {tokens.map((line, i) => (
+          <BlockLine {...getLineProps({ line, key: i })}>
+            <LineNumber>{i + 1}</LineNumber>
+            {line.map((token, key) => {
+              const props = getTokenProps({ token, key });
+
+              return <span {...props} />;
+            })}
+          </BlockLine>
+        ))}
+      </CodeBlock>
+    )}
+  </Highlight>
+);
+      `}
+      />
+      <BlogCodeBlock
         width={550}
+        title="data &#x2023; Queries &#x2023; GetBlogCodeBlock.graphql"
         language="graphql"
         code={`
 query {
@@ -152,11 +182,6 @@ export default BlogCodeBlock;
         dolor morbi. Elementum sagittis vitae et leo duis ut. Scelerisque eu
         ultrices vitae auctor.
       </BlogParagraph>
-      <BlogCodeSandboxEmbed
-        src="https://codesandbox.io/embed/308zj3k7l1?autoresize=1&fontsize=14&view=preview"
-        title="3D Snowfall"
-        sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-      />
       <BlogParagraph>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Eu sem integer vitae
@@ -188,9 +213,25 @@ export default BlogCodeBlock;
   </>
 );
 
+// const fontColor = '#31d7f9';
+// const highlightFontColor = 'springgreen';
+// const backgroundColor = '#3b3f45';
+
+// // _app.js level theme variable overrides
+// BlogPage.theme = {
+//   headerNavFontColor: fontColor,
+//   headerNavTextUnderlineColor: highlightFontColor,
+//   headerNavHoverFontColor: highlightFontColor,
+//   headerNavHamburgerIconColor: fontColor,
+//   pageBackgroundColor: backgroundColor,
+//   pageContentFontColor: fontColor,
+//   pageContentLinkHoverColor: highlightFontColor,
+//   blogArticleWidth: 740
+// };
+
 const fontColor = '#31d7f9';
 const highlightFontColor = 'springgreen';
-const backgroundColor = '#3b3f45';
+const backgroundColor = '#202629';
 
 // _app.js level theme variable overrides
 BlogPage.theme = {
