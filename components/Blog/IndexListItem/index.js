@@ -6,7 +6,7 @@ import DateAndDuration from '../DateAndDuration';
 const IndexListItem = ({ title, description, href, date, readTime }) => (
   <BlogItem>
     <header>
-      <Link href={href}>
+      <Link prefetch href={href}>
         <BlogTitle>{title}</BlogTitle>
       </Link>
       <small>
