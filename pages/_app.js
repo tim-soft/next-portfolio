@@ -11,7 +11,7 @@ import {
   animated,
   interpolate
 } from 'react-spring/renderprops.cjs';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import AppTheme from 'components/AppTheme';
 import GlobalStyles from 'components/GlobalStyles';
 import WebsiteLayout from 'layouts/WebsiteLayout';
@@ -46,9 +46,7 @@ class WebApp extends App {
 
     // eslint-disable-next-line no-console
     console.log(
-      `%cThis website was built with React@${
-        React.version
-      } and Next.js@${version}`,
+      `%cThis website was built with React@${React.version} and Next.js@${version}`,
       'color: black; font-size: 18px;'
     );
   }
@@ -106,24 +104,21 @@ class WebApp extends App {
                 translateY,
                 scale
               }) => (
-                <animated.div
+                <AnimatedContainer
                   style={{
                     opacity,
                     transform: interpolate(
                       [translateY, scale],
                       (translateY, scale) =>
-                        `scale(${scale}) translate3d(0, ${translateY}px, 0)`
-                    ),
-                    width: '100%',
-                    overflow: 'hidden',
-                    position: 'absolute'
+                        `scale(${scale}) translateY(${translateY}px)`
+                    )
                   }}
                 >
                   <Component
                     {...pageProps}
                     routeIsAnimating={opacity.value !== 1}
                   />
-                </animated.div>
+                </AnimatedContainer>
               )}
             </Transition>
           </WebsiteLayout>
@@ -136,3 +131,10 @@ class WebApp extends App {
 // Apply Google Analytics to entire app
 // https://github.com/sergiodxa/next-ga
 export default withGA('UA-137363397-1', Router)(WebApp);
+
+const AnimatedContainer = animated(styled.div`
+  will-change: opacity, transform;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+`);

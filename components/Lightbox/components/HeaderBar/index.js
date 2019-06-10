@@ -72,6 +72,7 @@ HeaderBar.propTypes = {
 export default HeaderBar;
 
 const AnimatedContainer = animated(styled.div`
+  will-change: opacity, transform;
   z-index: 10;
   position: absolute;
   top: 0;

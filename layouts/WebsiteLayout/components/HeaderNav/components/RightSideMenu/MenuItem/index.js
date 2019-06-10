@@ -178,6 +178,7 @@ const LinkHeading = styled.h1`
 `;
 
 const AnimatedContainer = animated(styled.div`
+  will-change: opacity, height;
   position: absolute;
   top: 66px;
   width: ${({ width }) => `${width}px`};
