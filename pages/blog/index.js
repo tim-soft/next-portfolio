@@ -36,7 +36,10 @@ const BlogPage = () => {
             <BioMetaContainer>
               <p>
                 A personal blog by{' '}
-                <StyledBlogLink href="/">Tim Ellenberger</StyledBlogLink>.
+                <BlogLink href="/" paragraph>
+                  Tim Ellenberger
+                </BlogLink>
+                .
               </p>
               <p>Building new webs out of the old ones.</p>
             </BioMetaContainer>
@@ -56,7 +59,7 @@ const BlogPage = () => {
 // const fontColor = '#B5B69D';
 // const fontColor = '#aaf0d1'; // Mint Magic
 
-const fontColor = '#2dbad8';
+const fontColor = '#31d7f9';
 const highlightFontColor = 'springgreen';
 const backgroundColor = '#202629';
 
@@ -82,12 +85,6 @@ const BioContainer = styled.aside`
 const BioMetaContainer = styled.div`
   margin: 15px 0 15px 15px;
   font-size: 1.1em;
-`;
-
-const StyledBlogLink = styled(BlogLink)`
-  color: ${({ theme }) => theme.pageContentFontColor};
-  font-weight: normal;
-  font-size: inherit;
 `;
 
 const Title = styled.h1`

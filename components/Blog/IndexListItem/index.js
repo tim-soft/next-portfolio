@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Link from 'next/link';
 import DateAndDuration from '../DateAndDuration';
+import StyledLink from '../BlogLink';
 
 const IndexListItem = ({ title, description, href, date, readTime }) => (
   <BlogItem>
     <header>
-      <Link prefetch href={href}>
+      <StyledLink prefetch href={href} paragraph>
         <BlogTitle>{title}</BlogTitle>
-      </Link>
+      </StyledLink>
       <small>
         <DateAndDuration date={date} readTime={readTime} />
       </small>
@@ -46,11 +46,6 @@ const BlogTitle = styled.h2`
   margin: 13px 0 4px 0;
   font-weight: normal;
   text-decoration: underline;
-  transition: color 0.2s linear;
-  :hover {
-    color: ${({ theme }) => theme.pageContentLinkHoverColor};
-    cursor: pointer;
-  }
 `;
 
 const BlogDescription = styled.p`
