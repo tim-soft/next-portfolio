@@ -89,7 +89,7 @@ export default class IntroBanner extends React.Component {
                 transform: interpolate(
                   [translateY, scale],
                   (translateY, scale) =>
-                    `scale(${scale}) translate3d(0, ${translateY}px, 0)`
+                    `scale(${scale}) translateY(${translateY}px)`
                 )
               }}
             >
@@ -103,8 +103,10 @@ export default class IntroBanner extends React.Component {
           src={imgSrc}
           alt=""
           actual={() => (
-            <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
-              {props => <SpaceBackgroundImg style={props} imgSrc={imgSrc} />}
+            <Spring native from={{ opacity: 0 }} to={{ opacity: 1 }}>
+              {props => (
+                <AnimatedSpaceBackgroundImg style={props} imgSrc={imgSrc} />
+              )}
             </Spring>
           )}
         />
@@ -144,7 +146,7 @@ const BannerContainer = styled.div`
   );
 `;
 
-const SpaceBackgroundImg = styled.div`
+const AnimatedSpaceBackgroundImg = animated(styled.div`
   pointer-events: none;
   position: absolute;
   bottom: 0;
@@ -154,4 +156,4 @@ const SpaceBackgroundImg = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
   background-image: ${({ imgSrc }) => imgSrc};
-`;
+`);
