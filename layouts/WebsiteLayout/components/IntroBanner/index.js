@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Spring, animated, interpolate } from 'react-spring/renderprops.cjs';
 import ParticleField from 'react-particles-webgl';
+import { LazyImage } from 'react-lazy-images';
 import particlesConfig from './particlesConfig';
 
 export default class IntroBanner extends React.Component {
@@ -70,6 +71,10 @@ export default class IntroBanner extends React.Component {
       scale: 1
     };
 
+    const imgSrc = webpSupport
+      ? 'url(/static/IntroBannerBG.webp)'
+      : 'url(/static/IntroBannerBG.png)';
+
     return (
       <BannerContainer>
         <Spring
@@ -78,31 +83,43 @@ export default class IntroBanner extends React.Component {
           to={routeIsAnimating ? from : to}
         >
           {({ opacity, translateY, scale }) => (
-            <animated.div
+            <AnimatedContainer
               style={{
                 opacity,
                 transform: interpolate(
                   [translateY, scale],
                   (translateY, scale) =>
                     `scale(${scale}) translate3d(0, ${translateY}px, 0)`
-                ),
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                height: '100%',
-                width: '100%'
+                )
               }}
             >
               <ParticleField config={particlesConfig} />
-            </animated.div>
+            </AnimatedContainer>
           )}
         </Spring>
 
-        <SpaceBackgroundImg webpSupport={webpSupport} />
+        <LazyImage
+          loadEagerly
+          src={imgSrc}
+          alt=""
+          actual={() => (
+            <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+              {props => <SpaceBackgroundImg style={props} imgSrc={imgSrc} />}
+            </Spring>
+          )}
+        />
       </BannerContainer>
     );
   }
 }
+
+const AnimatedContainer = animated(styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+`);
 
 const BannerContainer = styled.div`
   display: flex;
@@ -136,8 +153,5 @@ const SpaceBackgroundImg = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: ${({ webpSupport }) =>
-    webpSupport
-      ? 'url(/static/IntroBannerBG.webp)'
-      : 'url(/static/IntroBannerBG.png)'};
+  background-image: ${({ imgSrc }) => imgSrc};
 `;
