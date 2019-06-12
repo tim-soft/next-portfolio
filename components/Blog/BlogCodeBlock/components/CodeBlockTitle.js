@@ -3,7 +3,35 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { GoTriangleRight } from 'react-icons/go';
 
-const CodeBlockTitle = ({ title, path }) => (
+const defaultLogoSrc = [
+  {
+    language: 'js',
+    src: '/static/language-logos/javascript.svg'
+  },
+  {
+    language: 'jsx',
+    src: '/static/language-logos/react.svg'
+  },
+  {
+    language: 'json',
+    src: '/static/language-logos/json.svg'
+  },
+  {
+    language: 'graphql',
+    src: '/static/language-logos/graphql.svg'
+  }
+];
+
+// eslint-disable-next-line react/prop-types
+const LanguageLogo = ({ language }) => {
+  const lookupLogo = defaultLogoSrc.find(logo => logo.language === language);
+
+  if (lookupLogo) return <LangLogo src={lookupLogo.src} alt={language} />;
+
+  return null;
+};
+
+const CodeBlockTitle = ({ title, path, language }) => (
   <>
     {title && (
       <CodeTitleContainer>
@@ -27,6 +55,7 @@ const CodeBlockTitle = ({ title, path }) => (
               </span>
             ))}
         </CodeTitle>
+        <LanguageLogo language={language} />
       </CodeTitleContainer>
     )}
   </>
@@ -37,12 +66,14 @@ CodeBlockTitle.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]),
-  path: PropTypes.string
+  path: PropTypes.string,
+  language: PropTypes.string
 };
 
 CodeBlockTitle.defaultProps = {
   title: null,
-  path: null
+  path: null,
+  language: null
 };
 
 export default CodeBlockTitle;
@@ -59,10 +90,17 @@ const CodeTitleContainer = styled.div`
   background-color: rgb(30, 30, 30);
   width: 100%;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px ${({ theme }) => theme.pageContentLinkHoverColor} solid;
   margin: auto;
 `;
 
 const RightTriangleIcon = styled(GoTriangleRight)`
   margin: 0 8px;
+`;
+
+const LangLogo = styled.img`
+  height: 35px;
+  margin: auto 1em;
 `;
