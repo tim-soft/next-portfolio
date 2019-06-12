@@ -3,13 +3,21 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import Scrollbar from 'components/Scrollbar';
-import defaultTheme from './components/vsDarkPlusTheme';
-import splitLineIndent from './components/splitLineIndent';
+import defaultTheme from './utils/vsDarkPlusTheme';
+import splitLineIndent from './utils/splitLineIndent';
 import CodeBlockTitle from './components/CodeBlockTitle';
 
-const BlogCodeBlock = ({ code, language, theme, width, title, path }) => (
+const BlogCodeBlock = ({
+  code,
+  language,
+  theme,
+  width,
+  title,
+  path,
+  showLineNumbers
+}) => (
   <CodeBlockContainer width={width}>
-    <CodeBlockTitle title={title} path={path} />
+    <CodeBlockTitle title={title} path={path} language={language} />
     <StyledScrollbar translateContentSizesToHolder noScrollY width={width}>
       <Highlight
         {...defaultProps}
@@ -25,7 +33,7 @@ const BlogCodeBlock = ({ code, language, theme, width, title, path }) => (
 
               return (
                 <BlockLine {...getLineProps({ line, key: i })}>
-                  <LineNumber>{i + 1}</LineNumber>
+                  {showLineNumbers && <LineNumber>{i + 1}</LineNumber>}
                   {line.map((token, key) => {
                     const props = getTokenProps({ token, key });
 
@@ -70,7 +78,8 @@ BlogCodeBlock.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]),
-  path: PropTypes.string
+  path: PropTypes.string,
+  showLineNumbers: PropTypes.bool
 };
 
 BlogCodeBlock.defaultProps = {
@@ -78,7 +87,8 @@ BlogCodeBlock.defaultProps = {
   width: null,
   theme: null,
   title: null,
-  path: null
+  path: null,
+  showLineNumbers: true
 };
 
 export default BlogCodeBlock;
@@ -104,7 +114,7 @@ const LineNumber = styled.span`
 
 const BlockLine = styled.div`
   line-height: 1.3em;
-  height: 1.3em;
+  /* height: 1.3em; */
   transition: padding 0.1s ease-in-out;
   :hover {
     padding: 4px 0;
