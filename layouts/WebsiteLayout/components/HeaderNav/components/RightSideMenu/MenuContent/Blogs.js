@@ -96,5 +96,5 @@ const PostLogo = styled.img`
   /* width: 100%;
   height: auto; */
   max-height: 68px;
-  border-radius: 100px;
+  /* border-radius: 100px; */
 `;
