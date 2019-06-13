@@ -27,9 +27,9 @@ export default {
     transparency: 0.5,
     shape: 'circle',
     boundingBox: 'canvas',
-    count: 900,
+    count: 1000,
     minSize: 3,
-    maxSize: 40,
+    maxSize: 32,
     visible: true
   },
   cameraControls: {
