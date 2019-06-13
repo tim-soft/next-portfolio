@@ -6,11 +6,7 @@ import { version } from 'next/package.json';
 import Router from 'next/router';
 import withGA from 'next-ga';
 import NextSeo from 'next-seo';
-import {
-  Transition,
-  animated,
-  interpolate
-} from 'react-spring/renderprops.cjs';
+import { Transition, animated } from 'react-spring/renderprops.cjs';
 import styled, { ThemeProvider } from 'styled-components';
 import AppTheme from 'components/AppTheme';
 import GlobalStyles from 'components/GlobalStyles';
@@ -31,6 +27,11 @@ class WebApp extends App {
     pageProps: PropTypes.object.isRequired
   };
 
+  state = {
+    initialPageLoad: true,
+    routeIsAnimating: true
+  };
+
   componentDidMount() {
     // eslint-disable-next-line no-console
     console.log(
@@ -39,19 +40,17 @@ class WebApp extends App {
     );
 
     // eslint-disable-next-line no-console
-    console.log(
-      '%cGreetings!',
-      'color: green; font-size: 35px; font-family: monospace;'
-    );
+    console.log('%cGreetings!', 'font-size: 20px;');
 
     // eslint-disable-next-line no-console
     console.log(
-      `%cThis website was built with React@${React.version} and Next.js@${version}`,
-      'color: black; font-size: 18px;'
+      `%cThis web app was built with React@${React.version} and Next.js@${version}`,
+      'font-size: 17px;'
     );
   }
 
   render() {
+    const { routeIsAnimating, initialPageLoad } = this.state;
     const { Component, pageProps } = this.props;
 
     const items = [
@@ -82,41 +81,29 @@ class WebApp extends App {
               unique
               items={items}
               keys={items => items.id}
-              initial={{ opacity: 1 }}
-              from={{
-                opacity: 0,
-                translateY: -200,
-                scale: 0.9
-              }}
-              enter={{
-                opacity: 1,
-                translateY: 0,
-                scale: 1
-              }}
-              leave={{
-                opacity: 0,
-                translateY: -200,
-                scale: 0.9
-              }}
+              initial={{ opacity: 1, transform: 'scale(1) translateY(0)' }}
+              from={{ opacity: 0, transform: 'scale(0.9) translateY(-200px)' }}
+              enter={{ opacity: 1, transform: 'scale(1) translateY(0)' }}
+              leave={{ opacity: 0, transform: 'scale(0.9) translateY(-200px)' }}
+              onDestroyed={() =>
+                this.setState({
+                  routeIsAnimating: false,
+                  initialPageLoad: false
+                })
+              }
+              onStart={() =>
+                this.setState({
+                  routeIsAnimating: true
+                })
+              }
             >
-              {({ Component, pageProps }) => ({
-                opacity,
-                translateY,
-                scale
-              }) => (
-                <AnimatedContainer
-                  style={{
-                    opacity,
-                    transform: interpolate(
-                      [translateY, scale],
-                      (translateY, scale) =>
-                        `scale(${scale}) translateY(${translateY}px)`
-                    )
-                  }}
-                >
+              {({ Component, pageProps }) => animStyles => (
+                <AnimatedContainer style={animStyles}>
                   <Component
                     {...pageProps}
-                    routeIsAnimating={opacity.value !== 1}
+                    routeIsAnimating={
+                      initialPageLoad ? false : routeIsAnimating
+                    }
                   />
                 </AnimatedContainer>
               )}
