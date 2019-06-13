@@ -7,6 +7,36 @@ const theme = {
     backgroundColor: '#1e1e1e'
   },
   styles: [
+    /* CSS Edits Start */
+    {
+      types: ['rule'],
+      languages: ['css'],
+      style: {
+        color: 'rgb(197, 134, 192)'
+      }
+    },
+    {
+      types: ['property'],
+      style: {
+        color: 'rgb(156, 220, 254)'
+      }
+    },
+    {
+      types: ['atrule'],
+      languages: ['css'],
+      style: {
+        color: 'rgb(181, 206, 168)'
+      }
+    },
+    {
+      types: ['class'],
+      languages: ['css'],
+      style: {
+        color: 'rgb(181, 206, 168)'
+      }
+    },
+    /* CSS Edits End */
+
     {
       types: ['prolog'],
       style: {

@@ -19,6 +19,10 @@ const defaultLogoSrc = [
   {
     language: 'graphql',
     src: '/static/language-logos/graphql.svg'
+  },
+  {
+    language: 'css',
+    src: '/static/language-logos/css.svg'
   }
 ];
 
