@@ -87,7 +87,11 @@ export default class IntroBanner extends React.Component {
           src={imgSrc}
           alt=""
           actual={() => (
-            <Spring native from={{ opacity: 0 }} to={{ opacity: 1 }}>
+            <Spring
+              native
+              from={{ opacity: 0, transform: 'translateY(100%)' }}
+              to={{ opacity: 1, transform: 'translateY(0px)' }}
+            >
               {props => (
                 <AnimatedSpaceBackgroundImg style={props} imgSrc={imgSrc} />
               )}
