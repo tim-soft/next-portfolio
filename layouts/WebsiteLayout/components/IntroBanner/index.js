@@ -58,10 +58,10 @@ export default class IntroBanner extends React.Component {
     const { routeIsAnimating } = this.props;
 
     // Starting position of stars
-    const from = { transform: 'scale(0)' };
+    const from = { opacity: 0, transform: 'scale(0)' };
 
     // Expand starfield to fill background
-    const to = { transform: 'scale(1)' };
+    const to = { opacity: 1, transform: 'scale(1)' };
 
     const imgSrc = webpSupport
       ? 'url(/static/IntroBannerBG.webp)'
