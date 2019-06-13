@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Spring, animated, interpolate } from 'react-spring/renderprops.cjs';
+import { Spring, animated, config } from 'react-spring/renderprops.cjs';
 import ParticleField from 'react-particles-webgl';
 import { LazyImage } from 'react-lazy-images';
 import particlesConfig from './particlesConfig';
@@ -58,18 +58,10 @@ export default class IntroBanner extends React.Component {
     const { routeIsAnimating } = this.props;
 
     // Starting position of stars
-    const from = {
-      opacity: 0,
-      translateY: 0,
-      scale: 0.5
-    };
+    const from = { transform: 'scale(0)' };
 
     // Expand starfield to fill background
-    const to = {
-      opacity: 1,
-      translateY: 1,
-      scale: 1
-    };
+    const to = { transform: 'scale(1)' };
 
     const imgSrc = webpSupport
       ? 'url(/static/IntroBannerBG.webp)'
@@ -81,18 +73,10 @@ export default class IntroBanner extends React.Component {
           native
           from={routeIsAnimating ? to : from}
           to={routeIsAnimating ? from : to}
+          config={config.slow}
         >
-          {({ opacity, translateY, scale }) => (
-            <AnimatedContainer
-              style={{
-                opacity,
-                transform: interpolate(
-                  [translateY, scale],
-                  (translateY, scale) =>
-                    `scale(${scale}) translateY(${translateY}px)`
-                )
-              }}
-            >
+          {animStyles => (
+            <AnimatedContainer style={animStyles}>
               <ParticleField config={particlesConfig} />
             </AnimatedContainer>
           )}
