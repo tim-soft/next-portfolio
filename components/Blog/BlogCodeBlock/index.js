@@ -53,7 +53,7 @@ const BlogCodeBlock = ({
                       props.className += ' js-darkblue';
                     }
 
-                    return <span {...props} />;
+                    return <Token {...props} />;
                   })}
                 </BlockLine>
               );
@@ -112,23 +112,25 @@ const LineNumber = styled.span`
   opacity: 0.5;
 `;
 
+const Token = styled.span`
+  transition: unset;
+`;
+
 const BlockLine = styled.div`
   line-height: 1.3em;
-  /* height: 1.3em; */
   transition: padding 100ms ease-in-out;
-  .token {
-    transition: unset;
-  }
   :hover {
     padding: 4px 0;
+    border-top: 1px ${({ theme }) => theme.pageContentLinkHoverColor} dotted;
+    border-bottom: 1px ${({ theme }) => theme.pageContentLinkHoverColor} dotted;
     ${LineNumber} {
       color: white;
       opacity: 1;
     }
-    border-top: 1px ${({ theme }) => theme.pageContentLinkHoverColor} dotted;
-    border-bottom: 1px ${({ theme }) => theme.pageContentLinkHoverColor} dotted;
-    .token:not(.whitespace) {
-      background-color: darkmagenta;
+    ${Token} {
+      :not(.whitespace) {
+        background-color: darkmagenta;
+      }
     }
   }
   * ::selection {
