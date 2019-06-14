@@ -15,4 +15,8 @@ export default createGlobalStyle`
     font-family: 'Montserrat', sans-serif;
     text-size-adjust: 100%;
   }
+  * {
+      transition: all 0.2s linear;
+      transition-property: background-color, border-color;
+  }
 `;

@@ -11,6 +11,8 @@ export default {
   headerNavTextUnderlineColor: 'cyan',
   headerNavHamburgerIconColor: 'white',
   headerNavMobileMenuFontColor: 'white',
+  // UI colors
+  popoutMenuBorderColor: 'black',
   // Page colors
   pageBackgroundColor: '#9e9e9e',
   pageContentFontColor: 'black',

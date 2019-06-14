@@ -26,10 +26,8 @@ export const MenuListItem = styled.li`
   padding: 15px;
   overflow: hidden;
   border-bottom-style: solid;
-  border-bottom-color: black;
+  border-color: ${({ theme }) => theme.popoutMenuBorderColor};
   border-bottom-width: 1px;
-  transition: all 0.3s linear;
-  transition-property: color, background-color;
   :hover {
     color: ${({ theme }) => theme.pageContentLinkHoverColor};
     background-color: ${({ theme }) => {

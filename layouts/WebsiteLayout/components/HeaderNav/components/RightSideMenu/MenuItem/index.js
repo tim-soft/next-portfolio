@@ -189,10 +189,9 @@ const AnimatedContainer = animated(styled.div`
   flex-direction: column;
   overflow: hidden;
   border-radius: 2%;
-  border-color: black;
+  border-color: ${({ theme }) => theme.popoutMenuBorderColor};
   border-width: 1px;
   border-style: solid;
-  transition: background-color 0.3s linear;
   background-color: ${({ theme }) => {
     // Calculate a hover color lighter or darker than background
     // based on how bright the background color is
