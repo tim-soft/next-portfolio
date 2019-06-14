@@ -34,14 +34,16 @@ BlogLink.propTypes = {
   className: PropTypes.string,
   inverted: PropTypes.bool,
   paragraph: PropTypes.bool,
-  prefetch: PropTypes.bool
+  prefetch: PropTypes.bool,
+  noWrap: PropTypes.bool
 };
 
 BlogLink.defaultProps = {
   className: null,
   inverted: true,
   paragraph: null,
-  prefetch: false
+  prefetch: false,
+  noWrap: false
 };
 
 export default BlogLink;
@@ -59,6 +61,7 @@ const StyledLink = styled.a`
     color: ${({ theme, inverted }) =>
       inverted ? theme.pageContentFontColor : theme.pageContentLinkHoverColor};
   }
+  ${({ noWrap }) => noWrap && `white-space: nowrap;`}
   ${({ paragraph }) =>
     paragraph &&
     css`
