@@ -214,7 +214,9 @@ const AnimatedContainer = styled(animated.div)`
   flex-direction: column;
   overflow: hidden;
   border-radius: 2%;
-  border: 1px black solid;
+  border-width: 1px;
+  border-color: ${({ theme }) => theme.popoutMenuBorderColor};
+  border-style: solid;
   background-color: #1a1a1aba;
   /* Viewport Height - body margin - border width */
   max-height: calc(100vh - 15px - 2px);
