@@ -115,7 +115,10 @@ const LineNumber = styled.span`
 const BlockLine = styled.div`
   line-height: 1.3em;
   /* height: 1.3em; */
-  transition: padding 0.1s ease-in-out;
+  transition: padding 100ms ease-in-out;
+  .token {
+    transition: unset;
+  }
   :hover {
     padding: 4px 0;
     ${LineNumber} {
@@ -125,7 +128,7 @@ const BlockLine = styled.div`
     border-top: 1px ${({ theme }) => theme.pageContentLinkHoverColor} dotted;
     border-bottom: 1px ${({ theme }) => theme.pageContentLinkHoverColor} dotted;
     .token:not(.whitespace) {
-      background: darkmagenta;
+      background-color: darkmagenta;
     }
   }
   * ::selection {
