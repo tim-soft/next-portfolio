@@ -12,7 +12,9 @@ const BlogArticleContainer = ({ children, width }) => (
           <BlogArticleBanner />
           <BlogNavigation />
         </header>
+        <HorizontalRule />
         {children}
+        <HorizontalRule />
         <BlogNavigation />
       </article>
     </Container>
@@ -32,6 +34,19 @@ BlogArticleContainer.defaultProps = {
 };
 
 export default BlogArticleContainer;
+
+const HorizontalRule = styled.hr`
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    ${({ theme }) => theme.pageContentFontColor},
+    rgba(0, 0, 0, 0)
+  );
+  /* background-color: ${({ theme }) => theme.pageContentFontColor}; */
+  margin: 2em 0;
+`;
 
 const Container = styled.main`
   color: ${({ theme }) => theme.pageContentFontColor};
