@@ -2,10 +2,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Spring, animated, config } from 'react-spring/renderprops.cjs';
-import ParticleField from 'react-particles-webgl';
+import { Spring, animated, config } from 'react-spring';
 import { LazyImage } from 'react-lazy-images';
+import dynamic from 'next/dynamic';
 import particlesConfig from './particlesConfig';
+
+// Only import ParticleField on the client-side
+const DynamicParticleField = dynamic(import('react-particles-webgl'), {
+  ssr: false
+});
 
 export default class IntroBanner extends React.Component {
   static propTypes = {
@@ -77,7 +82,7 @@ export default class IntroBanner extends React.Component {
         >
           {animStyles => (
             <AnimatedContainer style={animStyles}>
-              <ParticleField config={particlesConfig} />
+              <DynamicParticleField config={particlesConfig} />
             </AnimatedContainer>
           )}
         </Spring>

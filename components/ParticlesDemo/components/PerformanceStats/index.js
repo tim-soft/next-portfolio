@@ -12,10 +12,9 @@ import styled from 'styled-components';
 class FPSStats extends Component {
   constructor(props) {
     super(props);
-    const currentTime = performance.now();
     this.state = {
       frames: 0,
-      prevTime: currentTime,
+      prevTime: 0,
       fps: []
     };
   }

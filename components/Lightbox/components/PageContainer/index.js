@@ -2,11 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {
-  Transition,
-  animated,
-  interpolate
-} from 'react-spring/renderprops.cjs';
+import { Transition, animated, interpolate } from 'react-spring';
 
 const Page = ({ children, isOpen }) => (
   <Transition

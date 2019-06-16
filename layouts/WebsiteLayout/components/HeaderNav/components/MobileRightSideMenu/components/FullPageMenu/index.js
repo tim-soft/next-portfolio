@@ -1,16 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Spring } from 'react-spring/renderprops.cjs';
+import { Spring, animated, interpolate } from 'react-spring';
 import Link from 'next/link';
 import { GoMarkGithub, GoMail } from 'react-icons/go';
 import Scrollbar from 'components/Scrollbar';
 import StyledLink from '../../../StyledLink';
 
 const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
-  <Spring to={{ opacity: menuIsOpen ? 1 : 0 }}>
+  <Spring native to={{ opacity: menuIsOpen ? 1 : 0 }}>
     {({ opacity }) => (
-      <MenuContainer opacity={opacity}>
+      <MenuContainer
+        style={{
+          opacity,
+          display: interpolate([opacity], x => (x === 0 ? 'none' : 'flex'))
+        }}
+      >
         <StyledScrollbar
           contentProps={{
             // eslint-disable-next-line react/prop-types
@@ -104,13 +109,7 @@ const StyledScrollbar = styled(Scrollbar)`
   height: calc(100% - 90px) !important;
 `;
 
-const MenuContainer = styled.div.attrs(({ opacity }) => ({
-  style: {
-    opacity,
-    // If mobile menu is closed, remove from DOM
-    ...(opacity === 0 && { display: 'none' })
-  }
-}))`
+const MenuContainer = animated(styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -122,7 +121,7 @@ const MenuContainer = styled.div.attrs(({ opacity }) => ({
   justify-content: flex-end;
   align-items: center;
   flex-direction: column;
-`;
+`);
 
 const MobileStyledLink = styled(StyledLink)`
   margin: 20px 20px;

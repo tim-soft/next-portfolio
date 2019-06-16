@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
-import { Transition, animated } from 'react-spring/renderprops.cjs';
+import { Transition, animated } from 'react-spring';
 import { GoMarkGithub } from 'react-icons/go';
 import StyledLogo from '../StyledLink';
 

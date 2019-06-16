@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import { Transition, animated } from 'react-spring/renderprops.cjs';
+import { Transition, animated } from 'react-spring';
 import ButtonControl from '../../../ButtonControl';
 
 const ArrowButton = ({ position, onClick, disabled, controlsAreHidden }) => {

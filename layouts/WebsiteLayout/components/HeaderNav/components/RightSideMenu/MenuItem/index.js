@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { Transition, animated } from 'react-spring/renderprops.cjs';
+import { Transition, animated } from 'react-spring';
 import Scrollbar from 'components/Scrollbar';
 import Color from 'color';
 import { FiChevronDown } from 'react-icons/fi';

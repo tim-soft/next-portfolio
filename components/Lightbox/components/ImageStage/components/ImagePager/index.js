@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Gesture } from '@tim-soft/react-with-gesture';
-import { Spring, animated } from 'react-spring/renderprops.cjs';
+import { Spring, animated } from 'react-spring';
 
 class ImagePager extends React.Component {
   static propTypes = {

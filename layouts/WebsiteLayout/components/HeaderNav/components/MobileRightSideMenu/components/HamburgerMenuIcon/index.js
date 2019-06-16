@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
-import { Spring, config } from 'react-spring/renderprops.cjs';
+import { Spring, config, animated, interpolate } from 'react-spring';
 
 const HamburgerMenuIcon = ({ menuIsOpen, toggleMenu, theme }) => (
   <StyledSVG viewBox="0 0 96 96" height="2em" onClick={() => toggleMenu()}>
     <Spring
+      native
       to={{
         x: menuIsOpen ? 1 : 0,
         y: menuIsOpen ? 0 : 1,
@@ -16,7 +17,7 @@ const HamburgerMenuIcon = ({ menuIsOpen, toggleMenu, theme }) => (
       config={config.wobbly}
     >
       {({ x, y, strokeColor }) => (
-        <g
+        <animated.g
           id="navicon"
           fill="none"
           stroke={strokeColor}
@@ -24,31 +25,39 @@ const HamburgerMenuIcon = ({ menuIsOpen, toggleMenu, theme }) => (
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <line
-            transform={`translate(${x * 12}, ${x * -7}) rotate(${x *
-              45}, 7, 26)`}
+          <animated.line
+            transform={interpolate(
+              [x],
+              xCoord =>
+                `translate(${xCoord * 12}, ${xCoord * -7}) rotate(${xCoord *
+                  45}, 7, 26)`
+            )}
             x1="7"
             y1="26"
             x2="89"
             y2="26"
           />
-          <line
-            transform={`translate(${x * 12}, ${x * 7}) rotate(${x *
-              -45}, 7, 70)`}
+          <animated.line
+            transform={interpolate(
+              [x],
+              xCoord =>
+                `translate(${xCoord * 12}, ${xCoord * 7}) rotate(${xCoord *
+                  -45}, 7, 70)`
+            )}
             x1="7"
             y1="70"
             x2="89"
             y2="70"
           />
-          <line
-            transform={`translate(${x * -96})`}
+          <animated.line
+            transform={interpolate([x], xCoord => `translate(${xCoord * -96})`)}
             opacity={y}
             x1="7"
             y1="48"
             x2="89"
             y2="48"
           />
-        </g>
+        </animated.g>
       )}
     </Spring>
   </StyledSVG>

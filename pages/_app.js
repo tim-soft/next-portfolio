@@ -6,7 +6,7 @@ import { version } from 'next/package.json';
 import Router from 'next/router';
 import withGA from 'next-ga';
 import NextSeo from 'next-seo';
-import { Transition, animated } from 'react-spring/renderprops.cjs';
+import { Transition, animated } from 'react-spring';
 import styled, { ThemeProvider } from 'styled-components';
 import AppTheme from 'components/AppTheme';
 import GlobalStyles from 'components/GlobalStyles';
@@ -27,11 +27,6 @@ class WebApp extends App {
     pageProps: PropTypes.object.isRequired
   };
 
-  state = {
-    initialPageLoad: true,
-    routeIsAnimating: true
-  };
-
   componentDidMount() {
     // eslint-disable-next-line no-console
     console.log(
@@ -50,7 +45,6 @@ class WebApp extends App {
   }
 
   render() {
-    const { routeIsAnimating, initialPageLoad } = this.state;
     const { Component, pageProps } = this.props;
 
     const items = [
@@ -81,29 +75,16 @@ class WebApp extends App {
               unique
               items={items}
               keys={items => items.id}
-              initial={{ opacity: 1, transform: 'scale(1) translateY(0)' }}
+              initial={{ opacity: 1, transform: 'scale(1) translateY(0px)' }}
               from={{ opacity: 0, transform: 'scale(0.9) translateY(-200px)' }}
-              enter={{ opacity: 1, transform: 'scale(1) translateY(0)' }}
+              enter={{ opacity: 1, transform: 'scale(1) translateY(0px)' }}
               leave={{ opacity: 0, transform: 'scale(0.9) translateY(-200px)' }}
-              onDestroyed={() =>
-                this.setState({
-                  routeIsAnimating: false,
-                  initialPageLoad: false
-                })
-              }
-              onStart={() =>
-                this.setState({
-                  routeIsAnimating: true
-                })
-              }
             >
-              {({ Component, pageProps }) => animStyles => (
-                <AnimatedContainer style={animStyles}>
+              {({ Component, pageProps }) => ({ opacity, transform }) => (
+                <AnimatedContainer style={{ opacity, transform }}>
                   <Component
                     {...pageProps}
-                    routeIsAnimating={
-                      initialPageLoad ? false : routeIsAnimating
-                    }
+                    routeIsAnimating={opacity.value !== 1}
                   />
                 </AnimatedContainer>
               )}
