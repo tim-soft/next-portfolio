@@ -68,4 +68,8 @@ const NavContainer = styled.nav`
 
 const NavLink = styled(BlogLink)`
   width: 45%;
+  text-decoration: none;
+  ::first-line {
+    text-decoration: overline;
+  }
 `;
