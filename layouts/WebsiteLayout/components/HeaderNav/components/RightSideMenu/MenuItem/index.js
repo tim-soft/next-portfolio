@@ -49,7 +49,15 @@ class MenuItem extends React.Component {
   }
 
   componentDidMount() {
+    // Measure the initial screen width to calculate menu offsets
     this.calculateRightOffestForMenu();
+
+    // If the screen size changes, recalculate menu offsets
+    window.addEventListener('resize', this.calculateRightOffestForMenu);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.calculateRightOffestForMenu);
   }
 
   calculateRightOffestForMenu = () => {
