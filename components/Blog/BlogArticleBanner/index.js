@@ -71,4 +71,5 @@ const Title = styled.h1`
 const PublishDate = styled.h4`
   font-weight: normal;
   margin-top: 3px;
+  margin-bottom: 1em;
 `;
