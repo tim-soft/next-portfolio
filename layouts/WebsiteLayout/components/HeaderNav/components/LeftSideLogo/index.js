@@ -158,7 +158,7 @@ const SubheadingContainer = styled.div`
   justify-content: space-between;
   font-size: 16px;
   margin: 0;
-  padding: 0 12px;
+  padding: 2px 12px 0 12px;
   transition: color 0.2s linear;
   color: ${({ theme, menuIsOpen, isHovering }) => {
     if (menuIsOpen) return theme.headerNavMobileMenuFontColor;
@@ -222,7 +222,7 @@ const AnimatedContainer = styled(animated.div)`
   max-height: calc(100vh - 15px - 2px);
   @media (max-width: 420px) {
     width: calc(100% - 10px);
-    border-radius: 0;
+    border: none;
     max-height: 100vh;
   }
 `;
@@ -244,8 +244,11 @@ const LogoProfileContainer = styled.main`
     ${Logo} {
       align-self: flex-start;
     }
+    ${SubheadingContainer} {
+      padding: 4px 6px 0 6px;
+    }
     ${LogoProfile} {
-      max-width: 256px;
+      width: auto;
       padding: 15px 5px;
     }
     ${AnimatedContainer} {

@@ -116,7 +116,7 @@ const MenuContainer = styled.div.attrs(({ opacity }) => ({
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 10;
+  z-index: -1;
   background: #1d1e1f;
   display: flex;
   justify-content: flex-end;
