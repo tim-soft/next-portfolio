@@ -21,7 +21,7 @@ export default {
   blogArticleWidth: 700,
   // Media Query Breakpoints
   breakpoints: {
-    mobileNav: 'min-width: 1060px',
-    desktopNav: 'max-width: 1061px'
+    mobileNav: 'min-width: 1061px',
+    desktopNav: 'max-width: 1060px'
   }
 };
