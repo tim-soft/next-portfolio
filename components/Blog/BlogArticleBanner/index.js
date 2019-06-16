@@ -54,7 +54,7 @@ const StyledBlogLink = styled(BlogLink)`
   position: absolute;
   right: 0;
   top: 15px;
-  text-decoration: overline;
+  text-decoration: none;
 `;
 
 const AvatarImage = styled.img`

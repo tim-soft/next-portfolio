@@ -61,7 +61,7 @@ const NavContainer = styled.nav`
   width: 100%;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   margin: 1em 0;
 `;
@@ -69,7 +69,4 @@ const NavContainer = styled.nav`
 const NavLink = styled(BlogLink)`
   width: 45%;
   text-decoration: none;
-  ::first-line {
-    text-decoration: overline;
-  }
 `;
