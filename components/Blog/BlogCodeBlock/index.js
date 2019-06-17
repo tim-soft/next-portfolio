@@ -18,7 +18,7 @@ const BlogCodeBlock = ({
 }) => (
   <CodeBlockContainer width={width}>
     <CodeBlockTitle title={title} path={path} language={language} />
-    <StyledScrollbar translateContentSizesToHolder noScrollY width={width}>
+    <StyledScrollbar translateContentSizesToHolder noScrollY>
       <Highlight
         {...defaultProps}
         theme={theme || defaultTheme}
@@ -98,11 +98,19 @@ const CodeBlockContainer = styled.div`
   width: 100%;
   max-width: ${({ theme, width }) =>
     width || theme.blogArticleWidth}px !important;
+  overflow: hidden;
+  border-radius: 4px;
 `;
 
 const StyledScrollbar = styled(Scrollbar)`
   width: 100% !important;
   margin: 0 auto;
+  .ScrollbarsCustom-Wrapper {
+    display: contents;
+  }
+  .ScrollbarsCustom-Scroller {
+    position: relative !important;
+  }
 `;
 
 const LineNumber = styled.span`
@@ -160,7 +168,7 @@ const CodeBlock = styled.pre`
   }};
   text-align: left;
   margin: 0;
-  padding: 1em;
+  padding: 1em 1em 1.5em 1em;
   font-size: 1.05em;
   cursor: text;
 `;
