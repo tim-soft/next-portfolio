@@ -34,38 +34,28 @@ const BlogData = [
     date: 'Mon May 3 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
   },
   {
-    href: '/blog/test-blog-entry-3',
-    title: 'Test Blog Entry 3',
-    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Eu sem integer vitae
-  justo eget magna fermentum iaculis. Tristique senectus et netus et
-  malesuada fames ac turpis egestas. Elit eget gravida cum sociis natoque
-  penatibus et magnis dis.`,
-    logo: '/static/avatar.png',
-    readTime: 15,
+    href: '/blog/operating-system-dark-mode-in-your-css',
+    title: 'Dark Mode: OS Level Control In Your CSS',
+    description: `Light/Dark mode via @media(prefers-color-scheme: dark)`,
+    logo: '/static/language-logos/css.svg',
+    readTime: 3,
     date: 'Mon May 5 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
   },
   {
-    href: '/blog/test-blog-entry-4',
-    title: 'Test Blog Entry 4',
-    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Eu sem integer vitae
-  justo eget magna fermentum iaculis. Tristique senectus et netus et
-  malesuada fames ac turpis egestas. Elit eget gravida cum sociis natoque
-  penatibus et magnis dis.`,
-    logo: '/static/avatar.png',
-    readTime: 35,
+    href: '/blog/pretty-printing-javascript-object-literals',
+    title: 'Pretty Printing Javascript Object Literals',
+    description: `Pretty printing javascript objects as JSON has always been 
+    trivial with JSON.stringify(), but what if you wanted to print the object 
+    as it appears in your code editor?`,
+    logo: '/static/language-logos/javascript.svg',
+    readTime: 5,
     date: 'Mon May 7 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
   },
   {
-    href: '/blog/test-blog-entry-5',
-    title: 'Test Blog Entry 5',
-    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Eu sem integer vitae
-  justo eget magna fermentum iaculis. Tristique senectus et netus et
-  malesuada fames ac turpis egestas. Elit eget gravida cum sociis natoque
-  penatibus et magnis dis.`,
-    logo: '/static/avatar.png',
+    href: '/blog/building-react-code-blocks-with-prism',
+    title: 'Building React Code Blocks with PrismJS',
+    description: `Easily reusable syntax highlighted code blocks as React components`,
+    logo: '/static/blog-logos/prismjs.svg',
     readTime: 13,
     date: 'Mon May 9 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
   }

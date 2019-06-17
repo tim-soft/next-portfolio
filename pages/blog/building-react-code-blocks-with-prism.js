@@ -3,7 +3,8 @@ import NextSEO, { BlogJsonLd } from 'next-seo';
 import {
   BlogParagraph,
   BlogCodeBlock,
-  BlogArticleContainer
+  BlogArticleContainer,
+  BlogLink
 } from 'components/Blog';
 
 const BlogPage = () => (
@@ -27,17 +28,34 @@ const BlogPage = () => (
     />
     <BlogArticleContainer>
       <BlogParagraph>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Eu sem integer vitae
-        justo eget magna fermentum iaculis. Tristique senectus et netus et
-        malesuada fames ac turpis egestas. Elit eget gravida cum sociis natoque
-        penatibus et magnis dis. Faucibus a pellentesque sit amet porttitor eget
-        dolor morbi. Elementum sagittis vitae et leo duis ut. Scelerisque eu
-        ultrices vitae auctor.
+        Code snippets without syntax highlighting are unsightly.
+      </BlogParagraph>
+      <BlogParagraph>
+        VS Code and its&apos; default theme Dark+ has gained a lot of
+        familiarity in the development community.
+      </BlogParagraph>
+      <BlogParagraph>
+        A project called{' '}
+        <BlogLink href="https://github.com/PrismJS/prism" paragraph>
+          PrismJS
+        </BlogLink>{' '}
+        for syntax highlighting{' '}
+      </BlogParagraph>
+      <BlogParagraph>
+        Another project succinctly named{' '}
+        <BlogLink
+          href="https://github.com/FormidableLabs/prism-react-renderer"
+          paragraph
+        >
+          prism-react-renderer
+        </BlogLink>{' '}
+        which enables us to manipulate the PrismJS syntax highlighted output as
+        well as add extraneous react components into the code blocks. Moreover,
+        a theme object may be passed as a prop to further control the syntax
+        highlighting.
       </BlogParagraph>
       <BlogCodeBlock
         language="jsx"
-        title="This is a test"
         path="/components/Blog/BlogCodeBlock.js"
         code={`
 const BlogCodeBlock = ({ code, language, theme }) => (
@@ -67,7 +85,7 @@ const BlogCodeBlock = ({ code, language, theme }) => (
       />
       <BlogCodeBlock
         width={550}
-        title="data &#x2023; Queries &#x2023; GetBlogCodeBlock.graphql"
+        path="/data/GraphQL/GetBlogCodeBlock.graphql"
         language="graphql"
         code={`
 query {
@@ -81,6 +99,7 @@ query {
       />
       <BlogCodeBlock
         language="jsx"
+        path="/components/Blog/BlogCodeBlock.js"
         code={`
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -242,6 +261,7 @@ BlogPage.theme = {
   pageBackgroundColor: backgroundColor,
   pageContentFontColor: fontColor,
   pageContentLinkHoverColor: highlightFontColor,
+  popoutMenuBorderColor: fontColor,
   blogArticleWidth: 740
 };
 
