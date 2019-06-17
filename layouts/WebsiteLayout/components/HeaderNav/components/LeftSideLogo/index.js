@@ -58,7 +58,7 @@ class LeftSideLogo extends React.Component {
         <Transition
           native
           items={(showBio && !menuIsOpen) || isHovering}
-          initial={{ opacity: 0, height: '0px' }}
+          initial={{ opacity: 1, height: '500px' }}
           from={{ opacity: 0, height: '0px' }}
           enter={{ opacity: 1, height: '500px' }}
           leave={{ opacity: 0, height: '0px' }}
