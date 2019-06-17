@@ -44,7 +44,7 @@ const nextConfig = {
       // Always pull images from cache if available
       {
         urlPattern: /.*\.(?:png|jpg|jpeg|svg|gif|webp|ico)/,
-        handler: 'cacheFirst',
+        handler: 'CacheFirst',
         options: {
           cacheName: 'image-cache',
           cacheableResponse: {
@@ -55,7 +55,7 @@ const nextConfig = {
       // Cache all other secure content, but try to fetch from network first
       {
         urlPattern: /^https?.*/,
-        handler: 'networkFirst',
+        handler: 'NetworkFirst',
         options: {
           cacheName: 'https-calls',
           networkTimeoutSeconds: 15,
