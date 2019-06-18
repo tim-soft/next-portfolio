@@ -22,14 +22,12 @@ const BlogData = [
     date: 'Mon May 1 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
   },
   {
-    href: '/blog/test-blog-entry-2',
-    title: 'Test Blog Entry 2',
-    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Eu sem integer vitae
-  justo eget magna fermentum iaculis. Tristique senectus et netus et
-  malesuada fames ac turpis egestas. Elit eget gravida cum sociis natoque
-  penatibus et magnis dis.`,
-    logo: '/static/avatar.png',
+    href: '/blog/react-always-throw-away-your-event-listeners',
+    title: 'Always Throw Away Your Event Listeners',
+    description: `Unlike your React components, the event listeners they've created 
+    don't magically disappear after their UI unmounts from the DOM. Undisposed event 
+    listeners will linger in your browser to haunt future components.`,
+    logo: '/static/language-logos/react.svg',
     readTime: 25,
     date: 'Mon May 3 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
   },
@@ -44,8 +42,7 @@ const BlogData = [
   {
     href: '/blog/pretty-printing-javascript-object-literals',
     title: 'Pretty Printing Javascript Object Literals',
-    description: `Pretty printing javascript objects as JSON has always been 
-    trivial with JSON.stringify(), but what if you wanted to print the object 
+    description: `Pretty printing javascript objects as JSON is easy, but what if you wanted to print the object 
     as it appears in your code editor?`,
     logo: '/static/language-logos/javascript.svg',
     readTime: 5,

@@ -71,7 +71,8 @@ BlogPage.theme = {
   headerNavHamburgerIconColor: fontColor,
   pageBackgroundColor: backgroundColor,
   pageContentFontColor: fontColor,
-  pageContentLinkHoverColor: highlightFontColor
+  pageContentLinkHoverColor: highlightFontColor,
+  blogArticleWidth: 650
 };
 
 export default BlogPage;
