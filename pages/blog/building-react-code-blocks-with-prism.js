@@ -1,9 +1,11 @@
 import React from 'react';
 import NextSEO, { BlogJsonLd } from 'next-seo';
-import dynamic from 'next/dynamic';
-import { BlogParagraph, BlogArticleContainer, BlogLink } from 'components/Blog';
-
-const BlogCodeBlock = dynamic(() => import('components/Blog/BlogCodeBlock'));
+import {
+  BlogParagraph,
+  BlogCodeBlock,
+  BlogArticleContainer,
+  BlogLink
+} from 'components/Blog';
 
 const BlogPage = () => (
   <>

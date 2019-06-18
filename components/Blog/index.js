@@ -1,4 +1,5 @@
 import BlogParagraph from './BlogParagraph';
+import BlogCodeBlock from './BlogCodeBlock';
 import BlogArticleBanner from './BlogArticleBanner';
 import BlogCodeSandboxEmbed from './BlogCodeSandboxEmbed';
 import IndexListItem from './IndexListItem';
@@ -10,6 +11,7 @@ import DateAndDuration from './DateAndDuration';
 export {
   BlogArticleBanner,
   BlogParagraph,
+  BlogCodeBlock,
   BlogCodeSandboxEmbed,
   IndexListItem,
   BlogArticleContainer,
