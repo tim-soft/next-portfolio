@@ -907,25 +907,36 @@
     tslib "^1.9.3"
     use-memo-one "^1.1.0"
 
-"@react-spring/konva@^9.0.0-beta.21":
-  version "9.0.0-beta.21"
-  resolved "https://registry.yarnpkg.com/@react-spring/konva/-/konva-9.0.0-beta.21.tgz#e1c9e1f0e9e8e3a878f6d4a523592e0a0c76ffed"
-  integrity sha512-IOa0fNsvpJBHi8VnDXx4TaysxIF3Y6Qc0ca+XHptxnZv5Az0WeftqtBpI4vHJ7A+ix3dGphyBreX5vm9HEKSYw==
+"@react-spring/core@^9.0.0-beta.22":
+  version "9.0.0-beta.22"
+  resolved "https://registry.yarnpkg.com/@react-spring/core/-/core-9.0.0-beta.22.tgz#75cadd18cf6dbbdc90a737e3b87b16797e9883d7"
+  integrity sha512-oNYI9c7S7vMY2HfCjG6F8GTJRPHpVnHJgNq4Qm3KYoE1YiLWWtO9rm4StO4JaXHABd84MNajZZmijpmQyQVUQA==
   dependencies:
     "@babel/runtime" "^7.3.1"
     "@react-spring/animated" "^9.0.0-beta.21"
-    "@react-spring/core" "^9.0.0-beta.21"
+    "@react-spring/shared" "^9.0.0-beta.21"
+    tslib "^1.9.3"
+    use-memo-one "^1.1.0"
+
+"@react-spring/konva@^9.0.0-beta.22":
+  version "9.0.0-beta.22"
+  resolved "https://registry.yarnpkg.com/@react-spring/konva/-/konva-9.0.0-beta.22.tgz#8caf72f376215a144dd656211e6cbe0129119b58"
+  integrity sha512-GJdpMDK9hvFxIHB16kv9zHBnK8l6QBfIzNxSh9e/G3xugORIIJe3OVGHEhujbqt/BZg0Ym9iqq11ILgo1aCUKg==
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    "@react-spring/animated" "^9.0.0-beta.21"
+    "@react-spring/core" "^9.0.0-beta.22"
     "@react-spring/shared" "^9.0.0-beta.21"
     tslib "^1.9.3"
 
-"@react-spring/native@^9.0.0-beta.21":
-  version "9.0.0-beta.21"
-  resolved "https://registry.yarnpkg.com/@react-spring/native/-/native-9.0.0-beta.21.tgz#75b69377f458b40b4b6f04ab336aeb3a5bef706d"
-  integrity sha512-aUaJVdTlBWj8x0a/SOlS7fMQUMPBFhYvbHEiBW+lKhBGD3CtR7MYzNZqaNgG/vnprXuh3g8GNyfwaphECy2HeA==
+"@react-spring/native@^9.0.0-beta.22":
+  version "9.0.0-beta.22"
+  resolved "https://registry.yarnpkg.com/@react-spring/native/-/native-9.0.0-beta.22.tgz#a6817314e2717261cc79330ed9c5fadaf6201d4c"
+  integrity sha512-UPrnCH1AZzYPrmyWKRocTIaTzx8RLZdJhhbZ94B68IBHqz1cGum23iAq18WsZ7KTxf3yY+gxg5BVLCZk0Tb+EA==
   dependencies:
     "@babel/runtime" "^7.3.1"
     "@react-spring/animated" "^9.0.0-beta.21"
-    "@react-spring/core" "^9.0.0-beta.21"
+    "@react-spring/core" "^9.0.0-beta.22"
     "@react-spring/shared" "^9.0.0-beta.21"
     tslib "^1.9.3"
 
@@ -938,36 +949,36 @@
     tiny-invariant "^1.0.4"
     tslib "^1.9.3"
 
-"@react-spring/three@^9.0.0-beta.21":
-  version "9.0.0-beta.21"
-  resolved "https://registry.yarnpkg.com/@react-spring/three/-/three-9.0.0-beta.21.tgz#14fddd98cb1a01559f7b7cae3ee46b8fc5f0ae97"
-  integrity sha512-PUXTdLuqbUHNSnuisPlKMmU4pji4Ze2kw9hWjX082++LgdGXq3RFFT5gjYsshqilzV5dhRCxEa6de3yBoeAUUg==
+"@react-spring/three@^9.0.0-beta.22":
+  version "9.0.0-beta.22"
+  resolved "https://registry.yarnpkg.com/@react-spring/three/-/three-9.0.0-beta.22.tgz#d9a77080485f7d6336f886642ad318f5b54ed061"
+  integrity sha512-a5C3N2upGPgp/4efVPMYkaSYerVJZbBd2PPTy6pAaW8mDNE9HAnebuJlAncwlR+IQhRyIIRcEEqerMHcw1Qxsg==
   dependencies:
     "@babel/runtime" "^7.3.1"
     "@react-spring/animated" "^9.0.0-beta.21"
-    "@react-spring/core" "^9.0.0-beta.21"
+    "@react-spring/core" "^9.0.0-beta.22"
     "@react-spring/shared" "^9.0.0-beta.21"
     tslib "^1.9.3"
 
-"@react-spring/web@^9.0.0-beta.21":
-  version "9.0.0-beta.21"
-  resolved "https://registry.yarnpkg.com/@react-spring/web/-/web-9.0.0-beta.21.tgz#022cecde8842ef119ebdb94ea394e352ec001b00"
-  integrity sha512-Zjo831aC8YU2vU2ZYHxD78lH65h8GMxLrsCkXvaCLhyTGbfqLwmjTjKY+Z7CvWzonIcMx9h5KTqzbO2RQIXzfw==
+"@react-spring/web@^9.0.0-beta.22":
+  version "9.0.0-beta.22"
+  resolved "https://registry.yarnpkg.com/@react-spring/web/-/web-9.0.0-beta.22.tgz#2777cc9259cddb8c06f68391f88228dcb2514112"
+  integrity sha512-7Z0UExAwkUVZAaRuZVxktLMAdaX4hoLNezoNIRlBElrkSyIG66BwwTkFt9F1uoKCOm5p8BcjxfHIwnrxKmvTyw==
   dependencies:
     "@babel/runtime" "^7.3.1"
     "@react-spring/animated" "^9.0.0-beta.21"
-    "@react-spring/core" "^9.0.0-beta.21"
+    "@react-spring/core" "^9.0.0-beta.22"
     "@react-spring/shared" "^9.0.0-beta.21"
     tslib "^1.9.3"
 
-"@react-spring/zdog@^9.0.0-beta.21":
-  version "9.0.0-beta.21"
-  resolved "https://registry.yarnpkg.com/@react-spring/zdog/-/zdog-9.0.0-beta.21.tgz#e8f93d4905e1a4f4675e71d39a40757831809e8f"
-  integrity sha512-8KF1NwcYtqWG6ajFLer1iygkc2+gMUW41BcWyZd8QL+45mYJntOwfW9zSBsFheUD68t/LNPCmawXlB6XQI0sVg==
+"@react-spring/zdog@^9.0.0-beta.22":
+  version "9.0.0-beta.22"
+  resolved "https://registry.yarnpkg.com/@react-spring/zdog/-/zdog-9.0.0-beta.22.tgz#af7167056246dbc6edbb25eb0505594c2887ad12"
+  integrity sha512-/yHQU84/KiGVNdzlArbK+sRvwL9hENjU0z5+BXErzSVi9lytsLBC6RN24wv5d4lw7uoxJS/DH7Zn/7NMB9KvSw==
   dependencies:
     "@babel/runtime" "^7.3.1"
     "@react-spring/animated" "^9.0.0-beta.21"
-    "@react-spring/core" "^9.0.0-beta.21"
+    "@react-spring/core" "^9.0.0-beta.22"
     "@react-spring/shared" "^9.0.0-beta.21"
     tslib "^1.9.3"
 
@@ -6025,19 +6036,19 @@ react-scrollbars-custom@^4.0.5:
     react-draggable "^3.3.0"
     zoom-level "^1.1.0"
 
-react-spring@^9.0.0-beta.21:
-  version "9.0.0-beta.21"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-9.0.0-beta.21.tgz#e126de518ff0d2bf281568cd54cf2d4a4fe12ee7"
-  integrity sha512-692IiP1kd6aZZMULHHuODjqxZmlDSTTdM9Etn2RQp2ocj/qg6mAD4LZV9WryNtgr4I5TH4KqIxlFq7e1nrWtfw==
+react-spring@^9.0.0-beta.22:
+  version "9.0.0-beta.22"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-9.0.0-beta.22.tgz#31a518d3517d815ced19404a0339a54bdb772032"
+  integrity sha512-ZARr47ex3yP2GlEiitwRrdxJTqcEFz6kiKBIzZ6ESpImqxugmn6Y0ItNUKhkGDJvLOCj1qZYsL9ITFC9nIJz7Q==
   dependencies:
     "@babel/runtime" "^7.3.1"
     "@react-spring/addons" "^9.0.0-beta.21"
-    "@react-spring/core" "^9.0.0-beta.21"
-    "@react-spring/konva" "^9.0.0-beta.21"
-    "@react-spring/native" "^9.0.0-beta.21"
-    "@react-spring/three" "^9.0.0-beta.21"
-    "@react-spring/web" "^9.0.0-beta.21"
-    "@react-spring/zdog" "^9.0.0-beta.21"
+    "@react-spring/core" "^9.0.0-beta.22"
+    "@react-spring/konva" "^9.0.0-beta.22"
+    "@react-spring/native" "^9.0.0-beta.22"
+    "@react-spring/three" "^9.0.0-beta.22"
+    "@react-spring/web" "^9.0.0-beta.22"
+    "@react-spring/zdog" "^9.0.0-beta.22"
     tslib "^1.9.3"
 
 react-ssr-prepass@1.0.2:
