@@ -34,7 +34,7 @@ const ScrollbarContentContainer = styled.div`
   align-items: center;
   flex-direction: column;
   min-height: 100%;
-  padding: 0 20px;
+  padding: 0 15px;
 `;
 
 const StyledScrollbar = styled(Scrollbar)`
