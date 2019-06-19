@@ -9,6 +9,9 @@ import styledNormalize from 'styled-normalize';
  */
 export default createGlobalStyle`
   ${styledNormalize}
+  html {
+    overflow: hidden;
+  }
   body {
     margin: 0;
     background: #1D1E1F;
