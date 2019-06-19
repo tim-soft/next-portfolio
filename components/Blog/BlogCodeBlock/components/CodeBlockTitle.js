@@ -38,7 +38,7 @@ const LanguageLogo = ({ language }) => {
 const CodeBlockTitle = ({ title, path, language }) => (
   <>
     {title && (
-      <CodeTitleContainer>
+      <CodeTitleContainer center>
         <CodeTitle>
           <span>{title}</span>
         </CodeTitle>
@@ -94,7 +94,7 @@ const CodeTitleContainer = styled.div`
   background-color: rgb(30, 30, 30);
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: ${({ center }) => (center ? 'center' : 'space-between')};
   align-items: center;
   border-bottom: 1px ${({ theme }) => theme.pageContentLinkHoverColor} solid;
   margin: auto;
