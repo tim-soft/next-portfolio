@@ -37,16 +37,10 @@ const LanguageLogo = ({ language }) => {
 
 const CodeBlockTitle = ({ title, path, language }) => (
   <>
-    {title && (
-      <CodeTitleContainer center>
-        <CodeTitle>
-          <span>{title}</span>
-        </CodeTitle>
-      </CodeTitleContainer>
-    )}
+    {title && <CodeTitleContainer center>{title}</CodeTitleContainer>}
     {path && (
       <CodeTitleContainer>
-        <CodeTitle>
+        <h2>
           {path
             // remove leading/trailing slashes
             .replace(/^[/]*(.*?)[/]*$/g, '$1')
@@ -58,7 +52,7 @@ const CodeBlockTitle = ({ title, path, language }) => (
                 {token === '/' ? <RightTriangleIcon size="0.60em" /> : token}
               </span>
             ))}
-        </CodeTitle>
+        </h2>
         <LanguageLogo language={language} />
       </CodeTitleContainer>
     )}
@@ -82,14 +76,6 @@ CodeBlockTitle.defaultProps = {
 
 export default CodeBlockTitle;
 
-const CodeTitle = styled.h2`
-  margin: 1em;
-  font-weight: normal;
-  font-size: 1.3em;
-  font-family: monospace;
-  color: ${({ theme }) => theme.pageContentLinkHoverColor};
-`;
-
 const CodeTitleContainer = styled.div`
   background-color: rgb(30, 30, 30);
   width: 100%;
@@ -98,6 +84,13 @@ const CodeTitleContainer = styled.div`
   align-items: center;
   border-bottom: 1px ${({ theme }) => theme.pageContentLinkHoverColor} solid;
   margin: auto;
+  > * {
+    margin: 1em;
+    font-weight: normal;
+    font-size: 1.3em;
+    font-family: monospace;
+    color: ${({ theme }) => theme.pageContentLinkHoverColor};
+  }
 `;
 
 const RightTriangleIcon = styled(GoTriangleRight)`

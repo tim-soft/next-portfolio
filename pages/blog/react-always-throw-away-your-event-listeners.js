@@ -110,7 +110,19 @@ updateWindowSize = () =>
       </BlogParagraph>
       <BlogCodeBlock
         language="jsx"
-        title={<WindowSizeReporter />}
+        title={
+          <h2 style={{ fontSize: '1.5em', margin: '1.4em' }}>
+            <span role="img" aria-label="Hooray">
+              🎉
+            </span>
+            {` `}
+            <WindowSizeReporter />
+            {` `}
+            <span role="img" aria-label="Hooray">
+              🎉
+            </span>
+          </h2>
+        }
         path="/components/WindowSizeReporter.js"
         code={`
 import React from 'react';
