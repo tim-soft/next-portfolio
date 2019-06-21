@@ -9,6 +9,8 @@ const BlogSEO = ({ baseUrl, router }) => {
   // Get index of current blog post
   const blogPost = BlogData.find(post => post.href === route);
 
+  if (!blogPost) return null;
+
   return (
     <>
       <NextSEO
