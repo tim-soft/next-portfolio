@@ -112,6 +112,7 @@ export default withGA('UA-137363397-1', Router)(WebApp);
 
 const AnimatedContainer = animated(styled.div`
   will-change: opacity, transform;
+  height: 100%;
   width: 100%;
   overflow: hidden;
   position: absolute;

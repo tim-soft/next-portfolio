@@ -43,7 +43,7 @@ const ScrollbarContentContainer = styled.div`
 
 const Container = styled.div`
   padding-top: 90px;
-  height: calc(100vh - 90px);
+  height: calc(100% - 90px);
   background: ${({ theme, backgroundColor }) =>
     backgroundColor || theme.pageBackgroundColor};
 `;
