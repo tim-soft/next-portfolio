@@ -1,10 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { withTheme } from 'styled-components';
+import { withTheme } from 'styled-components';
 import { Spring, config, animated, interpolate } from 'react-spring';
 
 const HamburgerMenuIcon = ({ menuIsOpen, toggleMenu, theme }) => (
-  <StyledSVG viewBox="0 0 96 96" height="2em" onClick={() => toggleMenu()}>
+  <svg
+    viewBox="0 0 96 96"
+    height="100%"
+    onClick={toggleMenu}
+    style={{
+      position: 'relative',
+      overflow: 'visible',
+      cursor: 'pointer',
+      zIndex: 'inherit',
+      WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)'
+    }}
+  >
     <Spring
       native
       to={{
@@ -60,7 +71,7 @@ const HamburgerMenuIcon = ({ menuIsOpen, toggleMenu, theme }) => (
         </animated.g>
       )}
     </Spring>
-  </StyledSVG>
+  </svg>
 );
 
 HamburgerMenuIcon.propTypes = {
@@ -72,15 +83,6 @@ HamburgerMenuIcon.propTypes = {
     headerNavMobileMenuFontColor: PropTypes.string.isRequired
   }).isRequired
 };
-
-const StyledSVG = styled.svg`
-  position: relative;
-  height: 100%;
-  overflow: visible;
-  cursor: pointer;
-  z-index: inherit;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-`;
 
 /**
  * The withTheme HOC adds any parent <ThemeProvider /> theme variables as props

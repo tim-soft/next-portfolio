@@ -8,9 +8,16 @@ import Scrollbar from 'components/Scrollbar';
  */
 const PageScrollWrapper = ({ children, backgroundColor }) => (
   <Container backgroundColor={backgroundColor}>
-    <StyledScrollbar>
-      <ScrollbarContentContainer>{children}</ScrollbarContentContainer>
-    </StyledScrollbar>
+    <Scrollbar
+      contentProps={{
+        // eslint-disable-next-line react/prop-types
+        renderer: ({ elementRef, ...restProps }) => (
+          <ScrollbarContentContainer {...restProps} ref={elementRef} />
+        )
+      }}
+    >
+      {children}
+    </Scrollbar>
   </Container>
 );
 
@@ -31,23 +38,12 @@ export default PageScrollWrapper;
 const ScrollbarContentContainer = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  min-height: 100%;
-  padding: 0 15px;
-`;
-
-const StyledScrollbar = styled(Scrollbar)`
-  max-height: calc(100% - 90px);
+  padding: 0 15px !important;
 `;
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  overflow: hidden;
-  height: 100vh;
+  padding-top: 90px;
+  height: calc(100vh - 90px);
   background: ${({ theme, backgroundColor }) =>
     backgroundColor || theme.pageBackgroundColor};
 `;

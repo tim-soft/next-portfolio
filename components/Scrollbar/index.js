@@ -1,6 +1,5 @@
 import React from 'react';
 import Scrollbar from 'react-scrollbars-custom';
-import styled from 'styled-components';
 
 /**
  * Wrapper around react-scrollbars-custom with styled scrollbars
@@ -12,29 +11,35 @@ export default ({ ...props }) => (
     {...props}
     trackXProps={{
       // eslint-disable-next-line react/prop-types
-      renderer: ({ elementRef, ...restProps }) => (
-        <ScrollTrackX {...restProps} ref={elementRef} />
+      renderer: ({ elementRef, style, ...restProps }) => (
+        <span
+          {...restProps}
+          ref={elementRef}
+          style={{
+            ...style,
+            background: '#9e9e9e',
+            height: '11px',
+            width: '100%',
+            left: 0
+          }}
+        />
       )
     }}
     trackYProps={{
       // eslint-disable-next-line react/prop-types
-      renderer: ({ elementRef, ...restProps }) => (
-        <ScrollTrackY {...restProps} ref={elementRef} />
+      renderer: ({ elementRef, style, ...restProps }) => (
+        <span
+          {...restProps}
+          ref={elementRef}
+          style={{
+            ...style,
+            background: '#9e9e9e',
+            height: '100%',
+            width: '11px',
+            top: 0
+          }}
+        />
       )
     }}
   />
 );
-
-const ScrollTrackY = styled.span`
-  background: #9e9e9e !important;
-  width: 11px !important;
-  height: 100% !important;
-  top: 0 !important;
-`;
-
-const ScrollTrackX = styled.span`
-  background: #9e9e9e !important;
-  height: 11px !important;
-  width: 100% !important;
-  left: 0 !important;
-`;

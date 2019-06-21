@@ -5,11 +5,8 @@ import { HamburgerMenuIcon, FullPageMenu } from './components';
 
 const MobileMenu = ({ menuIsOpen, toggleMenu }) => (
   <MobileRightSideMenu menuIsOpen={menuIsOpen}>
-    <HamburgerMenuIcon
-      menuIsOpen={menuIsOpen}
-      toggleMenu={() => toggleMenu()}
-    />
-    <FullPageMenu menuIsOpen={menuIsOpen} toggleMenu={() => toggleMenu()} />
+    <HamburgerMenuIcon menuIsOpen={menuIsOpen} toggleMenu={toggleMenu} />
+    <FullPageMenu menuIsOpen={menuIsOpen} toggleMenu={toggleMenu} />
   </MobileRightSideMenu>
 );
 

@@ -27,6 +27,16 @@ class WebApp extends App {
     pageProps: PropTypes.object.isRequired
   };
 
+  static async getInitialProps({ Component, ctx }) {
+    let pageProps = {};
+
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx);
+    }
+
+    return { pageProps };
+  }
+
   componentDidMount() {
     // eslint-disable-next-line no-console
     console.log(
