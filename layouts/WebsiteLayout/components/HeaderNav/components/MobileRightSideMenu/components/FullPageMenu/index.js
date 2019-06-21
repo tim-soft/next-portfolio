@@ -13,10 +13,12 @@ const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
       <MenuContainer
         style={{
           opacity,
-          display: interpolate([opacity], x => (x === 0 ? 'none' : 'flex'))
+          visibility: interpolate([opacity], x =>
+            x === 0 ? 'hidden' : 'visible'
+          )
         }}
       >
-        <StyledScrollbar
+        <Scrollbar
           contentProps={{
             // eslint-disable-next-line react/prop-types
             renderer: ({ elementRef, ...restProps }) => (
@@ -70,7 +72,7 @@ const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
               </MenuFooterLink>
             </MenuFooter>
           </MenuFooterContainer>
-        </StyledScrollbar>
+        </Scrollbar>
       </MenuContainer>
     )}
   </Spring>
@@ -105,10 +107,6 @@ const NavMenuContainer = styled.nav`
   margin: auto;
 `;
 
-const StyledScrollbar = styled(Scrollbar)`
-  height: calc(100% - 90px) !important;
-`;
-
 const MenuContainer = animated(styled.div`
   position: fixed;
   top: 0;
@@ -121,6 +119,7 @@ const MenuContainer = animated(styled.div`
   justify-content: flex-end;
   align-items: center;
   flex-direction: column;
+  padding-top: 90px;
 `);
 
 const MobileStyledLink = styled(StyledLink)`
