@@ -1,33 +1,18 @@
 import React from 'react';
-import NextSEO, { BlogJsonLd } from 'next-seo';
+import PropTypes from 'prop-types';
 import {
   BlogParagraph,
   BlogLink,
   BlogCodeBlock,
-  BlogArticleContainer
+  BlogArticleContainer,
+  BlogSEO
 } from 'components/Blog';
 
 import WindowSizeReporter from 'components/ArticleComponents/WindowSizeReporter';
 
-const BlogPage = () => (
+const BlogPage = ({ baseUrl }) => (
   <>
-    <NextSEO
-      config={{
-        title: 'Coding, Musings and Adventures of Tim Ellenberger',
-        openGraph: {
-          title: 'Coding, Musings and Adventures of Tim Ellenberger'
-        }
-      }}
-    />
-    <BlogJsonLd
-      url="https://timellenberger.now.sh/blog"
-      title="Coding, Musings and Adventures of Tim Ellenberger"
-      images={['https://timellenberger.now.sh/static/avatar.png']}
-      datePublished="2019-03-31T08:00:00+08:00"
-      dateModified="2019-03-31T09:00:00+08:00"
-      authorName="Tim Ellenberger"
-      description="Coding, Musings and Adventures of Tim Ellenberger"
-    />
+    <BlogSEO baseUrl={baseUrl} />
     <BlogArticleContainer>
       <BlogParagraph>
         Unlike your React components, the event listeners they&apos;ve created
@@ -179,6 +164,17 @@ BlogPage.theme = {
   pageContentLinkHoverColor: highlightFontColor,
   popoutMenuBorderColor: fontColor,
   blogArticleWidth: 740
+};
+
+BlogPage.propTypes = {
+  baseUrl: PropTypes.string.isRequired
+};
+
+// Get absolute url of page
+BlogPage.getInitialProps = async ({ req }) => {
+  const hostname = req ? req.headers.host : window.location.hostname;
+  const protocol = hostname.includes('localhost') ? 'http' : 'https';
+  return { baseUrl: `${protocol}/${hostname}` };
 };
 
 export default BlogPage;

@@ -1,11 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { withRouter } from 'next/router';
 import NextSEO, { BlogJsonLd } from 'next-seo';
 import PageScrollWrapper from 'components/PageScrollWrapper';
 import { IndexListItem, BlogLink } from 'components/Blog';
 import { getSortedPosts } from 'data/BlogPosts';
 
-const BlogPage = () => {
+const BlogPage = ({ baseUrl, router }) => {
+  const { route } = router;
+
   // Get blog posts, sorted newest to oldest
   const sortedPosts = getSortedPosts({ order: 'desc' });
 
@@ -14,8 +18,18 @@ const BlogPage = () => {
       <NextSEO
         config={{
           title: 'Coding, Musings and Adventures of Tim Ellenberger',
+          canonical: `${baseUrl}/${route}`,
           openGraph: {
+            url: `${baseUrl}/${route}`,
             title: 'Coding, Musings and Adventures of Tim Ellenberger'
+          },
+          site_name: 'Coding, Musings and Adventures of Tim Ellenberger',
+          locale: 'en_US',
+          profile: {
+            firstName: 'Tim',
+            lastName: 'Ellenberger',
+            username: 'tim-soft',
+            gender: 'male'
           }
         }}
       />
@@ -75,7 +89,21 @@ BlogPage.theme = {
   blogArticleWidth: 650
 };
 
-export default BlogPage;
+BlogPage.propTypes = {
+  baseUrl: PropTypes.string.isRequired,
+  router: PropTypes.shape({
+    route: PropTypes.string.isRequired
+  }).isRequired
+};
+
+// Get absolute url of page
+BlogPage.getInitialProps = async ({ req }) => {
+  const hostname = req ? req.headers.host : window.location.hostname;
+  const protocol = hostname.includes('localhost') ? 'http' : 'https';
+  return { baseUrl: `${protocol}/${hostname}` };
+};
+
+export default withRouter(BlogPage);
 
 const BioContainer = styled.aside`
   display: flex;
