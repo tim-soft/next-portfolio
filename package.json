@@ -9,6 +9,9 @@
     "url": "https://github.com/tim-soft/react-portfolio/issues"
   },
   "homepage": "https://timellenberger.now.sh",
+  "engines": {
+    "node": ">=10"
+  },
   "dependencies": {
     "@tim-soft/react-dat-gui": "^2.2.5",
     "@tim-soft/react-with-gesture": "^4.0.9",
