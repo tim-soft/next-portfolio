@@ -1,9 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import styled, { ThemeProvider } from 'styled-components';
 import NextSEO from 'next-seo';
 import ParticlesDemo from 'components/ParticlesDemo';
 
-const ThreeParticles = () => (
+import { generatePageTheme } from 'components/AppTheme';
+
+const ThreeParticles = ({ theme }) => (
   <>
     <NextSEO
       config={{
@@ -15,26 +18,36 @@ const ThreeParticles = () => (
         }
       }}
     />
-    <Container>
-      <ParticlesDemo />
-    </Container>
+    <ThemeProvider theme={theme}>
+      <Container>
+        <ParticlesDemo />
+      </Container>
+    </ThemeProvider>
   </>
 );
 
-const fontColor = '#31d7f9';
-const navFontColor = 'gainsboro';
-const highlightFontColor = 'springgreen';
-const backgroundColor = '#3b3f45';
+ThreeParticles.propTypes = {
+  theme: PropTypes.object
+};
 
-// _app.js level theme variable overrides
-ThreeParticles.theme = {
-  headerNavFontColor: navFontColor,
-  headerNavTextUnderlineColor: highlightFontColor,
-  headerNavHoverFontColor: highlightFontColor,
-  headerNavHamburgerIconColor: navFontColor,
-  pageBackgroundColor: backgroundColor,
-  pageContentFontColor: fontColor,
-  pageContentLinkHoverColor: highlightFontColor
+ThreeParticles.defaultProps = {
+  theme: {}
+};
+
+// Get URL and generate page theme
+ThreeParticles.getInitialProps = async () => {
+  const theme = generatePageTheme({
+    fontColor: '#31d7f9',
+    highlightFontColor: 'springgreen',
+    backgroundColor: '#3b3f45',
+    override: {
+      headerNavFontColor: 'gainsboro',
+      headerNavHamburgerIconColor: 'gainsboro',
+      popoutMenuBorderColor: 'black'
+    }
+  });
+
+  return { theme };
 };
 
 export default ThreeParticles;

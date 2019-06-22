@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ThemeProvider } from 'styled-components';
 import {
   BlogParagraph,
   BlogCodeBlock,
@@ -7,42 +8,44 @@ import {
   BlogLink,
   BlogSEO
 } from 'components/Blog';
+import { generatePageTheme } from 'components/AppTheme';
 
-const BlogPage = ({ baseUrl }) => (
+const BlogPage = ({ baseUrl, theme }) => (
   <>
     <BlogSEO baseUrl={baseUrl} />
-    <BlogArticleContainer>
-      <BlogParagraph>
-        Code snippets without syntax highlighting are unsightly.
-      </BlogParagraph>
-      <BlogParagraph>
-        VS Code and its&apos; default theme Dark+ has gained a lot of
-        familiarity in the development community.
-      </BlogParagraph>
-      <BlogParagraph>
-        A project called{' '}
-        <BlogLink href="https://github.com/PrismJS/prism" paragraph>
-          PrismJS
-        </BlogLink>{' '}
-        for syntax highlighting{' '}
-      </BlogParagraph>
-      <BlogParagraph>
-        Another project succinctly named{' '}
-        <BlogLink
-          href="https://github.com/FormidableLabs/prism-react-renderer"
-          paragraph
-        >
-          prism-react-renderer
-        </BlogLink>{' '}
-        which enables us to manipulate the PrismJS syntax highlighted output as
-        well as add extraneous react components into the code blocks. Moreover,
-        a theme object may be passed as a prop to further control the syntax
-        highlighting.
-      </BlogParagraph>
-      <BlogCodeBlock
-        language="jsx"
-        path="/components/Blog/BlogCodeBlock.js"
-        code={`
+    <ThemeProvider theme={theme}>
+      <BlogArticleContainer>
+        <BlogParagraph>
+          Code snippets without syntax highlighting are unsightly.
+        </BlogParagraph>
+        <BlogParagraph>
+          VS Code and its&apos; default theme Dark+ has gained a lot of
+          familiarity in the development community.
+        </BlogParagraph>
+        <BlogParagraph>
+          A project called{' '}
+          <BlogLink href="https://github.com/PrismJS/prism" paragraph>
+            PrismJS
+          </BlogLink>{' '}
+          for syntax highlighting{' '}
+        </BlogParagraph>
+        <BlogParagraph>
+          Another project succinctly named{' '}
+          <BlogLink
+            href="https://github.com/FormidableLabs/prism-react-renderer"
+            paragraph
+          >
+            prism-react-renderer
+          </BlogLink>{' '}
+          which enables us to manipulate the PrismJS syntax highlighted output
+          as well as add extraneous react components into the code blocks.
+          Moreover, a theme object may be passed as a prop to further control
+          the syntax highlighting.
+        </BlogParagraph>
+        <BlogCodeBlock
+          language="jsx"
+          path="/components/Blog/BlogCodeBlock.js"
+          code={`
 const BlogCodeBlock = ({ code, language, theme }) => (
   <Highlight
     {...defaultProps}
@@ -67,12 +70,12 @@ const BlogCodeBlock = ({ code, language, theme }) => (
   </Highlight>
 );
       `}
-      />
-      <BlogCodeBlock
-        width={550}
-        path="/data/GraphQL/GetBlogCodeBlock.graphql"
-        language="graphql"
-        code={`
+        />
+        <BlogCodeBlock
+          width={550}
+          path="/data/GraphQL/GetBlogCodeBlock.graphql"
+          language="graphql"
+          code={`
 query {
   superCoolGraphQLQuery({ number: 5 }) {
     id
@@ -81,11 +84,11 @@ query {
   }
 }
       `}
-      />
-      <BlogCodeBlock
-        language="jsx"
-        path="/components/Blog/BlogCodeBlock.js"
-        code={`
+        />
+        <BlogCodeBlock
+          language="jsx"
+          path="/components/Blog/BlogCodeBlock.js"
+          code={`
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -176,89 +179,68 @@ BlogCodeBlock.defaultProps = {
 
 export default BlogCodeBlock;
       `}
-      />
-      <BlogParagraph>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Eu sem integer vitae
-        justo eget magna fermentum iaculis. Tristique senectus et netus et
-        malesuada fames ac turpis egestas. Elit eget gravida cum sociis natoque
-        penatibus et magnis dis. Faucibus a pellentesque sit amet porttitor eget
-        dolor morbi. Elementum sagittis vitae et leo duis ut. Scelerisque eu
-        ultrices vitae auctor.
-      </BlogParagraph>
-      <BlogParagraph>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Eu sem integer vitae
-        justo eget magna fermentum iaculis. Tristique senectus et netus et
-        malesuada fames ac turpis egestas. Elit eget gravida cum sociis natoque
-        penatibus et magnis dis. Faucibus a pellentesque sit amet porttitor eget
-        dolor morbi. Elementum sagittis vitae et leo duis ut. Scelerisque eu
-        ultrices vitae auctor.
-      </BlogParagraph>
-      <BlogParagraph>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Eu sem integer vitae
-        justo eget magna fermentum iaculis. Tristique senectus et netus et
-        malesuada fames ac turpis egestas. Elit eget gravida cum sociis natoque
-        penatibus et magnis dis. Faucibus a pellentesque sit amet porttitor eget
-        dolor morbi. Elementum sagittis vitae et leo duis ut. Scelerisque eu
-        ultrices vitae auctor.
-      </BlogParagraph>
-      <BlogParagraph>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Eu sem integer vitae
-        justo eget magna fermentum iaculis. Tristique senectus et netus et
-        malesuada fames ac turpis egestas. Elit eget gravida cum sociis natoque
-        penatibus et magnis dis. Faucibus a pellentesque sit amet porttitor eget
-        dolor morbi. Elementum sagittis vitae et leo duis ut. Scelerisque eu
-        ultrices vitae auctor.
-      </BlogParagraph>
-    </BlogArticleContainer>
+        />
+        <BlogParagraph>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu sem
+          integer vitae justo eget magna fermentum iaculis. Tristique senectus
+          et netus et malesuada fames ac turpis egestas. Elit eget gravida cum
+          sociis natoque penatibus et magnis dis. Faucibus a pellentesque sit
+          amet porttitor eget dolor morbi. Elementum sagittis vitae et leo duis
+          ut. Scelerisque eu ultrices vitae auctor.
+        </BlogParagraph>
+        <BlogParagraph>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu sem
+          integer vitae justo eget magna fermentum iaculis. Tristique senectus
+          et netus et malesuada fames ac turpis egestas. Elit eget gravida cum
+          sociis natoque penatibus et magnis dis. Faucibus a pellentesque sit
+          amet porttitor eget dolor morbi. Elementum sagittis vitae et leo duis
+          ut. Scelerisque eu ultrices vitae auctor.
+        </BlogParagraph>
+        <BlogParagraph>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu sem
+          integer vitae justo eget magna fermentum iaculis. Tristique senectus
+          et netus et malesuada fames ac turpis egestas. Elit eget gravida cum
+          sociis natoque penatibus et magnis dis. Faucibus a pellentesque sit
+          amet porttitor eget dolor morbi. Elementum sagittis vitae et leo duis
+          ut. Scelerisque eu ultrices vitae auctor.
+        </BlogParagraph>
+        <BlogParagraph>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu sem
+          integer vitae justo eget magna fermentum iaculis. Tristique senectus
+          et netus et malesuada fames ac turpis egestas. Elit eget gravida cum
+          sociis natoque penatibus et magnis dis. Faucibus a pellentesque sit
+          amet porttitor eget dolor morbi. Elementum sagittis vitae et leo duis
+          ut. Scelerisque eu ultrices vitae auctor.
+        </BlogParagraph>
+      </BlogArticleContainer>
+    </ThemeProvider>
   </>
 );
 
-// const fontColor = '#31d7f9';
-// const highlightFontColor = 'springgreen';
-// const backgroundColor = '#3b3f45';
-
-// // _app.js level theme variable overrides
-// BlogPage.theme = {
-//   headerNavFontColor: fontColor,
-//   headerNavTextUnderlineColor: highlightFontColor,
-//   headerNavHoverFontColor: highlightFontColor,
-//   headerNavHamburgerIconColor: fontColor,
-//   pageBackgroundColor: backgroundColor,
-//   pageContentFontColor: fontColor,
-//   pageContentLinkHoverColor: highlightFontColor,
-//   blogArticleWidth: 740
-// };
-
-const fontColor = '#31d7f9';
-const highlightFontColor = 'springgreen';
-const backgroundColor = '#202629';
-
-// _app.js level theme variable overrides
-BlogPage.theme = {
-  headerNavFontColor: fontColor,
-  headerNavTextUnderlineColor: highlightFontColor,
-  headerNavHoverFontColor: highlightFontColor,
-  headerNavHamburgerIconColor: fontColor,
-  pageBackgroundColor: backgroundColor,
-  pageContentFontColor: fontColor,
-  pageContentLinkHoverColor: highlightFontColor,
-  popoutMenuBorderColor: fontColor,
-  blogArticleWidth: 740
-};
-
 BlogPage.propTypes = {
-  baseUrl: PropTypes.string.isRequired
+  baseUrl: PropTypes.string.isRequired,
+  theme: PropTypes.object
 };
 
-// Get absolute url of page
+BlogPage.defaultProps = {
+  theme: {}
+};
+
+// Get URL and generate page theme
 BlogPage.getInitialProps = async ({ req }) => {
   const hostname = req ? req.headers.host : window.location.hostname;
   const protocol = hostname.includes('localhost') ? 'http' : 'https';
-  return { baseUrl: `${protocol}/${hostname}` };
+  const theme = generatePageTheme({
+    fontColor: '#31d7f9',
+    highlightFontColor: 'springgreen',
+    backgroundColor: '#202629'
+  });
+
+  return { baseUrl: `${protocol}/${hostname}`, theme };
 };
 
 export default BlogPage;

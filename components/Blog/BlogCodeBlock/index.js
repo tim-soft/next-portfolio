@@ -97,7 +97,7 @@ const CodeBlockContainer = styled.div`
   margin: 2em auto;
   width: 100%;
   max-width: ${({ theme, width }) =>
-    width || theme.blogArticleWidth}px !important;
+    width || theme.pageContentWidth}px !important;
   overflow: hidden;
   border-radius: 4px;
 `;
@@ -159,7 +159,7 @@ const CodeBlock = styled.pre`
   min-width: ${({ width, theme }) => {
     if (width) return `calc(${width}px - 2em)`;
 
-    return `calc(${theme.blogArticleWidth}px - 2em)`;
+    return `calc(${theme.pageContentWidth}px - 2em)`;
   }};
   width: ${({ width }) => {
     if (width) return `calc(${width}px - 2em)`;

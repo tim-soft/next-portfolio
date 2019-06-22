@@ -4,12 +4,12 @@
  * Override any of these variables in /src/pages component exports
  * https://www.styled-components.com/docs/advanced#theming
  */
-export default {
+const defaultTheme = {
   // Navigation colors
-  headerNavFontColor: 'white',
-  headerNavHoverFontColor: '#ff6054',
+  headerNavFontColor: 'black',
+  headerNavHoverFontColor: 'cyan',
   headerNavTextUnderlineColor: 'cyan',
-  headerNavHamburgerIconColor: 'white',
+  headerNavHamburgerIconColor: 'black',
   headerNavMobileMenuFontColor: 'white',
   // UI colors
   popoutMenuBorderColor: 'black',
@@ -17,11 +17,30 @@ export default {
   pageBackgroundColor: '#9e9e9e',
   pageContentFontColor: 'black',
   pageContentLinkHoverColor: 'cyan',
-  // Blog vars
-  blogArticleWidth: 700,
+  pageContentWidth: 740,
   // Media Query Breakpoints
   breakpoints: {
     mobileNav: 'min-width: 1061px',
     desktopNav: 'max-width: 1060px'
   }
 };
+
+export default defaultTheme;
+
+export const generatePageTheme = ({
+  fontColor,
+  highlightFontColor,
+  backgroundColor,
+  override
+}) => ({
+  ...defaultTheme,
+  headerNavFontColor: fontColor,
+  headerNavTextUnderlineColor: highlightFontColor,
+  headerNavHoverFontColor: highlightFontColor,
+  headerNavHamburgerIconColor: fontColor,
+  pageBackgroundColor: backgroundColor,
+  pageContentFontColor: fontColor,
+  pageContentLinkHoverColor: highlightFontColor,
+  popoutMenuBorderColor: fontColor,
+  ...override
+});

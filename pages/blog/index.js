@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import NextSEO, { BlogJsonLd } from 'next-seo';
 import PageScrollWrapper from 'components/PageScrollWrapper';
 import { IndexListItem, BlogLink } from 'components/Blog';
+import { generatePageTheme } from 'components/AppTheme';
 import { getSortedPosts } from 'data/BlogPosts';
 
-const BlogPage = ({ baseUrl }) => {
+const BlogPage = ({ baseUrl, theme }) => {
   // Get blog posts, sorted newest to oldest
   const sortedPosts = getSortedPosts({ order: 'desc' });
 
@@ -39,62 +40,54 @@ const BlogPage = ({ baseUrl }) => {
         authorName="Tim Ellenberger"
         description="Coding, Musings and Adventures of Tim Ellenberger"
       />
-      <PageScrollWrapper>
-        <Container>
-          <Title>Blog</Title>
-          <BioContainer>
-            <AvatarImage src="/static/avatar.png" alt="avatar" />
-            <BioMetaContainer>
-              <p>
-                A personal blog by{' '}
-                <BlogLink href="/" paragraph>
-                  Tim Ellenberger
-                </BlogLink>
-                .
-              </p>
-              <p>Building new webs out of the old ones.</p>
-            </BioMetaContainer>
-          </BioContainer>
+      <ThemeProvider theme={theme}>
+        <PageScrollWrapper>
+          <Container>
+            <Title>Blog</Title>
+            <BioContainer>
+              <AvatarImage src="/static/avatar.png" alt="avatar" />
+              <BioMetaContainer>
+                <p>
+                  A personal blog by{' '}
+                  <BlogLink href="/" paragraph>
+                    Tim Ellenberger
+                  </BlogLink>
+                  .
+                </p>
+                <p>Building new webs out of the old ones.</p>
+              </BioMetaContainer>
+            </BioContainer>
 
-          {sortedPosts.map(post => (
-            <IndexListItem key={post.href} {...post} />
-          ))}
-        </Container>
-      </PageScrollWrapper>
+            {sortedPosts.map(post => (
+              <IndexListItem key={post.href} {...post} />
+            ))}
+          </Container>
+        </PageScrollWrapper>
+      </ThemeProvider>
     </>
   );
 };
 
-// const fontColor = '#BAE7DC'; // Chalky White
-// const fontColor = '#28A9C5'; // Blue
-// const fontColor = '#B5B69D';
-// const fontColor = '#aaf0d1'; // Mint Magic
-
-const fontColor = '#31d7f9';
-const highlightFontColor = 'springgreen';
-const backgroundColor = '#202629';
-
-// _app.js level theme variable overrides
-BlogPage.theme = {
-  headerNavFontColor: fontColor,
-  headerNavTextUnderlineColor: highlightFontColor,
-  headerNavHoverFontColor: highlightFontColor,
-  headerNavHamburgerIconColor: fontColor,
-  pageBackgroundColor: backgroundColor,
-  pageContentFontColor: fontColor,
-  pageContentLinkHoverColor: highlightFontColor,
-  blogArticleWidth: 650
+BlogPage.propTypes = {
+  baseUrl: PropTypes.string.isRequired,
+  theme: PropTypes.object
 };
 
-BlogPage.propTypes = {
-  baseUrl: PropTypes.string.isRequired
+BlogPage.defaultProps = {
+  theme: {}
 };
 
 // Get absolute url of page
 BlogPage.getInitialProps = async ({ req }) => {
   const hostname = req ? req.headers.host : window.location.hostname;
   const protocol = hostname.includes('localhost') ? 'http' : 'https';
-  return { baseUrl: `${protocol}/${hostname}` };
+  const theme = generatePageTheme({
+    fontColor: '#31d7f9',
+    highlightFontColor: 'springgreen',
+    backgroundColor: '#202629'
+  });
+
+  return { baseUrl: `${protocol}/${hostname}`, theme };
 };
 
 export default BlogPage;
@@ -118,7 +111,7 @@ const Title = styled.h1`
 const Container = styled.main`
   color: ${({ theme }) => theme.pageContentFontColor};
   width: 100%;
-  max-width: ${({ theme, width }) => width || theme.blogArticleWidth}px;
+  max-width: ${({ theme, width }) => width || theme.pageContentWidth}px;
   display: flex;
   flex-direction: column;
   align-items: center;

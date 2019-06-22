@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ThemeProvider } from 'styled-components';
 import {
   BlogParagraph,
   BlogLink,
@@ -7,49 +8,51 @@ import {
   BlogArticleContainer,
   BlogSEO
 } from 'components/Blog';
+import { generatePageTheme } from 'components/AppTheme';
 
 import WindowSizeReporter from 'components/ArticleComponents/WindowSizeReporter';
 
-const BlogPage = ({ baseUrl }) => (
+const BlogPage = ({ baseUrl, theme }) => (
   <>
     <BlogSEO baseUrl={baseUrl} />
-    <BlogArticleContainer>
-      <BlogParagraph>
-        Unlike your React components, the event listeners they&apos;ve created
-        don&apos;t magically disappear after their UI unmounts from the DOM.
-        Undisposed event listeners will linger in your browser to haunt future
-        components.
-      </BlogParagraph>
-      <BlogParagraph>
-        Let&apos;s say you wanted to create a simple component that displays the{' '}
-        <strong>instantaneous</strong> window width.
-      </BlogParagraph>
-      <BlogParagraph>
-        The first step is to create a function for setting some component state
-        we&apos;ll call{' '}
-        <strong>
-          <code>windowWidth</code>
-        </strong>
-        , then create a{' '}
-        <BlogLink
-          href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener"
-          paragraph
-        >
-          window event listener
-        </BlogLink>{' '}
-        in the React lifecycle method{' '}
-        <strong>
-          <code>componentDidMount()</code>
-        </strong>{' '}
-        with our new setter function as a{' '}
-        <strong>
-          <code>callback</code>
-        </strong>
-        .
-      </BlogParagraph>
-      <BlogCodeBlock
-        language="jsx"
-        code={`
+    <ThemeProvider theme={theme}>
+      <BlogArticleContainer>
+        <BlogParagraph>
+          Unlike your React components, the event listeners they&apos;ve created
+          don&apos;t magically disappear after their UI unmounts from the DOM.
+          Undisposed event listeners will linger in your browser to haunt future
+          components.
+        </BlogParagraph>
+        <BlogParagraph>
+          Let&apos;s say you wanted to create a simple component that displays
+          the <strong>instantaneous</strong> window width.
+        </BlogParagraph>
+        <BlogParagraph>
+          The first step is to create a function for setting some component
+          state we&apos;ll call{' '}
+          <strong>
+            <code>windowWidth</code>
+          </strong>
+          , then create a{' '}
+          <BlogLink
+            href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener"
+            paragraph
+          >
+            window event listener
+          </BlogLink>{' '}
+          in the React lifecycle method{' '}
+          <strong>
+            <code>componentDidMount()</code>
+          </strong>{' '}
+          with our new setter function as a{' '}
+          <strong>
+            <code>callback</code>
+          </strong>
+          .
+        </BlogParagraph>
+        <BlogCodeBlock
+          language="jsx"
+          code={`
 state = {
   windowWidth: null
 };
@@ -67,49 +70,49 @@ updateWindowSize = () =>
     windowWidth: window.innerWidth
   });
       `}
-      />
-      <BlogParagraph>
-        When the component first mounts,{' '}
-        <strong>
-          <code>updateWindowSize()</code>
-        </strong>{' '}
-        is called directly. As the window size changes, the event listener
-        we&apos;ve created will call the same function as a callback.
-      </BlogParagraph>
-      <BlogParagraph>
-        Before the current component unmounts, our event listener must be
-        removed from the{' '}
-        <strong>
-          <code>global Window object</code>
-        </strong>{' '}
-        by utilizing the React lifecycle method{' '}
-        <strong>
-          <code>componentWillUnmount()</code>
-        </strong>
-        .
-      </BlogParagraph>
-      <BlogParagraph>
-        All together the code is quite simple, but can save you from a lot of
-        potential headaches. Try resizing your browser window to see the code in
-        action.
-      </BlogParagraph>
-      <BlogCodeBlock
-        language="jsx"
-        title={
-          <h2 style={{ fontSize: '1.5em', margin: '1.4em' }}>
-            <span role="img" aria-label="Hooray">
-              🎉
-            </span>
-            {` `}
-            <WindowSizeReporter />
-            {` `}
-            <span role="img" aria-label="Hooray">
-              🎉
-            </span>
-          </h2>
-        }
-        path="/components/WindowSizeReporter.js"
-        code={`
+        />
+        <BlogParagraph>
+          When the component first mounts,{' '}
+          <strong>
+            <code>updateWindowSize()</code>
+          </strong>{' '}
+          is called directly. As the window size changes, the event listener
+          we&apos;ve created will call the same function as a callback.
+        </BlogParagraph>
+        <BlogParagraph>
+          Before the current component unmounts, our event listener must be
+          removed from the{' '}
+          <strong>
+            <code>global Window object</code>
+          </strong>{' '}
+          by utilizing the React lifecycle method{' '}
+          <strong>
+            <code>componentWillUnmount()</code>
+          </strong>
+          .
+        </BlogParagraph>
+        <BlogParagraph>
+          All together the code is quite simple, but can save you from a lot of
+          potential headaches. Try resizing your browser window to see the code
+          in action.
+        </BlogParagraph>
+        <BlogCodeBlock
+          language="jsx"
+          title={
+            <h2 style={{ fontSize: '1.5em', margin: '1.4em' }}>
+              <span role="img" aria-label="Hooray">
+                🎉
+              </span>
+              {` `}
+              <WindowSizeReporter />
+              {` `}
+              <span role="img" aria-label="Hooray">
+                🎉
+              </span>
+            </h2>
+          }
+          path="/components/WindowSizeReporter.js"
+          code={`
 import React from 'react';
 
 class WindowSizeReporter extends React.Component {
@@ -144,37 +147,32 @@ class WindowSizeReporter extends React.Component {
 
 export default WindowSizeReporter;
       `}
-      />
-    </BlogArticleContainer>
+        />
+      </BlogArticleContainer>
+    </ThemeProvider>
   </>
 );
 
-const fontColor = '#e2e5ec';
-const highlightFontColor = 'aquamarine';
-const backgroundColor = '#101010';
-
-// _app.js level theme variable overrides
-BlogPage.theme = {
-  headerNavFontColor: fontColor,
-  headerNavTextUnderlineColor: highlightFontColor,
-  headerNavHoverFontColor: highlightFontColor,
-  headerNavHamburgerIconColor: fontColor,
-  pageBackgroundColor: backgroundColor,
-  pageContentFontColor: fontColor,
-  pageContentLinkHoverColor: highlightFontColor,
-  popoutMenuBorderColor: fontColor,
-  blogArticleWidth: 740
-};
-
 BlogPage.propTypes = {
-  baseUrl: PropTypes.string.isRequired
+  baseUrl: PropTypes.string.isRequired,
+  theme: PropTypes.object
 };
 
-// Get absolute url of page
+BlogPage.defaultProps = {
+  theme: {}
+};
+
+// Get URL and generate page theme
 BlogPage.getInitialProps = async ({ req }) => {
   const hostname = req ? req.headers.host : window.location.hostname;
   const protocol = hostname.includes('localhost') ? 'http' : 'https';
-  return { baseUrl: `${protocol}/${hostname}` };
+  const theme = generatePageTheme({
+    fontColor: '#e2e5ec',
+    highlightFontColor: 'aquamarine',
+    backgroundColor: '#101010'
+  });
+
+  return { baseUrl: `${protocol}/${hostname}`, theme };
 };
 
 export default BlogPage;

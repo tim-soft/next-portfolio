@@ -55,11 +55,11 @@ class WebApp extends App {
   }
 
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, router } = this.props;
 
-    const items = [
+    const pages = [
       {
-        id: this.props.router.route,
+        id: router.route,
         Component,
         pageProps
       }
@@ -70,7 +70,7 @@ class WebApp extends App {
       // Theme variables defined in /src/components
       ...AppTheme,
       // Add any theme variables provided by the page/route level component
-      ...Component.theme
+      ...pageProps.theme
     };
 
     return (
@@ -83,17 +83,17 @@ class WebApp extends App {
             <Transition
               native
               unique
-              items={items}
-              keys={items => items.id}
+              items={pages}
+              keys={page => page.id}
               initial={{ opacity: 1, transform: 'scale(1) translateY(0px)' }}
               from={{ opacity: 0, transform: 'scale(0.9) translateY(-200px)' }}
               enter={{ opacity: 1, transform: 'scale(1) translateY(0px)' }}
               leave={{ opacity: 0, transform: 'scale(0.9) translateY(-200px)' }}
             >
-              {({ Component, pageProps }) => ({ opacity, transform }) => (
-                <AnimatedContainer style={{ opacity, transform }}>
-                  <Component
-                    {...pageProps}
+              {page => ({ opacity, transform }) => (
+                <AnimatedContainer key={page.id} style={{ opacity, transform }}>
+                  <page.Component
+                    {...page.pageProps}
                     routeIsAnimating={opacity.value !== 1}
                   />
                 </AnimatedContainer>

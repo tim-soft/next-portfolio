@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ThemeProvider } from 'styled-components';
 import {
   BlogParagraph,
   BlogLink,
@@ -7,142 +8,140 @@ import {
   BlogArticleContainer,
   BlogSEO
 } from 'components/Blog';
+import { generatePageTheme } from 'components/AppTheme';
 
-const BlogPage = ({ baseUrl }) => (
+const BlogPage = ({ baseUrl, theme }) => (
   <>
     <BlogSEO baseUrl={baseUrl} />
-    <BlogArticleContainer>
-      <BlogParagraph>
-        Test{` `}
-        <BlogLink
-          href="https://www.npmjs.com/package/stringify-object"
-          paragraph
-        >
-          stringify-object
-        </BlogLink>
-      </BlogParagraph>
+    <ThemeProvider theme={theme}>
+      <BlogArticleContainer>
+        <BlogParagraph>
+          Test{` `}
+          <BlogLink
+            href="https://www.npmjs.com/package/stringify-object"
+            paragraph
+          >
+            stringify-object
+          </BlogLink>
+        </BlogParagraph>
 
-      <BlogCodeBlock
-        language="js"
-        path="/data/config.js"
-        code={`
-const config = {
-  showCube: true,
-  dimension: '3D',
-  velocity: 2,
-  boundaryType: 'bounce',
-  antialias: true,
-  particles: {
-    colorMode: 'rainbow',
-    color: '#3FB568',
-    transparency: 0.9,
-    shape: 'square',
-    boundingBox: 'canvas',
-    count: 500,
-    minSize: 10,
-    maxSize: 75,
-    visible: true
+        <BlogCodeBlock
+          language="js"
+          path="/data/config.js"
+          code={`
+  const config = {
+    showCube: true,
+    dimension: '3D',
+    velocity: 2,
+    boundaryType: 'bounce',
+    antialias: true,
+    particles: {
+      colorMode: 'rainbow',
+      color: '#3FB568',
+      transparency: 0.9,
+      shape: 'square',
+      boundingBox: 'canvas',
+      count: 500,
+      minSize: 10,
+      maxSize: 75,
+      visible: true
+    }
   }
-}
-      `}
-      />
-
-      <BlogCodeBlock
-        language="js"
-        path="/data/config.js"
-        code={`
-const configJSON = JSON.stringify(config, null, 2);
-
-console.log(configJSON)
-      `}
-      />
-
-      <BlogCodeBlock
-        language="json"
-        path="/data/config.json"
-        showLineNumbers={false}
-        code={`
-{
-  "showCube": true,
-  "dimension": "3D",
-  "velocity": 2,
-  "boundaryType": "bounce",
-  "antialias": true,
-  "particles": {
-      "colorMode": "rainbow",
-      "color": "#3FB568",
-      "transparency": 0.9,
-      "shape": "square",
-      "boundingBox": "canvas",
-      "count": 500,
-      "minSize": 10,
-      "maxSize": 75,
-      "visible": true
-  }
-}
         `}
-      />
+        />
 
-      <BlogCodeBlock
-        language="js"
-        path="/data/config.js"
-        code={`
-import stringifyObject from 'stringify-object';
+        <BlogCodeBlock
+          language="js"
+          path="/data/config.js"
+          code={`
+  const configJSON = JSON.stringify(config, null, 2);
 
-const config = {
-  showCube: true,
-  dimension: '3D',
-  velocity: 2,
-  boundaryType: 'bounce',
-  antialias: true,
-  particles: {
-    colorMode: 'rainbow',
-    color: '#3FB568',
-    transparency: 0.9,
-    shape: 'square',
-    boundingBox: 'canvas',
-    count: 500,
-    minSize: 10,
-    maxSize: 75,
-    visible: true
+  console.log(configJSON)
+        `}
+        />
+
+        <BlogCodeBlock
+          language="json"
+          path="/data/config.json"
+          showLineNumbers={false}
+          code={`
+  {
+    "showCube": true,
+    "dimension": "3D",
+    "velocity": 2,
+    "boundaryType": "bounce",
+    "antialias": true,
+    "particles": {
+        "colorMode": "rainbow",
+        "color": "#3FB568",
+        "transparency": 0.9,
+        "shape": "square",
+        "boundingBox": "canvas",
+        "count": 500,
+        "minSize": 10,
+        "maxSize": 75,
+        "visible": true
+    }
   }
-}
+          `}
+        />
 
-console.log(stringifyObject(config, {
-  indent: '  ',
-  singleQuotes: true
-}))
-      `}
-      />
-    </BlogArticleContainer>
+        <BlogCodeBlock
+          language="js"
+          path="/data/config.js"
+          code={`
+  import stringifyObject from 'stringify-object';
+
+  const config = {
+    showCube: true,
+    dimension: '3D',
+    velocity: 2,
+    boundaryType: 'bounce',
+    antialias: true,
+    particles: {
+      colorMode: 'rainbow',
+      color: '#3FB568',
+      transparency: 0.9,
+      shape: 'square',
+      boundingBox: 'canvas',
+      count: 500,
+      minSize: 10,
+      maxSize: 75,
+      visible: true
+    }
+  }
+
+  console.log(stringifyObject(config, {
+    indent: '  ',
+    singleQuotes: true
+  }))
+        `}
+        />
+      </BlogArticleContainer>
+    </ThemeProvider>
   </>
 );
 
-const fontColor = '#31d7f9';
-const highlightFontColor = 'springgreen';
-const backgroundColor = '#202629';
-
-// _app.js level theme variable overrides
-BlogPage.theme = {
-  headerNavFontColor: fontColor,
-  headerNavTextUnderlineColor: highlightFontColor,
-  headerNavHoverFontColor: highlightFontColor,
-  headerNavHamburgerIconColor: fontColor,
-  pageBackgroundColor: backgroundColor,
-  pageContentFontColor: fontColor,
-  pageContentLinkHoverColor: highlightFontColor,
-  blogArticleWidth: 740
-};
-
 BlogPage.propTypes = {
-  baseUrl: PropTypes.string.isRequired
+  baseUrl: PropTypes.string.isRequired,
+  theme: PropTypes.object
 };
 
-// Get absolute url of page
+BlogPage.defaultProps = {
+  theme: {}
+};
+
+// Get URL and generate page theme
 BlogPage.getInitialProps = async ({ req }) => {
   const hostname = req ? req.headers.host : window.location.hostname;
   const protocol = hostname.includes('localhost') ? 'http' : 'https';
-  return { baseUrl: `${protocol}/${hostname}` };
+  const theme = generatePageTheme({
+    fontColor: '#31d7f9',
+    highlightFontColor: 'springgreen',
+    backgroundColor: '#202629'
+  });
+
+  return { baseUrl: `${protocol}/${hostname}`, theme };
 };
 
 export default BlogPage;

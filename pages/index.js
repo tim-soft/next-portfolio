@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ThemeProvider } from 'styled-components';
 import NextSEO from 'next-seo';
 import IntroBanner from 'layouts/WebsiteLayout/components/IntroBanner';
+import { generatePageTheme } from 'components/AppTheme';
 
-const HomePage = ({ routeIsAnimating }) => (
+const HomePage = ({ routeIsAnimating, theme }) => (
   <>
     <NextSEO
       config={{
@@ -13,32 +15,41 @@ const HomePage = ({ routeIsAnimating }) => (
         }
       }}
     />
-    <IntroBanner routeIsAnimating={routeIsAnimating} />
+    <ThemeProvider theme={theme}>
+      <IntroBanner routeIsAnimating={routeIsAnimating} />
+    </ThemeProvider>
   </>
 );
 
 HomePage.propTypes = {
-  routeIsAnimating: PropTypes.bool.isRequired
+  routeIsAnimating: PropTypes.bool.isRequired,
+  theme: PropTypes.object
+};
+
+HomePage.defaultProps = {
+  theme: {}
 };
 
 HomePage.layoutProps = {
   showBio: true
 };
 
-const fontColor = '#31d7f9';
-const navFontColor = 'gainsboro';
-const highlightFontColor = 'springgreen';
-const backgroundColor = '#3b3f45';
+// Generate page theme
+HomePage.getInitialProps = async () => {
+  const theme = generatePageTheme({
+    fontColor: '#31d7f9',
+    highlightFontColor: 'springgreen',
+    backgroundColor: '#3b3f45',
+    override: {
+      headerNavFontColor: 'gainsboro',
+      headerNavMobileMenuFontColor: 'gainsboro',
+      headerNavHamburgerIconColor: 'gainsboro',
+      popoutMenuBorderColor: 'black',
+      pageContentLinkHoverColor: 'springgreen'
+    }
+  });
 
-// _app.js level theme variable overrides
-HomePage.theme = {
-  headerNavFontColor: navFontColor,
-  headerNavTextUnderlineColor: highlightFontColor,
-  headerNavHoverFontColor: highlightFontColor,
-  headerNavHamburgerIconColor: navFontColor,
-  pageBackgroundColor: backgroundColor,
-  pageContentFontColor: fontColor,
-  pageContentLinkHoverColor: highlightFontColor
+  return { theme };
 };
 
 export default HomePage;

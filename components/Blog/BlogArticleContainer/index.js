@@ -51,7 +51,7 @@ const HorizontalRule = styled.hr`
 const Container = styled.main`
   color: ${({ theme }) => theme.pageContentFontColor};
   width: 100%;
-  max-width: ${({ theme, width }) => width || theme.blogArticleWidth}px;
+  max-width: ${({ theme, width }) => width || theme.pageContentWidth}px;
   display: flex;
   flex-direction: column;
   align-items: center;
