@@ -13,9 +13,7 @@ const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
       <MenuContainer
         style={{
           opacity,
-          visibility: interpolate([opacity], x =>
-            x === 0 ? 'hidden' : 'visible'
-          )
+          display: interpolate([opacity], x => (x === 0 ? 'none' : 'flex'))
         }}
       >
         <Scrollbar
