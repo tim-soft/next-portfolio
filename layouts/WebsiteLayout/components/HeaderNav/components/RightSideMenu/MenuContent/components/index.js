@@ -19,6 +19,8 @@ export const MenuList = styled.ul`
 
 export const MenuListItem = styled.li`
   display: flex;
+  transition: all 0.2s linear;
+  transition-property: background-color, color, border-color;
   color: ${({ theme }) => theme.pageContentFontColor};
   align-items: center;
   justify-content: space-between;
