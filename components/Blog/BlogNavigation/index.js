@@ -67,6 +67,7 @@ const NavContainer = styled.nav`
 `;
 
 const NavLink = styled(BlogLink)`
+  transition: color 0.2s linear;
   width: 45%;
   text-decoration: none;
 `;

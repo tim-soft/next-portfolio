@@ -20,6 +20,6 @@ export default createGlobalStyle`
   }
   * {
       transition: all 0.2s linear;
-      transition-property: background-color, border-color;
+      transition-property: background, background-color, border-color, background-image;
   }
 `;

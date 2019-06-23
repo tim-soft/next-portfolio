@@ -64,12 +64,14 @@ const AvatarImage = styled.img`
 `;
 
 const Title = styled.h1`
+  transition: color 0.2s linear;
   font-weight: normal;
   margin-bottom: 0;
   text-align: center;
 `;
 
 const PublishDate = styled.h4`
+  transition: color 0.2s linear;
   font-weight: normal;
   margin-top: 3px;
   margin-bottom: 1em;

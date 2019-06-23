@@ -10,14 +10,14 @@
  */
 const BlogData = [
   {
-    href: '/blog/test-blog-entry',
-    title: 'Test Blog Entry',
+    href: '/blog/dynamic-theming-with-styled-components-and-nextjs',
+    title: 'Dynamic Theming with Styled Components and NextJS',
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
   tempor incididunt ut labore et dolore magna aliqua. Eu sem integer vitae
   justo eget magna fermentum iaculis. Tristique senectus et netus et
   malesuada fames ac turpis egestas. Elit eget gravida cum sociis natoque
   penatibus et magnis dis.`,
-    logo: '/static/avatar.png',
+    logo: '/static/blog-logos/styled-components.png',
     readTime: 4,
     date: 'Mon May 1 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
   },

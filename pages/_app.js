@@ -37,6 +37,10 @@ class WebApp extends App {
     return { pageProps };
   }
 
+  state = {
+    dynamicPageThemes: []
+  };
+
   componentDidMount() {
     // eslint-disable-next-line no-console
     console.log(
@@ -54,8 +58,31 @@ class WebApp extends App {
     );
   }
 
+  updateTheme = dynamicTheme => {
+    const { dynamicPageThemes } = this.state;
+    const { route } = this.props.router;
+
+    const pageIndex = dynamicPageThemes.findIndex(page => page.route === route);
+
+    if (pageIndex === -1) dynamicPageThemes.push({ route, dynamicTheme });
+    else dynamicPageThemes[pageIndex] = { route, dynamicTheme };
+
+    this.setState({ dynamicPageThemes });
+  };
+
+  getDynamicPageTheme = () => {
+    const { route } = this.props.router;
+    const { dynamicPageThemes } = this.state;
+    const dynamicPageTheme = dynamicPageThemes.find(
+      pageTheme => pageTheme.route === route
+    );
+
+    return dynamicPageTheme ? dynamicPageTheme.dynamicTheme : {};
+  };
+
   render() {
     const { Component, pageProps, router } = this.props;
+    const dynamicTheme = this.getDynamicPageTheme();
 
     const pages = [
       {
@@ -70,7 +97,8 @@ class WebApp extends App {
       // Theme variables defined in /src/components
       ...AppTheme,
       // Add any theme variables provided by the page/route level component
-      ...pageProps.theme
+      ...pageProps.theme,
+      ...dynamicTheme
     };
 
     return (
@@ -94,6 +122,8 @@ class WebApp extends App {
                 <AnimatedContainer key={page.id} style={{ opacity, transform }}>
                   <page.Component
                     {...page.pageProps}
+                    theme={{ ...page.pageProps.theme, ...dynamicTheme }}
+                    updateTheme={theme => this.updateTheme(theme)}
                     routeIsAnimating={opacity.value !== 1}
                   />
                 </AnimatedContainer>
