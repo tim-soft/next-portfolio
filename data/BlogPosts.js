@@ -18,8 +18,8 @@ const BlogData = [
   malesuada fames ac turpis egestas. Elit eget gravida cum sociis natoque
   penatibus et magnis dis.`,
     logo: '/static/blog-logos/styled-components.png',
-    readTime: 4,
-    date: 'Mon May 1 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
+    readTime: 15,
+    date: 'Mon Jun 22 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
   },
   {
     href: '/blog/react-always-throw-away-your-event-listeners',

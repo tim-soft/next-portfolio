@@ -8,6 +8,7 @@ import BlogNavigation from './BlogNavigation';
 import BlogLink from './BlogLink';
 import DateAndDuration from './DateAndDuration';
 import BlogSEO from './BlogSEO';
+import BlogList from './BlogList';
 
 export {
   BlogArticleBanner,
@@ -19,5 +20,6 @@ export {
   BlogNavigation,
   BlogLink,
   DateAndDuration,
-  BlogSEO
+  BlogSEO,
+  BlogList
 };

@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
-import { BlogArticleContainer, BlogSEO } from 'components/Blog';
+import {
+  BlogArticleContainer,
+  BlogSEO,
+  BlogParagraph,
+  BlogList
+} from 'components/Blog';
 import { generatePageTheme } from 'components/AppTheme';
 import Button from 'components/Button';
 
@@ -10,6 +15,22 @@ const BlogPage = ({ baseUrl, theme, updateTheme }) => (
     <BlogSEO baseUrl={baseUrl} />
     <ThemeProvider theme={theme}>
       <BlogArticleContainer>
+        <h2
+          style={{
+            fontWeight: 'normal',
+            margin: '1.5em 0',
+            textAlign: 'center',
+            fontSize: '2em'
+          }}
+        >
+          <span role="img" aria-label="lit">
+            🔥
+          </span>{' '}
+          Demo First{' '}
+          <span role="img" aria-label="lit">
+            🔥
+          </span>{' '}
+        </h2>
         <ToggleThemeContainer>
           <Button
             onClick={() =>
@@ -51,8 +72,27 @@ const BlogPage = ({ baseUrl, theme, updateTheme }) => (
           >
             Dark Theme
           </Button>
-          <Button onClick={() => updateTheme({})}>Reset</Button>
+          <Button onClick={() => updateTheme({})}>Default</Button>
         </ToggleThemeContainer>
+        <BlogParagraph>
+          When you think of theming your React app, there are really two
+          situations you will encounter
+        </BlogParagraph>
+        <BlogList>
+          <li>Theming entire pages as they are loaded</li>
+          <li>Dynamically changing themes after these pages have loaded</li>
+        </BlogList>
+        <BlogParagraph>
+          The first situation is what you see on this page right now. Clicking
+          through the links of this blog, every page has it&apos;s own unique
+          set of theme variables such as background and font colors.
+        </BlogParagraph>
+        <BlogParagraph>
+          The second situation is a bit trickier. Changes to the page theme must
+          be triggered by a state change, and these new values need to be
+          supplied to the <code>styled-components</code> module{' '}
+          <code>{`<ThemeProvider />`}</code>
+        </BlogParagraph>
       </BlogArticleContainer>
     </ThemeProvider>
   </>
@@ -99,9 +139,17 @@ BlogPage.getInitialProps = async ({ req }) => {
 export default BlogPage;
 
 const ToggleThemeContainer = styled.div`
-  margin: 2em 0;
+  border-radius: 8px;
+  border-color: ${({ theme }) => theme.popoutMenuBorderColor};
+  border-width: 2px;
+  border-style: solid;
+  padding: 2em;
+  margin: 1em 0;
   display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
   > * {
-    margin: 0 auto;
+    margin: 1em;
   }
 `;

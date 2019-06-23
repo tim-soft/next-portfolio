@@ -50,6 +50,5 @@ const CoffeeIndicator = styled.span`
 `;
 
 const DotSeparator = styled.span`
-  transition: color 0.2s linear;
   font-size: 1.45em;
 `;
