@@ -56,7 +56,7 @@ const StyledButton = styled.button`
   :focus,
   :hover,
   :active {
-    outline-color: ${({ theme }) => theme.pageContentLinkHoverColor};
+    outline: none;
     border-color: ${({ theme }) => theme.pageContentLinkHoverColor};
     color: ${({ theme }) => theme.pageContentLinkHoverColor};
     background-color: ${({ theme }) => {
