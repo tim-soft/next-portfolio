@@ -33,16 +33,12 @@ PortfolioPage.defaultProps = {
   theme: {}
 };
 
-// Generate page theme
-PortfolioPage.getInitialProps = async () => {
-  const theme = generatePageTheme({
-    fontColor: 'black',
-    highlightFontColor: 'cyan',
-    backgroundColor: '#9e9e9e'
-  });
-
-  return { theme };
-};
+// Override default app theme for this page
+PortfolioPage.pageTheme = generatePageTheme({
+  fontColor: 'black',
+  highlightFontColor: 'cyan',
+  backgroundColor: '#9e9e9e'
+});
 
 export default PortfolioPage;
 

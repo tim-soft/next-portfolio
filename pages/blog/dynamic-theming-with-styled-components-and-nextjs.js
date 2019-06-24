@@ -117,17 +117,19 @@ BlogPage.defaultProps = {
   theme: {}
 };
 
+// Override default app theme for this page
+BlogPage.pageTheme = generatePageTheme({
+  fontColor: 'black',
+  highlightFontColor: 'springgreen',
+  backgroundColor: '#008000'
+});
+
 // Get absolute url of page
 BlogPage.getInitialProps = async ({ req }) => {
   const hostname = req ? req.headers.host : window.location.hostname;
   const protocol = hostname.includes('localhost') ? 'http' : 'https';
-  const theme = generatePageTheme({
-    fontColor: 'black',
-    highlightFontColor: 'springgreen',
-    backgroundColor: '#008000'
-  });
 
-  return { baseUrl: `${protocol}/${hostname}`, theme };
+  return { baseUrl: `${protocol}/${hostname}` };
 };
 
 export default BlogPage;

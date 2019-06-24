@@ -31,16 +31,12 @@ CoursesPage.defaultProps = {
   theme: {}
 };
 
-// Generate page theme
-CoursesPage.getInitialProps = async () => {
-  const theme = generatePageTheme({
-    fontColor: 'black',
-    highlightFontColor: 'cyan',
-    backgroundColor: '#9e9e9e'
-  });
-
-  return { theme };
-};
+// Override default app theme for this page
+CoursesPage.pageTheme = generatePageTheme({
+  fontColor: 'black',
+  highlightFontColor: 'cyan',
+  backgroundColor: '#9e9e9e'
+});
 
 export default CoursesPage;
 

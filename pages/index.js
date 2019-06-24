@@ -34,22 +34,18 @@ HomePage.layoutProps = {
   showBio: true
 };
 
-// Generate page theme
-HomePage.getInitialProps = async () => {
-  const theme = generatePageTheme({
-    fontColor: '#31d7f9',
-    highlightFontColor: 'springgreen',
-    backgroundColor: '#3b3f45',
-    override: {
-      headerNavFontColor: 'gainsboro',
-      headerNavMobileMenuFontColor: 'gainsboro',
-      headerNavHamburgerIconColor: 'gainsboro',
-      popoutMenuBorderColor: 'black',
-      pageContentLinkHoverColor: 'springgreen'
-    }
-  });
-
-  return { theme };
-};
+// Override default app theme for this page
+HomePage.pageTheme = generatePageTheme({
+  fontColor: '#31d7f9',
+  highlightFontColor: 'springgreen',
+  backgroundColor: '#3b3f45',
+  override: {
+    headerNavFontColor: 'gainsboro',
+    headerNavMobileMenuFontColor: 'gainsboro',
+    headerNavHamburgerIconColor: 'gainsboro',
+    popoutMenuBorderColor: 'black',
+    pageContentLinkHoverColor: 'springgreen'
+  }
+});
 
 export default HomePage;

@@ -34,21 +34,17 @@ ThreeParticles.defaultProps = {
   theme: {}
 };
 
-// Get URL and generate page theme
-ThreeParticles.getInitialProps = async () => {
-  const theme = generatePageTheme({
-    fontColor: '#31d7f9',
-    highlightFontColor: 'springgreen',
-    backgroundColor: '#3b3f45',
-    override: {
-      headerNavFontColor: 'gainsboro',
-      headerNavHamburgerIconColor: 'gainsboro',
-      popoutMenuBorderColor: 'black'
-    }
-  });
-
-  return { theme };
-};
+// Override default app theme for this page
+ThreeParticles.pageTheme = generatePageTheme({
+  fontColor: '#31d7f9',
+  highlightFontColor: 'springgreen',
+  backgroundColor: '#3b3f45',
+  override: {
+    headerNavFontColor: 'gainsboro',
+    headerNavHamburgerIconColor: 'gainsboro',
+    popoutMenuBorderColor: 'black'
+  }
+});
 
 export default ThreeParticles;
 

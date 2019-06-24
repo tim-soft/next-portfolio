@@ -8,7 +8,7 @@ import withGA from 'next-ga';
 import NextSeo from 'next-seo';
 import { Transition, animated } from 'react-spring';
 import styled, { ThemeProvider } from 'styled-components';
-import AppTheme from 'components/AppTheme';
+import appTheme from 'components/AppTheme';
 import GlobalStyles from 'components/GlobalStyles';
 import WebsiteLayout from 'layouts/WebsiteLayout';
 import defaultSEO from 'components/DefaultSEO';
@@ -82,6 +82,7 @@ class WebApp extends App {
 
   render() {
     const { Component, pageProps, router } = this.props;
+    const { pageTheme } = Component;
     const dynamicTheme = this.getDynamicPageTheme();
 
     const pages = [
@@ -95,9 +96,9 @@ class WebApp extends App {
     // _app level theme variables, wrapping the entire layout
     const theme = {
       // Theme variables defined in /src/components
-      ...AppTheme,
+      ...appTheme,
       // Add any theme variables provided by the page/route level component
-      ...pageProps.theme,
+      ...pageTheme,
       ...dynamicTheme
     };
 
@@ -122,8 +123,8 @@ class WebApp extends App {
                 <AnimatedContainer key={page.id} style={{ opacity, transform }}>
                   <page.Component
                     {...page.pageProps}
-                    theme={{ ...page.pageProps.theme, ...dynamicTheme }}
-                    updateTheme={theme => this.updateTheme(theme)}
+                    theme={{ ...page.pageTheme, ...dynamicTheme }}
+                    updateTheme={this.updateTheme}
                     routeIsAnimating={opacity.value !== 1}
                   />
                 </AnimatedContainer>
