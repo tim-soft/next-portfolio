@@ -5,7 +5,8 @@ import {
   BlogArticleContainer,
   BlogSEO,
   BlogParagraph,
-  BlogList
+  BlogList,
+  BlogSectionHeading
 } from 'components/Blog';
 import { generatePageTheme } from 'components/AppTheme';
 import Button from 'components/Button';
@@ -15,14 +16,7 @@ const BlogPage = ({ baseUrl, theme, updateTheme }) => (
     <BlogSEO baseUrl={baseUrl} />
     <ThemeProvider theme={theme}>
       <BlogArticleContainer>
-        <h2
-          style={{
-            fontWeight: 'normal',
-            margin: '1.5em 0',
-            textAlign: 'center',
-            fontSize: '2em'
-          }}
-        >
+        <BlogSectionHeading>
           <span role="img" aria-label="lit">
             🔥
           </span>{' '}
@@ -30,7 +24,7 @@ const BlogPage = ({ baseUrl, theme, updateTheme }) => (
           <span role="img" aria-label="lit">
             🔥
           </span>{' '}
-        </h2>
+        </BlogSectionHeading>
         <ToggleThemeContainer>
           <Button
             onClick={() =>
