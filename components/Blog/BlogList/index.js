@@ -24,4 +24,8 @@ const StyledList = styled.ul`
   font-size: 1.2em;
   color: ${({ theme }) => theme.pageContentFontColor};
   list-style-type: ${({ listStyle }) => listStyle};
+
+  li:not(:last-child) {
+    margin-bottom: 8px;
+  }
 `;
