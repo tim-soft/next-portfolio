@@ -12,7 +12,8 @@ import {
 } from 'components/Blog';
 import { generatePageTheme } from 'components/AppTheme';
 import Button from 'components/Button';
-import colors from 'nice-color-palettes/200';
+import colors from 'nice-color-palettes/500';
+import bestContrast from 'get-best-contrast-color';
 
 /**
  * Picks a random top color palette from https://www.colourlovers.com/
@@ -21,9 +22,20 @@ import colors from 'nice-color-palettes/200';
  * https://github.com/Jam3/nice-color-palettes
  */
 const generateColorPalette = () => {
-  const [fontColor, highlightFontColor, backgroundColor] = colors[
-    Math.floor(Math.random() * Math.floor(colors.length))
-  ];
+  // Choose random color palette
+  const palette = colors[Math.floor(Math.random() * Math.floor(colors.length))];
+
+  // Choose first color in palette as background color
+  const backgroundColor = palette.shift();
+
+  // Of remaining colors, choose highest contrast color against background as font color
+  const fontColor = bestContrast(backgroundColor, palette);
+
+  // Second-most contrasting color against background as font hover color
+  const highlightFontColor = bestContrast(
+    backgroundColor,
+    palette.filter(color => color !== fontColor)
+  );
 
   return generatePageTheme({
     fontColor,
