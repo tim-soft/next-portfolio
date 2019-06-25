@@ -3510,7 +3510,7 @@ get-best-contrast-color@^0.3.0:
   dependencies:
     get-contrast-ratio "0.2.0"
 
-get-contrast-ratio@0.2.0:
+get-contrast-ratio@0.2.0, get-contrast-ratio@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/get-contrast-ratio/-/get-contrast-ratio-0.2.0.tgz#fcac5abf4f44359cf8f53b733dd574ed08f54e31"
   integrity sha512-DDxjbKHRfCA4awtEhOcaRRNSAu7a2dvwmokg/t+fSNmuxVILUqnaPkB5mItTyzTTcayHRGW68z/od6oY29aWhQ==

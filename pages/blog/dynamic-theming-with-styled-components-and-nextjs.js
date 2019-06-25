@@ -12,8 +12,9 @@ import {
 } from 'components/Blog';
 import { generatePageTheme } from 'components/AppTheme';
 import Button from 'components/Button';
-import colors from 'nice-color-palettes/500';
+import colors from 'nice-color-palettes/1000';
 import bestContrast from 'get-best-contrast-color';
+import getContrastRatio from 'get-contrast-ratio';
 
 /**
  * Picks a random top color palette from https://www.colourlovers.com/
@@ -22,20 +23,89 @@ import bestContrast from 'get-best-contrast-color';
  * https://github.com/Jam3/nice-color-palettes
  */
 const generateColorPalette = () => {
-  // Choose random color palette
-  const palette = colors[Math.floor(Math.random() * Math.floor(colors.length))];
+  const CONTRAST_THRESHOLD = 3.4;
+  let backgroundColor;
+  let fontColor;
+  let highlightFontColor;
 
-  // Choose first color in palette as background color
-  const backgroundColor = palette.shift();
+  let paletteIterations = 0;
+  let colorIterations = 0;
 
-  // Of remaining colors, choose highest contrast color against background as font color
-  const fontColor = bestContrast(backgroundColor, palette);
+  // eslint-disable-next-line no-constant-condition
+  while (true) {
+    // Choose random color palette
+    const palette =
+      colors[Math.floor(Math.random() * Math.floor(colors.length))];
 
-  // Second-most contrasting color against background as font hover color
-  const highlightFontColor = bestContrast(
-    backgroundColor,
-    palette.filter(color => color !== fontColor)
-  );
+    paletteIterations += 1;
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const currBackground of palette) {
+      colorIterations += 1;
+
+      const currFontColor = bestContrast(currBackground, palette);
+      const currHighlightFontColor = bestContrast(
+        currBackground,
+        // eslint-disable-next-line no-loop-func
+        palette.filter(color => color !== currFontColor)
+      );
+
+      const currFontContrast = getContrastRatio(currBackground, currFontColor);
+      const currFontHighlightContrast = getContrastRatio(
+        currBackground,
+        currHighlightFontColor
+      );
+
+      // Set initial colors, update if a better contrast is found
+      if (!backgroundColor) {
+        backgroundColor = currBackground;
+        fontColor = currFontColor;
+        highlightFontColor = currHighlightFontColor;
+      } else {
+        const fontContrast = getContrastRatio(backgroundColor, fontColor);
+        const highlightFontContrast = getContrastRatio(
+          backgroundColor,
+          highlightFontColor
+        );
+
+        // If the current background color has suitable contrast
+        // with the font colors then exit loop
+        if (
+          fontContrast > CONTRAST_THRESHOLD &&
+          highlightFontContrast > CONTRAST_THRESHOLD
+        ) {
+          break;
+        }
+
+        if (
+          currFontContrast > fontContrast &&
+          currFontHighlightContrast > highlightFontContrast
+        ) {
+          backgroundColor = currBackground;
+          fontColor = currFontColor;
+          highlightFontColor = currHighlightFontColor;
+        }
+      }
+    }
+
+    const fontContrast = getContrastRatio(backgroundColor, fontColor);
+    const highlightFontContrast = getContrastRatio(
+      backgroundColor,
+      highlightFontColor
+    );
+
+    if (
+      fontContrast > CONTRAST_THRESHOLD &&
+      highlightFontContrast > CONTRAST_THRESHOLD
+    ) {
+      break;
+    }
+  }
+
+  // eslint-disable-next-line no-console
+  console.log('palette iterations', paletteIterations);
+  // eslint-disable-next-line no-console
+  console.log('color iterations', colorIterations);
 
   return generatePageTheme({
     fontColor,
