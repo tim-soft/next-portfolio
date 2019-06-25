@@ -12,12 +12,12 @@ import {
 } from 'components/Blog';
 import { generatePageTheme } from 'components/AppTheme';
 import Button from 'components/Button';
-import colors from 'nice-color-palettes/200';
+import colors from 'nice-color-palettes/500';
 import bestContrast from 'get-best-contrast-color';
 import getContrastRatio from 'get-contrast-ratio';
 
 /**
- * Picks a random top color palette from https://www.colourlovers.com/
+ * Picks a random top-rated color palette from https://www.colourlovers.com/
  * to generate a page theme.
  *
  * https://github.com/Jam3/nice-color-palettes
