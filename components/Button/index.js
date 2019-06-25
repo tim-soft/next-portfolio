@@ -53,10 +53,11 @@ const StyledButton = styled.button`
   font-size: 17px;
 
   padding: 0 10px;
-  :focus,
+  :focus {
+    outline: none;
+  }
   :hover,
   :active {
-    outline: none;
     border-color: ${({ theme }) => theme.pageContentLinkHoverColor};
     color: ${({ theme }) => theme.pageContentLinkHoverColor};
     background-color: ${({ theme }) => {

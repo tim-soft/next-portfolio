@@ -6,10 +6,31 @@ import {
   BlogSEO,
   BlogParagraph,
   BlogList,
-  BlogSectionHeading
+  BlogSectionHeading,
+  BlogCodeBlock,
+  BlogLink
 } from 'components/Blog';
 import { generatePageTheme } from 'components/AppTheme';
 import Button from 'components/Button';
+import colors from 'nice-color-palettes/200';
+
+/**
+ * Picks a random top color palette from https://www.colourlovers.com/
+ * to generate a page theme.
+ *
+ * https://github.com/Jam3/nice-color-palettes
+ */
+const generateColorPalette = () => {
+  const [fontColor, highlightFontColor, backgroundColor] = colors[
+    Math.floor(Math.random() * Math.floor(colors.length))
+  ];
+
+  return generatePageTheme({
+    fontColor,
+    highlightFontColor,
+    backgroundColor
+  });
+};
 
 const BlogPage = ({ baseUrl, theme, updateTheme }) => (
   <>
@@ -25,7 +46,13 @@ const BlogPage = ({ baseUrl, theme, updateTheme }) => (
             🔥
           </span>{' '}
         </BlogSectionHeading>
+        <BlogSectionHeading style={{ margin: 0, fontSize: '1.2em' }}>
+          Choose a new page theme
+        </BlogSectionHeading>
         <ToggleThemeContainer>
+          <RainbowButton onClick={() => updateTheme(generateColorPalette())}>
+            Random???
+          </RainbowButton>
           <Button
             onClick={() =>
               updateTheme(
@@ -86,6 +113,101 @@ const BlogPage = ({ baseUrl, theme, updateTheme }) => (
           be triggered by a state change, and these new values need to be
           supplied to the <code>styled-components</code> module{' '}
           <code>{`<ThemeProvider />`}</code>
+        </BlogParagraph>
+        <BlogCodeBlock
+          language="jsx"
+          path="/pages/_app.js"
+          code={`
+import App, { Container } from "next/app";
+import React from "react";
+import { ThemeProvider } from "styled-components";
+import appTheme from "../components/appTheme";
+import GlobalStyles from "../components/GlobalStyles";
+import WebsiteLayout from "../layouts/WebsiteLayout";
+
+export default class WebApp extends App {
+  static async getInitialProps({ Component, ctx }) {
+    let pageProps = {};
+
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx);
+    }
+
+    return { pageProps };
+  }
+
+  state = {
+    dynamicPageThemes: []
+  };
+
+  /**
+   * Updates the current page's theme with provided variables
+   *
+   * @param dynamicTheme object
+   */
+  updateTheme = dynamicTheme => {
+    const { dynamicPageThemes } = this.state;
+    const { route } = this.props.router;
+
+    const pageIndex = dynamicPageThemes.findIndex(page => page.route === route);
+
+    if (pageIndex === -1) dynamicPageThemes.push({ route, dynamicTheme });
+    else dynamicPageThemes[pageIndex] = { route, dynamicTheme };
+
+    this.setState({ dynamicPageThemes });
+  };
+
+  /**
+   * Retrieves any dynamic theme vars for current page
+   *
+   * @returns object
+   */
+  getDynamicPageTheme = () => {
+    const { route } = this.props.router;
+    const { dynamicPageThemes } = this.state;
+    const dynamicPageTheme = dynamicPageThemes.find(
+      pageTheme => pageTheme.route === route
+    );
+
+    return dynamicPageTheme ? dynamicPageTheme.dynamicTheme : {};
+  };
+
+  render() {
+    const { Component, pageProps } = this.props;
+    const { pageTheme } = Component;
+    const dynamicTheme = this.getDynamicPageTheme();
+
+    // _app level theme variables, wrapping the entire layout
+    const theme = {
+      // Theme variables defined in /src/components
+      ...appTheme,
+      // Add any theme variables provided by the page/route level component
+      ...pageTheme,
+      // Override any static page variables with dynamically set variables
+      ...dynamicTheme
+    };
+
+    return (
+      <Container>
+        <GlobalStyles />
+        <ThemeProvider theme={theme}>
+          <WebsiteLayout>
+            <Component {...pageProps} updateTheme={this.updateTheme} />
+          </WebsiteLayout>
+        </ThemeProvider>
+      </Container>
+    );
+  }
+}                   
+          `}
+        />
+        <BlogParagraph>
+          <BlogLink
+            href="https://codesandbox.io/s/nextjs-dynamic-theming-ibw4p"
+            paragraph
+          >
+            Check out the full demo on CodeSandbox
+          </BlogLink>
         </BlogParagraph>
       </BlogArticleContainer>
     </ThemeProvider>
@@ -148,4 +270,17 @@ const ToggleThemeContainer = styled.div`
   > * {
     margin: 1em;
   }
+`;
+
+const RainbowButton = styled(Button)`
+  border-image: linear-gradient(
+    to bottom right,
+    #b827fc 0%,
+    #2c90fc 25%,
+    #b8fd33 50%,
+    #fec837 75%,
+    #fd1892 100%
+  );
+  border-image-slice: 1;
+  border-width: 3px;
 `;
