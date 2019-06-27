@@ -6228,14 +6228,16 @@ react-reconciler@^0.20.4:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
-react-scrollbars-custom@^4.0.5:
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/react-scrollbars-custom/-/react-scrollbars-custom-4.0.5.tgz#3fa702aa849eebf9cc9f47a7dec713da423898a6"
-  integrity sha512-u6eHUFqRx3G3YymRD18w7ntA0U4NnbchzX29EaHbU+yCd5I2LEOkoCuexEObMoJVC9lovwF78BSQY8Sfb8IaQQ==
+react-scrollbars-custom@^4.0.6:
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/react-scrollbars-custom/-/react-scrollbars-custom-4.0.6.tgz#ad5b7ab78286f363be9cdca4c14249e3e9bf7ac9"
+  integrity sha512-/D/E5xNRMSDuwRBo5y5bDjFlmw4TRDp6u0KU10rXThlbQDOKKtxUpecjlMEWeDwJz3xjdZYbRghYZj2iJ2x4aQ==
   dependencies:
     cnbuilder "^1.0.0"
+    is-callable "^1.1.4"
+    is-number "^7.0.0"
     react-draggable "^3.3.0"
-    zoom-level "^1.1.0"
+    zoom-level "^1.1.13"
 
 react-spring@^9.0.0-beta.23:
   version "9.0.0-beta.23"
@@ -8140,7 +8142,7 @@ yup@^0.27.0:
     synchronous-promise "^2.0.6"
     toposort "^2.0.2"
 
-zoom-level@^1.1.0:
-  version "1.1.11"
-  resolved "https://registry.yarnpkg.com/zoom-level/-/zoom-level-1.1.11.tgz#98db34a06ab32dbe27ff88645493c5c9b306a8d6"
-  integrity sha512-njZKcd/vbBwXWqUVvpnVofr8+QkCmK+k6wOC1S+7hJLkovv5hTFXxu3c3lTQHF4A+7vnyn3LXSEqfiV7bnx5dA==
+zoom-level@^1.1.13:
+  version "1.1.13"
+  resolved "https://registry.yarnpkg.com/zoom-level/-/zoom-level-1.1.13.tgz#cad96a5964eff69f054b733b1de1facb5c629aa7"
+  integrity sha512-BFNE30A1ifQd217pzEaqftgz+NcedJbedj4rMCRBnoJ0N2J2n01hvIRdz4fMXFWEeCOIYPvRgojyNI1EyuCdiw==
