@@ -211,9 +211,10 @@ render() {
         `}
         />
         <BlogParagraph>
-          Since all pages are descendants of <code>{`<ThemeProvider />`}</code>{' '}
-          any page now has easy access to <code>fontColor</code> and{' '}
-          <code>backgroundColor</code>.
+          Since all pages are now descendants of{' '}
+          <code>{`<ThemeProvider />`}</code>, any component of these pages has
+          easy access to <code>fontColor</code> and <code>backgroundColor</code>
+          .
         </BlogParagraph>
         <BlogCodeBlock
           language="jsx"
@@ -221,106 +222,385 @@ render() {
           code={`
 import styled from 'styled-components';
 
-const Page = ({ routeIsAnimating, theme }) => (
-  <StyledDiv>
-    I am a themed page!
-  </StyledDiv>
+const Page = () => (
+  <StyledPage>
+    I'm a themed page!
+  </StyledPage>
 );
 
 export default Page;
 
-const StyledDiv = styled.div\`
+const StyledPage = styled.div\`
   background-color: ${`{({ theme }) => theme.backgroundColor }`};
   color: ${`{({ theme }) => theme.fontColor }`};
 \`;
         `}
         />
+        <BlogQuote>
+          The default app theme is cool but what about page themes?
+        </BlogQuote>
+        <BlogParagraph>
+          In Next.js, static properties of a page can be accessed in{' '}
+          <code>/pages/_app.js</code>. So let&apos;s add a static property to
+          our <code>Page</code> called <code>pageTheme</code>
+        </BlogParagraph>
+        <BlogCodeBlock
+          language="jsx"
+          path="/pages/cool-page.js"
+          code={`
+import styled from 'styled-components';
+
+const Page = () => (
+  <StyledPage>
+    I'm a themed page!
+  </StyledPage>
+);
+
+Page.pageTheme = {
+  backgroundColor: green;
+  fontColor: purple;
+};
+
+export default Page;
+
+const StyledPage = styled.div\`
+  background-color: ${`{({ theme }) => theme.backgroundColor }`};
+  color: ${`{({ theme }) => theme.fontColor }`};
+\`;
+        `}
+        />
+        <BlogParagraph>
+          Then we&apos;ll merge our page theme variables into the default app
+          theme.
+        </BlogParagraph>
         <BlogCodeBlock
           language="jsx"
           path="/pages/_app.js"
           code={`
-import App, { Container } from "next/app";
-import React from "react";
-import { ThemeProvider } from "styled-components";
-import appTheme from "../components/appTheme";
-import GlobalStyles from "../components/GlobalStyles";
-import WebsiteLayout from "../layouts/WebsiteLayout";
+render() {
+  const { Component, pageProps } = this.props;
+  const { pageTheme } = Component;
 
-export default class WebApp extends App {
-  static async getInitialProps({ Component, ctx }) {
-    let pageProps = {};
+  const theme = {
+    // Default app theme
+    ...appTheme,
+    // Any theme variables provided by the page
+    ...pageTheme
+  };
 
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
+  return (
+    <Container>
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </Container>
+  );
+}
+        `}
+        />
+        <BlogSectionHeading>The Dynamic Page Theme</BlogSectionHeading>
+        <BlogQuote>Pfff... Light/Dark mode. I want it all!</BlogQuote>
+        <BlogParagraph>
+          In order to change our page theme dynamically, i.e. at the push of a
+          button, we&apos;ll need to transcend our static page properties with
+          actual state changes inside <code>/pages/_app.js</code>.
+        </BlogParagraph>
+        <BlogParagraph>
+          The overall goal is to maintain state in <code>/pages/_app.js</code>{' '}
+          with a list of pages and their dynamic page overrides. We&apos;ll then
+          need to create a function for retrieving and updating the current
+          page&apos;s dynamic theme variables. The <code>updateTheme()</code>{' '}
+          function will be passed as a prop to our page which can be used to
+          update the theme!
+        </BlogParagraph>
+        <BlogCodeBlock
+          language="jsx"
+          path="/pages/_app.js"
+          code={`
+/**
+ * Maintain a list of dynamic theme variables for each page
+ * 
+ * dynamicPageThemes: [
+ *    {
+ *      route: '/cool-page',
+ *      dynamicTheme: {
+ *        backgroundColor: 'grey',
+ *        fontColor: 'blue'
+ *      }
+ *    }
+ * ]
+ */
+state = {
+  dynamicPageThemes: []
+};
+
+/**
+ * Updates the current page's theme with provided variables
+ *
+ * @param dynamicTheme object
+ */
+updateTheme = dynamicTheme => {
+  // Get the current page route i.e. /cool-page
+  const { route } = this.props.router;
+  const { dynamicPageThemes } = this.state;
+
+  // Lookup this page in state, create or update if necessary
+  const pageIndex = dynamicPageThemes.findIndex(page => page.route === route);
+  if (pageIndex === -1) dynamicPageThemes.push({ route, dynamicTheme });
+  else dynamicPageThemes[pageIndex] = { route, dynamicTheme };
+
+  // Add dynamic theme vars to state
+  this.setState({ dynamicPageThemes });
+};
+
+/**
+ * Retrieves any dynamic theme vars for current page
+ *
+ * @returns object
+ */
+getDynamicPageTheme = () => {
+  // Get the current page route i.e. /cool-page
+  const { route } = this.props.router;
+  const { dynamicPageThemes } = this.state;
+
+  // Lookup this page in state if it exists
+  const dynamicPageTheme = dynamicPageThemes.find(
+    pageTheme => pageTheme.route === route
+  );
+
+  // Return any dynamic theme variables for the current page route
+  return dynamicPageTheme ? dynamicPageTheme.dynamicTheme : {};
+};
+
+render() {
+  const { Component, pageProps } = this.props;
+  const { pageTheme } = Component;
+  const dynamicTheme = this.getDynamicPageTheme();
+
+  const theme = {
+    // Default app theme
+    ...appTheme,
+    // Any theme variables provided by the page
+    ...pageTheme,
+    // Override any static page variables with dynamically set variables
+    ...dynamicTheme
+  };
+
+  return (
+    <Container>
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} updateTheme={this.updateTheme} />
+      </ThemeProvider>
+    </Container>
+  );
+}
+        `}
+        />
+        <BlogParagraph>
+          Since our theme that is passed to <code>ThemeProvider</code> is now a
+          product of state changes, we can therefore dynamically update any page
+          by calling <code>this.props.updateTheme()</code>
+        </BlogParagraph>
+        <BlogCodeBlock
+          language="jsx"
+          path="/pages/cool-page.js"
+          code={`
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const Page = ({ updateTheme }) => (
+  <StyledPage>
+    I'm a themed page!
+    <button
+      type="button"
+      onClick={() =>
+        updateTheme({ backgroundColor: 'magenta', fontColor: 'grey' })
+      }
+    >
+      Grey Theme
+    </button>
+  </StyledPage>
+);
+
+Page.pageTheme = {
+  backgroundColor: green;
+  fontColor: purple;
+};
+
+BlogPage.propTypes = {
+  updateTheme: PropTypes.func.isRequired
+};
+
+export default Page;
+
+const StyledPage = styled.div\`
+  background-color: ${`{({ theme }) => theme.backgroundColor }`};
+  color: ${`{({ theme }) => theme.fontColor }`};
+\`;
+        `}
+        />
+        <BlogSectionHeading>The Random Button</BlogSectionHeading>
+        <BlogParagraph>
+          There is a treasure trove of cool color palettes over at{' '}
+          <BlogLink href="https://www.colourlovers.com/palettes" paragraph>
+            colourlovers.com
+          </BlogLink>
+          .
+        </BlogParagraph>
+        <BlogQuote>
+          Most of these palettes, let alone the top several hundred, surely will
+          look great in a page theme, right?
+        </BlogQuote>
+        <BlogParagraph>
+          Conveniently, there is a library for exactly this purpose on npm!
+        </BlogParagraph>
+        <BlogParagraph>
+          In order to automagically generate a complete page theme from random
+          color palettes, there is only one hardfast rule. The contrast of the
+          text to background must be high enough that the page is legible.
+        </BlogParagraph>
+        <BlogQuote>
+          The Web Content Accessibility Guidelines (WCAG) suggest several
+          minimum contrast ratios of font color to background color. I&apos;ll
+          settle for minimum contrast of 4.5 as it produces some very
+          interesting results.
+        </BlogQuote>
+        <BlogParagraph>The basic algorithm is:</BlogParagraph>
+        <BlogList>
+          <li>
+            Choose a random{' '}
+            <BlogLink href="https://www.colourlovers.com/palettes" paragraph>
+              colourlovers.com
+            </BlogLink>{' '}
+            color palette
+          </li>
+          <li>Pick the first color in the pallete as the background color</li>
+          <li>
+            Find the top two highest contrast colors in the palette against the
+            background color
+          </li>
+          <li>
+            If these contrasts exceed our <code>CONTRAST_THRESHOLD</code>, then
+            these colors will be used to update our theme
+          </li>
+          <li>
+            If these contrasts DO NOT exceed our <code>CONTRAST_THRESHOLD</code>
+            , set the next color in the palette as our background color and try
+            again
+          </li>
+          <li>
+            If we&apos;ve gone through our entire color palette and still
+            haven&apos;t found a suitable combination to meet our{' '}
+            <code>CONTRAST_THRESHOLD</code>, pick a new random palette and try
+            again until we&apos;ve found something decent.
+          </li>
+        </BlogList>
+        <BlogCodeBlock
+          language="jsx"
+          path="/pages/cool-page.js"
+          code={`
+import colors from 'nice-color-palettes/500';
+import bestContrast from 'get-best-contrast-color';
+import getContrastRatio from 'get-contrast-ratio';
+
+/**
+ * Picks a random top-rated color palette from https://www.colourlovers.com/
+ * to generate a page theme.
+ *
+ * https://github.com/Jam3/nice-color-palettes
+ */
+const generateColorPalette = () => {
+  // Font and Highlight Font contrast must equal or exceed
+  // this value against background color
+  const CONTRAST_THRESHOLD = 4.5;
+
+  let backgroundColor;
+  let fontColor;
+  let highlightFontColor;
+
+  // Returns true if background-font contrast is above CONTRAST_THRESHOLD
+  // otherwise false
+  const goodBackgroundContrast = () => {
+    if (
+      getContrastRatio(backgroundColor, fontColor) >= CONTRAST_THRESHOLD &&
+      getContrastRatio(backgroundColor, highlightFontColor) >=
+        CONTRAST_THRESHOLD
+    )
+      return true;
+
+    return false;
+  };
+
+  // Find color palette with good contrast
+  do {
+    // Choose random color palette
+    const palette =
+      colors[Math.floor(Math.random() * Math.floor(colors.length))];
+
+    // Find good background/font colors within palette
+    // eslint-disable-next-line no-restricted-syntax
+    for (const currBackground of palette) {
+      // Set theme colors based on current background of palette
+      backgroundColor = currBackground;
+      fontColor = bestContrast(currBackground, palette);
+      highlightFontColor = bestContrast(
+        currBackground,
+        // eslint-disable-next-line no-loop-func
+        palette.filter(color => color !== fontColor)
+      );
+
+      // Use current palette colors if they meet contrast threshold
+      if (goodBackgroundContrast()) break;
     }
+  } while (!goodBackgroundContrast());
 
-    return { pageProps };
-  }
-
-  state = {
-    dynamicPageThemes: []
+  return {
+    fontColor,
+    highlightFontColor,
+    backgroundColor
   };
-
-  /**
-   * Updates the current page's theme with provided variables
-   *
-   * @param dynamicTheme object
-   */
-  updateTheme = dynamicTheme => {
-    const { dynamicPageThemes } = this.state;
-    const { route } = this.props.router;
-
-    const pageIndex = dynamicPageThemes.findIndex(page => page.route === route);
-
-    if (pageIndex === -1) dynamicPageThemes.push({ route, dynamicTheme });
-    else dynamicPageThemes[pageIndex] = { route, dynamicTheme };
-
-    this.setState({ dynamicPageThemes });
-  };
-
-  /**
-   * Retrieves any dynamic theme vars for current page
-   *
-   * @returns object
-   */
-  getDynamicPageTheme = () => {
-    const { route } = this.props.router;
-    const { dynamicPageThemes } = this.state;
-    const dynamicPageTheme = dynamicPageThemes.find(
-      pageTheme => pageTheme.route === route
-    );
-
-    return dynamicPageTheme ? dynamicPageTheme.dynamicTheme : {};
-  };
-
-  render() {
-    const { Component, pageProps } = this.props;
-    const { pageTheme } = Component;
-    const dynamicTheme = this.getDynamicPageTheme();
-
-    // _app level theme variables, wrapping the entire layout
-    const theme = {
-      // Theme variables defined in /src/components
-      ...appTheme,
-      // Add any theme variables provided by the page/route level component
-      ...pageTheme,
-      // Override any static page variables with dynamically set variables
-      ...dynamicTheme
-    };
-
-    return (
-      <Container>
-        <GlobalStyles />
-        <ThemeProvider theme={theme}>
-          <WebsiteLayout>
-            <Component {...pageProps} updateTheme={this.updateTheme} />
-          </WebsiteLayout>
-        </ThemeProvider>
-      </Container>
-    );
-  }
-}                   
+};
           `}
+        />
+        <BlogParagraph>
+          Useage is as simple as calling <code>generateColorPalette()</code> and
+          passing it&apos;s result to <code>updateTheme()</code>.
+        </BlogParagraph>
+        <BlogCodeBlock
+          language="jsx"
+          path="/pages/cool-page.js"
+          code={`
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const Page = ({ updateTheme }) => (
+  <StyledPage>
+    I'm a themed page!
+    <button
+      type="button"
+      onClick={() => updateTheme(generateColorPalette())}
+    >
+      Grey Theme
+    </button>
+  </StyledPage>
+);
+
+Page.pageTheme = {
+  backgroundColor: green;
+  fontColor: purple;
+};
+
+BlogPage.propTypes = {
+  updateTheme: PropTypes.func.isRequired
+};
+
+export default Page;
+
+const StyledPage = styled.div\`
+  background-color: ${`{({ theme }) => theme.backgroundColor }`};
+  color: ${`{({ theme }) => theme.fontColor }`};
+\`;    
+        `}
         />
         <BlogParagraph>
           <BlogLink
