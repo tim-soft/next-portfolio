@@ -142,25 +142,99 @@ const BlogPage = ({ baseUrl, theme, updateTheme }) => (
           Click that random button a few times, what is it doing?
         </BlogQuote>
         <BlogParagraph>
-          When you think of theming a React app, things usually play out in
-          three ways
+          When I go about building themable React apps, I usually have three
+          concerns
         </BlogParagraph>
         <BlogList>
-          <li>The overall app has a theme</li>
-          <li>The page has a theme</li>
-          <li>Dynamically changing themes after these pages have loaded</li>
+          <li>
+            The entire app <i>has</i> a theme
+          </li>
+          <li>
+            A page <i>can have</i> a theme
+          </li>
+          <li>
+            The page or app theme can change <i>at runtime</i>
+          </li>
         </BlogList>
         <BlogParagraph>
-          The first situation is what you see on this page right now. Clicking
+          Concerns #1 and #2 are what you see on this page right now. Clicking
           through the links of this blog, every page has it&apos;s own unique
-          set of theme variables such as background and font colors.
+          set of theme variables such as background and font colors, which
+          optionally override the default app theme.
         </BlogParagraph>
         <BlogParagraph>
-          The second situation is a bit trickier. Changes to the page theme must
-          be triggered by a state change, and these new values need to be
-          supplied to the <code>styled-components</code> module{' '}
-          <code>{`<ThemeProvider />`}</code>
+          The venerable CSS-in-JS library{' '}
+          <BlogLink
+            href="https://github.com/styled-components/styled-components"
+            paragraph
+          >
+            <code>styled-components</code>
+          </BlogLink>{' '}
+          comes with a{' '}
+          <BlogLink
+            href="https://www.styled-components.com/docs/advanced#theming"
+            paragraph
+          >
+            <code>{`<ThemeProvider theme={theme}/>`}</code>
+          </BlogLink>{' '}
+          component which uses React context to pass it&apos;s theme variables
+          to any of it&apos;s child components.
         </BlogParagraph>
+        <BlogParagraph>
+          In a Next.js app, it&apos;s easy to apply this{' '}
+          <code>ThemeProvider</code> to all pages by wrapping{' '}
+          <code>{`<Component />`}</code> in{' '}
+          <BlogLink href="https://nextjs.org/docs#custom-app" paragraph>
+            <code>/pages/_app.js</code>
+          </BlogLink>
+          .
+        </BlogParagraph>
+        <BlogCodeBlock
+          language="jsx"
+          path="/pages/_app.js"
+          code={`
+render() {
+  const { Component, pageProps } = this.props;
+  const appTheme = {
+    fontColor: 'black',
+    backgroundColor: 'white'
+  };
+
+  return (
+    <Container>
+      <ThemeProvider theme={appTheme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </Container>
+  );
+}
+        `}
+        />
+        <BlogParagraph>
+          Since all pages are descendants of <code>{`<ThemeProvider />`}</code>{' '}
+          any page now has easy access to <code>fontColor</code> and{' '}
+          <code>backgroundColor</code>.
+        </BlogParagraph>
+        <BlogCodeBlock
+          language="jsx"
+          path="/pages/cool-page.js"
+          code={`
+import styled from 'styled-components';
+
+const Page = ({ routeIsAnimating, theme }) => (
+  <StyledDiv>
+    I am a themed page!
+  </StyledDiv>
+);
+
+export default Page;
+
+const StyledDiv = styled.div\`
+  background-color: ${`{({ theme }) => theme.backgroundColor }`};
+  color: ${`{({ theme }) => theme.fontColor }`};
+\`;
+        `}
+        />
         <BlogCodeBlock
           language="jsx"
           path="/pages/_app.js"
