@@ -8,7 +8,8 @@ import {
   BlogList,
   BlogSectionHeading,
   BlogCodeBlock,
-  BlogLink
+  BlogLink,
+  BlogQuote
 } from 'components/Blog';
 import { generatePageTheme } from 'components/AppTheme';
 import Button from 'components/Button';
@@ -137,12 +138,16 @@ const BlogPage = ({ baseUrl, theme, updateTheme }) => (
           </Button>
           <Button onClick={() => updateTheme({})}>Default</Button>
         </ToggleThemeContainer>
+        <BlogQuote>
+          Click that random button a few times, what is it doing?
+        </BlogQuote>
         <BlogParagraph>
-          When you think of theming your React app, there are really two
-          situations you will encounter
+          When you think of theming a React app, things usually play out in
+          three ways
         </BlogParagraph>
         <BlogList>
-          <li>Theming entire pages as they are loaded</li>
+          <li>The overall app has a theme</li>
+          <li>The page has a theme</li>
           <li>Dynamically changing themes after these pages have loaded</li>
         </BlogList>
         <BlogParagraph>

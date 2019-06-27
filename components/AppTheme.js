@@ -1,3 +1,5 @@
+import Color from 'color';
+
 /**
  * Theme variables for the _app.js level styled-components theme
  *
@@ -44,3 +46,25 @@ export const generatePageTheme = ({
   popoutMenuBorderColor: fontColor,
   ...override
 });
+
+export const darken = color => {
+  // Calculate a hover color lighter or darker than background
+  // based on how bright the background color is
+  const newColor = Color(color);
+  const luminosity = newColor.luminosity();
+
+  if (luminosity < 0.3) return newColor.darken(0.1).hex();
+
+  return newColor.lighten(0.05).hex();
+};
+
+export const lighten = color => {
+  // Calculate a hover color lighter or darker than background
+  // based on how bright the background color is
+  const newColor = Color(color);
+  const luminosity = newColor.luminosity();
+
+  if (luminosity > 0.3) return newColor.darken(0.1).hex();
+
+  return newColor.lighten(0.3).hex();
+};

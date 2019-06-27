@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Color from 'color';
+import { darken } from 'components/AppTheme';
 
 export const MenuContent = styled.div`
   display: flex;
@@ -32,21 +32,7 @@ export const MenuListItem = styled.li`
   border-bottom-width: 1px;
   :hover {
     color: ${({ theme }) => theme.pageContentLinkHoverColor};
-    background-color: ${({ theme }) => {
-      // Calculate a hover color lighter or darker than background
-      // based on how bright the background color is
-      const color = Color(theme.pageBackgroundColor);
-      const luminosity = color.luminosity();
-
-      if (luminosity < 0.3)
-        return Color(theme.pageBackgroundColor)
-          .darken(0.05)
-          .hex();
-
-      return Color(theme.pageBackgroundColor)
-        .lighten(0.1)
-        .hex();
-    }};
+    background-color: ${({ theme }) => darken(theme.pageBackgroundColor)};
     cursor: pointer;
   }
 `;

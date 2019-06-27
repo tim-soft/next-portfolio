@@ -10,6 +10,7 @@ import DateAndDuration from './DateAndDuration';
 import BlogSEO from './BlogSEO';
 import BlogList from './BlogList';
 import BlogSectionHeading from './BlogSectionHeading';
+import BlogQuote from './BlogQuote';
 
 export {
   BlogArticleBanner,
@@ -23,5 +24,6 @@ export {
   DateAndDuration,
   BlogSEO,
   BlogList,
-  BlogSectionHeading
+  BlogSectionHeading,
+  BlogQuote
 };

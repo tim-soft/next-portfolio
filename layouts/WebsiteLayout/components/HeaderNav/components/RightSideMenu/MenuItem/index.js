@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { Transition, animated } from 'react-spring';
-import Scrollbar from 'components/Scrollbar';
-import Color from 'color';
 import { FiChevronDown } from 'react-icons/fi';
+import Scrollbar from 'components/Scrollbar';
+import { lighten } from 'components/AppTheme';
 import StyledLink from '../../StyledLink';
 
 class MenuItem extends React.Component {
@@ -200,21 +200,7 @@ const AnimatedContainer = animated(styled.div`
   border-color: ${({ theme }) => theme.popoutMenuBorderColor};
   border-width: 1px;
   border-style: solid;
-  background-color: ${({ theme }) => {
-    // Calculate a hover color lighter or darker than background
-    // based on how bright the background color is
-    const color = Color(theme.pageBackgroundColor);
-    const luminosity = color.luminosity();
-
-    if (luminosity > 0.3)
-      return Color(theme.pageBackgroundColor)
-        .darken(0.05)
-        .hex();
-
-    return Color(theme.pageBackgroundColor)
-      .lighten(0.1)
-      .hex();
-  }};
+  background-color: ${({ theme }) => lighten(theme.pageBackgroundColor)};
   max-height: calc(100vh - 90px);
   font-size: 15px;
   z-index: 11;

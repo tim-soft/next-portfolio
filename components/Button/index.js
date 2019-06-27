@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Color from 'color';
+import { lighten, darken } from 'components/AppTheme';
 
 const Button = ({ children, ...props }) => (
   <StyledButton type="button" {...props}>
@@ -28,22 +28,7 @@ const StyledButton = styled.button`
 
   color: ${({ theme }) => theme.pageContentFontColor};
 
-  background-color: ${({ theme }) => {
-    // Calculate a hover color lighter or darker than background
-    // based on how bright the background color is
-    const color = Color(theme.pageBackgroundColor);
-    const luminosity = color.luminosity();
-
-    if (luminosity > 0.3)
-      return Color(theme.pageBackgroundColor)
-        .darken(0.05)
-        .hex();
-
-    return Color(theme.pageBackgroundColor)
-      .lighten(0.1)
-      .hex();
-  }};
-
+  background-color: ${({ theme }) => lighten(theme.pageBackgroundColor)};
   border-color: ${({ theme }) => theme.popoutMenuBorderColor};
   border-width: 2px;
   border-style: solid;
@@ -60,21 +45,7 @@ const StyledButton = styled.button`
   :active {
     border-color: ${({ theme }) => theme.pageContentLinkHoverColor};
     color: ${({ theme }) => theme.pageContentLinkHoverColor};
-    background-color: ${({ theme }) => {
-      // Calculate a hover color lighter or darker than background
-      // based on how bright the background color is
-      const color = Color(theme.pageBackgroundColor);
-      const luminosity = color.luminosity();
-
-      if (luminosity < 0.3)
-        return Color(theme.pageBackgroundColor)
-          .darken(0.05)
-          .hex();
-
-      return Color(theme.pageBackgroundColor)
-        .lighten(0.1)
-        .hex();
-    }};
+    background-color: ${({ theme }) => darken(theme.pageBackgroundColor)};
     cursor: pointer;
   }
 `;
