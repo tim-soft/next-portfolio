@@ -76,6 +76,22 @@ const generateColorPalette = () => {
   });
 };
 
+/**
+ * Remove window hash before updating page theme
+ * to prevent scrolling to hash id
+ */
+const handleThemeChange = callback => {
+  if (window.location.hash) {
+    const href = Router.route;
+    const as = href;
+    Router.push(href, as, { shallow: true }).then(() => {
+      callback();
+    });
+  } else {
+    callback();
+  }
+};
+
 const BlogPage = ({ baseUrl, theme, updateTheme }) => (
   <>
     <BlogSEO baseUrl={baseUrl} />
@@ -96,28 +112,22 @@ const BlogPage = ({ baseUrl, theme, updateTheme }) => (
         <ToggleThemeContainer>
           <RainbowButton
             onClick={() => {
-              const href = Router.route;
-              const as = href;
-              Router.push(href, as, { shallow: true }).then(() => {
-                updateTheme(generateColorPalette());
-              });
+              handleThemeChange(() => updateTheme(generateColorPalette()));
             }}
           >
             Random???
           </RainbowButton>
           <Button
             onClick={() => {
-              const href = Router.route;
-              const as = href;
-              Router.push(href, as, { shallow: true }).then(() => {
+              handleThemeChange(() =>
                 updateTheme(
                   generatePageTheme({
                     fontColor: 'black',
                     highlightFontColor: 'cyan',
                     backgroundColor: '#9e9e9e'
                   })
-                );
-              });
+                )
+              );
             }}
           >
             Grey Theme
@@ -125,45 +135,37 @@ const BlogPage = ({ baseUrl, theme, updateTheme }) => (
 
           <Button
             onClick={() => {
-              const href = Router.route;
-              const as = href;
-              Router.push(href, as, { shallow: true }).then(() => {
+              handleThemeChange(() =>
                 updateTheme(
                   generatePageTheme({
                     fontColor: '#31d7f9',
                     highlightFontColor: 'springgreen',
                     backgroundColor: '#202629'
                   })
-                );
-              });
+                )
+              );
             }}
           >
             Blue Theme
           </Button>
           <Button
             onClick={() => {
-              const href = Router.route;
-              const as = href;
-              Router.push(href, as, { shallow: true }).then(() => {
+              handleThemeChange(() =>
                 updateTheme(
                   generatePageTheme({
                     fontColor: '#e2e5ec',
                     highlightFontColor: 'aquamarine',
                     backgroundColor: '#101010'
                   })
-                );
-              });
+                )
+              );
             }}
           >
             Dark Theme
           </Button>
           <Button
             onClick={() => {
-              const href = Router.route;
-              const as = href;
-              Router.push(href, as, { shallow: true }).then(() => {
-                updateTheme({});
-              });
+              handleThemeChange(() => updateTheme({}));
             }}
           >
             Default
