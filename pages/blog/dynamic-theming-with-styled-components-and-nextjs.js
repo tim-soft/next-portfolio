@@ -139,8 +139,24 @@ const BlogPage = ({ baseUrl, theme, updateTheme }) => (
           <Button onClick={() => updateTheme({})}>Default</Button>
         </ToggleThemeContainer>
         <BlogQuote>
-          Click that random button a few times, what is it doing?
+          <span>Click that random button a few times, what is it doing?</span>
+          <TableOfContents>
+            <span>Skip Ahead:</span>
+            <BlogLink
+              paragraph
+              href="/blog/dynamic-theming-with-styled-components-and-nextjs#the-dynamic-page-theme"
+            >
+              The Dynamic Page Theme
+            </BlogLink>
+            <BlogLink
+              paragraph
+              href="/blog/dynamic-theming-with-styled-components-and-nextjs#the-random-button"
+            >
+              The Random Button
+            </BlogLink>
+          </TableOfContents>
         </BlogQuote>
+
         <BlogParagraph>
           When I go about building themable React apps, I usually have three
           concerns
@@ -298,7 +314,9 @@ render() {
 }
         `}
         />
-        <BlogSectionHeading>The Dynamic Page Theme</BlogSectionHeading>
+        <BlogSectionHeading id="the-dynamic-page-theme">
+          The Dynamic Page Theme
+        </BlogSectionHeading>
         <BlogQuote>Pfff... Light/Dark mode. I want it all!</BlogQuote>
         <BlogParagraph>
           In order to change our page theme dynamically, i.e. at the push of a
@@ -439,7 +457,9 @@ const StyledPage = styled.div\`
 \`;
         `}
         />
-        <BlogSectionHeading>The Random Button</BlogSectionHeading>
+        <BlogSectionHeading id="the-random-button">
+          The Random Button
+        </BlogSectionHeading>
         <BlogParagraph>
           There is a treasure trove of cool color palettes over at{' '}
           <BlogLink href="https://www.colourlovers.com/palettes" paragraph>
@@ -684,4 +704,15 @@ const RainbowButton = styled(Button)`
   );
   border-image-slice: 1;
   border-width: 3px;
+`;
+
+const TableOfContents = styled.div`
+  display: flex;
+  flex-direction: column;
+  > :not(:last-child) {
+    margin-bottom: 0.3em;
+  }
+  > a {
+    margin-left: 20px;
+  }
 `;

@@ -21,6 +21,7 @@ const StyledQuote = styled.q`
   border-left-width: 3px;
   border-left-style: solid;
   display: flex;
+  flex-direction: column;
   padding: 18px 20px;
   font-size: 1.2em;
   line-height: 1.5em;
@@ -30,5 +31,8 @@ const StyledQuote = styled.q`
   }
   :after {
     content: no-close-quote;
+  }
+  > :not(:last-child) {
+    margin-bottom: 1.2em;
   }
 `;
