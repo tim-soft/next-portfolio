@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'next/router';
+import Router from 'next/router';
 import styled, { ThemeProvider } from 'styled-components';
 import {
   BlogArticleContainer,
@@ -76,7 +76,7 @@ const generateColorPalette = () => {
   });
 };
 
-const BlogPage = ({ baseUrl, theme, updateTheme, router }) => (
+const BlogPage = ({ baseUrl, theme, updateTheme }) => (
   <>
     <BlogSEO baseUrl={baseUrl} />
     <ThemeProvider theme={theme}>
@@ -96,9 +96,9 @@ const BlogPage = ({ baseUrl, theme, updateTheme, router }) => (
         <ToggleThemeContainer>
           <RainbowButton
             onClick={() => {
-              const href = router.route;
+              const href = Router.route;
               const as = href;
-              router.push(href, as, { shallow: true }).then(() => {
+              Router.push(href, as, { shallow: true }).then(() => {
                 updateTheme(generateColorPalette());
               });
             }}
@@ -107,9 +107,9 @@ const BlogPage = ({ baseUrl, theme, updateTheme, router }) => (
           </RainbowButton>
           <Button
             onClick={() => {
-              const href = router.route;
+              const href = Router.route;
               const as = href;
-              router.push(href, as, { shallow: true }).then(() => {
+              Router.push(href, as, { shallow: true }).then(() => {
                 updateTheme(
                   generatePageTheme({
                     fontColor: 'black',
@@ -125,9 +125,9 @@ const BlogPage = ({ baseUrl, theme, updateTheme, router }) => (
 
           <Button
             onClick={() => {
-              const href = router.route;
+              const href = Router.route;
               const as = href;
-              router.push(href, as, { shallow: true }).then(() => {
+              Router.push(href, as, { shallow: true }).then(() => {
                 updateTheme(
                   generatePageTheme({
                     fontColor: '#31d7f9',
@@ -142,9 +142,9 @@ const BlogPage = ({ baseUrl, theme, updateTheme, router }) => (
           </Button>
           <Button
             onClick={() => {
-              const href = router.route;
+              const href = Router.route;
               const as = href;
-              router.push(href, as, { shallow: true }).then(() => {
+              Router.push(href, as, { shallow: true }).then(() => {
                 updateTheme(
                   generatePageTheme({
                     fontColor: '#e2e5ec',
@@ -159,9 +159,9 @@ const BlogPage = ({ baseUrl, theme, updateTheme, router }) => (
           </Button>
           <Button
             onClick={() => {
-              const href = router.route;
+              const href = Router.route;
               const as = href;
-              router.push(href, as, { shallow: true }).then(() => {
+              Router.push(href, as, { shallow: true }).then(() => {
                 updateTheme({});
               });
             }}
@@ -684,11 +684,7 @@ BlogPage.theme = {
 BlogPage.propTypes = {
   baseUrl: PropTypes.string.isRequired,
   theme: PropTypes.object,
-  updateTheme: PropTypes.func.isRequired,
-  router: PropTypes.shape({
-    route: PropTypes.string.isRequired,
-    push: PropTypes.func.isRequired
-  }).isRequired
+  updateTheme: PropTypes.func.isRequired
 };
 
 BlogPage.defaultProps = {
@@ -710,7 +706,7 @@ BlogPage.getInitialProps = async ({ req }) => {
   return { baseUrl: `${protocol}/${hostname}` };
 };
 
-export default withRouter(BlogPage);
+export default BlogPage;
 
 const ToggleThemeContainer = styled.div`
   border-radius: 8px;
