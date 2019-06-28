@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'next/router';
 import styled, { ThemeProvider } from 'styled-components';
 import {
   BlogArticleContainer,
@@ -75,7 +76,7 @@ const generateColorPalette = () => {
   });
 };
 
-const BlogPage = ({ baseUrl, theme, updateTheme }) => (
+const BlogPage = ({ baseUrl, theme, updateTheme, router }) => (
   <>
     <BlogSEO baseUrl={baseUrl} />
     <ThemeProvider theme={theme}>
@@ -93,50 +94,80 @@ const BlogPage = ({ baseUrl, theme, updateTheme }) => (
           Choose a new page theme
         </BlogSectionHeading>
         <ToggleThemeContainer>
-          <RainbowButton onClick={() => updateTheme(generateColorPalette())}>
+          <RainbowButton
+            onClick={() => {
+              const href = router.route;
+              const as = href;
+              router.push(href, as, { shallow: true }).then(() => {
+                updateTheme(generateColorPalette());
+              });
+            }}
+          >
             Random???
           </RainbowButton>
           <Button
-            onClick={() =>
-              updateTheme(
-                generatePageTheme({
-                  fontColor: 'black',
-                  highlightFontColor: 'cyan',
-                  backgroundColor: '#9e9e9e'
-                })
-              )
-            }
+            onClick={() => {
+              const href = router.route;
+              const as = href;
+              router.push(href, as, { shallow: true }).then(() => {
+                updateTheme(
+                  generatePageTheme({
+                    fontColor: 'black',
+                    highlightFontColor: 'cyan',
+                    backgroundColor: '#9e9e9e'
+                  })
+                );
+              });
+            }}
           >
             Grey Theme
           </Button>
 
           <Button
-            onClick={() =>
-              updateTheme(
-                generatePageTheme({
-                  fontColor: '#31d7f9',
-                  highlightFontColor: 'springgreen',
-                  backgroundColor: '#202629'
-                })
-              )
-            }
+            onClick={() => {
+              const href = router.route;
+              const as = href;
+              router.push(href, as, { shallow: true }).then(() => {
+                updateTheme(
+                  generatePageTheme({
+                    fontColor: '#31d7f9',
+                    highlightFontColor: 'springgreen',
+                    backgroundColor: '#202629'
+                  })
+                );
+              });
+            }}
           >
             Blue Theme
           </Button>
           <Button
-            onClick={() =>
-              updateTheme(
-                generatePageTheme({
-                  fontColor: '#e2e5ec',
-                  highlightFontColor: 'aquamarine',
-                  backgroundColor: '#101010'
-                })
-              )
-            }
+            onClick={() => {
+              const href = router.route;
+              const as = href;
+              router.push(href, as, { shallow: true }).then(() => {
+                updateTheme(
+                  generatePageTheme({
+                    fontColor: '#e2e5ec',
+                    highlightFontColor: 'aquamarine',
+                    backgroundColor: '#101010'
+                  })
+                );
+              });
+            }}
           >
             Dark Theme
           </Button>
-          <Button onClick={() => updateTheme({})}>Default</Button>
+          <Button
+            onClick={() => {
+              const href = router.route;
+              const as = href;
+              router.push(href, as, { shallow: true }).then(() => {
+                updateTheme({});
+              });
+            }}
+          >
+            Default
+          </Button>
         </ToggleThemeContainer>
         <BlogQuote>
           <span>Click that random button a few times, what is it doing?</span>
@@ -653,7 +684,11 @@ BlogPage.theme = {
 BlogPage.propTypes = {
   baseUrl: PropTypes.string.isRequired,
   theme: PropTypes.object,
-  updateTheme: PropTypes.func.isRequired
+  updateTheme: PropTypes.func.isRequired,
+  router: PropTypes.shape({
+    route: PropTypes.string.isRequired,
+    push: PropTypes.func.isRequired
+  }).isRequired
 };
 
 BlogPage.defaultProps = {
@@ -675,7 +710,7 @@ BlogPage.getInitialProps = async ({ req }) => {
   return { baseUrl: `${protocol}/${hostname}` };
 };
 
-export default BlogPage;
+export default withRouter(BlogPage);
 
 const ToggleThemeContainer = styled.div`
   border-radius: 8px;
