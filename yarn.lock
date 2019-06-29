@@ -4128,11 +4128,6 @@ is-fullwidth-code-point@^3.0.0:
   resolved "https://registry.yarnpkg.com/is-fullwidth-code-point/-/is-fullwidth-code-point-3.0.0.tgz#f116f8064fe90b3f7844a38997c0b75051269f1d"
   integrity sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg==
 
-is-fun@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/is-fun/-/is-fun-1.0.4.tgz#ebd10cd4efe4219ef1a432ba88d8279769020530"
-  integrity sha512-Df3xv2Vfmapj6P9ITYu2QJxUbbYrQiWFWtaMyS5GWzzDS8gDhIeEf5pGU8YkAHPKnWGnpJYXlfo1UHBTx1GgjQ==
-
 is-glob@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/is-glob/-/is-glob-3.1.0.tgz#7ba5ae24217804ac70707b96922567486cc3e84a"
@@ -6233,14 +6228,12 @@ react-reconciler@^0.20.4:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
-react-scrollbars-custom@^4.0.9:
-  version "4.0.9"
-  resolved "https://registry.yarnpkg.com/react-scrollbars-custom/-/react-scrollbars-custom-4.0.9.tgz#f3bc1f30ad92892581ff8ec1297c7c219cbed452"
-  integrity sha512-AhYI8pgd+Y0CKnzYBggqbsr+NOVnwBVHkNGy4tiBZxpvy2md0ahZApANOnpqqWaIUIFB47XVrUJMZGQWG53ttw==
+react-scrollbars-custom@^4.0.10:
+  version "4.0.10"
+  resolved "https://registry.yarnpkg.com/react-scrollbars-custom/-/react-scrollbars-custom-4.0.10.tgz#abbcbd51c771da9033c4495596980240613c0f8c"
+  integrity sha512-fOfZ3C6jV7CTlL/zLC2UzS32/elSjvk4W3bwQQ5TGDEAJdA+jcE4KU5Yo7pM+Uknu3RqX3QX8yxF1vxYkI8aQg==
   dependencies:
     cnbuilder "^1.1.1"
-    is-fun "^1.0.4"
-    is-number "^7.0.0"
     react-draggable "^3.3.0"
     zoom-level "^1.2.1"
 
