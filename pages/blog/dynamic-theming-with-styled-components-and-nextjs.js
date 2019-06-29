@@ -226,7 +226,7 @@ const BlogPage = ({ baseUrl, theme, updateTheme }) => (
           >
             <code>{`<ThemeProvider theme={theme}/>`}</code>
           </BlogLink>{' '}
-          component which uses React context to pass it&apos;s theme variables
+          component which uses React Context to pass it&apos;s theme variables
           to any of it&apos;s child components.
         </BlogParagraph>
         <BlogParagraph>

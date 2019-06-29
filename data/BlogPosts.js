@@ -12,11 +12,8 @@ const BlogData = [
   {
     href: '/blog/dynamic-theming-with-styled-components-and-nextjs',
     title: 'Dynamic Theming with Styled Components and NextJS',
-    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Eu sem integer vitae
-  justo eget magna fermentum iaculis. Tristique senectus et netus et
-  malesuada fames ac turpis egestas. Elit eget gravida cum sociis natoque
-  penatibus et magnis dis.`,
+    description: `What if you could automagically theme your React app with the internet's favorite color palettes?
+    Styled-Components, a little React Context and colourlovers.com may prove a powerful combination.`,
     logo: '/static/blog-logos/styled-components.png',
     readTime: 15,
     date: 'Mon Jun 22 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
