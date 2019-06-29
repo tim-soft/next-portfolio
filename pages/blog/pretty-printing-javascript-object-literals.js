@@ -35,7 +35,7 @@ const BlogPage = ({ baseUrl, theme }) => (
           , I began realizing how convenient it would be to copy + paste the
           current config directly into your own code. I already had the entire
           particle config saved in React state for updating the particles as you
-          change it&apos;s parameters, so all I needed to was get that object
+          change it&apos;s parameters, so all I needed was to get that object
           into the browser somehow.
         </BlogParagraph>
         <BlogParagraph>
