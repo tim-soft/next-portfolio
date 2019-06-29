@@ -697,7 +697,7 @@ BlogPage.defaultProps = {
 BlogPage.pageTheme = generatePageTheme({
   fontColor: 'black',
   highlightFontColor: 'springgreen',
-  backgroundColor: '#008000'
+  backgroundColor: '#019800'
 });
 
 // Get absolute url of page
