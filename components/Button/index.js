@@ -38,6 +38,7 @@ const StyledButton = styled.button`
   font-size: 17px;
 
   padding: 0 10px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   :focus {
     outline: none;
   }
