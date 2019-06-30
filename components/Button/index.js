@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { lighten, darken } from 'components/AppTheme';
 
 const Button = ({ children, ...props }) => (
   <StyledButton type="button" {...props}>
@@ -28,7 +27,7 @@ const StyledButton = styled.button`
 
   color: ${({ theme }) => theme.pageContentFontColor};
 
-  background-color: ${({ theme }) => lighten(theme.pageBackgroundColor)};
+  background-color: ${({ theme }) => theme.accentColor};
   border-color: ${({ theme }) => theme.popoutMenuBorderColor};
   border-width: 2px;
   border-style: solid;
@@ -46,7 +45,7 @@ const StyledButton = styled.button`
   :active {
     border-color: ${({ theme }) => theme.pageContentLinkHoverColor};
     color: ${({ theme }) => theme.pageContentLinkHoverColor};
-    background-color: ${({ theme }) => darken(theme.pageBackgroundColor)};
+    background-color: ${({ theme }) => theme.accentHoverColor};
     cursor: pointer;
   }
 `;

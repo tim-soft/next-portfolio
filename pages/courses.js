@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
 import NextSEO from 'next-seo';
 import PageScrollWrapper from 'components/PageScrollWrapper';
-import { generatePageTheme } from 'components/AppTheme';
 
 const CoursesPage = ({ theme }) => (
   <>
@@ -30,13 +29,6 @@ CoursesPage.propTypes = {
 CoursesPage.defaultProps = {
   theme: {}
 };
-
-// Override default app theme for this page
-CoursesPage.pageTheme = generatePageTheme({
-  fontColor: 'black',
-  highlightFontColor: 'cyan',
-  backgroundColor: '#9e9e9e'
-});
 
 export default CoursesPage;
 

@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { Transition, animated } from 'react-spring';
 import { FiChevronDown } from 'react-icons/fi';
 import Scrollbar from 'components/Scrollbar';
-import { lighten } from 'components/AppTheme';
 import StyledLink from '../../StyledLink';
 
 class MenuItem extends React.Component {
@@ -200,7 +199,7 @@ const AnimatedContainer = animated(styled.div`
   border-color: ${({ theme }) => theme.popoutMenuBorderColor};
   border-width: 1px;
   border-style: solid;
-  background-color: ${({ theme }) => lighten(theme.pageBackgroundColor)};
+  background-color: ${({ theme }) => theme.accentColor};
   max-height: calc(100vh - 90px);
   font-size: 15px;
   z-index: 11;

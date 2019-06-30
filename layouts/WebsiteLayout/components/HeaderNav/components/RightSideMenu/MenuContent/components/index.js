@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { darken } from 'components/AppTheme';
 
 export const MenuContent = styled.div`
   display: flex;
@@ -32,7 +31,7 @@ export const MenuListItem = styled.li`
   border-bottom-width: 1px;
   :hover {
     color: ${({ theme }) => theme.pageContentLinkHoverColor};
-    background-color: ${({ theme }) => darken(theme.pageBackgroundColor)};
+    background-color: ${({ theme }) => theme.accentHoverColor};
     cursor: pointer;
   }
 `;
