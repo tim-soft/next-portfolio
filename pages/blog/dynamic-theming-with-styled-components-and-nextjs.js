@@ -50,7 +50,7 @@ const generateColorPalette = () => {
   do {
     // Choose random color palette
     const palette =
-      colors[Math.floor(Math.random() * Math.floor(colors.length))];
+      colors[Math.floor(Math.random() * Math.floor(colors.length - 1))];
 
     // Find good background/font colors within palette
     // eslint-disable-next-line no-restricted-syntax
@@ -588,7 +588,7 @@ const generateColorPalette = () => {
   do {
     // Choose random color palette
     const palette =
-      colors[Math.floor(Math.random() * Math.floor(colors.length))];
+      colors[Math.floor(Math.random() * Math.floor(colors.length - 1))];
 
     // Find good background/font colors within palette
     // eslint-disable-next-line no-restricted-syntax
