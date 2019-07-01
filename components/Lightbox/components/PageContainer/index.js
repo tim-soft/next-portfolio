@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Transition, animated, interpolate } from 'react-spring';
+import { Transition, animated, to } from 'react-spring';
 
 const Page = ({ children, isOpen }) => (
   <Transition
@@ -28,7 +28,7 @@ const Page = ({ children, isOpen }) => (
         <animated.div
           style={{
             opacity,
-            transform: interpolate(
+            transform: to(
               [translateY, scale],
               (translateY, scale) =>
                 `scale(${scale}) translate3d(0, ${translateY}px, 0)`

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
-import { Spring, config, animated, interpolate } from 'react-spring';
+import { Spring, config, animated, to } from 'react-spring';
 
 const HamburgerMenuIcon = ({ menuIsOpen, toggleMenu, theme }) => (
   <svg
@@ -37,7 +37,7 @@ const HamburgerMenuIcon = ({ menuIsOpen, toggleMenu, theme }) => (
           strokeLinejoin="round"
         >
           <animated.line
-            transform={interpolate(
+            transform={to(
               [x],
               xCoord =>
                 `translate(${xCoord * 12}, ${xCoord * -7}) rotate(${xCoord *
@@ -49,7 +49,7 @@ const HamburgerMenuIcon = ({ menuIsOpen, toggleMenu, theme }) => (
             y2="26"
           />
           <animated.line
-            transform={interpolate(
+            transform={to(
               [x],
               xCoord =>
                 `translate(${xCoord * 12}, ${xCoord * 7}) rotate(${xCoord *
@@ -61,7 +61,7 @@ const HamburgerMenuIcon = ({ menuIsOpen, toggleMenu, theme }) => (
             y2="70"
           />
           <animated.line
-            transform={interpolate([x], xCoord => `translate(${xCoord * -96})`)}
+            transform={to([x], xCoord => `translate(${xCoord * -96})`)}
             opacity={y}
             x1="7"
             y1="48"

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Spring, animated, interpolate } from 'react-spring';
+import { Spring, animated, to } from 'react-spring';
 import Link from 'next/link';
 import { GoMarkGithub, GoMail } from 'react-icons/go';
 import Scrollbar from 'components/Scrollbar';
@@ -13,7 +13,7 @@ const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
       <MenuContainer
         style={{
           opacity,
-          display: interpolate([opacity], x => (x === 0 ? 'none' : 'flex'))
+          display: to([opacity], x => (x === 0 ? 'none' : 'flex'))
         }}
       >
         <Scrollbar

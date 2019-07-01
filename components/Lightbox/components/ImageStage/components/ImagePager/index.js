@@ -128,7 +128,7 @@ class ImagePager extends React.Component {
                 <animated.div
                   style={{
                     display,
-                    transform: x.interpolate(x => `translate3d(${x}px,0,0)`),
+                    transform: x.to(x => `translate3d(${x}px,0,0)`),
                     position: 'absolute',
                     width: '100%',
                     height: '100%',
@@ -139,7 +139,7 @@ class ImagePager extends React.Component {
                 >
                   <animated.div
                     style={{
-                      // transform: sc.interpolate(
+                      // transform: sc.to(
                       //   s => `scale(${(s + pinchScale) / 2})`
                       // ),
                       transform: `scale(${pinchScale})`,
