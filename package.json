@@ -52,7 +52,7 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.2",
     "husky": "^3.0.0",
-    "lint-staged": "^8.2.1",
+    "lint-staged": "^9.0.0",
     "prettier": "1.18.2",
     "stylelint": "^10.1.0",
     "stylelint-config-recommended": "^2.2.0",
@@ -60,18 +60,16 @@
     "stylelint-processor-styled-components": "^1.8.0"
   },
   "lint-staged": {
-    "linters": {
-      "*.{json,md}": [
-        "prettier --write",
-        "git add --force"
-      ],
-      "*.{js, jsx}": [
-        "prettier --write",
-        "stylelint",
-        "eslint --no-ignore --fix",
-        "git add --force"
-      ]
-    }
+    "*.{json,md}": [
+      "prettier --write",
+      "git add --force"
+    ],
+    "*.{js, jsx}": [
+      "prettier --write",
+      "stylelint",
+      "eslint --no-ignore --fix",
+      "git add --force"
+    ]
   },
   "scripts": {
     "dev": "next",
