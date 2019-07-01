@@ -18,8 +18,15 @@ const BlogLink = ({ prefetch, href, children, className, ...props }) => {
       </Link>
     );
 
+  // External links should open in a new tab by default
   return (
-    <StyledLink className={className} href={href} target="_blank" {...props}>
+    <StyledLink
+      className={className}
+      href={href}
+      target="_blank"
+      rel="noopener"
+      {...props}
+    >
       {children}
     </StyledLink>
   );
