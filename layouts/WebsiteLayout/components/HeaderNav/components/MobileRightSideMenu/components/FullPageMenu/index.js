@@ -19,8 +19,18 @@ const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
         <Scrollbar
           contentProps={{
             // eslint-disable-next-line react/prop-types
-            renderer: ({ elementRef, ...restProps }) => (
-              <ScrollbarContent {...restProps} ref={elementRef} />
+            renderer: ({ elementRef, style, ...restProps }) => (
+              <ScrollbarContent
+                {...restProps}
+                style={{
+                  ...style,
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  flexDirection: 'column'
+                }}
+                ref={elementRef}
+              />
             )
           }}
         >
@@ -83,11 +93,13 @@ FullPageMenu.propTypes = {
 
 export default FullPageMenu;
 
-const ScrollbarContent = styled.span`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+const ScrollbarContent = styled.div`
+  &[style] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 `;
 
 const LinkHeading = styled.h1`
@@ -123,6 +135,11 @@ const MenuContainer = animated(styled.div`
 const MobileStyledLink = styled(StyledLink)`
   margin: 20px 20px;
   padding: 15px 0;
+  h1 {
+    font-size: inherit;
+    font-weight: normal;
+    margin: 0;
+  }
   color: ${({ theme }) => theme.headerNavMobileMenuFontColor};
 `;
 
