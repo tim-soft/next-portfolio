@@ -16,6 +16,9 @@ const BlogArticleContainer = ({ children, width }) => (
         {children}
         <HorizontalRule />
         <BlogNavigation />
+        <a href="mailto:timellenberger@gmail.com">
+          <HiringCallout>Need a developer? Drop me a line!</HiringCallout>
+        </a>
       </article>
     </Container>
   </PageScrollWrapper>
@@ -34,6 +37,20 @@ BlogArticleContainer.defaultProps = {
 };
 
 export default BlogArticleContainer;
+
+const HiringCallout = styled.h2`
+  transition: color 0.2s linear;
+  font-size: 1.2em;
+  font-weight: normal;
+  text-align: center;
+  color: ${({ theme }) => theme.pageContentLinkHoverColor};
+  text-decoration: underline;
+  margin: 2em 0 1em 0;
+  :hover {
+    cursor: pointer;
+    color: ${({ theme }) => theme.pageContentFontColor};
+  }
+`;
 
 const HorizontalRule = styled.hr`
   border: 0;
