@@ -7,7 +7,8 @@ import {
   BlogCodeBlock,
   BlogArticleContainer,
   BlogSEO,
-  BlogQuote
+  BlogQuote,
+  BlogCodeInline
 } from 'components/Blog';
 import { generatePageTheme } from 'components/AppTheme';
 
@@ -72,7 +73,8 @@ const BlogPage = ({ baseUrl, theme }) => (
           .
         </BlogParagraph>
         <BlogParagraph>
-          Useage is just as simple as <code>JSON.stringify()</code>.
+          Useage is just as simple as{' '}
+          <BlogCodeInline>JSON.stringify()</BlogCodeInline>.
         </BlogParagraph>
         <BlogCodeBlock
           language="js"
@@ -106,9 +108,9 @@ const configString = stringifyObject(config, {
         `}
         />
         <BlogParagraph>
-          After generating this string via <code>stringifyObject()</code>, one
-          could simply run it through a syntax highlighter like I&apos;ve
-          detailed in my post{' '}
+          After generating this string via{' '}
+          <BlogCodeInline>stringifyObject()</BlogCodeInline>, one could simply
+          run it through a syntax highlighter like I&apos;ve detailed in my post{' '}
           <BlogLink
             href="/blog/building-react-code-blocks-with-prism"
             paragraph

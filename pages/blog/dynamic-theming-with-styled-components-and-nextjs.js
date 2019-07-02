@@ -10,7 +10,8 @@ import {
   BlogSectionHeading,
   BlogCodeBlock,
   BlogLink,
-  BlogQuote
+  BlogQuote,
+  BlogCodeInline
 } from 'components/Blog';
 import { generatePageTheme } from 'components/AppTheme';
 import Button from 'components/Button';
@@ -230,8 +231,8 @@ const BlogPage = ({ baseUrl, theme, updateTheme }) => (
         </BlogParagraph>
         <BlogParagraph>
           In a Next.js app, it&apos;s easy to apply this{' '}
-          <code>ThemeProvider</code> to all pages by wrapping{' '}
-          <code>{`<Component />`}</code> in{' '}
+          <BlogCodeInline>{`<ThemeProvider />`}</BlogCodeInline> to all pages by
+          wrapping <BlogCodeInline>{`<Component />`}</BlogCodeInline> in{' '}
           <BlogLink href="https://nextjs.org/docs#custom-app" paragraph>
             <code>/pages/_app.js</code>
           </BlogLink>
@@ -260,9 +261,10 @@ render() {
         />
         <BlogParagraph>
           Since all pages are now descendants of{' '}
-          <code>{`<ThemeProvider />`}</code>, any component of these pages has
-          easy access to <code>fontColor</code> and <code>backgroundColor</code>
-          .
+          <BlogCodeInline>{`<ThemeProvider />`}</BlogCodeInline>, any component
+          of these pages has easy access to{' '}
+          <BlogCodeInline>fontColor</BlogCodeInline> and{' '}
+          <BlogCodeInline>backgroundColor</BlogCodeInline>.
         </BlogParagraph>
         <BlogCodeBlock
           language="jsx"
@@ -289,8 +291,9 @@ const StyledPage = styled.div\`
         </BlogQuote>
         <BlogParagraph>
           In Next.js, static properties of a page can be accessed in{' '}
-          <code>/pages/_app.js</code>. Let&apos;s add a static property to the{' '}
-          <code>Page</code> called <code>pageTheme</code>
+          <BlogCodeInline>/pages/_app.js</BlogCodeInline>. Let&apos;s add a
+          static property to the <BlogCodeInline>Page</BlogCodeInline> called{' '}
+          <BlogCodeInline>pageTheme</BlogCodeInline>
         </BlogParagraph>
         <BlogCodeBlock
           language="jsx"
@@ -353,13 +356,15 @@ render() {
         <BlogParagraph>
           In order to change our page theme dynamically, i.e. at the push of a
           button, we&apos;ll need to transcend our static page properties with
-          actual state changes inside <code>/pages/_app.js</code>.
+          actual state changes inside{' '}
+          <BlogCodeInline>/pages/_app.js</BlogCodeInline>.
         </BlogParagraph>
         <BlogParagraph>
-          The overall goal is to maintain state in <code>/pages/_app.js</code>{' '}
-          with a list of pages and their dynamic page overrides. We&apos;ll then
-          need to create a function for retrieving and updating the current
-          page&apos;s dynamic theme variables. The <code>updateTheme()</code>{' '}
+          The overall goal is to maintain state in{' '}
+          <BlogCodeInline>/pages/_app.js</BlogCodeInline> with a list of pages
+          and their dynamic page overrides. We&apos;ll then need to create a
+          function for retrieving and updating the current page&apos;s dynamic
+          theme variables. The <BlogCodeInline>updateTheme()</BlogCodeInline>{' '}
           function will be passed as a prop to our page which can be used to
           update the theme!
         </BlogParagraph>
@@ -447,9 +452,10 @@ render() {
         `}
         />
         <BlogParagraph>
-          Since our theme that is passed to <code>ThemeProvider</code> is now a
-          product of state changes, we can dynamically update any page by
-          calling <code>this.props.updateTheme()</code>
+          Since our theme that is passed to{' '}
+          <BlogCodeInline>ThemeProvider</BlogCodeInline> is now a product of
+          state changes, we can dynamically update any page by calling{' '}
+          <BlogCodeInline>this.props.updateTheme()</BlogCodeInline>
         </BlogParagraph>
         <BlogCodeBlock
           language="jsx"
@@ -532,19 +538,21 @@ const StyledPage = styled.div\`
             background color.
           </li>
           <li>
-            If these contrasts exceed our <code>CONTRAST_THRESHOLD</code>, then
-            these colors will be used to update our theme.
+            If these contrasts exceed our{' '}
+            <BlogCodeInline>CONTRAST_THRESHOLD</BlogCodeInline>, then these
+            colors will be used to update our theme.
           </li>
           <li>
-            If these contrasts DO NOT exceed our <code>CONTRAST_THRESHOLD</code>
-            , set the next color in the palette as our background color and try
-            again.
+            If these contrasts DO NOT exceed our{' '}
+            <BlogCodeInline>CONTRAST_THRESHOLD</BlogCodeInline>, set the next
+            color in the palette as our background color and try again.
           </li>
           <li>
             If we&apos;ve gone through our entire color palette and still
             haven&apos;t found a suitable combination to meet our{' '}
-            <code>CONTRAST_THRESHOLD</code>, pick a new random palette and try
-            again until we&apos;ve found something decent.
+            <BlogCodeInline>CONTRAST_THRESHOLD</BlogCodeInline>, pick a new
+            random palette and try again until we&apos;ve found something
+            decent.
           </li>
         </BlogList>
         <BlogCodeBlock
@@ -615,8 +623,9 @@ const generateColorPalette = () => {
           `}
         />
         <BlogParagraph>
-          Useage is as simple as calling <code>generateColorPalette()</code> and
-          passing it&apos;s result to <code>updateTheme()</code>.
+          Useage is as simple as calling{' '}
+          <BlogCodeInline>generateColorPalette()</BlogCodeInline> and passing
+          it&apos;s result to <BlogCodeInline>updateTheme()</BlogCodeInline>.
         </BlogParagraph>
         <BlogCodeBlock
           language="jsx"

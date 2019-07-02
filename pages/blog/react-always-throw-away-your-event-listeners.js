@@ -7,7 +7,8 @@ import {
   BlogCodeBlock,
   BlogArticleContainer,
   BlogSEO,
-  BlogQuote
+  BlogQuote,
+  BlogCodeInline
 } from 'components/Blog';
 import { generatePageTheme } from 'components/AppTheme';
 
@@ -32,7 +33,7 @@ const BlogPage = ({ baseUrl, theme }) => (
           The first step is to create a function for setting some component
           state we&apos;ll call{' '}
           <strong>
-            <code>windowWidth</code>
+            <BlogCodeInline>windowWidth</BlogCodeInline>
           </strong>
           , then create a{' '}
           <BlogLink
@@ -43,11 +44,11 @@ const BlogPage = ({ baseUrl, theme }) => (
           </BlogLink>{' '}
           in the React lifecycle method{' '}
           <strong>
-            <code>componentDidMount()</code>
+            <BlogCodeInline>componentDidMount()</BlogCodeInline>
           </strong>{' '}
           with our new setter function as a{' '}
           <strong>
-            <code>callback</code>
+            <BlogCodeInline>callback</BlogCodeInline>
           </strong>
           .
         </BlogParagraph>
@@ -75,7 +76,7 @@ updateWindowSize = () =>
         <BlogParagraph>
           When the component first mounts,{' '}
           <strong>
-            <code>updateWindowSize()</code>
+            <BlogCodeInline>updateWindowSize()</BlogCodeInline>
           </strong>{' '}
           is called directly. As the window size changes, the event listener
           we&apos;ve created calls the same function as a callback.
@@ -84,7 +85,7 @@ updateWindowSize = () =>
           Before the current component unmounts, our event listener must be
           removed from the{' '}
           <strong>
-            <code>global Window object</code>
+            <BlogCodeInline>global Window object</BlogCodeInline>
           </strong>{' '}
           by utilizing the React lifecycle method{' '}
           <strong>

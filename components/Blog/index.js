@@ -11,6 +11,7 @@ import BlogSEO from './BlogSEO';
 import BlogList from './BlogList';
 import BlogSectionHeading from './BlogSectionHeading';
 import BlogQuote from './BlogQuote';
+import BlogCodeInline from './BlogCodeInline';
 
 export {
   BlogArticleBanner,
@@ -25,5 +26,6 @@ export {
   BlogSEO,
   BlogList,
   BlogSectionHeading,
-  BlogQuote
+  BlogQuote,
+  BlogCodeInline
 };
