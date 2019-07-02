@@ -34,6 +34,6 @@ export default class WebsiteLayout extends React.Component {
 const StyledContainer = styled.div`
   overflow: hidden;
   * ::selection {
-    background: ${({ theme }) => theme.pageBackgroundColor};
+    background: ${({ theme }) => theme.accentHoverColor};
   }
 `;
