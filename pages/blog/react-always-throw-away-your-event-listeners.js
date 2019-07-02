@@ -6,7 +6,8 @@ import {
   BlogLink,
   BlogCodeBlock,
   BlogArticleContainer,
-  BlogSEO
+  BlogSEO,
+  BlogQuote
 } from 'components/Blog';
 import { generatePageTheme } from 'components/AppTheme';
 
@@ -21,11 +22,11 @@ const BlogPage = ({ baseUrl, theme }) => (
           Unlike your React components, the event listeners they&apos;ve created
           don&apos;t magically disappear after their UI unmounts from the DOM.
           Undisposed event listeners will linger in your browser to haunt future
-          components.
+          components. Be afraid.
         </BlogParagraph>
         <BlogParagraph>
-          Let&apos;s say you wanted to create a simple component that displays
-          the <strong>instantaneous</strong> window width.
+          For example, let&apos;s say you want to create a simple component that
+          displays the <strong>instantaneous</strong> window width.
         </BlogParagraph>
         <BlogParagraph>
           The first step is to create a function for setting some component
@@ -77,7 +78,7 @@ updateWindowSize = () =>
             <code>updateWindowSize()</code>
           </strong>{' '}
           is called directly. As the window size changes, the event listener
-          we&apos;ve created will call the same function as a callback.
+          we&apos;ve created calls the same function as a callback.
         </BlogParagraph>
         <BlogParagraph>
           Before the current component unmounts, our event listener must be
@@ -92,10 +93,12 @@ updateWindowSize = () =>
           .
         </BlogParagraph>
         <BlogParagraph>
-          All together the code is quite simple, but can save you from a lot of
-          potential headaches. Try resizing your browser window to see the code
-          in action.
+          All together the code is quite simple and can save you from a lot of
+          potential headaches.
         </BlogParagraph>
+        <BlogQuote>
+          Try resizing your browser window to see the code in action.
+        </BlogQuote>
         <BlogCodeBlock
           language="jsx"
           title={

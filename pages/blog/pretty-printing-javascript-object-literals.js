@@ -32,11 +32,11 @@ const BlogPage = ({ baseUrl, theme }) => (
           <BlogLink href="/particles" paragraph>
             demo page (go play with it!)
           </BlogLink>
-          , I began realizing how convenient it would be to copy + paste the
+          I began realizing how convenient it would be to copy + paste the
           current config directly into your own code. I already had the entire
           particle config saved in React state for updating the particles as you
-          change it&apos;s parameters, so all I needed was to get that object
-          into the browser somehow.
+          change it&apos;s parameters. Luckily, all I needed was to get that
+          object into the browser somehow.
         </BlogParagraph>
         <BlogParagraph>
           Consulting the{' '}
@@ -56,8 +56,8 @@ const BlogPage = ({ baseUrl, theme }) => (
             <BlogLink href="https://stackoverflow.com/a/2904181" paragraph>
               a valid JavaScript object is not necessarily JSON
             </BlogLink>
-            . Separate from this, JSON isn&apos;t likely to be how you write out
-            your React props, so I needed to find a better solution.
+            . Separately, JSON isn&apos;t likely to be how you write out your
+            React props, so a better solution needed to be found.
           </span>
         </BlogQuote>
         <BlogParagraph>
@@ -107,8 +107,8 @@ const configString = stringifyObject(config, {
         />
         <BlogParagraph>
           After generating this string via <code>stringifyObject()</code>, one
-          could simply run it through a syntax highlighter like I&apos;ve detail
-          in my post{' '}
+          could simply run it through a syntax highlighter like I&apos;ve
+          detailed in my post{' '}
           <BlogLink
             href="/blog/building-react-code-blocks-with-prism"
             paragraph

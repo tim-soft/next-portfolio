@@ -18,7 +18,7 @@ const BlogPage = ({ baseUrl, theme }) => (
         <BlogParagraph>
           Already have a dark mode in your web app? Why not set a sensible
           default for your users by mirroring their system&apos;s dark mode
-          preferences?
+          preferences!
         </BlogParagraph>
 
         <BlogParagraph>
@@ -65,7 +65,7 @@ but cannot find a light/dark preference */
           >
             Window.matchMedia()
           </BlogLink>{' '}
-          function to retrieve this setting programatically in Javascript
+          function to retrieve this setting programatically in Javascript.
         </BlogParagraph>
         <BlogCodeBlock
           language="js"

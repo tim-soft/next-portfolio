@@ -16,11 +16,14 @@ const BlogPage = ({ baseUrl, theme }) => (
     <ThemeProvider theme={theme}>
       <BlogArticleContainer>
         <BlogParagraph>
-          Code snippets without syntax highlighting are unsightly.
+          Code snippets without syntax highlighting are unsightly. No one wants
+          to view these code snippets. They are extremely hard to read and
+          deeply unstylistic.
         </BlogParagraph>
         <BlogParagraph>
-          VS Code and its&apos; default theme Dark+ has gained a lot of
-          familiarity in the development community.
+          Aiming to bridge the gap for the unsightly snippets, VS Code and
+          its&apos; default theme Dark+ have gained a lot of familiarity in the
+          development community.
         </BlogParagraph>
         <BlogParagraph>
           A project called{' '}
@@ -37,10 +40,10 @@ const BlogPage = ({ baseUrl, theme }) => (
           >
             prism-react-renderer
           </BlogLink>{' '}
-          which enables us to manipulate the PrismJS syntax highlighted output
-          as well as add extraneous react components into the code blocks.
-          Moreover, a theme object may be passed as a prop to further control
-          the syntax highlighting.
+          enables us to manipulate the PrismJS syntax highlighted output as well
+          as add extraneous react components into the code blocks. Subsequently,
+          a theme object can be passed as a prop to further control the syntax
+          highlighting.
         </BlogParagraph>
         <BlogCodeBlock
           language="jsx"
@@ -96,10 +99,10 @@ import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/vsDark';
 
 /**
- * Splits the first token of a code line at any leading whitespace
+ * Splits the first token of a code line at any leading whitespace.
  *
  * The purpose of the split is to easily highlight code on hover
- * without including the indenting whitespace
+ * without including the indenting whitespace.
  *
  * So if the beginning of a line looks like this exists:
  *    <span>{\`      <div />\`}</span>
@@ -180,42 +183,6 @@ BlogCodeBlock.defaultProps = {
 export default BlogCodeBlock;
       `}
         />
-        <BlogParagraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu sem
-          integer vitae justo eget magna fermentum iaculis. Tristique senectus
-          et netus et malesuada fames ac turpis egestas. Elit eget gravida cum
-          sociis natoque penatibus et magnis dis. Faucibus a pellentesque sit
-          amet porttitor eget dolor morbi. Elementum sagittis vitae et leo duis
-          ut. Scelerisque eu ultrices vitae auctor.
-        </BlogParagraph>
-        <BlogParagraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu sem
-          integer vitae justo eget magna fermentum iaculis. Tristique senectus
-          et netus et malesuada fames ac turpis egestas. Elit eget gravida cum
-          sociis natoque penatibus et magnis dis. Faucibus a pellentesque sit
-          amet porttitor eget dolor morbi. Elementum sagittis vitae et leo duis
-          ut. Scelerisque eu ultrices vitae auctor.
-        </BlogParagraph>
-        <BlogParagraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu sem
-          integer vitae justo eget magna fermentum iaculis. Tristique senectus
-          et netus et malesuada fames ac turpis egestas. Elit eget gravida cum
-          sociis natoque penatibus et magnis dis. Faucibus a pellentesque sit
-          amet porttitor eget dolor morbi. Elementum sagittis vitae et leo duis
-          ut. Scelerisque eu ultrices vitae auctor.
-        </BlogParagraph>
-        <BlogParagraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu sem
-          integer vitae justo eget magna fermentum iaculis. Tristique senectus
-          et netus et malesuada fames ac turpis egestas. Elit eget gravida cum
-          sociis natoque penatibus et magnis dis. Faucibus a pellentesque sit
-          amet porttitor eget dolor morbi. Elementum sagittis vitae et leo duis
-          ut. Scelerisque eu ultrices vitae auctor.
-        </BlogParagraph>
       </BlogArticleContainer>
     </ThemeProvider>
   </>

@@ -12,7 +12,7 @@ const BlogData = [
   {
     href: '/blog/dynamic-theming-with-styled-components-and-nextjs',
     title: 'Dynamic Theming with Styled Components and NextJS',
-    description: `What if you could automagically theme your React app with the internet's favorite color palettes?
+    description: `What if you could automatically theme your React app with the internet's favorite color palettes?
     Styled-Components, a little React Context and colourlovers.com may prove a powerful combination.`,
     logo: '/static/blog-logos/styled-components.png',
     readTime: 15,
@@ -31,7 +31,7 @@ const BlogData = [
   {
     href: '/blog/operating-system-dark-mode-in-your-css',
     title: 'Dark Mode: OS Level Control In Your CSS',
-    description: `Light/Dark mode via @media(prefers-color-scheme: dark)`,
+    description: `Light/Dark mode via @media(prefers-color-scheme: dark), learn how to detect if you are in light mode or dark mode.`,
     logo: '/static/language-logos/css.svg',
     readTime: 3,
     date: 'Mon May 5 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
@@ -40,7 +40,7 @@ const BlogData = [
     href: '/blog/pretty-printing-javascript-object-literals',
     title: 'Pretty Printing Javascript Object Literals',
     description: `Pretty printing javascript objects as JSON is easy, but what if you wanted to print the object 
-    as it appears in your code editor?`,
+    as it appears in your code editor? Join me to find out.`,
     logo: '/static/language-logos/javascript.svg',
     readTime: 5,
     date: 'Mon May 7 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
@@ -48,7 +48,7 @@ const BlogData = [
   {
     href: '/blog/building-react-code-blocks-with-prism',
     title: 'Building React Code Blocks with PrismJS',
-    description: `Easily reusable syntax highlighted code blocks as React components`,
+    description: `Easily reusable syntax highlighted code blocks as React components, learn to make your code blocks as attractive as you are.`,
     logo: '/static/blog-logos/prismjs.svg',
     readTime: 13,
     date: 'Mon May 9 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'

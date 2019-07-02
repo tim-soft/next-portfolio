@@ -191,25 +191,24 @@ const BlogPage = ({ baseUrl, theme, updateTheme }) => (
         </BlogQuote>
 
         <BlogParagraph>
-          When I go about building themable React apps, I usually have three
-          concerns
+          When building themable React apps, I have three primary concerns:
         </BlogParagraph>
         <BlogList>
           <li>
-            The entire app <i>has</i> a theme
+            The entire app <i>has</i> a theme.
           </li>
           <li>
-            A page <i>can have</i> a theme
+            A single page <i>can have</i> a theme.
           </li>
           <li>
-            The page or app theme can change <i>at runtime</i>
+            The page or app theme can change <i>at runtime.</i>
           </li>
         </BlogList>
         <BlogParagraph>
-          Concerns #1 and #2 are what you see on this page right now. Clicking
-          through the links of this blog, every page has it&apos;s own unique
-          set of theme variables such as background and font colors, which
-          optionally override the default app theme.
+          Concerns #1 and #2 are represented on this page right now. By clicking
+          through the links of this blog, you can see that every page has
+          it&apos;s own unique set of theme variables, such as background and
+          font colors. Variables optionally override the default app theme.
         </BlogParagraph>
         <BlogParagraph>
           The venerable CSS-in-JS library{' '}
@@ -290,8 +289,8 @@ const StyledPage = styled.div\`
         </BlogQuote>
         <BlogParagraph>
           In Next.js, static properties of a page can be accessed in{' '}
-          <code>/pages/_app.js</code>. So let&apos;s add a static property to
-          our <code>Page</code> called <code>pageTheme</code>
+          <code>/pages/_app.js</code>. Let&apos;s add a static property to the{' '}
+          <code>Page</code> called <code>pageTheme</code>
         </BlogParagraph>
         <BlogCodeBlock
           language="jsx"
@@ -449,8 +448,8 @@ render() {
         />
         <BlogParagraph>
           Since our theme that is passed to <code>ThemeProvider</code> is now a
-          product of state changes, we can therefore dynamically update any page
-          by calling <code>this.props.updateTheme()</code>
+          product of state changes, we can dynamically update any page by
+          calling <code>this.props.updateTheme()</code>
         </BlogParagraph>
         <BlogCodeBlock
           language="jsx"
@@ -501,21 +500,21 @@ const StyledPage = styled.div\`
           .
         </BlogParagraph>
         <BlogQuote>
-          Most of these palettes, let alone the top several hundred, surely will
-          look great in a page theme, right?
+          Most of these palettes, minimally the top hundred, will look great in
+          a page theme, right?
         </BlogQuote>
         <BlogParagraph>
           Conveniently, there is a library for exactly this purpose on npm!
         </BlogParagraph>
         <BlogParagraph>
-          In order to automagically generate a complete page theme from random
-          color palettes, there is only one hardfast rule. The contrast of the
+          In order to automatically generate a complete page theme from random
+          color palettes, there is only one hardfast rule: The contrast of the
           text to background must be high enough that the page is legible.
         </BlogParagraph>
         <BlogQuote>
           The Web Content Accessibility Guidelines (WCAG) suggest several
           minimum contrast ratios of font color to background color. I&apos;ll
-          settle for minimum contrast of 4.5 as it produces some very
+          settle for minimum contrast of 4.5, as it produces some very
           interesting results.
         </BlogQuote>
         <BlogParagraph>The basic algorithm is:</BlogParagraph>
@@ -527,19 +526,19 @@ const StyledPage = styled.div\`
             </BlogLink>{' '}
             color palette
           </li>
-          <li>Pick the first color in the pallete as the background color</li>
+          <li>Pick the first color in the pallete as the background color.</li>
           <li>
             Find the top two highest contrast colors in the palette against the
-            background color
+            background color.
           </li>
           <li>
             If these contrasts exceed our <code>CONTRAST_THRESHOLD</code>, then
-            these colors will be used to update our theme
+            these colors will be used to update our theme.
           </li>
           <li>
             If these contrasts DO NOT exceed our <code>CONTRAST_THRESHOLD</code>
             , set the next color in the palette as our background color and try
-            again
+            again.
           </li>
           <li>
             If we&apos;ve gone through our entire color palette and still
