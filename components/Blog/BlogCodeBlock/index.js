@@ -117,7 +117,7 @@ const LineNumber = styled.span`
   display: inline-block;
   width: 2em;
   user-select: none;
-  opacity: 0.5;
+  opacity: 0.6;
 `;
 
 const Token = styled.span`
