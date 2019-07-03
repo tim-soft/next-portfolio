@@ -6,15 +6,22 @@ import {
   BlogLink,
   BlogCodeBlock,
   BlogArticleContainer,
-  BlogSEO
+  BlogSEO,
+  BlogQuote
 } from 'components/Blog';
 import { generatePageTheme } from 'components/AppTheme';
+import DarkModeReporter from 'components/ArticleComponents/DarkModeReporter';
 
 const BlogPage = ({ baseUrl, theme }) => (
   <>
     <BlogSEO baseUrl={baseUrl} />
     <ThemeProvider theme={theme}>
       <BlogArticleContainer>
+        <BlogQuote>
+          <span>Let&apos;s check your system preferences...</span>
+          <span />
+          <DarkModeReporter />
+        </BlogQuote>
         <BlogParagraph>
           Already have a dark mode in your web app? Why not set a sensible
           default for your users by mirroring their system&apos;s dark mode
