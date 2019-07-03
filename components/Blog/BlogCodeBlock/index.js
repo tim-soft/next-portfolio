@@ -151,7 +151,7 @@ const BlockLine = styled.div`
     color: rgb(86, 156, 214) !important;
   }
   span.token.tag.punctuation {
-    color: rgb(128, 128, 128) !important;
+    color: rgb(134, 134, 134) !important;
   }
 `;
 
