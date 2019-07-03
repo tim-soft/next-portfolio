@@ -23,13 +23,16 @@ const BlogPage = ({ baseUrl, theme }) => (
           <DarkModeReporter />
         </BlogQuote>
         <BlogParagraph>
-          Already have a dark mode in your web app? Why not set a sensible
-          default for your users by mirroring their system&apos;s dark mode
-          preferences!
+          You know what really grinds my gears? Explicitly setting my OS to dark
+          mode, going to a website that clearly has a dark mode, and still
+          getting blasted in the retinas by all the bright shades of white.
         </BlogParagraph>
-
         <BlogParagraph>
-          You can access this preference via the new media query{' '}
+          The only reasonable default mode for the web apps that have them,
+          should be the user&apos;s system preference!
+        </BlogParagraph>
+        <BlogParagraph>
+          Luckily the new media query{' '}
           <BlogLink
             href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme"
             paragraph
@@ -37,6 +40,15 @@ const BlogPage = ({ baseUrl, theme }) => (
           >
             @media(prefers-color-scheme: dark)
           </BlogLink>
+          {` `}
+          is gaining{' '}
+          <BlogLink
+            href="https://caniuse.com/#feat=prefers-color-scheme"
+            paragraph
+          >
+            browser support
+          </BlogLink>{' '}
+          to solve this exact problem.
         </BlogParagraph>
 
         <BlogCodeBlock
@@ -85,6 +97,64 @@ window.matchMedia("(prefers-color-scheme)").matches
 window.matchMedia("(prefers-color-scheme: dark)").matches
       `}
         />
+        <BlogParagraph>
+          In React you could check for this preference fairly easily, then
+          update your app theme dynamically... and responsibly!
+        </BlogParagraph>
+        <BlogCodeBlock
+          language="jsx"
+          path="/components/DarkModeReporter.js"
+          code={`
+import React from 'react';
+
+class DarkModeReporter extends React.Component {
+  state = {
+    supportsColorScheme: false,
+    isDarkMode: false,
+    isLightMode: false
+  };
+
+  componentDidMount() {
+    const supportsColorScheme = window.matchMedia('(prefers-color-scheme)')
+      .matches;
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)')
+      .matches;
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)')
+      .matches;
+
+    this.setState({ supportsColorScheme, isDarkMode, isLightMode });
+  }
+
+  render() {
+    const { supportsColorScheme, isDarkMode, isLightMode } = this.state;
+
+    if (supportsColorScheme) {
+      if (isDarkMode) return <>Your system is in dark mode!</>;
+      if (isLightMode) return <>Your system is in light mode!</>;
+
+      // The browser supports light/dark mode but can't infer anything from the system
+      return <>Your system light/dark mode preference is unset!</>;
+    }
+
+    // The browser doesn't support light/dark mode
+    return <>Your browser doesn&apos;t support dark mode!</>;
+  }
+}
+
+export default DarkModeReporter;          
+`}
+        />
+        <BlogParagraph>
+          For my take on implementing dynamic app themes in React with
+          Styled-Components, check out my post{' '}
+          <BlogLink
+            href="/blog/dynamic-theming-with-styled-components-and-nextjs"
+            paragraph
+          >
+            dynamic-theming-with-styled-components-and-nextjs
+          </BlogLink>
+          .
+        </BlogParagraph>
       </BlogArticleContainer>
     </ThemeProvider>
   </>
