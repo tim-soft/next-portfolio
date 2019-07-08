@@ -119,13 +119,12 @@ class WebApp extends App {
               enter={{ opacity: 1, transform: 'scale(1) translateY(0px)' }}
               leave={{ opacity: 0, transform: 'scale(0.9) translateY(-200px)' }}
             >
-              {page => ({ opacity, transform }) => (
-                <AnimatedContainer key={page.id} style={{ opacity, transform }}>
+              {page => animStyles => (
+                <AnimatedContainer key={page.id} style={animStyles}>
                   <page.Component
                     {...page.pageProps}
                     theme={{ ...page.pageTheme, ...dynamicTheme }}
                     updateTheme={this.updateTheme}
-                    routeIsAnimating={opacity.value !== 1}
                   />
                 </AnimatedContainer>
               )}

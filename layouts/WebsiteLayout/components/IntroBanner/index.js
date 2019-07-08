@@ -1,28 +1,23 @@
 /* eslint-disable no-shadow */
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Spring, animated, config } from 'react-spring';
 import { LazyImage } from 'react-lazy-images';
-import dynamic from 'next/dynamic';
+import ParticleField from 'react-particles-webgl';
 import particlesConfig from './particlesConfig';
 
-// Only import ParticleField on the client-side
-const DynamicParticleField = dynamic(import('react-particles-webgl'), {
-  ssr: false
-});
+// // Only import ParticleField on the client-side
+// const DynamicParticleField = dynamic(import('react-particles-webgl'), {
+//   ssr: false
+// });
 
 export default class IntroBanner extends React.Component {
-  static propTypes = {
-    /* True if the current page transition animation is in progress */
-    routeIsAnimating: PropTypes.bool.isRequired
-  };
-
   constructor(props) {
     super(props);
     this.state = {
       // Assume initial *.webp browser support
-      webpSupport: true
+      webpSupport: true,
+      backgroundAnimDone: false
     };
   }
 
@@ -59,14 +54,7 @@ export default class IntroBanner extends React.Component {
   };
 
   render() {
-    const { webpSupport } = this.state;
-    const { routeIsAnimating } = this.props;
-
-    // Starting position of stars
-    const from = { opacity: 0, transform: 'scale(0)' };
-
-    // Expand starfield to fill background
-    const to = { opacity: 1, transform: 'scale(1)' };
+    const { webpSupport, backgroundAnimDone } = this.state;
 
     const imgSrc = webpSupport
       ? 'url(/static/IntroBannerBG.webp)'
@@ -74,18 +62,20 @@ export default class IntroBanner extends React.Component {
 
     return (
       <BannerContainer>
-        <Spring
-          native
-          from={routeIsAnimating ? to : from}
-          to={routeIsAnimating ? from : to}
-          config={config.slow}
-        >
-          {animStyles => (
-            <AnimatedContainer style={animStyles}>
-              <DynamicParticleField config={particlesConfig} />
-            </AnimatedContainer>
-          )}
-        </Spring>
+        {backgroundAnimDone && (
+          <Spring
+            native
+            from={{ opacity: 0, transform: 'scale(0)' }}
+            to={{ opacity: 1, transform: 'scale(1)' }}
+            config={config.slow}
+          >
+            {animStyles => (
+              <AnimatedContainer style={animStyles}>
+                <ParticleField config={particlesConfig} />
+              </AnimatedContainer>
+            )}
+          </Spring>
+        )}
 
         <LazyImage
           loadEagerly
@@ -96,6 +86,7 @@ export default class IntroBanner extends React.Component {
               native
               from={{ opacity: 0, transform: 'translateY(100%)' }}
               to={{ opacity: 1, transform: 'translateY(0px)' }}
+              onRest={() => this.setState({ backgroundAnimDone: true })}
             >
               {props => (
                 <AnimatedSpaceBackgroundImg style={props} imgSrc={imgSrc} />

@@ -5,7 +5,7 @@ import NextSEO from 'next-seo';
 import IntroBanner from 'layouts/WebsiteLayout/components/IntroBanner';
 import { generatePageTheme } from 'components/AppTheme';
 
-const HomePage = ({ routeIsAnimating, theme }) => (
+const HomePage = ({ theme }) => (
   <>
     <NextSEO
       config={{
@@ -16,13 +16,12 @@ const HomePage = ({ routeIsAnimating, theme }) => (
       }}
     />
     <ThemeProvider theme={theme}>
-      <IntroBanner routeIsAnimating={routeIsAnimating} />
+      <IntroBanner />
     </ThemeProvider>
   </>
 );
 
 HomePage.propTypes = {
-  routeIsAnimating: PropTypes.bool.isRequired,
   theme: PropTypes.object
 };
 
