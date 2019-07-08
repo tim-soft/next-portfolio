@@ -1,15 +1,9 @@
-/* eslint-disable no-shadow */
 import React from 'react';
 import styled from 'styled-components';
 import { Spring, animated, config } from 'react-spring';
 import { LazyImage } from 'react-lazy-images';
 import ParticleField from 'react-particles-webgl';
 import particlesConfig from './particlesConfig';
-
-// // Only import ParticleField on the client-side
-// const DynamicParticleField = dynamic(import('react-particles-webgl'), {
-//   ssr: false
-// });
 
 export default class IntroBanner extends React.Component {
   constructor(props) {
@@ -53,6 +47,8 @@ export default class IntroBanner extends React.Component {
       'data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAARBxAR/Q9ERP8DAABWUDggGAAAABQBAJ0BKgEAAQAAAP4AAA3AAP7mtQAAAA==';
   };
 
+  setBackgroundAnimDone = () => this.setState({ backgroundAnimDone: true });
+
   render() {
     const { webpSupport, backgroundAnimDone } = this.state;
 
@@ -86,7 +82,7 @@ export default class IntroBanner extends React.Component {
               native
               from={{ opacity: 0, transform: 'translateY(100%)' }}
               to={{ opacity: 1, transform: 'translateY(0px)' }}
-              onRest={() => this.setState({ backgroundAnimDone: true })}
+              onRest={this.setBackgroundAnimDone}
             >
               {props => (
                 <AnimatedSpaceBackgroundImg style={props} imgSrc={imgSrc} />
