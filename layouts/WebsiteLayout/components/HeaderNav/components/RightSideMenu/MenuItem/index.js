@@ -101,17 +101,17 @@ class MenuItem extends React.Component {
         onFocus={() => this.handleHover(true)}
       >
         {/* The menu item */}
-        <Link prefetch href={link}>
-          <MenuLink
-            isHovering={isHovering || alwaysShowMenu}
-            ref={this.menuOverlay}
-            showUnderline={children === null}
-          >
+        <MenuLink
+          isHovering={isHovering || alwaysShowMenu}
+          ref={this.menuOverlay}
+          showUnderline={children === null}
+        >
+          <Link prefetch href={link}>
             <LinkHeading isHovering={isHovering}>
               {text} {children && <FiChevronDown />}
             </LinkHeading>
-          </MenuLink>
-        </Link>
+          </Link>
+        </MenuLink>
 
         {/* The pop-out menu content */}
         {children && (
