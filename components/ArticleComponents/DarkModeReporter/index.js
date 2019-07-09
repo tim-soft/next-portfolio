@@ -1,6 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { withTheme } from 'styled-components';
+import { generatePageTheme } from 'components/AppTheme';
+import Color from 'color';
 
+/**
+ * Displays the current dark/light mode system preference,
+ * sets dynamic app theme to match.
+ */
 class DarkModeReporter extends React.Component {
+  static propTypes = {
+    updateTheme: PropTypes.func.isRequired,
+    theme: PropTypes.object.isRequired
+  };
+
   state = {
     supportsColorScheme: false,
     isDarkMode: false,
@@ -21,7 +34,39 @@ class DarkModeReporter extends React.Component {
       .matches;
 
     this.setState({ supportsColorScheme, isDarkMode, isLightMode });
+
+    // Is the current page in dark mode? i.e. default page theme
+    const { theme } = this.props;
+    const isCurrentThemeDarkMode = new Color(
+      theme.pageBackgroundColor
+    ).isDark();
+
+    // Update the current page theme to reflect the operating system
+    if (isDarkMode && !isCurrentThemeDarkMode) this.setDarkTheme();
+    if (isLightMode && isCurrentThemeDarkMode) this.setLightTheme();
   }
+
+  setDarkTheme = () => {
+    const { updateTheme } = this.props;
+    updateTheme(
+      generatePageTheme({
+        fontColor: '#e2e5ec',
+        highlightFontColor: 'aquamarine',
+        backgroundColor: '#101010'
+      })
+    );
+  };
+
+  setLightTheme = () => {
+    const { updateTheme } = this.props;
+    updateTheme(
+      generatePageTheme({
+        fontColor: 'black',
+        highlightFontColor: 'cyan',
+        backgroundColor: '#9e9e9e'
+      })
+    );
+  };
 
   render() {
     const { supportsColorScheme, isDarkMode, isLightMode } = this.state;
@@ -39,4 +84,4 @@ class DarkModeReporter extends React.Component {
   }
 }
 
-export default DarkModeReporter;
+export default withTheme(DarkModeReporter);

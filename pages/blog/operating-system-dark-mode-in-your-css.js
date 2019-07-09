@@ -31,7 +31,7 @@ const BlogPage = ({ baseUrl, theme, updateTheme }) => {
             <BlogQuote>
               <span>Let&apos;s check your system preferences...</span>
               <span />
-              <DarkModeReporter />
+              <DarkModeReporter updateTheme={updateTheme} />
             </BlogQuote>
 
             <ToggleContainer>
