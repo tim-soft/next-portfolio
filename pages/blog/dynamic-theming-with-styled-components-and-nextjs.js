@@ -11,7 +11,8 @@ import {
   BlogCodeBlock,
   BlogLink,
   BlogQuote,
-  BlogCodeInline
+  BlogCodeInline,
+  BlogDemoContainer
 } from 'components/Blog';
 import { generatePageTheme } from 'components/AppTheme';
 import Button from 'components/Button';
@@ -98,19 +99,10 @@ const BlogPage = ({ baseUrl, theme, updateTheme }) => (
     <BlogSEO baseUrl={baseUrl} />
     <ThemeProvider theme={theme}>
       <BlogArticleContainer>
-        <BlogSectionHeading>
-          <span role="img" aria-label="lit">
-            🔥
-          </span>{' '}
-          Demo First{' '}
-          <span role="img" aria-label="lit">
-            🔥
-          </span>{' '}
-        </BlogSectionHeading>
-        <BlogSectionHeading style={{ margin: 0, fontSize: '1.2em' }}>
-          Choose a new page theme
-        </BlogSectionHeading>
-        <ToggleThemeContainer>
+        <BlogDemoContainer
+          heading="Demo First"
+          subheading="Choose a new page theme"
+        >
           <RainbowButton
             onClick={() => {
               handleThemeChange(() => updateTheme(generateColorPalette()));
@@ -171,7 +163,7 @@ const BlogPage = ({ baseUrl, theme, updateTheme }) => (
           >
             Default
           </Button>
-        </ToggleThemeContainer>
+        </BlogDemoContainer>
         <BlogQuote>
           <span>Click that random button a few times, what is it doing?</span>
           <TableOfContents>
@@ -717,22 +709,6 @@ BlogPage.getInitialProps = async ({ req }) => {
 };
 
 export default BlogPage;
-
-const ToggleThemeContainer = styled.div`
-  border-radius: 8px;
-  border-color: ${({ theme }) => theme.popoutMenuBorderColor};
-  border-width: 2px;
-  border-style: solid;
-  padding: 2em;
-  margin: 1em 0;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-wrap: wrap;
-  > * {
-    margin: 1em;
-  }
-`;
 
 const RainbowButton = styled(Button)`
   border-image: linear-gradient(

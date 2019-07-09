@@ -1,60 +1,99 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import {
   BlogParagraph,
   BlogLink,
   BlogCodeBlock,
   BlogArticleContainer,
   BlogSEO,
-  BlogQuote
+  BlogQuote,
+  BlogDemoContainer
 } from 'components/Blog';
 import { generatePageTheme } from 'components/AppTheme';
 import DarkModeReporter from 'components/ArticleComponents/DarkModeReporter';
+import ToggleSwitch from 'components/ToggleSwitch';
+import Color from 'color';
 
-const BlogPage = ({ baseUrl, theme }) => (
-  <>
-    <BlogSEO baseUrl={baseUrl} />
-    <ThemeProvider theme={theme}>
-      <BlogArticleContainer>
-        <BlogQuote>
-          <span>Let&apos;s check your system preferences...</span>
-          <span />
-          <DarkModeReporter />
-        </BlogQuote>
-        <BlogParagraph>
-          You know what really grinds my gears? Explicitly setting my OS to dark
-          mode, going to a website that clearly has a dark mode, and still
-          getting blasted in the retinas by all the bright shades of white.
-        </BlogParagraph>
-        <BlogParagraph>
-          The only reasonable default mode for the web apps that have them,
-          should be the user&apos;s system preference!
-        </BlogParagraph>
-        <BlogParagraph>
-          Luckily the new media query{' '}
-          <BlogLink
-            href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme"
-            paragraph
-            noWrap
-          >
-            @media(prefers-color-scheme: dark)
-          </BlogLink>
-          {` `}
-          is gaining{' '}
-          <BlogLink
-            href="https://caniuse.com/#feat=prefers-color-scheme"
-            paragraph
-          >
-            browser support
-          </BlogLink>{' '}
-          to solve this exact problem.
-        </BlogParagraph>
+const BlogPage = ({ baseUrl, theme, updateTheme }) => {
+  // Is the page in dark mode?
+  const isDarkMode = () => new Color(theme.pageBackgroundColor).isDark();
 
-        <BlogCodeBlock
-          language="css"
-          path="styles/theme.css"
-          code={`
+  return (
+    <>
+      <BlogSEO baseUrl={baseUrl} />
+      <ThemeProvider theme={theme}>
+        <BlogArticleContainer>
+          <BlogDemoContainer
+            heading="Demo First"
+            subheading="Default light/dark mode mirrors your operating system"
+          >
+            <BlogQuote>
+              <span>Let&apos;s check your system preferences...</span>
+              <span />
+              <DarkModeReporter />
+            </BlogQuote>
+
+            <ToggleContainer>
+              <ToggleSwitchHeading>Toggle Mode</ToggleSwitchHeading>
+              <ToggleSwitch
+                aria-label="Toggle Light/Dark Mode"
+                checked={isDarkMode()}
+                onChange={checked => {
+                  if (checked) {
+                    updateTheme(
+                      generatePageTheme({
+                        fontColor: '#e2e5ec',
+                        highlightFontColor: 'aquamarine',
+                        backgroundColor: '#101010'
+                      })
+                    );
+                  } else {
+                    updateTheme(
+                      generatePageTheme({
+                        fontColor: 'black',
+                        highlightFontColor: 'cyan',
+                        backgroundColor: '#9e9e9e'
+                      })
+                    );
+                  }
+                }}
+              />
+            </ToggleContainer>
+          </BlogDemoContainer>
+          <BlogParagraph>
+            You know what really grinds my gears? Explicitly setting my OS to
+            dark mode, going to a website that clearly has a dark mode, and
+            still getting blasted in the retinas by all the bright shades of
+            white.
+          </BlogParagraph>
+          <BlogParagraph>
+            The only reasonable default mode for the web apps that have them,
+            should be the user&apos;s system preference!
+          </BlogParagraph>
+          <BlogParagraph>
+            Luckily the new media query{' '}
+            <BlogLink
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme"
+              paragraph
+              noWrap
+            >
+              @media(prefers-color-scheme: dark)
+            </BlogLink>
+            {` `}
+            is gaining{' '}
+            <BlogLink
+              href="https://caniuse.com/#feat=prefers-color-scheme"
+              paragraph
+            >
+              browser support
+            </BlogLink>{' '}
+            to solve this exact problem.
+          </BlogParagraph>
+          <BlogCodeBlock
+            language="css"
+            path="styles/theme.css"
+            code={`
 /* The browser supports prefers-color-scheme,
 but cannot find a light/dark preference */
 @media (prefers-color-scheme: no-preference) {
@@ -74,37 +113,37 @@ but cannot find a light/dark preference */
   color: black;
 }
       `}
-        />
-        <BlogParagraph>
-          Use the{' '}
-          <BlogLink
-            href="https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia"
-            paragraph
-            noWrap
-          >
-            Window.matchMedia()
-          </BlogLink>{' '}
-          function to retrieve this setting programatically in Javascript.
-        </BlogParagraph>
-        <BlogCodeBlock
-          language="js"
-          path="console"
-          code={`
+          />
+          <BlogParagraph>
+            Use the{' '}
+            <BlogLink
+              href="https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia"
+              paragraph
+              noWrap
+            >
+              Window.matchMedia()
+            </BlogLink>{' '}
+            function to retrieve this setting programatically in Javascript.
+          </BlogParagraph>
+          <BlogCodeBlock
+            language="js"
+            path="console"
+            code={`
 // true if the browser supports prefers-color-scheme
 window.matchMedia("(prefers-color-scheme)").matches
 
 // true if there is a system level dark mode preference
 window.matchMedia("(prefers-color-scheme: dark)").matches
       `}
-        />
-        <BlogParagraph>
-          In React you could check for this preference fairly easily, then
-          update your app theme dynamically... and responsibly!
-        </BlogParagraph>
-        <BlogCodeBlock
-          language="jsx"
-          path="/components/DarkModeReporter.js"
-          code={`
+          />
+          <BlogParagraph>
+            In React you could check for this preference fairly easily, then
+            update your app theme dynamically... and responsibly!
+          </BlogParagraph>
+          <BlogCodeBlock
+            language="jsx"
+            path="/components/DarkModeReporter.js"
+            code={`
 import React from 'react';
 
 class DarkModeReporter extends React.Component {
@@ -143,25 +182,27 @@ class DarkModeReporter extends React.Component {
 
 export default DarkModeReporter;          
 `}
-        />
-        <BlogParagraph>
-          For my take on implementing dynamic app themes in React with
-          Styled-Components, check out my post{' '}
-          <BlogLink
-            href="/blog/dynamic-theming-with-styled-components-and-nextjs"
-            paragraph
-          >
-            dynamic-theming-with-styled-components-and-nextjs
-          </BlogLink>
-          .
-        </BlogParagraph>
-      </BlogArticleContainer>
-    </ThemeProvider>
-  </>
-);
+          />
+          <BlogParagraph>
+            For my take on implementing dynamic app themes in React with
+            Styled-Components, check out my post{' '}
+            <BlogLink
+              href="/blog/dynamic-theming-with-styled-components-and-nextjs"
+              paragraph
+            >
+              dynamic-theming-with-styled-components-and-nextjs
+            </BlogLink>
+            .
+          </BlogParagraph>
+        </BlogArticleContainer>
+      </ThemeProvider>
+    </>
+  );
+};
 
 BlogPage.propTypes = {
   baseUrl: PropTypes.string.isRequired,
+  updateTheme: PropTypes.func.isRequired,
   theme: PropTypes.object
 };
 
@@ -185,3 +226,14 @@ BlogPage.getInitialProps = async ({ req }) => {
 };
 
 export default BlogPage;
+
+const ToggleContainer = styled.div`
+  text-align: center;
+`;
+
+const ToggleSwitchHeading = styled.h3`
+  margin-top: 0;
+  margin-bottom: 1.2em;
+  font-weight: normal;
+  font-size: 1.2em;
+`;

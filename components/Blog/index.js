@@ -12,6 +12,7 @@ import BlogList from './BlogList';
 import BlogSectionHeading from './BlogSectionHeading';
 import BlogQuote from './BlogQuote';
 import BlogCodeInline from './BlogCodeInline';
+import BlogDemoContainer from './BlogDemoContainer';
 
 export {
   BlogArticleBanner,
@@ -27,5 +28,6 @@ export {
   BlogList,
   BlogSectionHeading,
   BlogQuote,
-  BlogCodeInline
+  BlogCodeInline,
+  BlogDemoContainer
 };
