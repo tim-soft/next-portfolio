@@ -10,7 +10,7 @@ import {
   BlogQuote,
   BlogCodeInline
 } from 'components/Blog';
-import { generatePageTheme } from 'components/AppTheme';
+import { darkTheme } from 'components/AppTheme';
 
 import WindowSizeReporter from 'components/ArticleComponents/WindowSizeReporter';
 
@@ -167,11 +167,7 @@ BlogPage.defaultProps = {
 };
 
 // Override default app theme for this page
-BlogPage.pageTheme = generatePageTheme({
-  fontColor: '#e2e5ec',
-  highlightFontColor: 'aquamarine',
-  backgroundColor: '#101010'
-});
+BlogPage.pageTheme = darkTheme;
 
 // Get URL and generate page theme
 BlogPage.getInitialProps = async ({ req }) => {

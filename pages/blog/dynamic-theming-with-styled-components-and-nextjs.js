@@ -14,7 +14,13 @@ import {
   BlogCodeInline,
   BlogDemoContainer
 } from 'components/Blog';
-import { generatePageTheme } from 'components/AppTheme';
+import {
+  generatePageTheme,
+  darkTheme,
+  greyTheme,
+  blueTheme,
+  greenTheme
+} from 'components/AppTheme';
 import Button from 'components/Button';
 import colors from 'nice-color-palettes/500';
 import bestContrast from 'get-best-contrast-color';
@@ -112,15 +118,7 @@ const BlogPage = ({ baseUrl, theme, updateTheme }) => (
           </RainbowButton>
           <Button
             onClick={() => {
-              handleThemeChange(() =>
-                updateTheme(
-                  generatePageTheme({
-                    fontColor: 'black',
-                    highlightFontColor: 'cyan',
-                    backgroundColor: '#9e9e9e'
-                  })
-                )
-              );
+              handleThemeChange(() => updateTheme(greyTheme));
             }}
           >
             Grey Theme
@@ -128,30 +126,14 @@ const BlogPage = ({ baseUrl, theme, updateTheme }) => (
 
           <Button
             onClick={() => {
-              handleThemeChange(() =>
-                updateTheme(
-                  generatePageTheme({
-                    fontColor: '#31d7f9',
-                    highlightFontColor: 'springgreen',
-                    backgroundColor: '#202629'
-                  })
-                )
-              );
+              handleThemeChange(() => updateTheme(blueTheme));
             }}
           >
             Blue Theme
           </Button>
           <Button
             onClick={() => {
-              handleThemeChange(() =>
-                updateTheme(
-                  generatePageTheme({
-                    fontColor: '#e2e5ec',
-                    highlightFontColor: 'aquamarine',
-                    backgroundColor: '#101010'
-                  })
-                )
-              );
+              handleThemeChange(() => updateTheme(darkTheme));
             }}
           >
             Dark Theme
@@ -694,11 +676,7 @@ BlogPage.defaultProps = {
 };
 
 // Override default app theme for this page
-BlogPage.pageTheme = generatePageTheme({
-  fontColor: 'black',
-  highlightFontColor: 'springgreen',
-  backgroundColor: '#019800'
-});
+BlogPage.pageTheme = greenTheme;
 
 // Get absolute url of page
 BlogPage.getInitialProps = async ({ req }) => {

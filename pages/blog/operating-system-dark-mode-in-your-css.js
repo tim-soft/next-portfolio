@@ -10,7 +10,7 @@ import {
   BlogQuote,
   BlogDemoContainer
 } from 'components/Blog';
-import { generatePageTheme } from 'components/AppTheme';
+import { darkTheme, greyTheme } from 'components/AppTheme';
 import DarkModeReporter from 'components/ArticleComponents/DarkModeReporter';
 import ToggleSwitch from 'components/ToggleSwitch';
 import Color from 'color';
@@ -41,21 +41,9 @@ const BlogPage = ({ baseUrl, theme, updateTheme }) => {
                 checked={isDarkMode()}
                 onChange={checked => {
                   if (checked) {
-                    updateTheme(
-                      generatePageTheme({
-                        fontColor: '#e2e5ec',
-                        highlightFontColor: 'aquamarine',
-                        backgroundColor: '#101010'
-                      })
-                    );
+                    updateTheme(darkTheme);
                   } else {
-                    updateTheme(
-                      generatePageTheme({
-                        fontColor: 'black',
-                        highlightFontColor: 'cyan',
-                        backgroundColor: '#9e9e9e'
-                      })
-                    );
+                    updateTheme(greyTheme);
                   }
                 }}
               />
@@ -211,11 +199,7 @@ BlogPage.defaultProps = {
 };
 
 // Override default app theme for this page
-BlogPage.pageTheme = generatePageTheme({
-  fontColor: '#e2e5ec',
-  highlightFontColor: 'aquamarine',
-  backgroundColor: '#101010'
-});
+BlogPage.pageTheme = darkTheme;
 
 // Get URL and generate page theme
 BlogPage.getInitialProps = async ({ req }) => {

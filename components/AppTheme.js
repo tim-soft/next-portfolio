@@ -77,3 +77,30 @@ const defaultTheme = generatePageTheme({
 });
 
 export default defaultTheme;
+
+export const darkTheme = generatePageTheme({
+  fontColor: '#e2e5ec',
+  highlightFontColor: 'aquamarine',
+  backgroundColor: '#101010',
+  override: {
+    accentColor: '#1f1f1f'
+  }
+});
+
+export const greyTheme = generatePageTheme({
+  fontColor: 'black',
+  highlightFontColor: 'cyan',
+  backgroundColor: '#9e9e9e'
+});
+
+export const blueTheme = generatePageTheme({
+  fontColor: '#31d7f9',
+  highlightFontColor: 'springgreen',
+  backgroundColor: '#202629'
+});
+
+export const greenTheme = generatePageTheme({
+  fontColor: 'black',
+  highlightFontColor: 'springgreen',
+  backgroundColor: '#019800'
+});

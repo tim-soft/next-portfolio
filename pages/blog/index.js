@@ -4,7 +4,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import NextSEO, { BlogJsonLd } from 'next-seo';
 import PageScrollWrapper from 'components/PageScrollWrapper';
 import { IndexListItem, BlogLink } from 'components/Blog';
-import { generatePageTheme } from 'components/AppTheme';
+import { blueTheme } from 'components/AppTheme';
 import { getSortedPosts } from 'data/BlogPosts';
 
 const BlogPage = ({ baseUrl, theme }) => {
@@ -78,11 +78,7 @@ BlogPage.defaultProps = {
 };
 
 // Override default app theme for this page
-BlogPage.pageTheme = generatePageTheme({
-  fontColor: '#31d7f9',
-  highlightFontColor: 'springgreen',
-  backgroundColor: '#202629'
-});
+BlogPage.pageTheme = blueTheme;
 
 // Get absolute url of page
 BlogPage.getInitialProps = async ({ req }) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
-import { generatePageTheme } from 'components/AppTheme';
+import { darkTheme, greyTheme } from 'components/AppTheme';
 import Color from 'color';
 
 /**
@@ -48,24 +48,12 @@ class DarkModeReporter extends React.Component {
 
   setDarkTheme = () => {
     const { updateTheme } = this.props;
-    updateTheme(
-      generatePageTheme({
-        fontColor: '#e2e5ec',
-        highlightFontColor: 'aquamarine',
-        backgroundColor: '#101010'
-      })
-    );
+    updateTheme(darkTheme);
   };
 
   setLightTheme = () => {
     const { updateTheme } = this.props;
-    updateTheme(
-      generatePageTheme({
-        fontColor: 'black',
-        highlightFontColor: 'cyan',
-        backgroundColor: '#9e9e9e'
-      })
-    );
+    updateTheme(greyTheme);
   };
 
   render() {

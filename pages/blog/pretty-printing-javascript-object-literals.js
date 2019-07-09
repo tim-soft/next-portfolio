@@ -10,7 +10,7 @@ import {
   BlogQuote,
   BlogCodeInline
 } from 'components/Blog';
-import { generatePageTheme } from 'components/AppTheme';
+import { blueTheme } from 'components/AppTheme';
 
 const BlogPage = ({ baseUrl, theme }) => (
   <>
@@ -135,11 +135,7 @@ BlogPage.defaultProps = {
 };
 
 // Override default app theme for this page
-BlogPage.pageTheme = generatePageTheme({
-  fontColor: '#31d7f9',
-  highlightFontColor: 'springgreen',
-  backgroundColor: '#202629'
-});
+BlogPage.pageTheme = blueTheme;
 
 // Get URL and generate page theme
 BlogPage.getInitialProps = async ({ req }) => {
