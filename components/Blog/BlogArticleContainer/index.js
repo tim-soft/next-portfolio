@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import PageScrollWrapper from 'components/PageScrollWrapper';
+import HiringCallout from 'components/HiringCallout';
 import BlogArticleBanner from '../BlogArticleBanner';
 import BlogNavigation from '../BlogNavigation';
 
@@ -16,11 +17,7 @@ const BlogArticleContainer = ({ children, width }) => (
         {children}
         <HorizontalRule />
         <BlogNavigation />
-        <HiringCallout>
-          <a href="mailto:timellenberger@gmail.com">
-            Need a developer? Drop me a line!
-          </a>
-        </HiringCallout>
+        <HiringCallout />
       </article>
     </Container>
   </PageScrollWrapper>
@@ -39,22 +36,6 @@ BlogArticleContainer.defaultProps = {
 };
 
 export default BlogArticleContainer;
-
-const HiringCallout = styled.h2`
-  margin: 2em 0 1em 0;
-  font-size: 1.2em;
-  font-weight: normal;
-  text-decoration: underline;
-  text-align: center;
-  a {
-    transition: color 0.2s linear;
-    color: ${({ theme }) => theme.pageContentLinkHoverColor};
-    :hover {
-      cursor: pointer;
-      color: ${({ theme }) => theme.pageContentFontColor};
-    }
-  }
-`;
 
 const HorizontalRule = styled.hr`
   border: 0;

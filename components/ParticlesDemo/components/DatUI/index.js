@@ -164,15 +164,18 @@ const StyledScrollbar = styled(Scrollbar)`
   width: 100%;
   height: calc(100vh - 180px) !important;
 
+  /* RepoTag hidden, config underneath FPSCounter */
   @media (max-width: 512px) {
     height: calc(100vh - 260px) !important;
   }
 
+  /* Small screen, RepoTag visible */
   @media (min-width: 512px) {
-    height: calc(100vh - 260px) !important;
+    height: calc(100vh - 310px) !important;
   }
 
-  @media (min-width: 1050px) {
-    height: calc(100vh - 180px) !important;
+  /* Large screen, RepoTag visible */
+  @media (min-width: 1140px) {
+    height: calc(100vh - 167px) !important;
   }
 `;

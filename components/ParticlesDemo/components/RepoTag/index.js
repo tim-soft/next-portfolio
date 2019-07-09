@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { GoMarkGithub } from 'react-icons/go';
+import HiringCallout from 'components/HiringCallout';
 
 export default () => (
   <Container>
@@ -24,8 +25,14 @@ export default () => (
         />
       </ShieldContainer>
     </StyledLink>
+    <StyledHiringCallout />
   </Container>
 );
+
+const StyledHiringCallout = styled(HiringCallout)`
+  margin: 1em;
+  font-size: 1em;
+`;
 
 const Container = styled.div`
   position: absolute;
@@ -54,7 +61,7 @@ const StyledLink = styled.a`
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  padding: 10px;
+  padding: 10px 10px 0 10px;
   color: inherit;
 `;
 
@@ -79,5 +86,5 @@ const ShieldContainer = styled.div`
 `;
 
 const NpmShield = styled.img`
-  margin: 5px;
+  margin: 5px 5px 0 5px;
 `;
