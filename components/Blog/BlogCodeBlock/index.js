@@ -142,7 +142,7 @@ const BlockLine = styled.div`
     }
   }
   * ::selection {
-    background: ${({ theme }) => theme.pageBackgroundColor};
+    background: rgb(86, 156, 214) !important;
   }
   /* Update punctuation colors not accessible through prism theme */
   span.token.tag.spread.punctuation,
