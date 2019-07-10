@@ -56,6 +56,7 @@ export const generatePageTheme = ({
   pageContentFontColor: fontColor,
   pageContentLinkHoverColor: highlightFontColor,
   pageContentWidth: 740,
+  pageContentSelectionColor: backgroundColor,
   // Media Query Breakpoints
   breakpoints: {
     mobileNav: 'min-width: 1061px',
@@ -83,7 +84,8 @@ export const darkTheme = generatePageTheme({
   highlightFontColor: 'aquamarine',
   backgroundColor: '#101010',
   override: {
-    accentColor: '#1f1f1f'
+    accentColor: '#1f1f1f',
+    pageContentSelectionColor: 'aquamarine'
   }
 });
 
