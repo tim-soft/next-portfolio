@@ -63,7 +63,7 @@ const DemoContainer = styled.div`
   border-color: ${({ theme }) => theme.popoutMenuBorderColor};
   border-width: 2px;
   border-style: solid;
-  padding: 2em;
+  padding: 2em 1em;
   margin: 1em 0;
   display: flex;
   justify-content: space-evenly;
