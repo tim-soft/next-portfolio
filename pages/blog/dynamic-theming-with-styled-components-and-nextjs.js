@@ -133,17 +133,17 @@ const BlogPage = ({ baseUrl, theme, updateTheme }) => (
           </Button>
           <Button
             onClick={() => {
-              handleThemeChange(() => updateTheme(darkTheme));
+              handleThemeChange(() => updateTheme(greenTheme));
             }}
           >
-            Dark Theme
+            Green Theme
           </Button>
           <Button
             onClick={() => {
               handleThemeChange(() => updateTheme({}));
             }}
           >
-            Default
+            Default Dark
           </Button>
         </BlogDemoContainer>
         <BlogQuote>
@@ -676,7 +676,7 @@ BlogPage.defaultProps = {
 };
 
 // Override default app theme for this page
-BlogPage.pageTheme = greenTheme;
+BlogPage.pageTheme = darkTheme;
 
 // Get absolute url of page
 BlogPage.getInitialProps = async ({ req }) => {
