@@ -16,7 +16,23 @@ const BlogData = [
     Styled-Components, a little React Context and colourlovers.com may prove a powerful combination.`,
     logo: '/static/blog-logos/styled-components.png',
     readTime: 15,
-    date: 'Mon Jun 22 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
+    date: 'Mon Jul 10 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
+  },
+  {
+    href: '/blog/operating-system-dark-mode-in-your-css',
+    title: 'Dark Mode: OS Level Control In Your CSS',
+    description: `Light/Dark mode via @media(prefers-color-scheme: dark), learn how to detect if you are in light mode or dark mode.`,
+    logo: '/static/language-logos/css.svg',
+    readTime: 3,
+    date: 'Mon Jul 5 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
+  },
+  {
+    href: '/blog/building-react-code-blocks-with-prism',
+    title: 'Building React Code Blocks with PrismJS',
+    description: `Easily reusable syntax highlighted code blocks as React components, learn to make your code blocks as attractive as you are.`,
+    logo: '/static/blog-logos/prismjs.svg',
+    readTime: 13,
+    date: 'Mon Jun 13 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
   },
   {
     href: '/blog/react-always-throw-away-your-event-listeners',
@@ -26,15 +42,7 @@ const BlogData = [
     listeners will linger in your browser to haunt future components.`,
     logo: '/static/language-logos/react.svg',
     readTime: 25,
-    date: 'Mon May 3 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
-  },
-  {
-    href: '/blog/operating-system-dark-mode-in-your-css',
-    title: 'Dark Mode: OS Level Control In Your CSS',
-    description: `Light/Dark mode via @media(prefers-color-scheme: dark), learn how to detect if you are in light mode or dark mode.`,
-    logo: '/static/language-logos/css.svg',
-    readTime: 3,
-    date: 'Mon May 5 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
+    date: 'Mon May 7 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
   },
   {
     href: '/blog/pretty-printing-javascript-object-literals',
@@ -43,15 +51,7 @@ const BlogData = [
     as it appears in your code editor? Join me to find out.`,
     logo: '/static/language-logos/javascript.svg',
     readTime: 5,
-    date: 'Mon May 7 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
-  },
-  {
-    href: '/blog/building-react-code-blocks-with-prism',
-    title: 'Building React Code Blocks with PrismJS',
-    description: `Easily reusable syntax highlighted code blocks as React components, learn to make your code blocks as attractive as you are.`,
-    logo: '/static/blog-logos/prismjs.svg',
-    readTime: 13,
-    date: 'Mon May 9 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
+    date: 'Mon May 1 2019 14:17:57 GMT-0700 (Pacific Daylight Time)'
   }
 ];
 
