@@ -58,15 +58,22 @@ export default class StyledDocument extends Document {
           />
           <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
           <link rel="manifest" href="/static/manifest.json" />
+          {/* Google Webmaster Tools Site Verification */}
           <meta
             name="google-site-verification"
             content="CINNC3dOk4o4wlk7uIE7GZm1dxbG-UfQMAkzdpypoog"
+          />
+          {/* Bing Webmaster Tools Site Verification */}
+          <meta
+            name="msvalidate.01"
+            content="FCA0098C94CF509BD6FC5F3DA79C1549"
           />
           <meta name="theme-color" content="#1d1e1f" />
           <link
             href="https://fonts.googleapis.com/css?family=Montserrat"
             rel="stylesheet"
           />
+
           {/* Global Site Tag (../lib/googleAnalytics.js) - Google Analytics */}
           <script
             async
