@@ -59,16 +59,27 @@ class DarkModeReporter extends React.Component {
   render() {
     const { supportsColorScheme, isDarkMode, isLightMode } = this.state;
 
-    if (supportsColorScheme) {
+    const SystemMode = () => {
+      if (!supportsColorScheme)
+        return <>Your browser doesn&apos;t support dark mode!</>;
+      if (supportsColorScheme && !isDarkMode && !isLightMode)
+        return <>Your system light/dark mode preference is unset!</>;
       if (isDarkMode) return <>Your system is in dark mode!</>;
-      if (isLightMode) return <>Your system is in light mode!</>;
 
-      // The browser supports light/dark mode but can't infer anything from the OS
-      return <>Your system light/dark mode preference is unset!</>;
-    }
+      return <>Your system is in light mode!</>;
+    };
 
-    // The browser doesn't support light/dark mode
-    return <>Your browser doesn&apos;t support dark mode!</>;
+    const SettingMode = () => (
+      <>The page theme has been set to {isLightMode ? 'light' : 'dark'} mode.</>
+    );
+
+    return (
+      <>
+        <SystemMode />
+        <br />
+        <SettingMode />
+      </>
+    );
   }
 }
 
