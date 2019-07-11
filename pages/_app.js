@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import App, { Container } from 'next/app';
-import { version } from 'next/package.json';
 import Router from 'next/router';
-import withGA from 'next-ga';
+import { version } from 'next/package.json';
 import NextSeo from 'next-seo';
 import { Transition, animated } from 'react-spring';
 import styled, { ThemeProvider } from 'styled-components';
@@ -11,6 +10,7 @@ import appTheme from 'components/AppTheme';
 import GlobalStyles from 'components/GlobalStyles';
 import WebsiteLayout from 'layouts/WebsiteLayout';
 import defaultSEO from 'components/DefaultSEO';
+import { pageview } from '../lib/googleAnalytics';
 
 /**
  * Custom Next.js App that wraps all Next.js pages, adds global styles and animates route changes
@@ -25,16 +25,6 @@ class WebApp extends App {
     /* Props of the Next.js page */
     pageProps: PropTypes.object.isRequired
   };
-
-  static async getInitialProps({ Component, ctx }) {
-    let pageProps = {};
-
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-
-    return { pageProps };
-  }
 
   state = {
     dynamicPageThemes: []
@@ -135,9 +125,11 @@ class WebApp extends App {
   }
 }
 
-// Apply Google Analytics to entire app
-// https://github.com/sergiodxa/next-ga
-export default withGA('UA-137363397-1', Router)(WebApp);
+// Apply Google Analytics to app
+// https://github.com/zeit/next.js/tree/canary/examples/with-google-analytics
+Router.events.on('routeChangeComplete', url => pageview(url));
+
+export default WebApp;
 
 const AnimatedContainer = animated(styled.div`
   will-change: opacity, transform;
