@@ -11,5 +11,5 @@
     }
   ],
   "builds": [{ "src": "next.config.js", "use": "@now/next@canary" }],
-  "alias": ["tim-soft.now.sh", "timellenberger.now.sh"]
+  "alias": ["tim-soft.now.sh", "timellenberger.now.sh", "timellenberger.com"]
 }
