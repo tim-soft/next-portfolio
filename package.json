@@ -43,6 +43,8 @@
     "three": "^0.106.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.5.4",
+    "@babel/node": "^7.5.0",
     "babel-eslint": "^10.0.2",
     "babel-plugin-styled-components": "^1.10.6",
     "eslint": "^5.16.0",
@@ -76,6 +78,8 @@
     "dev": "next",
     "now-build": "next build",
     "start": "next start",
+    "postinstall": "yarn generate-sitemap",
+    "generate-sitemap": "babel-node ./tools/generate-sitemap",
     "lint-js": "eslint --ignore-path .gitignore --ignore-pattern \"!**/.*\" .",
     "lint-styles": "stylelint \"./**/*.{js,jsx}\""
   },
