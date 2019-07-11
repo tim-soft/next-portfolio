@@ -1,3 +1,3 @@
 User-agent: *
-Sitemap: https://timellenberger.now.sh/sitemap.xml
+Sitemap: https://timellenberger.com/sitemap.xml
 Disallow:

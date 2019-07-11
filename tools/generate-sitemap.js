@@ -8,7 +8,7 @@ if (!fs.existsSync('./public')) {
 
 // ROBOTS.txt
 const robotsTxt = `User-agent: *
-Sitemap: https://timellenberger.now.sh/sitemap.xml
+Sitemap: https://timellenberger.com/sitemap.xml
 Disallow:`;
 
 fs.writeFileSync('public/robots.txt', robotsTxt);
@@ -20,7 +20,7 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
   ${Object.keys(pathsObj).map(
     path => `<url>
-    <loc>https://timellenberger.now.sh${path}</loc>
+    <loc>https://timellenberger.com${path}</loc>
     <lastmod>${
       pathsObj[path].lastModified
         ? new Date(pathsObj[path].lastModified).toISOString()

@@ -2,7 +2,7 @@
 
 **next-portfolio** Is my personal website, blog and library demo playground, built from scratch with Next.js
 
-[**https://timellenberger.now.sh**](https://timellenberger.now.sh)
+[**https://timellenberger.com**](https://timellenberger.com)
 
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/tim-soft/next-portfolio.svg?color=brightgreen&style=popout-square)
 [![NPM](https://img.shields.io/npm/l/react-particles-webgl.svg?color=brightgreen&style=popout-square)](https://github.com/tim-soft/next-portfolio/blob/master/LICENSE)
@@ -13,7 +13,7 @@
 - Dynamic Theming and Styles via [Styled-Components](https://github.com/styled-components/styled-components)
 - Offline Ready via [Workbox](https://github.com/GoogleChrome/workbox)
 - One Click Production Serverless Deploy to [Now](https://zeit.co/now)
-- [Prettier](https://github.com/prettier/prettier), [ESLint](https://github.com/eslint/eslint) and [StyleLint](https://stylelint.io/)  Integration
+- [Prettier](https://github.com/prettier/prettier), [ESLint](https://github.com/eslint/eslint) and [StyleLint](https://stylelint.io/) Integration
 
 ## How to use
 

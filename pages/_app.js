@@ -34,7 +34,7 @@ class WebApp extends App {
     // eslint-disable-next-line no-console
     console.log(
       '%c ',
-      "background: url('https://timellenberger.now.sh/static/avatar.png') 0 0 no-repeat; padding: 66px; border-radius: 50%;"
+      "background: url('https://timellenberger.com/static/avatar.png') 0 0 no-repeat; padding: 66px; border-radius: 50%;"
     );
 
     // eslint-disable-next-line no-console

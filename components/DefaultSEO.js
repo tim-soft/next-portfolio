@@ -10,7 +10,7 @@ export default {
     locale: 'en_US',
     images: [
       {
-        url: 'https://timellenberger.now.sh/static/avatar.png',
+        url: 'https://timellenberger.com/static/avatar.png',
         width: 140,
         height: 140,
         alt: 'Tim Ellenberger'

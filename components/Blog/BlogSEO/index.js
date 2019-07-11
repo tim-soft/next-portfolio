@@ -19,18 +19,18 @@ const BlogSEO = ({ router }) => {
           description: blogPost.description,
           canonical: `${route}`,
           openGraph: {
-            url: `https://timellenberger.now.sh${route}`,
+            url: `https://timellenberger.com${route}`,
             title: blogPost.title,
             description: blogPost.description,
             images: [
-              `https://timellenberger.now.sh${blogPost.logo}`,
-              `https://timellenberger.now.sh/static/avatar.png`
+              `https://timellenberger.com${blogPost.logo}`,
+              `https://timellenberger.com/static/avatar.png`
             ],
             type: 'article',
             article: {
               publishedTime: blogPost.date,
               section: 'Technology',
-              authors: ['https://timellenberger.now.sh']
+              authors: ['https://timellenberger.com']
             },
             site_name: 'Coding, Musings and Adventures of Tim Ellenberger',
             locale: 'en_US',
