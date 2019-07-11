@@ -7,7 +7,7 @@ import { IndexListItem, BlogLink } from 'components/Blog';
 import { blueTheme } from 'components/AppTheme';
 import { getSortedPosts } from 'data/BlogPosts';
 
-const BlogPage = ({ baseUrl, theme }) => {
+const BlogPage = ({ theme }) => {
   // Get blog posts, sorted newest to oldest
   const sortedPosts = getSortedPosts({ order: 'desc' });
 
@@ -16,9 +16,9 @@ const BlogPage = ({ baseUrl, theme }) => {
       <NextSEO
         config={{
           title: 'Coding, Musings and Adventures of Tim Ellenberger',
-          canonical: `${baseUrl}/blog`,
+          canonical: `/blog`,
           openGraph: {
-            url: `${baseUrl}/blog`,
+            url: `/blog`,
             title: 'Coding, Musings and Adventures of Tim Ellenberger'
           },
           site_name: 'Coding, Musings and Adventures of Tim Ellenberger',
@@ -32,9 +32,9 @@ const BlogPage = ({ baseUrl, theme }) => {
         }}
       />
       <BlogJsonLd
-        url="https://timellenberger.now.sh/blog"
+        url="/blog"
         title="Coding, Musings and Adventures of Tim Ellenberger"
-        images={['https://timellenberger.now.sh/static/avatar.png']}
+        images={['/static/avatar.png']}
         datePublished="2019-03-31T08:00:00+08:00"
         dateModified="2019-03-31T09:00:00+08:00"
         authorName="Tim Ellenberger"
@@ -69,7 +69,6 @@ const BlogPage = ({ baseUrl, theme }) => {
 };
 
 BlogPage.propTypes = {
-  baseUrl: PropTypes.string.isRequired,
   theme: PropTypes.object
 };
 
@@ -79,14 +78,6 @@ BlogPage.defaultProps = {
 
 // Override default app theme for this page
 BlogPage.pageTheme = blueTheme;
-
-// Get absolute url of page
-BlogPage.getInitialProps = async ({ req }) => {
-  const hostname = req ? req.headers.host : window.location.hostname;
-  const protocol = hostname.includes('localhost') ? 'http' : 'https';
-
-  return { baseUrl: `${protocol}/${hostname}` };
-};
 
 export default BlogPage;
 

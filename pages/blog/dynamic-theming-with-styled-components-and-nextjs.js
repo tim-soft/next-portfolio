@@ -100,9 +100,9 @@ const handleThemeChange = callback => {
   }
 };
 
-const BlogPage = ({ baseUrl, theme, updateTheme }) => (
+const BlogPage = ({ theme, updateTheme }) => (
   <>
-    <BlogSEO baseUrl={baseUrl} />
+    <BlogSEO />
     <ThemeProvider theme={theme}>
       <BlogArticleContainer>
         <BlogDemoContainer
@@ -666,7 +666,6 @@ BlogPage.theme = {
 };
 
 BlogPage.propTypes = {
-  baseUrl: PropTypes.string.isRequired,
   theme: PropTypes.object,
   updateTheme: PropTypes.func.isRequired
 };
@@ -677,14 +676,6 @@ BlogPage.defaultProps = {
 
 // Override default app theme for this page
 BlogPage.pageTheme = darkTheme;
-
-// Get absolute url of page
-BlogPage.getInitialProps = async ({ req }) => {
-  const hostname = req ? req.headers.host : window.location.hostname;
-  const protocol = hostname.includes('localhost') ? 'http' : 'https';
-
-  return { baseUrl: `${protocol}/${hostname}` };
-};
 
 export default BlogPage;
 

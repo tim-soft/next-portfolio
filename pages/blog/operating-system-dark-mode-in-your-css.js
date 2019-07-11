@@ -15,13 +15,13 @@ import DarkModeReporter from 'components/ArticleComponents/DarkModeReporter';
 import ToggleSwitch from 'components/ToggleSwitch';
 import Color from 'color';
 
-const BlogPage = ({ baseUrl, theme, updateTheme }) => {
+const BlogPage = ({ theme, updateTheme }) => {
   // Is the page in dark mode?
   const isDarkMode = () => new Color(theme.pageBackgroundColor).isDark();
 
   return (
     <>
-      <BlogSEO baseUrl={baseUrl} />
+      <BlogSEO />
       <ThemeProvider theme={theme}>
         <BlogArticleContainer>
           <BlogDemoContainer
@@ -189,7 +189,6 @@ export default DarkModeReporter;
 };
 
 BlogPage.propTypes = {
-  baseUrl: PropTypes.string.isRequired,
   updateTheme: PropTypes.func.isRequired,
   theme: PropTypes.object
 };
@@ -200,14 +199,6 @@ BlogPage.defaultProps = {
 
 // Override default app theme for this page
 BlogPage.pageTheme = darkTheme;
-
-// Get URL and generate page theme
-BlogPage.getInitialProps = async ({ req }) => {
-  const hostname = req ? req.headers.host : window.location.hostname;
-  const protocol = hostname.includes('localhost') ? 'http' : 'https';
-
-  return { baseUrl: `${protocol}/${hostname}` };
-};
 
 export default BlogPage;
 

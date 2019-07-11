@@ -3,7 +3,7 @@ import NextSEO, { BlogJsonLd } from 'next-seo';
 import { withRouter } from 'next/router';
 import BlogData from 'data/BlogPosts';
 
-const BlogSEO = ({ baseUrl, router }) => {
+const BlogSEO = ({ router }) => {
   const { route } = router;
 
   // Get index of current blog post
@@ -17,20 +17,20 @@ const BlogSEO = ({ baseUrl, router }) => {
         config={{
           title: blogPost.title,
           description: blogPost.description,
-          canonical: `${baseUrl}/${route}`,
+          canonical: `${route}`,
           openGraph: {
-            url: `${baseUrl}/${route}`,
+            url: `https://timellenberger.now.sh${route}`,
             title: blogPost.title,
             description: blogPost.description,
             images: [
-              `${baseUrl}${blogPost.logo}`,
-              `${baseUrl}/static/avatar.png`
+              `https://timellenberger.now.sh${blogPost.logo}`,
+              `https://timellenberger.now.sh/static/avatar.png`
             ],
             type: 'article',
             article: {
               publishedTime: blogPost.date,
               section: 'Technology',
-              authors: [baseUrl]
+              authors: ['https://timellenberger.now.sh']
             },
             site_name: 'Coding, Musings and Adventures of Tim Ellenberger',
             locale: 'en_US',
@@ -44,9 +44,9 @@ const BlogSEO = ({ baseUrl, router }) => {
         }}
       />
       <BlogJsonLd
-        url={`${baseUrl}/${route}`}
+        url={`${route}`}
         title={blogPost.title}
-        images={[`${baseUrl}${blogPost.logo}`, `${baseUrl}/static/avatar.png`]}
+        images={[`${blogPost.logo}`, `/static/avatar.png`]}
         datePublished={blogPost.date}
         authorName="Tim Ellenberger"
         description={blogPost.description}
@@ -56,7 +56,6 @@ const BlogSEO = ({ baseUrl, router }) => {
 };
 
 BlogSEO.propTypes = {
-  baseUrl: PropTypes.string.isRequired,
   router: PropTypes.shape({
     route: PropTypes.string.isRequired
   }).isRequired

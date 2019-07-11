@@ -12,9 +12,9 @@ import {
 } from 'components/Blog';
 import { blueTheme } from 'components/AppTheme';
 
-const BlogPage = ({ baseUrl, theme }) => (
+const BlogPage = ({ theme }) => (
   <>
-    <BlogSEO baseUrl={baseUrl} />
+    <BlogSEO />
     <ThemeProvider theme={theme}>
       <BlogArticleContainer>
         <BlogQuote>
@@ -126,7 +126,6 @@ const configString = stringifyObject(config, {
 );
 
 BlogPage.propTypes = {
-  baseUrl: PropTypes.string.isRequired,
   theme: PropTypes.object
 };
 
@@ -136,13 +135,5 @@ BlogPage.defaultProps = {
 
 // Override default app theme for this page
 BlogPage.pageTheme = blueTheme;
-
-// Get URL and generate page theme
-BlogPage.getInitialProps = async ({ req }) => {
-  const hostname = req ? req.headers.host : window.location.hostname;
-  const protocol = hostname.includes('localhost') ? 'http' : 'https';
-
-  return { baseUrl: `${protocol}/${hostname}` };
-};
 
 export default BlogPage;
