@@ -16,13 +16,28 @@ const getPathsObject = () => {
         walkSync(`${filePath}/`);
       } else {
         // Construct this file's pathname excluding the "pages" folder & its extension
-        const cleanFileName = filePath
+        let cleanFileName = `/${filePath
           .substr(0, filePath.lastIndexOf('.'))
-          .replace('pages/', '');
+          .replace('pages/', '')}`;
+
+        // Chop off any trailing "/index" from path
+        if (cleanFileName.endsWith('/index')) {
+          cleanFileName = cleanFileName.substr(
+            0,
+            cleanFileName.lastIndexOf('/index')
+          );
+        } else if (cleanFileName === '/index') cleanFileName = '';
+
+        // Don't add Next.js reserved files to sitemap
+        if (
+          cleanFileName.endsWith('_app') ||
+          cleanFileName.endsWith('_document')
+        )
+          return;
 
         // Add this file to `fileObj`
-        fileObj[`/${cleanFileName}`] = {
-          page: `/${cleanFileName}`,
+        fileObj[cleanFileName] = {
+          page: cleanFileName,
           lastModified: fileStat.mtime
         };
       }
