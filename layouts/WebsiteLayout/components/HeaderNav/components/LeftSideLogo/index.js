@@ -217,7 +217,7 @@ const AnimatedContainer = styled(animated.div)`
   border-width: 1px;
   border-color: ${({ theme }) => theme.popoutMenuBorderColor};
   border-style: solid;
-  background-color: #1a1a1aba;
+  background-color: rgba(26, 26, 26, 0.73);
   /* Viewport Height - body margin - border width */
   max-height: calc(100vh - 15px - 2px);
   @media (max-width: 420px) {

@@ -78,7 +78,6 @@
     "dev": "next",
     "now-build": "next build",
     "start": "next start",
-    "postinstall": "yarn generate-sitemap",
     "generate-sitemap": "babel-node ./tools/generate-sitemap",
     "lint-js": "eslint --ignore-path .gitignore --ignore-pattern \"!**/.*\" .",
     "lint-styles": "stylelint \"./**/*.{js,jsx}\""
