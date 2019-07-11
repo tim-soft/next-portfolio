@@ -21,6 +21,23 @@ class DarkModeReporter extends React.Component {
   };
 
   componentDidMount() {
+    // Set the initial page theme based on the system theme
+    this.updateColorMode();
+
+    // If the system changes it's light/dark mode, then update
+    // the current page theme
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addListener(this.updateColorMode);
+  }
+
+  componentWillUnmount() {
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .removeListener(this.updateColorMode);
+  }
+
+  updateColorMode = () => {
     // true if the browser supports prefers-color-scheme
     const supportsColorScheme = window.matchMedia('(prefers-color-scheme)')
       .matches;
@@ -44,13 +61,19 @@ class DarkModeReporter extends React.Component {
     // Update the current page theme to reflect the operating system
     if (isDarkMode && !isCurrentThemeDarkMode) this.setDarkTheme();
     if (isLightMode && isCurrentThemeDarkMode) this.setLightTheme();
-  }
+  };
 
+  /**
+   * Updates the current page theme to dark mode
+   */
   setDarkTheme = () => {
     const { updateTheme } = this.props;
     updateTheme(darkTheme);
   };
 
+  /**
+   * Updates the current page theme to light mode
+   */
   setLightTheme = () => {
     const { updateTheme } = this.props;
     updateTheme(greyTheme);
