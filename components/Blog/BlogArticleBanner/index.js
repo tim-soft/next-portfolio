@@ -13,10 +13,10 @@ const BlogArticleBanner = ({ router }) => {
 
   return (
     <BannerContainer>
-      <BlogLogo src={blogPost.logo} alt="Article Logo" />
-      <StyledBlogLink href="/blog">&#10226; Go Back</StyledBlogLink>
       {blogPost && (
         <>
+          <BlogLogo src={blogPost.logo} alt="Article Logo" />
+          <StyledBlogLink href="/blog">&#10226; Go Back</StyledBlogLink>
           <Title>{blogPost.title}</Title>
           <BlogMeta>
             <AvatarImage src="/static/avatar.png" alt="Avatar" />
@@ -27,7 +27,7 @@ const BlogArticleBanner = ({ router }) => {
                   readTime={blogPost.readTime}
                 />
               </span>
-              <BlogLink paragraph passHref href="/">
+              <BlogLink paragraph href="/">
                 <span style={{ display: 'block', margin: '5px 0 0 0' }}>
                   Tim Ellenberger
                 </span>
