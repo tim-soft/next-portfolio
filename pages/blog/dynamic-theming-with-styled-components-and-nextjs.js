@@ -506,7 +506,7 @@ const StyledPage = styled.div\`
             </BlogLink>{' '}
             color palette
           </li>
-          <li>Pick the first color in the pallete as the background color.</li>
+          <li>Pick the first color in the palette as the background color.</li>
           <li>
             Find the top two highest contrast colors in the palette against the
             background color.
@@ -597,7 +597,7 @@ const generateColorPalette = () => {
           `}
         />
         <BlogParagraph>
-          Useage is as simple as calling{' '}
+          Usage is as simple as calling{' '}
           <BlogCodeInline>generateColorPalette()</BlogCodeInline> and passing
           it&apos;s result to <BlogCodeInline>updateTheme()</BlogCodeInline>.
         </BlogParagraph>

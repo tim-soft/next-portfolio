@@ -73,7 +73,7 @@ const BlogPage = ({ theme }) => (
           .
         </BlogParagraph>
         <BlogParagraph>
-          Useage is just as simple as{' '}
+          Usage is just as simple as{' '}
           <BlogCodeInline>JSON.stringify()</BlogCodeInline>.
         </BlogParagraph>
         <BlogCodeBlock
