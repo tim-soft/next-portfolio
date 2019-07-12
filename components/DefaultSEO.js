@@ -13,7 +13,7 @@ export default {
         url: 'https://timellenberger.com/static/avatar.png',
         width: 140,
         height: 140,
-        alt: 'Tim Ellenberger'
+        alt: 'Tim Ellenberger (Avatar)'
       }
     ],
     profile: {
