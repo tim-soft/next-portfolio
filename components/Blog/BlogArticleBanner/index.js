@@ -13,17 +13,27 @@ const BlogArticleBanner = ({ router }) => {
 
   return (
     <BannerContainer>
-      <AvatarImage src="/static/avatar.png" alt="avatar" />
+      <BlogLogo src={blogPost.logo} alt="Article Logo" />
       <StyledBlogLink href="/blog">&#10226; Go Back</StyledBlogLink>
       {blogPost && (
         <>
           <Title>{blogPost.title}</Title>
-          <PublishDate>
-            <DateAndDuration
-              date={blogPost.date}
-              readTime={blogPost.readTime}
-            />
-          </PublishDate>
+          <BlogMeta>
+            <AvatarImage src="/static/avatar.png" alt="Avatar" />
+            <PublishDate>
+              <span>
+                <DateAndDuration
+                  date={blogPost.date}
+                  readTime={blogPost.readTime}
+                />
+              </span>
+              <BlogLink paragraph passHref href="/">
+                <span style={{ display: 'block', margin: '5px 0 0 0' }}>
+                  Tim Ellenberger
+                </span>
+              </BlogLink>
+            </PublishDate>
+          </BlogMeta>
         </>
       )}
     </BannerContainer>
@@ -37,6 +47,18 @@ BlogArticleBanner.propTypes = {
     route: PropTypes.string.isRequired
   }).isRequired
 };
+
+const BlogMeta = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 1em 0;
+`;
+
+const AvatarImage = styled.img`
+  height: 55px;
+  border-radius: 50%;
+  margin-right: 10px;
+`;
 
 const BannerContainer = styled.div`
   position: relative;
@@ -57,22 +79,23 @@ const StyledBlogLink = styled(BlogLink)`
   text-decoration: none;
 `;
 
-const AvatarImage = styled.img`
-  width: 90px;
-  border-radius: 50%;
-  margin: 20px 0;
+const BlogLogo = styled.img`
+  height: 120px;
+  margin: 1.5em 0;
 `;
 
 const Title = styled.h1`
   transition: color 0.2s linear;
   font-weight: normal;
-  margin-bottom: 0;
+  margin: 0;
   text-align: center;
 `;
 
-const PublishDate = styled.h4`
+const PublishDate = styled.span`
   transition: color 0.2s linear;
   font-weight: normal;
-  margin-top: 3px;
-  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 `;

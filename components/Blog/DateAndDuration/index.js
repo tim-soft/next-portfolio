@@ -28,8 +28,7 @@ const DateAndDuration = ({ date, readTime }) => (
       day: 'numeric'
     })}
     <span>
-      {' '}
-      <DotSeparator>&#8226;</DotSeparator>{' '}
+      <DotSeparator>&#8226;</DotSeparator>
       <CoffeeTimeIndicator readTime={readTime} /> {readTime} mins
     </span>
   </>
@@ -45,10 +44,11 @@ export default DateAndDuration;
 const CoffeeIndicator = styled.span`
   > span {
     transition: color 0.2s linear;
-    font-size: 1.45em;
+    font-size: 1.2em;
   }
 `;
 
 const DotSeparator = styled.span`
-  font-size: 1.45em;
+  font-size: 1.2em;
+  margin: 0 3px 0 6px;
 `;
