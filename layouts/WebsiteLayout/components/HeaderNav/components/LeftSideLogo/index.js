@@ -108,7 +108,7 @@ const MainHeading = styled.h1`
   font-weight: inherit;
 `;
 
-const SubHeading = styled.h2`
+const SubHeading = styled.span`
   margin: 0;
   font-size: inherit;
   font-weight: inherit;
@@ -152,11 +152,12 @@ const LogoProfile = styled.div`
   flex-direction: column;
 `;
 
-const SubheadingContainer = styled.div`
+const SubheadingContainer = styled.h2`
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 16px;
+  font-weight: normal;
   margin: 0;
   padding: 2px 12px 0 12px;
   transition: color 0.2s linear;
