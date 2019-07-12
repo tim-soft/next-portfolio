@@ -1,15 +1,10 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { FaCoffee } from 'react-icons/fa';
 
 const CoffeeTimeIndicator = ({ readTime }) => {
   const numCoffees = Math.ceil(readTime / 5);
-  const Coffee = key => (
-    <CoffeeIndicator>
-      <span key={key} role="img" aria-label="coffee">
-        ☕
-      </span>
-    </CoffeeIndicator>
-  );
+  const Coffee = key => <CoffeeLogo key={key} />;
 
   const coffeeArr = [];
 
@@ -27,10 +22,11 @@ const DateAndDuration = ({ date, readTime }) => (
       month: 'short',
       day: 'numeric'
     })}
-    <span>
+    <CoffeeContainer>
       <DotSeparator>&#8226;</DotSeparator>
-      <CoffeeTimeIndicator readTime={readTime} /> {readTime} mins
-    </span>
+      <CoffeeTimeIndicator readTime={readTime} />
+      {readTime} mins
+    </CoffeeContainer>
   </>
 );
 
@@ -41,10 +37,16 @@ DateAndDuration.propTypes = {
 
 export default DateAndDuration;
 
-const CoffeeIndicator = styled.span`
-  > span {
-    transition: color 0.2s linear;
-    font-size: 1.2em;
+const CoffeeLogo = styled(FaCoffee)`
+  margin: 0 3px;
+  height: inherit;
+`;
+
+const CoffeeContainer = styled.span`
+  display: inline-flex;
+  align-items: center;
+  svg:last-of-type {
+    margin-right: 6px;
   }
 `;
 
