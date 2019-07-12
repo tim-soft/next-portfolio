@@ -2,6 +2,11 @@
   "version": 2,
   "routes": [
     {
+      "src": "/(.*)",
+      "status": 301,
+      "headers": { "Location": "https://timellenberger.com/$1" }
+    },
+    {
       "src": "^/service-worker.js$",
       "dest": "/_next/static/service-worker.js",
       "headers": {
