@@ -51,7 +51,8 @@ BlogArticleBanner.propTypes = {
 const BlogMeta = styled.div`
   display: flex;
   align-items: center;
-  margin: 1em 0;
+  margin-top: 0.5em;
+  margin-bottom: 2em;
 `;
 
 const AvatarImage = styled.img`
@@ -89,6 +90,10 @@ const Title = styled.h1`
   font-weight: normal;
   margin: 0;
   text-align: center;
+  font-size: 2.5em;
+  @media only screen and (max-width: 600px) {
+    font-size: 2.2em;
+  }
 `;
 
 const PublishDate = styled.span`
