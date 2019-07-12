@@ -34,7 +34,7 @@ class LeftSideLogo extends React.Component {
         onFocus={() => this.handleHover(true)}
       >
         <LogoProfile>
-          <Link prefetch href="/">
+          <Link prefetch passHref href="/">
             <Logo
               menuIsOpen={menuIsOpen}
               onClick={() => menuIsOpen && toggleMenu()}
@@ -173,6 +173,7 @@ const Logo = styled(StyledLogo)`
   padding: 0;
   z-index: 21;
   font-size: 2.2em;
+  text-decoration: none;
   ::before {
     top: 110%;
   }

@@ -35,31 +35,31 @@ const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
           }}
         >
           <NavMenuContainer>
-            <Link prefetch href="/">
+            <Link prefetch passHref href="/">
               <MobileStyledLink onClick={toggleMenu}>
                 <LinkHeading>Home</LinkHeading>
               </MobileStyledLink>
             </Link>
 
-            <Link prefetch href="/portfolio">
+            <Link prefetch passHref href="/portfolio">
               <MobileStyledLink onClick={toggleMenu}>
                 <LinkHeading>Portfolio</LinkHeading>
               </MobileStyledLink>
             </Link>
 
-            <Link prefetch href="/particles">
+            <Link prefetch passHref href="/particles">
               <MobileStyledLink onClick={toggleMenu}>
                 <LinkHeading>ParticlesGL</LinkHeading>
               </MobileStyledLink>
             </Link>
 
-            <Link prefetch href="/courses">
+            <Link prefetch passHref href="/courses">
               <MobileStyledLink onClick={toggleMenu}>
                 <LinkHeading>Courses</LinkHeading>
               </MobileStyledLink>
             </Link>
 
-            <Link prefetch href="/blog">
+            <Link prefetch passHref href="/blog">
               <MobileStyledLink onClick={toggleMenu}>
                 <LinkHeading>Blog</LinkHeading>
               </MobileStyledLink>
@@ -102,7 +102,7 @@ const ScrollbarContent = styled.div`
   }
 `;
 
-const LinkHeading = styled.h1`
+const LinkHeading = styled.span`
   margin: 0;
   font-size: inherit;
   font-weight: inherit;
@@ -135,11 +135,7 @@ const MenuContainer = animated(styled.div`
 const MobileStyledLink = styled(StyledLink)`
   margin: 20px 20px;
   padding: 15px 0;
-  h1 {
-    font-size: inherit;
-    font-weight: normal;
-    margin: 0;
-  }
+  text-decoration: none;
   color: ${({ theme }) => theme.headerNavMobileMenuFontColor};
 `;
 

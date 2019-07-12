@@ -11,7 +11,7 @@ import Link from 'next/link';
 const BlogLink = ({ prefetch, href, children, className, ...props }) => {
   if (href.charAt(0) === '/')
     return (
-      <Link href={href} prefetch={prefetch}>
+      <Link href={href} passHref prefetch={prefetch}>
         <StyledLink className={className} {...props}>
           {children}
         </StyledLink>

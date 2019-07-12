@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { Transition, animated } from 'react-spring';
 import { FiChevronDown } from 'react-icons/fi';
 import Scrollbar from 'components/Scrollbar';
-import StyledLink from '../../StyledLink';
 
 class MenuItem extends React.Component {
   static propTypes = {
@@ -106,7 +105,7 @@ class MenuItem extends React.Component {
           ref={this.menuOverlay}
           showUnderline={children === null}
         >
-          <Link prefetch href={link}>
+          <Link prefetch passHref href={link}>
             <LinkHeading isHovering={isHovering}>
               {text} {children && <FiChevronDown />}
             </LinkHeading>
@@ -144,20 +143,46 @@ class MenuItem extends React.Component {
 
 export default MenuItem;
 
-const MenuLink = styled(StyledLink)`
+const MenuLink = styled.span`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: auto;
-  padding: auto;
+  padding: 15px 0;
   z-index: ${({ isHovering }) => (isHovering ? 12 : 10)};
   color: ${({ theme, isHovering }) =>
     isHovering ? theme.headerNavHoverFontColor : theme.headerNavFontColor};
-  > h1 {
+  > a {
     z-index: ${({ isHovering }) => (isHovering ? 12 : 10)};
   }
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+  white-space: nowrap;
+  font-size: 2em;
+  transition: color 0.2s linear;
+  :hover {
+    cursor: pointer;
+    color: ${({ theme }) => theme.headerNavHoverFontColor};
+  }
   ::before {
+    content: '';
     display: ${({ showUnderline }) => (showUnderline ? 'block' : 'none')};
+    position: absolute;
+    top: 105%;
+    height: 3px;
+    width: 100%;
+    background-color: ${({ theme }) => theme.headerNavTextUnderlineColor};
+    transform-origin: center top;
+    transform: scale(0, 1);
+    transition: color 0.1s, transform 0.2s ease-out;
+  }
+  :active::before {
+    background-color: ${({ theme }) => theme.headerNavHoverFontColor};
+  }
+  :focus::before,
+  :hover::before {
+    transform-origin: center top;
+    transform: scale(1, 1);
   }
 `;
 
@@ -170,12 +195,14 @@ const MenuItemRelativeContainer = styled.div`
   align-items: center;
 `;
 
-const LinkHeading = styled.h1`
+const LinkHeading = styled.a`
   margin: 0 15px;
   font-size: inherit;
   font-weight: inherit;
   display: flex;
   align-items: center;
+  color: inherit;
+  text-decoration: inherit;
   svg {
     font-size: 22px;
     margin-left: 7px;
