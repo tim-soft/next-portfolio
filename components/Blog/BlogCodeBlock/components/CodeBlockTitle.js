@@ -40,7 +40,7 @@ const CodeBlockTitle = ({ title, path, language }) => (
     {title && <CodeTitleContainer center>{title}</CodeTitleContainer>}
     {path && (
       <CodeTitleContainer>
-        <h2>
+        <span>
           {path
             // remove leading/trailing slashes
             .replace(/^[/]*(.*?)[/]*$/g, '$1')
@@ -52,7 +52,7 @@ const CodeBlockTitle = ({ title, path, language }) => (
                 {token === '/' ? <RightTriangleIcon size="0.60em" /> : token}
               </span>
             ))}
-        </h2>
+        </span>
         <LanguageLogo language={language} />
       </CodeTitleContainer>
     )}
