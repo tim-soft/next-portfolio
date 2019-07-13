@@ -41,17 +41,14 @@ const CoffeeLogo = styled(FaCoffee)`
 `;
 
 const CoffeeContainer = styled.span`
-  display: inline-flex;
-  align-items: flex-end;
-  svg {
-    margin-bottom: 1px;
-  }
+  display: flex;
+  align-items: center;
   svg:last-of-type {
     margin-right: 6px;
   }
 `;
 
 const DotSeparator = styled.span`
-  font-size: 1.2em;
-  margin: 0 3px 0 6px;
+  font-weight: bold;
+  margin: 0 3px 2px 6px;
 `;

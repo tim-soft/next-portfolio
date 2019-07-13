@@ -26,7 +26,7 @@ const BlogArticleBanner = ({ router }) => {
                 readTime={blogPost.readTime}
               />
               <BlogLink paragraph href="/">
-                <span style={{ display: 'block', margin: '5px 0 0 0' }}>
+                <span style={{ display: 'block', margin: '3px 0 0 0' }}>
                   Tim Ellenberger
                 </span>
               </BlogLink>
