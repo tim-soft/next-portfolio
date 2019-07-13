@@ -538,8 +538,8 @@ import bestContrast from 'get-best-contrast-color';
 import getContrastRatio from 'get-contrast-ratio';
 
 /**
- * Picks a random top-rated color palette from https://www.colourlovers.com/
- * to generate a page theme.
+ * Picks a random top-rated color palette from
+ * https://www.colourlovers.com/ to generate a page theme.
  *
  * https://github.com/Jam3/nice-color-palettes
  */
@@ -552,11 +552,12 @@ const generateColorPalette = () => {
   let fontColor;
   let highlightFontColor;
 
-  // Returns true if background-font contrast is above CONTRAST_THRESHOLD
-  // otherwise false
+  // Returns true if background-font contrast is above
+  // CONTRAST_THRESHOLD, otherwise false
   const goodBackgroundContrast = () => {
     if (
-      getContrastRatio(backgroundColor, fontColor) >= CONTRAST_THRESHOLD &&
+      getContrastRatio(backgroundColor, fontColor) >=
+        CONTRAST_THRESHOLD &&
       getContrastRatio(backgroundColor, highlightFontColor) >=
         CONTRAST_THRESHOLD
     )

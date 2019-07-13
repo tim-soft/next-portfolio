@@ -75,13 +75,7 @@ const theme = {
       }
     },
     {
-      types: ['constant'],
-      style: {
-        color: 'rgb(100, 102, 149)'
-      }
-    },
-    {
-      types: ['attr-name', 'attr-value', 'variable', 'script'],
+      types: ['constant', 'attr-name', 'attr-value', 'variable', 'script'],
       style: {
         color: 'rgb(156, 220, 254)'
       }
