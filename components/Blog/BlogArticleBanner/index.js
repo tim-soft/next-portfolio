@@ -76,6 +76,7 @@ const StyledBlogLink = styled(BlogLink)`
   right: 0;
   top: 15px;
   text-decoration: none;
+  font-weight: normal;
 `;
 
 const BlogLogo = styled.img`
