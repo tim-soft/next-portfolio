@@ -50,7 +50,7 @@ const BlogMeta = styled.div`
   display: flex;
   align-items: center;
   margin-top: 0.5em;
-  margin-bottom: 2em;
+  margin-bottom: 1.5em;
 `;
 
 const AvatarImage = styled.img`
