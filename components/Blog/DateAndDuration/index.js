@@ -17,11 +17,13 @@ const CoffeeTimeIndicator = ({ readTime }) => {
 
 const DateAndDuration = ({ date, readTime }) => (
   <CoffeeContainer>
-    {new Date(date).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric'
-    })}
+    <time pubdate={date}>
+      {new Date(date).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      })}
+    </time>
     <DotSeparator>&#8226;</DotSeparator>
     <CoffeeTimeIndicator readTime={readTime} />
     {readTime} mins
