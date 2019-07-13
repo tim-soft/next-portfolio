@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
+import { TiArrowBackOutline } from 'react-icons/ti';
 import BlogData from 'data/BlogPosts';
 import BlogLink from '../BlogLink';
 import DateAndDuration from '../DateAndDuration';
@@ -16,7 +17,9 @@ const BlogArticleBanner = ({ router }) => {
       {blogPost && (
         <>
           <BlogLogo src={blogPost.logo} alt="Article Logo" />
-          <StyledBlogLink href="/blog">&#10226; Go Back</StyledBlogLink>
+          <StyledBlogLink href="/blog">
+            <TiArrowBackOutline /> Go Back
+          </StyledBlogLink>
           <Title>{blogPost.title}</Title>
           <BlogMeta>
             <AvatarImage src="/static/avatar.png" alt="Avatar" />
@@ -77,6 +80,11 @@ const StyledBlogLink = styled(BlogLink)`
   top: 15px;
   text-decoration: none;
   font-weight: normal;
+  display: flex;
+  align-items: center;
+  svg {
+    margin-right: 3px;
+  }
 `;
 
 const BlogLogo = styled.img`
