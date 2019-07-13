@@ -59,7 +59,7 @@ const LogoContainer = styled.div`
 
 const PostTitle = styled.h2`
   font-weight: normal;
-  margin: 0;
+  margin: 0 0 2px 0;
 `;
 
 const PostContent = styled.div`
