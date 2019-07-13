@@ -24,14 +24,8 @@ const BlogSEO = ({ router }) => {
             description: blogPost.description,
             images: [
               {
-                url: `https://timellenberger.com/static/avatar.png`,
-                alt: 'Blog Post Logo'
-              },
-              {
                 url: `https://timellenberger.com${blogPost.logo}`,
-                width: 140,
-                height: 140,
-                alt: 'Tim Ellenberger (Avatar)'
+                alt: 'Blog Post Logo'
               }
             ],
             type: 'article',
