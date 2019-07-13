@@ -21,12 +21,10 @@ const BlogArticleBanner = ({ router }) => {
           <BlogMeta>
             <AvatarImage src="/static/avatar.png" alt="Avatar" />
             <PublishDate>
-              <span>
-                <DateAndDuration
-                  date={blogPost.date}
-                  readTime={blogPost.readTime}
-                />
-              </span>
+              <DateAndDuration
+                date={blogPost.date}
+                readTime={blogPost.readTime}
+              />
               <BlogLink paragraph href="/">
                 <span style={{ display: 'block', margin: '5px 0 0 0' }}>
                   Tim Ellenberger

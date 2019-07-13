@@ -16,18 +16,16 @@ const CoffeeTimeIndicator = ({ readTime }) => {
 };
 
 const DateAndDuration = ({ date, readTime }) => (
-  <>
+  <CoffeeContainer>
     {new Date(date).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short',
       day: 'numeric'
     })}
-    <CoffeeContainer>
-      <DotSeparator>&#8226;</DotSeparator>
-      <CoffeeTimeIndicator readTime={readTime} />
-      {readTime} mins
-    </CoffeeContainer>
-  </>
+    <DotSeparator>&#8226;</DotSeparator>
+    <CoffeeTimeIndicator readTime={readTime} />
+    {readTime} mins
+  </CoffeeContainer>
 );
 
 DateAndDuration.propTypes = {
@@ -44,7 +42,10 @@ const CoffeeLogo = styled(FaCoffee)`
 
 const CoffeeContainer = styled.span`
   display: inline-flex;
-  align-items: center;
+  align-items: flex-end;
+  svg {
+    margin-bottom: 1px;
+  }
   svg:last-of-type {
     margin-right: 6px;
   }
