@@ -127,6 +127,12 @@ const Token = styled.span`
 const BlockLine = styled.div`
   line-height: 1.3em;
   transition: padding 100ms ease-in-out;
+  * ::selection {
+    background: rgb(86, 156, 214) !important;
+  }
+  * ::-moz-selection {
+    background: #0f508a !important;
+  }
   :hover {
     padding: 4px 0;
     border-top: 1px ${({ theme }) => theme.pageContentLinkHoverColor} dotted;
@@ -141,9 +147,7 @@ const BlockLine = styled.div`
       }
     }
   }
-  * ::selection {
-    background: rgb(86, 156, 214) !important;
-  }
+
   /* Update punctuation colors not accessible through prism theme */
   span.token.tag.spread.punctuation,
   span.token.tag.script.punctuation,

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Color from 'color';
 import HeaderNav from './components/HeaderNav';
 
 // eslint-disable-next-line react/prefer-stateless-function
@@ -30,5 +31,9 @@ const StyledContainer = styled.div`
   overflow: hidden;
   * ::selection {
     background: ${({ theme }) => theme.pageContentSelectionColor};
+  }
+  * ::-moz-selection {
+    background: ${({ theme }) =>
+      new Color(theme.pageContentSelectionColor).darken(0.57).hex()};
   }
 `;
