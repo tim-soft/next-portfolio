@@ -52,8 +52,7 @@ BlogArticleBanner.propTypes = {
 const BlogMeta = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 0.5em;
-  margin-bottom: 1.5em;
+  margin: 1.5em 0;
 `;
 
 const AvatarImage = styled.img`
