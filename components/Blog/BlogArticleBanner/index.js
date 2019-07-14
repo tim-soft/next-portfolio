@@ -1,16 +1,13 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { withRouter } from 'next/router';
 import { TiArrowBackOutline } from 'react-icons/ti';
 import BlogData from 'data/BlogPosts';
 import BlogLink from '../BlogLink';
 import DateAndDuration from '../DateAndDuration';
 
-const BlogArticleBanner = ({ router }) => {
-  const currHref = router.route;
-
+const BlogArticleBanner = ({ route }) => {
   // Get index of current blog post
-  const blogPost = BlogData.find(post => post.href === currHref);
+  const blogPost = BlogData.find(post => post.href === route);
 
   return (
     <BannerContainer>
@@ -41,12 +38,10 @@ const BlogArticleBanner = ({ router }) => {
   );
 };
 
-export default withRouter(BlogArticleBanner);
+export default BlogArticleBanner;
 
 BlogArticleBanner.propTypes = {
-  router: PropTypes.shape({
-    route: PropTypes.string.isRequired
-  }).isRequired
+  route: PropTypes.string.isRequired
 };
 
 const BlogMeta = styled.div`

@@ -15,7 +15,7 @@ import DarkModeReporter from 'components/ArticleComponents/DarkModeReporter';
 import ToggleSwitch from 'components/ToggleSwitch';
 import Color from 'color';
 
-const BlogPage = ({ theme, updateTheme }) => {
+const BlogPage = ({ route, theme, updateTheme }) => {
   // Is the page in dark mode?
   const isDarkMode = () => new Color(theme.pageBackgroundColor).isDark();
 
@@ -23,7 +23,7 @@ const BlogPage = ({ theme, updateTheme }) => {
     <>
       <BlogSEO />
       <ThemeProvider theme={theme}>
-        <BlogArticleContainer>
+        <BlogArticleContainer route={route}>
           <BlogDemoContainer
             heading="Demo First"
             subheading="Default light/dark mode mirrors your operating system"
@@ -190,6 +190,7 @@ export default DarkModeReporter;
 
 BlogPage.propTypes = {
   updateTheme: PropTypes.func.isRequired,
+  route: PropTypes.string.isRequired,
   theme: PropTypes.object
 };
 

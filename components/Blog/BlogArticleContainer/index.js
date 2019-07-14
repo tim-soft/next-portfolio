@@ -5,18 +5,18 @@ import HiringCallout from 'components/HiringCallout';
 import BlogArticleBanner from '../BlogArticleBanner';
 import BlogNavigation from '../BlogNavigation';
 
-const BlogArticleContainer = ({ children, width }) => (
+const BlogArticleContainer = ({ route, children, width }) => (
   <PageScrollWrapper>
     <Container width={width}>
       <article>
         <header>
-          <BlogArticleBanner />
-          <BlogNavigation />
+          <BlogArticleBanner route={route} />
+          <BlogNavigation route={route} />
         </header>
         <HorizontalRule />
         {children}
         <HorizontalRule />
-        <BlogNavigation />
+        <BlogNavigation route={route} />
         <HiringCallout />
       </article>
     </Container>
@@ -28,6 +28,7 @@ BlogArticleContainer.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]).isRequired,
+  route: PropTypes.string.isRequired,
   width: PropTypes.number
 };
 

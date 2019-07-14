@@ -10,11 +10,11 @@ import {
 } from 'components/Blog';
 import { blueTheme } from 'components/AppTheme';
 
-const BlogPage = ({ theme }) => (
+const BlogPage = ({ route, theme }) => (
   <>
     <BlogSEO />
     <ThemeProvider theme={theme}>
-      <BlogArticleContainer>
+      <BlogArticleContainer route={route}>
         <BlogParagraph>
           Code snippets without syntax highlighting are unsightly. No one wants
           to view these code snippets. They are extremely hard to read and
@@ -189,6 +189,7 @@ export default BlogCodeBlock;
 );
 
 BlogPage.propTypes = {
+  route: PropTypes.string.isRequired,
   theme: PropTypes.object
 };
 

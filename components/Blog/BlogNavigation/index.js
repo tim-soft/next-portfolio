@@ -1,17 +1,14 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { withRouter } from 'next/router';
 import { getSortedPosts } from 'data/BlogPosts';
 import BlogLink from '../BlogLink';
 
-const BlogNavigation = ({ router }) => {
-  const currHref = router.route;
-
+const BlogNavigation = ({ route }) => {
   // Get blog posts, sorted oldest to newest
   const sortedPosts = getSortedPosts({ order: 'asc' });
 
   // Get index of current blog post
-  const currPostIndex = sortedPosts.findIndex(post => post.href === currHref);
+  const currPostIndex = sortedPosts.findIndex(post => post.href === route);
 
   // Get prev post
   const PrevPost = () => {
@@ -50,12 +47,10 @@ const BlogNavigation = ({ router }) => {
 };
 
 BlogNavigation.propTypes = {
-  router: PropTypes.shape({
-    route: PropTypes.string.isRequired
-  }).isRequired
+  route: PropTypes.string.isRequired
 };
 
-export default withRouter(BlogNavigation);
+export default BlogNavigation;
 
 const NavContainer = styled.nav`
   transition: unset;

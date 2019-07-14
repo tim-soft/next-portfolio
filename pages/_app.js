@@ -76,7 +76,7 @@ class WebApp extends App {
 
     const pages = [
       {
-        id: router.route,
+        route: router.route,
         Component,
         pageProps
       }
@@ -102,16 +102,17 @@ class WebApp extends App {
               native
               unique
               items={pages}
-              keys={page => page.id}
+              keys={page => page.route}
               initial={{ opacity: 1, transform: 'scale(1) translateY(0px)' }}
               from={{ opacity: 0, transform: 'scale(0.9) translateY(-200px)' }}
               enter={{ opacity: 1, transform: 'scale(1) translateY(0px)' }}
               leave={{ opacity: 0, transform: 'scale(0.9) translateY(-200px)' }}
             >
               {page => animStyles => (
-                <AnimatedContainer key={page.id} style={animStyles}>
+                <AnimatedContainer key={page.route} style={animStyles}>
                   <page.Component
                     {...page.pageProps}
+                    route={page.route}
                     theme={{ ...page.pageTheme, ...dynamicTheme }}
                     updateTheme={this.updateTheme}
                   />

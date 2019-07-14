@@ -14,11 +14,11 @@ import { darkTheme } from 'components/AppTheme';
 
 import WindowSizeReporter from 'components/ArticleComponents/WindowSizeReporter';
 
-const BlogPage = ({ theme }) => (
+const BlogPage = ({ route, theme }) => (
   <>
     <BlogSEO />
     <ThemeProvider theme={theme}>
-      <BlogArticleContainer>
+      <BlogArticleContainer route={route}>
         <BlogParagraph>
           Unlike your React components, the event listeners they&apos;ve created
           don&apos;t magically disappear after their UI unmounts from the DOM.
@@ -158,6 +158,7 @@ export default WindowSizeReporter;
 );
 
 BlogPage.propTypes = {
+  route: PropTypes.string.isRequired,
   theme: PropTypes.object
 };
 

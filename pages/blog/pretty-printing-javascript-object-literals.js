@@ -12,11 +12,11 @@ import {
 } from 'components/Blog';
 import { blueTheme } from 'components/AppTheme';
 
-const BlogPage = ({ theme }) => (
+const BlogPage = ({ route, theme }) => (
   <>
     <BlogSEO />
     <ThemeProvider theme={theme}>
-      <BlogArticleContainer>
+      <BlogArticleContainer route={route}>
         <BlogQuote>
           Sometimes you just need to show your JavaScript object in the browser
           and JSON.stringify() isn&apos;t going to cut it!
@@ -126,6 +126,7 @@ const configString = stringifyObject(config, {
 );
 
 BlogPage.propTypes = {
+  route: PropTypes.string.isRequired,
   theme: PropTypes.object
 };
 

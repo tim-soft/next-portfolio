@@ -100,11 +100,11 @@ const handleThemeChange = callback => {
   }
 };
 
-const BlogPage = ({ theme, updateTheme }) => (
+const BlogPage = ({ route, theme, updateTheme }) => (
   <>
     <BlogSEO />
     <ThemeProvider theme={theme}>
-      <BlogArticleContainer>
+      <BlogArticleContainer route={route}>
         <BlogDemoContainer
           heading="Demo First"
           subheading="Choose a new page theme"
@@ -668,7 +668,8 @@ BlogPage.theme = {
 
 BlogPage.propTypes = {
   theme: PropTypes.object,
-  updateTheme: PropTypes.func.isRequired
+  updateTheme: PropTypes.func.isRequired,
+  route: PropTypes.string.isRequired
 };
 
 BlogPage.defaultProps = {
