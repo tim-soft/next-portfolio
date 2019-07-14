@@ -68,7 +68,7 @@ export default class StyledDocument extends Document {
           />
           <meta name="theme-color" content="#1d1e1f" />
           <link
-            href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
+            href="https://fonts.googleapis.com/css?family=Montserrat"
             rel="stylesheet"
           />
 
