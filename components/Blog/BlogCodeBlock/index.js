@@ -124,7 +124,8 @@ const Token = styled.span`
   transition: unset;
 `;
 
-const BlockLine = styled.div`
+const BlockLine = styled.span`
+  display: block;
   line-height: 1.3em;
   transition: padding 100ms ease-in-out;
   * ::selection {
