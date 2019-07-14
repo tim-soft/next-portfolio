@@ -69,7 +69,11 @@ class LeftSideLogo extends React.Component {
             (({ opacity, height }) => (
               <AnimatedContainer style={{ opacity, height }}>
                 <AvatarImage src="/static/avatar.png" alt="avatar" />
-                <StyledLink href="https://github.com/tim-soft" target="_blank">
+                <StyledLink
+                  href="https://github.com/tim-soft"
+                  target="_blank"
+                  rel="noopener"
+                >
                   <GoMarkGithub size="2.5em" />
                   <GitHubUsername>GitHub@tim-soft</GitHubUsername>
                 </StyledLink>

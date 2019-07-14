@@ -8,6 +8,7 @@ export default () => (
     <StyledLink
       href="https://github.com/tim-soft/react-particles-webgl#readme"
       target="_blank"
+      rel="noopener"
     >
       <RepoTitleContainer>
         <Text>react-particles-webgl</Text>
