@@ -7,7 +7,7 @@ export default () => (
   <Container>
     <StyledLink
       href="https://github.com/tim-soft/react-particles-webgl#readme"
-      target="__blank"
+      target="_blank"
     >
       <RepoTitleContainer>
         <Text>react-particles-webgl</Text>

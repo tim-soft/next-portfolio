@@ -69,7 +69,7 @@ const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
             <MenuFooter>
               <MenuFooterLink
                 href="https://github.com/tim-soft"
-                target="__blank"
+                target="_blank"
               >
                 <GoMarkGithub size="1.1em" />
                 <FooterLinkText>@tim-soft</FooterLinkText>

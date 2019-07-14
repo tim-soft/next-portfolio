@@ -19,7 +19,7 @@ const ConfigViewer = ({ datConfig }) => (
  * `}
         <StyledCommentLink
           href="https://github.com/tim-soft/react-particles-webgl#usage"
-          target="__blank"
+          target="_blank"
         >
           docs@tim-soft/react-particles-webgl
         </StyledCommentLink>
