@@ -87,8 +87,7 @@ class WebApp extends App {
       {
         route: router.route,
         Component,
-        pageProps,
-        theme
+        pageProps
       }
     ];
 
@@ -113,8 +112,10 @@ class WebApp extends App {
                 <AnimatedContainer key={page.route} style={animStyles}>
                   <page.Component
                     {...page.pageProps}
+                    // Pass route from transition data
                     route={page.route}
-                    theme={page.theme}
+                    // Combine page theme from transition with current dynamic page theme
+                    theme={{ ...page.pageTheme, ...dynamicTheme }}
                     updateTheme={this.updateTheme}
                   />
                 </AnimatedContainer>
