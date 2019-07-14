@@ -2,26 +2,36 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import PageScrollWrapper from 'components/PageScrollWrapper';
 import HiringCallout from 'components/HiringCallout';
+import BlogData from 'data/BlogPosts';
 import BlogArticleBanner from '../BlogArticleBanner';
 import BlogNavigation from '../BlogNavigation';
+import BlogSEO from '../BlogSEO';
 
-const BlogArticleContainer = ({ route, children, width }) => (
-  <PageScrollWrapper>
-    <Container width={width}>
-      <article>
-        <header>
-          <BlogArticleBanner route={route} />
-          <BlogNavigation route={route} />
-        </header>
-        <HorizontalRule />
-        {children}
-        <HorizontalRule />
-        <BlogNavigation route={route} />
-        <HiringCallout />
-      </article>
-    </Container>
-  </PageScrollWrapper>
-);
+const BlogArticleContainer = ({ route, children, width }) => {
+  // Get the current blog post from data
+  const blogPost = BlogData.find(post => post.href === route);
+
+  return (
+    <>
+      <BlogSEO route={route} blogPost={blogPost} />
+      <PageScrollWrapper>
+        <Container width={width}>
+          <article>
+            <header>
+              <BlogArticleBanner blogPost={blogPost} />
+              <BlogNavigation route={route} />
+            </header>
+            <HorizontalRule />
+            {children}
+            <HorizontalRule />
+            <BlogNavigation route={route} />
+            <HiringCallout />
+          </article>
+        </Container>
+      </PageScrollWrapper>
+    </>
+  );
+};
 
 BlogArticleContainer.propTypes = {
   children: PropTypes.oneOfType([

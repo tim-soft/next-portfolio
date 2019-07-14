@@ -1,47 +1,41 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { TiArrowBackOutline } from 'react-icons/ti';
-import BlogData from 'data/BlogPosts';
 import BlogLink from '../BlogLink';
 import DateAndDuration from '../DateAndDuration';
 
-const BlogArticleBanner = ({ route }) => {
-  // Get index of current blog post
-  const blogPost = BlogData.find(post => post.href === route);
-
-  return (
-    <BannerContainer>
-      {blogPost && (
-        <>
-          <BlogLogo src={blogPost.logo} alt="Article Logo" />
-          <StyledBlogLink href="/blog">
-            <TiArrowBackOutline /> Go Back
-          </StyledBlogLink>
-          <Title>{blogPost.title}</Title>
-          <BlogMeta>
-            <AvatarImage src="/static/avatar.png" alt="Avatar" />
-            <PublishDate>
-              <DateAndDuration
-                date={blogPost.date}
-                readTime={blogPost.readTime}
-              />
-              <BlogLink paragraph href="/">
-                <span style={{ display: 'block', margin: '3px 0 0 0' }}>
-                  Tim Ellenberger
-                </span>
-              </BlogLink>
-            </PublishDate>
-          </BlogMeta>
-        </>
-      )}
-    </BannerContainer>
-  );
-};
+const BlogArticleBanner = ({ blogPost }) => (
+  <BannerContainer>
+    <BlogLogo src={blogPost.logo} alt="Article Logo" />
+    <StyledBlogLink href="/blog">
+      <TiArrowBackOutline /> Go Back
+    </StyledBlogLink>
+    <Title>{blogPost.title}</Title>
+    <BlogMeta>
+      <AvatarImage src="/static/avatar.png" alt="Avatar" />
+      <PublishDate>
+        <DateAndDuration date={blogPost.date} readTime={blogPost.readTime} />
+        <BlogLink paragraph href="/">
+          <span style={{ display: 'block', margin: '3px 0 0 0' }}>
+            Tim Ellenberger
+          </span>
+        </BlogLink>
+      </PublishDate>
+    </BlogMeta>
+  </BannerContainer>
+);
 
 export default BlogArticleBanner;
 
 BlogArticleBanner.propTypes = {
-  route: PropTypes.string.isRequired
+  blogPost: PropTypes.shape({
+    href: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    logo: PropTypes.string.isRequired,
+    readTime: PropTypes.number.isRequired,
+    date: PropTypes.string.isRequired
+  }).isRequired
 };
 
 const BlogMeta = styled.div`

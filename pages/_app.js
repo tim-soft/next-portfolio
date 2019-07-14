@@ -74,14 +74,6 @@ class WebApp extends App {
     const { pageTheme } = Component;
     const dynamicTheme = this.getDynamicPageTheme();
 
-    const pages = [
-      {
-        route: router.route,
-        Component,
-        pageProps
-      }
-    ];
-
     // _app level theme variables, wrapping the entire layout
     const theme = {
       // Theme variables defined in /src/components
@@ -90,6 +82,15 @@ class WebApp extends App {
       ...pageTheme,
       ...dynamicTheme
     };
+
+    const pages = [
+      {
+        route: router.route,
+        Component,
+        pageProps,
+        theme
+      }
+    ];
 
     return (
       <Container>
@@ -113,7 +114,7 @@ class WebApp extends App {
                   <page.Component
                     {...page.pageProps}
                     route={page.route}
-                    theme={{ ...page.pageTheme, ...dynamicTheme }}
+                    theme={page.theme}
                     updateTheme={this.updateTheme}
                   />
                 </AnimatedContainer>

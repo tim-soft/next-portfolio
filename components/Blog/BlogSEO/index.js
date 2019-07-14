@@ -1,14 +1,7 @@
 import PropTypes from 'prop-types';
 import NextSEO, { BlogJsonLd } from 'next-seo';
-import { withRouter } from 'next/router';
-import BlogData from 'data/BlogPosts';
 
-const BlogSEO = ({ router }) => {
-  const { route } = router;
-
-  // Get index of current blog post
-  const blogPost = BlogData.find(post => post.href === route);
-
+const BlogSEO = ({ blogPost, route }) => {
   if (!blogPost) return null;
 
   return (
@@ -58,9 +51,15 @@ const BlogSEO = ({ router }) => {
 };
 
 BlogSEO.propTypes = {
-  router: PropTypes.shape({
-    route: PropTypes.string.isRequired
-  }).isRequired
+  blogPost: PropTypes.shape({
+    href: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    logo: PropTypes.string.isRequired,
+    readTime: PropTypes.number.isRequired,
+    date: PropTypes.string.isRequired
+  }).isRequired,
+  route: PropTypes.string.isRequired
 };
 
-export default withRouter(BlogSEO);
+export default BlogSEO;
