@@ -12,7 +12,7 @@ BlogQuote.propTypes = {
 
 export default BlogQuote;
 
-const StyledQuote = styled.q`
+const StyledQuote = styled.aside`
   transition: all 0.2s linear;
   transition-property: background-color, border-left-color, color;
   background-color: ${({ theme }) => theme.accentColor};
@@ -25,12 +25,6 @@ const StyledQuote = styled.q`
   font-size: 1.2em;
   line-height: 1.5em;
   margin: 2em 0;
-  :before {
-    content: no-open-quote;
-  }
-  :after {
-    content: no-close-quote;
-  }
   > :not(:last-child) {
     margin-bottom: 1.2em;
   }
