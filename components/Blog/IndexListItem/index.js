@@ -6,9 +6,11 @@ import StyledLink from '../BlogLink';
 const IndexListItem = ({ title, description, href, date, readTime }) => (
   <BlogItem>
     <header>
-      <StyledLink prefetch href={href} paragraph>
-        <BlogTitle>{title}</BlogTitle>
-      </StyledLink>
+      <BlogTitle>
+        <StyledLink prefetch href={href} paragraph>
+          {title}
+        </StyledLink>
+      </BlogTitle>
       <small>
         <DateAndDuration date={date} readTime={readTime} />
       </small>
@@ -45,7 +47,9 @@ const BlogTitle = styled.h2`
   font-size: 1.7em;
   margin: 13px 0 7px 0;
   font-weight: normal;
-  text-decoration: underline;
+  a {
+    text-decoration: none;
+  }
 `;
 
 const BlogDescription = styled.p`
