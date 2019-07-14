@@ -12,7 +12,7 @@ export default ({ ...props }) => (
     trackXProps={{
       // eslint-disable-next-line react/prop-types
       renderer: ({ elementRef, style, ...restProps }) => (
-        <span
+        <div
           {...restProps}
           ref={elementRef}
           style={{
@@ -28,7 +28,7 @@ export default ({ ...props }) => (
     trackYProps={{
       // eslint-disable-next-line react/prop-types
       renderer: ({ elementRef, style, ...restProps }) => (
-        <span
+        <div
           {...restProps}
           ref={elementRef}
           style={{
