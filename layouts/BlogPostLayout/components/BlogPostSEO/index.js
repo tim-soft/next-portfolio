@@ -1,54 +1,77 @@
 import PropTypes from 'prop-types';
-import NextSEO, { BlogJsonLd } from 'next-seo';
+import NextSEO, { BlogJsonLd, BreadcrumbJsonLd } from 'next-seo';
 
-const BlogPostSEO = ({ blogPost, route }) => {
-  if (!blogPost) return null;
+const BASE_URL = 'https://timellenberger.com';
 
-  return (
-    <>
-      <NextSEO
-        config={{
+/**
+ * Inserts blog-post optimized structured data into the page
+ *
+ * https://developers.google.com/search/docs/guides/intro-structured-data
+ * https://search.google.com/structured-data/testing-tool
+ */
+const BlogPostSEO = ({ blogPost, route }) => (
+  <>
+    <NextSEO
+      config={{
+        title: blogPost.title,
+        description: blogPost.description,
+        canonical: `${BASE_URL}${route}`,
+        openGraph: {
+          url: `${BASE_URL}${route}`,
           title: blogPost.title,
           description: blogPost.description,
-          canonical: `${route}`,
-          openGraph: {
-            url: `https://timellenberger.com${route}`,
-            title: blogPost.title,
-            description: blogPost.description,
-            images: [
-              {
-                url: `https://timellenberger.com${blogPost.logo}`,
-                alt: 'Blog Post Logo'
-              }
-            ],
-            type: 'article',
-            article: {
-              publishedTime: blogPost.date,
-              section: 'Technology',
-              authors: ['https://timellenberger.com']
-            },
-            site_name: 'Coding, Musings and Adventures of Tim Ellenberger',
-            locale: 'en_US',
-            profile: {
-              firstName: 'Tim',
-              lastName: 'Ellenberger',
-              username: 'tim-soft',
-              gender: 'male'
+          images: [
+            {
+              url: `${BASE_URL}${blogPost.logo}`,
+              alt: 'Blog Post Logo'
             }
+          ],
+          type: 'article',
+          article: {
+            publishedTime: blogPost.date,
+            section: 'Technology',
+            authors: [BASE_URL]
+          },
+          site_name: 'Coding, Musings and Adventures of Tim Ellenberger',
+          locale: 'en_US',
+          profile: {
+            firstName: 'Tim',
+            lastName: 'Ellenberger',
+            username: 'tim-soft',
+            gender: 'male'
           }
-        }}
-      />
-      <BlogJsonLd
-        url={`${route}`}
-        title={blogPost.title}
-        images={[`${blogPost.logo}`, `/static/avatar.png`]}
-        datePublished={blogPost.date}
-        authorName="Tim Ellenberger"
-        description={blogPost.description}
-      />
-    </>
-  );
-};
+        }
+      }}
+    />
+    <BlogJsonLd
+      url={`${BASE_URL}${route}`}
+      title={blogPost.title}
+      images={[`${BASE_URL}${blogPost.logo}`, `${BASE_URL}/static/avatar.png`]}
+      datePublished={blogPost.date}
+      authorName="Tim Ellenberger"
+      description={blogPost.description}
+    />
+    <BreadcrumbJsonLd
+      itemListElements={[
+        {
+          position: 1,
+          name: BASE_URL,
+          item: BASE_URL
+        },
+        {
+          position: 2,
+          name: 'Blog',
+          item: `${BASE_URL}/blog`
+        },
+        {
+          position: 3,
+          name: blogPost.title,
+          item: `${BASE_URL}${route}`
+        }
+      ]}
+    />
+  </>
+);
 
 BlogPostSEO.propTypes = {
   blogPost: PropTypes.shape({
