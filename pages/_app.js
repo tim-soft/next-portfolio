@@ -59,8 +59,7 @@ class WebApp extends App {
     this.setState({ dynamicPageThemes });
   };
 
-  getDynamicPageTheme = () => {
-    const { route } = this.props.router;
+  getDynamicPageTheme = route => {
     const { dynamicPageThemes } = this.state;
     const dynamicPageTheme = dynamicPageThemes.find(
       pageTheme => pageTheme.route === route
@@ -72,7 +71,7 @@ class WebApp extends App {
   render() {
     const { Component, pageProps, router } = this.props;
     const { pageTheme } = Component;
-    const dynamicTheme = this.getDynamicPageTheme();
+    const dynamicTheme = this.getDynamicPageTheme(router.route);
 
     // _app level theme variables, wrapping the entire layout
     const theme = {
@@ -115,7 +114,11 @@ class WebApp extends App {
                     // Pass route from transition data
                     route={page.route}
                     // Combine page theme from transition with current dynamic page theme
-                    theme={{ ...page.pageTheme, ...dynamicTheme }}
+                    // for this route
+                    theme={{
+                      ...page.pageTheme,
+                      ...this.getDynamicPageTheme(page.route)
+                    }}
                     updateTheme={this.updateTheme}
                   />
                 </AnimatedContainer>
