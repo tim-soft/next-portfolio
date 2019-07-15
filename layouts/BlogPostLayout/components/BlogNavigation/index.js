@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { getSortedPosts } from 'data/BlogPosts';
-import BlogLink from '../BlogLink';
+import { BlogLink } from 'components/Blog';
 
 const BlogNavigation = ({ route }) => {
   // Get blog posts, sorted oldest to newest

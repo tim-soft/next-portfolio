@@ -5,10 +5,10 @@ import {
   BlogParagraph,
   BlogLink,
   BlogCodeBlock,
-  BlogArticleContainer,
   BlogQuote,
   BlogDemoContainer
 } from 'components/Blog';
+import BlogPostLayout from 'layouts/BlogPostLayout';
 import { darkTheme, greyTheme } from 'components/AppTheme';
 import DarkModeReporter from 'components/ArticleComponents/DarkModeReporter';
 import ToggleSwitch from 'components/ToggleSwitch';
@@ -20,7 +20,7 @@ const BlogPage = ({ route, theme, updateTheme }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <BlogArticleContainer route={route}>
+      <BlogPostLayout route={route}>
         <BlogDemoContainer
           heading="Demo First"
           subheading="Default light/dark mode mirrors your operating system"
@@ -178,7 +178,7 @@ export default DarkModeReporter;
           </BlogLink>
           .
         </BlogParagraph>
-      </BlogArticleContainer>
+      </BlogPostLayout>
     </ThemeProvider>
   );
 };

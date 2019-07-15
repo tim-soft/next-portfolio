@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { TiArrowBackOutline } from 'react-icons/ti';
-import BlogLink from '../BlogLink';
-import DateAndDuration from '../DateAndDuration';
+import { BlogLink, DateAndDuration } from 'components/Blog';
 
-const BlogArticleBanner = ({ blogPost }) => (
+const BlogPostBanner = ({ blogPost }) => (
   <BannerContainer>
     <BlogLogo src={blogPost.logo} alt="Article Logo" />
     <StyledBlogLink href="/blog">
@@ -25,9 +24,7 @@ const BlogArticleBanner = ({ blogPost }) => (
   </BannerContainer>
 );
 
-export default BlogArticleBanner;
-
-BlogArticleBanner.propTypes = {
+BlogPostBanner.propTypes = {
   blogPost: PropTypes.shape({
     href: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -37,6 +34,8 @@ BlogArticleBanner.propTypes = {
     date: PropTypes.string.isRequired
   }).isRequired
 };
+
+export default BlogPostBanner;
 
 const BlogMeta = styled.div`
   display: flex;

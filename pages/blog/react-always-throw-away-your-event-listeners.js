@@ -5,17 +5,17 @@ import {
   BlogParagraph,
   BlogLink,
   BlogCodeBlock,
-  BlogArticleContainer,
   BlogQuote,
   BlogCodeInline
 } from 'components/Blog';
+import BlogPostLayout from 'layouts/BlogPostLayout';
 import { darkTheme } from 'components/AppTheme';
 
 import WindowSizeReporter from 'components/ArticleComponents/WindowSizeReporter';
 
 const BlogPage = ({ route, theme }) => (
   <ThemeProvider theme={theme}>
-    <BlogArticleContainer route={route}>
+    <BlogPostLayout route={route}>
       <BlogParagraph>
         Unlike your React components, the event listeners they&apos;ve created
         don&apos;t magically disappear after their UI unmounts from the DOM.
@@ -149,7 +149,7 @@ class WindowSizeReporter extends React.Component {
 export default WindowSizeReporter;
       `}
       />
-    </BlogArticleContainer>
+    </BlogPostLayout>
   </ThemeProvider>
 );
 

@@ -5,15 +5,15 @@ import {
   BlogParagraph,
   BlogLink,
   BlogCodeBlock,
-  BlogArticleContainer,
   BlogQuote,
   BlogCodeInline
 } from 'components/Blog';
+import BlogPostLayout from 'layouts/BlogPostLayout';
 import { blueTheme } from 'components/AppTheme';
 
 const BlogPage = ({ route, theme }) => (
   <ThemeProvider theme={theme}>
-    <BlogArticleContainer route={route}>
+    <BlogPostLayout route={route}>
       <BlogQuote>
         Sometimes you just need to show your JavaScript object in the browser
         and JSON.stringify() isn&apos;t going to cut it!
@@ -114,7 +114,7 @@ const configString = stringifyObject(config, {
         to represent any object in the browser as it would appear in your code
         editor.
       </BlogParagraph>
-    </BlogArticleContainer>
+    </BlogPostLayout>
   </ThemeProvider>
 );
 

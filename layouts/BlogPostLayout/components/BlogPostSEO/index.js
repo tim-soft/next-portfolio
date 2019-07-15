@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import NextSEO, { BlogJsonLd } from 'next-seo';
 
-const BlogSEO = ({ blogPost, route }) => {
+const BlogPostSEO = ({ blogPost, route }) => {
   if (!blogPost) return null;
 
   return (
@@ -50,7 +50,7 @@ const BlogSEO = ({ blogPost, route }) => {
   );
 };
 
-BlogSEO.propTypes = {
+BlogPostSEO.propTypes = {
   blogPost: PropTypes.shape({
     href: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -62,4 +62,4 @@ BlogSEO.propTypes = {
   route: PropTypes.string.isRequired
 };
 
-export default BlogSEO;
+export default BlogPostSEO;

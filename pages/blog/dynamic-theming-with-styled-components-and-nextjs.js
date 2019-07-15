@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Router from 'next/router';
 import styled, { ThemeProvider } from 'styled-components';
 import {
-  BlogArticleContainer,
   BlogParagraph,
   BlogList,
   BlogSectionHeading,
@@ -13,6 +12,7 @@ import {
   BlogCodeInline,
   BlogDemoContainer
 } from 'components/Blog';
+import BlogPostLayout from 'layouts/BlogPostLayout';
 import {
   generatePageTheme,
   darkTheme,
@@ -101,7 +101,7 @@ const handleThemeChange = callback => {
 
 const BlogPage = ({ route, theme, updateTheme }) => (
   <ThemeProvider theme={theme}>
-    <BlogArticleContainer route={route}>
+    <BlogPostLayout route={route}>
       <BlogDemoContainer
         heading="Demo First"
         subheading="Choose a new page theme"
@@ -641,7 +641,7 @@ const StyledPage = styled.div\`
           Check out the full demo on CodeSandbox
         </BlogLink>
       </BlogParagraph>
-    </BlogArticleContainer>
+    </BlogPostLayout>
   </ThemeProvider>
 );
 

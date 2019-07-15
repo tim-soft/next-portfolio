@@ -1,17 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
-import {
-  BlogParagraph,
-  BlogCodeBlock,
-  BlogArticleContainer,
-  BlogLink
-} from 'components/Blog';
+import { BlogParagraph, BlogCodeBlock, BlogLink } from 'components/Blog';
+import BlogPostLayout from 'layouts/BlogPostLayout';
 import { blueTheme } from 'components/AppTheme';
 
 const BlogPage = ({ route, theme }) => (
   <ThemeProvider theme={theme}>
-    <BlogArticleContainer route={route}>
+    <BlogPostLayout route={route}>
       <BlogParagraph>
         Code snippets without syntax highlighting are unsightly. No one wants to
         view these code snippets. They are extremely hard to read and deeply
@@ -180,7 +176,7 @@ BlogCodeBlock.defaultProps = {
 export default BlogCodeBlock;
       `}
       />
-    </BlogArticleContainer>
+    </BlogPostLayout>
   </ThemeProvider>
 );
 
