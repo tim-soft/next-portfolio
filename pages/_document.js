@@ -37,6 +37,16 @@ export default class StyledDocument extends Document {
     return (
       <html lang="en">
         <Head>
+          {/* Preconnect to the Google Fonts domain */}
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com/"
+            crossOrigin="true"
+          />
+          <link
+            href="https://fonts.googleapis.com/css?family=Montserrat"
+            rel="stylesheet"
+          />
           <link
             rel="apple-touch-icon"
             sizes="180x180"
@@ -67,11 +77,6 @@ export default class StyledDocument extends Document {
             content="FCA0098C94CF509BD6FC5F3DA79C1549"
           />
           <meta name="theme-color" content="#1d1e1f" />
-          <link
-            href="https://fonts.googleapis.com/css?family=Montserrat"
-            rel="stylesheet"
-          />
-
           {/* Global Site Tag (../lib/googleAnalytics.js) - Google Analytics */}
           <script
             async
