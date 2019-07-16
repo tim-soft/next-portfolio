@@ -10,6 +10,12 @@ const isDev = process.env.NODE_ENV === 'development';
  * https://nextjs.org/docs/#custom-configuration
  */
 const nextConfig = {
+  // Build-time variables available via `process.env` within the app
+  env: {
+    APP_BASE_URL: isDev
+      ? `http://localhost:${process.env.PORT || 3000}`
+      : 'https://timellenberger.com'
+  },
   // Alias the /components and /layouts folders for imports
   // e.g. import xyz from 'components/xyz'
   webpack(config) {

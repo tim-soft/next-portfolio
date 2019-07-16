@@ -5,6 +5,8 @@ import NextSEO, { BreadcrumbJsonLd } from 'next-seo';
 import IntroBanner from 'layouts/WebsiteLayout/components/IntroBanner';
 import { generatePageTheme } from 'components/AppTheme';
 
+const { APP_BASE_URL } = process.env;
+
 const HomePage = ({ theme }) => (
   <>
     {/* https://schema.org/breadcrumb */}
@@ -12,13 +14,13 @@ const HomePage = ({ theme }) => (
       itemListElements={[
         {
           position: 1,
-          name: 'https://timellenberger.com',
-          item: 'https://timellenberger.com'
+          name: APP_BASE_URL,
+          item: APP_BASE_URL
         },
         {
           position: 2,
           name: 'Home',
-          item: 'https://timellenberger.com'
+          item: APP_BASE_URL
         }
       ]}
     />

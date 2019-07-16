@@ -31,10 +31,12 @@ class WebApp extends App {
   };
 
   componentDidMount() {
+    const { APP_BASE_URL } = process.env;
+
     // eslint-disable-next-line no-console
     console.log(
       '%c ',
-      "background: url('https://timellenberger.com/static/avatar.png') 0 0 no-repeat; padding: 66px; border-radius: 50%;"
+      `background: url('${APP_BASE_URL}/static/avatar.png') 0 0 no-repeat; padding: 66px; border-radius: 50%;`
     );
 
     // eslint-disable-next-line no-console

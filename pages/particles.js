@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
 import NextSEO, { BreadcrumbJsonLd } from 'next-seo';
 import ParticlesDemo from 'components/ParticlesDemo';
-
 import { generatePageTheme } from 'components/AppTheme';
+
+const { APP_BASE_URL } = process.env;
 
 const ThreeParticles = ({ theme }) => (
   <>
@@ -13,13 +14,13 @@ const ThreeParticles = ({ theme }) => (
       itemListElements={[
         {
           position: 1,
-          name: 'https://timellenberger.com',
-          item: 'https://timellenberger.com'
+          name: APP_BASE_URL,
+          item: APP_BASE_URL
         },
         {
           position: 2,
           name: 'React Particles WebGL',
-          item: 'https://timellenberger.com/particles'
+          item: `${APP_BASE_URL}/particles`
         }
       ]}
     />
