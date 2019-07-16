@@ -3593,31 +3593,17 @@ get-best-contrast-color@^0.3.1:
   dependencies:
     get-contrast-ratio "0.2.1"
 
-get-contrast-ratio@0.2.1:
+get-contrast-ratio@0.2.1, get-contrast-ratio@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/get-contrast-ratio/-/get-contrast-ratio-0.2.1.tgz#3f8e2a9610df2fb55fc2004bfce002ff0aa25c0a"
   integrity sha512-lNIpmDIoxlVJsEQ5G/XCxH2YiiXH0ukOZ0ASvPp9ku2f+2AOYG5OXQ9cLgc9p3lNom5gy8JLkfSzi8fZN9LdKg==
   dependencies:
     get-relative-luminance "0.3.1"
 
-get-contrast-ratio@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/get-contrast-ratio/-/get-contrast-ratio-0.2.0.tgz#fcac5abf4f44359cf8f53b733dd574ed08f54e31"
-  integrity sha512-DDxjbKHRfCA4awtEhOcaRRNSAu7a2dvwmokg/t+fSNmuxVILUqnaPkB5mItTyzTTcayHRGW68z/od6oY29aWhQ==
-  dependencies:
-    get-relative-luminance "0.3.0"
-
 get-own-enumerable-property-symbols@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/get-own-enumerable-property-symbols/-/get-own-enumerable-property-symbols-3.0.0.tgz#b877b49a5c16aefac3655f2ed2ea5b684df8d203"
   integrity sha512-CIJYJC4GGF06TakLg8z4GQKvDsx9EMspVxOYih7LerEL/WosUnFIww45CGfxfeKHqlg3twgUrYRT1O3WQqjGCg==
-
-get-relative-luminance@0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/get-relative-luminance/-/get-relative-luminance-0.3.0.tgz#3cb2f74e9044014dde3d049a4f479cc2b8c09bd2"
-  integrity sha512-5lRMk7EPF4hlDl7N0sp0dUAALeAfzIjfYVw0zY2Xoi/wNs3e7sAcyR82cQ/Xd4qJ1gOg8PmNTvW42uvfGv39cQ==
-  dependencies:
-    parse-color "1.0.0"
 
 get-relative-luminance@0.3.1:
   version "0.3.1"
