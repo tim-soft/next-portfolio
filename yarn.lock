@@ -3586,14 +3586,21 @@ gauge@~2.7.3:
     strip-ansi "^3.0.1"
     wide-align "^1.1.0"
 
-get-best-contrast-color@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/get-best-contrast-color/-/get-best-contrast-color-0.3.0.tgz#0be6c57bac7418512097f0afce8809f2c25d53a7"
-  integrity sha512-lxo9pslrX+nnjvMEMq/gpoCmFYkxN+mEh3JNVb4COd24TQ5msfmyRTlWHmGdpvQT+sgY0gEoyZXXGGEOLd/5tw==
+get-best-contrast-color@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/get-best-contrast-color/-/get-best-contrast-color-0.3.1.tgz#e13e0ea32d82871ccdfb742ccab1d6e07b137f44"
+  integrity sha512-B88vyjLzu+fDq2mMky/75pg14Pwgb9Zl6RZ3ws43Jyk4tsdvgiF/KAvRkFZAaMEgd1HTuykKg0GaG2KnsBoaCA==
   dependencies:
-    get-contrast-ratio "0.2.0"
+    get-contrast-ratio "0.2.1"
 
-get-contrast-ratio@0.2.0, get-contrast-ratio@^0.2.0:
+get-contrast-ratio@0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/get-contrast-ratio/-/get-contrast-ratio-0.2.1.tgz#3f8e2a9610df2fb55fc2004bfce002ff0aa25c0a"
+  integrity sha512-lNIpmDIoxlVJsEQ5G/XCxH2YiiXH0ukOZ0ASvPp9ku2f+2AOYG5OXQ9cLgc9p3lNom5gy8JLkfSzi8fZN9LdKg==
+  dependencies:
+    get-relative-luminance "0.3.1"
+
+get-contrast-ratio@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/get-contrast-ratio/-/get-contrast-ratio-0.2.0.tgz#fcac5abf4f44359cf8f53b733dd574ed08f54e31"
   integrity sha512-DDxjbKHRfCA4awtEhOcaRRNSAu7a2dvwmokg/t+fSNmuxVILUqnaPkB5mItTyzTTcayHRGW68z/od6oY29aWhQ==
@@ -3609,6 +3616,13 @@ get-relative-luminance@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/get-relative-luminance/-/get-relative-luminance-0.3.0.tgz#3cb2f74e9044014dde3d049a4f479cc2b8c09bd2"
   integrity sha512-5lRMk7EPF4hlDl7N0sp0dUAALeAfzIjfYVw0zY2Xoi/wNs3e7sAcyR82cQ/Xd4qJ1gOg8PmNTvW42uvfGv39cQ==
+  dependencies:
+    parse-color "1.0.0"
+
+get-relative-luminance@0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/get-relative-luminance/-/get-relative-luminance-0.3.1.tgz#f86b722194f87f23c9d4df9075e066329001907f"
+  integrity sha512-nLEJhDAPC4anQlFhBxt8lHRwxs5OvOxmN0mHCxOCFDtzy0x5cXTMKNKUycpulsAw1zNOtz6GIRcIaVMcUUcU7Q==
   dependencies:
     parse-color "1.0.0"
 
