@@ -1,13 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
-import NextSEO from 'next-seo';
+import NextSEO, { BreadcrumbJsonLd } from 'next-seo';
 import ParticlesDemo from 'components/ParticlesDemo';
 
 import { generatePageTheme } from 'components/AppTheme';
 
 const ThreeParticles = ({ theme }) => (
   <>
+    {/* https://schema.org/breadcrumb */}
+    <BreadcrumbJsonLd
+      itemListElements={[
+        {
+          position: 1,
+          name: 'https://timellenberger.com',
+          item: 'https://timellenberger.com'
+        },
+        {
+          position: 2,
+          name: 'React Particles WebGL',
+          item: 'https://timellenberger.com/particles'
+        }
+      ]}
+    />
     <NextSEO
       config={{
         title:

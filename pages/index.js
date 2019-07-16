@@ -1,12 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
-import NextSEO from 'next-seo';
+import NextSEO, { BreadcrumbJsonLd } from 'next-seo';
 import IntroBanner from 'layouts/WebsiteLayout/components/IntroBanner';
 import { generatePageTheme } from 'components/AppTheme';
 
 const HomePage = ({ theme }) => (
   <>
+    {/* https://schema.org/breadcrumb */}
+    <BreadcrumbJsonLd
+      itemListElements={[
+        {
+          position: 1,
+          name: 'https://timellenberger.com',
+          item: 'https://timellenberger.com'
+        },
+        {
+          position: 2,
+          name: 'Home',
+          item: 'https://timellenberger.com'
+        }
+      ]}
+    />
     <NextSEO
       config={{
         title: 'Home | Tim Ellenberger',
