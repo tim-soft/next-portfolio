@@ -6327,15 +6327,15 @@ react-lazy-images@^1.1.0:
     react-intersection-observer "^6.1.0"
     unionize "^2.1.2"
 
-react-particles-webgl@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/react-particles-webgl/-/react-particles-webgl-1.0.4.tgz#ae29655ca2a0571cae947ac6f396e27fd28a4d67"
-  integrity sha512-Tk9FYk9B9i1eB3mYpD+m1B9dUwkqUv9MfhdUX6hLSbdr+O6C6nPR4eXKi0ZwCL0QkfLWoQyEX2zzGMgPYLGs6Q==
+react-particles-webgl@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/react-particles-webgl/-/react-particles-webgl-1.0.5.tgz#0a8755f2b87326db5cac4219e879f5a3d5a8f867"
+  integrity sha512-/PPcSuzrsRFNnQkvd7I+Gp5u/KwdTGAyyTA6/UI4wbgnsSdmqzUmjwY+DTzEkMg2SgWsUnVk8q8KlhW2w0QAKg==
   dependencies:
     hex-rgb "^4.1.0"
     is-hexcolor "^1.0.0"
-    react-three-fiber "^2.2.5"
-    three-orbitcontrols "^2.102.1"
+    react-three-fiber "^2.2.11"
+    three-orbitcontrols "^2.102.2"
 
 react-photo-gallery@^7.0.2:
   version "7.0.2"
@@ -6385,10 +6385,10 @@ react-switch@^5.0.1:
   dependencies:
     prop-types "^15.6.2"
 
-react-three-fiber@^2.2.5:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/react-three-fiber/-/react-three-fiber-2.2.5.tgz#5b1140805d45725a19aab3074cda784bc020cadb"
-  integrity sha512-tqiFjFH+jMuzlXFWxhDBssTg6N/v0W5nZqXUxU4OyNYAtp3pOwp4+wm4IzBc23WGpVmDrxA5TpX1lrKoBrFpSw==
+react-three-fiber@^2.2.11:
+  version "2.2.11"
+  resolved "https://registry.yarnpkg.com/react-three-fiber/-/react-three-fiber-2.2.11.tgz#e9eb844c5386a51cc6d14d9ef3811ae1448ca934"
+  integrity sha512-6iuJycGbmz0TkKgR3HoAeiJZKY/rGl4AQRxtzCp4H5ZS/6JjefM6mmE5YxF3oFfBuBvTNhnmnWXV67euBUmYQQ==
   dependencies:
     "@babel/runtime" "^7.4.4"
     "@types/three" "^0.103.2"
@@ -7503,10 +7503,10 @@ text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-three-orbitcontrols@^2.102.1:
-  version "2.102.1"
-  resolved "https://registry.yarnpkg.com/three-orbitcontrols/-/three-orbitcontrols-2.102.1.tgz#f4071e79f1c12e2b7668992cb06cfa29a816629d"
-  integrity sha512-mp5qc5mooCtjgSloMFzIEI2VQVkvBDWDMYtbxY3TFB/BCCYpR6NV7/dD5+EUyzR90/a9H356s9QR+2PhH48f6w==
+three-orbitcontrols@^2.102.2:
+  version "2.102.2"
+  resolved "https://registry.yarnpkg.com/three-orbitcontrols/-/three-orbitcontrols-2.102.2.tgz#4126cbc941227ef03acdd9f2cc0551b7c7271e64"
+  integrity sha512-VIJpnJoL6PXbGiTX+z68/uu9E+I8cACVr6m1qm9yjfel6PU1/VE78B6gar9fVaQUhrXCCK0GlvpYsyZjCsisrQ==
 
 three@*:
   version "0.105.2"
