@@ -6,18 +6,20 @@ import ParticleField from 'react-particles-webgl';
 import particlesConfig from './particlesConfig';
 
 export default class IntroBanner extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       // Assume initial *.webp browser support
       webpSupport: true,
-      backgroundAnimDone: false
+      backgroundAnimDone: false,
+      clientSide: false
     };
   }
 
   componentDidMount() {
     // Check browser for webp support, set state accordingly
     this.checkWebpSupport();
+    this.setState({ clientSide: true });
   }
 
   /**
@@ -50,7 +52,7 @@ export default class IntroBanner extends React.Component {
   setBackgroundAnimDone = () => this.setState({ backgroundAnimDone: true });
 
   render() {
-    const { webpSupport, backgroundAnimDone } = this.state;
+    const { webpSupport, backgroundAnimDone, clientSide } = this.state;
 
     const imgSrc = webpSupport
       ? 'url(/static/IntroBannerBG.webp)'
@@ -58,11 +60,15 @@ export default class IntroBanner extends React.Component {
 
     return (
       <BannerContainer>
-        {backgroundAnimDone && (
+        {clientSide && (
           <Spring
             native
             from={{ opacity: 0, transform: 'scale(0)' }}
-            to={{ opacity: 1, transform: 'scale(1)' }}
+            to={
+              backgroundAnimDone
+                ? { opacity: 1, transform: 'scale(1)' }
+                : { opacity: 0, transform: 'scale(0)' }
+            }
             config={config.slow}
           >
             {animStyles => (
