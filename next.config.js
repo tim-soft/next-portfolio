@@ -41,6 +41,8 @@ const nextConfig = {
   // Now 2.0 Build Type
   // https://nextjs.org/blog/next-8#serverless-nextjs
   target: 'serverless',
+  // Add manifest to WorkBox cache
+  transformManifest: manifest => ['/'].concat(manifest),
   // Service Worker implemented via next-offline and powered by Workbox
   // https://github.com/hanford/next-offline#next-offline-options
   // https://developers.google.com/web/tools/workbox/guides/configure-workbox
@@ -55,6 +57,39 @@ const nextConfig = {
           cacheName: 'image-cache',
           cacheableResponse: {
             statuses: [0, 200]
+          },
+          expiration: {
+            maxEntries: 200
+          }
+        }
+      },
+      /**
+       * Cache Google Fonts
+       *
+       * https://developers.google.com/web/tools/workbox/
+       */
+      // Cache the Google Fonts stylesheets with a stale while revalidate strategy.
+      {
+        urlPattern: /^https:\/\/fonts\.googleapis\.com/,
+        handler: 'CacheFirst',
+        options: {
+          cacheName: 'google-fonts-stylesheets',
+          cacheableResponse: {
+            statuses: [0, 200]
+          }
+        }
+      },
+      // Cache the Google Fonts webfont files with a cache first strategy for 1 year.
+      {
+        urlPattern: /^https:\/\/fonts\.gstatic\.com/,
+        handler: 'CacheFirst',
+        options: {
+          cacheName: 'google-fonts-webfonts',
+          cacheableResponse: {
+            statuses: [0, 200]
+          },
+          expiration: {
+            maxAgeSeconds: 60 * 60 * 24 * 365
           }
         }
       },
@@ -66,7 +101,7 @@ const nextConfig = {
           cacheName: 'https-calls',
           networkTimeoutSeconds: 15,
           expiration: {
-            maxEntries: 150,
+            maxEntries: 200,
             maxAgeSeconds: 30 * 24 * 60 * 60 // 1 month
           },
           cacheableResponse: {
