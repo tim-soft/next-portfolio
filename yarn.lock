@@ -2322,10 +2322,10 @@ clone-response@^1.0.2:
   dependencies:
     mimic-response "^1.0.0"
 
-cnbuilder@^1.1.6:
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/cnbuilder/-/cnbuilder-1.1.6.tgz#f906a196d9d4e9fc64de0ab347bf0b0c4c783195"
-  integrity sha512-9dsTvgfNjeoUoH1Dk0LCGRjSXCO/2ZZf9oQ0NBlKwadulwSgfdMtpeBSVxNSiUZAzNOuaZ5NMCOtCuu2g1cJ3g==
+cnbuilder@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/cnbuilder/-/cnbuilder-1.1.7.tgz#04ef08d278efd69bc65a95b087328455a85a2eef"
+  integrity sha512-8D9dpabOVOh7GX/qPZ60sJpqxHaiLqSDsuZOYH1TvoNkgMrO7BJHCbNepHHoglSdU//M2sjLHaL9Vu0qibSV2A==
 
 code-point-at@^1.0.0:
   version "1.1.0"
@@ -6367,12 +6367,12 @@ react-reconciler@^0.20.4:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
-react-scrollbars-custom@^4.0.12:
-  version "4.0.12"
-  resolved "https://registry.yarnpkg.com/react-scrollbars-custom/-/react-scrollbars-custom-4.0.12.tgz#8183ba29ba9d9a0cd67147561dae255288d2aadb"
-  integrity sha512-LRv2glDDfoPH8Qsc0k1kSbDui5rAGKfCYXxZYdBl19i90awQ4XKb3P2t4xktQvS9oqsa55jJvbPGEYg/1Ov8Bg==
+react-scrollbars-custom@^4.0.16:
+  version "4.0.16"
+  resolved "https://registry.yarnpkg.com/react-scrollbars-custom/-/react-scrollbars-custom-4.0.16.tgz#6f00be36591d64c07ae5be365efe8188406dd894"
+  integrity sha512-QNNYuRqGo6voqtxxmTq5qnPz0GrmtparGuo/UfmRVnkDbEPL3ExO9Y5w0TTOA1AgKZdc6keYhKfkN6daDX9J3Q==
   dependencies:
-    cnbuilder "^1.1.6"
+    cnbuilder "^1.1.7"
     react-draggable "^3.3.0"
     zoom-level "^1.2.4"
 
