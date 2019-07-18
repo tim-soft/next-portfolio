@@ -45,7 +45,7 @@ const nextConfig = {
   // https://nextjs.org/blog/next-8#serverless-nextjs
   target: 'serverless',
   // Add manifest to WorkBox cache
-  transformManifest: manifest => ['/'].concat(manifest),
+  // transformManifest: manifest => ['/'].concat(manifest),
   // Service Worker implemented via next-offline and powered by Workbox
   // https://github.com/hanford/next-offline#next-offline-options
   // https://developers.google.com/web/tools/workbox/guides/configure-workbox
