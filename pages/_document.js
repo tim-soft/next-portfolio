@@ -38,21 +38,14 @@ export default class StyledDocument extends Document {
       <html lang="en">
         <Head>
           {/* Preconnect to the Google domains */}
-          <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com/"
-            crossOrigin="true"
-          />
-          <link
-            rel="preconnect"
-            href="https://fonts.googleapis.com/"
-            crossOrigin="true"
-          />
-          <link
-            rel="preconnect"
-            href="https://www.googletagmanager.com/"
-            crossOrigin="true"
-          />
+          {[
+            'https://fonts.gstatic.com',
+            'https://fonts.googleapis.com',
+            'https://www.googletagmanager.com',
+            'https://www.google-analytics.com'
+          ].map(href => (
+            <link key={href} rel="preconnect" href={href} crossOrigin="true" />
+          ))}
           {/* Google Font: Montserrat */}
           <link
             href="https://fonts.googleapis.com/css?family=Montserrat"
