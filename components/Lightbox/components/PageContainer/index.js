@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Transition, animated, to } from 'react-spring';
+import Color from 'color';
 
 const Page = ({ children, isOpen }) => (
   <Transition
@@ -11,13 +12,13 @@ const Page = ({ children, isOpen }) => (
     from={{
       opacity: 0,
       translateY: 0,
-      scale: 0.85
+      scale: 0.75
     }}
     enter={{ opacity: 1, translateY: 1, scale: 1 }}
     leave={{
       opacity: 0,
       translateY: 0,
-      scale: 0.85
+      scale: 0.75
     }}
     config={{ mass: 1, tension: 320, friction: 32 }}
   >
@@ -25,24 +26,18 @@ const Page = ({ children, isOpen }) => (
       isOpen &&
       // eslint-disable-next-line react/prop-types
       (({ opacity, translateY, scale }) => (
-        <animated.div
+        <AnimatedContainer
           style={{
             opacity,
             transform: to(
               [translateY, scale],
               (translateY, scale) =>
                 `scale(${scale}) translate3d(0, ${translateY}px, 0)`
-            ),
-            position: 'fixed',
-            top: 0,
-            bottom: 0,
-            left: 0,
-            right: 0,
-            zIndex: 400
+            )
           }}
         >
-          <PageContainer>{children}</PageContainer>
-        </animated.div>
+          {children}
+        </AnimatedContainer>
       ))
     }
   </Transition>
@@ -58,8 +53,17 @@ Page.propTypes = {
 
 export default Page;
 
-const PageContainer = styled.div`
-  background: rgba(68, 68, 68, 0.94);
-  height: 100%;
-  width: 100%;
-`;
+const AnimatedContainer = animated(styled.div`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 400;
+  background: ${({ theme }) =>
+    Color(theme.accentColor)
+      .alpha(0.95)
+      .hsl()
+      .string()};
+  cursor: url('/static/touch-cursor.png') 39 39, auto;
+`);

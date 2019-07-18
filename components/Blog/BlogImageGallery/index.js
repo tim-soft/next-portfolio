@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import Gallery from 'react-photo-gallery';
 import Lightbox from 'components/Lightbox';
 
-export default class ImageGallery extends React.Component {
+class BlogImageGallery extends React.Component {
   static propTypes = {
     galleryTitle: PropTypes.string.isRequired,
+    imageMasonryDirection: PropTypes.oneOf(['column', 'row']),
     images: PropTypes.arrayOf(
       PropTypes.shape({
         src: PropTypes.string.isRequired,
@@ -17,10 +19,18 @@ export default class ImageGallery extends React.Component {
     ).isRequired
   };
 
+  static defaultProps = {
+    imageMasonryDirection: 'column'
+  };
+
   constructor() {
     super();
 
-    this.state = { currentImage: 0, lightboxIsOpen: false };
+    this.state = { currentImage: 0, lightboxIsOpen: false, clientSide: false };
+  }
+
+  componentDidMount() {
+    this.setState({ clientSide: true });
   }
 
   openLightbox = (event, obj) => {
@@ -60,12 +70,19 @@ export default class ImageGallery extends React.Component {
   };
 
   render() {
-    const { currentImage, lightboxIsOpen } = this.state;
-    const { images, galleryTitle } = this.props;
+    const { currentImage, lightboxIsOpen, clientSide } = this.state;
+    const { images, galleryTitle, imageMasonryDirection } = this.props;
 
     return (
-      <>
-        <Gallery photos={images} onClick={this.openLightbox} margin={3} />
+      <GalleryContainer>
+        {clientSide && (
+          <Gallery
+            photos={images}
+            onClick={this.openLightbox}
+            margin={3}
+            direction={imageMasonryDirection}
+          />
+        )}
         <Lightbox
           isOpen={lightboxIsOpen}
           onClose={this.closeLightbox}
@@ -75,7 +92,13 @@ export default class ImageGallery extends React.Component {
           currentIndex={currentImage}
           galleryTitle={galleryTitle}
         />
-      </>
+      </GalleryContainer>
     );
   }
 }
+
+export default BlogImageGallery;
+
+const GalleryContainer = styled.section`
+  margin: 2em 0;
+`;

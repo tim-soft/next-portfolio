@@ -9,6 +9,7 @@ import BlogSectionHeading from './BlogSectionHeading';
 import BlogQuote from './BlogQuote';
 import BlogCodeInline from './BlogCodeInline';
 import BlogDemoContainer from './BlogDemoContainer';
+import BlogImageGallery from './BlogImageGallery';
 
 export {
   BlogParagraph,
@@ -21,5 +22,6 @@ export {
   BlogSectionHeading,
   BlogQuote,
   BlogCodeInline,
-  BlogDemoContainer
+  BlogDemoContainer,
+  BlogImageGallery
 };

@@ -9,7 +9,7 @@ import {
 
 export default class Lightbox extends React.Component {
   static propTypes = {
-    projectTitle: PropTypes.string.isRequired,
+    galleryTitle: PropTypes.string.isRequired,
     isOpen: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired,
     onClickPrev: PropTypes.func.isRequired,
@@ -114,7 +114,7 @@ export default class Lightbox extends React.Component {
       currentIndex,
       onClickPrev,
       onClickNext,
-      projectTitle
+      galleryTitle
     } = this.props;
 
     const { controlsAreHidden } = this.state;
@@ -123,7 +123,7 @@ export default class Lightbox extends React.Component {
       <CreatePortal>
         <PageContainer isOpen={isOpen}>
           <HeaderBar
-            projectTitle={projectTitle}
+            galleryTitle={galleryTitle}
             images={images}
             currentIndex={currentIndex}
             onClose={onClose}

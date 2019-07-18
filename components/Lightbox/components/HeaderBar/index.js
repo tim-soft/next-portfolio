@@ -7,7 +7,7 @@ import { Transition, animated } from 'react-spring';
 import ButtonControl from '../ButtonControl';
 
 const HeaderBar = ({
-  projectTitle,
+  galleryTitle,
   images,
   currentIndex,
   onClose,
@@ -16,7 +16,7 @@ const HeaderBar = ({
   <Transition
     native
     items={!controlsAreHidden}
-    // initial={{ opacity: 1, transform: 'translate(0,-40px)' }}
+    initial={{ opacity: 1, transform: 'translate(0,0)' }}
     from={{ opacity: 0, transform: 'translate(0,-40px)' }}
     enter={{ opacity: 1, transform: 'translate(0,0)' }}
     leave={{ opacity: 0, transform: 'translate(0,-40px)' }}
@@ -34,7 +34,7 @@ const HeaderBar = ({
         >
           <FixedHeaderBar>
             <LeftSideDescriptionContainer>
-              <h2>{projectTitle}</h2>
+              <h2>{galleryTitle}</h2>
               <h4>{images[currentIndex].caption}</h4>
             </LeftSideDescriptionContainer>
 
@@ -56,7 +56,7 @@ const HeaderBar = ({
 HeaderBar.propTypes = {
   controlsAreHidden: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
-  projectTitle: PropTypes.string.isRequired,
+  galleryTitle: PropTypes.string.isRequired,
   currentIndex: PropTypes.number.isRequired,
   images: PropTypes.arrayOf(
     PropTypes.shape({
@@ -78,10 +78,14 @@ const AnimatedContainer = animated(styled.div`
   top: 0;
   left: 0;
   right: 0;
+  cursor: auto;
 `);
 
-const PageIndicator = styled.h3`
+const PageIndicator = styled.span`
   white-space: nowrap;
+  /* margin: 0 1em; */
+  min-width: 60px;
+  text-align: center;
 `;
 
 const RightSideContainer = styled.div`
@@ -95,10 +99,10 @@ const RightSideContainer = styled.div`
 const CloseButton = styled(ButtonControl)`
   height: 100%;
   display: flex;
-  @media (min-width: 500px) {
-    border-left-style: solid;
-    border-left-width: 1px;
-  }
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-left-color: ${({ theme }) => theme.headerNavFontColor};
+  color: inherit;
 `;
 
 const LeftSideDescriptionContainer = styled.div`
@@ -119,9 +123,8 @@ const FixedHeaderBar = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 5px 20px;
-  color: white;
+  color: ${({ theme }) => theme.headerNavFontColor};
   h2,
-  h3,
   h4 {
     margin: 0;
     font-weight: normal;

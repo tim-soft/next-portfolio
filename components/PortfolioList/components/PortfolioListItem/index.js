@@ -11,7 +11,7 @@ const PortfolioListItem = ({ projectTitle, images, description }) => (
     </div>
 
     <GalleryContainer>
-      <ImageGallery images={images} projectTitle={projectTitle} />
+      <ImageGallery images={images} galleryTitle={projectTitle} />
     </GalleryContainer>
   </PortfolioListItemContainer>
 );

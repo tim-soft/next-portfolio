@@ -188,7 +188,8 @@ export default ImagePager;
 
 const Image = styled.img`
   max-width: 100%;
-  max-height: 100%;
+  /* Max height is screen height minus double header height */
+  max-height: calc(100% - 180px);
   user-select: none;
   box-shadow: 0 22px 70px 4px rgba(0, 0, 0, 0.56);
 `;

@@ -1,22 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
+import Color from 'color';
 import {
   BlogParagraph,
   BlogLink,
   BlogCodeBlock,
   BlogQuote,
-  BlogDemoContainer
+  BlogDemoContainer,
+  BlogImageGallery
 } from 'components/Blog';
 import BlogPostLayout from 'layouts/BlogPostLayout';
 import { darkTheme, greyTheme } from 'components/AppTheme';
 import DarkModeReporter from 'components/ArticleComponents/DarkModeReporter';
 import ToggleSwitch from 'components/ToggleSwitch';
-import Color from 'color';
+import BlogData from 'data/BlogPosts';
 
 const BlogPage = ({ route, theme, updateTheme }) => {
   // Is the page in dark mode?
   const isDarkMode = () => new Color(theme.pageBackgroundColor).isDark();
+
+  // Get the current blog post from data
+  const blogPost = BlogData.find(post => post.href === route);
 
   return (
     <ThemeProvider theme={theme}>
@@ -51,6 +56,26 @@ const BlogPage = ({ route, theme, updateTheme }) => {
           mode, going to a website that clearly has a dark mode, and still
           getting blasted in the retinas by all the bright shades of white.
         </BlogParagraph>
+        <BlogImageGallery
+          galleryTitle={blogPost.title}
+          imageMasonryDirection="column"
+          images={[
+            {
+              src: '/static/blog-content/dark-mode/win10-dark-mode.jpg',
+              caption: 'Windows 10 Dark Mode Setting',
+              alt: 'Windows 10 Dark Mode Setting',
+              width: 4,
+              height: 3
+            },
+            {
+              src: '/static/blog-content/dark-mode/macos-dark-mode.jpg',
+              caption: 'macOS Mojave Dark Mode Setting',
+              alt: 'macOS Mojave Dark Mode Setting',
+              width: 1,
+              height: 1
+            }
+          ]}
+        />
         <BlogParagraph>
           The only reasonable default mode for the web apps that have them,
           should be the user&apos;s system preference!
