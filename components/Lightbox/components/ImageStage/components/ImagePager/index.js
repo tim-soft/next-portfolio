@@ -191,5 +191,6 @@ const Image = styled.img`
   /* Max height is screen height minus double header height */
   max-height: calc(100% - 180px);
   user-select: none;
-  box-shadow: 0 22px 70px 4px rgba(0, 0, 0, 0.56);
+  filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.4))
+    drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
 `;
