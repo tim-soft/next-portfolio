@@ -44,7 +44,12 @@ export default class StyledDocument extends Document {
             'https://www.googletagmanager.com',
             'https://www.google-analytics.com'
           ].map(href => (
-            <link key={href} rel="preconnect" href={href} crossOrigin="true" />
+            <link
+              key={href}
+              rel="preconnect"
+              href={href}
+              crossOrigin="anonymous"
+            />
           ))}
           {/* Google Font: Montserrat */}
           <link
