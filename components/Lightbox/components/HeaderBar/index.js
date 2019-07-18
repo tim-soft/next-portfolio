@@ -76,7 +76,6 @@ export default HeaderBar;
 const GalleryHeading = styled.h2`
   margin: 0 0 5px 0;
   font-weight: normal;
-  margin-bottom: 5px;
 `;
 
 const GallerySubheading = styled.h4`
@@ -103,26 +102,30 @@ const CloseButton = styled(ButtonControl)`
   height: 100%;
   display: flex;
   border-left-style: solid;
-  border-left-width: 1px;
+  border-left-width: 2px;
   border-left-color: ${({ theme }) => theme.headerNavFontColor};
   color: inherit;
 `;
 
 const LeftSideDescriptionContainer = styled.div`
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-left-width: 2px;
   border-left-color: ${({ theme }) => theme.pageContentLinkHoverColor};
   border-left-style: solid;
-  padding-left: 10px;
+  padding: 8px 0 8px 10px;
 `;
 
 const FixedHeaderBar = styled.header`
   min-height: 70px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 5px 20px;
+  padding: 10px 2px 10px 20px;
   color: ${({ theme }) => theme.headerNavFontColor};
+  > * {
+    height: inherit;
+  }
 `;
 
 const AnimatedContainer = animated(styled.div`
