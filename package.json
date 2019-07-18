@@ -10,7 +10,7 @@
   },
   "homepage": "https://timellenberger.com",
   "engines": {
-    "node": ">=10"
+    "node": "10.x"
   },
   "dependencies": {
     "@tim-soft/react-dat-gui": "^2.2.5",
