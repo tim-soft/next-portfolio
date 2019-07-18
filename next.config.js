@@ -12,9 +12,12 @@ const isDev = process.env.NODE_ENV === 'development';
 const nextConfig = {
   // Build-time variables available via `process.env` within the app
   env: {
+    // Canonical URL for this app
     APP_BASE_URL: isDev
       ? `http://localhost:${process.env.PORT || 3000}`
-      : 'https://timellenberger.com'
+      : 'https://timellenberger.com',
+    // Google Analytics tracking ID
+    GA_TRACKING_ID: 'UA-137363397-1'
   },
   // Alias the /components and /layouts folders for imports
   // e.g. import xyz from 'components/xyz'
