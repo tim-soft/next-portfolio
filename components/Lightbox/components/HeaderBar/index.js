@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { IoIosClose } from 'react-icons/io';
 import { Transition, animated } from 'react-spring';
+import Color from 'color';
 import ButtonControl from '../ButtonControl';
 
 const HeaderBar = ({
@@ -13,46 +14,48 @@ const HeaderBar = ({
   onClose,
   controlsAreHidden
 }) => (
-  <Transition
-    native
-    items={!controlsAreHidden}
-    initial={{ opacity: 1, transform: 'translate(0,0)' }}
-    from={{ opacity: 0, transform: 'translate(0,-40px)' }}
-    enter={{ opacity: 1, transform: 'translate(0,0)' }}
-    leave={{ opacity: 0, transform: 'translate(0,-40px)' }}
-  >
-    {controlsAreHidden =>
-      controlsAreHidden &&
-      // eslint-disable-next-line react/prop-types
-      (({ opacity, transform }) => (
-        <AnimatedContainer
-          style={{
-            opacity,
-            transform,
-            ...(opacity === 1 && { display: 'none' })
-          }}
-        >
-          <FixedHeaderBar>
-            <LeftSideDescriptionContainer>
-              <GalleryHeading>{galleryTitle}</GalleryHeading>
-              <GallerySubheading>
-                {images[currentIndex].caption}
-              </GallerySubheading>
-            </LeftSideDescriptionContainer>
+  <div style={{ height: '90px' }}>
+    <Transition
+      native
+      items={!controlsAreHidden}
+      initial={{ opacity: 1, transform: 'translate(0,0)' }}
+      from={{ opacity: 0, transform: 'translate(0,-40px)' }}
+      enter={{ opacity: 1, transform: 'translate(0,0)' }}
+      leave={{ opacity: 0, transform: 'translate(0,-40px)' }}
+    >
+      {controlsAreHidden =>
+        controlsAreHidden &&
+        // eslint-disable-next-line react/prop-types
+        (({ opacity, transform }) => (
+          <AnimatedContainer
+            style={{
+              opacity,
+              transform
+              // ...(opacity === 1 && { display: 'none' })
+            }}
+          >
+            <TopHeaderBar>
+              <LeftSideDescriptionContainer>
+                <GalleryHeading>{galleryTitle}</GalleryHeading>
+                <GallerySubheading>
+                  {images[currentIndex].caption}
+                </GallerySubheading>
+              </LeftSideDescriptionContainer>
 
-            <RightSideContainer>
-              <PageIndicator>
-                {currentIndex + 1} / {images.length}
-              </PageIndicator>
-              <CloseButton onClick={onClose} type="button">
-                <IoIosClose size={60} />
-              </CloseButton>
-            </RightSideContainer>
-          </FixedHeaderBar>
-        </AnimatedContainer>
-      ))
-    }
-  </Transition>
+              <RightSideContainer>
+                <PageIndicator>
+                  {currentIndex + 1} / {images.length}
+                </PageIndicator>
+                <CloseButton onClick={onClose} type="button">
+                  <IoIosClose size={60} />
+                </CloseButton>
+              </RightSideContainer>
+            </TopHeaderBar>
+          </AnimatedContainer>
+        ))
+      }
+    </Transition>
+  </div>
 );
 
 HeaderBar.propTypes = {
@@ -117,12 +120,17 @@ const LeftSideDescriptionContainer = styled.div`
   padding: 8px 0 8px 10px;
 `;
 
-const FixedHeaderBar = styled.header`
-  min-height: 70px;
+const TopHeaderBar = styled.header`
+  min-height: 100%;
   display: flex;
   justify-content: space-between;
   padding: 10px 2px 10px 20px;
   color: ${({ theme }) => theme.headerNavFontColor};
+  background-color: ${({ theme }) =>
+    Color(theme.pageBackgroundColor)
+      .alpha(0.5)
+      .hsl()
+      .string()};
   > * {
     height: inherit;
   }
@@ -131,9 +139,5 @@ const FixedHeaderBar = styled.header`
 const AnimatedContainer = animated(styled.div`
   will-change: opacity, transform;
   z-index: 10;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   cursor: auto;
 `);

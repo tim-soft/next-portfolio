@@ -131,7 +131,7 @@ class ImagePager extends React.Component {
                     transform: x.to(x => `translate3d(${x}px,0,0)`),
                     position: 'absolute',
                     width: '100%',
-                    height: '100%',
+                    height: 'calc(100% - 90px)',
                     willChange: 'transform',
                     userSelect: 'none',
                     touchAction: 'none'
@@ -187,9 +187,10 @@ class ImagePager extends React.Component {
 export default ImagePager;
 
 const Image = styled.img`
-  max-width: 100%;
+  width: auto;
+  /* height: 100%; */
   /* Max height is screen height minus double header height */
-  max-height: calc(100% - 180px);
+  max-height: calc(100% - 90px);
   user-select: none;
   filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.4))
     drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
