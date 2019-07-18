@@ -74,12 +74,9 @@ const nextConfig = {
       // Cache the Google Fonts stylesheets with a stale while revalidate strategy.
       {
         urlPattern: /^https:\/\/fonts\.googleapis\.com/,
-        handler: 'CacheFirst',
+        handler: 'StaleWhileRevalidate',
         options: {
-          cacheName: 'google-fonts-stylesheets',
-          cacheableResponse: {
-            statuses: [0, 200]
-          }
+          cacheName: 'google-fonts-stylesheets'
         }
       },
       // Cache the Google Fonts webfont files with a cache first strategy for 1 year.
