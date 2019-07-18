@@ -68,7 +68,7 @@ const BlogPage = ({ route, theme, updateTheme }) => {
               height: 3
             },
             {
-              src: '/static/blog-content/dark-mode/macos-dark-mode.jpg',
+              src: '/static/blog-content/dark-mode/macos-dark-mode.png',
               caption: 'macOS Mojave Dark Mode Setting',
               alt: 'macOS Mojave Dark Mode Setting',
               width: 1,
