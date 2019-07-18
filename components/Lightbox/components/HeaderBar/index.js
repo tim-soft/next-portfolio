@@ -34,8 +34,10 @@ const HeaderBar = ({
         >
           <FixedHeaderBar>
             <LeftSideDescriptionContainer>
-              <h2>{galleryTitle}</h2>
-              <h4>{images[currentIndex].caption}</h4>
+              <GalleryHeading>{galleryTitle}</GalleryHeading>
+              <GallerySubheading>
+                {images[currentIndex].caption}
+              </GallerySubheading>
             </LeftSideDescriptionContainer>
 
             <RightSideContainer>
@@ -71,19 +73,20 @@ HeaderBar.propTypes = {
 
 export default HeaderBar;
 
-const AnimatedContainer = animated(styled.div`
-  will-change: opacity, transform;
-  z-index: 10;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  cursor: auto;
-`);
+const GalleryHeading = styled.h2`
+  margin: 0 0 5px 0;
+  font-weight: normal;
+  margin-bottom: 5px;
+`;
+
+const GallerySubheading = styled.h4`
+  margin: 0;
+  font-weight: normal;
+  color: ${({ theme }) => theme.pageContentLinkHoverColor};
+`;
 
 const PageIndicator = styled.span`
   white-space: nowrap;
-  /* margin: 0 1em; */
   min-width: 60px;
   text-align: center;
 `;
@@ -106,27 +109,28 @@ const CloseButton = styled(ButtonControl)`
 `;
 
 const LeftSideDescriptionContainer = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-around;
-  flex-direction: column;
   height: 100%;
-  h2 {
-    margin-bottom: 5px !important;
-  }
+  border-left-width: 2px;
+  border-left-color: ${({ theme }) => theme.pageContentLinkHoverColor};
+  border-left-style: solid;
+  padding-left: 10px;
 `;
 
 const FixedHeaderBar = styled.header`
   min-height: 70px;
-  /* background: rgba(25, 25, 25, 0.36); */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5px 20px;
   color: ${({ theme }) => theme.headerNavFontColor};
-  h2,
-  h4 {
-    margin: 0;
-    font-weight: normal;
-  }
 `;
+
+const AnimatedContainer = animated(styled.div`
+  will-change: opacity, transform;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  cursor: auto;
+`);
