@@ -38,7 +38,7 @@
     "react-spring": "^9.0.0-beta.30",
     "react-switch": "^5.0.1",
     "stringify-object": "^3.3.0",
-    "styled-components": "^5.0.0-beta.8",
+    "styled-components": "^4.3.2",
     "styled-normalize": "^8.0.6",
     "three": "^0.106.2"
   },
