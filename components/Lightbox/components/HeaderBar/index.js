@@ -98,14 +98,13 @@ const RightSideContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 20px;
 `;
 
 const CloseButton = styled(ButtonControl)`
   height: 100%;
   display: flex;
   border-left-style: solid;
-  border-left-width: 2px;
+  border-left-width: 3px;
   border-left-color: ${({ theme }) => theme.headerNavFontColor};
   color: inherit;
 `;
@@ -114,7 +113,7 @@ const LeftSideDescriptionContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-left-width: 2px;
+  border-left-width: 3px;
   border-left-color: ${({ theme }) => theme.pageContentLinkHoverColor};
   border-left-style: solid;
   padding: 8px 0 8px 10px;

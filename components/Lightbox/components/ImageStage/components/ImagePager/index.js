@@ -188,6 +188,7 @@ export default ImagePager;
 
 const Image = styled.img`
   width: auto;
+  max-width: 100%;
   /* height: 100%; */
   /* Max height is screen height minus double header height */
   max-height: calc(100% - 90px);
