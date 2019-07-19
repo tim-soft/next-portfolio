@@ -73,6 +73,20 @@ const BlogPage = ({ route, theme, updateTheme }) => {
               alt: 'macOS Mojave Dark Mode Setting',
               width: 1200,
               height: 1218
+            },
+            // {
+            //   src: '/static/blog-content/dark-mode/ios-13-dark-mode-crop.jpg',
+            //   caption: 'iOS 13 Dark Mode Setting',
+            //   alt: 'iOS 13 Dark Mode Setting',
+            //   width: 748,
+            //   height: 750
+            // },
+            {
+              src: '/static/blog-content/dark-mode/android-9-dark-mode.jpg',
+              caption: 'Android 9.0 Dark Mode Setting',
+              alt: 'Android 9.0 Dark Mode Setting',
+              width: 1280,
+              height: 600
             }
           ]}
         />

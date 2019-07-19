@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Gallery from 'react-photo-gallery';
 import Lightbox from 'components/Lightbox';
+import GridImage from './components/GridImage';
 
 class BlogImageGallery extends React.Component {
   static propTypes = {
@@ -33,9 +34,9 @@ class BlogImageGallery extends React.Component {
     this.setState({ clientSide: true });
   }
 
-  openLightbox = (event, obj) => {
+  openLightbox = (e, { index }) => {
     this.setState({
-      currentImage: obj.index,
+      currentImage: index,
       lightboxIsOpen: true
     });
   };
@@ -69,6 +70,20 @@ class BlogImageGallery extends React.Component {
     }
   };
 
+  /**
+   * Sets breakpoints for column width based on containerWidth
+   *
+   * @int containerWidth The current width of the image grid
+   */
+  columnConfig = containerWidth => {
+    let columns = 1;
+    if (containerWidth >= 500) columns = 2;
+    if (containerWidth >= 900) columns = 3;
+    if (containerWidth >= 1500) columns = 4;
+
+    return columns;
+  };
+
   render() {
     const { currentImage, lightboxIsOpen, clientSide } = this.state;
     const { images, galleryTitle, imageMasonryDirection } = this.props;
@@ -77,10 +92,12 @@ class BlogImageGallery extends React.Component {
       <GalleryContainer>
         {clientSide && (
           <Gallery
-            photos={images}
+            columns={this.columnConfig}
             onClick={this.openLightbox}
-            margin={3}
+            photos={images}
+            margin={6}
             direction={imageMasonryDirection}
+            renderImage={GridImage}
           />
         )}
         <Lightbox
