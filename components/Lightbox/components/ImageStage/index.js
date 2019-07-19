@@ -69,7 +69,9 @@ ImageStage.propTypes = {
 export default ImageStage;
 
 const ImageContainer = styled.div`
-  height: calc(100% - 90px);
+  flex-grow: 1;
+  margin: 25px 0;
+  position: relative;
   width: 100%;
   display: flex;
   justify-content: center;

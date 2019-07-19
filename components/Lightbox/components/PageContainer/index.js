@@ -54,6 +54,8 @@ Page.propTypes = {
 export default Page;
 
 const AnimatedContainer = animated(styled.div`
+  display: flex;
+  flex-direction: column;
   position: fixed;
   top: 0;
   bottom: 0;

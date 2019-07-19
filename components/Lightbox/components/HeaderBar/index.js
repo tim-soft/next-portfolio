@@ -14,48 +14,46 @@ const HeaderBar = ({
   onClose,
   controlsAreHidden
 }) => (
-  <div style={{ height: '90px' }}>
-    <Transition
-      native
-      items={!controlsAreHidden}
-      initial={{ opacity: 1, transform: 'translate(0,0)' }}
-      from={{ opacity: 0, transform: 'translate(0,-40px)' }}
-      enter={{ opacity: 1, transform: 'translate(0,0)' }}
-      leave={{ opacity: 0, transform: 'translate(0,-40px)' }}
-    >
-      {controlsAreHidden =>
-        controlsAreHidden &&
-        // eslint-disable-next-line react/prop-types
-        (({ opacity, transform }) => (
-          <AnimatedContainer
-            style={{
-              opacity,
-              transform
-              // ...(opacity === 1 && { display: 'none' })
-            }}
-          >
-            <TopHeaderBar>
-              <LeftSideDescriptionContainer>
-                <GalleryHeading>{galleryTitle}</GalleryHeading>
-                <GallerySubheading>
-                  {images[currentIndex].caption}
-                </GallerySubheading>
-              </LeftSideDescriptionContainer>
+  <Transition
+    native
+    items={!controlsAreHidden}
+    initial={{ opacity: 1, transform: 'translate(0,0)' }}
+    from={{ opacity: 0, transform: 'translate(0,-40px)' }}
+    enter={{ opacity: 1, transform: 'translate(0,0)' }}
+    leave={{ opacity: 0, transform: 'translate(0,-40px)' }}
+  >
+    {controlsAreHidden =>
+      controlsAreHidden &&
+      // eslint-disable-next-line react/prop-types
+      (({ opacity, transform }) => (
+        <AnimatedContainer
+          style={{
+            opacity,
+            transform
+            // ...(opacity === 1 && { display: 'none' })
+          }}
+        >
+          <TopHeaderBar>
+            <LeftSideDescriptionContainer>
+              <GalleryHeading>{galleryTitle}</GalleryHeading>
+              <GallerySubheading>
+                {images[currentIndex].caption}
+              </GallerySubheading>
+            </LeftSideDescriptionContainer>
 
-              <RightSideContainer>
-                <PageIndicator>
-                  {currentIndex + 1} / {images.length}
-                </PageIndicator>
-                <CloseButton onClick={onClose} type="button">
-                  <IoIosClose size={60} />
-                </CloseButton>
-              </RightSideContainer>
-            </TopHeaderBar>
-          </AnimatedContainer>
-        ))
-      }
-    </Transition>
-  </div>
+            <RightSideContainer>
+              <PageIndicator>
+                {currentIndex + 1} / {images.length}
+              </PageIndicator>
+              <CloseButton onClick={onClose} type="button">
+                <IoIosClose size={60} />
+              </CloseButton>
+            </RightSideContainer>
+          </TopHeaderBar>
+        </AnimatedContainer>
+      ))
+    }
+  </Transition>
 );
 
 HeaderBar.propTypes = {
@@ -120,7 +118,6 @@ const LeftSideDescriptionContainer = styled.div`
 `;
 
 const TopHeaderBar = styled.header`
-  min-height: 100%;
   display: flex;
   justify-content: space-between;
   padding: 10px 2px 10px 20px;
