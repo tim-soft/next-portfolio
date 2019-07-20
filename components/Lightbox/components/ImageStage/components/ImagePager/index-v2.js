@@ -16,25 +16,24 @@ const ImagePager = ({
 }) => {
   const pageWidth = window.innerWidth;
 
-  const [props, set] = useSprings(images.length, i => ({
-    x: i * pageWidth,
-    display: 'block'
-  }));
+  // Generate page positions based on current index
+  const getPagePositions = (i, down = false, xDelta = 0) => {
+    const x = (i - currentIndex) * pageWidth + (down ? xDelta : 0);
+    if (i < currentIndex - 1 || i > currentIndex + 1)
+      return { x, display: 'none' };
+    return { x, display: 'block' };
+  };
 
-  useEffect(() => {
-    set(i => {
-      if (i < currentIndex - 1 || i > currentIndex + 1)
-        return { display: 'none' };
-      const x = (i - currentIndex) * pageWidth;
-      const sc = 1;
-      return { x, sc, display: 'block' };
-    });
-  });
+  // Set the initial pages
+  const [props, set] = useSprings(images.length, getPagePositions);
+
+  // Update page positions if props change
+  useEffect(() => set(getPagePositions));
 
   const bind = useGesture(
     ({ down, delta: [xDelta], direction: [xDir], distance, cancel }) => {
       // Handle next/prev image from valid drag
-      if (down && distance > pageWidth / 2) {
+      if (down && distance > pageWidth / 3) {
         const goToIndex = clamp(
           currentIndex + (xDir > 0 ? -1 : 1),
           0,
@@ -46,12 +45,7 @@ const ImagePager = ({
 
         cancel();
       }
-      set(i => {
-        if (i < currentIndex - 1 || i > currentIndex + 1)
-          return { display: 'none' };
-        const x = (i - currentIndex) * pageWidth + (down ? xDelta : 0);
-        return { x, display: 'block' };
-      });
+      set(i => getPagePositions(i, down, xDelta));
     }
   );
 
