@@ -1,11 +1,17 @@
 /* eslint-disable react/no-array-index-key */
-import { useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useSprings, animated } from 'react-spring';
 import { useGesture } from 'react-use-gesture';
 import clamp from 'lodash.clamp';
 
+/**
+ * Gesture controlled surface that animates prev/next page changes via spring physics.
+ *
+ * https://github.com/react-spring/react-use-gesture
+ * https://github.com/react-spring/react-spring
+ */
 const ImagePager = ({
   images,
   currentIndex,
@@ -14,6 +20,7 @@ const ImagePager = ({
   toggleControls,
   onClose
 }) => {
+  const firstRender = useRef(true);
   const pageWidth = window.innerWidth;
 
   // Generate page positions based on current index
@@ -24,27 +31,50 @@ const ImagePager = ({
     return { x, display: 'block' };
   };
 
-  // Set the initial pages
+  // Set the initial page positions
   const [props, set] = useSprings(images.length, getPagePositions);
 
-  // Update page positions if props change
-  useEffect(() => set(getPagePositions));
+  // Animate page change if currentIndex changes
+  useEffect(() => {
+    // No need to set page position for initial render
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
 
+    // Update page positions after prev/next page state change
+    set(getPagePositions);
+  });
+
+  // Animate current page and adjacent pages during drag
   const bind = useGesture(
-    ({ down, delta: [xDelta], direction: [xDir], distance, cancel }) => {
+    ({
+      down,
+      delta: [xDelta],
+      direction: [xDir],
+      velocity,
+      distance,
+      cancel
+    }) => {
+      const draggedFarEnough = down && distance > pageWidth / 3;
+      const draggedFastEnough = down && velocity > 2.8;
+
       // Handle next/prev image from valid drag
-      if (down && distance > pageWidth / 3) {
+      if (draggedFarEnough || draggedFastEnough) {
         const goToIndex = clamp(
           currentIndex + (xDir > 0 ? -1 : 1),
           0,
           images.length - 1
         );
 
+        // Cancel gesture animation
+        cancel();
+
         if (goToIndex > currentIndex) onClickNext();
         if (goToIndex < currentIndex) onClickPrev();
-
-        cancel();
       }
+
+      // Update page x-coordinates during gesture
       set(i => getPagePositions(i, down, xDelta));
     }
   );
@@ -55,7 +85,6 @@ const ImagePager = ({
       key={i}
       style={{
         display,
-        position: 'absolute',
         transform: x.to(xInterp => `translate3d(${xInterp}px,0,0)`)
       }}
     >
@@ -96,10 +125,7 @@ ImagePager.propTypes = {
   images: PropTypes.arrayOf(
     PropTypes.shape({
       src: PropTypes.string.isRequired,
-      caption: PropTypes.string.isRequired,
-      alt: PropTypes.string.isRequired,
-      width: PropTypes.number,
-      height: PropTypes.number
+      alt: PropTypes.string.isRequired
     })
   ).isRequired
 };
@@ -126,6 +152,7 @@ const Image = styled.img`
 `;
 
 const AnimatedTranslate = animated(styled.div`
+  position: absolute;
   height: 100%;
   width: 100%;
   will-change: transform;
