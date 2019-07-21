@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@tim-soft/react-dat-gui": "^2.2.5",
-    "@tim-soft/react-with-gesture": "^4.0.9",
     "color": "^3.1.2",
     "get-best-contrast-color": "^0.3.1",
     "get-contrast-ratio": "^0.2.1",

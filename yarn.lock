@@ -1023,11 +1023,6 @@
     lodash.set "^4.2.0"
     react-color "^2.13.8"
 
-"@tim-soft/react-with-gesture@^4.0.9":
-  version "4.0.9"
-  resolved "https://registry.yarnpkg.com/@tim-soft/react-with-gesture/-/react-with-gesture-4.0.9.tgz#c50c52b9a3a51ef6bce1414b3fd8b09e1252a17e"
-  integrity sha512-pNi6uxheaHAoApEjp4agWCRx7VJLsQgDN7q3CH9FUS8bioyrr4mx1jgVgAcRGkt23K+q1sgLJq8L0WB/9ZrOqA==
-
 "@types/events@*":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/events/-/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"
