@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import ImagePager from './components/ImagePager/index-v2';
+import ImagePager from './components/ImagePager';
 import ArrowButton from './components/ArrowButton';
 
 const ImageStage = ({

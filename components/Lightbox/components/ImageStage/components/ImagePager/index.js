@@ -1,196 +1,160 @@
 /* eslint-disable react/no-array-index-key */
-/* eslint-disable no-shadow */
-import React from 'react';
+import { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Gesture } from '@tim-soft/react-with-gesture';
-import { Spring, animated } from 'react-spring';
+import { useSprings, animated } from 'react-spring';
+import { useGesture } from 'react-use-gesture';
+import clamp from 'lodash.clamp';
 
-class ImagePager extends React.Component {
-  static propTypes = {
-    toggleControls: PropTypes.func.isRequired,
-    onClose: PropTypes.func.isRequired,
-    onClickPrev: PropTypes.func.isRequired,
-    onClickNext: PropTypes.func.isRequired,
-    currentIndex: PropTypes.number.isRequired,
-    images: PropTypes.arrayOf(
-      PropTypes.shape({
-        src: PropTypes.string.isRequired,
-        caption: PropTypes.string.isRequired,
-        alt: PropTypes.string.isRequired,
-        width: PropTypes.number,
-        height: PropTypes.number
-      })
-    ).isRequired
+/**
+ * Gesture controlled surface that animates prev/next page changes via spring physics.
+ *
+ * https://github.com/react-spring/react-use-gesture
+ * https://github.com/react-spring/react-spring
+ */
+const ImagePager = ({
+  images,
+  currentIndex,
+  onClickPrev,
+  onClickNext,
+  toggleControls,
+  onClose
+}) => {
+  const firstRender = useRef(true);
+  const pageWidth = window.innerWidth;
+
+  // Generate page positions based on current index
+  const getPagePositions = (i, down = false, xDelta = 0) => {
+    const x = (i - currentIndex) * pageWidth + (down ? xDelta : 0);
+    if (i < currentIndex - 1 || i > currentIndex + 1)
+      return { x, display: 'none' };
+    return { x, display: 'block' };
   };
 
-  constructor() {
-    super();
+  // Set the initial page positions
+  const [props, set] = useSprings(images.length, getPagePositions);
 
-    this.state = {
-      /* Maintain accurate measure of window width, even during resize events */
-      windowWidth: window.innerWidth
-    };
-  }
-
-  componentDidMount() {
-    window.addEventListener('resize', this.updateWindowWidth);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateWindowWidth);
-  }
-
-  updateWindowWidth = () => this.setState({ windowWidth: window.innerWidth });
-
-  // Determine whether to slide to next or previous image
-  clamp = (num, clamp, higher) => {
-    const { currentIndex, onClickPrev, onClickNext } = this.props;
-
-    const nextIndex = higher
-      ? Math.min(Math.max(num, clamp), higher)
-      : Math.min(num, clamp);
-
-    if (currentIndex > nextIndex) onClickPrev();
-    else if (currentIndex < nextIndex) onClickNext();
-  };
-
-  /**
-   * Callback function for <Gesture {...} />
-   *
-   * If swipe is successful, call clamp() to set state of next index
-   */
-  onMove = ({
-    down,
-    distance,
-    direction: [xDir],
-    cancel,
-    velocity,
-    i,
-    // pinch: [pinchDistance, pinchScale],
-    ...props
-  }) => {
-    // console.log({ pinchDistance, pinchDirection, pinchScale });
-    const { images, currentIndex } = this.props;
-    const { windowWidth } = this.state;
-
-    // Animate over to the next image if it has been dragged far enough or fast enough
-    if (
-      currentIndex === i &&
-      down &&
-      (distance > windowWidth / 3 || velocity > 3.0)
-    ) {
-      cancel(
-        this.clamp(currentIndex + (xDir > 0 ? -1 : 1), 0, images.length - 1)
-      );
+  // Animate page change if currentIndex changes
+  useEffect(() => {
+    // No need to set page position for initial render
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
     }
 
-    // Always return props back to <Gesture />
-    return props;
-  };
+    // Update page positions after prev/next page state change
+    set(getPagePositions);
+  });
 
-  render() {
-    const { images, currentIndex, onClose, toggleControls } = this.props;
-    const { windowWidth } = this.state;
+  // Animate current page and adjacent pages during drag
+  const bind = useGesture(
+    ({
+      down,
+      delta: [xDelta],
+      direction: [xDir],
+      velocity,
+      distance,
+      cancel
+    }) => {
+      const draggedFarEnough = down && distance > pageWidth / 3;
+      const draggedFastEnough = down && velocity > 2.8;
 
-    return images.map((image, i) => (
-      <Gesture key={i} onMove={props => this.onMove({ ...props, i })}>
-        {({ down, delta: [xDelta], distance, pinch: [, pinchScale] }) => {
-          // Flag to differentiate a click versus a drag
-          // Useful for showing/hiding controls
-          const clickNotDrag = i === currentIndex && xDelta === 0;
-          // Override <Spring /> styles with these if applicable to the current image
-          let gestureConfig = {};
+      // Handle next/prev image from valid drag
+      if (draggedFarEnough || draggedFastEnough) {
+        const goToIndex = clamp(
+          currentIndex + (xDir > 0 ? -1 : 1),
+          0,
+          images.length - 1
+        );
 
-          // Hide image if not the current image
-          if (i < currentIndex - 1 && i > currentIndex + 1)
-            gestureConfig = { display: 'none' };
-          else {
-            // Update current image position
-            const x = (i - currentIndex) * windowWidth + (down ? xDelta : 0);
-            const sc = down ? 1 - distance / windowWidth / 1.9 : 1;
+        // Cancel gesture animation
+        cancel();
 
-            gestureConfig = { x, sc, display: 'block' };
-          }
+        if (goToIndex > currentIndex) onClickNext();
+        if (goToIndex < currentIndex) onClickPrev();
+      }
 
-          return (
-            <Spring
-              native
-              to={{
-                pinchScale,
-                x: (i - currentIndex) * windowWidth,
-                sc: 1,
-                display: 'block',
-                ...gestureConfig
-              }}
-            >
-              {({ x, display /* , sc */ }) => (
-                <animated.div
-                  style={{
-                    display,
-                    transform: x.to(x => `translate3d(${x}px,0,0)`),
-                    position: 'absolute',
-                    width: '100%',
-                    height: '100%',
-                    willChange: 'transform',
-                    userSelect: 'none',
-                    touchAction: 'none'
-                  }}
-                >
-                  <animated.div
-                    style={{
-                      // transform: sc.to(
-                      //   s => `scale(${(s + pinchScale) / 2})`
-                      // ),
-                      transform: `scale(${pinchScale})`,
-                      width: '100%',
-                      height: '100%',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      willChange: 'transform',
-                      userSelect: 'none'
-                    }}
-                    // If the background is clicked close the lightbox
-                    onClick={() => {
-                      if (clickNotDrag) onClose();
-                    }}
-                  >
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      draggable="false"
-                      onDragStart={e => {
-                        // Disable image ghost dragging in firefox
-                        e.preventDefault();
-                      }}
-                      onClick={e => {
-                        // Don't close lighbox when clicking image
-                        e.stopPropagation();
-                        e.nativeEvent.stopImmediatePropagation();
+      // Update page x-coordinates during gesture
+      set(i => getPagePositions(i, down, xDelta));
+    }
+  );
 
-                        // Show/Hide controls when image is clicked
-                        if (clickNotDrag) toggleControls();
-                      }}
-                    />
-                  </animated.div>
-                </animated.div>
-              )}
-            </Spring>
-          );
+  return props.map(({ x, display }, i) => (
+    <AnimatedTranslate
+      {...bind()}
+      key={i}
+      style={{
+        display,
+        transform: x.to(xInterp => `translate3d(${xInterp}px,0,0)`)
+      }}
+    >
+      <PageContentContainer
+        // If the background is clicked close the lightbox
+        onClick={() => {
+          if (x.value === 0) onClose();
         }}
-      </Gesture>
-    ));
-  }
-}
+      >
+        <Image
+          src={images[i].src}
+          alt={images[i].alt}
+          draggable="false"
+          onDragStart={e => {
+            // Disable image ghost dragging in firefox
+            e.preventDefault();
+          }}
+          onClick={e => {
+            // Don't close lighbox when clicking image
+            e.stopPropagation();
+            e.nativeEvent.stopImmediatePropagation();
+
+            // Show/Hide controls when image is clicked
+            if (x.value === 0) toggleControls();
+          }}
+        />
+      </PageContentContainer>
+    </AnimatedTranslate>
+  ));
+};
+
+ImagePager.propTypes = {
+  toggleControls: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onClickPrev: PropTypes.func.isRequired,
+  onClickNext: PropTypes.func.isRequired,
+  currentIndex: PropTypes.number.isRequired,
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      src: PropTypes.string.isRequired,
+      alt: PropTypes.string.isRequired
+    })
+  ).isRequired
+};
 
 export default ImagePager;
+
+const PageContentContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  touch-action: none;
+`;
 
 const Image = styled.img`
   width: auto;
   max-height: 100%;
   max-width: 100%;
   user-select: none;
-  filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.4))
-    drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+  box-shadow: 0 62.5px 125px -25px rgba(50, 50, 73, 0.5),
+    0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6);
 `;
+
+const AnimatedTranslate = animated(styled.div`
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  will-change: transform;
+  touch-action: none;
+`);
