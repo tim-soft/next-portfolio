@@ -77,6 +77,6 @@ const AnimatedImage = animated(styled.img`
   max-height: 100%;
   max-width: 100%;
   user-select: none;
-  box-shadow: 0 62.5px 125px -25px rgba(50, 50, 73, 0.5),
-    0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6);
+  filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.4))
+    drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
 `);
