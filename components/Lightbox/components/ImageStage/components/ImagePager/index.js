@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { useSprings, animated } from 'react-spring';
 import { useGesture } from 'react-use-gesture';
 import clamp from 'lodash.clamp';
+import useWindowSize from '../../utils/useWindowSize';
 
 /**
  * Gesture controlled surface that animates prev/next page changes via spring physics.
@@ -21,7 +22,7 @@ const ImagePager = ({
   onClose
 }) => {
   const firstRender = useRef(true);
-  const pageWidth = window.innerWidth;
+  const { width: pageWidth } = useWindowSize();
 
   // Generate page positions based on current index
   const getPagePositions = (i, down = false, xDelta = 0) => {
@@ -47,8 +48,8 @@ const ImagePager = ({
   });
 
   // Animate current page and adjacent pages during drag
-  const bind = useGesture(
-    ({
+  const bind = useGesture({
+    onDrag: ({
       down,
       delta: [xDelta],
       direction: [xDir],
@@ -77,7 +78,7 @@ const ImagePager = ({
       // Update page x-coordinates during gesture
       set(i => getPagePositions(i, down, xDelta));
     }
-  );
+  });
 
   return props.map(({ x, display }, i) => (
     <AnimatedTranslate

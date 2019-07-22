@@ -5,6 +5,9 @@ import styled from 'styled-components';
 import { Transition, animated, to } from 'react-spring';
 import Color from 'color';
 
+/**
+ * Animates the lightbox as it opens/closes
+ */
 const Page = ({ children, isOpen }) => (
   <Transition
     native
