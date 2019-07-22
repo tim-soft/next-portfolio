@@ -6,6 +6,7 @@ import { useSprings, animated } from 'react-spring';
 import { useGesture } from 'react-use-gesture';
 import clamp from 'lodash.clamp';
 import useWindowSize from '../../utils/useWindowSize';
+import Image from '../Image';
 
 /**
  * Gesture controlled surface that animates prev/next page changes via spring physics.
@@ -91,26 +92,13 @@ const ImagePager = ({
     >
       <PageContentContainer
         // If the background is clicked close the lightbox
-        onClick={() => {
-          if (x.value === 0) onClose();
-        }}
+        onClick={() => x.value === 0 && onClose()}
       >
         <Image
           src={images[i].src}
           alt={images[i].alt}
-          draggable="false"
-          onDragStart={e => {
-            // Disable image ghost dragging in firefox
-            e.preventDefault();
-          }}
-          onClick={e => {
-            // Don't close lighbox when clicking image
-            e.stopPropagation();
-            e.nativeEvent.stopImmediatePropagation();
-
-            // Show/Hide controls when image is clicked
-            if (x.value === 0) toggleControls();
-          }}
+          isCurrentImage={i === currentIndex}
+          toggleControls={() => (x.value === 0 ? toggleControls() : null)}
         />
       </PageContentContainer>
     </AnimatedTranslate>
@@ -141,15 +129,6 @@ const PageContentContainer = styled.div`
   height: 100%;
   user-select: none;
   touch-action: none;
-`;
-
-const Image = styled.img`
-  width: auto;
-  max-height: 100%;
-  max-width: 100%;
-  user-select: none;
-  box-shadow: 0 62.5px 125px -25px rgba(50, 50, 73, 0.5),
-    0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6);
 `;
 
 const AnimatedTranslate = animated(styled.div`
