@@ -1,11 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CreatePortal from 'components/CreatePortal';
-import {
-  HeaderBar,
-  ImageStage,
-  PageContainer
-} from 'components/Lightbox/components';
+import CreatePortal from '../CreatePortal';
+import { HeaderBar, ImageStage, PageContainer } from './components';
 
 export default class Lightbox extends React.Component {
   static propTypes = {
