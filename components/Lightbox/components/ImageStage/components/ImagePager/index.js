@@ -77,8 +77,11 @@ const ImagePager = ({
         if (goToIndex < currentIndex) onClickPrev();
       }
 
-      // Update page x-coordinates during single finger/mouse gesture
-      if (touches.length === 1) set(i => getPagePositions(i, down, xDelta));
+      // Don't move pager during two+ finger touch events, i.e. pinch-zoom
+      if (touches && touches.length > 1) return;
+
+      // Update page x-coordinates for single finger/mouse gestures
+      set(i => getPagePositions(i, down, xDelta));
     }
   });
 
