@@ -10,7 +10,7 @@ import { useGesture } from 'react-use-gesture';
  * https://github.com/react-spring/react-use-gesture
  * https://github.com/react-spring/react-spring
  */
-const Image = ({ src, alt, isCurrentImage, toggleControls, ...restProps }) => {
+const Image = ({ src, alt, isCurrentImage, toggleControls }) => {
   const [scale, setScale] = useState(1);
   const [immediate, setImmediate] = useState(false);
 
@@ -43,7 +43,6 @@ const Image = ({ src, alt, isCurrentImage, toggleControls, ...restProps }) => {
   return (
     <AnimatedImage
       {...bind()}
-      {...restProps}
       style={animStyles}
       src={src}
       alt={alt}
