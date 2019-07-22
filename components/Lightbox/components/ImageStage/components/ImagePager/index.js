@@ -56,7 +56,8 @@ const ImagePager = ({
       direction: [xDir],
       velocity,
       distance,
-      cancel
+      cancel,
+      event: { touches }
     }) => {
       const draggedFarEnough = down && distance > pageWidth / 3;
       const draggedFastEnough = down && velocity > 2.8;
@@ -76,8 +77,8 @@ const ImagePager = ({
         if (goToIndex < currentIndex) onClickPrev();
       }
 
-      // Update page x-coordinates during gesture
-      set(i => getPagePositions(i, down, xDelta));
+      // Update page x-coordinates during single finger/mouse gesture
+      if (touches.length === 1) set(i => getPagePositions(i, down, xDelta));
     }
   });
 
