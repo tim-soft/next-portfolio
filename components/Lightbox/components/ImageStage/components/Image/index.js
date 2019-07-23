@@ -26,7 +26,10 @@ const Image = ({
   const [{ scale, translateX, translateY }, set] = useSpring(() => ({
     ...defaultImageTransform(),
     onRest: i => {
-      if (i.scale < 1) set(defaultImageTransform);
+      if (i.scale < 1) {
+        set(defaultImageTransform);
+        setDisableDrag(false);
+      }
     }
   }));
 
