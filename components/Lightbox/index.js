@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CreatePortal from '../CreatePortal';
-import { HeaderBar, ImageStage, PageContainer } from './components';
+import { ImageStage, PageContainer } from './components';
 
-export default class Lightbox extends React.Component {
+class Lightbox extends React.Component {
   static propTypes = {
     galleryTitle: PropTypes.string.isRequired,
     isOpen: PropTypes.bool.isRequired,
@@ -19,7 +19,14 @@ export default class Lightbox extends React.Component {
         width: PropTypes.number,
         height: PropTypes.number
       })
-    ).isRequired
+    ).isRequired,
+    renderHeader: PropTypes.func,
+    renderPagerButton: PropTypes.func
+  };
+
+  static defaultProps = {
+    renderHeader: () => null,
+    renderPagerButton: () => null
   };
 
   constructor(props) {
@@ -110,7 +117,9 @@ export default class Lightbox extends React.Component {
       currentIndex,
       onClickPrev,
       onClickNext,
-      galleryTitle
+      galleryTitle,
+      renderHeader: HeaderBar,
+      renderPagerButton
     } = this.props;
 
     const { controlsAreHidden } = this.state;
@@ -134,9 +143,12 @@ export default class Lightbox extends React.Component {
             onClickNext={onClickNext}
             controlsAreHidden={controlsAreHidden}
             toggleControls={this.toggleControls}
+            renderPagerButton={renderPagerButton}
           />
         </PageContainer>
       </CreatePortal>
     );
   }
 }
+
+export default Lightbox;

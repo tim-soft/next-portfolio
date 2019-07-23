@@ -3,7 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ImagePager from './components/ImagePager';
-import ArrowButton from './components/ArrowButton';
 
 const ImageStage = ({
   images,
@@ -12,7 +11,8 @@ const ImageStage = ({
   onClickNext,
   onClose,
   toggleControls,
-  controlsAreHidden
+  controlsAreHidden,
+  renderPagerButton: ArrowButton
 }) => {
   // Extra sanity check that the next/prev image exists before moving to it
   const canPrev = currentIndex > 0;
@@ -63,7 +63,8 @@ ImageStage.propTypes = {
       width: PropTypes.number,
       height: PropTypes.number
     })
-  ).isRequired
+  ).isRequired,
+  renderPagerButton: PropTypes.func.isRequired
 };
 
 export default ImageStage;

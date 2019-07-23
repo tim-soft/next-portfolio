@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { Transition, animated } from 'react-spring';
-import ButtonControl from '../../../ButtonControl';
+import ButtonControl from './LightboxButtonControl';
 
 const ArrowButton = ({ position, onClick, disabled, controlsAreHidden }) => {
   return (

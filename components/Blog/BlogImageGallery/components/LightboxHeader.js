@@ -1,18 +1,16 @@
-/* eslint-disable no-shadow */
-import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { IoIosClose } from 'react-icons/io';
 import { Transition, animated } from 'react-spring';
+import { IoIosClose } from 'react-icons/io';
 import Color from 'color';
-import ButtonControl from '../ButtonControl';
+import ButtonControl from './LightboxButtonControl';
 
-const HeaderBar = ({
+const LightboxHeader = ({
+  controlsAreHidden,
   galleryTitle,
   images,
   currentIndex,
-  onClose,
-  controlsAreHidden
+  onClose
 }) => (
   <Transition
     native
@@ -22,15 +20,14 @@ const HeaderBar = ({
     enter={{ opacity: 1, transform: 'translate(0,0)' }}
     leave={{ opacity: 0, transform: 'translate(0,-40px)' }}
   >
-    {controlsAreHidden =>
-      controlsAreHidden &&
+    {showHeader =>
+      showHeader &&
       // eslint-disable-next-line react/prop-types
       (({ opacity, transform }) => (
         <AnimatedContainer
           style={{
             opacity,
             transform
-            // ...(opacity === 1 && { display: 'none' })
           }}
         >
           <TopHeaderBar>
@@ -56,7 +53,7 @@ const HeaderBar = ({
   </Transition>
 );
 
-HeaderBar.propTypes = {
+LightboxHeader.propTypes = {
   controlsAreHidden: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   galleryTitle: PropTypes.string.isRequired,
@@ -72,7 +69,7 @@ HeaderBar.propTypes = {
   ).isRequired
 };
 
-export default HeaderBar;
+export default LightboxHeader;
 
 const GalleryHeading = styled.h2`
   margin: 0 0 5px 0;

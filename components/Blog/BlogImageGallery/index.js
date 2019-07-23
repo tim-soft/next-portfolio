@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Gallery from 'react-photo-gallery';
-import Lightbox from 'components/Lightbox';
+import Lightbox from '../../Lightbox';
 import GridImage from './components/GridImage';
+import LightboxHeader from './components/LightboxHeader';
+import LightboxArrowButton from './components/LightboxArrowButton';
 
 class BlogImageGallery extends React.Component {
   static propTypes = {
@@ -27,7 +29,11 @@ class BlogImageGallery extends React.Component {
   constructor() {
     super();
 
-    this.state = { currentImage: 0, lightboxIsOpen: false, clientSide: false };
+    this.state = {
+      currentImage: 0,
+      lightboxIsOpen: false,
+      clientSide: false
+    };
   }
 
   componentDidMount() {
@@ -108,6 +114,8 @@ class BlogImageGallery extends React.Component {
           images={images}
           currentIndex={currentImage}
           galleryTitle={galleryTitle}
+          renderHeader={LightboxHeader}
+          renderPagerButton={LightboxArrowButton}
         />
       </GalleryContainer>
     );

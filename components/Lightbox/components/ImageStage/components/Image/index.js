@@ -32,7 +32,7 @@ const Image = ({ src, alt, isCurrentImage, toggleControls }) => {
   // Animate current page and adjacent pages during drag
   const bind = useGesture({
     onPinch: ({ delta: [deltaDist] }) => {
-      const pinchScale = scale + deltaDist * 0.0003;
+      const pinchScale = scale + deltaDist * 0.0004;
 
       if (pinchScale < 0.5) setScale(0.5);
       else if (pinchScale > 3.0) setScale(3.0);

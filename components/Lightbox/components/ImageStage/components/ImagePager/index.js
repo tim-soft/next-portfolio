@@ -57,7 +57,7 @@ const ImagePager = ({
       velocity,
       distance,
       cancel,
-      event: { touches }
+      touches
     }) => {
       const draggedFarEnough = down && distance > pageWidth / 3;
       const draggedFastEnough = down && velocity > 2.8;
@@ -78,7 +78,7 @@ const ImagePager = ({
       }
 
       // Don't move pager during two+ finger touch events, i.e. pinch-zoom
-      if (touches && touches.length > 1) return;
+      if (touches > 1) return;
 
       // Update page x-coordinates for single finger/mouse gestures
       set(i => getPagePositions(i, down, xDelta));
