@@ -17,15 +17,19 @@ const Image = ({
   toggleControls,
   setDisableDrag
 }) => {
-  const [{ scale, translateX, translateY }, set] = useSpring(() => ({
+  const defaultImageTransform = () => ({
     scale: 1,
     translateX: 0,
     translateY: 0
-  }));
+  });
+
+  const [{ scale, translateX, translateY }, set] = useSpring(
+    defaultImageTransform
+  );
 
   // Reset scale of this image when switching to new image
   useEffect(() => {
-    if (!isCurrentImage) set({ scale: 1 });
+    if (!isCurrentImage) set(defaultImageTransform);
   });
 
   // Animate current page and adjacent pages during drag
@@ -39,14 +43,22 @@ const Image = ({
     },
     onPinchEnd: () => {
       if (scale.value > 1) setDisableDrag(true);
-      else setDisableDrag(false);
+      else {
+        setDisableDrag(false);
+        set(defaultImageTransform);
+      }
     },
     onDrag: ({ delta: [xDelta, yDelta] }) => {
       if (scale.value <= 1) return;
       set({
-        translateX: translateX.value + xDelta / 2,
-        translateY: translateY.value + yDelta / 2
+        translateX: translateX.value + xDelta / 3,
+        translateY: translateY.value + yDelta / 3
       });
+    },
+    onDragEnd: () => {
+      if (scale.value <= 1) {
+        set(defaultImageTransform);
+      }
     }
   });
 
