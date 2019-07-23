@@ -37,7 +37,7 @@
     "react-scrollbars-custom": "^4.0.16",
     "react-spring": "^9.0.0-beta.30",
     "react-switch": "^5.0.1",
-    "react-use-gesture": "^5.1.3",
+    "react-use-gesture": "^5.2.0",
     "stringify-object": "^3.3.0",
     "styled-components": "^4.3.2",
     "styled-normalize": "^8.0.6",

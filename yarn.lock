@@ -1248,9 +1248,9 @@ acorn-jsx@^5.0.0:
   integrity sha512-HJ7CfNHrfJLlNTzIEUTj43LNWGkqpRLxm3YjAlcD0ACydk9XynzYsCBHxut+iqt+1aBXkx9UP/w/ZqMr13XIzg==
 
 acorn@^6.0.7, acorn@^6.2.0:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.2.0.tgz#67f0da2fc339d6cfb5d6fb244fd449f33cd8bbe3"
-  integrity sha512-8oe72N3WPMjA+2zVG71Ia0nXZ8DpQH+QyyHO+p06jT8eg8FGG3FbcUIi8KziHlAfheJQZeoqbvq1mQSQHXKYLw==
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.2.1.tgz#3ed8422d6dec09e6121cc7a843ca86a330a86b51"
+  integrity sha512-JD0xT5FCRDNyjDda3Lrg/IxFscp9q4tiYtxE1/nOzlKCk7hIRuYjhq1kCNkbPjMRMZuFq20HNQn1I9k8Oj0E+Q==
 
 ajv-errors@^1.0.0:
   version "1.0.1"
@@ -1960,9 +1960,9 @@ camelize@^1.0.0:
   integrity sha1-FkpUg+Yw+kMh5a8HAg5TGDGyYJs=
 
 caniuse-lite@^1.0.30000980, caniuse-lite@^1.0.30000984:
-  version "1.0.30000984"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000984.tgz#dc96c3c469e9bcfc6ad5bdd24c77ec918ea76fe0"
-  integrity sha512-n5tKOjMaZ1fksIpQbjERuqCyfgec/m9pferkFQbLmWtqLUdmt12hNhjSwsmPdqeiG2NkITOQhr1VYIwWSAceiA==
+  version "1.0.30000985"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000985.tgz#0eb40f6c8a8c219155cbe43c4975c0efb4a0f77f"
+  integrity sha512-1ngiwkgqAYPG0JSSUp3PUDGPKKY59EK7NrGGX+VOxaKCNzRbNc7uXMny+c3VJfZxtoK3wSImTvG9T9sXiTw2+w==
 
 ccount@^1.0.0:
   version "1.0.4"
@@ -2698,9 +2698,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.191:
-  version "1.3.194"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.194.tgz#a96452a96d4539131957aade9f634a45721f2819"
-  integrity sha512-w0LHR2YD9Ex1o+Sz4IN2hYzCB8vaFtMNW+yJcBf6SZlVqgFahkne/4rGVJdk4fPF98Gch9snY7PiabOh+vqHNg==
+  version "1.3.199"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.199.tgz#f9a62a74cda77854310a2abffde8b75591ea09a1"
+  integrity sha512-gachlDdHSK47s0N2e58GH9HMC6Z4ip0SfmYUa5iEbE50AKaOUXysaJnXMfKj0xB245jWbYcyFSH+th3rqsF8hA==
 
 elegant-spinner@^1.0.1:
   version "1.0.1"
@@ -2887,9 +2887,9 @@ eslint-plugin-prettier@^3.1.0:
     prettier-linter-helpers "^1.0.0"
 
 eslint-plugin-react@^7.14.2:
-  version "7.14.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.14.2.tgz#94c193cc77a899ac0ecbb2766fbef88685b7ecc1"
-  integrity sha512-jZdnKe3ip7FQOdjxks9XPN0pjUKZYq48OggNMd16Sk+8VXx6JOvXmlElxROCgp7tiUsTsze3jd78s/9AFJP2mA==
+  version "7.14.3"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.14.3.tgz#911030dd7e98ba49e1b2208599571846a66bdf13"
+  integrity sha512-EzdyyBWC4Uz2hPYBiEJrKCUi2Fn+BJ9B/pJQcjw5X+x/H2Nm59S4MJIvL4O5NEE0+WbnQwEBxWY03oUk+Bc3FA==
   dependencies:
     array-includes "^3.0.3"
     doctrine "^2.1.0"
@@ -5741,9 +5741,9 @@ postcss-html@^0.36.0:
     htmlparser2 "^3.10.0"
 
 postcss-jsx@^0.36.1:
-  version "0.36.1"
-  resolved "https://registry.yarnpkg.com/postcss-jsx/-/postcss-jsx-0.36.1.tgz#ab5e469e7449b84bd1a5973ff555fbe84c39f91d"
-  integrity sha512-xaZpy01YR7ijsFUtu5rViYCFHurFIPHir+faiOQp8g/NfTfWqZCKDhKrydQZ4d8WlSAmVdXGwLjpFbsNUI26Sw==
+  version "0.36.2"
+  resolved "https://registry.yarnpkg.com/postcss-jsx/-/postcss-jsx-0.36.2.tgz#34bcd6752426a60b8df73f069e7595383060a794"
+  integrity sha512-7B8a8a6YDOQFqMQ9UmOo+IPPb2i14Z57Fvc9cOI11B3bWMSY2O6r2XJ3tlcQhUhv93TeN0ntxehTaSWJDQavlg==
   dependencies:
     "@babel/core" ">=7.2.2"
 
@@ -6177,10 +6177,10 @@ react-three-fiber@^2.2.11:
     resize-observer-polyfill "^1.5.1"
     scheduler "0.13.3"
 
-react-use-gesture@^5.1.3:
-  version "5.1.3"
-  resolved "https://registry.yarnpkg.com/react-use-gesture/-/react-use-gesture-5.1.3.tgz#4aed28b9fd371200a5f949750a0488b68ed12356"
-  integrity sha512-u6fkrsXCE6Ff2KMs8DkouXfejCCKKsl0TcwJlz9+uTsSCg1IIBJWSoYMN/qTQ/RLciXNs5N7FrVVQqMfuWYpow==
+react-use-gesture@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/react-use-gesture/-/react-use-gesture-5.2.0.tgz#ebd3c66107e848ea6d67b3ac5274860cdd12a418"
+  integrity sha512-fH0kPcclMfDsbb7ayKWEkEBkkYjGvaCXgyaVCaPRehr2MZLT7kxL8VfOw53YmIcIZqjwMFoAoHUO5Q1W3hYYUQ==
 
 react@^16.8.6:
   version "16.8.6"
