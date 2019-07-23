@@ -43,7 +43,10 @@ const Image = ({
     },
     onDrag: ({ delta: [xDelta, yDelta] }) => {
       if (scale.value <= 1) return;
-      set({ translateX: xDelta / 2, translateY: yDelta / 2 });
+      set({
+        translateX: translateX.value + xDelta / 2,
+        translateY: translateY.value + yDelta / 2
+      });
     }
   });
 
