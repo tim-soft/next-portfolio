@@ -113,29 +113,27 @@ class MenuItem extends React.Component {
         </MenuLink>
 
         {/* The pop-out menu content */}
-        {children && (
-          <Transition
-            native
-            items={isHovering || alwaysShowMenu}
-            initial={{ opacity: 0, height: '0px' }}
-            from={{ opacity: 0, height: '0px' }}
-            enter={{ opacity: 1, height: `${menuHeight}px` }}
-            leave={{ opacity: 0, height: '0px' }}
-          >
-            {isOpen =>
-              isOpen &&
-              (animatedStyles => (
-                <AnimatedContainer
-                  style={animatedStyles}
-                  rightOffset={rightOffset}
-                  width={menuWidth}
-                >
-                  {useScroll ? <Scrollbar>{children}</Scrollbar> : children}
-                </AnimatedContainer>
-              ))
-            }
-          </Transition>
-        )}
+        <Transition
+          native
+          items={children && (isHovering || alwaysShowMenu)}
+          initial={{ opacity: 0, height: '0px' }}
+          from={{ opacity: 0, height: '0px' }}
+          enter={{ opacity: 1, height: `${menuHeight}px` }}
+          leave={{ opacity: 0, height: '0px' }}
+        >
+          {isOpen =>
+            isOpen &&
+            (animatedStyles => (
+              <AnimatedContainer
+                style={animatedStyles}
+                rightOffset={rightOffset}
+                width={menuWidth}
+              >
+                {useScroll ? <Scrollbar>{children}</Scrollbar> : children}
+              </AnimatedContainer>
+            ))
+          }
+        </Transition>
       </MenuItemRelativeContainer>
     );
   }

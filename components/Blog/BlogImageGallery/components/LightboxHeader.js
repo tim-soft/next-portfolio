@@ -22,14 +22,8 @@ const LightboxHeader = ({
   >
     {showHeader =>
       showHeader &&
-      // eslint-disable-next-line react/prop-types
-      (({ opacity, transform }) => (
-        <AnimatedContainer
-          style={{
-            opacity,
-            transform
-          }}
-        >
+      (animStyles => (
+        <AnimatedContainer style={animStyles}>
           <TopHeaderBar>
             <LeftSideDescriptionContainer>
               <GalleryHeading>{galleryTitle}</GalleryHeading>
