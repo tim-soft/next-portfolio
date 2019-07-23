@@ -23,9 +23,12 @@ const Image = ({
     translateY: 0
   });
 
-  const [{ scale, translateX, translateY }, set] = useSpring(
-    defaultImageTransform
-  );
+  const [{ scale, translateX, translateY }, set] = useSpring(() => ({
+    ...defaultImageTransform(),
+    onRest: i => {
+      if (i.scale < 1) set(defaultImageTransform);
+    }
+  }));
 
   // Reset scale of this image when switching to new image
   useEffect(() => {
@@ -56,9 +59,7 @@ const Image = ({
       });
     },
     onDragEnd: () => {
-      if (scale.value <= 1) {
-        set(defaultImageTransform);
-      }
+      if (scale.value <= 1) set(defaultImageTransform);
     }
   });
 
