@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useSprings, animated } from 'react-spring';
@@ -24,6 +24,7 @@ const ImagePager = ({
 }) => {
   const firstRender = useRef(true);
   const { width: pageWidth } = useWindowSize();
+  const [disableDrag, setDisableDrag] = useState(false);
 
   // Generate page positions based on current index
   const getPagePositions = (i, down = false, xDelta = 0) => {
@@ -59,6 +60,9 @@ const ImagePager = ({
       cancel,
       touches
     }) => {
+      // Disable drag if Image has been zoomed in to allow for panning
+      if (disableDrag) return;
+
       const draggedFarEnough = down && distance > pageWidth / 3;
       const draggedFastEnough = down && velocity > 2.8;
 
@@ -99,6 +103,7 @@ const ImagePager = ({
         onClick={() => x.value === 0 && onClose()}
       >
         <Image
+          setDisableDrag={setDisableDrag}
           src={images[i].src}
           alt={images[i].alt}
           isCurrentImage={i === currentIndex}

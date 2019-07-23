@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { useSpring, animated } from 'react-spring';
+import { useSpring, animated, to } from 'react-spring';
 import { useGesture } from 'react-use-gesture';
 
 /**
@@ -10,8 +10,18 @@ import { useGesture } from 'react-use-gesture';
  * https://github.com/react-spring/react-use-gesture
  * https://github.com/react-spring/react-spring
  */
-const Image = ({ src, alt, isCurrentImage, toggleControls }) => {
-  const [{ scale }, set] = useSpring(() => ({ scale: 1 }));
+const Image = ({
+  src,
+  alt,
+  isCurrentImage,
+  toggleControls,
+  setDisableDrag
+}) => {
+  const [{ scale, translateX, translateY }, set] = useSpring(() => ({
+    scale: 1,
+    translateX: 0,
+    translateY: 0
+  }));
 
   // Reset scale of this image when switching to new image
   useEffect(() => {
@@ -26,6 +36,14 @@ const Image = ({ src, alt, isCurrentImage, toggleControls }) => {
       if (pinchScale < 0.5) set({ scale: 0.5 });
       else if (pinchScale > 3.0) set({ scale: 3.0 });
       else set({ scale: pinchScale });
+    },
+    onPinchEnd: () => {
+      if (scale.value > 1) setDisableDrag(true);
+      else setDisableDrag(false);
+    },
+    onDrag: ({ delta: [xDelta, yDelta] }) => {
+      if (scale.value <= 1) return;
+      set({ translateX: xDelta / 2, translateY: yDelta / 2 });
     }
   });
 
@@ -33,7 +51,10 @@ const Image = ({ src, alt, isCurrentImage, toggleControls }) => {
     <AnimatedImage
       {...bind()}
       style={{
-        transform: scale.to(s => `scale(${s})`)
+        transform: to(
+          [scale, translateX, translateY],
+          (s, x, y) => `scale(${s}) translateX(${x}px) translateY(${y}px)`
+        )
       }}
       src={src}
       alt={alt}
@@ -58,7 +79,8 @@ Image.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
   isCurrentImage: PropTypes.bool.isRequired,
-  toggleControls: PropTypes.func.isRequired
+  toggleControls: PropTypes.func.isRequired,
+  setDisableDrag: PropTypes.func.isRequired
 };
 
 export default Image;
