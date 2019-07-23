@@ -84,11 +84,13 @@ class WebApp extends App {
       ...dynamicTheme
     };
 
+    // Maintain single element array for route transition
     const pages = [
       {
         route: router.route,
         Component,
-        pageProps
+        pageProps,
+        pageTheme
       }
     ];
 
