@@ -72,9 +72,10 @@ const Image = ({
       style={{
         transform: to(
           [scale, translateX, translateY],
-          (s, x, y) => `scale(${s}) translateX(${x}px) translateY(${y}px)`
+          (s, x, y) => `scale(${s}) translate(${x}px, ${y}px)`
         )
       }}
+      isCurrentImage={isCurrentImage}
       src={src}
       alt={alt}
       draggable="false"
@@ -109,7 +110,8 @@ const AnimatedImage = animated(styled.img`
   max-height: 100%;
   max-width: 100%;
   user-select: none;
-  will-change: transform;
-  filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.4))
-    drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+  will-change: ${({ isCurrentImage }) =>
+    isCurrentImage ? 'transform' : 'unset'};
+  /* filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.4))
+    drop-shadow(0 0 2px rgba(0, 0, 0, 0.5)); */
 `);

@@ -95,7 +95,7 @@ const ImagePager = ({
       key={i}
       style={{
         display,
-        transform: x.to(xInterp => `translate3d(${xInterp}px,0,0)`)
+        transform: x.to(xInterp => `translateX(${xInterp}px)`)
       }}
     >
       <PageContentContainer
@@ -131,6 +131,7 @@ ImagePager.propTypes = {
 export default ImagePager;
 
 const PageContentContainer = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
