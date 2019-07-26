@@ -35,7 +35,7 @@ const Page = ({ children, isOpen }) => (
             transform: to(
               [translateY, scale],
               (translateY, scale) =>
-                `scale(${scale}) translate3d(0, ${translateY}px, 0)`
+                `scale(${scale}) translateY(${translateY}px)`
             )
           }}
         >
@@ -70,5 +70,5 @@ const AnimatedContainer = animated(styled.div`
       .alpha(0.95)
       .hsl()
       .string()};
-  cursor: url('/static/touch-cursor.png') 39 39, auto;
+  /* cursor: url('/static/touch-cursor.png') 39 39, auto; */
 `);

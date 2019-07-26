@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useSpring, animated, to } from 'react-spring';
@@ -17,21 +17,25 @@ const Image = ({
   toggleControls,
   setDisableDrag
 }) => {
+  const imageRef = useRef();
   const defaultImageTransform = () => ({
     scale: 1,
     translateX: 0,
-    translateY: 0
+    translateY: 0,
+    transformOrigin: '50% 50%'
   });
 
-  const [{ scale, translateX, translateY }, set] = useSpring(() => ({
-    ...defaultImageTransform(),
-    onRest: i => {
-      if (i.scale < 1) {
-        set(defaultImageTransform);
-        setDisableDrag(false);
+  const [{ scale, translateX, translateY, transformOrigin }, set] = useSpring(
+    () => ({
+      ...defaultImageTransform(),
+      onFrame: f => {
+        if (f.scale < 1 || !f.pinching) {
+          set(defaultImageTransform);
+          setDisableDrag(false);
+        }
       }
-    }
-  }));
+    })
+  );
 
   // Reset scale of this image when switching to new image
   useEffect(() => {
@@ -39,41 +43,74 @@ const Image = ({
   });
 
   // Animate current page and adjacent pages during drag
-  const bind = useGesture({
-    onPinch: ({ delta: [deltaDist] }) => {
-      const pinchScale = scale.value + deltaDist * 0.004;
+  const bind = useGesture(
+    {
+      onPinch: ({
+        delta: [deltaDist],
+        origin: [touchOriginX, touchOriginY]
+      }) => {
+        const pinchScale = scale.value + deltaDist * 0.004;
 
-      if (pinchScale < 0.5) set({ scale: 0.5 });
-      else if (pinchScale > 3.0) set({ scale: 3.0 });
-      else set({ scale: pinchScale });
-    },
-    onPinchEnd: () => {
-      if (scale.value > 1) setDisableDrag(true);
-      else {
-        setDisableDrag(false);
-        set(defaultImageTransform);
+        const {
+          top: imageTopLeftY,
+          left: imageTopLeftX,
+          width: imageWidth,
+          height: imageHeight
+        } = imageRef.current.getBoundingClientRect();
+
+        const relativeImageClickX = touchOriginX - imageTopLeftX;
+        const relativeImageClickY = touchOriginY - imageTopLeftY;
+
+        const transformPercentX = (relativeImageClickX / imageWidth) * 100;
+        const transformPercentY = (relativeImageClickY / imageHeight) * 100;
+
+        const newTransformOrigin = `${transformPercentX}% ${transformPercentY}%`;
+
+        // Restrict the amount of zoom between half and 3x image size
+        if (pinchScale < 0.5) set({ scale: 0.5, pinching: true });
+        else if (pinchScale > 3.0) set({ scale: 3.0, pinching: true });
+        else
+          set({
+            scale: pinchScale,
+            transformOrigin: newTransformOrigin,
+            pinching: true
+          });
+      },
+      onPinchEnd: () => {
+        if (scale.value > 1) setDisableDrag(true);
+        else {
+          setDisableDrag(false);
+          set(defaultImageTransform);
+        }
+      },
+      onDrag: ({ delta: [xDelta, yDelta], pinching }) => {
+        if (pinching || scale.value <= 1) return;
+        set({
+          translateX: translateX.value + xDelta / 3,
+          translateY: translateY.value + yDelta / 3
+        });
+      },
+      onDragEnd: () => {
+        if (scale.value <= 1) set(defaultImageTransform);
       }
     },
-    onDrag: ({ delta: [xDelta, yDelta] }) => {
-      if (scale.value <= 1) return;
-      set({
-        translateX: translateX.value + xDelta / 3,
-        translateY: translateY.value + yDelta / 3
-      });
-    },
-    onDragEnd: () => {
-      if (scale.value <= 1) set(defaultImageTransform);
-    }
-  });
+    /**
+     * useGesture config
+     * https://github.com/react-spring/react-use-gesture#usegesture-config
+     */
+    { domTarget: imageRef }
+  );
 
   return (
     <AnimatedImage
       {...bind()}
+      ref={imageRef}
       style={{
         transform: to(
           [scale, translateX, translateY],
           (s, x, y) => `scale(${s}) translate(${x}px, ${y}px)`
-        )
+        ),
+        transformOrigin
       }}
       isCurrentImage={isCurrentImage}
       src={src}
