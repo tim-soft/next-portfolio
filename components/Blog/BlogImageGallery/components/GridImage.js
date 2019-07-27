@@ -56,6 +56,7 @@ const Caption = styled.div`
 const OverlayContainer = styled.div`
   position: relative;
   height: 100%;
+  overflow: hidden;
 `;
 
 const ImageContainer = styled.div`
