@@ -21,8 +21,7 @@ const Image = ({
   const defaultImageTransform = () => ({
     scale: 1,
     translateX: 0,
-    translateY: 0,
-    transformOrigin: '50% 50%'
+    translateY: 0
   });
 
   const [{ scale, translateX, translateY, transformOrigin }, set] = useSpring(
@@ -50,6 +49,7 @@ const Image = ({
         origin: [touchOriginX, touchOriginY]
       }) => {
         const pinchScale = scale.value + deltaDist * 0.004;
+        const pinchDelta = pinchScale - scale.value;
 
         const {
           top: imageTopLeftY,
@@ -58,13 +58,15 @@ const Image = ({
           height: imageHeight
         } = imageRef.current.getBoundingClientRect();
 
-        const relativeImageClickX = touchOriginX - imageTopLeftX;
-        const relativeImageClickY = touchOriginY - imageTopLeftY;
+        // Get the (x,y) touch position relative to image origin at the current scale
+        const imageCoordX =
+          (touchOriginX - imageTopLeftX - imageWidth / 2) / scale.value;
+        const imageCoordY =
+          (touchOriginY - imageTopLeftY - imageHeight / 2) / scale.value;
 
-        const transformPercentX = (relativeImageClickX / imageWidth) * 100;
-        const transformPercentY = (relativeImageClickY / imageHeight) * 100;
-
-        const newTransformOrigin = `${transformPercentX}% ${transformPercentY}%`;
+        // Calculate translateX/Y offset at the next scale to zoom to touch position
+        const newTransformX = -imageCoordX * pinchDelta + translateX.value;
+        const newTransformY = -imageCoordY * pinchDelta + translateY.value;
 
         // Restrict the amount of zoom between half and 3x image size
         if (pinchScale < 0.5) set({ scale: 0.5, pinching: true });
@@ -72,7 +74,8 @@ const Image = ({
         else
           set({
             scale: pinchScale,
-            transformOrigin: newTransformOrigin,
+            translateX: newTransformX,
+            translateY: newTransformY,
             pinching: true
           });
       },
@@ -108,7 +111,7 @@ const Image = ({
       style={{
         transform: to(
           [scale, translateX, translateY],
-          (s, x, y) => `scale(${s}) translate(${x}px, ${y}px)`
+          (s, x, y) => `translate(${x}px, ${y}px) scale(${s})`
         ),
         transformOrigin
       }}
@@ -149,6 +152,4 @@ const AnimatedImage = animated(styled.img`
   user-select: none;
   will-change: ${({ isCurrentImage }) =>
     isCurrentImage ? 'transform' : 'unset'};
-  /* filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.4))
-    drop-shadow(0 0 2px rgba(0, 0, 0, 0.5)); */
 `);
