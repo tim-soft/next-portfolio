@@ -24,17 +24,15 @@ const Image = ({
     translateY: 0
   });
 
-  const [{ scale, translateX, translateY, transformOrigin }, set] = useSpring(
-    () => ({
-      ...defaultImageTransform(),
-      onFrame: f => {
-        if (f.scale < 1 || !f.pinching) {
-          set(defaultImageTransform);
-          setDisableDrag(false);
-        }
+  const [{ scale, translateX, translateY }, set] = useSpring(() => ({
+    ...defaultImageTransform(),
+    onFrame: f => {
+      if (f.scale < 1 || !f.pinching) {
+        set(defaultImageTransform);
+        setDisableDrag(false);
       }
-    })
-  );
+    }
+  }));
 
   // Reset scale of this image when switching to new image
   useEffect(() => {
@@ -112,8 +110,7 @@ const Image = ({
         transform: to(
           [scale, translateX, translateY],
           (s, x, y) => `translate(${x}px, ${y}px) scale(${s})`
-        ),
-        transformOrigin
+        )
       }}
       isCurrentImage={isCurrentImage}
       src={src}
