@@ -3,7 +3,7 @@ import { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useSprings, animated } from 'react-spring';
-import { useGesture } from 'react-use-gesture';
+import { useDrag } from 'react-use-gesture';
 import clamp from 'lodash.clamp';
 import useWindowSize from '../../utils/useWindowSize';
 import Image from '../Image';
@@ -34,7 +34,11 @@ const ImagePager = ({
     return { x, display: 'block' };
   };
 
-  // Set the initial page positions
+  /**
+   * Animates translateX of all images at the same time
+   *
+   * https://www.react-spring.io/docs/hooks/use-springs
+   */
   const [props, set] = useSprings(images.length, getPagePositions);
 
   // Animate page change if currentIndex changes
@@ -49,9 +53,13 @@ const ImagePager = ({
     set(getPagePositions);
   });
 
-  // Animate current page and adjacent pages during drag
-  const bind = useGesture({
-    onDrag: ({
+  /**
+   * Update each Image's visibility and translateX offset during dragging
+   *
+   * https://github.com/react-spring/react-use-gesture
+   */
+  const bind = useDrag(
+    ({
       down,
       delta: [xDelta],
       direction: [xDir],
@@ -87,7 +95,7 @@ const ImagePager = ({
       // Update page x-coordinates for single finger/mouse gestures
       set(i => getPagePositions(i, down, xDelta));
     }
-  });
+  );
 
   return props.map(({ x, display }, i) => (
     <AnimatedTranslate
@@ -99,7 +107,7 @@ const ImagePager = ({
       }}
     >
       <PageContentContainer
-        // If the background is clicked close the lightbox
+        // If the background is clicked, close the lightbox
         onClick={() => x.value === 0 && onClose()}
       >
         <Image
@@ -115,14 +123,22 @@ const ImagePager = ({
 };
 
 ImagePager.propTypes = {
+  /* Function that shows/hides UI elements when invoked */
   toggleControls: PropTypes.func.isRequired,
+  /* Function that closes the Lightbox */
   onClose: PropTypes.func.isRequired,
+  /* Function that triggers ImagePager to move to the previous image */
   onClickPrev: PropTypes.func.isRequired,
+  /* Function that triggers ImagePager to move to the next image */
   onClickNext: PropTypes.func.isRequired,
+  /* Index of image in images array that is currently shown */
   currentIndex: PropTypes.number.isRequired,
+  /* Array of images to be shown in Lightbox */
   images: PropTypes.arrayOf(
     PropTypes.shape({
+      /* The source URL of this image */
       src: PropTypes.string.isRequired,
+      /* The alt attribute for this image */
       alt: PropTypes.string.isRequired
     })
   ).isRequired
