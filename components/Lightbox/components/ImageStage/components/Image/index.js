@@ -5,7 +5,7 @@ import { useSpring, animated, to } from 'react-spring';
 import { useGesture } from 'react-use-gesture';
 
 /**
- * Animate pinch/zoom on image
+ * Animates pinch-zoom + panning on image using spring physics
  *
  * https://github.com/react-spring/react-use-gesture
  * https://github.com/react-spring/react-spring
@@ -24,6 +24,11 @@ const Image = ({
     translateY: 0
   });
 
+  /**
+   * Animates scale and translate offsets of Image as they change in gestures
+   *
+   * https://www.react-spring.io/docs/hooks/use-spring
+   */
   const [{ scale, translateX, translateY }, set] = useSpring(() => ({
     ...defaultImageTransform(),
     onFrame: f => {
@@ -34,12 +39,16 @@ const Image = ({
     }
   }));
 
-  // Reset scale of this image when switching to new image
+  // Reset scale of this image when dragging to new image in ImagePager
   useEffect(() => {
     if (!isCurrentImage) set(defaultImageTransform);
   });
 
-  // Animate current page and adjacent pages during drag
+  /**
+   * Update Image scale and translate offsets during pinch/pan gestures
+   *
+   * https://github.com/react-spring/react-use-gesture#usegesture-hook-supporting-multiple-gestures-at-once
+   */
   const bind = useGesture(
     {
       onPinch: ({
@@ -133,10 +142,15 @@ const Image = ({
 };
 
 Image.propTypes = {
+  /* The source URL of this image */
   src: PropTypes.string.isRequired,
+  /* The alt attribute for this image */
   alt: PropTypes.string.isRequired,
+  /* True if this image is currently shown in pager, otherwise false */
   isCurrentImage: PropTypes.bool.isRequired,
+  /* Function that shows/hides UI elements when invoked */
   toggleControls: PropTypes.func.isRequired,
+  /* Function that can be called to disable dragging in the pager */
   setDisableDrag: PropTypes.func.isRequired
 };
 
