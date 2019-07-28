@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useSpring, animated, to } from 'react-spring';
 import { useGesture } from 'react-use-gesture';
+import useDoubleClick from '../../utils/useDoubleClick';
 
 /**
  * Animates pinch-zoom + panning on image using spring physics
@@ -14,10 +15,11 @@ const Image = ({
   src,
   alt,
   isCurrentImage,
-  toggleControls,
+  // toggleControls,
   setDisableDrag
 }) => {
   const imageRef = useRef();
+
   const defaultImageTransform = () => ({
     scale: 1,
     translateX: 0,
@@ -111,6 +113,54 @@ const Image = ({
     { domTarget: imageRef }
   );
 
+  useDoubleClick({
+    // onSingleClick: () => {
+    //   toggleControls();
+    // },
+    onDoubleClick: e => {
+      // If double-tapped while already zoomed-in, zoom out to default scale
+      if (scale.value !== 1) {
+        setDisableDrag(false);
+        set(defaultImageTransform);
+
+        return;
+      }
+
+      // Zoom-in to origin of click on image
+      const { clientX: touchOriginX, clientY: touchOriginY } = e;
+      const pinchScale = scale.value + 1;
+      const pinchDelta = pinchScale - scale.value;
+
+      const {
+        top: imageTopLeftY,
+        left: imageTopLeftX,
+        width: imageWidth,
+        height: imageHeight
+      } = imageRef.current.getBoundingClientRect();
+
+      // Get the (x,y) touch position relative to image origin at the current scale
+      const imageCoordX =
+        (touchOriginX - imageTopLeftX - imageWidth / 2) / scale.value;
+      const imageCoordY =
+        (touchOriginY - imageTopLeftY - imageHeight / 2) / scale.value;
+
+      // Calculate translateX/Y offset at the next scale to zoom to touch position
+      const newTransformX = -imageCoordX * pinchDelta + translateX.value;
+      const newTransformY = -imageCoordY * pinchDelta + translateY.value;
+
+      // Disable dragging in pager
+      setDisableDrag(true);
+      set({
+        scale: pinchScale,
+        translateX: newTransformX,
+        translateY: newTransformY,
+        pinching: true
+      });
+    },
+    ref: imageRef,
+    latency: 250
+  });
+
   return (
     <AnimatedImage
       {...bind()}
@@ -133,9 +183,6 @@ const Image = ({
         // Don't close lighbox when clicking image
         e.stopPropagation();
         e.nativeEvent.stopImmediatePropagation();
-
-        // Show/Hide controls when image is clicked
-        toggleControls();
       }}
     />
   );
