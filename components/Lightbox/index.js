@@ -48,14 +48,6 @@ class Lightbox extends React.Component {
     renderNextButton: () => null
   };
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      controlsAreHidden: false
-    };
-  }
-
   componentDidMount() {
     // Listen for keyboard events to control Lightbox
     document.addEventListener('keyup', this.handleKeyboardInput);
@@ -124,8 +116,6 @@ class Lightbox extends React.Component {
       renderNextButton
     } = this.props;
 
-    const { controlsAreHidden } = this.state;
-
     return (
       <CreatePortal>
         <PageContainer isOpen={isOpen}>
@@ -136,8 +126,6 @@ class Lightbox extends React.Component {
             currentIndex={currentIndex}
             onClickPrev={onClickPrev}
             onClickNext={onClickNext}
-            controlsAreHidden={controlsAreHidden}
-            toggleControls={this.toggleControls}
             renderPrevButton={renderPrevButton}
             renderNextButton={renderNextButton}
           />
