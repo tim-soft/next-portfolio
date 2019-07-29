@@ -8,18 +8,16 @@ import useDoubleClick from '../../utils/useDoubleClick';
 /**
  * Animates pinch-zoom + panning on image using spring physics
  *
- * https://github.com/react-spring/react-use-gesture
- * https://github.com/react-spring/react-spring
+ * @param {string} src The source URL of this image
+ * @param {string} alt The alt attribute for this image
+ * @param {boolean} isCurrentImage True if this image is currently shown in pager, otherwise false
+ * @param {function} setDisableDrag Function that can be called to disable dragging in the pager
+ *
+ * @see https://github.com/react-spring/react-use-gesture
+ * @see https://github.com/react-spring/react-spring
  */
-const Image = ({
-  src,
-  alt,
-  isCurrentImage,
-  // toggleControls,
-  setDisableDrag
-}) => {
+const Image = ({ src, alt, isCurrentImage, setDisableDrag }) => {
   const imageRef = useRef();
-
   const defaultImageTransform = () => ({
     scale: 1,
     translateX: 0,
@@ -29,7 +27,7 @@ const Image = ({
   /**
    * Animates scale and translate offsets of Image as they change in gestures
    *
-   * https://www.react-spring.io/docs/hooks/use-spring
+   * @see https://www.react-spring.io/docs/hooks/use-spring
    */
   const [{ scale, translateX, translateY }, set] = useSpring(() => ({
     ...defaultImageTransform(),
@@ -49,7 +47,7 @@ const Image = ({
   /**
    * Update Image scale and translate offsets during pinch/pan gestures
    *
-   * https://github.com/react-spring/react-use-gesture#usegesture-hook-supporting-multiple-gestures-at-once
+   * @see https://github.com/react-spring/react-use-gesture#usegesture-hook-supporting-multiple-gestures-at-once
    */
   const bind = useGesture(
     {
@@ -108,15 +106,13 @@ const Image = ({
     },
     /**
      * useGesture config
-     * https://github.com/react-spring/react-use-gesture#usegesture-config
+     * @see https://github.com/react-spring/react-use-gesture#usegesture-config
      */
     { domTarget: imageRef }
   );
 
+  // Handle double-tap on image
   useDoubleClick({
-    // onSingleClick: () => {
-    //   toggleControls();
-    // },
     onDoubleClick: e => {
       // If double-tapped while already zoomed-in, zoom out to default scale
       if (scale.value !== 1) {
@@ -195,8 +191,6 @@ Image.propTypes = {
   alt: PropTypes.string.isRequired,
   /* True if this image is currently shown in pager, otherwise false */
   isCurrentImage: PropTypes.bool.isRequired,
-  /* Function that shows/hides UI elements when invoked */
-  toggleControls: PropTypes.func.isRequired,
   /* Function that can be called to disable dragging in the pager */
   setDisableDrag: PropTypes.func.isRequired
 };

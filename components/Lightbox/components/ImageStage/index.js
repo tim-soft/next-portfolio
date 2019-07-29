@@ -10,8 +10,6 @@ const ImageStage = ({
   onClickPrev,
   onClickNext,
   onClose,
-  toggleControls,
-  controlsAreHidden,
   renderPagerButton: ArrowButton
 }) => {
   // Extra sanity check that the next/prev image exists before moving to it
@@ -22,12 +20,7 @@ const ImageStage = ({
 
   return (
     <ImageContainer>
-      <ArrowButton
-        onClick={prev}
-        position="left"
-        disabled={!canPrev}
-        controlsAreHidden={controlsAreHidden}
-      />
+      <ArrowButton onClick={prev} position="left" disabled={!canPrev} />
 
       <ImagePager
         images={images}
@@ -35,22 +28,14 @@ const ImageStage = ({
         onClose={onClose}
         onClickNext={next}
         onClickPrev={prev}
-        toggleControls={toggleControls}
       />
 
-      <ArrowButton
-        onClick={next}
-        position="right"
-        disabled={!canNext}
-        controlsAreHidden={controlsAreHidden}
-      />
+      <ArrowButton onClick={next} position="right" disabled={!canNext} />
     </ImageContainer>
   );
 };
 
 ImageStage.propTypes = {
-  toggleControls: PropTypes.func.isRequired,
-  controlsAreHidden: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   onClickPrev: PropTypes.func.isRequired,
   onClickNext: PropTypes.func.isRequired,

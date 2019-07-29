@@ -3,6 +3,11 @@ import { useState, useEffect } from 'react';
 /**
  * React Hook that returns the current window size
  * and report updates from the 'resize' window event
+ *
+ * @typedef {WindowSize} WindowSize
+ * @property {number} width Window width
+ * @property {number} height Window height
+ * @returns {WindowSize} An object container the window width and height
  */
 const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState({

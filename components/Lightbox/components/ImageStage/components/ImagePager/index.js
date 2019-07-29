@@ -11,15 +11,20 @@ import Image from '../Image';
 /**
  * Gesture controlled surface that animates prev/next page changes via spring physics.
  *
- * https://github.com/react-spring/react-use-gesture
- * https://github.com/react-spring/react-spring
+ * @param {array} images Array of image objects to be shown in Lightbox
+ * @param {number} currentIndex Index of image in images array that is currently shown
+ * @param {function} onClickPrev True if this image is currently shown in pager, otherwise false
+ * @param {function} onClickNext Function that can be called to disable dragging in the pager
+ * @param {function} onClose Function that closes the Lightbox
+ *
+ * @see https://github.com/react-spring/react-use-gesture
+ * @see https://github.com/react-spring/react-spring
  */
 const ImagePager = ({
   images,
   currentIndex,
   onClickPrev,
   onClickNext,
-  toggleControls,
   onClose
 }) => {
   const firstRender = useRef(true);
@@ -115,7 +120,6 @@ const ImagePager = ({
           src={images[i].src}
           alt={images[i].alt}
           isCurrentImage={i === currentIndex}
-          toggleControls={() => (x.value === 0 ? toggleControls() : null)}
         />
       </PageContentContainer>
     </AnimatedTranslate>
@@ -123,8 +127,6 @@ const ImagePager = ({
 };
 
 ImagePager.propTypes = {
-  /* Function that shows/hides UI elements when invoked */
-  toggleControls: PropTypes.func.isRequired,
   /* Function that closes the Lightbox */
   onClose: PropTypes.func.isRequired,
   /* Function that triggers ImagePager to move to the previous image */

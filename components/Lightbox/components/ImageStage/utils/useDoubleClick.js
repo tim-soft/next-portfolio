@@ -18,8 +18,6 @@ const useDoubleClick = ({
   useEffect(() => {
     let clickCount = 0;
     const handleClick = e => {
-      // e.stopPropagation();
-
       clickCount += 1;
 
       setTimeout(() => {

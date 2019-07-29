@@ -114,8 +114,15 @@ class BlogImageGallery extends React.Component {
           images={images}
           currentIndex={currentImage}
           galleryTitle={galleryTitle}
-          renderHeader={LightboxHeader}
-          renderPagerButton={LightboxArrowButton}
+          renderHeader={() => (
+            <LightboxHeader
+              galleryTitle={galleryTitle}
+              images={images}
+              currentIndex={currentImage}
+              onClose={this.closeLightbox}
+            />
+          )}
+          renderPagerButton={props => <LightboxArrowButton {...props} />}
         />
       </GalleryContainer>
     );

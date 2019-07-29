@@ -6,6 +6,9 @@ import PropTypes from 'prop-types';
  * Creates a SSR + next.js friendly React Portal inside <body />
  *
  * Child components are rendered on the client side only
+ *
+ * @param {array|node} children Child components will be rendered to the portal
+ * @see https://reactjs.org/docs/portals.html
  */
 export default class CreatePortal extends React.Component {
   static propTypes = {

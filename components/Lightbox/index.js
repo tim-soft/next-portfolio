@@ -2,9 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ImageStage, PageContainer, CreatePortal } from './components';
 
+/**
+ * Gesture controlled lightbox that interpolates animations with spring physics.
+ *
+ * @param {boolean} isOpen Flag that dictates if the lightbox is open or closed
+ * @param {function} onClose Function that closes the Lightbox
+ * @param {function} onClickPrev True if this image is currently shown in pager, otherwise false
+ * @param {function} onClickNext Function that can be called to disable dragging in the pager
+ * @param {number} currentIndex Index of image in images array that is currently shown
+ * @param {ReactNode} renderHeader A React component that renders above the image pager
+ * @param {ReactNonde} renderPagerButton A React component that is used for prev/next buttons, recieves position prop
+ * @param {array} images Array of image objects to be shown in Lightbox
+ *
+ * @see https://github.com/react-spring/react-use-gesture
+ * @see https://github.com/react-spring/react-spring
+ */
 class Lightbox extends React.Component {
   static propTypes = {
-    galleryTitle: PropTypes.string.isRequired,
     isOpen: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired,
     onClickPrev: PropTypes.func.isRequired,
@@ -46,15 +60,6 @@ class Lightbox extends React.Component {
     // Remove event listeners when the component unmounts
     document.removeEventListener('keyup', this.handleKeyboardInput);
     document.removeEventListener('keydown', this.preventBackgroundScroll);
-  }
-
-  static getDerivedStateFromProps(props, state) {
-    const { isOpen } = props;
-    const { controlsAreHidden } = state;
-
-    // Always display the controls when opening the lightbox
-    if (!isOpen && controlsAreHidden) return { controlsAreHidden: false };
-    return null;
   }
 
   /**
@@ -99,15 +104,6 @@ class Lightbox extends React.Component {
     }
   };
 
-  /**
-   * Toggles whether the lightbox controls are hidden or not
-   */
-  toggleControls = () => {
-    const { controlsAreHidden } = this.state;
-
-    this.setState({ controlsAreHidden: !controlsAreHidden });
-  };
-
   render() {
     const {
       isOpen,
@@ -116,7 +112,6 @@ class Lightbox extends React.Component {
       currentIndex,
       onClickPrev,
       onClickNext,
-      galleryTitle,
       renderHeader: HeaderBar,
       renderPagerButton
     } = this.props;
@@ -126,14 +121,7 @@ class Lightbox extends React.Component {
     return (
       <CreatePortal>
         <PageContainer isOpen={isOpen}>
-          <HeaderBar
-            galleryTitle={galleryTitle}
-            images={images}
-            currentIndex={currentIndex}
-            onClose={onClose}
-            controlsAreHidden={controlsAreHidden}
-            toggleControls={this.toggleControls}
-          />
+          <HeaderBar />
           <ImageStage
             images={images}
             onClose={onClose}

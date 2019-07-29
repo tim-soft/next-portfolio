@@ -1,54 +1,28 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Transition, animated } from 'react-spring';
 import { IoIosClose } from 'react-icons/io';
 import Color from 'color';
 import ButtonControl from './LightboxButtonControl';
 
-const LightboxHeader = ({
-  controlsAreHidden,
-  galleryTitle,
-  images,
-  currentIndex,
-  onClose
-}) => (
-  <Transition
-    native
-    items={!controlsAreHidden}
-    initial={{ opacity: 1, transform: 'translate(0,0)' }}
-    from={{ opacity: 0, transform: 'translate(0,-40px)' }}
-    enter={{ opacity: 1, transform: 'translate(0,0)' }}
-    leave={{ opacity: 0, transform: 'translate(0,-40px)' }}
-  >
-    {showHeader =>
-      showHeader &&
-      (animStyles => (
-        <AnimatedContainer style={animStyles}>
-          <TopHeaderBar>
-            <LeftSideDescriptionContainer>
-              <GalleryHeading>{galleryTitle}</GalleryHeading>
-              <GallerySubheading>
-                {images[currentIndex].caption}
-              </GallerySubheading>
-            </LeftSideDescriptionContainer>
+const LightboxHeader = ({ galleryTitle, images, currentIndex, onClose }) => (
+  <TopHeaderBar>
+    <LeftSideDescriptionContainer>
+      <GalleryHeading>{galleryTitle}</GalleryHeading>
+      <GallerySubheading>{images[currentIndex].caption}</GallerySubheading>
+    </LeftSideDescriptionContainer>
 
-            <RightSideContainer>
-              <PageIndicator>
-                {currentIndex + 1} / {images.length}
-              </PageIndicator>
-              <CloseButton onClick={onClose} type="button">
-                <IoIosClose size={60} />
-              </CloseButton>
-            </RightSideContainer>
-          </TopHeaderBar>
-        </AnimatedContainer>
-      ))
-    }
-  </Transition>
+    <RightSideContainer>
+      <PageIndicator>
+        {currentIndex + 1} / {images.length}
+      </PageIndicator>
+      <CloseButton onClick={onClose} type="button">
+        <IoIosClose size={60} />
+      </CloseButton>
+    </RightSideContainer>
+  </TopHeaderBar>
 );
 
 LightboxHeader.propTypes = {
-  controlsAreHidden: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   galleryTitle: PropTypes.string.isRequired,
   currentIndex: PropTypes.number.isRequired,
@@ -109,6 +83,8 @@ const LeftSideDescriptionContainer = styled.div`
 `;
 
 const TopHeaderBar = styled.header`
+  z-index: 10;
+  cursor: auto;
   display: flex;
   justify-content: space-between;
   padding: 10px 2px 10px 20px;
@@ -122,9 +98,3 @@ const TopHeaderBar = styled.header`
     height: inherit;
   }
 `;
-
-const AnimatedContainer = animated(styled.div`
-  will-change: opacity, transform;
-  z-index: 10;
-  cursor: auto;
-`);
