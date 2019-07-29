@@ -92,7 +92,8 @@ const Image = ({ src, alt, isCurrentImage, setDisableDrag }) => {
           set(defaultImageTransform);
         }
       },
-      onDrag: ({ delta: [xDelta, yDelta], pinching }) => {
+      onDrag: ({ delta: [xDelta, yDelta], pinching, event }) => {
+        if (event.touches && event.touches.length > 1) return;
         if (pinching || scale.value <= 1) return;
         set({
           translateX: translateX.value + xDelta / 3,
