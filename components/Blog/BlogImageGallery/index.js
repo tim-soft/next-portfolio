@@ -155,4 +155,11 @@ const StyledLightbox = styled(Lightbox)`
       .alpha(0.95)
       .hsl()
       .string()};
+  * ::selection {
+    background: ${({ theme }) => theme.pageContentSelectionColor};
+  }
+  * ::-moz-selection {
+    background: ${({ theme }) =>
+      new Color(theme.pageContentSelectionColor).darken(0.57).hex()};
+  }
 `;
