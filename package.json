@@ -20,6 +20,7 @@
     "hex-rgb": "^4.1.0",
     "is-hexcolor": "^1.0.0",
     "lodash.clamp": "^4.0.3",
+    "lodash.merge": "^4.6.2",
     "next": "^9.0.2",
     "next-offline": "^4.0.2",
     "next-seo": "^1.12.0",

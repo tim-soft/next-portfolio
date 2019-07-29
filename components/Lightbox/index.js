@@ -15,6 +15,9 @@ import { ImageStage, PageContainer, CreatePortal } from './components';
  * @param {function} renderPrevButton A React component that is used for previous button in image pager
  * @param {function} renderNextButton A React component that is used for next button in image pager
  * @param {array} images Array of image objects to be shown in Lightbox
+ * @param {string} className Classes are applied to the root lightbox component
+ * @param {object} style Inline styles are applied to the root lightbox component
+ * @param {object} pageTransitionConfig React-Spring useTransition config for page open/close animation
  *
  * @see https://github.com/react-spring/react-use-gesture
  * @see https://github.com/react-spring/react-spring
@@ -31,7 +34,8 @@ const Lightbox = ({
   renderPrevButton,
   renderNextButton,
   className,
-  style
+  style,
+  pageTransitionConfig
 }) => {
   // Handle event listeners for keyboard
   useEffect(() => {
@@ -85,7 +89,12 @@ const Lightbox = ({
 
   return (
     <CreatePortal>
-      <PageContainer isOpen={isOpen} className={className} style={style}>
+      <PageContainer
+        isOpen={isOpen}
+        className={className}
+        style={style}
+        pageTransitionConfig={pageTransitionConfig}
+      >
         {renderHeader()}
         <ImageStage
           images={images}
@@ -122,10 +131,12 @@ Lightbox.propTypes = {
   renderPrevButton: PropTypes.func,
   renderNextButton: PropTypes.func,
   className: PropTypes.string,
-  style: PropTypes.object
+  style: PropTypes.object,
+  pageTransitionConfig: PropTypes.object
 };
 
 Lightbox.defaultProps = {
+  pageTransitionConfig: null,
   className: null,
   style: null,
   renderHeader: () => null,

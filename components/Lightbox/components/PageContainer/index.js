@@ -1,16 +1,37 @@
 import PropTypes from 'prop-types';
 import { useTransition, animated } from 'react-spring';
+import merge from 'lodash.merge';
 
 /**
  * Animates the lightbox as it opens/closes
+ *
+ * @param {ReactNode} children All child components of Lightbox
+ * @param {boolean} isOpen Flag that dictates if the lightbox is open or closed
+ * @param {string} className Classes are applied to the root lightbox component
+ * @param {object} style Inline styles are applied to the root lightbox component
+ * @param {object} pageTransitionConfig React-Spring useTransition config for page open/close animation
+ *
+ * @see https://www.react-spring.io/docs/hooks/use-transition
  */
-const PageContainer = ({ children, isOpen, className, style }) => {
-  const transitions = useTransition(isOpen, null, {
+const PageContainer = ({
+  children,
+  isOpen,
+  className,
+  style,
+  pageTransitionConfig
+}) => {
+  const defaultTransition = {
     from: { transform: 'scale(0.75)', opacity: 0 },
     enter: { transform: 'scale(1)', opacity: 1 },
     leave: { transform: 'scale(0.75)', opacity: 0 },
     config: { mass: 1, tension: 320, friction: 32 }
-  });
+  };
+
+  const transitions = useTransition(
+    isOpen,
+    null,
+    merge(defaultTransition, pageTransitionConfig)
+  );
 
   return transitions.map(
     ({ item, key, props }) =>
@@ -42,7 +63,10 @@ PageContainer.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element),
     PropTypes.element
-  ]).isRequired
+  ]).isRequired,
+  className: PropTypes.string,
+  style: PropTypes.object,
+  pageTransitionConfig: PropTypes.object
 };
 
 export default PageContainer;
