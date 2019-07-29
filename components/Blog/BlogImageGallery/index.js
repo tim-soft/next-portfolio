@@ -30,7 +30,7 @@ class BlogImageGallery extends React.Component {
     super();
 
     this.state = {
-      currentImage: 0,
+      currentImageIndex: 0,
       lightboxIsOpen: false,
       clientSide: false
     };
@@ -42,7 +42,7 @@ class BlogImageGallery extends React.Component {
 
   openLightbox = (e, { index }) => {
     this.setState({
-      currentImage: index,
+      currentImageIndex: index,
       lightboxIsOpen: true
     });
   };
@@ -54,24 +54,24 @@ class BlogImageGallery extends React.Component {
   };
 
   gotoPrevious = () => {
-    const { currentImage } = this.state;
+    const { currentImageIndex } = this.state;
 
     // If the current image isn't the first in the list, go to the previous
-    if (currentImage > 0) {
+    if (currentImageIndex > 0) {
       this.setState({
-        currentImage: currentImage - 1
+        currentImageIndex: currentImageIndex - 1
       });
     }
   };
 
   gotoNext = () => {
     const { images } = this.props;
-    const { currentImage } = this.state;
+    const { currentImageIndex } = this.state;
 
     // If the current image isn't the list in the list, go to the next
-    if (currentImage + 1 < images.length) {
+    if (currentImageIndex + 1 < images.length) {
       this.setState({
-        currentImage: currentImage + 1
+        currentImageIndex: currentImageIndex + 1
       });
     }
   };
@@ -91,7 +91,7 @@ class BlogImageGallery extends React.Component {
   };
 
   render() {
-    const { currentImage, lightboxIsOpen, clientSide } = this.state;
+    const { currentImageIndex, lightboxIsOpen, clientSide } = this.state;
     const { images, galleryTitle, imageMasonryDirection } = this.props;
 
     return (
@@ -112,17 +112,30 @@ class BlogImageGallery extends React.Component {
           onClickPrev={this.gotoPrevious}
           onClickNext={this.gotoNext}
           images={images}
-          currentIndex={currentImage}
+          currentIndex={currentImageIndex}
           galleryTitle={galleryTitle}
           renderHeader={() => (
             <LightboxHeader
               galleryTitle={galleryTitle}
               images={images}
-              currentIndex={currentImage}
+              currentIndex={currentImageIndex}
               onClose={this.closeLightbox}
             />
           )}
-          renderPagerButton={props => <LightboxArrowButton {...props} />}
+          renderPrevButton={({ canPrev }) => (
+            <LightboxArrowButton
+              position="left"
+              onClick={this.gotoPrevious}
+              disabled={!canPrev}
+            />
+          )}
+          renderNextButton={({ canNext }) => (
+            <LightboxArrowButton
+              position="right"
+              onClick={this.gotoNext}
+              disabled={!canNext}
+            />
+          )}
         />
       </GalleryContainer>
     );

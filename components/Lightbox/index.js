@@ -10,8 +10,10 @@ import { ImageStage, PageContainer, CreatePortal } from './components';
  * @param {function} onClickPrev True if this image is currently shown in pager, otherwise false
  * @param {function} onClickNext Function that can be called to disable dragging in the pager
  * @param {number} currentIndex Index of image in images array that is currently shown
- * @param {ReactNode} renderHeader A React component that renders above the image pager
- * @param {ReactNonde} renderPagerButton A React component that is used for prev/next buttons, recieves position prop
+ * @param {function} renderHeader A React component that renders above the image pager
+ * @param {function} renderFooter A React component that renders below the image pager
+ * @param {function} renderPrevButton A React component that is used for previous button in image pager
+ * @param {function} renderNextButton A React component that is used for next button in image pager
  * @param {array} images Array of image objects to be shown in Lightbox
  *
  * @see https://github.com/react-spring/react-use-gesture
@@ -34,12 +36,16 @@ class Lightbox extends React.Component {
       })
     ).isRequired,
     renderHeader: PropTypes.func,
-    renderPagerButton: PropTypes.func
+    renderFooter: PropTypes.func,
+    renderPrevButton: PropTypes.func,
+    renderNextButton: PropTypes.func
   };
 
   static defaultProps = {
     renderHeader: () => null,
-    renderPagerButton: () => null
+    renderFooter: () => null,
+    renderPrevButton: () => null,
+    renderNextButton: () => null
   };
 
   constructor(props) {
@@ -112,8 +118,10 @@ class Lightbox extends React.Component {
       currentIndex,
       onClickPrev,
       onClickNext,
-      renderHeader: HeaderBar,
-      renderPagerButton
+      renderHeader,
+      renderFooter,
+      renderPrevButton,
+      renderNextButton
     } = this.props;
 
     const { controlsAreHidden } = this.state;
@@ -121,7 +129,7 @@ class Lightbox extends React.Component {
     return (
       <CreatePortal>
         <PageContainer isOpen={isOpen}>
-          <HeaderBar />
+          {renderHeader()}
           <ImageStage
             images={images}
             onClose={onClose}
@@ -130,8 +138,10 @@ class Lightbox extends React.Component {
             onClickNext={onClickNext}
             controlsAreHidden={controlsAreHidden}
             toggleControls={this.toggleControls}
-            renderPagerButton={renderPagerButton}
+            renderPrevButton={renderPrevButton}
+            renderNextButton={renderNextButton}
           />
+          {renderFooter()}
         </PageContainer>
       </CreatePortal>
     );

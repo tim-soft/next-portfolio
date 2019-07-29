@@ -1,18 +1,15 @@
 /* eslint-disable no-shadow */
-import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import { animated, useTransition, config } from 'react-spring';
+import { animated, useTransition } from 'react-spring';
 import ButtonControl from './LightboxButtonControl';
 
 const ArrowButton = ({ position, onClick, disabled }) => {
   const transitions = useTransition(!disabled, null, {
-    initial: { opacity: 1 },
-    from: { opacity: 1 },
+    from: { opacity: 0 },
     enter: { opacity: 1 },
-    leave: { opacity: 0 },
-    config: config.slow
+    leave: { opacity: 0 }
   });
 
   return transitions.map(
