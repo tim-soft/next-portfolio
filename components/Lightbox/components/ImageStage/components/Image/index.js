@@ -168,8 +168,7 @@ const Image = ({ src, alt, isCurrentImage, setDisableDrag }) => {
         width: 'auto',
         maxHeight: '100%',
         maxWidth: '100%',
-        userSelect: 'none',
-        willChange: isCurrentImage ? 'transform' : 'unset'
+        ...(isCurrentImage && { willChange: 'transform' })
       }}
       src={src}
       alt={alt}

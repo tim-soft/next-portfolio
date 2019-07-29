@@ -124,8 +124,11 @@ const ImagePager = ({
           justifyContent: 'center',
           width: '100%',
           height: '100%',
-          userSelect: 'none',
-          touchAction: 'none'
+          touchAction: 'none',
+          WebkitUserSelect: 'none',
+          MozUserSelect: 'none',
+          MsUserSelect: 'none',
+          userSelect: 'none'
         }}
         // If the background is clicked, close the lightbox
         onClick={() => x.value === 0 && onClose()}
