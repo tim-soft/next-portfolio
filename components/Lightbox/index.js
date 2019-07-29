@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ImageStage, PageContainer, CreatePortal } from './components';
 
@@ -19,53 +19,23 @@ import { ImageStage, PageContainer, CreatePortal } from './components';
  * @see https://github.com/react-spring/react-use-gesture
  * @see https://github.com/react-spring/react-spring
  */
-class Lightbox extends React.Component {
-  static propTypes = {
-    isOpen: PropTypes.bool.isRequired,
-    onClose: PropTypes.func.isRequired,
-    onClickPrev: PropTypes.func.isRequired,
-    onClickNext: PropTypes.func.isRequired,
-    currentIndex: PropTypes.number.isRequired,
-    images: PropTypes.arrayOf(
-      PropTypes.shape({
-        src: PropTypes.string.isRequired,
-        caption: PropTypes.string.isRequired,
-        alt: PropTypes.string.isRequired,
-        width: PropTypes.number,
-        height: PropTypes.number
-      })
-    ).isRequired,
-    renderHeader: PropTypes.func,
-    renderFooter: PropTypes.func,
-    renderPrevButton: PropTypes.func,
-    renderNextButton: PropTypes.func
-  };
-
-  static defaultProps = {
-    renderHeader: () => null,
-    renderFooter: () => null,
-    renderPrevButton: () => null,
-    renderNextButton: () => null
-  };
-
-  componentDidMount() {
-    // Listen for keyboard events to control Lightbox
-    document.addEventListener('keyup', this.handleKeyboardInput);
-    document.addEventListener('keydown', this.preventBackgroundScroll);
-  }
-
-  componentWillUnmount() {
-    // Remove event listeners when the component unmounts
-    document.removeEventListener('keyup', this.handleKeyboardInput);
-    document.removeEventListener('keydown', this.preventBackgroundScroll);
-  }
-
+const Lightbox = ({
+  isOpen,
+  onClose,
+  images,
+  currentIndex,
+  onClickPrev,
+  onClickNext,
+  renderHeader,
+  renderFooter,
+  renderPrevButton,
+  renderNextButton
+}) => {
   /**
    * Prevent keyboard from controlling background page
    * when lightbox is open
    */
-  preventBackgroundScroll = e => {
-    const { isOpen } = this.props;
+  const preventBackgroundScroll = e => {
     const keysToIgnore = [
       'ArrowUp',
       'ArrowDown',
@@ -81,9 +51,7 @@ class Lightbox extends React.Component {
   /**
    * Navigate images with arrow keys, close on Esc key
    */
-  handleKeyboardInput = e => {
-    const { isOpen, onClickPrev, onClickNext, onClose } = this.props;
-
+  const handleKeyboardInput = e => {
     if (isOpen) {
       switch (e.key) {
         case 'ArrowLeft':
@@ -102,38 +70,62 @@ class Lightbox extends React.Component {
     }
   };
 
-  render() {
-    const {
-      isOpen,
-      onClose,
-      images,
-      currentIndex,
-      onClickPrev,
-      onClickNext,
-      renderHeader,
-      renderFooter,
-      renderPrevButton,
-      renderNextButton
-    } = this.props;
+  // Handle event listeners for keyboard
+  useEffect(() => {
+    document.addEventListener('keyup', handleKeyboardInput);
+    document.addEventListener('keydown', preventBackgroundScroll);
 
-    return (
-      <CreatePortal>
-        <PageContainer isOpen={isOpen}>
-          {renderHeader()}
-          <ImageStage
-            images={images}
-            onClose={onClose}
-            currentIndex={currentIndex}
-            onClickPrev={onClickPrev}
-            onClickNext={onClickNext}
-            renderPrevButton={renderPrevButton}
-            renderNextButton={renderNextButton}
-          />
-          {renderFooter()}
-        </PageContainer>
-      </CreatePortal>
-    );
-  }
-}
+    return () => {
+      document.removeEventListener('keyup', handleKeyboardInput);
+      document.removeEventListener('keydown', preventBackgroundScroll);
+    };
+  });
+
+  return (
+    <CreatePortal>
+      <PageContainer isOpen={isOpen}>
+        {renderHeader()}
+        <ImageStage
+          images={images}
+          onClose={onClose}
+          currentIndex={currentIndex}
+          onClickPrev={onClickPrev}
+          onClickNext={onClickNext}
+          renderPrevButton={renderPrevButton}
+          renderNextButton={renderNextButton}
+        />
+        {renderFooter()}
+      </PageContainer>
+    </CreatePortal>
+  );
+};
+
+Lightbox.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onClickPrev: PropTypes.func.isRequired,
+  onClickNext: PropTypes.func.isRequired,
+  currentIndex: PropTypes.number.isRequired,
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      src: PropTypes.string.isRequired,
+      caption: PropTypes.string.isRequired,
+      alt: PropTypes.string.isRequired,
+      width: PropTypes.number,
+      height: PropTypes.number
+    })
+  ).isRequired,
+  renderHeader: PropTypes.func,
+  renderFooter: PropTypes.func,
+  renderPrevButton: PropTypes.func,
+  renderNextButton: PropTypes.func
+};
+
+Lightbox.defaultProps = {
+  renderHeader: () => null,
+  renderFooter: () => null,
+  renderPrevButton: () => null,
+  renderNextButton: () => null
+};
 
 export default Lightbox;
