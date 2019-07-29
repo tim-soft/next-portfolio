@@ -3,6 +3,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ImagePager from './components/ImagePager';
 
+/**
+ * Containing element for ImagePager and prev/next button controls
+ *
+ * @param {array} images Array of image objects to be shown in Lightbox
+ * @param {number} currentIndex Index of image in images array that is currently shown
+ * @param {function} onClickPrev True if this image is currently shown in pager, otherwise false
+ * @param {function} onClickNext Function that can be called to disable dragging in the pager
+ * @param {function} renderPrevButton A React component that is used for previous button in image pager
+ * @param {function} renderNextButton A React component that is used for next button in image pager
+ */
 const ImageStage = ({
   images,
   currentIndex,
