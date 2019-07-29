@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { useSpring, animated, to } from 'react-spring';
 import { useGesture } from 'react-use-gesture';
 import useDoubleClick from '../../utils/useDoubleClick';
@@ -158,16 +157,20 @@ const Image = ({ src, alt, isCurrentImage, setDisableDrag }) => {
   });
 
   return (
-    <AnimatedImage
+    <animated.img
       {...bind()}
       ref={imageRef}
       style={{
         transform: to(
           [scale, translateX, translateY],
           (s, x, y) => `translate(${x}px, ${y}px) scale(${s})`
-        )
+        ),
+        width: 'auto',
+        maxHeight: '100%',
+        maxWidth: '100%',
+        userSelect: 'none',
+        willChange: isCurrentImage ? 'transform' : 'unset'
       }}
-      isCurrentImage={isCurrentImage}
       src={src}
       alt={alt}
       draggable="false"
@@ -196,12 +199,3 @@ Image.propTypes = {
 };
 
 export default Image;
-
-const AnimatedImage = animated(styled.img`
-  width: auto;
-  max-height: 100%;
-  max-width: 100%;
-  user-select: none;
-  will-change: ${({ isCurrentImage }) =>
-    isCurrentImage ? 'transform' : 'unset'};
-`);

@@ -1,7 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { useSprings, animated } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 import clamp from 'lodash.clamp';
@@ -103,15 +102,31 @@ const ImagePager = ({
   );
 
   return props.map(({ x, display }, i) => (
-    <AnimatedTranslate
+    <animated.div
       {...bind()}
       key={i}
       style={{
         display,
-        transform: x.to(xInterp => `translateX(${xInterp}px)`)
+        transform: x.to(xInterp => `translateX(${xInterp}px)`),
+        position: 'absolute',
+        height: '100%',
+        width: '100%',
+        willChange: 'transform',
+        touchAction: 'none'
       }}
     >
-      <PageContentContainer
+      <div
+        role="presentation"
+        style={{
+          position: 'relative',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '100%',
+          height: '100%',
+          userSelect: 'none',
+          touchAction: 'none'
+        }}
         // If the background is clicked, close the lightbox
         onClick={() => x.value === 0 && onClose()}
       >
@@ -121,8 +136,8 @@ const ImagePager = ({
           alt={images[i].alt}
           isCurrentImage={i === currentIndex}
         />
-      </PageContentContainer>
-    </AnimatedTranslate>
+      </div>
+    </animated.div>
   ));
 };
 
@@ -147,22 +162,3 @@ ImagePager.propTypes = {
 };
 
 export default ImagePager;
-
-const PageContentContainer = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  user-select: none;
-  touch-action: none;
-`;
-
-const AnimatedTranslate = animated(styled.div`
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  will-change: transform;
-  touch-action: none;
-`);

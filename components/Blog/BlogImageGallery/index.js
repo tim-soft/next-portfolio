@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Color from 'color';
 import Gallery from 'react-photo-gallery';
 import Lightbox from '../../Lightbox';
 import GridImage from './components/GridImage';
@@ -106,7 +107,7 @@ class BlogImageGallery extends React.Component {
             renderImage={GridImage}
           />
         )}
-        <Lightbox
+        <StyledLightbox
           isOpen={lightboxIsOpen}
           onClose={this.closeLightbox}
           onClickPrev={this.gotoPrevious}
@@ -146,4 +147,12 @@ export default BlogImageGallery;
 
 const GalleryContainer = styled.section`
   margin: 2em 0;
+`;
+
+const StyledLightbox = styled(Lightbox)`
+  background: ${({ theme }) =>
+    Color(theme.accentColor)
+      .alpha(0.95)
+      .hsl()
+      .string()};
 `;

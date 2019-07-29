@@ -29,49 +29,51 @@ const Lightbox = ({
   renderHeader,
   renderFooter,
   renderPrevButton,
-  renderNextButton
+  renderNextButton,
+  className,
+  style
 }) => {
-  /**
-   * Prevent keyboard from controlling background page
-   * when lightbox is open
-   */
-  const preventBackgroundScroll = e => {
-    const keysToIgnore = [
-      'ArrowUp',
-      'ArrowDown',
-      'End',
-      'Home',
-      'PageUp',
-      'PageDown'
-    ];
-
-    if (isOpen && keysToIgnore.includes(e.key)) e.preventDefault();
-  };
-
-  /**
-   * Navigate images with arrow keys, close on Esc key
-   */
-  const handleKeyboardInput = e => {
-    if (isOpen) {
-      switch (e.key) {
-        case 'ArrowLeft':
-          onClickPrev();
-          break;
-        case 'ArrowRight':
-          onClickNext();
-          break;
-        case 'Escape':
-          onClose();
-          break;
-        default:
-          e.preventDefault();
-          break;
-      }
-    }
-  };
-
   // Handle event listeners for keyboard
   useEffect(() => {
+    /**
+     * Prevent keyboard from controlling background page
+     * when lightbox is open
+     */
+    const preventBackgroundScroll = e => {
+      const keysToIgnore = [
+        'ArrowUp',
+        'ArrowDown',
+        'End',
+        'Home',
+        'PageUp',
+        'PageDown'
+      ];
+
+      if (isOpen && keysToIgnore.includes(e.key)) e.preventDefault();
+    };
+
+    /**
+     * Navigate images with arrow keys, close on Esc key
+     */
+    const handleKeyboardInput = e => {
+      if (isOpen) {
+        switch (e.key) {
+          case 'ArrowLeft':
+            onClickPrev();
+            break;
+          case 'ArrowRight':
+            onClickNext();
+            break;
+          case 'Escape':
+            onClose();
+            break;
+          default:
+            e.preventDefault();
+            break;
+        }
+      }
+    };
+
     document.addEventListener('keyup', handleKeyboardInput);
     document.addEventListener('keydown', preventBackgroundScroll);
 
@@ -83,7 +85,7 @@ const Lightbox = ({
 
   return (
     <CreatePortal>
-      <PageContainer isOpen={isOpen}>
+      <PageContainer isOpen={isOpen} className={className} style={style}>
         {renderHeader()}
         <ImageStage
           images={images}
@@ -118,10 +120,14 @@ Lightbox.propTypes = {
   renderHeader: PropTypes.func,
   renderFooter: PropTypes.func,
   renderPrevButton: PropTypes.func,
-  renderNextButton: PropTypes.func
+  renderNextButton: PropTypes.func,
+  className: PropTypes.string,
+  style: PropTypes.object
 };
 
 Lightbox.defaultProps = {
+  className: null,
+  style: null,
   renderHeader: () => null,
   renderFooter: () => null,
   renderPrevButton: () => null,

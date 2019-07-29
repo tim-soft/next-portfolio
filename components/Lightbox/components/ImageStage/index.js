@@ -1,7 +1,6 @@
 /* eslint-disable no-shadow */
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import ImagePager from './components/ImagePager';
 
 const ImageStage = ({
@@ -20,7 +19,17 @@ const ImageStage = ({
   const next = () => canNext && onClickNext();
 
   return (
-    <ImageContainer>
+    <div
+      style={{
+        flexGrow: 1,
+        margin: '25px 0',
+        position: 'relative',
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}
+    >
       {renderPrevButton({ canPrev })}
 
       <ImagePager
@@ -32,7 +41,7 @@ const ImageStage = ({
       />
 
       {renderNextButton({ canNext })}
-    </ImageContainer>
+    </div>
   );
 };
 
@@ -55,13 +64,3 @@ ImageStage.propTypes = {
 };
 
 export default ImageStage;
-
-const ImageContainer = styled.div`
-  flex-grow: 1;
-  margin: 25px 0;
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;

@@ -1,52 +1,43 @@
-/* eslint-disable no-shadow */
-import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { Transition, animated, to } from 'react-spring';
-import Color from 'color';
+import { useTransition, animated } from 'react-spring';
 
 /**
  * Animates the lightbox as it opens/closes
  */
-const Page = ({ children, isOpen }) => (
-  <Transition
-    native
-    items={isOpen}
-    from={{
-      opacity: 0,
-      translateY: 0,
-      scale: 0.75
-    }}
-    enter={{ opacity: 1, translateY: 1, scale: 1 }}
-    leave={{
-      opacity: 0,
-      translateY: 0,
-      scale: 0.75
-    }}
-    config={{ mass: 1, tension: 320, friction: 32 }}
-  >
-    {isOpen =>
-      isOpen &&
-      // eslint-disable-next-line react/prop-types
-      (({ opacity, translateY, scale }) => (
-        <AnimatedContainer
+const PageContainer = ({ children, isOpen, className, style }) => {
+  const transitions = useTransition(isOpen, null, {
+    from: { transform: 'scale(0.75)', opacity: 0 },
+    enter: { transform: 'scale(1)', opacity: 1 },
+    leave: { transform: 'scale(0.75)', opacity: 0 },
+    config: { mass: 1, tension: 320, friction: 32 }
+  });
+
+  return transitions.map(
+    ({ item, key, props }) =>
+      item && (
+        <animated.div
+          key={key}
+          className={className}
           style={{
-            opacity,
-            transform: to(
-              [translateY, scale],
-              (translateY, scale) =>
-                `scale(${scale}) translateY(${translateY}px)`
-            )
+            ...props,
+            display: 'flex',
+            flexDirection: 'column',
+            position: 'fixed',
+            zIndex: 400,
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            ...style
           }}
         >
           {children}
-        </AnimatedContainer>
-      ))
-    }
-  </Transition>
-);
+        </animated.div>
+      )
+  );
+};
 
-Page.propTypes = {
+PageContainer.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element),
@@ -54,21 +45,4 @@ Page.propTypes = {
   ]).isRequired
 };
 
-export default Page;
-
-const AnimatedContainer = animated(styled.div`
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 400;
-  background: ${({ theme }) =>
-    Color(theme.accentColor)
-      .alpha(0.95)
-      .hsl()
-      .string()};
-  /* cursor: url('/static/touch-cursor.png') 39 39, auto; */
-`);
+export default PageContainer;
