@@ -16,6 +16,7 @@ const useDoubleClick = ({
   onDoubleClick = () => null
 }) => {
   useEffect(() => {
+    const clickRef = ref.current;
     let clickCount = 0;
     const handleClick = e => {
       clickCount += 1;
@@ -29,11 +30,11 @@ const useDoubleClick = ({
     };
 
     // Add event listener for click events
-    ref.current.addEventListener('click', handleClick);
+    clickRef.addEventListener('click', handleClick);
 
     // Remove event listener
     return () => {
-      ref.current.removeEventListener('click', handleClick);
+      clickRef.removeEventListener('click', handleClick);
     };
   });
 };
