@@ -114,6 +114,7 @@ const Image = ({ src, alt, isCurrentImage, setDisableDrag }) => {
           ) {
             cancel();
             set(defaultImageTransform);
+            setDisableDrag(false);
           } else {
             set({
               translateX: translateX.value + xDelta / 3,
