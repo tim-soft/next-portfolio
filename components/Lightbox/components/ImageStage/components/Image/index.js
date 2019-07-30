@@ -2,7 +2,11 @@ import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useSpring, animated, to } from 'react-spring';
 import { useGesture } from 'react-use-gesture';
-import useDoubleClick from '../../utils/useDoubleClick';
+import {
+  useDoubleClick,
+  imageIsOutOfBounds,
+  getTranslateOffsetsFromScale
+} from '../../utils';
 
 /**
  * Animates pinch-zoom + panning on image using spring physics
@@ -31,10 +35,11 @@ const Image = ({ src, alt, isCurrentImage, setDisableDrag }) => {
   const [{ scale, translateX, translateY }, set] = useSpring(() => ({
     ...defaultImageTransform(),
     onFrame: f => {
-      if (f.scale < 1 || !f.pinching) {
-        set(defaultImageTransform);
-        setDisableDrag(false);
-      }
+      if (f.scale < 1 || !f.pinching) set(defaultImageTransform);
+
+      // Prevent dragging image out of viewport
+      if (f.scale > 1 && imageIsOutOfBounds(imageRef))
+        set(defaultImageTransform());
     },
     // Enable dragging in ImagePager if image is at the default size
     onRest: f => {
@@ -61,22 +66,15 @@ const Image = ({ src, alt, isCurrentImage, setDisableDrag }) => {
         const pinchScale = scale.value + deltaDist * 0.004;
         const pinchDelta = pinchScale - scale.value;
 
-        const {
-          top: imageTopLeftY,
-          left: imageTopLeftX,
-          width: imageWidth,
-          height: imageHeight
-        } = imageRef.current.getBoundingClientRect();
-
-        // Get the (x,y) touch position relative to image origin at the current scale
-        const imageCoordX =
-          (touchOriginX - imageTopLeftX - imageWidth / 2) / scale.value;
-        const imageCoordY =
-          (touchOriginY - imageTopLeftY - imageHeight / 2) / scale.value;
-
-        // Calculate translateX/Y offset at the next scale to zoom to touch position
-        const newTransformX = -imageCoordX * pinchDelta + translateX.value;
-        const newTransformY = -imageCoordY * pinchDelta + translateY.value;
+        // Calculate the amount of x, y translate offset needed to
+        // zoom-in to point as image scale grows
+        const [newTranslateX, newTranslateY] = getTranslateOffsetsFromScale({
+          imageRef,
+          scale: scale.value,
+          pinchDelta,
+          currentTranslate: [translateX.value, translateY.value],
+          touchOrigin: [touchOriginX, touchOriginY]
+        });
 
         // Restrict the amount of zoom between half and 3x image size
         if (pinchScale < 0.5) set({ scale: 0.5, pinching: true });
@@ -84,8 +82,8 @@ const Image = ({ src, alt, isCurrentImage, setDisableDrag }) => {
         else
           set({
             scale: pinchScale,
-            translateX: newTransformX,
-            translateY: newTransformY,
+            translateX: newTranslateX,
+            translateY: newTranslateY,
             pinching: true
           });
       },
@@ -98,33 +96,12 @@ const Image = ({ src, alt, isCurrentImage, setDisableDrag }) => {
         if (pinching || scale.value <= 1) return;
 
         // Prevent dragging image out of viewport
-        if (scale.value > 1) {
-          const {
-            top: topLeftY,
-            left: topLeftX,
-            bottom: bottomRightY,
-            right: bottomRightX
-          } = imageRef.current.getBoundingClientRect();
-          const { innerHeight: windowHeight, innerWidth: windowWidth } = window;
-
-          if (
-            topLeftX > windowWidth / 2.5 ||
-            topLeftY > windowHeight / 2.5 ||
-            bottomRightX < windowWidth / 2.5 ||
-            bottomRightY < windowHeight / 2.5
-          ) {
-            cancel();
-            set(defaultImageTransform);
-          } else {
-            set({
-              translateX: translateX.value + xDelta / 3,
-              translateY: translateY.value + yDelta / 3
-            });
-          }
-        }
-      },
-      onDragEnd: () => {
-        if (scale.value <= 1) set(defaultImageTransform);
+        if (scale.value > 1 && imageIsOutOfBounds(imageRef)) cancel();
+        else
+          set({
+            translateX: translateX.value + xDelta / 3,
+            translateY: translateY.value + yDelta / 3
+          });
       }
     },
     /**
@@ -149,29 +126,22 @@ const Image = ({ src, alt, isCurrentImage, setDisableDrag }) => {
       const pinchScale = scale.value + 1;
       const pinchDelta = pinchScale - scale.value;
 
-      const {
-        top: imageTopLeftY,
-        left: imageTopLeftX,
-        width: imageWidth,
-        height: imageHeight
-      } = imageRef.current.getBoundingClientRect();
-
-      // Get the (x,y) touch position relative to image origin at the current scale
-      const imageCoordX =
-        (touchOriginX - imageTopLeftX - imageWidth / 2) / scale.value;
-      const imageCoordY =
-        (touchOriginY - imageTopLeftY - imageHeight / 2) / scale.value;
-
-      // Calculate translateX/Y offset at the next scale to zoom to touch position
-      const newTransformX = -imageCoordX * pinchDelta + translateX.value;
-      const newTransformY = -imageCoordY * pinchDelta + translateY.value;
+      // Calculate the amount of x, y translate offset needed to
+      // zoom-in to point as image scale grows
+      const [newTranslateX, newTranslateY] = getTranslateOffsetsFromScale({
+        imageRef,
+        scale: scale.value,
+        pinchDelta,
+        currentTranslate: [translateX.value, translateY.value],
+        touchOrigin: [touchOriginX, touchOriginY]
+      });
 
       // Disable dragging in pager
       setDisableDrag(true);
       set({
         scale: pinchScale,
-        translateX: newTransformX,
-        translateY: newTransformY,
+        translateX: newTranslateX,
+        translateY: newTranslateY,
         pinching: true
       });
     },

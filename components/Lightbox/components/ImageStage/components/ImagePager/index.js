@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useSprings, animated } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 import clamp from 'lodash.clamp';
-import useWindowSize from '../../utils/useWindowSize';
+import { useWindowSize } from '../../utils';
 import Image from '../Image';
 
 /**
