@@ -92,9 +92,31 @@ const Image = ({ src, alt, isCurrentImage, setDisableDrag }) => {
           set(defaultImageTransform);
         }
       },
-      onDrag: ({ delta: [xDelta, yDelta], pinching, event }) => {
+      onDrag: ({ delta: [xDelta, yDelta], pinching, event, cancel }) => {
         if (event.touches && event.touches.length > 1) return;
         if (pinching || scale.value <= 1) return;
+
+        const {
+          top: topLeftY,
+          left: topLeftX,
+          bottom: bottomRightY,
+          right: bottomRightX
+        } = imageRef.current.getBoundingClientRect();
+        const { innerHeight: windowHeight, innerWidth: windowWidth } = window;
+
+        if (scale.value > 1) {
+          if (
+            topLeftX > windowWidth / 2.5 ||
+            topLeftY > windowHeight / 2.5 ||
+            bottomRightX < windowWidth / 2.5 ||
+            bottomRightY < windowHeight / 2.5
+          ) {
+            cancel();
+            set(defaultImageTransform);
+            return;
+          }
+        }
+
         set({
           translateX: translateX.value + xDelta / 3,
           translateY: translateY.value + yDelta / 3
