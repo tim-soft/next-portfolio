@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { useSpring, animated, to } from 'react-spring';
+import { useSpring, animated, to, config } from 'react-spring';
 import { useGesture } from 'react-use-gesture';
 import {
   useDoubleClick,
@@ -24,7 +24,8 @@ const Image = ({ src, alt, isCurrentImage, setDisableDrag }) => {
   const defaultImageTransform = () => ({
     scale: 1,
     translateX: 0,
-    translateY: 0
+    translateY: 0,
+    config: { ...config.default, precision: 0.01 }
   });
 
   /**

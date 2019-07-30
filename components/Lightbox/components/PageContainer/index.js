@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useTransition, animated } from 'react-spring';
+import { useTransition, animated, config } from 'react-spring';
 import merge from 'lodash.merge';
 
 /**
@@ -24,7 +24,7 @@ const PageContainer = ({
     from: { transform: 'scale(0.75)', opacity: 0 },
     enter: { transform: 'scale(1)', opacity: 1 },
     leave: { transform: 'scale(0.75)', opacity: 0 },
-    config: { mass: 1, tension: 320, friction: 32 }
+    config: { ...config.default, mass: 1, tension: 320, friction: 32 }
   };
 
   const transitions = useTransition(
