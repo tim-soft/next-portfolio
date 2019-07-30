@@ -96,15 +96,16 @@ const Image = ({ src, alt, isCurrentImage, setDisableDrag }) => {
         if (event.touches && event.touches.length > 1) return;
         if (pinching || scale.value <= 1) return;
 
-        const {
-          top: topLeftY,
-          left: topLeftX,
-          bottom: bottomRightY,
-          right: bottomRightX
-        } = imageRef.current.getBoundingClientRect();
-        const { innerHeight: windowHeight, innerWidth: windowWidth } = window;
-
+        // Prevent dragging image out of viewport
         if (scale.value > 1) {
+          const {
+            top: topLeftY,
+            left: topLeftX,
+            bottom: bottomRightY,
+            right: bottomRightX
+          } = imageRef.current.getBoundingClientRect();
+          const { innerHeight: windowHeight, innerWidth: windowWidth } = window;
+
           if (
             topLeftX > windowWidth / 2.5 ||
             topLeftY > windowHeight / 2.5 ||
