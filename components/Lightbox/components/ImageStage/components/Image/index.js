@@ -35,6 +35,10 @@ const Image = ({ src, alt, isCurrentImage, setDisableDrag }) => {
         set(defaultImageTransform);
         setDisableDrag(false);
       }
+    },
+    // Enable dragging in ImagePager if image is at the default size
+    onRest: f => {
+      if (f.scale === 1) setDisableDrag(false);
     }
   }));
 
@@ -87,10 +91,7 @@ const Image = ({ src, alt, isCurrentImage, setDisableDrag }) => {
       },
       onPinchEnd: () => {
         if (scale.value > 1) setDisableDrag(true);
-        else {
-          setDisableDrag(false);
-          set(defaultImageTransform);
-        }
+        else set(defaultImageTransform);
       },
       onDrag: ({ delta: [xDelta, yDelta], pinching, event, cancel }) => {
         if (event.touches && event.touches.length > 1) return;
@@ -114,7 +115,6 @@ const Image = ({ src, alt, isCurrentImage, setDisableDrag }) => {
           ) {
             cancel();
             set(defaultImageTransform);
-            setDisableDrag(false);
           } else {
             set({
               translateX: translateX.value + xDelta / 3,
@@ -139,7 +139,6 @@ const Image = ({ src, alt, isCurrentImage, setDisableDrag }) => {
     onDoubleClick: e => {
       // If double-tapped while already zoomed-in, zoom out to default scale
       if (scale.value !== 1) {
-        setDisableDrag(false);
         set(defaultImageTransform);
 
         return;
