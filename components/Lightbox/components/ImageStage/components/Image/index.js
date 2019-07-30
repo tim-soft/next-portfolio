@@ -114,14 +114,13 @@ const Image = ({ src, alt, isCurrentImage, setDisableDrag }) => {
           ) {
             cancel();
             set(defaultImageTransform);
-            return;
+          } else {
+            set({
+              translateX: translateX.value + xDelta / 3,
+              translateY: translateY.value + yDelta / 3
+            });
           }
         }
-
-        set({
-          translateX: translateX.value + xDelta / 3,
-          translateY: translateY.value + yDelta / 3
-        });
       },
       onDragEnd: () => {
         if (scale.value <= 1) set(defaultImageTransform);
