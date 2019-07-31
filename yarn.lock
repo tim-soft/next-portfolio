@@ -6187,10 +6187,10 @@ react-lazy-images@^1.1.0:
     react-intersection-observer "^6.1.0"
     unionize "^2.1.2"
 
-react-particles-webgl@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/react-particles-webgl/-/react-particles-webgl-1.0.6.tgz#e472755ec3642b15960cce9d732ca5a17a76150a"
-  integrity sha512-WCqqbY62aTGIiBo/9hyRyVMEA6JWU9gJcSMrK7KjOfQfeFXU2yDgXxlZ4q/pTNbkEBDBVPpkhsTAjh9pp57T8Q==
+react-particles-webgl@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/react-particles-webgl/-/react-particles-webgl-1.0.7.tgz#285904f31bdda94c42b62a2324f4e8693028ac52"
+  integrity sha512-ovet/vGuNtFRpcVIL1wGg/A/2JFvCjSQ2YVUzfeMLf2+qrh4ribpGMUdgLXTpcpHYuq16cO9Ax6QxlPb3+/HKg==
   dependencies:
     hex-rgb "^4.1.0"
     is-hexcolor "^1.0.0"
