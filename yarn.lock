@@ -6187,14 +6187,14 @@ react-lazy-images@^1.1.0:
     react-intersection-observer "^6.1.0"
     unionize "^2.1.2"
 
-react-particles-webgl@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/react-particles-webgl/-/react-particles-webgl-1.0.5.tgz#0a8755f2b87326db5cac4219e879f5a3d5a8f867"
-  integrity sha512-/PPcSuzrsRFNnQkvd7I+Gp5u/KwdTGAyyTA6/UI4wbgnsSdmqzUmjwY+DTzEkMg2SgWsUnVk8q8KlhW2w0QAKg==
+react-particles-webgl@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/react-particles-webgl/-/react-particles-webgl-1.0.6.tgz#e472755ec3642b15960cce9d732ca5a17a76150a"
+  integrity sha512-WCqqbY62aTGIiBo/9hyRyVMEA6JWU9gJcSMrK7KjOfQfeFXU2yDgXxlZ4q/pTNbkEBDBVPpkhsTAjh9pp57T8Q==
   dependencies:
     hex-rgb "^4.1.0"
     is-hexcolor "^1.0.0"
-    react-three-fiber "^2.2.11"
+    react-three-fiber "^2.2.14"
     three-orbitcontrols "^2.102.2"
 
 react-photo-gallery@^8.0.0:
@@ -6245,10 +6245,10 @@ react-switch@^5.0.1:
   dependencies:
     prop-types "^15.6.2"
 
-react-three-fiber@^2.2.11:
-  version "2.2.12"
-  resolved "https://registry.yarnpkg.com/react-three-fiber/-/react-three-fiber-2.2.12.tgz#9ad0302ebe852945f1f4dc9021b4492d13889fc8"
-  integrity sha512-OmLz958S1S2q+tzKMx+gOtt65Fbv4OeDUiTNLO8QQhOG4hEXL6gvydBp15Qm2x5LGk6soTg9TdsKu8bbYHaG9g==
+react-three-fiber@^2.2.14:
+  version "2.2.14"
+  resolved "https://registry.yarnpkg.com/react-three-fiber/-/react-three-fiber-2.2.14.tgz#df07a654335af90a3ee80020553cefbcc41553bc"
+  integrity sha512-ANLbGBRdUZC+L18pOtC5vJfU92mLLs4a5tDIpjdD//IyYoEACJWc0Qy069hC6hOUdLAZBq6vyRD8EPOuxJCtHA==
   dependencies:
     "@babel/runtime" "^7.4.4"
     "@types/three" "^0.103.2"
