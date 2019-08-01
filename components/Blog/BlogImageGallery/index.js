@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Color from 'color';
 import Gallery from 'react-photo-gallery';
-import Lightbox from '../../Lightbox';
+import Lightbox from 'react-spring-lightbox';
 import GridImage from './components/GridImage';
 import LightboxHeader from './components/LightboxHeader';
 import LightboxArrowButton from './components/LightboxArrowButton';

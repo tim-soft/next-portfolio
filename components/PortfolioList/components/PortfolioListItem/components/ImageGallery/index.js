@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Gallery from 'react-photo-gallery';
-import Lightbox from 'components/Lightbox';
+import Lightbox from 'react-spring-lightbox';
 
 export default class ImageGallery extends React.Component {
   static propTypes = {
