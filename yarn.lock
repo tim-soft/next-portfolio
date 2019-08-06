@@ -6280,10 +6280,10 @@ react-scrollbars-custom@^4.0.16:
     react-draggable "^3.3.0"
     zoom-level "^1.2.4"
 
-react-spring-lightbox@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/react-spring-lightbox/-/react-spring-lightbox-0.0.3.tgz#30d3db893e087b083bf929196fcfbe9a7f92a3fa"
-  integrity sha512-ft5JK0YuAbH4dQxOij5iMhPaKoCGCLEfgtYQ4hda/UH+tDHW+0KRq+vu/qPucslFflVec3K9QmqnYk2Gd5lYug==
+react-spring-lightbox@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-spring-lightbox/-/react-spring-lightbox-1.0.0.tgz#2da6f97e3173743772e82ce9f41d68c4eaca2130"
+  integrity sha512-xloelsgzpCAdYUuzVBZAMJ4nbe4Ev6ONA3Dd/pKxtPMqNz1eKUyBKJk99RQ/9rgeMtoeg+yY/QPT74TxaUhPYA==
   dependencies:
     lodash.clamp "^4.0.3"
     lodash.merge "^4.6.2"
