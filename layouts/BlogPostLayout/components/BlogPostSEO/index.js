@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import NextSEO, { BreadcrumbJsonLd } from 'next-seo';
 import Head from 'next/head';
 
-const { APP_BASE_URL } = process.env;
+const APP_URL = process.env.APP_BASE_URL;
 
 /**
  * Inserts blog-post optimized structured data into the page
@@ -24,12 +24,12 @@ const BlogPostSEO = ({ blogPost, route }) => (
               '@type': 'BlogPosting',
               mainEntityOfPage: {
                 '@type': 'WebPage',
-                '@id': `${APP_BASE_URL}${route}`
+                '@id': `${APP_URL}${route}`
               },
               headline: blogPost.title,
               image: [
-                `${APP_BASE_URL}${blogPost.logo}`,
-                `${APP_BASE_URL}/static/avatar.png`
+                `${APP_URL}${blogPost.logo}`,
+                `${APP_URL}/static/avatar.png`
               ],
               datePublished: blogPost.date,
               dateModified: blogPost.date,
@@ -40,15 +40,15 @@ const BlogPostSEO = ({ blogPost, route }) => (
               creator: {
                 '@type': 'Person',
                 name: 'Tim Ellenberger',
-                url: APP_BASE_URL
+                url: APP_URL
               },
               publisher: {
                 '@type': 'Organization',
                 name: 'Tim Ellenberger',
-                url: APP_BASE_URL,
+                url: APP_URL,
                 logo: {
                   '@type': 'ImageObject',
-                  url: `${APP_BASE_URL}/static/avatar.png`,
+                  url: `${APP_URL}/static/avatar.png`,
                   width: '140',
                   height: '140'
                 }
@@ -66,18 +66,18 @@ const BlogPostSEO = ({ blogPost, route }) => (
       itemListElements={[
         {
           position: 1,
-          name: APP_BASE_URL,
-          item: APP_BASE_URL
+          name: APP_URL,
+          item: APP_URL
         },
         {
           position: 2,
           name: 'Blog',
-          item: `${APP_BASE_URL}/blog`
+          item: `${APP_URL}/blog`
         },
         {
           position: 3,
           name: blogPost.title,
-          item: `${APP_BASE_URL}${route}`
+          item: `${APP_URL}${route}`
         }
       ]}
     />
@@ -85,14 +85,14 @@ const BlogPostSEO = ({ blogPost, route }) => (
       config={{
         title: blogPost.title,
         description: blogPost.description,
-        canonical: `${APP_BASE_URL}${route}`,
+        canonical: `${APP_URL}${route}`,
         openGraph: {
-          url: `${APP_BASE_URL}${route}`,
+          url: `${APP_URL}${route}`,
           title: blogPost.title,
           description: blogPost.description,
           images: [
             {
-              url: `${APP_BASE_URL}${blogPost.logo}`,
+              url: `${APP_URL}${blogPost.logo}`,
               alt: 'Blog Post Logo'
             }
           ],
@@ -100,7 +100,7 @@ const BlogPostSEO = ({ blogPost, route }) => (
           article: {
             publishedTime: blogPost.date,
             section: 'Technology',
-            authors: [APP_BASE_URL]
+            authors: [APP_URL]
           },
           site_name: 'Coding, Musings and Adventures of Tim Ellenberger',
           locale: 'en_US',

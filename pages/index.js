@@ -5,7 +5,7 @@ import NextSEO, { BreadcrumbJsonLd } from 'next-seo';
 import IntroBanner from 'layouts/WebsiteLayout/components/IntroBanner';
 import { generatePageTheme } from 'components/AppTheme';
 
-const { APP_BASE_URL } = process.env;
+const APP_URL = process.env.APP_BASE_URL;
 
 const HomePage = ({ theme }) => (
   <>
@@ -14,13 +14,13 @@ const HomePage = ({ theme }) => (
       itemListElements={[
         {
           position: 1,
-          name: APP_BASE_URL,
-          item: APP_BASE_URL
+          name: APP_URL,
+          item: APP_URL
         },
         {
           position: 2,
           name: 'Home',
-          item: APP_BASE_URL
+          item: APP_URL
         }
       ]}
     />

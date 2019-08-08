@@ -35,7 +35,7 @@ module.exports = {
     // https://github.com/benmosher/eslint-plugin-import
     'import/resolver': {
       node: {
-        moduleDirectory: ['node_modules', '/']
+        moduleDirectory: ['node_modules', `.`]
       }
     }
   }

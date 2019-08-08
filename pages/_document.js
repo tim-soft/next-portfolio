@@ -1,6 +1,6 @@
 import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
-import { GA_TRACKING_ID } from '../lib/googleAnalytics';
+import { GOOGLE_ANALYTICS_ID } from '../lib/googleAnalytics';
 
 /**
  * Custom Next.js Document that implements SSR friendly Styled-Components
@@ -89,7 +89,7 @@ export default class StyledDocument extends Document {
           {/* Global Site Tag (../lib/googleAnalytics.js) - Google Analytics */}
           <script
             async
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+            src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}
           />
           <script
             // eslint-disable-next-line react/no-danger
@@ -98,7 +98,7 @@ export default class StyledDocument extends Document {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${GA_TRACKING_ID}');
+            gtag('config', '${GOOGLE_ANALYTICS_ID}');
           `
             }}
           />

@@ -31,12 +31,12 @@ class WebApp extends App {
   };
 
   componentDidMount() {
-    const { APP_BASE_URL } = process.env;
+    const APP_URL = process.env.APP_BASE_URL;
 
     // eslint-disable-next-line no-console
     console.log(
       '%c ',
-      `background: url('${APP_BASE_URL}/static/avatar.png') 0 0 no-repeat; padding: 66px; border-radius: 50%;`
+      `background: url('${APP_URL}/static/avatar.png') 0 0 no-repeat; padding: 66px; border-radius: 50%;`
     );
 
     // eslint-disable-next-line no-console

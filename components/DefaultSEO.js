@@ -1,4 +1,4 @@
-const { APP_BASE_URL } = process.env;
+const APP_URL = process.env.APP_BASE_URL;
 
 export default {
   title: 'Tim Ellenberger',
@@ -12,7 +12,7 @@ export default {
     locale: 'en_US',
     images: [
       {
-        url: `${APP_BASE_URL}/static/avatar.png`,
+        url: `${APP_URL}/static/avatar.png`,
         width: 140,
         height: 140,
         alt: 'Tim Ellenberger (Avatar)'
