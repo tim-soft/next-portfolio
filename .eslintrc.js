@@ -11,7 +11,7 @@ module.exports = {
     es6: true
   },
   extends: ['airbnb', 'prettier', 'prettier/react', 'plugin:import/warnings'],
-  plugins: ['prettier', 'import', 'jsx-a11y'],
+  plugins: ['prettier', 'import', 'jsx-a11y', 'react-hooks'],
   globals: {
     document: true,
     window: true,
@@ -28,7 +28,9 @@ module.exports = {
     'jsx-a11y/anchor-is-valid': 0,
     'import/no-extraneous-dependencies': 0,
     'prettier/prettier': 'error',
-    'react/destructuring-assignment': 0
+    'react/destructuring-assignment': 0,
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn'
   },
   settings: {
     // Resolve modules from the root dir
