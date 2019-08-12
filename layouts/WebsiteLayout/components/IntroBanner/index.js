@@ -3,18 +3,16 @@ import styled from 'styled-components';
 import { Spring, animated, config } from 'react-spring';
 import { LazyImage } from 'react-lazy-images';
 import ParticleField from 'react-particles-webgl';
+import SiteVersionFAB from 'components/SiteVersionFAB';
 import particlesConfig from './particlesConfig';
 
 export default class IntroBanner extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      // Assume initial *.webp browser support
-      webpSupport: true,
-      backgroundAnimDone: false,
-      clientSide: false
-    };
-  }
+  state = {
+    // Assume initial *.webp browser support
+    webpSupport: true,
+    backgroundAnimDone: false,
+    clientSide: false
+  };
 
   componentDidMount() {
     // Check browser for webp support, set state accordingly
@@ -96,6 +94,7 @@ export default class IntroBanner extends React.Component {
             </Spring>
           )}
         />
+        <SiteVersionFAB />
       </BannerContainer>
     );
   }

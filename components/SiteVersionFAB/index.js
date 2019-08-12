@@ -1,30 +1,34 @@
 import styled from 'styled-components';
-import { version } from '../../package.json';
+import { name, version } from '../../package.json';
 
-const VersionFAB = () => (
+const SiteVersionFAB = () => (
   <a
-    href="https://github.com/tim-soft/next-portfolio/tree/master/pages"
+    href="https://github.com/tim-soft/next-portfolio"
     target="_blank"
     rel="noopener noreferrer"
   >
     <SiteVersionContainer>
       <SiteLogo src="/static/android-chrome-192x192.png" />
-      <p>
+      <FooterText>
+        <code>{name}</code>
+        <br />
         <code>Version {version}</code>
-      </p>
+      </FooterText>
     </SiteVersionContainer>
   </a>
 );
 
-export default VersionFAB;
+export default SiteVersionFAB;
+
+const FooterText = styled.p`
+  text-align: center;
+  line-height: 1.3em;
+`;
 
 const SiteVersionContainer = styled.div`
-  /* @media (max-width: 1200px) {
-    display: none;
-  } */
   position: absolute;
   bottom: 10px;
-  right: 20px;
+  right: 10px;
   display: flex;
   align-items: center;
   flex-direction: column;
