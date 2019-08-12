@@ -6,6 +6,7 @@ import BlogData from 'data/BlogPosts';
 import BlogPostBanner from './components/BlogPostBanner';
 import BlogPostSEO from './components/BlogPostSEO';
 import BlogNavigation from './components/BlogNavigation';
+import BlogEditPostFAB from './components/BlogEditPostFAB';
 
 const BlogPostLayout = ({ route, children, width }) => {
   // Get the current blog post from data
@@ -27,6 +28,7 @@ const BlogPostLayout = ({ route, children, width }) => {
             <BlogNavigation route={route} />
             <HiringCallout />
           </article>
+          <BlogEditPostFAB route={route} />
         </Container>
       </PageScrollWrapper>
     </>
