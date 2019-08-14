@@ -29,6 +29,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 0,
     'prettier/prettier': 'error',
     'react/destructuring-assignment': 0,
+    'react/static-property-placement': 0,
     'react/jsx-props-no-spreading': 0,
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn'
