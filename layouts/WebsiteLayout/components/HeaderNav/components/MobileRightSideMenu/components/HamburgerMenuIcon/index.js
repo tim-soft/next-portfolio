@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withTheme } from 'styled-components';
-import { Spring, config, animated, to } from 'react-spring';
+import { Spring, config, animated, to } from '@react-spring/web';
 
 const HamburgerMenuIcon = ({ menuIsOpen, toggleMenu, theme }) => (
   <svg

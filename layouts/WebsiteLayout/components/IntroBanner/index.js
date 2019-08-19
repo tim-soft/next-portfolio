@@ -1,18 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Spring, animated, config } from 'react-spring';
+import { Spring, animated, config } from '@react-spring/web';
 import { LazyImage } from 'react-lazy-images';
 import ParticleField from 'react-particles-webgl';
 import SiteVersionFAB from 'components/SiteVersionFAB';
 import particlesConfig from './particlesConfig';
 
 export default class IntroBanner extends React.Component {
-  state = {
-    // Assume initial *.webp browser support
-    webpSupport: true,
-    backgroundAnimDone: false,
-    clientSide: false
-  };
+  constructor() {
+    super();
+    this.state = {
+      // Assume initial *.webp browser support
+      webpSupport: true,
+      backgroundAnimDone: false,
+      clientSide: false
+    };
+  }
 
   componentDidMount() {
     // Check browser for webp support, set state accordingly

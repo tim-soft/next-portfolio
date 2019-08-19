@@ -4,7 +4,7 @@ import App, { Container } from 'next/app';
 import Router from 'next/router';
 import { version } from 'next/package.json';
 import NextSeo from 'next-seo';
-import { Transition, animated } from 'react-spring';
+import { Transition, animated } from '@react-spring/web';
 import styled, { ThemeProvider } from 'styled-components';
 import appTheme from 'components/AppTheme';
 import GlobalStyles from 'components/GlobalStyles';

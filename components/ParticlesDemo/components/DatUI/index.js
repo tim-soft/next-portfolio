@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Scrollbar from 'components/Scrollbar';
-import { Transition, animated } from 'react-spring';
+import { Transition, animated } from '@react-spring/web';
 import ConfigViewer from './components/ConfigViewer';
 import DatUIPane from './components/DatUIPane';
 

@@ -924,24 +924,6 @@
     "@nodelib/fs.scandir" "2.1.1"
     fastq "^1.6.0"
 
-"@react-spring/addons@^9.0.0-beta.31":
-  version "9.0.0-beta.31"
-  resolved "https://registry.yarnpkg.com/@react-spring/addons/-/addons-9.0.0-beta.31.tgz#0a35a92369e9d380d2559f1b8dca23451863fc72"
-  integrity sha512-SZCQuN9iAubMiQvZSk4eroorD/KLsWvXjXfb8emYcLL6UGPQqyI663KczpH5UU7iwsh3QoZDwq3wYoitORtPVA==
-  dependencies:
-    "@babel/runtime" "^7.3.1"
-    "@react-spring/animated" "^9.0.0-beta.31"
-    "@react-spring/core" "^9.0.0-beta.31"
-    use-memo-one "^1.1.0"
-
-"@react-spring/animated@^9.0.0-beta.31":
-  version "9.0.0-beta.31"
-  resolved "https://registry.yarnpkg.com/@react-spring/animated/-/animated-9.0.0-beta.31.tgz#d7fe8171724ee8870fd5585a58c87818690e422b"
-  integrity sha512-Zrf6VQCpXexv/NngV1c/J2gPrK3uGk/yjEi6pnrXgmUAO67rfsNxJb/9kWcI4v2U9yrUS9EYAoDqG1BZV8Jvcw==
-  dependencies:
-    "@babel/runtime" "^7.3.1"
-    "@react-spring/shared" "^9.0.0-beta.31"
-
 "@react-spring/animated@^9.0.0-beta.33":
   version "9.0.0-beta.33"
   resolved "https://registry.yarnpkg.com/@react-spring/animated/-/animated-9.0.0-beta.33.tgz#5481278056e771466137f4d48c2efbf3277faad3"
@@ -950,16 +932,6 @@
     "@babel/runtime" "^7.3.1"
     "@react-spring/shared" "^9.0.0-beta.33"
     tiny-invariant "^1.0.4"
-
-"@react-spring/core@^9.0.0-beta.31":
-  version "9.0.0-beta.31"
-  resolved "https://registry.yarnpkg.com/@react-spring/core/-/core-9.0.0-beta.31.tgz#3ccdea75bcfb937b02ca540135383c51660e3a38"
-  integrity sha512-E0cwfnBjP6kftwfr/81LBhLsuN4wObwTlUO3eAfEuwPnyzaWfQ0QkM33uw8FUASyk+NdinmRVPfaUZNGYjdZNg==
-  dependencies:
-    "@babel/runtime" "^7.3.1"
-    "@react-spring/animated" "^9.0.0-beta.31"
-    "@react-spring/shared" "^9.0.0-beta.31"
-    use-memo-one "^1.1.0"
 
 "@react-spring/core@^9.0.0-beta.33":
   version "9.0.0-beta.33"
@@ -971,34 +943,6 @@
     "@react-spring/shared" "^9.0.0-beta.33"
     use-memo-one "^1.1.0"
 
-"@react-spring/konva@^9.0.0-beta.31":
-  version "9.0.0-beta.31"
-  resolved "https://registry.yarnpkg.com/@react-spring/konva/-/konva-9.0.0-beta.31.tgz#3eb9f9a12c21b2386058a348f7ff773d219f58a0"
-  integrity sha512-IezBohtc8sl6yXKkjKV80yZzypA21OiPT1vc6x/nh2iqaZcNCesDjNSwtQUZbWyWqgx/f9mQ0nCejtIw07C/NQ==
-  dependencies:
-    "@babel/runtime" "^7.3.1"
-    "@react-spring/animated" "^9.0.0-beta.31"
-    "@react-spring/core" "^9.0.0-beta.31"
-    "@react-spring/shared" "^9.0.0-beta.31"
-
-"@react-spring/native@^9.0.0-beta.31":
-  version "9.0.0-beta.31"
-  resolved "https://registry.yarnpkg.com/@react-spring/native/-/native-9.0.0-beta.31.tgz#1bf3e1a93fe3eab01834c885b05adddce1d47ea1"
-  integrity sha512-hUYTJSOLGrURV5WaJojWs05GfoAZij2WVRWM0/4TrZA0Ud89BZmu+lDb8XkfRW00YWEF688bTO5B+mtyZC1A/w==
-  dependencies:
-    "@babel/runtime" "^7.3.1"
-    "@react-spring/animated" "^9.0.0-beta.31"
-    "@react-spring/core" "^9.0.0-beta.31"
-    "@react-spring/shared" "^9.0.0-beta.31"
-
-"@react-spring/shared@^9.0.0-beta.31":
-  version "9.0.0-beta.31"
-  resolved "https://registry.yarnpkg.com/@react-spring/shared/-/shared-9.0.0-beta.31.tgz#417622806247fd9f676eda064baee622d608e937"
-  integrity sha512-MVCD2a8C5rQVRS67Ov4372efT8aDb6/5ZWRKwBcIeN2CrTuGqO6S3HgRZnER1LIZr7/BM4jkxA26KwTILQiaHw==
-  dependencies:
-    "@babel/runtime" "^7.3.1"
-    tiny-invariant "^1.0.4"
-
 "@react-spring/shared@^9.0.0-beta.33":
   version "9.0.0-beta.33"
   resolved "https://registry.yarnpkg.com/@react-spring/shared/-/shared-9.0.0-beta.33.tgz#8630cf68f79a7b12f075345bdf23a47dff6ed877"
@@ -1006,26 +950,6 @@
   dependencies:
     "@babel/runtime" "^7.3.1"
     tiny-invariant "^1.0.4"
-
-"@react-spring/three@^9.0.0-beta.31":
-  version "9.0.0-beta.31"
-  resolved "https://registry.yarnpkg.com/@react-spring/three/-/three-9.0.0-beta.31.tgz#256b7a837a5d513a2cf52bbfb3792a283a65d6dd"
-  integrity sha512-XgkBiWnb+7IWRxrO2iO33NeCz/KWbjxwpHiOZ+VQRsXO0Goe9upWezqgg2HCgq/yh2tNYFiOUY92MGNIscWo5w==
-  dependencies:
-    "@babel/runtime" "^7.3.1"
-    "@react-spring/animated" "^9.0.0-beta.31"
-    "@react-spring/core" "^9.0.0-beta.31"
-    "@react-spring/shared" "^9.0.0-beta.31"
-
-"@react-spring/web@^9.0.0-beta.31":
-  version "9.0.0-beta.31"
-  resolved "https://registry.yarnpkg.com/@react-spring/web/-/web-9.0.0-beta.31.tgz#1c16d5deaeea1b6fff2fa4fa8d8fb7b0af48d254"
-  integrity sha512-U1wAddiYDnf8u3UuKm/IwVk+5GbFlZv+hEemUWaLu+HeBnmZRORDgjWYPW1jHm25/wRW/CBJh3Yvun+XJEQ0yQ==
-  dependencies:
-    "@babel/runtime" "^7.3.1"
-    "@react-spring/animated" "^9.0.0-beta.31"
-    "@react-spring/core" "^9.0.0-beta.31"
-    "@react-spring/shared" "^9.0.0-beta.31"
 
 "@react-spring/web@^9.0.0-beta.33":
   version "9.0.0-beta.33"
@@ -1036,16 +960,6 @@
     "@react-spring/animated" "^9.0.0-beta.33"
     "@react-spring/core" "^9.0.0-beta.33"
     "@react-spring/shared" "^9.0.0-beta.33"
-
-"@react-spring/zdog@^9.0.0-beta.31":
-  version "9.0.0-beta.31"
-  resolved "https://registry.yarnpkg.com/@react-spring/zdog/-/zdog-9.0.0-beta.31.tgz#b4c440df6d600fb3690cd66844555ec4719a4691"
-  integrity sha512-BzdZ+jHY7RNfhu98w1P42yzHPkCqSzjxcea4RTqzD2x9DOYCTACUUcsl0SiOBkdRtEHWsqRdPMY3cqcegiKP8Q==
-  dependencies:
-    "@babel/runtime" "^7.3.1"
-    "@react-spring/animated" "^9.0.0-beta.31"
-    "@react-spring/core" "^9.0.0-beta.31"
-    "@react-spring/shared" "^9.0.0-beta.31"
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
@@ -6363,20 +6277,6 @@ react-spring-lightbox@^1.1.3:
     lodash.clamp "^4.0.3"
     lodash.merge "^4.6.2"
     react-use-gesture "^5.2.4"
-
-react-spring@^9.0.0-beta.30:
-  version "9.0.0-beta.31"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-9.0.0-beta.31.tgz#4c61e49319ecc05c4b8780dbe2718e433049531d"
-  integrity sha512-g4z40d+y3MtWNKsvpaGX9Qh33WtVo/qa0/78IisnUKQy7rUwLEMRd2X4HefuUZmbex0/neTbxWFDHiKMudn5Fw==
-  dependencies:
-    "@babel/runtime" "^7.3.1"
-    "@react-spring/addons" "^9.0.0-beta.31"
-    "@react-spring/core" "^9.0.0-beta.31"
-    "@react-spring/konva" "^9.0.0-beta.31"
-    "@react-spring/native" "^9.0.0-beta.31"
-    "@react-spring/three" "^9.0.0-beta.31"
-    "@react-spring/web" "^9.0.0-beta.31"
-    "@react-spring/zdog" "^9.0.0-beta.31"
 
 react-switch@^5.0.1:
   version "5.0.1"

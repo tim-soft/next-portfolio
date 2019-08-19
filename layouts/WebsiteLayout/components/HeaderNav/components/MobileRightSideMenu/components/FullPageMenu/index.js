@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Spring, animated, to } from 'react-spring';
+import { Spring, animated, to } from '@react-spring/web';
 import Link from 'next/link';
 import { GoMarkGithub, GoMail } from 'react-icons/go';
 import Scrollbar from 'components/Scrollbar';
