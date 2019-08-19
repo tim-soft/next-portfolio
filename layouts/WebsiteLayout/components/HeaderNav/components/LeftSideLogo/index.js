@@ -34,7 +34,7 @@ class LeftSideLogo extends React.Component {
         onFocus={() => this.handleHover(true)}
       >
         <LogoProfile>
-          <Link prefetch passHref href="/">
+          <Link passHref href="/">
             <Logo
               menuIsOpen={menuIsOpen}
               onClick={() => menuIsOpen && toggleMenu()}

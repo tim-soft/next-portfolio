@@ -14,11 +14,7 @@ const BlogNavigation = ({ route }) => {
   const PrevPost = () => {
     if (currPostIndex > 0) {
       const prevPost = sortedPosts[currPostIndex - 1];
-      return (
-        <NavLink prefetch href={prevPost.href}>
-          &#10229; {prevPost.title}
-        </NavLink>
-      );
+      return <NavLink href={prevPost.href}>&#10229; {prevPost.title}</NavLink>;
     }
 
     return <span />;
@@ -29,7 +25,7 @@ const BlogNavigation = ({ route }) => {
     if (currPostIndex < sortedPosts.length - 1) {
       const nextPost = sortedPosts[currPostIndex + 1];
       return (
-        <NavLink prefetch href={nextPost.href} rtl>
+        <NavLink href={nextPost.href} rtl>
           &#10230; {nextPost.title}
         </NavLink>
       );

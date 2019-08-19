@@ -105,7 +105,7 @@ class MenuItem extends React.Component {
           ref={this.menuOverlay}
           showUnderline={children === null}
         >
-          <Link prefetch passHref href={link}>
+          <Link passHref href={link}>
             <LinkHeading isHovering={isHovering}>
               {text} {children && <FiChevronDown />}
             </LinkHeading>

@@ -35,31 +35,31 @@ const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
           }}
         >
           <NavMenuContainer>
-            <Link prefetch passHref href="/">
+            <Link passHref href="/">
               <MobileStyledLink onClick={toggleMenu}>
                 <LinkHeading>Home</LinkHeading>
               </MobileStyledLink>
             </Link>
 
-            <Link prefetch passHref href="/portfolio">
+            <Link passHref href="/portfolio">
               <MobileStyledLink onClick={toggleMenu}>
                 <LinkHeading>Portfolio</LinkHeading>
               </MobileStyledLink>
             </Link>
 
-            <Link prefetch passHref href="/particles">
+            <Link passHref href="/particles">
               <MobileStyledLink onClick={toggleMenu}>
                 <LinkHeading>ParticlesGL</LinkHeading>
               </MobileStyledLink>
             </Link>
 
-            <Link prefetch passHref href="/courses">
+            <Link passHref href="/courses">
               <MobileStyledLink onClick={toggleMenu}>
                 <LinkHeading>Courses</LinkHeading>
               </MobileStyledLink>
             </Link>
 
-            <Link prefetch passHref href="/blog">
+            <Link passHref href="/blog">
               <MobileStyledLink onClick={toggleMenu}>
                 <LinkHeading>Blog</LinkHeading>
               </MobileStyledLink>

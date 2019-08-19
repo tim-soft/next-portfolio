@@ -7,7 +7,7 @@ const IndexListItem = ({ title, description, href, date, readTime }) => (
   <BlogItem>
     <header>
       <BlogTitle>
-        <StyledLink prefetch href={href} paragraph>
+        <StyledLink href={href} paragraph>
           {title}
         </StyledLink>
       </BlogTitle>

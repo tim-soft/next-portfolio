@@ -8,10 +8,10 @@ import Link from 'next/link';
  * If given an external link, the url will load in a new tab.
  * Optionally include the `paragraph` prop to inherit styling.
  */
-const BlogLink = ({ prefetch, href, children, className, ...props }) => {
+const BlogLink = ({ href, children, className, ...props }) => {
   if (href.charAt(0) === '/')
     return (
-      <Link href={href} passHref prefetch={prefetch}>
+      <Link href={href} passHref>
         <StyledLink className={className} {...props}>
           {children}
         </StyledLink>
@@ -41,7 +41,6 @@ BlogLink.propTypes = {
   className: PropTypes.string,
   inverted: PropTypes.bool,
   paragraph: PropTypes.bool,
-  prefetch: PropTypes.bool,
   noWrap: PropTypes.bool
 };
 
@@ -49,7 +48,6 @@ BlogLink.defaultProps = {
   className: null,
   inverted: true,
   paragraph: null,
-  prefetch: false,
   noWrap: false
 };
 
