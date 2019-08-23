@@ -20,7 +20,7 @@ import DatContainer from './DatContainer';
  */
 const DatUIPane = ({ datConfig, handleDatUpdate }) => (
   <DatContainer>
-    <DatGui data={datConfig} onUpdate={handleDatUpdate} labelWidth="65%">
+    <DatGui data={datConfig} onUpdate={handleDatUpdate}>
       <DatPresets
         label="Presets"
         options={[

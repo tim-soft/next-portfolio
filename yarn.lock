@@ -1005,10 +1005,10 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@tim-soft/react-dat-gui@^4.0.7":
-  version "4.0.7"
-  resolved "https://registry.yarnpkg.com/@tim-soft/react-dat-gui/-/react-dat-gui-4.0.7.tgz#ff333434f35ce42589a7a2c448070516e088a70f"
-  integrity sha512-B1nN5ObY+HWrpm5uaWp2kvrgFF2eZVqg9n1JeDZXPovvFIzAtgUMYR7Rpl8Al8hLu4AcnETGk+udOO1v/e6+Ig==
+"@tim-soft/react-dat-gui@^4.0.8":
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/@tim-soft/react-dat-gui/-/react-dat-gui-4.0.8.tgz#aa2f60b09fae5d155029f3f7a6e1e9d0f9df21bb"
+  integrity sha512-KKEIfeZ661l/SB3nM7/iyQcmkzIK7SYVMKZq6Ddo+ajczMB9KpMy3VoRkAog+kwc01Uhne/4gRs48XxT96UtfA==
   dependencies:
     "@babel/runtime" "^7.5.5"
     classnames "2.2.6"
