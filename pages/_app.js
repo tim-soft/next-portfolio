@@ -13,9 +13,16 @@ import defaultSEO from 'components/DefaultSEO';
 import { pageview } from '../lib/googleAnalytics';
 
 /**
+ * Temporary hotfix for next-css
+ *
+ * @see https://github.com/zeit/next-plugins/issues/282
+ */
+import '../components/_appStyles.css';
+
+/**
  * Custom Next.js App that wraps all Next.js pages, adds global styles and animates route changes
  *
- * https://nextjs.org/docs/#custom-app
+ * @see https://nextjs.org/docs/#custom-app
  */
 class WebApp extends App {
   static propTypes = {
