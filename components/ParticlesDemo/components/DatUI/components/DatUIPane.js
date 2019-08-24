@@ -8,7 +8,6 @@ import DatGui, {
   DatPresets,
   DatColor
 } from '@tim-soft/react-dat-gui';
-import '@tim-soft/react-dat-gui/dist/index.css';
 import { defaultConfig } from 'react-particles-webgl';
 import DatContainer from './DatContainer';
 
