@@ -6261,10 +6261,10 @@ react-reconciler@^0.20.4:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
-react-scrollbars-custom@^4.0.16:
-  version "4.0.16"
-  resolved "https://registry.yarnpkg.com/react-scrollbars-custom/-/react-scrollbars-custom-4.0.16.tgz#6f00be36591d64c07ae5be365efe8188406dd894"
-  integrity sha512-QNNYuRqGo6voqtxxmTq5qnPz0GrmtparGuo/UfmRVnkDbEPL3ExO9Y5w0TTOA1AgKZdc6keYhKfkN6daDX9J3Q==
+react-scrollbars-custom@^4.0.18:
+  version "4.0.18"
+  resolved "https://registry.yarnpkg.com/react-scrollbars-custom/-/react-scrollbars-custom-4.0.18.tgz#45a4c3d057960f9509e4023c2f775294c180186f"
+  integrity sha512-jh3Cni1sLVBpid+ElBrXy7WrQdtFj6uvb4PiRtafS81F0O0FDU3A/HOpxSjvM+lEGw+DnixNqTdpj2eHVtkuVg==
   dependencies:
     cnbuilder "^1.1.7"
     react-draggable "^3.3.0"
