@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import App, { Container } from 'next/app';
+import App from 'next/app';
 import Router from 'next/router';
 import { version } from 'next/package.json';
 import NextSeo from 'next-seo';
@@ -95,7 +95,7 @@ class WebApp extends App {
     ];
 
     return (
-      <Container>
+      <>
         <NextSeo config={defaultSEO} />
         <GlobalStyles />
         <ThemeProvider theme={theme}>
@@ -130,7 +130,7 @@ class WebApp extends App {
             </Transition>
           </WebsiteLayout>
         </ThemeProvider>
-      </Container>
+      </>
     );
   }
 }
