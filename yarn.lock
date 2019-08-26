@@ -4571,7 +4571,7 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
-lodash-es@^4.17.11:
+lodash-es@^4.17.15:
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.15.tgz#21bd96839354412f23d7a10340e5eac6ee455d78"
   integrity sha512-rlrc3yU3+JNOpZ9zj5pQtxnx2THmvRykwL4Xlxoa8I9lHBlVbbyPhgyPMioxVZ4NqyxaVVtaJnzsyOidQIhyyQ==
@@ -6240,14 +6240,14 @@ react-lazy-images@^1.1.0:
     react-intersection-observer "^6.1.0"
     unionize "^2.1.2"
 
-react-particles-webgl@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/react-particles-webgl/-/react-particles-webgl-1.0.8.tgz#d5d77f4cecbf323833d60d90d6e65ed45e07c8ec"
-  integrity sha512-qaEbvYKsXh+0kcni0dXPiAmsMYizHUUk5ZSoPBO8okRyfwpgxfDwY0DwRwse1UFM5XxiD40cTbgJKElLLldHNQ==
+react-particles-webgl@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/react-particles-webgl/-/react-particles-webgl-1.0.9.tgz#8f029e6319d350352b8f048dd8813cc5f03bf099"
+  integrity sha512-HLmRL9gycwAURiO5FRJ9+hCHmP9GxiKy9sQWjm5JRu0hZxu3h1MgwLb+iS2hwGzxjfzGKmPWFHwMKOPudWqtdg==
   dependencies:
     hex-rgb "^4.1.0"
     is-hexcolor "^1.0.0"
-    react-three-fiber "^2.2.14"
+    react-three-fiber "^2.3.6"
     three-orbitcontrols "^2.102.2"
 
 react-photo-gallery@^8.0.0:
@@ -6258,7 +6258,7 @@ react-photo-gallery@^8.0.0:
     prop-types "~15.7.2"
     resize-observer-polyfill "^1.5.0"
 
-react-reconciler@^0.20.4:
+react-reconciler@0.20.4:
   version "0.20.4"
   resolved "https://registry.yarnpkg.com/react-reconciler/-/react-reconciler-0.20.4.tgz#3da6a95841592f849cb4edd3d38676c86fd920b2"
   integrity sha512-kxERc4H32zV2lXMg/iMiwQHOtyqf15qojvkcZ5Ja2CPkjVohHw9k70pdDBwrnQhLVetUJBSYyqU3yqrlVTOajA==
@@ -6294,16 +6294,16 @@ react-switch@^5.0.1:
   dependencies:
     prop-types "^15.6.2"
 
-react-three-fiber@^2.2.14:
-  version "2.2.15"
-  resolved "https://registry.yarnpkg.com/react-three-fiber/-/react-three-fiber-2.2.15.tgz#154dcb449f34f842f4d84196779dfcc6ae86320d"
-  integrity sha512-eDtuVfeq15Xmgs0P3U0i3D1yRjoEr8qAniL0bnZ0JPb41L6fsDvqe0YBFcQUYccYYPAFkJc58wMCP/aPtCD2Vg==
+react-three-fiber@^2.3.6:
+  version "2.3.6"
+  resolved "https://registry.yarnpkg.com/react-three-fiber/-/react-three-fiber-2.3.6.tgz#33b2ffe10be661fa969db17477a8f229183228cd"
+  integrity sha512-9wx5hvf54Gazg2fDQZi4TQ1Nk771O6j4VHgNCv/wAp6RW6c9iGV3BY1FievUQUOq07nj+J1zUX9U6bTRmtd22Q==
   dependencies:
     "@babel/runtime" "^7.4.4"
     "@types/three" "^0.103.2"
-    lodash-es "^4.17.11"
+    lodash-es "^4.17.15"
     pointer-events-polyfill "^0.4.4-pre"
-    react-reconciler "^0.20.4"
+    react-reconciler "0.20.4"
     resize-observer-polyfill "^1.5.1"
     scheduler "0.13.3"
 
