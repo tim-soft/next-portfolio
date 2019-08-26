@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import App from 'next/app';
+import App, { Container } from 'next/app';
 import Router from 'next/router';
 import { version } from 'next/package.json';
 import NextSeo from 'next-seo';
@@ -95,7 +95,7 @@ class WebApp extends App {
     ];
 
     return (
-      <>
+      <Container>
         <NextSeo config={defaultSEO} />
         <GlobalStyles />
         <ThemeProvider theme={theme}>
@@ -111,17 +111,17 @@ class WebApp extends App {
               enter={{ opacity: 1, transform: 'scale(1) translateY(0px)' }}
               leave={{ opacity: 0, transform: 'scale(0.9) translateY(-200px)' }}
             >
-              {() => animStyles => (
-                <AnimatedContainer key={router.route} style={animStyles}>
-                  <Component
-                    {...pageProps}
+              {page => animStyles => (
+                <AnimatedContainer key={page.route} style={animStyles}>
+                  <page.Component
+                    {...page.pageProps}
                     // Pass route from transition data
-                    route={router.route}
+                    route={page.route}
                     // Combine page theme from transition with current dynamic page theme
                     // for this route
                     theme={{
-                      ...pageTheme,
-                      ...this.getDynamicPageTheme(router.route)
+                      ...page.pageTheme,
+                      ...this.getDynamicPageTheme(page.route)
                     }}
                     updateTheme={this.updateTheme}
                   />
@@ -130,7 +130,7 @@ class WebApp extends App {
             </Transition>
           </WebsiteLayout>
         </ThemeProvider>
-      </>
+      </Container>
     );
   }
 }
