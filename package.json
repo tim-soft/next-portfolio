@@ -20,7 +20,7 @@
     "get-contrast-ratio": "^0.2.1",
     "hex-rgb": "^4.1.0",
     "is-hexcolor": "^1.0.0",
-    "next": "^9.0.4",
+    "next": "^9.0.5",
     "next-offline": "^4.0.5",
     "next-seo": "^1.12.0",
     "nice-color-palettes": "^3.0.0",
