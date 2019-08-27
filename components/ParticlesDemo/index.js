@@ -11,17 +11,14 @@ export default class ParticlesDemo extends React.Component {
   constructor() {
     super();
     this.state = {
-      clientSide: false,
       datConfig: defaultConfig
     };
   }
 
-  componentDidMount = () => this.setState({ clientSide: true });
-
   handleDatUpdate = datConfig => this.setState({ datConfig });
 
   render() {
-    const { datConfig, clientSide } = this.state;
+    const { datConfig } = this.state;
 
     return (
       <>
@@ -30,7 +27,7 @@ export default class ParticlesDemo extends React.Component {
         {/* Config GUI */}
         <DatUI datConfig={datConfig} handleDatUpdate={this.handleDatUpdate} />
         {/* Particle Canvas */}
-        {clientSide && <ParticleField config={datConfig} />}
+        <ParticleField config={datConfig} />
 
         {/* Repo tag */}
         <RepoTag />
