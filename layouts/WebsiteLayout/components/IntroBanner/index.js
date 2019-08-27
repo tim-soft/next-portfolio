@@ -12,15 +12,13 @@ export default class IntroBanner extends React.Component {
     this.state = {
       // Assume initial *.webp browser support
       webpSupport: true,
-      backgroundAnimDone: false,
-      clientSide: false
+      backgroundAnimDone: false
     };
   }
 
   componentDidMount() {
     // Check browser for webp support, set state accordingly
     this.checkWebpSupport();
-    this.setState({ clientSide: true });
   }
 
   /**
@@ -53,7 +51,7 @@ export default class IntroBanner extends React.Component {
   setBackgroundAnimDone = () => this.setState({ backgroundAnimDone: true });
 
   render() {
-    const { webpSupport, backgroundAnimDone, clientSide } = this.state;
+    const { webpSupport, backgroundAnimDone } = this.state;
 
     const imgSrc = webpSupport
       ? 'url(/static/IntroBannerBG.webp)'
@@ -61,24 +59,22 @@ export default class IntroBanner extends React.Component {
 
     return (
       <BannerContainer>
-        {clientSide && (
-          <Spring
-            native
-            from={{ opacity: 0, transform: 'scale(0)' }}
-            to={
-              backgroundAnimDone
-                ? { opacity: 1, transform: 'scale(1)' }
-                : { opacity: 0, transform: 'scale(0)' }
-            }
-            config={config.slow}
-          >
-            {animStyles => (
-              <AnimatedContainer style={animStyles}>
-                <ParticleField config={particlesConfig} />
-              </AnimatedContainer>
-            )}
-          </Spring>
-        )}
+        <Spring
+          native
+          from={{ opacity: 0, transform: 'scale(0)' }}
+          to={
+            backgroundAnimDone
+              ? { opacity: 1, transform: 'scale(1)' }
+              : { opacity: 0, transform: 'scale(0)' }
+          }
+          config={config.slow}
+        >
+          {animStyles => (
+            <AnimatedContainer style={animStyles}>
+              <ParticleField config={particlesConfig} />
+            </AnimatedContainer>
+          )}
+        </Spring>
 
         <LazyImage
           loadEagerly
