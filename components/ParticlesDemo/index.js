@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ParticleField, { defaultConfig } from 'react-particles-webgl';
 import { DatUI, PerformanceStats, RepoTag } from './components';
 
@@ -7,31 +7,21 @@ import { DatUI, PerformanceStats, RepoTag } from './components';
  *
  * Includes a config panel and performance monitor
  */
-export default class ParticlesDemo extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      datConfig: defaultConfig
-    };
-  }
+const ParticlesDemo = () => {
+  const [datConfig, setDatConfig] = useState(defaultConfig);
 
-  handleDatUpdate = datConfig => this.setState({ datConfig });
+  return (
+    <>
+      {/* FPS Counter */}
+      <PerformanceStats />
+      {/* Config GUI */}
+      <DatUI datConfig={datConfig} handleDatUpdate={setDatConfig} />
+      {/* Particle Canvas */}
+      <ParticleField config={datConfig} />
+      {/* Repo tag */}
+      <RepoTag />
+    </>
+  );
+};
 
-  render() {
-    const { datConfig } = this.state;
-
-    return (
-      <>
-        {/* FPS Counter */}
-        <PerformanceStats />
-        {/* Config GUI */}
-        <DatUI datConfig={datConfig} handleDatUpdate={this.handleDatUpdate} />
-        {/* Particle Canvas */}
-        <ParticleField config={datConfig} />
-
-        {/* Repo tag */}
-        <RepoTag />
-      </>
-    );
-  }
-}
+export default ParticlesDemo;

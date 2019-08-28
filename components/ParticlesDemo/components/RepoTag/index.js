@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { GoMarkGithub } from 'react-icons/go';
 import HiringCallout from 'components/HiringCallout';
 
-export default () => (
+const RepoTag = () => (
   <Container>
     <StyledLink
       href="https://github.com/tim-soft/react-particles-webgl#readme"
@@ -29,6 +29,8 @@ export default () => (
     <StyledHiringCallout />
   </Container>
 );
+
+export default RepoTag;
 
 const StyledHiringCallout = styled(HiringCallout)`
   margin: 1em;
