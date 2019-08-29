@@ -26,4 +26,14 @@ const ProjectListItem = styled.li`
   }
 `;
 
-export { ProjectBadge, ProjectTitle, ProjectList, ProjectListItem };
+const ProjectBadgeList = styled.div`
+  margin-top: 1em !important;
+`;
+
+export {
+  ProjectBadge,
+  ProjectBadgeList,
+  ProjectTitle,
+  ProjectList,
+  ProjectListItem
+};

@@ -1,14 +1,15 @@
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const ProjectBadge = ({ badgeUrl, linkUrl }) => (
-  <a
+  <BadgeLink
     href={linkUrl}
     target="_blank"
     rel="noopener noreferrer"
     style={{ marginRight: '0.5em' }}
   >
     <img src={badgeUrl} alt="badge" />
-  </a>
+  </BadgeLink>
 );
 
 ProjectBadge.propTypes = {
@@ -17,3 +18,9 @@ ProjectBadge.propTypes = {
 };
 
 export default ProjectBadge;
+
+const BadgeLink = styled.a`
+  margin-right: 5px;
+  display: inline-block;
+  height: 20px;
+`;

@@ -1,22 +1,14 @@
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { GoMarkGithub } from 'react-icons/go';
 
 const ProjectTitle = ({ text, href }) => (
-  <h2 style={{ display: 'flex', alignItems: 'center', fontWeight: 'normal' }}>
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        textDecoration: 'none'
-      }}
-    >
+  <Title>
+    <ProjectLink href={href} target="_blank" rel="noopener noreferrer">
       {text}
-      <GoMarkGithub size="1.5em" style={{ marginLeft: '0.5em' }} />
-    </a>
-  </h2>
+      <GoMarkGithub size="1.5em" />
+    </ProjectLink>
+  </Title>
 );
 
 ProjectTitle.propTypes = {
@@ -25,3 +17,18 @@ ProjectTitle.propTypes = {
 };
 
 export default ProjectTitle;
+
+const Title = styled.h2`
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+`;
+
+const ProjectLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  svg {
+    margin-left: 0.5em;
+  }
+`;

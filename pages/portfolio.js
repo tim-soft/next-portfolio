@@ -6,7 +6,8 @@ import {
   ProjectList,
   ProjectListItem,
   ProjectTitle,
-  ProjectBadge
+  ProjectBadge,
+  ProjectBadgeList
 } from 'components/Portfolio';
 import PageScrollWrapper from 'components/PageScrollWrapper';
 
@@ -38,7 +39,7 @@ const PortfolioPage = ({ theme }) => (
                   href="https://github.com/tim-soft/next-portfolio"
                   text="next-portfolio"
                 />
-                <div>
+                <ProjectBadgeList>
                   <ProjectBadge
                     badgeUrl="https://img.shields.io/github/package-json/v/tim-soft/next-portfolio.svg?color=brightgreen&style=popout-square"
                     linkUrl="https://github.com/tim-soft/next-portfolio"
@@ -47,7 +48,7 @@ const PortfolioPage = ({ theme }) => (
                     badgeUrl="https://img.shields.io/github/license/tim-soft/next-portfolio?color=brightgreen&style=popout-square"
                     linkUrl="https://github.com/tim-soft/next-portfolio/blob/master/LICENSE.md"
                   />
-                </div>
+                </ProjectBadgeList>
                 <p>
                   My personal website, blog and library demo playground, built
                   from scratch with Next.js
@@ -58,7 +59,7 @@ const PortfolioPage = ({ theme }) => (
                   href="https://github.com/tim-soft/react-particles-webgl"
                   text="react-particles-webgl"
                 />
-                <div>
+                <ProjectBadgeList>
                   <ProjectBadge
                     badgeUrl="https://img.shields.io/npm/v/react-particles-webgl.svg?color=brightgreen&style=popout-square"
                     linkUrl="https://www.npmjs.com/package/react-particles-webgl"
@@ -75,7 +76,7 @@ const PortfolioPage = ({ theme }) => (
                     badgeUrl="https://img.shields.io/travis/tim-soft/react-particles-webgl?style=flat-square"
                     linkUrl="https://travis-ci.org/tim-soft/react-particles-webgl"
                   />
-                </div>
+                </ProjectBadgeList>
                 <p>
                   A 2D/3D particle library built on React, Three.js and WebGL
                 </p>
@@ -85,7 +86,7 @@ const PortfolioPage = ({ theme }) => (
                   href="https://github.com/tim-soft/react-spring-lightbox"
                   text="react-spring-lightbox"
                 />
-                <div>
+                <ProjectBadgeList>
                   <ProjectBadge
                     badgeUrl="https://img.shields.io/npm/v/react-spring-lightbox.svg?color=brightgreen&style=popout-square"
                     linkUrl="https://www.npmjs.com/package/react-spring-lightbox"
@@ -102,7 +103,7 @@ const PortfolioPage = ({ theme }) => (
                     badgeUrl="https://img.shields.io/travis/tim-soft/react-spring-lightbox?style=flat-square"
                     linkUrl="https://travis-ci.org/tim-soft/react-spring-lightbox"
                   />
-                </div>
+                </ProjectBadgeList>
                 <p>
                   A flexible image gallery lightbox with native-feeling touch
                   gestures and buttery smooth animations, built with
@@ -114,7 +115,7 @@ const PortfolioPage = ({ theme }) => (
                   href="https://github.com/tim-soft/use-double-click"
                   text="use-double-click"
                 />
-                <div>
+                <ProjectBadgeList>
                   <ProjectBadge
                     badgeUrl="https://img.shields.io/npm/v/use-double-click.svg?color=brightgreen&style=popout-square"
                     linkUrl="https://www.npmjs.com/package/use-double-click"
@@ -135,7 +136,7 @@ const PortfolioPage = ({ theme }) => (
                     badgeUrl="https://img.shields.io/travis/tim-soft/use-double-click?style=flat-square"
                     linkUrl="https://travis-ci.org/tim-soft/use-double-click"
                   />
-                </div>
+                </ProjectBadgeList>
                 <p>
                   A simple React hook for differentiating single and double
                   clicks on the same component.
