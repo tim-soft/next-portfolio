@@ -2,12 +2,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const ProjectBadge = ({ badgeUrl, linkUrl }) => (
-  <BadgeLink
-    href={linkUrl}
-    target="_blank"
-    rel="noopener noreferrer"
-    style={{ marginRight: '0.5em' }}
-  >
+  <BadgeLink href={linkUrl} target="_blank" rel="noopener noreferrer">
     <img src={badgeUrl} alt="badge" />
   </BadgeLink>
 );
