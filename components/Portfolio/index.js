@@ -4,16 +4,15 @@ import ProjectBadge from './components/ProjectBadge';
 
 const ProjectList = styled.ul`
   margin: 3em 0;
-  padding: 0 2em;
+  padding: 0;
   list-style-type: none;
-  @media (max-width: 900px) {
-    padding: 0;
-  }
 `;
 
 const ProjectListItem = styled.li`
   &:not(:last-child) {
-    border-bottom: 2px black solid;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: ${({ theme }) => theme.pageContentFontColor};
     margin-bottom: 2em;
     padding-bottom: 2em;
   }
