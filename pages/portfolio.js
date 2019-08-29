@@ -24,7 +24,7 @@ const PortfolioPage = ({ theme }) => (
     <ThemeProvider theme={theme}>
       <PageScrollWrapper>
         <PageContainer>
-          <Title>Portfolio</Title>
+          <PageTitle>Portfolio</PageTitle>
           <section>
             <h2>Open Source</h2>
             <p>
@@ -165,6 +165,7 @@ PortfolioPage.defaultProps = {
 export default PortfolioPage;
 
 const PageContainer = styled.main`
+  color: ${({ theme }) => theme.pageContentFontColor};
   width: 100%;
   max-width: 1100px;
   > section {
@@ -179,8 +180,7 @@ const PageContainer = styled.main`
   }
 `;
 
-const Title = styled.h1`
-  color: ${({ theme }) => theme.pageContentFontColor};
+const PageTitle = styled.h1`
   font-size: 50px;
   text-align: center;
 `;
