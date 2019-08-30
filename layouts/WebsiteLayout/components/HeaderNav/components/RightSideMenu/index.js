@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import MenuItem from './MenuItem';
-import CourseMenuContent from './MenuContent/Courses';
 import BlogPostMenuContent from './MenuContent/Blogs';
+import LibrariesMenuContent from './MenuContent/Libraries';
 
 export default () => (
   <RightSideMenu>
@@ -11,13 +11,13 @@ export default () => (
     <MenuItem link="/particles" text="ParticlesGL" />
 
     <MenuItem
-      link="/courses"
-      text="Courses"
-      menuWidth={350}
-      menuHeight={500}
+      link="/portfolio"
+      text="Libraries"
+      menuWidth={660}
+      menuHeight={600}
       useScroll
     >
-      <CourseMenuContent />
+      <LibrariesMenuContent />
     </MenuItem>
 
     <MenuItem
