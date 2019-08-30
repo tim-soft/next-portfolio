@@ -10,6 +10,7 @@ import {
   ProjectBadgeList
 } from 'components/Portfolio';
 import PageScrollWrapper from 'components/PageScrollWrapper';
+import { greyTheme } from 'components/AppTheme';
 
 const PortfolioPage = ({ theme }) => (
   <>
@@ -161,6 +162,8 @@ PortfolioPage.propTypes = {
 PortfolioPage.defaultProps = {
   theme: {}
 };
+
+PortfolioPage.pageTheme = greyTheme;
 
 export default PortfolioPage;
 
