@@ -6188,10 +6188,10 @@ react-dom@^16.8.6:
     prop-types "^15.6.2"
     scheduler "^0.15.0"
 
-react-draggable@^3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/react-draggable/-/react-draggable-3.3.0.tgz#2ed7ea3f92e7d742d747f9e6324860606cd4d997"
-  integrity sha512-U7/jD0tAW4T0S7DCPK0kkKLyL0z61sC/eqU+NUfDjnq+JtBKaYKDHpsK2wazctiA4alEzCXUnzkREoxppOySVw==
+react-draggable@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/react-draggable/-/react-draggable-3.3.2.tgz#966ef1d90f2387af3c2d8bd3516f601ea42ca359"
+  integrity sha512-oaz8a6enjbPtx5qb0oDWxtDNuybOylvto1QLydsXgKmwT7e3GXC2eMVDwEMIUYJIFqVG72XpOv673UuuAq6LhA==
   dependencies:
     classnames "^2.2.5"
     prop-types "^15.6.0"
@@ -6270,13 +6270,13 @@ react-reconciler@0.20.4:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
-react-scrollbars-custom@^4.0.18:
-  version "4.0.18"
-  resolved "https://registry.yarnpkg.com/react-scrollbars-custom/-/react-scrollbars-custom-4.0.18.tgz#45a4c3d057960f9509e4023c2f775294c180186f"
-  integrity sha512-jh3Cni1sLVBpid+ElBrXy7WrQdtFj6uvb4PiRtafS81F0O0FDU3A/HOpxSjvM+lEGw+DnixNqTdpj2eHVtkuVg==
+react-scrollbars-custom@^4.0.20:
+  version "4.0.20"
+  resolved "https://registry.yarnpkg.com/react-scrollbars-custom/-/react-scrollbars-custom-4.0.20.tgz#5cdeb864aacfcc5b6e9c7e532cff1a5ca290b739"
+  integrity sha512-mYEljeOpYabspUrSEFf52bwzUcAd6lU1sgMd/Hp0jh9sOeps1fs/FoiSfFqDZWcshMTekTia/GPYbwhCJOFa9w==
   dependencies:
     cnbuilder "^1.1.7"
-    react-draggable "^3.3.0"
+    react-draggable "^3.3.2"
     zoom-level "^1.2.4"
 
 react-spring-lightbox@^1.1.6:

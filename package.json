@@ -34,7 +34,7 @@
     "react-lazy-images": "^1.1.0",
     "react-particles-webgl": "^1.0.10",
     "react-photo-gallery": "^8.0.0",
-    "react-scrollbars-custom": "^4.0.18",
+    "react-scrollbars-custom": "^4.0.20",
     "react-spring-lightbox": "^1.1.6",
     "react-switch": "^5.0.1",
     "stringify-object": "^3.3.0",
