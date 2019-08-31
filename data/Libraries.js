@@ -60,7 +60,7 @@ export default [
   },
   {
     name: 'use-double-click',
-    href: 'https://github.com/tim-soft/use-double-click',
+    href: '/libraries/use-double-click',
     description:
       'A simple React hook for differentiating single and double clicks on the same component.',
     logoSrc: '/static/avatar.png',

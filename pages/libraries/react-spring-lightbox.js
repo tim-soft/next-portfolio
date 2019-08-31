@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { ThemeProvider } from 'styled-components';
-import NextSEO from 'next-seo';
-import PageScrollWrapper from 'components/PageScrollWrapper';
+import { ThemeProvider } from 'styled-components';
+import LibraryLayout from 'layouts/LibraryLayout';
 import { darkTheme } from 'components/AppTheme';
-import { ProjectBadge, ProjectBadgeList } from 'components/Portfolio';
 import { BlogImageGallery } from 'components/Blog';
 
 const images = [
@@ -41,85 +39,34 @@ const images = [
   }
 ];
 
-const LightboxPage = ({ theme }) => (
-  <>
-    <NextSEO
-      config={{
-        title: 'Portfolio | Tim Ellenberger',
-        openGraph: {
-          title: 'Portfolio | Tim Ellenberger'
-        }
-      }}
-    />
-    <ThemeProvider theme={theme}>
-      <PageScrollWrapper>
-        <PageContainer>
-          <PageTitle>react-spring-lightbox</PageTitle>
-          <ProjectBadgeList style={{ textAlign: 'center' }}>
-            <ProjectBadge
-              badgeUrl="https://img.shields.io/npm/v/react-spring-lightbox.svg?color=brightgreen&style=popout-square"
-              linkUrl="https://www.npmjs.com/package/react-spring-lightbox"
-            />
-            <ProjectBadge
-              badgeUrl="https://img.shields.io/github/license/tim-soft/react-spring-lightbox?color=brightgreen&style=popout-square"
-              linkUrl="https://github.com/tim-soft/react-spring-lightbox/blob/master/LICENSE.md"
-            />
-            <ProjectBadge
-              badgeUrl="https://img.shields.io/bundlephobia/minzip/react-spring-lightbox.svg?style=popout-square"
-              linkUrl="https://bundlephobia.com/result?p=react-spring-lightbox"
-            />
-            <ProjectBadge
-              badgeUrl="https://img.shields.io/travis/tim-soft/react-spring-lightbox?style=flat-square"
-              linkUrl="https://travis-ci.org/tim-soft/react-spring-lightbox"
-            />
-          </ProjectBadgeList>
-          <p>
-            A flexible image gallery lightbox with native-feeling touch gestures
-            and buttery smooth animations, built with react-spring.
-          </p>
-          <section>
-            <h2>Test 1</h2>
-            <BlogImageGallery galleryTitle="Test 1" images={images} />
-          </section>
-          <section>
-            <h2>Test 2</h2>
-            <BlogImageGallery galleryTitle="Test 1" images={images} />
-          </section>
-        </PageContainer>
-      </PageScrollWrapper>
-    </ThemeProvider>
-  </>
+const LibraryPage = ({ route, theme }) => (
+  <ThemeProvider theme={theme}>
+    <LibraryLayout route={route}>
+      <p>
+        A flexible image gallery lightbox with native-feeling touch gestures and
+        buttery smooth animations, built with react-spring.
+      </p>
+      <section>
+        <h2>Test 1</h2>
+        <BlogImageGallery galleryTitle="Test 1" images={images} />
+      </section>
+      <section>
+        <h2>Test 2</h2>
+        <BlogImageGallery galleryTitle="Test 1" images={images} />
+      </section>
+    </LibraryLayout>
+  </ThemeProvider>
 );
 
-LightboxPage.propTypes = {
+LibraryPage.propTypes = {
+  route: PropTypes.string.isRequired,
   theme: PropTypes.object
 };
 
-LightboxPage.defaultProps = {
+LibraryPage.defaultProps = {
   theme: {}
 };
 
-LightboxPage.pageTheme = darkTheme;
+LibraryPage.pageTheme = darkTheme;
 
-export default LightboxPage;
-
-const PageContainer = styled.main`
-  color: ${({ theme }) => theme.pageContentFontColor};
-  width: 100%;
-  max-width: 1100px;
-  > section {
-    margin-bottom: 4em;
-  }
-  a {
-    transition: color 0.2s linear;
-    color: ${({ theme }) => theme.pageContentFontColor};
-    :hover {
-      color: ${({ theme }) => theme.pageContentLinkHoverColor};
-    }
-  }
-`;
-
-const PageTitle = styled.h1`
-  font-size: 50px;
-  text-align: center;
-`;
+export default LibraryPage;
