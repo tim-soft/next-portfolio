@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const BlogEditPostFAB = ({ route }) => (
   <a
-    href={`https://github.com/tim-soft/next-portfolio/blob/master/pages/${route}.js`}
+    href={`https://github.com/tim-soft/next-portfolio/blob/master/pages${route}.js`}
     target="_blank"
     rel="noopener noreferrer"
   >

@@ -4,6 +4,7 @@ import PageScrollWrapper from 'components/PageScrollWrapper';
 import HiringCallout from 'components/HiringCallout';
 import libraries from 'data/Libraries';
 import { LibraryBanner } from './components';
+import EditFAB from '../BlogPostLayout/components/BlogEditPostFAB';
 
 const LibraryLayout = ({ route, children, width }) => {
   // Get the current blog post from data
@@ -23,7 +24,7 @@ const LibraryLayout = ({ route, children, width }) => {
             <HorizontalRule />
             <HiringCallout />
           </article>
-          {/* <BlogEditPostFAB route={route} /> */}
+          <EditFAB route={route} />
         </Container>
       </PageScrollWrapper>
     </>
