@@ -92,5 +92,25 @@ export default [
         linkUrl: 'https://travis-ci.org/tim-soft/use-double-click'
       }
     ]
+  },
+  {
+    name: 'next-portfolio',
+    href: 'https://github.com/tim-soft/next-portfolio',
+    description:
+      'My personal website, blog and library demo playground, built from scratch with Next.js.',
+    logoSrc: '/static/avatar.png',
+    badges: [
+      {
+        badgeUrl:
+          'https://img.shields.io/github/package-json/v/tim-soft/next-portfolio.svg?color=brightgreen&style=popout-square',
+        linkUrl: 'https://github.com/tim-soft/next-portfolio'
+      },
+      {
+        badgeUrl:
+          'https://img.shields.io/github/license/tim-soft/next-portfolio?color=brightgreen&style=popout-square',
+        linkUrl:
+          'https://github.com/tim-soft/next-portfolio/blob/master/LICENSE.md'
+      }
+    ]
   }
 ];
