@@ -4,6 +4,21 @@ export default [
     href: '/libraries/react-particles-webgl',
     description: 'A 2D/3D particle library built on React, Three.js and WebGL',
     logoSrc: '/static/avatar.png',
+    repoUrl: 'https://github.com/tim-soft/react-particles-webgl',
+    demoLinks: [
+      {
+        href: 'https://codesandbox.io/s/4x4lmpqz1w',
+        title: '2D Green Particles'
+      },
+      {
+        href: 'https://codesandbox.io/s/308zj3k7l1',
+        title: '3D Snowfall'
+      },
+      {
+        href: '/particles',
+        title: 'Config Generator'
+      }
+    ],
     badges: [
       {
         badgeUrl:
@@ -34,6 +49,14 @@ export default [
     description:
       'A flexible image gallery lightbox with native-feeling touch gestures and buttery smooth animations, built with react-spring.',
     logoSrc: '/static/avatar.png',
+    repoUrl: 'https://github.com/tim-soft/react-spring-lightbox',
+    demoLinks: [
+      {
+        href:
+          'https://codesandbox.io/s/react-spring-lightbox-mosaic-71hts?fontsize=14&module=%2Fsrc%2FImageGallery%2Findex.js',
+        title: 'Masonry Lightbox Gallery'
+      }
+    ],
     badges: [
       {
         badgeUrl:
@@ -64,6 +87,14 @@ export default [
     description:
       'A simple React hook for differentiating single and double clicks on the same component.',
     logoSrc: '/static/avatar.png',
+    repoUrl: 'https://github.com/tim-soft/use-double-click',
+    demoLinks: [
+      {
+        href:
+          'https://codesandbox.io/s/use-double-click-f7e33?expanddevtools=1&fontsize=14',
+        title: 'CodeSandbox'
+      }
+    ],
     badges: [
       {
         badgeUrl:
@@ -99,6 +130,13 @@ export default [
     description:
       'My personal website, blog and library demo playground, built from scratch with Next.js.',
     logoSrc: '/static/avatar.png',
+    repoUrl: 'https://github.com/tim-soft/next-portfolio',
+    demoLinks: [
+      {
+        href: 'https://timellenberger.com',
+        title: 'This website!'
+      }
+    ],
     badges: [
       {
         badgeUrl:
