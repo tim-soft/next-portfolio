@@ -70,11 +70,8 @@ const Container = styled.main`
   article {
     width: inherit;
   }
-  a {
-    transition: color 0.2s linear;
-    color: ${({ theme }) => theme.pageContentFontColor};
-    :hover {
-      color: ${({ theme }) => theme.pageContentLinkHoverColor};
-    }
+  p {
+    font-size: 1.2em;
+    line-height: 1.5em;
   }
 `;

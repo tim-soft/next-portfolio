@@ -60,10 +60,6 @@ const LinkContainer = styled.div`
 const StyledLink = styled(BlogLink)`
   font-weight: normal;
   font-size: 1.1em;
-  color: ${({ theme }) => theme.pageContentLinkHoverColor} !important;
-  :hover {
-    color: ${({ theme }) => theme.pageContentFontColor} !important;
-  }
 `;
 
 const BannerContainer = styled.div`
