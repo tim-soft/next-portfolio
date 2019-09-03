@@ -7,8 +7,8 @@ const APP_URL = process.env.APP_BASE_URL;
 /**
  * Inserts blog-post optimized structured data into the page
  *
- * https://developers.google.com/search/docs/guides/intro-structured-data
- * https://search.google.com/structured-data/testing-tool
+ * @see https://developers.google.com/search/docs/guides/intro-structured-data
+ * @see https://search.google.com/structured-data/testing-tool
  */
 const BlogPostSEO = ({ blogPost, route }) => (
   <>
@@ -20,7 +20,7 @@ const BlogPostSEO = ({ blogPost, route }) => (
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             {
-              '@context': 'http://schema.org',
+              '@context': 'https://schema.org',
               '@type': 'BlogPosting',
               mainEntityOfPage: {
                 '@type': 'WebPage',
@@ -33,6 +33,54 @@ const BlogPostSEO = ({ blogPost, route }) => (
               ],
               datePublished: blogPost.date,
               dateModified: blogPost.date,
+              author: {
+                '@type': 'Person',
+                name: 'Tim Ellenberger'
+              },
+              creator: {
+                '@type': 'Person',
+                name: 'Tim Ellenberger',
+                url: APP_URL
+              },
+              publisher: {
+                '@type': 'Organization',
+                name: 'Tim Ellenberger',
+                url: APP_URL,
+                logo: {
+                  '@type': 'ImageObject',
+                  url: `${APP_URL}/static/avatar.png`,
+                  width: '140',
+                  height: '140'
+                }
+              },
+              description: blogPost.description
+            },
+            null,
+            2
+          )
+        }}
+      />
+      {/* */}
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            {
+              '@context': 'https://schema.org',
+              '@type': 'TechArticle',
+              mainEntityOfPage: {
+                '@type': 'WebPage',
+                '@id': `${APP_URL}${route}`
+              },
+              headline: blogPost.title,
+              image: [
+                `${APP_URL}${blogPost.logo}`,
+                `${APP_URL}/static/avatar.png`
+              ],
+              datePublished: blogPost.date,
+              dateModified: blogPost.date,
+              proficiencyLevel: 'Beginner',
               author: {
                 '@type': 'Person',
                 name: 'Tim Ellenberger'
