@@ -13,7 +13,7 @@ const APP_URL = process.env.APP_BASE_URL;
 const BlogPostSEO = ({ blogPost, route }) => (
   <>
     <Head>
-      {/* https://schema.org/BlogPosting */}
+      {/** @see https://schema.org/BlogPosting */}
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
@@ -60,7 +60,7 @@ const BlogPostSEO = ({ blogPost, route }) => (
           )
         }}
       />
-      {/* */}
+      {/** @see https://schema.org/TechArticle */}
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
@@ -109,7 +109,7 @@ const BlogPostSEO = ({ blogPost, route }) => (
         }}
       />
     </Head>
-    {/* https://schema.org/breadcrumb */}
+    {/** @see https://schema.org/breadcrumb */}
     <BreadcrumbJsonLd
       itemListElements={[
         {
