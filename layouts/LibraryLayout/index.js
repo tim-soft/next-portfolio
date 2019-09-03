@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PageScrollWrapper from 'components/PageScrollWrapper';
 import HiringCallout from 'components/HiringCallout';
 import libraries from 'data/Libraries';
-import { LibraryBanner } from './components';
+import { LibraryBanner, LibrarySEO } from './components';
 import EditFAB from '../BlogPostLayout/components/BlogEditPostFAB';
 
 const LibraryLayout = ({ route, children, width }) => {
@@ -12,7 +12,7 @@ const LibraryLayout = ({ route, children, width }) => {
 
   return (
     <>
-      {/* <BlogPostSEO route={route} blogPost={blogPost} /> */}
+      <LibrarySEO library={library} route={route} />
       <PageScrollWrapper>
         <Container width={width}>
           <article>
