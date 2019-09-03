@@ -32,9 +32,10 @@ const LibrariesList = () => (
               <TitleContainer>
                 <PostTitle>{name}</PostTitle>
                 <DateContainer>
-                  <ProjectBadgeList>
+                  <ProjectBadgeList style={{ marginTop: '0.6em' }}>
                     {badges.map(({ badgeUrl, linkUrl }) => (
                       <ProjectBadge
+                        style={{ height: '20px' }}
                         badgeUrl={badgeUrl}
                         linkUrl={linkUrl}
                         key={linkUrl}

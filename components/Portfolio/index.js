@@ -27,7 +27,10 @@ const ProjectListItem = styled.li`
 `;
 
 const ProjectBadgeList = styled.div`
-  margin-top: 1em !important;
+  margin-top: 1em;
+  > * :last-child {
+    margin-right: 0;
+  }
 `;
 
 export {

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
-const ProjectBadge = ({ badgeUrl, linkUrl }) => {
+const ProjectBadge = ({ badgeUrl, linkUrl, ...props }) => {
   const [isLoaded, setLoaded] = useState(false);
 
   return (
@@ -11,6 +11,7 @@ const ProjectBadge = ({ badgeUrl, linkUrl }) => {
       href={linkUrl}
       target="_blank"
       rel="noopener noreferrer"
+      {...props}
     >
       <BadgeImage
         src={badgeUrl}
