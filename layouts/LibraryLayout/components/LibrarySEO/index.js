@@ -28,6 +28,8 @@ const LibrarySEO = ({ library, route }) => (
               },
               headline: library.name,
               image: [`${APP_URL}/static/avatar.png`],
+              datePublished: library.docsPublishedDate,
+              dateModified: library.docsPublishedDate,
               proficiencyLevel: 'Beginner',
               author: {
                 '@type': 'Person',
@@ -94,7 +96,7 @@ const LibrarySEO = ({ library, route }) => (
           ],
           type: 'article',
           article: {
-            // publishedTime: blogPost.date,
+            publishedTime: library.docsPublishedDate,
             section: 'Technology',
             authors: [APP_URL]
           },
@@ -117,6 +119,7 @@ LibrarySEO.propTypes = {
     href: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
+    docsPublishedDate: PropTypes.string.isRequired,
     repoUrl: PropTypes.string.isRequired,
     demoLinks: PropTypes.arrayOf(
       PropTypes.shape({

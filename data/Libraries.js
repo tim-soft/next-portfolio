@@ -1,3 +1,6 @@
+/**
+ * Index for published software libraries
+ */
 export default [
   {
     name: 'react-particles-webgl',
@@ -5,6 +8,8 @@ export default [
     description: 'A 2D/3D particle library built on React, Three.js and WebGL',
     logoSrc: '/static/avatar.png',
     repoUrl: 'https://github.com/tim-soft/react-particles-webgl',
+    docsPublishedDate:
+      'Tue Sep 03 2019 14:21:15 GMT-0700 (Pacific Daylight Time)',
     demoLinks: [
       {
         href: 'https://codesandbox.io/s/4x4lmpqz1w',
@@ -50,6 +55,8 @@ export default [
       'A flexible image gallery lightbox with native-feeling touch gestures and buttery smooth animations, built with react-spring.',
     logoSrc: '/static/avatar.png',
     repoUrl: 'https://github.com/tim-soft/react-spring-lightbox',
+    docsPublishedDate:
+      'Tue Sep 03 2019 14:21:15 GMT-0700 (Pacific Daylight Time)',
     demoLinks: [
       {
         href:
@@ -88,6 +95,8 @@ export default [
       'A simple React hook for differentiating single and double clicks on the same component.',
     logoSrc: '/static/avatar.png',
     repoUrl: 'https://github.com/tim-soft/use-double-click',
+    docsPublishedDate:
+      'Tue Sep 03 2019 14:21:15 GMT-0700 (Pacific Daylight Time)',
     demoLinks: [
       {
         href:
@@ -131,6 +140,8 @@ export default [
       'My personal website, blog and library demo playground, built from scratch with Next.js.',
     logoSrc: '/static/avatar.png',
     repoUrl: 'https://github.com/tim-soft/next-portfolio',
+    docsPublishedDate:
+      'Tue Sep 03 2019 14:21:15 GMT-0700 (Pacific Daylight Time)',
     demoLinks: [
       {
         href: 'https://timellenberger.com',
