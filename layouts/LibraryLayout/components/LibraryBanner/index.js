@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { GoMarkGithub } from 'react-icons/go';
 import { ProjectBadge, ProjectBadgeList } from 'components/Portfolio';
 import { BlogLink } from 'components/Blog';
 
@@ -7,7 +8,10 @@ const LibraryBanner = ({ library }) => (
   <BannerContainer>
     <LibraryName>{library.name}</LibraryName>
     <LinkContainer>
-      <StyledLink href={library.repoUrl}>GitHub</StyledLink>
+      <RepoStyledLink href={library.repoUrl}>
+        GitHub
+        <GoMarkGithub size="1.5em" />
+      </RepoStyledLink>
       {library.demoLinks.map(link => (
         <StyledLink href={link.href} key={link.href}>
           {link.title}
@@ -47,7 +51,9 @@ LibraryBanner.propTypes = {
 export default LibraryBanner;
 
 const ProjectDescription = styled.p`
-  margin: 2em 0 0 0;
+  margin: 1.2em 0 0 0;
+  text-align: center;
+  max-width: 700px;
 `;
 
 const LinkContainer = styled.div`
@@ -60,6 +66,14 @@ const LinkContainer = styled.div`
 const StyledLink = styled(BlogLink)`
   font-weight: normal;
   font-size: 1.1em;
+`;
+
+const RepoStyledLink = styled(StyledLink)`
+  display: inline-flex;
+  align-items: center;
+  > svg {
+    margin-left: 0.25em;
+  }
 `;
 
 const BannerContainer = styled.div`
