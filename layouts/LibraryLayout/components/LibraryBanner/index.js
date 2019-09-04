@@ -65,7 +65,7 @@ const LinkContainer = styled.div`
 
 const StyledLink = styled(BlogLink)`
   font-weight: normal;
-  font-size: 1.1em;
+  font-size: 1.15em;
 `;
 
 const RepoStyledLink = styled(StyledLink)`
