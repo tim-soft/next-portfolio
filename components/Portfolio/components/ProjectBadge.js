@@ -11,14 +11,10 @@ const ProjectBadge = ({ badgeUrl, linkUrl, ...props }) => {
       href={linkUrl}
       target="_blank"
       rel="noopener noreferrer"
+      isLoaded={isLoaded}
       {...props}
     >
-      <BadgeImage
-        src={badgeUrl}
-        alt="badge"
-        isLoaded={isLoaded}
-        onLoad={() => setLoaded(true)}
-      />
+      <BadgeImage src={badgeUrl} alt="badge" onLoad={() => setLoaded(true)} />
     </BadgeLink>
   );
 };
@@ -33,6 +29,19 @@ export default ProjectBadge;
 const BadgeImage = styled.img`
   height: 100%;
   min-height: initial;
+`;
+
+const BadgeLink = styled.a`
+  transition: border-color 0.2s linear !important;
+  margin-right: 3px;
+  display: inline-block;
+  height: 23px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: transparent;
+  :hover {
+    border-color: ${({ theme }) => theme.pageContentLinkHoverColor};
+  }
   ${({ isLoaded }) =>
     isLoaded &&
     css`
@@ -52,17 +61,4 @@ const BadgeImage = styled.img`
         }
       }
     `}
-`;
-
-const BadgeLink = styled.a`
-  transition: border-color 0.2s linear !important;
-  margin-right: 3px;
-  display: inline-block;
-  height: 23px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: transparent;
-  :hover {
-    border-color: ${({ theme }) => theme.pageContentLinkHoverColor};
-  }
 `;
