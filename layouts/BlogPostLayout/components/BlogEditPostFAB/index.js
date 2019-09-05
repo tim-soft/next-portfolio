@@ -8,10 +8,9 @@ const BlogEditPostFAB = ({ route }) => (
     rel="noopener noreferrer"
   >
     <FABContainer>
-      <SiteLogo src="/static/android-chrome-192x192.png" />
+      <SiteLogo src="/static/android-chrome-192x192.png" alt="Edit Post" />
       <FooterText>
         <code>Bug?</code>
-        <br />
         <code>Edit Post</code>
       </FooterText>
     </FABContainer>
@@ -25,6 +24,8 @@ BlogEditPostFAB.propTypes = {
 export default BlogEditPostFAB;
 
 const FooterText = styled.p`
+  display: flex;
+  flex-direction: column;
   margin-top: 6px;
   margin-bottom: 0;
   text-align: center;
