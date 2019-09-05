@@ -50,7 +50,7 @@ LibraryBanner.propTypes = {
 
 export default LibraryBanner;
 
-const ProjectDescription = styled.p`
+const ProjectDescription = styled.aside`
   margin: 1.2em 0 0 0;
   text-align: center;
   max-width: 700px;

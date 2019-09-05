@@ -69,8 +69,14 @@ const Container = styled.main`
   padding-bottom: 1.5em;
   article {
     width: inherit;
+    section {
+      margin: 2em 0;
+      h2 {
+        font-size: 2em;
+      }
+    }
   }
-  p {
+  p, aside {
     font-size: 1.2em;
     line-height: 1.5em;
   }
