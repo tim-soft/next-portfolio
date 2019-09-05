@@ -14,9 +14,10 @@ const BlogCodeBlock = ({
   width,
   title,
   path,
-  showLineNumbers
+  showLineNumbers,
+  ...containerProps
 }) => (
-  <CodeBlockContainer width={width}>
+  <CodeBlockContainer width={width} {...containerProps}>
     <CodeBlockTitle title={title} path={path} language={language} />
     <StyledScrollbar translateContentSizesToHolder noScrollY>
       <Highlight
