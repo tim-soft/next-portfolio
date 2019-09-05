@@ -3,12 +3,45 @@ import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import LibraryLayout from 'layouts/LibraryLayout';
 import { darkTheme } from 'components/AppTheme';
+import { BlogCodeBlock } from 'components/Blog';
 
 const LibraryPage = ({ route, theme }) => (
   <ThemeProvider theme={theme}>
     <LibraryLayout route={route}>
       <section>
         <h2>[Under Construction]</h2>
+      </section>
+      <section>
+        <BlogCodeBlock
+          path="Terminal"
+          language="bash"
+          code="yarn add use-double-click"
+        />
+        <BlogCodeBlock
+          path="/components/Clicker.js"
+          language="jsx"
+          code={`
+import { useRef } from 'react';
+import useDoubleClick from 'use-double-click';
+
+const Button = () => {
+  const buttonRef = useRef();
+  
+  useDoubleClick({
+    onSingleClick: e => {
+      console.log(e, 'single click');
+    },
+    onDoubleClick: e => {
+      console.log(e, 'double click');
+    },
+    ref: buttonRef,
+    latency: 250
+  });
+  
+  return <button ref={buttonRef}>Click Me</button>
+}
+      `}
+        />
       </section>
     </LibraryLayout>
   </ThemeProvider>
