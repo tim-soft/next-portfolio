@@ -57,6 +57,7 @@ const ProjectDescription = styled.p`
 `;
 
 const LinkContainer = styled.div`
+  text-align: center;
   margin: 1em 0 0.5em 0;
   > * {
     margin-right: 1em;
