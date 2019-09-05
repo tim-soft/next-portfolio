@@ -9,14 +9,15 @@ const LibraryPage = ({ route, theme }) => (
   <ThemeProvider theme={theme}>
     <LibraryLayout route={route}>
       <section>
-        <h2>[Under Construction]</h2>
-      </section>
-      <section>
+        <h2>Installation</h2>
         <BlogCodeBlock
           path="Terminal"
           language="bash"
           code="yarn add use-double-click"
         />
+      </section>
+      <section>
+        <h2>Basic Usage</h2>
         <BlogCodeBlock
           path="/components/Clicker.js"
           language="jsx"

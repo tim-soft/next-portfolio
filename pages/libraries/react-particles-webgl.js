@@ -9,14 +9,19 @@ const LibraryPage = ({ route, theme }) => (
   <ThemeProvider theme={theme}>
     <LibraryLayout route={route}>
       <section>
-        <h2>[Under Construction]</h2>
-      </section>
-      <section>
+        <h2>Installation</h2>
+        <p>
+          Adding react-particles-webgl to your project is easy, Three.js is
+          required so add it if your project doesn&apos;t have it already.
+        </p>
         <BlogCodeBlock
           path="Terminal"
           language="bash"
           code="yarn add react-particles-webgl three"
         />
+      </section>
+      <section>
+        <h2>Basic Usage</h2>
         <BlogCodeBlock
           path="/components/Particles.js"
           language="jsx"
@@ -36,9 +41,6 @@ const config = {
 export default () => <ParticleField config={config} />;
       `}
         />
-      </section>
-      <section>
-        <h2>Test 2</h2>
       </section>
     </LibraryLayout>
   </ThemeProvider>
