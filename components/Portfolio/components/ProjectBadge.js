@@ -36,7 +36,6 @@ const BadgeImage = styled.img`
   ${({ isLoaded }) =>
     isLoaded &&
     css`
-      opacity: 1;
       animation-name: fadeInOpacity;
       animation-iteration-count: 1;
       animation-timing-function: ease-in;
@@ -45,9 +44,11 @@ const BadgeImage = styled.img`
       @keyframes fadeInOpacity {
         0% {
           opacity: 0;
+          transform: scale(0);
         }
         100% {
           opacity: 1;
+          transform: scale(1);
         }
       }
     `}
