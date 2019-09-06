@@ -44,7 +44,7 @@ const LibraryPage = ({ route, theme }) => (
         <ParticlesJSClone />
         <p>
           A three dimensional particle field using a combination of the{' '}
-          <BlogCodeInline>boundaryType: {`'bounce'`}</BlogCodeInline> and
+          <BlogCodeInline>boundaryType: {`'passthru'`}</BlogCodeInline> and
           direction constraints.
         </p>
         <SnowfallParticles />
