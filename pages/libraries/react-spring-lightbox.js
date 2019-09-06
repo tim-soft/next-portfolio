@@ -3,45 +3,45 @@ import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import LibraryLayout from 'layouts/LibraryLayout';
 import { darkTheme } from 'components/AppTheme';
-import { BlogCodeBlock, BlogImageGallery } from 'components/Blog';
-
-const images = [
-  {
-    src: 'https://i.imgur.com/8oNzu0S.png',
-    alt: 'README.md',
-    caption: 'README.md',
-    width: 2486,
-    height: 1469
-  },
-  {
-    src:
-      'https://timellenberger.com/static/blog-content/dark-mode/win10-dark-mode.jpg',
-    alt: 'Windows 10 Dark Mode Setting',
-    caption: 'Windows 10 Dark Mode Setting',
-    width: 2848,
-    height: 2035
-  },
-  {
-    src:
-      'https://timellenberger.com/static/blog-content/dark-mode/macos-dark-mode.png',
-    alt: 'macOS Mojave Dark Mode Setting',
-    caption: 'macOS Mojave Dark Mode Setting',
-    width: 1200,
-    height: 1218
-  },
-  {
-    src:
-      'https://timellenberger.com/static/blog-content/dark-mode/android-9-dark-mode.jpg',
-    alt: 'Android 9.0 Dark Mode Setting',
-    caption: 'Android 9.0 Dark Mode Setting',
-    width: 1280,
-    height: 600
-  }
-];
+import { BlogCodeBlock, BlogCodeInline } from 'components/Blog';
+import {
+  LightboxDemoNoUI,
+  LightboxDemoAllControls
+} from 'components/Libraries/react-spring-lightbox/demos';
 
 const LibraryPage = ({ route, theme }) => (
   <ThemeProvider theme={theme}>
     <LibraryLayout route={route}>
+      <section>
+        <p>
+          <BlogCodeInline>react-spring-particles</BlogCodeInline> is a modal
+          photo gallery that aims to replicate <strong>all</strong> of the input
+          UX of hardware-accelerated native image applications from touch
+          swiping to <BlogCodeInline>Ctrl + Mousewheel</BlogCodeInline> zooming.
+        </p>
+      </section>
+      <section>
+        <h2>Demos</h2>
+        <p>
+          Out of the box, this library purposely does not include any UI
+          elements (header, footer, buttons etc). With the available{' '}
+          <BlogCodeInline>{`renderHeader={}`}</BlogCodeInline>,{' '}
+          <BlogCodeInline>{`renderFooter={}`}</BlogCodeInline>,{' '}
+          <BlogCodeInline>{`renderPrevButton={}`}</BlogCodeInline> and{' '}
+          <BlogCodeInline>{`renderNextButton={}`}</BlogCodeInline> props, the
+          sky is the limit for total customization.
+        </p>
+        <p>
+          All that is included is the image stage (press{' '}
+          <BlogCodeInline>Esc</BlogCodeInline> to close).
+        </p>
+        <LightboxDemoNoUI />
+        <p>
+          Utilizing the UI props to add a custom fixed header, absolutely
+          positioned footer and left/right arrow buttons
+        </p>
+        <LightboxDemoAllControls />
+      </section>
       <section>
         <h2>Installation</h2>
         <p>This library is built with hooks and requires React {`>=`} 16.8.0</p>
@@ -122,14 +122,6 @@ const CoolLightbox = () => {
 export default CoolLightbox;
       `}
         />
-      </section>
-      <section>
-        <h2>Test 1</h2>
-        <BlogImageGallery galleryTitle="Test 1" images={images} />
-      </section>
-      <section>
-        <h2>Test 2</h2>
-        <BlogImageGallery galleryTitle="Test 1" images={images} />
       </section>
     </LibraryLayout>
   </ThemeProvider>

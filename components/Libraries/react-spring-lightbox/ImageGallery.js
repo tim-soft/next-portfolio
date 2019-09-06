@@ -4,11 +4,9 @@ import styled from 'styled-components';
 import Color from 'color';
 import Gallery from 'react-photo-gallery';
 import Lightbox from 'react-spring-lightbox';
-import GridImage from './components/GridImage';
-import LightboxHeader from './components/LightboxHeader';
-import LightboxArrowButton from './components/LightboxArrowButton';
+import GridImage from '../../Blog/BlogImageGallery/components/GridImage';
 
-class BlogImageGallery extends React.Component {
+class ImageGallery extends React.Component {
   static propTypes = {
     galleryTitle: PropTypes.string.isRequired,
     imageMasonryDirection: PropTypes.oneOf(['column', 'row']),
@@ -20,11 +18,17 @@ class BlogImageGallery extends React.Component {
         width: PropTypes.number,
         height: PropTypes.number
       })
-    ).isRequired
+    ).isRequired,
+    LightboxHeader: PropTypes.element,
+    LightboxFooter: PropTypes.element,
+    LightboxArrowButton: PropTypes.element
   };
 
   static defaultProps = {
-    imageMasonryDirection: 'column'
+    imageMasonryDirection: 'column',
+    LightboxHeader: null,
+    LightboxFooter: null,
+    LightboxArrowButton: null
   };
 
   constructor() {
@@ -93,7 +97,14 @@ class BlogImageGallery extends React.Component {
 
   render() {
     const { currentImageIndex, lightboxIsOpen, clientSide } = this.state;
-    const { images, galleryTitle, imageMasonryDirection } = this.props;
+    const {
+      images,
+      galleryTitle,
+      imageMasonryDirection,
+      LightboxHeader,
+      LightboxFooter,
+      LightboxArrowButton
+    } = this.props;
 
     return (
       <GalleryContainer>
@@ -114,37 +125,49 @@ class BlogImageGallery extends React.Component {
           onNext={this.gotoNext}
           images={images}
           currentIndex={currentImageIndex}
-          renderHeader={() => (
-            <LightboxHeader
-              galleryTitle={galleryTitle}
-              images={images}
-              currentIndex={currentImageIndex}
-              onClose={this.closeLightbox}
-            />
-          )}
-          renderPrevButton={({ canPrev }) => (
-            <LightboxArrowButton
-              position="left"
-              onClick={this.gotoPrevious}
-              disabled={!canPrev}
-            />
-          )}
-          renderNextButton={({ canNext }) => (
-            <LightboxArrowButton
-              position="right"
-              onClick={this.gotoNext}
-              disabled={!canNext}
-            />
-          )}
+          renderHeader={() =>
+            LightboxHeader &&
+            React.cloneElement(LightboxHeader, {
+              galleryTitle,
+              images,
+              currentIndex: currentImageIndex,
+              onClose: this.closeLightbox
+            })
+          }
+          renderFooter={() =>
+            LightboxFooter &&
+            React.cloneElement(LightboxFooter, {
+              galleryTitle,
+              images,
+              currentIndex: currentImageIndex,
+              onClose: this.closeLightbox
+            })
+          }
+          renderPrevButton={({ canPrev }) =>
+            LightboxArrowButton &&
+            React.cloneElement(LightboxArrowButton, {
+              position: 'left',
+              onClick: this.gotoPrevious,
+              disabled: !canPrev
+            })
+          }
+          renderNextButton={({ canNext }) =>
+            LightboxArrowButton &&
+            React.cloneElement(LightboxArrowButton, {
+              position: 'right',
+              onClick: this.gotoNext,
+              disabled: !canNext
+            })
+          }
         />
       </GalleryContainer>
     );
   }
 }
 
-export default BlogImageGallery;
+export default ImageGallery;
 
-const GalleryContainer = styled.section`
+const GalleryContainer = styled.div`
   margin: 2em 0;
 `;
 
