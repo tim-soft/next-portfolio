@@ -5,6 +5,10 @@ import { GoTriangleRight } from 'react-icons/go';
 
 const defaultLogoSrc = [
   {
+    language: 'bash',
+    src: '/static/language-logos/terminal.svg'
+  },
+  {
     language: 'js',
     src: '/static/language-logos/javascript.svg'
   },
