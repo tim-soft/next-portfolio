@@ -1,7 +1,7 @@
 /**
  * Configure Babel
  *
- * https://babeljs.io/docs/en/configuration
+ * @see https://babeljs.io/docs/en/configuration
  */
 module.exports = {
   presets: [['next/babel']],
