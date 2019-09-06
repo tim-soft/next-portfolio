@@ -35,6 +35,7 @@ const LibraryPage = ({ route, theme }) => (
           Adding react-particles-webgl to your project is easy, Three.js is
           required so add it if your project doesn&apos;t have it already.
         </p>
+        <p>This library is built with hooks and requires React {`>=`} 16.8.0</p>
         <BlogCodeBlock
           path="Terminal"
           language="bash"

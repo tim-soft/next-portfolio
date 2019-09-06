@@ -44,6 +44,7 @@ const LibraryPage = ({ route, theme }) => (
     <LibraryLayout route={route}>
       <section>
         <h2>Installation</h2>
+        <p>This library is built with hooks and requires React {`>=`} 16.8.0</p>
         <BlogCodeBlock
           path="Terminal"
           language="bash"
