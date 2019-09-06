@@ -4,6 +4,11 @@ import { ThemeProvider } from 'styled-components';
 import LibraryLayout from 'layouts/LibraryLayout';
 import { darkTheme } from 'components/AppTheme';
 import { BlogCodeBlock, BlogCodeInline, BlogLink } from 'components/Blog';
+import {
+  DefaultParticles,
+  ParticlesJSClone,
+  SnowfallParticles
+} from 'components/Libraries/react-particles-webgl/demos';
 
 const LibraryPage = ({ route, theme }) => (
   <ThemeProvider theme={theme}>
@@ -28,6 +33,21 @@ const LibraryPage = ({ route, theme }) => (
           to offer smooth 60FPS high-count particle fields in both two and three
           dimensions.
         </p>
+        <p>
+          The particle field&apos;s configuration is extremely flexible,
+          allowing you to optionally interact with the field via{' '}
+          <BlogCodeInline>cameraControls</BlogCodeInline> with
+          drag/touch/scrollwheel etc.
+        </p>
+        <DefaultParticles />
+        <p>A two dimensional particle field with camera controls disabled.</p>
+        <ParticlesJSClone />
+        <p>
+          A three dimensional particle field using a combination of the{' '}
+          <BlogCodeInline>boundaryType: {`'bounce'`}</BlogCodeInline> and
+          direction constraints.
+        </p>
+        <SnowfallParticles />
       </section>
       <section>
         <h2>Installation</h2>
@@ -81,6 +101,7 @@ export default () => (
           options.
         </p>
         <BlogCodeBlock
+          width={850}
           path="/components/ParticleConfig.js"
           language="js"
           code={`
