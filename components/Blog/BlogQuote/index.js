@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const BlogQuote = ({ children }) => <StyledQuote>{children}</StyledQuote>;
+const BlogQuote = ({ children, ...props }) => (
+  <StyledQuote {...props}>{children}</StyledQuote>
+);
 
 BlogQuote.propTypes = {
   children: PropTypes.oneOfType([

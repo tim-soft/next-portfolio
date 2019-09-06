@@ -33,12 +33,14 @@ const LibraryPage = ({ route, theme }) => (
           to offer smooth 60FPS high-count particle fields in both two and three
           dimensions.
         </p>
+        <h2>Demos</h2>
         <p>
           The particle field&apos;s configuration is extremely flexible,
           allowing you to optionally interact with the field via{' '}
           <BlogCodeInline>cameraControls</BlogCodeInline> with
           drag/touch/scrollwheel etc.
         </p>
+
         <DefaultParticles />
         <p>A two dimensional particle field with camera controls disabled.</p>
         <ParticlesJSClone />

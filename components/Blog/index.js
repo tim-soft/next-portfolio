@@ -10,6 +10,7 @@ import BlogQuote from './BlogQuote';
 import BlogCodeInline from './BlogCodeInline';
 import BlogDemoContainer from './BlogDemoContainer';
 import BlogImageGallery from './BlogImageGallery';
+import BlogTableOfContents from './BlogTableOfContents';
 
 export {
   BlogParagraph,
@@ -23,5 +24,6 @@ export {
   BlogQuote,
   BlogCodeInline,
   BlogDemoContainer,
-  BlogImageGallery
+  BlogImageGallery,
+  BlogTableOfContents
 };
