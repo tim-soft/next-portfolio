@@ -70,7 +70,7 @@ const Container = styled.main`
   article {
     width: inherit;
     section {
-      margin: 2em 0;
+      margin: 3em 0;
       h2 {
         font-size: 2em;
       }
