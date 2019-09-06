@@ -167,11 +167,7 @@ const CodeBlock = styled.pre`
 
     return `calc(${theme.pageContentWidth}px - 2em)`;
   }};
-  width: ${({ width }) => {
-    if (width) return `calc(${width}px - 2em)`;
-
-    return `calc(100% - 2em)`;
-  }};
+  width: auto;
   text-align: left;
   margin: 0;
   padding: 1em 1em 1.5em 1em;
