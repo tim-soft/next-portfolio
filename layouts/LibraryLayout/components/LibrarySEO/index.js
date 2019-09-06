@@ -81,12 +81,12 @@ const LibrarySEO = ({ library, route }) => (
     />
     <NextSEO
       config={{
-        title: library.name,
+        title: `${library.name} - Docs`,
         description: library.description,
         canonical: `${APP_URL}${route}`,
         openGraph: {
           url: `${APP_URL}${route}`,
-          title: library.name,
+          title: `${library.name} - Docs`,
           description: library.description,
           images: [
             {
