@@ -169,6 +169,10 @@ export default ImageGallery;
 
 const GalleryContainer = styled.div`
   margin: 2em 0;
+  padding: 2em;
+  border-color: ${({ theme }) => theme.pageContentLinkHoverColor};
+  border-width: 1px;
+  border-style: solid;
 `;
 
 const StyledLightbox = styled(Lightbox)`

@@ -32,8 +32,8 @@ const LibraryPage = ({ route, theme }) => (
           sky is the limit for total customization.
         </p>
         <p>
-          All that is included is the image stage (press{' '}
-          <BlogCodeInline>Esc</BlogCodeInline> to close).
+          All that is included is the image stage which implements all gestures
+          (press <BlogCodeInline>Esc</BlogCodeInline> to close).
         </p>
         <LightboxDemoNoUI />
         <p>

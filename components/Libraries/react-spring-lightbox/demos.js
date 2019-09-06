@@ -26,6 +26,14 @@ const images = [
     caption: 'macOS Mojave Dark Mode Setting',
     width: 1200,
     height: 1218
+  },
+  {
+    src:
+      'https://timellenberger.com/static/blog-content/dark-mode/android-9-dark-mode.jpg',
+    alt: 'Android 9.0 Dark Mode Setting',
+    caption: 'Android 9.0 Dark Mode Setting',
+    width: 1280,
+    height: 600
   }
 ];
 
