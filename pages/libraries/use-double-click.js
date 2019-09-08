@@ -63,18 +63,16 @@ const Button = () => {
   const buttonRef = useRef();
   
   useDoubleClick({
-    // A callback function for single click events
-    onSingleClick: e => {
-      console.log(e, 'single click');
-    },
-    // A callback function for double click events
-    onDoubleClick: e => {
-      console.log(e, 'double click');
-    },
-    // (Required) Dom node to watch for double clicks
+    /** A callback function for single click events */
+    onSingleClick: e => console.log(e, 'single click'),
+    /** A callback function for double click events */
+    onDoubleClick: e => console.log(e, 'double click'),
+    /** (Required) Dom node to watch for double clicks */
     ref: buttonRef,
-    // The amount of time (in milliseconds) to wait 
-    // before differentiating a single from a double click
+    /**
+     * The amount of time (in milliseconds) to wait 
+     * before differentiating a single from a double click
+     */
     latency: 250
   });
   
