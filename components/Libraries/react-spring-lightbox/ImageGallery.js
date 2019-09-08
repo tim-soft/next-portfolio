@@ -8,7 +8,7 @@ import GridImage from '../../Blog/BlogImageGallery/components/GridImage';
 
 class ImageGallery extends React.Component {
   static propTypes = {
-    galleryTitle: PropTypes.string.isRequired,
+    galleryTitle: PropTypes.string,
     imageMasonryDirection: PropTypes.oneOf(['column', 'row']),
     images: PropTypes.arrayOf(
       PropTypes.shape({
@@ -19,16 +19,17 @@ class ImageGallery extends React.Component {
         height: PropTypes.number
       })
     ).isRequired,
-    LightboxHeader: PropTypes.element,
-    LightboxFooter: PropTypes.element,
-    LightboxArrowButton: PropTypes.element
+    LightboxHeader: PropTypes.func,
+    LightboxFooter: PropTypes.func,
+    LightboxArrowButton: PropTypes.func
   };
 
   static defaultProps = {
+    galleryTitle: null,
     imageMasonryDirection: 'column',
-    LightboxHeader: null,
-    LightboxFooter: null,
-    LightboxArrowButton: null
+    LightboxHeader: () => null,
+    LightboxFooter: () => null,
+    LightboxArrowButton: () => null
   };
 
   constructor() {
@@ -125,40 +126,36 @@ class ImageGallery extends React.Component {
           onNext={this.gotoNext}
           images={images}
           currentIndex={currentImageIndex}
-          renderHeader={() =>
-            LightboxHeader &&
-            React.cloneElement(LightboxHeader, {
-              galleryTitle,
-              images,
-              currentIndex: currentImageIndex,
-              onClose: this.closeLightbox
-            })
-          }
-          renderFooter={() =>
-            LightboxFooter &&
-            React.cloneElement(LightboxFooter, {
-              galleryTitle,
-              images,
-              currentIndex: currentImageIndex,
-              onClose: this.closeLightbox
-            })
-          }
-          renderPrevButton={({ canPrev }) =>
-            LightboxArrowButton &&
-            React.cloneElement(LightboxArrowButton, {
-              position: 'left',
-              onClick: this.gotoPrevious,
-              disabled: !canPrev
-            })
-          }
-          renderNextButton={({ canNext }) =>
-            LightboxArrowButton &&
-            React.cloneElement(LightboxArrowButton, {
-              position: 'right',
-              onClick: this.gotoNext,
-              disabled: !canNext
-            })
-          }
+          renderHeader={() => (
+            <LightboxHeader
+              galleryTitle={galleryTitle}
+              images={images}
+              currentIndex={currentImageIndex}
+              onClose={this.closeLightbox}
+            />
+          )}
+          renderFooter={() => (
+            <LightboxFooter
+              galleryTitle={galleryTitle}
+              images={images}
+              currentIndex={currentImageIndex}
+              onClose={this.closeLightbox}
+            />
+          )}
+          renderPrevButton={({ canPrev }) => (
+            <LightboxArrowButton
+              position="left"
+              onClick={this.gotoPrevious}
+              disabled={!canPrev}
+            />
+          )}
+          renderNextButton={({ canNext }) => (
+            <LightboxArrowButton
+              position="right"
+              onClick={this.gotoNext}
+              disabled={!canNext}
+            />
+          )}
         />
       </GalleryContainer>
     );

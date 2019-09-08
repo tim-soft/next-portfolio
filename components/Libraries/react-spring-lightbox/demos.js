@@ -42,9 +42,9 @@ export const LightboxDemoNoUI = () => <ImageGallery images={images} />;
 export const LightboxDemoAllControls = () => (
   <ImageGallery
     galleryTitle="Fixed header, absolutely positioned footer and left/right buttons"
-    LightboxHeader={<LightboxHeader images={[]} />}
-    LightboxFooter={<LightboxFooter />}
-    LightboxArrowButton={<LightboxArrowButton onClick={() => null} />}
+    LightboxHeader={LightboxHeader}
+    LightboxFooter={LightboxFooter}
+    LightboxArrowButton={LightboxArrowButton}
     images={images}
   />
 );

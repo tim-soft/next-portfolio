@@ -54,6 +54,7 @@ const LibraryPage = ({ route, theme }) => (
       <section>
         <h2>Basic Usage</h2>
         <BlogCodeBlock
+          width={860}
           path="/components/Lightbox.js"
           language="jsx"
           code={`

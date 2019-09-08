@@ -103,7 +103,7 @@ export default () => (
           options.
         </p>
         <BlogCodeBlock
-          width={850}
+          width={860}
           path="/components/ParticleConfig.js"
           language="js"
           code={`

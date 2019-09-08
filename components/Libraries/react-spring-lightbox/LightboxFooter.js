@@ -62,9 +62,10 @@ const StyledLink = styled.a`
 `;
 
 const StyledFooter = styled.footer`
+  font-size: 1.1em;
   position: absolute;
   padding: 0px 20px;
-  bottom: 8px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   background-color: ${({ theme }) => theme.pageBackgroundColor};
