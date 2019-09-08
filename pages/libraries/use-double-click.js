@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import LibraryLayout from 'layouts/LibraryLayout';
 import { darkTheme } from 'components/AppTheme';
 import { BlogCodeBlock, BlogCodeInline } from 'components/Blog';
+import UseDoubleClickDemo from 'components/Libraries/use-double-click/demo';
 
 const LibraryPage = ({ route, theme }) => (
   <ThemeProvider theme={theme}>
@@ -16,9 +17,13 @@ const LibraryPage = ({ route, theme }) => (
         </p>
       </section>
       <section>
+        <h2>Demo</h2>
+        <UseDoubleClickDemo />
+      </section>
+      <section>
         <h2>
-          What&apos;s wrong with{' '}
-          <BlogCodeInline>useDoubleClick()</BlogCodeInline>?
+          What&apos;s wrong with native
+          <BlogCodeInline>onDoubleClick()</BlogCodeInline>?
         </h2>
         <p>
           When you double click on a React component, it&apos;s{' '}
@@ -68,7 +73,8 @@ const Button = () => {
     },
     // (Required) Dom node to watch for double clicks
     ref: buttonRef,
-    // The amount of time (in milliseconds) to wait before differentiating a single from a double click
+    // The amount of time (in milliseconds) to wait 
+    // before differentiating a single from a double click
     latency: 250
   });
   
