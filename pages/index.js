@@ -27,7 +27,7 @@ const HomePage = ({ theme, route }) => (
     <NextSEO
       config={{
         title: 'Home | Tim Ellenberger',
-        canonical: `${APP_URL}${route}`,
+        canonical: `${APP_URL}`,
         openGraph: {
           url: `${APP_URL}${route}`,
           title: 'Home | Tim Ellenberger',
