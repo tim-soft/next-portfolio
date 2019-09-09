@@ -1,25 +1,49 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
-import NextSEO, { BlogJsonLd } from 'next-seo';
+import NextSEO, { BlogJsonLd, BreadcrumbJsonLd } from 'next-seo';
 import PageScrollWrapper from 'components/PageScrollWrapper';
 import { IndexListItem, BlogLink } from 'components/Blog';
 import { blueTheme } from 'components/AppTheme';
 import { getSortedPosts } from 'data/BlogPosts';
 
-const BlogPage = ({ theme }) => {
+const APP_URL = process.env.APP_BASE_URL;
+
+const BlogPage = ({ theme, route }) => {
   // Get blog posts, sorted newest to oldest
   const sortedPosts = getSortedPosts({ order: 'desc' });
 
   return (
     <>
+      {/** @see https://schema.org/breadcrumb */}
+      <BreadcrumbJsonLd
+        itemListElements={[
+          {
+            position: 1,
+            name: APP_URL,
+            item: APP_URL
+          },
+          {
+            position: 2,
+            name: 'Blog',
+            item: `${APP_URL}${route}`
+          }
+        ]}
+      />
       <NextSEO
         config={{
           title: 'Coding, Musings and Adventures of Tim Ellenberger',
-          canonical: `/blog`,
+          canonical: `${APP_URL}${route}`,
           openGraph: {
-            url: `/blog`,
-            title: 'Coding, Musings and Adventures of Tim Ellenberger'
+            url: `${APP_URL}${route}`,
+            title: 'Coding, Musings and Adventures of Tim Ellenberger',
+            images: [
+              {
+                url: `${APP_URL}/static/avatar.png`,
+                alt: 'Blog Post Logo'
+              }
+            ],
+            type: 'website'
           },
           site_name: 'Coding, Musings and Adventures of Tim Ellenberger',
           locale: 'en_US',
@@ -32,11 +56,11 @@ const BlogPage = ({ theme }) => {
         }}
       />
       <BlogJsonLd
-        url="/blog"
+        url={`${APP_URL}${route}`}
         title="Coding, Musings and Adventures of Tim Ellenberger"
-        images={['/static/avatar.png']}
-        datePublished="2019-03-31T08:00:00+08:00"
-        dateModified="2019-03-31T09:00:00+08:00"
+        images={[`${APP_URL}/static/avatar.png`]}
+        datePublished="2019-08-31T08:00:00+08:00"
+        dateModified="2019-08-31T09:00:00+08:00"
         authorName="Tim Ellenberger"
         description="Coding, Musings and Adventures of Tim Ellenberger"
       />
@@ -69,7 +93,8 @@ const BlogPage = ({ theme }) => {
 };
 
 BlogPage.propTypes = {
-  theme: PropTypes.object
+  theme: PropTypes.object,
+  route: PropTypes.string.isRequired
 };
 
 BlogPage.defaultProps = {

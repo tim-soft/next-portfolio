@@ -7,7 +7,7 @@ import { generatePageTheme } from 'components/AppTheme';
 
 const APP_URL = process.env.APP_BASE_URL;
 
-const HomePage = ({ theme }) => (
+const HomePage = ({ theme, route }) => (
   <>
     {/* https://schema.org/breadcrumb */}
     <BreadcrumbJsonLd
@@ -27,8 +27,25 @@ const HomePage = ({ theme }) => (
     <NextSEO
       config={{
         title: 'Home | Tim Ellenberger',
+        canonical: `${APP_URL}${route}`,
         openGraph: {
-          title: 'Home | Tim Ellenberger'
+          url: `${APP_URL}${route}`,
+          title: 'Home | Tim Ellenberger',
+          images: [
+            {
+              url: `${APP_URL}/static/avatar.png`,
+              alt: 'Avatar Logo'
+            }
+          ],
+          type: 'website'
+        },
+        site_name: 'Coding, Musings and Adventures of Tim Ellenberger',
+        locale: 'en_US',
+        profile: {
+          firstName: 'Tim',
+          lastName: 'Ellenberger',
+          username: 'tim-soft',
+          gender: 'male'
         }
       }}
     />
@@ -39,7 +56,8 @@ const HomePage = ({ theme }) => (
 );
 
 HomePage.propTypes = {
-  theme: PropTypes.object
+  theme: PropTypes.object,
+  route: PropTypes.string.isRequired
 };
 
 HomePage.defaultProps = {
