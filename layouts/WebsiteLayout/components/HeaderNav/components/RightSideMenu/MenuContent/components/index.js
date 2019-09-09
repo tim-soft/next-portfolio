@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import LinkWrapper from './LinkWrapper';
 
 export const MenuContent = styled.div`
   display: flex;
@@ -43,3 +44,15 @@ export const MenuFooter = styled.div`
   text-align: center;
   margin-top: auto;
 `;
+
+export const MenuHeader = styled.div`
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: ${({ theme }) => theme.popoutMenuBorderColor};
+  padding: 20px;
+  text-align: center;
+  background-color: #f44336;
+  color: white;
+`;
+
+export { LinkWrapper };

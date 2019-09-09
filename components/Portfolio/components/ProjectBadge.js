@@ -1,11 +1,23 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const ProjectBadge = ({ badgeUrl, linkUrl }) => (
-  <BadgeLink href={linkUrl} target="_blank" rel="noopener noreferrer">
-    <img src={badgeUrl} alt="badge" height="100%" />
-  </BadgeLink>
-);
+const ProjectBadge = ({ badgeUrl, linkUrl, ...props }) => {
+  const [isLoaded, setLoaded] = useState(false);
+
+  return (
+    <BadgeLink
+      onClick={e => e.stopPropagation()}
+      href={linkUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      isLoaded={isLoaded}
+      {...props}
+    >
+      <BadgeImage src={badgeUrl} alt="badge" onLoad={() => setLoaded(true)} />
+    </BadgeLink>
+  );
+};
 
 ProjectBadge.propTypes = {
   badgeUrl: PropTypes.string.isRequired,
@@ -14,8 +26,39 @@ ProjectBadge.propTypes = {
 
 export default ProjectBadge;
 
+const BadgeImage = styled.img`
+  height: 100%;
+  min-height: initial;
+`;
+
 const BadgeLink = styled.a`
-  margin-right: 5px;
+  transition: border-color 0.2s linear !important;
+  margin-right: 3px;
   display: inline-block;
   height: 23px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: transparent;
+  :hover {
+    border-color: ${({ theme }) => theme.pageContentLinkHoverColor};
+  }
+  ${({ isLoaded }) =>
+    isLoaded &&
+    css`
+      animation-name: fadeInOpacity;
+      animation-iteration-count: 1;
+      animation-timing-function: ease-in;
+      animation-duration: 0.2s;
+
+      @keyframes fadeInOpacity {
+        0% {
+          opacity: 0;
+          transform: scale(0);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    `}
 `;

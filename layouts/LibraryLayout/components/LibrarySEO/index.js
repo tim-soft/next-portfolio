@@ -5,61 +5,14 @@ import Head from 'next/head';
 const APP_URL = process.env.APP_BASE_URL;
 
 /**
- * Inserts blog-post optimized structured data into the page
+ * Inserts software library optimized structured data into the page
  *
  * @see https://developers.google.com/search/docs/guides/intro-structured-data
  * @see https://search.google.com/structured-data/testing-tool
  */
-const BlogPostSEO = ({ blogPost, route }) => (
+const LibrarySEO = ({ library, route }) => (
   <>
     <Head>
-      {/** @see https://schema.org/BlogPosting */}
-      <script
-        type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            {
-              '@context': 'https://schema.org',
-              '@type': 'BlogPosting',
-              mainEntityOfPage: {
-                '@type': 'WebPage',
-                '@id': `${APP_URL}${route}`
-              },
-              headline: blogPost.title,
-              image: [
-                `${APP_URL}${blogPost.logo}`,
-                `${APP_URL}/static/avatar.png`
-              ],
-              datePublished: blogPost.date,
-              dateModified: blogPost.date,
-              author: {
-                '@type': 'Person',
-                name: 'Tim Ellenberger'
-              },
-              creator: {
-                '@type': 'Person',
-                name: 'Tim Ellenberger',
-                url: APP_URL
-              },
-              publisher: {
-                '@type': 'Organization',
-                name: 'Tim Ellenberger',
-                url: APP_URL,
-                logo: {
-                  '@type': 'ImageObject',
-                  url: `${APP_URL}/static/avatar.png`,
-                  width: '140',
-                  height: '140'
-                }
-              },
-              description: blogPost.description
-            },
-            null,
-            2
-          )
-        }}
-      />
       {/** @see https://schema.org/TechArticle */}
       <script
         type="application/ld+json"
@@ -73,13 +26,10 @@ const BlogPostSEO = ({ blogPost, route }) => (
                 '@type': 'WebPage',
                 '@id': `${APP_URL}${route}`
               },
-              headline: blogPost.title,
-              image: [
-                `${APP_URL}${blogPost.logo}`,
-                `${APP_URL}/static/avatar.png`
-              ],
-              datePublished: blogPost.date,
-              dateModified: blogPost.date,
+              headline: library.name,
+              image: [`${APP_URL}/static/avatar.png`],
+              datePublished: library.docsPublishedDate,
+              dateModified: library.docsPublishedDate,
               proficiencyLevel: 'Beginner',
               author: {
                 '@type': 'Person',
@@ -101,7 +51,7 @@ const BlogPostSEO = ({ blogPost, route }) => (
                   height: '140'
                 }
               },
-              description: blogPost.description
+              description: library.description
             },
             null,
             2
@@ -119,34 +69,34 @@ const BlogPostSEO = ({ blogPost, route }) => (
         },
         {
           position: 2,
-          name: 'Blog',
-          item: `${APP_URL}/blog`
+          name: 'Libraries',
+          item: `${APP_URL}/libraries`
         },
         {
           position: 3,
-          name: blogPost.title,
+          name: library.name,
           item: `${APP_URL}${route}`
         }
       ]}
     />
     <NextSEO
       config={{
-        title: blogPost.title,
-        description: blogPost.description,
+        title: `${library.name} - Docs`,
+        description: library.description,
         canonical: `${APP_URL}${route}`,
         openGraph: {
           url: `${APP_URL}${route}`,
-          title: blogPost.title,
-          description: blogPost.description,
+          title: `${library.name} - Docs`,
+          description: library.description,
           images: [
             {
-              url: `${APP_URL}${blogPost.logo}`,
+              url: `${APP_URL}/static/avatar.png`,
               alt: 'Blog Post Logo'
             }
           ],
           type: 'article',
           article: {
-            publishedTime: blogPost.date,
+            publishedTime: library.docsPublishedDate,
             section: 'Technology',
             authors: [APP_URL]
           },
@@ -164,16 +114,27 @@ const BlogPostSEO = ({ blogPost, route }) => (
   </>
 );
 
-BlogPostSEO.propTypes = {
-  blogPost: PropTypes.shape({
+LibrarySEO.propTypes = {
+  library: PropTypes.shape({
     href: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    logo: PropTypes.string.isRequired,
-    readTime: PropTypes.number.isRequired,
-    date: PropTypes.string.isRequired
+    docsPublishedDate: PropTypes.string.isRequired,
+    repoUrl: PropTypes.string.isRequired,
+    demoLinks: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        href: PropTypes.string.isRequired
+      })
+    ).isRequired,
+    badges: PropTypes.arrayOf(
+      PropTypes.shape({
+        badgeUrl: PropTypes.string.isRequired,
+        linkUrl: PropTypes.string.isRequired
+      })
+    ).isRequired
   }).isRequired,
   route: PropTypes.string.isRequired
 };
 
-export default BlogPostSEO;
+export default LibrarySEO;

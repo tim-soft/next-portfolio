@@ -1,7 +1,7 @@
 /**
  * Configure Stylint to work with Styled-Components
  *
- * https://www.styled-components.com/docs/tooling#stylelint
+ * @see https://www.styled-components.com/docs/tooling#stylelint
  */
 module.exports = {
   processors: ['stylelint-processor-styled-components'],

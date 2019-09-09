@@ -7,7 +7,7 @@ const isDev = process.env.NODE_ENV === 'development';
 /**
  * Configure Next.js
  *
- * https://nextjs.org/docs/#custom-configuration
+ * @see https://nextjs.org/docs/#custom-configuration
  */
 const nextConfig = {
   // Build-time variables available via `process.env` within the app

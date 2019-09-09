@@ -4,13 +4,11 @@ import styled from 'styled-components';
 import Color from 'color';
 import Gallery from 'react-photo-gallery';
 import Lightbox from 'react-spring-lightbox';
-import GridImage from './components/GridImage';
-import LightboxHeader from './components/LightboxHeader';
-import LightboxArrowButton from './components/LightboxArrowButton';
+import GridImage from '../../Blog/BlogImageGallery/components/GridImage';
 
-class BlogImageGallery extends React.Component {
+class ImageGallery extends React.Component {
   static propTypes = {
-    galleryTitle: PropTypes.string.isRequired,
+    galleryTitle: PropTypes.string,
     imageMasonryDirection: PropTypes.oneOf(['column', 'row']),
     images: PropTypes.arrayOf(
       PropTypes.shape({
@@ -20,11 +18,18 @@ class BlogImageGallery extends React.Component {
         width: PropTypes.number,
         height: PropTypes.number
       })
-    ).isRequired
+    ).isRequired,
+    LightboxHeader: PropTypes.func,
+    LightboxFooter: PropTypes.func,
+    LightboxArrowButton: PropTypes.func
   };
 
   static defaultProps = {
-    imageMasonryDirection: 'column'
+    galleryTitle: null,
+    imageMasonryDirection: 'column',
+    LightboxHeader: () => null,
+    LightboxFooter: () => null,
+    LightboxArrowButton: () => null
   };
 
   constructor() {
@@ -93,7 +98,14 @@ class BlogImageGallery extends React.Component {
 
   render() {
     const { currentImageIndex, lightboxIsOpen, clientSide } = this.state;
-    const { images, galleryTitle, imageMasonryDirection } = this.props;
+    const {
+      images,
+      galleryTitle,
+      imageMasonryDirection,
+      LightboxHeader,
+      LightboxFooter,
+      LightboxArrowButton
+    } = this.props;
 
     return (
       <GalleryContainer>
@@ -122,6 +134,14 @@ class BlogImageGallery extends React.Component {
               onClose={this.closeLightbox}
             />
           )}
+          renderFooter={() => (
+            <LightboxFooter
+              galleryTitle={galleryTitle}
+              images={images}
+              currentIndex={currentImageIndex}
+              onClose={this.closeLightbox}
+            />
+          )}
           renderPrevButton={({ canPrev }) => (
             <LightboxArrowButton
               position="left"
@@ -142,10 +162,14 @@ class BlogImageGallery extends React.Component {
   }
 }
 
-export default BlogImageGallery;
+export default ImageGallery;
 
-const GalleryContainer = styled.section`
+const GalleryContainer = styled.div`
   margin: 2em 0;
+  padding: 2em;
+  border-color: ${({ theme }) => theme.pageContentLinkHoverColor};
+  border-width: 1px;
+  border-style: solid;
 `;
 
 const StyledLightbox = styled(Lightbox)`
