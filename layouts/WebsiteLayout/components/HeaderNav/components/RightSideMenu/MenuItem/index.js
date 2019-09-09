@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { Transition, animated } from '@react-spring/web';
+import { Spring, animated } from '@react-spring/web';
 import { FiChevronDown } from 'react-icons/fi';
 import Scrollbar from 'components/Scrollbar';
 
@@ -113,17 +113,13 @@ class MenuItem extends React.Component {
         </MenuLink>
 
         {/* The pop-out menu content */}
-        <Transition
-          native
-          items={children && (isHovering || alwaysShowMenu)}
-          initial={{ opacity: 0, height: '0px' }}
-          from={{ opacity: 0, height: '0px' }}
-          enter={{ opacity: 1, height: `${menuHeight}px` }}
-          leave={{ opacity: 0, height: '0px' }}
-        >
-          {isOpen =>
-            isOpen &&
-            (animatedStyles => (
+        {children && (
+          <Spring
+            from={{ opacity: 0, height: '0px' }}
+            to={{ opacity: 1, height: `${menuHeight}px` }}
+            reverse={!(isHovering || alwaysShowMenu)}
+          >
+            {animatedStyles => (
               <AnimatedContainer
                 style={animatedStyles}
                 rightOffset={rightOffset}
@@ -131,9 +127,9 @@ class MenuItem extends React.Component {
               >
                 {useScroll ? <Scrollbar>{children}</Scrollbar> : children}
               </AnimatedContainer>
-            ))
-          }
-        </Transition>
+            )}
+          </Spring>
+        )}
       </MenuItemRelativeContainer>
     );
   }
