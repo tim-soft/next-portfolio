@@ -88,7 +88,7 @@ query {
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Highlight, { defaultProps } from 'prism-react-renderer';
+import Highlight, { defaultProps } from 'prism-react-renderer'; 
 import theme from 'prism-react-renderer/themes/vsDark';
 
 /**
