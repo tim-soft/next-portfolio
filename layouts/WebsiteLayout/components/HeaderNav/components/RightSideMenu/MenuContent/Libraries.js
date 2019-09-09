@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FaBookOpen } from 'react-icons/fa';
+import { BlogLink } from 'components/Blog';
 import { ProjectBadge, ProjectBadgeList } from 'components/Portfolio';
 import libraries from 'data/Libraries';
 import {
@@ -30,7 +31,9 @@ const LibrariesList = () => (
             </LogoContainer>
             <PostContent>
               <TitleContainer>
-                <PostTitle>{name}</PostTitle>
+                <BlogLink href={href}>
+                  <PostTitle>{name}</PostTitle>
+                </BlogLink>
                 <DateContainer>
                   <ProjectBadgeList style={{ marginTop: '0.6em' }}>
                     {badges.map(({ badgeUrl, linkUrl }) => (
