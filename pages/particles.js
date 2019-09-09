@@ -7,7 +7,7 @@ import { generatePageTheme } from 'components/AppTheme';
 
 const APP_URL = process.env.APP_BASE_URL;
 
-const ThreeParticles = ({ theme }) => (
+const ThreeParticles = ({ theme, route }) => (
   <>
     {/* https://schema.org/breadcrumb */}
     <BreadcrumbJsonLd
@@ -20,7 +20,7 @@ const ThreeParticles = ({ theme }) => (
         {
           position: 2,
           name: 'React Particles WebGL',
-          item: `${APP_URL}/particles`
+          item: `${APP_URL}${route}`
         }
       ]}
     />
@@ -28,9 +28,26 @@ const ThreeParticles = ({ theme }) => (
       config={{
         title:
           '🔆 A 2D/3D particle library built on React, Three.js and WebGL | Tim Ellenberger',
+        canonical: `${APP_URL}${route}`,
         openGraph: {
+          url: `${APP_URL}${route}`,
           title:
-            '🔆 A 2D/3D particle library built on React, Three.js and WebGL | Tim Ellenberger'
+            '🔆 A 2D/3D particle library built on React, Three.js and WebGL | Tim Ellenberger',
+          images: [
+            {
+              url: `${APP_URL}/static/avatar.png`,
+              alt: 'Avatar Logo'
+            }
+          ],
+          type: 'website'
+        },
+        site_name: 'Coding, Musings and Adventures of Tim Ellenberger',
+        locale: 'en_US',
+        profile: {
+          firstName: 'Tim',
+          lastName: 'Ellenberger',
+          username: 'tim-soft',
+          gender: 'male'
         }
       }}
     />
@@ -43,7 +60,8 @@ const ThreeParticles = ({ theme }) => (
 );
 
 ThreeParticles.propTypes = {
-  theme: PropTypes.object
+  theme: PropTypes.object,
+  route: PropTypes.string.isRequired
 };
 
 ThreeParticles.defaultProps = {

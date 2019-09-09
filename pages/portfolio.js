@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
-import NextSEO from 'next-seo';
+import NextSEO, { BreadcrumbJsonLd } from 'next-seo';
 import {
   ProjectList,
   ProjectListItem,
@@ -12,13 +12,47 @@ import {
 import PageScrollWrapper from 'components/PageScrollWrapper';
 import { greyTheme } from 'components/AppTheme';
 
-const PortfolioPage = ({ theme }) => (
+const APP_URL = process.env.APP_BASE_URL;
+
+const PortfolioPage = ({ theme, route }) => (
   <>
+    {/* https://schema.org/breadcrumb */}
+    <BreadcrumbJsonLd
+      itemListElements={[
+        {
+          position: 1,
+          name: APP_URL,
+          item: APP_URL
+        },
+        {
+          position: 2,
+          name: 'Portfolio',
+          item: `${APP_URL}${route}`
+        }
+      ]}
+    />
     <NextSEO
       config={{
         title: 'Portfolio | Tim Ellenberger',
+        canonical: `${APP_URL}${route}`,
         openGraph: {
-          title: 'Portfolio | Tim Ellenberger'
+          url: `${APP_URL}${route}`,
+          title: 'Portfolio | Tim Ellenberger',
+          images: [
+            {
+              url: `${APP_URL}/static/avatar.png`,
+              alt: 'Avatar Logo'
+            }
+          ],
+          type: 'website'
+        },
+        site_name: 'Coding, Musings and Adventures of Tim Ellenberger',
+        locale: 'en_US',
+        profile: {
+          firstName: 'Tim',
+          lastName: 'Ellenberger',
+          username: 'tim-soft',
+          gender: 'male'
         }
       }}
     />
@@ -156,7 +190,8 @@ const PortfolioPage = ({ theme }) => (
 );
 
 PortfolioPage.propTypes = {
-  theme: PropTypes.object
+  theme: PropTypes.object,
+  route: PropTypes.string.isRequired
 };
 
 PortfolioPage.defaultProps = {
