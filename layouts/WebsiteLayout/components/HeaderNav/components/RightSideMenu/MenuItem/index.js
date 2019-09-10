@@ -64,7 +64,7 @@ class MenuItem extends React.Component {
   handlePageVisibility = () => {
     if (document.visibilityState === 'visible')
       this.setState({ pageIsVisible: true });
-    else this.setState({ pageIsVisible: false });
+    else this.setState({ pageIsVisible: false, isHovering: false });
   };
 
   calculateRightOffestForMenu = () => {
