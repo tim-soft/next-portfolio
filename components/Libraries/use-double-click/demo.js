@@ -27,8 +27,14 @@ const DoubleClickDemo = () => {
         >
           Click Me
         </StyledButton>
-        <span>[native] onClick: {nativeClickCount}</span>
-        <span>[native] onDoubleClick: {nativeDoubleClickCount}</span>
+        <span>
+          [<AccentColor>native</AccentColor>] onClick:{' '}
+          <AccentColor>{nativeClickCount}</AccentColor>
+        </span>
+        <span>
+          [<AccentColor>native</AccentColor>] onDoubleClick:{' '}
+          <AccentColor>{nativeDoubleClickCount}</AccentColor>
+        </span>
       </Column>
 
       <Column>
@@ -36,14 +42,24 @@ const DoubleClickDemo = () => {
         <StyledButton ref={buttonRef} type="button">
           Click Me
         </StyledButton>
-        <span>onSingleClick: {onSingleClickCount}</span>
-        <span>onDoubleClick: {onDoubleClickCount}</span>
+        <span>
+          [<AccentColor>hook</AccentColor>] onSingleClick:{' '}
+          <AccentColor>{onSingleClickCount}</AccentColor>
+        </span>
+        <span>
+          [<AccentColor>hook</AccentColor>] onDoubleClick:{' '}
+          <AccentColor>{onDoubleClickCount}</AccentColor>
+        </span>
       </Column>
     </DemoContainer>
   );
 };
 
 export default DoubleClickDemo;
+
+const AccentColor = styled.span`
+  color: ${({ theme }) => theme.pageContentLinkHoverColor};
+`;
 
 const Column = styled.div`
   display: flex;
