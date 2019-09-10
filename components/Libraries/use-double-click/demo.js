@@ -69,6 +69,7 @@ const Column = styled.div`
     font-size: 1.3em;
     margin-top: 0;
     margin-bottom: 1.5em;
+    text-align: center;
   }
   > span {
     font-size: 1.2em;
@@ -85,6 +86,12 @@ const DemoContainer = styled.div`
   border-color: ${({ theme }) => theme.pageContentLinkHoverColor};
   border-width: 1px;
   border-style: solid;
+  @media (max-width: 800px) {
+    flex-direction: column;
+    div:first-of-type {
+      margin-bottom: 2em;
+    }
+  }
 `;
 
 const StyledButton = styled.button`
