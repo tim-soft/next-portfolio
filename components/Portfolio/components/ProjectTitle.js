@@ -27,7 +27,6 @@ const Title = styled.h2`
 const ProjectLink = styled.a`
   display: inline-flex;
   align-items: center;
-  text-decoration: none;
   svg {
     margin-left: 0.5em;
   }

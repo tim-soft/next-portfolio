@@ -31,9 +31,9 @@ const LibrariesList = () => (
             </LogoContainer>
             <PostContent>
               <TitleContainer>
-                <BlogLink href={href}>
+                <TitleLink href={href}>
                   <PostTitle>{name}</PostTitle>
-                </BlogLink>
+                </TitleLink>
                 <DateContainer>
                   <ProjectBadgeList style={{ marginTop: '0.6em' }}>
                     {badges.map(({ badgeUrl, linkUrl }) => (
@@ -65,6 +65,12 @@ const LibrariesList = () => (
 );
 
 export default LibrariesList;
+
+const TitleLink = styled(BlogLink)`
+  :hover {
+    color: unset;
+  }
+`;
 
 const DocsHeading = styled.h2`
   display: flex;
