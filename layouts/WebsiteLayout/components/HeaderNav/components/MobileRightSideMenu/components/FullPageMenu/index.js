@@ -53,9 +53,9 @@ const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
               </MobileStyledLink>
             </Link>
 
-            <Link passHref href="/courses">
+            <Link passHref href="/portfolio">
               <MobileStyledLink onClick={toggleMenu}>
-                <LinkHeading>Courses</LinkHeading>
+                <LinkHeading>Libraries</LinkHeading>
               </MobileStyledLink>
             </Link>
 
