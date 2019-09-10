@@ -22,7 +22,7 @@ const LibraryPage = ({ route, theme }) => (
       </section>
       <section>
         <h2>
-          What&apos;s wrong with native
+          What&apos;s wrong with native{` `}
           <BlogCodeInline>onDoubleClick()</BlogCodeInline>?
         </h2>
         <p>
