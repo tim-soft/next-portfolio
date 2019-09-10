@@ -42,7 +42,8 @@ class MenuItem extends React.Component {
     this.menuOverlay = React.createRef();
     this.state = {
       isHovering: false,
-      rightOffset: null
+      rightOffset: null,
+      pageIsVisible: true
     };
   }
 
@@ -52,11 +53,19 @@ class MenuItem extends React.Component {
 
     // If the screen size changes, recalculate menu offsets
     window.addEventListener('resize', this.calculateRightOffestForMenu);
+    document.addEventListener('visibilitychange', this.handlePageVisibility);
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.calculateRightOffestForMenu);
+    document.removeEventListener('visibilitychange', this.handlePageVisibility);
   }
+
+  handlePageVisibility = () => {
+    if (document.visibilityState === 'visible')
+      this.setState({ pageIsVisible: true });
+    else this.setState({ pageIsVisible: false });
+  };
 
   calculateRightOffestForMenu = () => {
     const { menuWidth } = this.props;
@@ -82,7 +91,7 @@ class MenuItem extends React.Component {
   };
 
   render() {
-    const { isHovering, rightOffset } = this.state;
+    const { isHovering, rightOffset, pageIsVisible } = this.state;
     const {
       link,
       text,
@@ -113,7 +122,7 @@ class MenuItem extends React.Component {
         </MenuLink>
 
         {/* The pop-out menu content */}
-        {children && (
+        {children && pageIsVisible && (
           <Spring
             native
             from={{ opacity: 0, height: '0px' }}
