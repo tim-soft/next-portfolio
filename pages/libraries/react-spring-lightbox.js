@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import LibraryLayout from 'layouts/LibraryLayout';
 import { darkTheme } from 'components/AppTheme';
-import { BlogCodeBlock, BlogCodeInline } from 'components/Blog';
+import { BlogCodeBlock, BlogCodeInline, BlogLink } from 'components/Blog';
 import {
   LightboxDemoNoUI,
   LightboxDemoAllControls
@@ -19,6 +19,67 @@ const LibraryPage = ({ route, theme }) => (
           UX of hardware-accelerated native image applications from touch
           swiping to <BlogCodeInline>Ctrl + Mousewheel</BlogCodeInline> zooming.
         </p>
+      </section>
+      <section>
+        <h2>Supported Gestures and Features</h2>
+
+        <ul>
+          <li>
+            <span role="img" aria-label="keyboard">
+              ☝️
+            </span>
+            <BlogCodeInline>Mousewheel</BlogCodeInline>, swipe or click+drag to
+            page photos
+          </li>
+          <li>
+            <span role="img" aria-label="keyboard">
+              ⌨️
+            </span>
+            Keyboard controls <BlogCodeInline>←</BlogCodeInline>{' '}
+            <BlogCodeInline>→</BlogCodeInline>{' '}
+            <BlogCodeInline>Esc</BlogCodeInline>
+          </li>
+          <li>
+            <span role="img" aria-label="keyboard">
+              🐁
+            </span>
+            <BlogCodeInline>Ctrl</BlogCodeInline> +{' '}
+            <BlogCodeInline>Mousewheel</BlogCodeInline> or{' '}
+            <BlogCodeInline>Trackpad Pinch</BlogCodeInline> to zoom
+          </li>
+          <li>
+            <span role="img" aria-label="keyboard">
+              🔎
+            </span>
+            Double-tap or double-click to zoom in/out
+          </li>
+          <li>
+            <span role="img" aria-label="keyboard">
+              👌
+            </span>
+            Pinch to zoom
+          </li>
+          <li>
+            <span role="img" aria-label="keyboard">
+              👈
+            </span>
+            Panning on zoomed-in images
+          </li>
+          <li>
+            <span role="img" aria-label="keyboard">
+              🏁
+            </span>
+            Highly performant spring based animations via{' '}
+            <BlogLink
+              href="https://github.com/react-spring/react-spring"
+              paragraph
+            >
+              react-spring
+            </BlogLink>
+          </li>
+          <li>No external CSS</li>
+          <li>Implement your own UI</li>
+        </ul>
       </section>
       <section>
         <h2>Demos</h2>

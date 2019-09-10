@@ -76,7 +76,7 @@ const Container = styled.main`
       }
     }
   }
-  p, aside {
+  p, aside, li {
     font-size: 1.2em;
     line-height: 1.5em;
   }
