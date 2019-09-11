@@ -218,7 +218,7 @@ const LinkHeading = styled.a`
 const AnimatedContainer = animated(styled.div`
   will-change: opacity, height;
   position: absolute;
-  top: 66px;
+  top: 64px;
   width: ${({ width }) => `${width}px`};
   right: ${({ rightOffset }) =>
     rightOffset ? `${rightOffset / 2}px` : 'unset'};
