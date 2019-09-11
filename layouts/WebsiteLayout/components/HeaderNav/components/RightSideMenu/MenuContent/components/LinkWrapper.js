@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import Router from 'next/router';
+import styled from 'styled-components';
 
 const LinkWrapper = ({ href, children, ...props }) => {
   const handleClick = () => {
@@ -8,7 +9,7 @@ const LinkWrapper = ({ href, children, ...props }) => {
   };
 
   return (
-    <div
+    <ListItemContainer
       role="button"
       onClick={handleClick}
       onKeyPress={handleClick}
@@ -16,7 +17,7 @@ const LinkWrapper = ({ href, children, ...props }) => {
       {...props}
     >
       {children}
-    </div>
+    </ListItemContainer>
   );
 };
 
@@ -29,3 +30,10 @@ LinkWrapper.propTypes = {
 };
 
 export default LinkWrapper;
+
+const ListItemContainer = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  width: 100%;
+`;

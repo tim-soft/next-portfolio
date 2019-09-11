@@ -24,8 +24,7 @@ export const MenuListItem = styled.li`
   color: ${({ theme }) => theme.pageContentFontColor};
   align-items: center;
   justify-content: space-between;
-  height: ${({ height }) => `${height}px` || '80px'};
-  padding: 15px;
+  height: ${({ height }) => (height ? `${height}px` : 'auto')};
   overflow: hidden;
   border-bottom-style: solid;
   border-color: ${({ theme }) => theme.popoutMenuBorderColor};

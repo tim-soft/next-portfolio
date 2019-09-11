@@ -24,8 +24,8 @@ const LibrariesList = () => (
     </MenuHeader>
     <MenuList>
       {libraries.map(({ name, href, description, logoSrc, badges }) => (
-        <LinkWrapper href={href} key={name}>
-          <MenuListItem>
+        <MenuListItem key={name}>
+          <LinkWrapper href={href}>
             <LogoContainer>
               <PostLogo src={logoSrc} alt="Library Logo" />
             </LogoContainer>
@@ -49,8 +49,8 @@ const LibrariesList = () => (
               </TitleContainer>
               <PostDescription>{description}</PostDescription>
             </PostContent>
-          </MenuListItem>
-        </LinkWrapper>
+          </LinkWrapper>
+        </MenuListItem>
       ))}
     </MenuList>
     {/* Emoji found with https://emojipedia.org/ */}

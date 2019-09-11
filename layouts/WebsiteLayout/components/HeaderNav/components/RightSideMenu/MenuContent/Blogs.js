@@ -14,22 +14,24 @@ const BlogList = () => {
       <MenuList>
         {sortedPosts.map(
           ({ title, description, logo, href, date, readTime }) => (
-            <Link href={href} key={title}>
-              <MenuListItem>
-                <LogoContainer>
-                  <PostLogo src={logo} alt="Blog post logo" />
-                </LogoContainer>
-                <PostContent>
-                  <TitleContainer>
-                    <PostTitle>{title}</PostTitle>
-                    <DateContainer>
-                      <DateAndDuration date={date} readTime={readTime} />
-                    </DateContainer>
-                  </TitleContainer>
-                  <PostDescription>{description}</PostDescription>
-                </PostContent>
-              </MenuListItem>
-            </Link>
+            <MenuListItem key={title}>
+              <Link href={href}>
+                <LinkContainer>
+                  <LogoContainer>
+                    <PostLogo src={logo} alt="Blog post logo" />
+                  </LogoContainer>
+                  <PostContent>
+                    <TitleContainer>
+                      <PostTitle>{title}</PostTitle>
+                      <DateContainer>
+                        <DateAndDuration date={date} readTime={readTime} />
+                      </DateContainer>
+                    </TitleContainer>
+                    <PostDescription>{description}</PostDescription>
+                  </PostContent>
+                </LinkContainer>
+              </Link>
+            </MenuListItem>
           )
         )}
       </MenuList>
@@ -46,6 +48,13 @@ const BlogList = () => {
 };
 
 export default BlogList;
+
+const LinkContainer = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  width: 100%;
+`;
 
 const TitleContainer = styled.div``;
 
