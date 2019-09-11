@@ -8,7 +8,7 @@ const SiteVersionFAB = () => (
     rel="noopener noreferrer"
   >
     <SiteVersionContainer>
-      <SiteLogo src="/static/android-chrome-192x192.png" />
+      <SiteLogo src="/static/android-chrome-192x192.png" alt="Site Logo" />
       <FooterText>
         <code>{name}</code>
         <br />
