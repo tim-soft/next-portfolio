@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import PageScrollWrapper from 'components/PageScrollWrapper';
 import HiringCallout from 'components/HiringCallout';
+import HorizontalRule from 'components/HorizontalRule';
 import BlogData from 'data/BlogPosts';
 import BlogPostBanner from './components/BlogPostBanner';
 import BlogPostSEO from './components/BlogPostSEO';
@@ -26,7 +27,9 @@ const BlogPostLayout = ({ route, children, width }) => {
             {children}
             <HorizontalRule />
             <BlogNavigation route={route} />
-            <HiringCallout />
+            <footer>
+              <HiringCallout />
+            </footer>
           </article>
           <BlogEditPostFAB route={route} />
         </Container>
@@ -49,18 +52,6 @@ BlogPostLayout.defaultProps = {
 };
 
 export default BlogPostLayout;
-
-const HorizontalRule = styled.hr`
-  border: 0;
-  height: 1px;
-  background-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0),
-    ${({ theme }) => theme.pageContentFontColor},
-    rgba(0, 0, 0, 0)
-  );
-  margin: 2em 0;
-`;
 
 const Container = styled.main`
   color: ${({ theme }) => theme.pageContentFontColor};

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import PageScrollWrapper from 'components/PageScrollWrapper';
 import HiringCallout from 'components/HiringCallout';
+import HorizontalRule from 'components/HorizontalRule';
 import libraries from 'data/Libraries';
 import { LibraryBanner, LibrarySEO } from './components';
 import EditFAB from '../BlogPostLayout/components/BlogEditPostFAB';
@@ -22,7 +23,9 @@ const LibraryLayout = ({ route, children, width }) => {
             <HorizontalRule />
             {children}
             <HorizontalRule />
-            <HiringCallout />
+            <footer>
+              <HiringCallout />
+            </footer>
           </article>
           <EditFAB route={route} />
         </Container>
@@ -45,18 +48,6 @@ LibraryLayout.defaultProps = {
 };
 
 export default LibraryLayout;
-
-const HorizontalRule = styled.hr`
-  border: 0;
-  height: 1px;
-  background-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0),
-    ${({ theme }) => theme.pageContentFontColor},
-    rgba(0, 0, 0, 0)
-  );
-  margin: 2em 0;
-`;
 
 const Container = styled.main`
   color: ${({ theme }) => theme.pageContentFontColor};
