@@ -21,7 +21,7 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
   ${Object.keys(pathsObj)
     .map(
       path => `<url>
-    <loc>https://timellenberger.com${path}</loc>
+    <loc>https://timellenberger.com/${path.substr(1)}</loc>
     <lastmod>${
       pathsObj[path].lastModified
         ? new Date(pathsObj[path].lastModified).toISOString()

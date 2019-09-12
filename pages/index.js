@@ -20,14 +20,14 @@ const HomePage = ({ theme, route }) => (
         {
           position: 2,
           name: 'Home',
-          item: APP_URL
+          item: `${APP_URL}${route}`
         }
       ]}
     />
     <NextSEO
       config={{
         title: 'Home | Tim Ellenberger',
-        canonical: `${APP_URL}`,
+        canonical: `${APP_URL}${route}`,
         openGraph: {
           url: `${APP_URL}${route}`,
           title: 'Home | Tim Ellenberger',
