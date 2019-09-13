@@ -15,7 +15,7 @@ import { BlogLink } from 'components/Blog';
 import PageScrollWrapper from 'components/PageScrollWrapper';
 import { greyTheme } from 'components/AppTheme';
 import HorizontalRule from 'components/HorizontalRule';
-import HiringCallout from 'components/HiringCallout';
+import PageFooter from 'components/PageFooter';
 
 const APP_URL = process.env.APP_BASE_URL;
 
@@ -106,9 +106,7 @@ const PortfolioPage = ({ theme, route }) => (
             <p>[coming soon]</p>
           </section>
           <HorizontalRule />
-          <footer>
-            <StyledHiringCallout />
-          </footer>
+          <StyledPageFooter />
         </PageContainer>
       </PageScrollWrapper>
     </ThemeProvider>
@@ -128,7 +126,7 @@ PortfolioPage.pageTheme = greyTheme;
 
 export default PortfolioPage;
 
-const StyledHiringCallout = styled(HiringCallout)`
+const StyledPageFooter = styled(PageFooter)`
   margin: 2em 0;
 `;
 

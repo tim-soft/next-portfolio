@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import PageScrollWrapper from 'components/PageScrollWrapper';
-import HiringCallout from 'components/HiringCallout';
 import HorizontalRule from 'components/HorizontalRule';
+import PageFooter from 'components/PageFooter';
 import BlogData from 'data/BlogPosts';
 import BlogPostBanner from './components/BlogPostBanner';
 import BlogPostSEO from './components/BlogPostSEO';
@@ -27,9 +27,7 @@ const BlogPostLayout = ({ route, children, width }) => {
             {children}
             <HorizontalRule />
             <BlogNavigation route={route} />
-            <footer>
-              <HiringCallout />
-            </footer>
+            <PageFooter />
           </article>
           <BlogEditPostFAB route={route} />
         </Container>

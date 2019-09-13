@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import PageScrollWrapper from 'components/PageScrollWrapper';
-import HiringCallout from 'components/HiringCallout';
 import HorizontalRule from 'components/HorizontalRule';
+import PageFooter from 'components/PageFooter';
 import libraries from 'data/Libraries';
 import { LibraryBanner, LibrarySEO } from './components';
 import EditFAB from '../BlogPostLayout/components/BlogEditPostFAB';
@@ -23,9 +23,7 @@ const LibraryLayout = ({ route, children, width }) => {
             <HorizontalRule />
             {children}
             <HorizontalRule />
-            <footer>
-              <HiringCallout />
-            </footer>
+            <PageFooter />
           </article>
           <EditFAB route={route} />
         </Container>
