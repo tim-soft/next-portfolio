@@ -115,7 +115,7 @@ const BlogPostSEO = ({ blogPost, route }) => (
         {
           position: 1,
           name: APP_URL,
-          item: APP_URL
+          item: `${APP_URL}/`
         },
         {
           position: 2,
