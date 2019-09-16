@@ -38,10 +38,13 @@ const PortfolioPage = ({ theme, route }) => (
     />
     <NextSeo
       title="Portfolio | Tim Ellenberger"
+      description="An abridged list of open source libraries, contributions and other projects of Tim Ellenberger."
       canonical={`${APP_URL}${route}`}
       openGraph={{
         url: `${APP_URL}${route}`,
         title: 'Portfolio | Tim Ellenberger',
+        description:
+          'An abridged list of open source libraries, contributions and other projects of Tim Ellenberger.',
         images: [
           {
             url: `${APP_URL}/static/avatar.png`,

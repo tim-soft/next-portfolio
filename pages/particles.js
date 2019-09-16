@@ -26,11 +26,14 @@ const ThreeParticles = ({ theme, route }) => (
     />
     <NextSeo
       title="🔆 A 2D/3D particle library built on React, Three.js and WebGL | Tim Ellenberger"
+      description="A configuration generator and demo playground for the react-particles-webgl React library."
       canonical={`${APP_URL}${route}`}
       openGraph={{
         url: `${APP_URL}${route}`,
         title:
           '🔆 A 2D/3D particle library built on React, Three.js and WebGL | Tim Ellenberger',
+        description:
+          'A configuration generator and demo playground for the react-particles-webgl React library.',
         images: [
           {
             url: `${APP_URL}/static/avatar.png`,
