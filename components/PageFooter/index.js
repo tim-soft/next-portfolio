@@ -39,9 +39,10 @@ const Footer = styled.footer`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0.6em 0;
   > h2 {
     margin-top: 0;
-    margin-bottom: 1.2em;
+    margin-bottom: 1.4em;
   }
 `;
 
