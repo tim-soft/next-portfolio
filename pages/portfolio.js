@@ -70,9 +70,39 @@ const PortfolioPage = ({ theme, route }) => (
             <h2>Open Source</h2>
             <p>
               Aside from numerous contributions to <i>other</i> open-source
-              projects such as ant-design, react-dat-gui, react-starter-kit,
-              react-use-gesture, graphql-tools and others, I&apos;ve also
-              released several projects of my own.
+              projects such as{' '}
+              <BlogLink
+                href="https://github.com/ant-design/ant-design"
+                paragraph
+              >
+                ant-design
+              </BlogLink>
+              ,{' '}
+              <BlogLink href="https://github.com/claus/react-dat-gui" paragraph>
+                react-dat-gui
+              </BlogLink>
+              ,{' '}
+              <BlogLink
+                href="https://github.com/kriasoft/react-starter-kit"
+                paragraph
+              >
+                react-starter-kit
+              </BlogLink>
+              ,{' '}
+              <BlogLink
+                href="https://github.com/react-spring/react-use-gesture"
+                paragraph
+              >
+                react-use-gesture
+              </BlogLink>
+              ,{' '}
+              <BlogLink
+                href="https://github.com/apollographql/graphql-tools"
+                paragraph
+              >
+                graphql-tools
+              </BlogLink>{' '}
+              and others, I&apos;ve also released several projects of my own.
             </p>
             <ProjectList>
               {LibraryData.map(library => (
