@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import App from 'next/app';
 import Router from 'next/router';
 import { version } from 'next/package.json';
-import NextSeo from 'next-seo';
+import { DefaultSeo } from 'next-seo';
 import { Transition, animated } from '@react-spring/web';
 import styled, { ThemeProvider } from 'styled-components';
 import appTheme from 'components/AppTheme';
 import GlobalStyles from 'components/GlobalStyles';
 import WebsiteLayout from 'layouts/WebsiteLayout';
-import defaultSEO from 'components/DefaultSEO';
+import defaultSeoConfig from 'components/DefaultSEO';
 import { pageview } from '../lib/googleAnalytics';
 
 /**
@@ -96,7 +96,7 @@ class WebApp extends App {
 
     return (
       <>
-        <NextSeo config={defaultSEO} />
+        <DefaultSeo {...defaultSeoConfig} />
         <GlobalStyles />
         <ThemeProvider theme={theme}>
           <WebsiteLayout {...Component.layoutProps}>
