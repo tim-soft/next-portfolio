@@ -26,7 +26,7 @@ const LibrarySEO = ({ library, route }) => (
                 '@type': 'WebPage',
                 '@id': `${APP_URL}${route}`
               },
-              headline: library.name,
+              headline: library.tagline,
               image: [`${APP_URL}/static/avatar.png`],
               datePublished: library.docsPublishedDate,
               dateModified: library.docsPublishedDate,
@@ -118,6 +118,7 @@ LibrarySEO.propTypes = {
   library: PropTypes.shape({
     href: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
+    tagline: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     docsPublishedDate: PropTypes.string.isRequired,
     repoUrl: PropTypes.string.isRequired,

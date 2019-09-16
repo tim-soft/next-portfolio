@@ -15,8 +15,8 @@ const LibraryPage = ({ route, theme }) => (
     <LibraryLayout route={route}>
       <section>
         <p>
-          <BlogCodeInline>react-particles-webgl</BlogCodeInline> is inspired by
-          the popular{' '}
+          <BlogCodeInline>react-particles-webgl</BlogCodeInline> is a React
+          component inspired by the popular{' '}
           <BlogLink
             href="https://github.com/VincentGarreau/particles.js/"
             paragraph

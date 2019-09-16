@@ -23,7 +23,7 @@ const LibraryBanner = ({ library }) => (
         <ProjectBadge key={badgeUrl} badgeUrl={badgeUrl} linkUrl={linkUrl} />
       ))}
     </ProjectBadgeList>
-    <ProjectDescription>{library.description}</ProjectDescription>
+    <ProjectTagline>{library.tagline}</ProjectTagline>
   </BannerContainer>
 );
 
@@ -31,7 +31,7 @@ LibraryBanner.propTypes = {
   library: PropTypes.shape({
     href: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
+    tagline: PropTypes.string.isRequired,
     repoUrl: PropTypes.string.isRequired,
     demoLinks: PropTypes.arrayOf(
       PropTypes.shape({
@@ -50,7 +50,7 @@ LibraryBanner.propTypes = {
 
 export default LibraryBanner;
 
-const ProjectDescription = styled.aside`
+const ProjectTagline = styled.aside`
   margin: 1.2em 0 0 0;
   text-align: center;
   max-width: 700px;

@@ -23,7 +23,7 @@ const LibrariesList = () => (
       </DocsHeading>
     </MenuHeader>
     <MenuList>
-      {libraries.map(({ name, href, description, logoSrc, badges }) => (
+      {libraries.map(({ name, href, tagline, logoSrc, badges }) => (
         <MenuListItem key={name}>
           <LinkWrapper href={href}>
             <LogoContainer>
@@ -47,7 +47,7 @@ const LibrariesList = () => (
                   </ProjectBadgeList>
                 </DateContainer>
               </TitleContainer>
-              <PostDescription>{description}</PostDescription>
+              <PostDescription>{tagline}</PostDescription>
             </PostContent>
           </LinkWrapper>
         </MenuListItem>

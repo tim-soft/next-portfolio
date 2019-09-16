@@ -5,7 +5,9 @@ export default [
   {
     name: 'react-particles-webgl',
     href: '/libraries/react-particles-webgl',
-    description: 'A 2D/3D particle library built on React, Three.js and WebGL',
+    tagline: 'A 2D/3D particle library built on React, Three.js and WebGL',
+    description: `react-particles-webgl is a React component inspired by the popular particles.js library 
+      and built with react-three-fiber to offer smooth 60FPS high-count particle fields in both two and three dimensions.`,
     logoSrc: '/static/avatar.png',
     repoUrl: 'https://github.com/tim-soft/react-particles-webgl',
     docsPublishedDate:
@@ -51,8 +53,10 @@ export default [
   {
     name: 'react-spring-lightbox',
     href: '/libraries/react-spring-lightbox',
-    description:
+    tagline:
       'A flexible image gallery lightbox with native-feeling touch gestures and buttery smooth animations, built with react-spring.',
+    description: `react-spring-particles is a modal photo gallery that aims to replicate all of the input UX of 
+    hardware-accelerated native image applications from touch swiping to Ctrl + Mousewheel zooming.`,
     logoSrc: '/static/avatar.png',
     repoUrl: 'https://github.com/tim-soft/react-spring-lightbox',
     docsPublishedDate:
@@ -91,8 +95,9 @@ export default [
   {
     name: 'use-double-click',
     href: '/libraries/use-double-click',
-    description:
+    tagline:
       'A simple React hook for differentiating single and double clicks on the same component.',
+    description: `use-double-click is a simple React hook for differentiating single and double clicks on the same component.`,
     logoSrc: '/static/avatar.png',
     repoUrl: 'https://github.com/tim-soft/use-double-click',
     docsPublishedDate:
@@ -136,6 +141,8 @@ export default [
   {
     name: 'next-portfolio',
     href: 'https://github.com/tim-soft/next-portfolio',
+    tagline:
+      'My personal website, blog and library demo playground, built from scratch with Next.js.',
     description:
       'My personal website, blog and library demo playground, built from scratch with Next.js.',
     logoSrc: '/static/avatar.png',
