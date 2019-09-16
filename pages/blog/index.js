@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
-import NextSEO, { BlogJsonLd, BreadcrumbJsonLd } from 'next-seo';
+import { NextSeo, BlogJsonLd, BreadcrumbJsonLd } from 'next-seo';
 import PageScrollWrapper from 'components/PageScrollWrapper';
 import { IndexListItem, BlogLink } from 'components/Blog';
 import { blueTheme } from 'components/AppTheme';
@@ -30,29 +30,27 @@ const BlogPage = ({ theme, route }) => {
           }
         ]}
       />
-      <NextSEO
-        config={{
+      <NextSeo
+        title="Coding, Musings and Adventures of Tim Ellenberger"
+        canonical={`${APP_URL}${route}`}
+        openGraph={{
+          url: `${APP_URL}${route}`,
           title: 'Coding, Musings and Adventures of Tim Ellenberger',
-          canonical: `${APP_URL}${route}`,
-          openGraph: {
-            url: `${APP_URL}${route}`,
-            title: 'Coding, Musings and Adventures of Tim Ellenberger',
-            images: [
-              {
-                url: `${APP_URL}/static/avatar.png`,
-                alt: 'Blog Post Logo'
-              }
-            ],
-            type: 'website'
-          },
-          site_name: 'Coding, Musings and Adventures of Tim Ellenberger',
-          locale: 'en_US',
-          profile: {
-            firstName: 'Tim',
-            lastName: 'Ellenberger',
-            username: 'tim-soft',
-            gender: 'male'
-          }
+          images: [
+            {
+              url: `${APP_URL}/static/avatar.png`,
+              alt: 'Blog Post Logo'
+            }
+          ],
+          type: 'website'
+        }}
+        site_name="Coding, Musings and Adventures of Tim Ellenberger"
+        locale="en_US"
+        profile={{
+          firstName: 'Tim',
+          lastName: 'Ellenberger',
+          username: 'tim-soft',
+          gender: 'male'
         }}
       />
       <BlogJsonLd
