@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import NextSEO, { BreadcrumbJsonLd } from 'next-seo';
+import { NextSeo, BreadcrumbJsonLd } from 'next-seo';
 import Head from 'next/head';
 
 const APP_URL = process.env.APP_BASE_URL;
@@ -129,35 +129,33 @@ const BlogPostSEO = ({ blogPost, route }) => (
         }
       ]}
     />
-    <NextSEO
-      config={{
+    <NextSeo
+      title={blogPost.title}
+      description={blogPost.description}
+      canonical={`${APP_URL}${route}`}
+      openGraph={{
+        url: `${APP_URL}${route}`,
         title: blogPost.title,
         description: blogPost.description,
-        canonical: `${APP_URL}${route}`,
-        openGraph: {
-          url: `${APP_URL}${route}`,
-          title: blogPost.title,
-          description: blogPost.description,
-          images: [
-            {
-              url: `${APP_URL}${blogPost.logo}`,
-              alt: 'Blog Post Logo'
-            }
-          ],
-          type: 'article',
-          article: {
-            publishedTime: blogPost.date,
-            section: 'Technology',
-            authors: [APP_URL]
-          },
-          site_name: 'Coding, Musings and Adventures of Tim Ellenberger',
-          locale: 'en_US',
-          profile: {
-            firstName: 'Tim',
-            lastName: 'Ellenberger',
-            username: 'tim-soft',
-            gender: 'male'
+        images: [
+          {
+            url: `${APP_URL}${blogPost.logo}`,
+            alt: 'Blog Post Logo'
           }
+        ],
+        type: 'article',
+        article: {
+          publishedTime: blogPost.date,
+          section: 'Technology',
+          authors: [APP_URL]
+        },
+        site_name: 'Coding, Musings and Adventures of Tim Ellenberger',
+        locale: 'en_US',
+        profile: {
+          firstName: 'Tim',
+          lastName: 'Ellenberger',
+          username: 'tim-soft',
+          gender: 'male'
         }
       }}
     />

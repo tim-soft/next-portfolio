@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
-import NextSEO, { BreadcrumbJsonLd } from 'next-seo';
+import { NextSeo, BreadcrumbJsonLd } from 'next-seo';
 import ParticlesDemo from 'components/ParticlesDemo';
 import { generatePageTheme } from 'components/AppTheme';
 
@@ -24,31 +24,28 @@ const ThreeParticles = ({ theme, route }) => (
         }
       ]}
     />
-    <NextSEO
-      config={{
+    <NextSeo
+      title="🔆 A 2D/3D particle library built on React, Three.js and WebGL | Tim Ellenberger"
+      canonical={`${APP_URL}${route}`}
+      openGraph={{
+        url: `${APP_URL}${route}`,
         title:
           '🔆 A 2D/3D particle library built on React, Three.js and WebGL | Tim Ellenberger',
-        canonical: `${APP_URL}${route}`,
-        openGraph: {
-          url: `${APP_URL}${route}`,
-          title:
-            '🔆 A 2D/3D particle library built on React, Three.js and WebGL | Tim Ellenberger',
-          images: [
-            {
-              url: `${APP_URL}/static/avatar.png`,
-              alt: 'Avatar Logo'
-            }
-          ],
-          type: 'website'
-        },
-        site_name: 'Coding, Musings and Adventures of Tim Ellenberger',
-        locale: 'en_US',
-        profile: {
-          firstName: 'Tim',
-          lastName: 'Ellenberger',
-          username: 'tim-soft',
-          gender: 'male'
-        }
+        images: [
+          {
+            url: `${APP_URL}/static/avatar.png`,
+            alt: 'Avatar Logo'
+          }
+        ],
+        type: 'website'
+      }}
+      site_name="Coding, Musings and Adventures of Tim Ellenberger"
+      locale="en_US"
+      profile={{
+        firstName: 'Tim',
+        lastName: 'Ellenberger',
+        username: 'tim-soft',
+        gender: 'male'
       }}
     />
     <ThemeProvider theme={theme}>

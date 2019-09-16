@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import NextSEO, { BreadcrumbJsonLd } from 'next-seo';
+import { NextSeo, BreadcrumbJsonLd } from 'next-seo';
 import Head from 'next/head';
 
 const APP_URL = process.env.APP_BASE_URL;
@@ -79,35 +79,33 @@ const LibrarySEO = ({ library, route }) => (
         }
       ]}
     />
-    <NextSEO
-      config={{
+    <NextSeo
+      title={`${library.name} - Docs`}
+      description={library.description}
+      canonical={`${APP_URL}${route}`}
+      openGraph={{
+        url: `${APP_URL}${route}`,
         title: `${library.name} - Docs`,
         description: library.description,
-        canonical: `${APP_URL}${route}`,
-        openGraph: {
-          url: `${APP_URL}${route}`,
-          title: `${library.name} - Docs`,
-          description: library.description,
-          images: [
-            {
-              url: `${APP_URL}/static/avatar.png`,
-              alt: 'Blog Post Logo'
-            }
-          ],
-          type: 'article',
-          article: {
-            publishedTime: library.docsPublishedDate,
-            section: 'Technology',
-            authors: [APP_URL]
-          },
-          site_name: 'Coding, Musings and Adventures of Tim Ellenberger',
-          locale: 'en_US',
-          profile: {
-            firstName: 'Tim',
-            lastName: 'Ellenberger',
-            username: 'tim-soft',
-            gender: 'male'
+        images: [
+          {
+            url: `${APP_URL}/static/avatar.png`,
+            alt: 'Blog Post Logo'
           }
+        ],
+        type: 'article',
+        article: {
+          publishedTime: library.docsPublishedDate,
+          section: 'Technology',
+          authors: [APP_URL]
+        },
+        site_name: 'Coding, Musings and Adventures of Tim Ellenberger',
+        locale: 'en_US',
+        profile: {
+          firstName: 'Tim',
+          lastName: 'Ellenberger',
+          username: 'tim-soft',
+          gender: 'male'
         }
       }}
     />

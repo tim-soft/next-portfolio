@@ -1,17 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
-import NextSEO from 'next-seo';
+import { NextSeo } from 'next-seo';
 import PageScrollWrapper from 'components/PageScrollWrapper';
 
 const CoursesPage = ({ theme }) => (
   <>
-    <NextSEO
-      config={{
-        title: 'React and GraphQL Courses | Tim Ellenberger',
-        openGraph: {
-          title: 'React and GraphQL Courses | Tim Ellenberger'
-        }
+    <NextSeo
+      title="React and GraphQL Courses | Tim Ellenberger"
+      openGraph={{
+        title: 'React and GraphQL Courses | Tim Ellenberger'
       }}
     />
     <ThemeProvider theme={theme}>

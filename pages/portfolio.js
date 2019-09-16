@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
-import NextSEO, { BreadcrumbJsonLd } from 'next-seo';
+import { NextSeo, BreadcrumbJsonLd } from 'next-seo';
 import { GoLinkExternal } from 'react-icons/go';
 import LibraryData from 'data/Libraries';
 import {
@@ -36,29 +36,27 @@ const PortfolioPage = ({ theme, route }) => (
         }
       ]}
     />
-    <NextSEO
-      config={{
+    <NextSeo
+      title="Portfolio | Tim Ellenberger"
+      canonical={`${APP_URL}${route}`}
+      openGraph={{
+        url: `${APP_URL}${route}`,
         title: 'Portfolio | Tim Ellenberger',
-        canonical: `${APP_URL}${route}`,
-        openGraph: {
-          url: `${APP_URL}${route}`,
-          title: 'Portfolio | Tim Ellenberger',
-          images: [
-            {
-              url: `${APP_URL}/static/avatar.png`,
-              alt: 'Avatar Logo'
-            }
-          ],
-          type: 'website'
-        },
-        site_name: 'Coding, Musings and Adventures of Tim Ellenberger',
-        locale: 'en_US',
-        profile: {
-          firstName: 'Tim',
-          lastName: 'Ellenberger',
-          username: 'tim-soft',
-          gender: 'male'
-        }
+        images: [
+          {
+            url: `${APP_URL}/static/avatar.png`,
+            alt: 'Avatar Logo'
+          }
+        ],
+        type: 'website'
+      }}
+      site_name="Coding, Musings and Adventures of Tim Ellenberger"
+      locale="en_US"
+      profile={{
+        firstName: 'Tim',
+        lastName: 'Ellenberger',
+        username: 'tim-soft',
+        gender: 'male'
       }}
     />
     <ThemeProvider theme={theme}>
