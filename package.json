@@ -13,7 +13,7 @@
     "node": ">=10"
   },
   "dependencies": {
-    "@react-spring/web": "^9.0.0-beta.33",
+    "@react-spring/web": "^9.0.0-beta.34",
     "@tim-soft/react-dat-gui": "^4.0.11",
     "color": "^3.1.2",
     "get-best-contrast-color": "^0.3.1",
