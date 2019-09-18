@@ -69,4 +69,8 @@ const Container = styled.main`
     font-size: 1.2em;
     line-height: 1.5em;
   }
+  li > span[role="img"] {
+    display: inline-block;
+    width: 30px;
+  }
 `;
