@@ -1050,16 +1050,6 @@
     "@babel/runtime" "^7.3.1"
     tiny-invariant "^1.0.4"
 
-"@react-spring/web@^9.0.0-beta.33":
-  version "9.0.0-beta.33"
-  resolved "https://registry.yarnpkg.com/@react-spring/web/-/web-9.0.0-beta.33.tgz#d1dbe05dfa888ab0c46fe3fac8790cd3a7dfb8d5"
-  integrity sha512-IIKF+wwnDahMOB7Llr/HdLUHrzL9LEGHGPmnv9bJsdxmMdn28Dydbk3ekbpZrbjYnduKCeFVqtTl/TZcnQDVdw==
-  dependencies:
-    "@babel/runtime" "^7.3.1"
-    "@react-spring/animated" "^9.0.0-beta.33"
-    "@react-spring/core" "^9.0.0-beta.33"
-    "@react-spring/shared" "^9.0.0-beta.33"
-
 "@react-spring/web@^9.0.0-beta.34":
   version "9.0.0-beta.34"
   resolved "https://registry.yarnpkg.com/@react-spring/web/-/web-9.0.0-beta.34.tgz#d71fef11416a6be8b07d22faea16c8597e9487f3"
@@ -6465,15 +6455,15 @@ react-scrollbars-custom@^4.0.20:
     react-draggable "^3.3.2"
     zoom-level "^1.2.4"
 
-react-spring-lightbox@^1.1.6:
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/react-spring-lightbox/-/react-spring-lightbox-1.1.6.tgz#bd728c543c9fdedf12679b284f847b2b8e281e72"
-  integrity sha512-2aM+uxOFgxcRxgEq6O1V6WmmWi3hmwf62nxYreCzPwMIlsqke1u/XBbCng3D1QGpMpW632h4QdlDMJy+9h14aw==
+react-spring-lightbox@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/react-spring-lightbox/-/react-spring-lightbox-1.1.7.tgz#928c428a81446ec1000f7ed1ec788277ed50cf7a"
+  integrity sha512-oEaNQfAZUWnHPWozmjoI+mzVB+SMulV57I/G2w5Svx3aBJP6jVRlaeoS2YyJc+OJYAOpGK6a4r1vNZIi/UCZxw==
   dependencies:
-    "@react-spring/web" "^9.0.0-beta.33"
+    "@react-spring/web" "^9.0.0-beta.34"
     lodash.clamp "^4.0.3"
     lodash.merge "^4.6.2"
-    react-use-gesture "^5.2.4"
+    react-use-gesture "^6.0.1"
 
 react-spring@^8.0.27:
   version "8.0.27"
@@ -6503,10 +6493,10 @@ react-three-fiber@^2.3.6:
     resize-observer-polyfill "^1.5.1"
     scheduler "0.13.3"
 
-react-use-gesture@^5.2.4:
-  version "5.2.4"
-  resolved "https://registry.yarnpkg.com/react-use-gesture/-/react-use-gesture-5.2.4.tgz#c84ebe0d79703fd90cb26a220812c2f430d3e40d"
-  integrity sha512-oay95IPKBTAIqsZWwPAXJVVlDCpXdg4y2kEKz8oGLSqewpmXsXC4vKlAZq/ZDwZa4djzWlK1pnSIJY2iylx4QQ==
+react-use-gesture@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/react-use-gesture/-/react-use-gesture-6.0.1.tgz#c66d686c63a2469de3ae178e19e3d1a04c526bf6"
+  integrity sha512-RgQ6gYf2yahakB7wZD04Vu4uj6NWj28DVh188dGUIN4+Mlw1LqxnfWBTBDF7ggDXlZ3cWxbZHUvlyO1WeEFZnA==
 
 react@^16.8.6:
   version "16.9.0"
