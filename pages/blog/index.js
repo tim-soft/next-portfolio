@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
 import { NextSeo, BlogJsonLd, BreadcrumbJsonLd } from 'next-seo';
 import PageScrollWrapper from 'components/PageScrollWrapper';
+import PageFooter from 'components/PageFooter';
+import HorizontalRule from 'components/HorizontalRule';
 import { IndexListItem, BlogLink } from 'components/Blog';
 import { blueTheme } from 'components/AppTheme';
 import { getSortedPosts } from 'data/BlogPosts';
@@ -79,10 +81,11 @@ const BlogPage = ({ theme, route }) => {
                 <p>Building new webs out of the old ones.</p>
               </BioMetaContainer>
             </BioContainer>
-
             {sortedPosts.map(post => (
               <IndexListItem key={post.href} {...post} />
             ))}
+            <HorizontalRule />
+            <PageFooter />
           </Container>
         </PageScrollWrapper>
       </ThemeProvider>
