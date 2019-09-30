@@ -40,7 +40,7 @@
     "stringify-object": "^3.3.0",
     "styled-components": "^4.4.0",
     "styled-normalize": "^8.0.6",
-    "three": "^0.108.0",
+    "three": "^0.109.0",
     "use-double-click": "^1.0.5"
   },
   "devDependencies": {
