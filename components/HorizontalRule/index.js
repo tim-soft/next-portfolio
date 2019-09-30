@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export default styled.hr`
+  width: 100%;
   border: 0;
   height: 1px;
   background-image: linear-gradient(
