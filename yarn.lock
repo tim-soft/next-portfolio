@@ -5449,10 +5449,10 @@ new-array@^1.0.0:
   resolved "https://registry.yarnpkg.com/new-array/-/new-array-1.0.0.tgz#5dbc639d961eac7f1a9fbc1a7146ec12f2924fbf"
   integrity sha1-XbxjnZYerH8an7wacUbsEvKST78=
 
-next-offline@^4.0.5:
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/next-offline/-/next-offline-4.0.5.tgz#e77c7d38034bff969fa5ad3b5e1f18ce01d1ab7b"
-  integrity sha512-yoQx2PvtPICuz4NwSDrtNgfw9uSBbK0uh/MG+e59zFXDhA2n38M8+65My2WvXfR1JXQwSnrDlrIlWwc6x7kxsg==
+next-offline@^4.0.6:
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/next-offline/-/next-offline-4.0.6.tgz#c2c5f1a08518b83cd60cafb9485752955ebefc00"
+  integrity sha512-uLU1g2DrAdIilTUUznBlrymDaQA4WFfZA3lDmTDZ6hUIai1X/JlghiMmuBEwPuuJEdZHv1ExBpyucoUSNpXjlg==
   dependencies:
     clean-webpack-plugin "^0.1.19"
     copy-webpack-plugin "~4.5.2"
@@ -5461,10 +5461,10 @@ next-offline@^4.0.5:
     webpack "^4.19.1"
     workbox-webpack-plugin "^4.3.1"
 
-next-seo@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-2.1.1.tgz#3451c5628b0f186a5b0e231363170cf2848f11f9"
-  integrity sha512-Uge9KT+ugublhcSa2TqRnux61+YNCl5dEC1Bh25zQDuV85H8pKXl3MWFt9n/VZ3BTNne4cWWGI+/g9apnfNfBg==
+next-seo@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-2.1.2.tgz#71f0ade5c6e237786ecb1fd5bdec4cca351945d6"
+  integrity sha512-jsAFX5xqWnumBbJR82QNw+qC3+ykkQ3HtMguY/4LM269ZiWo4XR+zXiF/vLGX8xsUnqsT8M3D2hksQT5PB1iaA==
 
 next@^9.1.1:
   version "9.1.1"
