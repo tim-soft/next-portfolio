@@ -5454,10 +5454,10 @@ next-offline@^4.0.6:
     webpack "^4.19.1"
     workbox-webpack-plugin "^4.3.1"
 
-next-seo@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-2.1.2.tgz#71f0ade5c6e237786ecb1fd5bdec4cca351945d6"
-  integrity sha512-jsAFX5xqWnumBbJR82QNw+qC3+ykkQ3HtMguY/4LM269ZiWo4XR+zXiF/vLGX8xsUnqsT8M3D2hksQT5PB1iaA==
+next-seo@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-2.2.1.tgz#c531fb0a4b079ba50983ee15b0f224568f44a474"
+  integrity sha512-q7mz7Jbm+7EFV9FSwDKFj6VKhHNIt13l9wTn7tKSzhwaTP3CAuMciQzyNY5WVEk+I0QUzBl0y7fn1XNTaDqfRg==
 
 next@^9.1.1:
   version "9.1.1"
