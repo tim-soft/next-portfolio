@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import CourseData from 'data/Courses';
+import LocationTagline from 'components/LocationTagline';
 import { MenuContent, MenuList, MenuListItem, MenuFooter } from './components';
 
 const CourseList = () => (
@@ -21,11 +22,7 @@ const CourseList = () => (
     </MenuList>
     {/* Emoji found with https://emojipedia.org/ */}
     <MenuFooter>
-      Made with{' '}
-      <span role="img" aria-label="love">
-        💚
-      </span>{' '}
-      in Seattle
+      <LocationTagline />
     </MenuFooter>
   </MenuContent>
 );

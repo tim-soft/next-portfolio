@@ -4,6 +4,7 @@ import Link from 'next/link';
 import styled, { css } from 'styled-components';
 import { Transition, animated } from '@react-spring/web';
 import { GoMarkGithub } from 'react-icons/go';
+import LocationTagline from 'components/LocationTagline';
 import StyledLogo from '../StyledLink';
 
 class LeftSideLogo extends React.Component {
@@ -85,11 +86,7 @@ class LeftSideLogo extends React.Component {
                 </BioParagraph>
                 {/* Emoji found with https://emojipedia.org/ */}
                 <BioParagraph>
-                  Made with{' '}
-                  <span role="img" aria-label="love">
-                    💚
-                  </span>{' '}
-                  in Seattle
+                  <LocationTagline />
                 </BioParagraph>
               </AnimatedContainer>
             ))

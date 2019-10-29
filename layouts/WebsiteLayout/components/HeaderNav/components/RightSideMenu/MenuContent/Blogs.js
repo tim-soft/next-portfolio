@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { getSortedPosts } from 'data/BlogPosts';
 import { DateAndDuration } from 'components/Blog';
+import LocationTagline from 'components/LocationTagline';
 import { MenuContent, MenuList, MenuListItem, MenuFooter } from './components';
 
 const BlogList = () => {
@@ -37,11 +38,7 @@ const BlogList = () => {
       </MenuList>
       {/* Emoji found with https://emojipedia.org/ */}
       <MenuFooter>
-        Made with{' '}
-        <span role="img" aria-label="love">
-          💚
-        </span>{' '}
-        in Seattle
+        <LocationTagline />
       </MenuFooter>
     </MenuContent>
   );

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { FaBookOpen } from 'react-icons/fa';
 import { BlogLink } from 'components/Blog';
 import { ProjectBadge, ProjectBadgeList } from 'components/Portfolio';
+import LocationTagline from 'components/LocationTagline';
 import libraries from 'data/Libraries';
 import {
   MenuContent,
@@ -55,11 +56,7 @@ const LibrariesList = () => (
     </MenuList>
     {/* Emoji found with https://emojipedia.org/ */}
     <MenuFooter>
-      Made with{' '}
-      <span role="img" aria-label="love">
-        💚
-      </span>{' '}
-      in Seattle
+      <LocationTagline />
     </MenuFooter>
   </MenuContent>
 );
