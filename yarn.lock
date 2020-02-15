@@ -7939,15 +7939,15 @@ react-scrollbars-custom@^4.0.21:
     react-draggable "^3.3.2"
     zoom-level "^1.2.4"
 
-react-spring-lightbox@^1.1.7:
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/react-spring-lightbox/-/react-spring-lightbox-1.1.7.tgz#928c428a81446ec1000f7ed1ec788277ed50cf7a"
-  integrity sha512-oEaNQfAZUWnHPWozmjoI+mzVB+SMulV57I/G2w5Svx3aBJP6jVRlaeoS2YyJc+OJYAOpGK6a4r1vNZIi/UCZxw==
+react-spring-lightbox@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-spring-lightbox/-/react-spring-lightbox-1.2.0.tgz#b0444abcbef915ac3112cb95d453b4f9465916d0"
+  integrity sha512-Wm4kHZ7e27Vjo9Oau76+TFLD3nZgfA6kyKvLH6it3QfUTMPeprEHC8W2ifjVb2cpWMmw+gmi1TewbjawtgmyTQ==
   dependencies:
     "@react-spring/web" "^9.0.0-beta.34"
     lodash.clamp "^4.0.3"
     lodash.merge "^4.6.2"
-    react-use-gesture "^6.0.1"
+    react-use-gesture "^7.0.4"
 
 react-spring@^8.0.27:
   version "8.0.27"
@@ -7977,10 +7977,10 @@ react-three-fiber@^2.3.6:
     resize-observer-polyfill "^1.5.1"
     scheduler "0.13.3"
 
-react-use-gesture@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/react-use-gesture/-/react-use-gesture-6.0.1.tgz#c66d686c63a2469de3ae178e19e3d1a04c526bf6"
-  integrity sha512-RgQ6gYf2yahakB7wZD04Vu4uj6NWj28DVh188dGUIN4+Mlw1LqxnfWBTBDF7ggDXlZ3cWxbZHUvlyO1WeEFZnA==
+react-use-gesture@^7.0.4:
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/react-use-gesture/-/react-use-gesture-7.0.4.tgz#94493ede7d90c0e05a97b366e419b55eaea53739"
+  integrity sha512-6RGHBRyHXSqRwti/osj7WTcSVTxeulyz+pLg20vCv/bl1oEU3mVVEtmbPpsXWsqR23FZuE7//8AiqVmQQSGuBg==
 
 react@^16.12.0:
   version "16.12.0"
