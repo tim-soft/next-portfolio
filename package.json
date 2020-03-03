@@ -23,7 +23,7 @@
     "lodash.merge": "^4.6.2",
     "next": "^9.2.1",
     "next-offline": "^5.0.0",
-    "next-seo": "^4.1.0",
+    "next-seo": "^4.4.0",
     "nice-color-palettes": "^3.0.0",
     "prism-react-renderer": "^1.0.2",
     "prop-types": "^15.7.2",
