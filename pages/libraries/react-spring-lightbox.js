@@ -14,7 +14,7 @@ const LibraryPage = ({ route, theme }) => (
     <LibraryLayout route={route}>
       <section>
         <p>
-          <BlogCodeInline>react-spring-particles</BlogCodeInline> is a modal
+          <BlogCodeInline>react-spring-lightbox</BlogCodeInline> is a modal
           photo gallery that aims to replicate <strong>all</strong> of the input
           UX of hardware-accelerated native image applications from touch
           swiping to <BlogCodeInline>Ctrl + Mousewheel</BlogCodeInline> zooming.
