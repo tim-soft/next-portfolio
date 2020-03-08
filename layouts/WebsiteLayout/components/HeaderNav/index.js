@@ -8,64 +8,68 @@ import { LeftSideLogo, RightSideMenu, MobileRightSideMenu } from './components';
  * Prefetches nav route links https://nextjs.org/docs#prefetching-pages
  */
 export default class HeaderNav extends React.Component {
-  static propTypes = {
-    showBio: PropTypes.bool.isRequired
-  };
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      menuIsOpen: false
+    static propTypes = {
+        showBio: PropTypes.bool.isRequired
     };
-  }
 
-  render() {
-    const { showBio } = this.props;
-    const { menuIsOpen } = this.state;
+    constructor(props) {
+        super(props);
 
-    return (
-      <HeaderStyled>
-        <HeaderItemContainer>
-          <LeftSideLogo
-            menuIsOpen={menuIsOpen}
-            toggleMenu={() => this.setState({ menuIsOpen: !menuIsOpen })}
-            showBio={showBio}
-          />
+        this.state = {
+            menuIsOpen: false
+        };
+    }
 
-          <RightSideMenu />
-          <MobileRightSideMenu
-            menuIsOpen={menuIsOpen}
-            toggleMenu={() => this.setState({ menuIsOpen: !menuIsOpen })}
-          />
-        </HeaderItemContainer>
-      </HeaderStyled>
-    );
-  }
+    render() {
+        const { showBio } = this.props;
+        const { menuIsOpen } = this.state;
+
+        return (
+            <HeaderStyled>
+                <HeaderItemContainer>
+                    <LeftSideLogo
+                        menuIsOpen={menuIsOpen}
+                        toggleMenu={() =>
+                            this.setState({ menuIsOpen: !menuIsOpen })
+                        }
+                        showBio={showBio}
+                    />
+
+                    <RightSideMenu />
+                    <MobileRightSideMenu
+                        menuIsOpen={menuIsOpen}
+                        toggleMenu={() =>
+                            this.setState({ menuIsOpen: !menuIsOpen })
+                        }
+                    />
+                </HeaderItemContainer>
+            </HeaderStyled>
+        );
+    }
 }
 
 const HeaderItemContainer = styled.div`
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: inherit;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: inherit;
 `;
 
 const HeaderStyled = styled.header`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
-  padding: 15px;
-  background: none;
-  color: white;
-  z-index: 20;
-  overflow: visible;
-  @media (max-width: 500px) {
-    padding-left: 5px;
-    padding-right: 5px;
-  }
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    padding: 15px;
+    background: none;
+    color: white;
+    z-index: 20;
+    overflow: visible;
+    @media (max-width: 500px) {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
 `;

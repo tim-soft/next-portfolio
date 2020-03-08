@@ -6,42 +6,42 @@ import BlogPostLayout from 'layouts/BlogPostLayout';
 import { blueTheme } from 'components/AppTheme';
 
 const BlogPage = ({ route, theme }) => (
-  <ThemeProvider theme={theme}>
-    <BlogPostLayout route={route}>
-      <BlogParagraph>
-        Code snippets without syntax highlighting are unsightly. No one wants to
-        view these code snippets. They are extremely hard to read and deeply
-        unstylistic.
-      </BlogParagraph>
-      <BlogParagraph>
-        Aiming to bridge the gap for the unsightly snippets, VS Code and
-        its&apos; default theme Dark+ have gained a lot of familiarity in the
-        development community.
-      </BlogParagraph>
-      <BlogParagraph>
-        A project called{' '}
-        <BlogLink href="https://github.com/PrismJS/prism" paragraph>
-          PrismJS
-        </BlogLink>{' '}
-        for syntax highlighting{' '}
-      </BlogParagraph>
-      <BlogParagraph>
-        Another project succinctly named{' '}
-        <BlogLink
-          href="https://github.com/FormidableLabs/prism-react-renderer"
-          paragraph
-        >
-          prism-react-renderer
-        </BlogLink>{' '}
-        enables us to manipulate the PrismJS syntax highlighted output as well
-        as add extraneous react components into the code blocks. Subsequently, a
-        theme object can be passed as a prop to further control the syntax
-        highlighting.
-      </BlogParagraph>
-      <BlogCodeBlock
-        language="jsx"
-        path="/components/Blog/BlogCodeBlock.js"
-        code={`
+    <ThemeProvider theme={theme}>
+        <BlogPostLayout route={route}>
+            <BlogParagraph>
+                Code snippets without syntax highlighting are unsightly. No one
+                wants to view these code snippets. They are extremely hard to
+                read and deeply unstylistic.
+            </BlogParagraph>
+            <BlogParagraph>
+                Aiming to bridge the gap for the unsightly snippets, VS Code and
+                its&apos; default theme Dark+ have gained a lot of familiarity
+                in the development community.
+            </BlogParagraph>
+            <BlogParagraph>
+                A project called{' '}
+                <BlogLink href="https://github.com/PrismJS/prism" paragraph>
+                    PrismJS
+                </BlogLink>{' '}
+                for syntax highlighting{' '}
+            </BlogParagraph>
+            <BlogParagraph>
+                Another project succinctly named{' '}
+                <BlogLink
+                    href="https://github.com/FormidableLabs/prism-react-renderer"
+                    paragraph
+                >
+                    prism-react-renderer
+                </BlogLink>{' '}
+                enables us to manipulate the PrismJS syntax highlighted output
+                as well as add extraneous react components into the code blocks.
+                Subsequently, a theme object can be passed as a prop to further
+                control the syntax highlighting.
+            </BlogParagraph>
+            <BlogCodeBlock
+                language="jsx"
+                path="/components/Blog/BlogCodeBlock.js"
+                code={`
 const BlogCodeBlock = ({ code, language, theme }) => (
   <Highlight
     {...defaultProps}
@@ -66,12 +66,12 @@ const BlogCodeBlock = ({ code, language, theme }) => (
   </Highlight>
 );
       `}
-      />
-      <BlogCodeBlock
-        width={550}
-        path="/data/GraphQL/GetBlogCodeBlock.graphql"
-        language="graphql"
-        code={`
+            />
+            <BlogCodeBlock
+                width={550}
+                path="/data/GraphQL/GetBlogCodeBlock.graphql"
+                language="graphql"
+                code={`
 query {
   superCoolGraphQLQuery({ number: 5 }) {
     id
@@ -80,11 +80,11 @@ query {
   }
 }
       `}
-      />
-      <BlogCodeBlock
-        language="jsx"
-        path="/components/Blog/BlogCodeBlock.js"
-        code={`
+            />
+            <BlogCodeBlock
+                language="jsx"
+                path="/components/Blog/BlogCodeBlock.js"
+                code={`
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -175,18 +175,18 @@ BlogCodeBlock.defaultProps = {
 
 export default BlogCodeBlock;
       `}
-      />
-    </BlogPostLayout>
-  </ThemeProvider>
+            />
+        </BlogPostLayout>
+    </ThemeProvider>
 );
 
 BlogPage.propTypes = {
-  route: PropTypes.string.isRequired,
-  theme: PropTypes.object
+    route: PropTypes.string.isRequired,
+    theme: PropTypes.object
 };
 
 BlogPage.defaultProps = {
-  theme: {}
+    theme: {}
 };
 
 // Override default app theme for this page

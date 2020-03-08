@@ -13,17 +13,17 @@ import BlogImageGallery from './BlogImageGallery';
 import BlogTableOfContents from './BlogTableOfContents';
 
 export {
-  BlogParagraph,
-  BlogCodeBlock,
-  BlogCodeSandboxEmbed,
-  IndexListItem,
-  BlogLink,
-  DateAndDuration,
-  BlogList,
-  BlogSectionHeading,
-  BlogQuote,
-  BlogCodeInline,
-  BlogDemoContainer,
-  BlogImageGallery,
-  BlogTableOfContents
+    BlogParagraph,
+    BlogCodeBlock,
+    BlogCodeSandboxEmbed,
+    IndexListItem,
+    BlogLink,
+    DateAndDuration,
+    BlogList,
+    BlogSectionHeading,
+    BlogQuote,
+    BlogCodeInline,
+    BlogDemoContainer,
+    BlogImageGallery,
+    BlogTableOfContents
 };

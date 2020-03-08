@@ -8,20 +8,20 @@ import { DatUI, PerformanceStats, RepoTag } from './components';
  * Includes a config panel and performance monitor
  */
 const ParticlesDemo = () => {
-  const [datConfig, setDatConfig] = useState(defaultConfig);
+    const [datConfig, setDatConfig] = useState(defaultConfig);
 
-  return (
-    <>
-      {/* FPS Counter */}
-      <PerformanceStats />
-      {/* Config GUI */}
-      <DatUI datConfig={datConfig} handleDatUpdate={setDatConfig} />
-      {/* Particle Canvas */}
-      <ParticleField config={datConfig} />
-      {/* Repo tag */}
-      <RepoTag />
-    </>
-  );
+    return (
+        <>
+            {/* FPS Counter */}
+            <PerformanceStats />
+            {/* Config GUI */}
+            <DatUI datConfig={datConfig} handleDatUpdate={setDatConfig} />
+            {/* Particle Canvas */}
+            <ParticleField config={datConfig} />
+            {/* Repo tag */}
+            <RepoTag />
+        </>
+    );
 };
 
 export default ParticlesDemo;

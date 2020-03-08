@@ -8,40 +8,40 @@ import PropTypes from 'prop-types';
  * Child components are rendered on the client side only
  */
 export default class CreatePortal extends React.Component {
-  static propTypes = {
-    children: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.element),
-      PropTypes.element
-    ]).isRequired
-  };
+    static propTypes = {
+        children: PropTypes.oneOfType([
+            PropTypes.arrayOf(PropTypes.element),
+            PropTypes.element
+        ]).isRequired
+    };
 
-  // Only executes on the client-side
-  componentDidMount() {
-    // Get the document body
-    this.body = document.body;
+    // Only executes on the client-side
+    componentDidMount() {
+        // Get the document body
+        this.body = document.body;
 
-    // Create a container <div /> for React Portal
-    this.portalContainer = document.createElement('div');
+        // Create a container <div /> for React Portal
+        this.portalContainer = document.createElement('div');
 
-    // Append the container to the document body
-    this.body.appendChild(this.portalContainer);
+        // Append the container to the document body
+        this.body.appendChild(this.portalContainer);
 
-    // Force a re-render as we're on the client side now
-    // children prop will render to portalContainer
-    this.forceUpdate();
-  }
+        // Force a re-render as we're on the client side now
+        // children prop will render to portalContainer
+        this.forceUpdate();
+    }
 
-  componentWillUnmount() {
-    // Cleanup Portal from DOM
-    this.body.removeChild(this.portalContainer);
-  }
+    componentWillUnmount() {
+        // Cleanup Portal from DOM
+        this.body.removeChild(this.portalContainer);
+    }
 
-  render() {
-    // Return null during SSR
-    if (this.portalContainer === undefined) return null;
+    render() {
+        // Return null during SSR
+        if (this.portalContainer === undefined) return null;
 
-    const { children } = this.props;
+        const { children } = this.props;
 
-    return ReactDOM.createPortal(children, this.portalContainer);
-  }
+        return ReactDOM.createPortal(children, this.portalContainer);
+    }
 }

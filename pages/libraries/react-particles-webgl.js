@@ -5,76 +5,86 @@ import LibraryLayout from 'layouts/LibraryLayout';
 import { darkTheme } from 'components/AppTheme';
 import { BlogCodeBlock, BlogCodeInline, BlogLink } from 'components/Blog';
 import {
-  DefaultParticles,
-  ParticlesJSClone,
-  SnowfallParticles
+    DefaultParticles,
+    ParticlesJSClone,
+    SnowfallParticles
 } from 'components/Libraries/react-particles-webgl/demos';
 
 const LibraryPage = ({ route, theme }) => (
-  <ThemeProvider theme={theme}>
-    <LibraryLayout route={route}>
-      <section>
-        <p>
-          <BlogCodeInline>react-particles-webgl</BlogCodeInline> is a React
-          component inspired by the popular{' '}
-          <BlogLink
-            href="https://github.com/VincentGarreau/particles.js/"
-            paragraph
-          >
-            particles.js
-          </BlogLink>{' '}
-          library and built with{' '}
-          <BlogLink
-            href="https://github.com/drcmda/react-three-fiber"
-            paragraph
-          >
-            react-three-fiber
-          </BlogLink>{' '}
-          to offer smooth 60FPS high-count particle fields in both two and three
-          dimensions.
-        </p>
-        <h2>Demos</h2>
-        <p>
-          The particle field&apos;s configuration is extremely flexible,
-          allowing you to optionally interact with the field via{' '}
-          <BlogCodeInline>cameraControls</BlogCodeInline> with
-          drag/touch/scrollwheel etc.
-        </p>
+    <ThemeProvider theme={theme}>
+        <LibraryLayout route={route}>
+            <section>
+                <p>
+                    <BlogCodeInline>react-particles-webgl</BlogCodeInline> is a
+                    React component inspired by the popular{' '}
+                    <BlogLink
+                        href="https://github.com/VincentGarreau/particles.js/"
+                        paragraph
+                    >
+                        particles.js
+                    </BlogLink>{' '}
+                    library and built with{' '}
+                    <BlogLink
+                        href="https://github.com/drcmda/react-three-fiber"
+                        paragraph
+                    >
+                        react-three-fiber
+                    </BlogLink>{' '}
+                    to offer smooth 60FPS high-count particle fields in both two
+                    and three dimensions.
+                </p>
+                <h2>Demos</h2>
+                <p>
+                    The particle field&apos;s configuration is extremely
+                    flexible, allowing you to optionally interact with the field
+                    via <BlogCodeInline>cameraControls</BlogCodeInline> with
+                    drag/touch/scrollwheel etc.
+                </p>
 
-        <DefaultParticles />
-        <p>A two dimensional particle field with camera controls disabled.</p>
-        <ParticlesJSClone />
-        <p>
-          A three dimensional particle field using a combination of the{' '}
-          <BlogCodeInline>boundaryType: {`'passthru'`}</BlogCodeInline> and
-          direction constraints.
-        </p>
-        <SnowfallParticles />
-      </section>
-      <section>
-        <h2>Installation</h2>
-        <p>
-          Adding react-particles-webgl to your project is easy, Three.js is
-          required so add it if your project doesn&apos;t have it already.
-        </p>
-        <p>This library is built with hooks and requires React {`>=`} 16.8.0</p>
-        <BlogCodeBlock
-          path="Terminal"
-          language="bash"
-          code="yarn add react-particles-webgl three"
-        />
-      </section>
-      <section>
-        <h2>Basic Usage</h2>
-        <p>
-          <BlogCodeInline>{`<ParticleField />`}</BlogCodeInline> will grow to
-          fit the size of it&apos;s container, making it simple to integrate
-          into any application.
-        </p>
-        <BlogCodeBlock
-          path="/components/Particles.js"
-          language="jsx"
-          code={`
+                <DefaultParticles />
+                <p>
+                    A two dimensional particle field with camera controls
+                    disabled.
+                </p>
+                <ParticlesJSClone />
+                <p>
+                    A three dimensional particle field using a combination of
+                    the{' '}
+                    <BlogCodeInline>
+                        boundaryType: &apos;passthru&apos;
+                    </BlogCodeInline>{' '}
+                    and direction constraints.
+                </p>
+                <SnowfallParticles />
+            </section>
+            <section>
+                <h2>Installation</h2>
+                <p>
+                    Adding react-particles-webgl to your project is easy,
+                    Three.js is required so add it if your project doesn&apos;t
+                    have it already.
+                </p>
+                <p>
+                    This library is built with hooks and requires React {`>=`}{' '}
+                    16.8.0
+                </p>
+                <BlogCodeBlock
+                    path="Terminal"
+                    language="bash"
+                    code="yarn add react-particles-webgl three"
+                />
+            </section>
+            <section>
+                <h2>Basic Usage</h2>
+                <p>
+                    <BlogCodeInline>{`<ParticleField />`}</BlogCodeInline> will
+                    grow to fit the size of it&apos;s container, making it
+                    simple to integrate into any application.
+                </p>
+                <BlogCodeBlock
+                    path="/components/Particles.js"
+                    language="jsx"
+                    code={`
 import React from 'react';
 import ParticleField from 'react-particles-webgl';
 
@@ -84,29 +94,30 @@ export default () => (
   </div>
 );
       `}
-        />
-      </section>
-      <section>
-        <h2>Configuration</h2>
-        <p>
-          The <BlogCodeInline>{`<ParticleField />`}</BlogCodeInline> component
-          accepts an optional <BlogCodeInline>config</BlogCodeInline> prop with
-          an extensive list of options such as particle color, enabling camera
-          controls and 2D or 3D mode.
-        </p>
-        <p>
-          Checkout the{' '}
-          <BlogLink href="/particles" paragraph>
-            configurator tool
-          </BlogLink>{' '}
-          to test several presets and options. Below is the full list of config
-          options.
-        </p>
-        <BlogCodeBlock
-          width={860}
-          path="/components/ParticleConfig.js"
-          language="js"
-          code={`
+                />
+            </section>
+            <section>
+                <h2>Configuration</h2>
+                <p>
+                    The <BlogCodeInline>{`<ParticleField />`}</BlogCodeInline>{' '}
+                    component accepts an optional{' '}
+                    <BlogCodeInline>config</BlogCodeInline> prop with an
+                    extensive list of options such as particle color, enabling
+                    camera controls and 2D or 3D mode.
+                </p>
+                <p>
+                    Checkout the{' '}
+                    <BlogLink href="/particles" paragraph>
+                        configurator tool
+                    </BlogLink>{' '}
+                    to test several presets and options. Below is the full list
+                    of config options.
+                </p>
+                <BlogCodeBlock
+                    width={860}
+                    path="/components/ParticleConfig.js"
+                    language="js"
+                    code={`
 export default {
   // Display reference cube, useful for orienting the field
   showCube: true,
@@ -189,19 +200,19 @@ export default {
   }
 };
           `}
-        />
-      </section>
-    </LibraryLayout>
-  </ThemeProvider>
+                />
+            </section>
+        </LibraryLayout>
+    </ThemeProvider>
 );
 
 LibraryPage.propTypes = {
-  route: PropTypes.string.isRequired,
-  theme: PropTypes.object
+    route: PropTypes.string.isRequired,
+    theme: PropTypes.object
 };
 
 LibraryPage.defaultProps = {
-  theme: {}
+    theme: {}
 };
 
 LibraryPage.pageTheme = darkTheme;

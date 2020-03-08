@@ -5,49 +5,49 @@ import LocationTagline from 'components/LocationTagline';
 import { MenuContent, MenuList, MenuListItem, MenuFooter } from './components';
 
 const CourseList = () => (
-  <MenuContent>
-    <MenuList>
-      {CourseData.map(({ title, description, logoSrc, logoAlt }) => (
-        <MenuListItem key={title}>
-          <LogoContainer>
-            <CourseLogo src={logoSrc} alt={logoAlt} />
-          </LogoContainer>
-          <CourseContent>
-            <CourseTitle>{title}</CourseTitle>
+    <MenuContent>
+        <MenuList>
+            {CourseData.map(({ title, description, logoSrc, logoAlt }) => (
+                <MenuListItem key={title}>
+                    <LogoContainer>
+                        <CourseLogo src={logoSrc} alt={logoAlt} />
+                    </LogoContainer>
+                    <CourseContent>
+                        <CourseTitle>{title}</CourseTitle>
 
-            <p>{description}</p>
-          </CourseContent>
-        </MenuListItem>
-      ))}
-    </MenuList>
-    {/* Emoji found with https://emojipedia.org/ */}
-    <MenuFooter>
-      <LocationTagline />
-    </MenuFooter>
-  </MenuContent>
+                        <p>{description}</p>
+                    </CourseContent>
+                </MenuListItem>
+            ))}
+        </MenuList>
+        {/* Emoji found with https://emojipedia.org/ */}
+        <MenuFooter>
+            <LocationTagline />
+        </MenuFooter>
+    </MenuContent>
 );
 
 export default CourseList;
 
 const LogoContainer = styled.div`
-  width: 100px;
+    width: 100px;
 `;
 
 const CourseTitle = styled.h2`
-  font-weight: normal;
-  margin: 0;
+    font-weight: normal;
+    margin: 0;
 `;
 
 const CourseContent = styled.div`
-  width: 100%;
-  height: 100%;
-  padding: 0 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 `;
 
 const CourseLogo = styled.img`
-  width: 100%;
-  max-height: 45px;
+    width: 100%;
+    max-height: 45px;
 `;

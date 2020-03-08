@@ -1,20 +1,20 @@
 {
-  "name": "Tim Ellenberger | Consulting",
-  "short_name": "React + GraphQL",
-  "start_url": "/",
-  "icons": [
-    {
-      "src": "/static/android-chrome-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/static/android-chrome-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ],
-  "theme_color": "#1d1e1f",
-  "background_color": "#1D1E1F",
-  "display": "standalone"
+    "name": "Tim Ellenberger | Consulting",
+    "short_name": "React + GraphQL",
+    "start_url": "/",
+    "icons": [
+        {
+            "src": "/static/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/static/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#1d1e1f",
+    "background_color": "#1D1E1F",
+    "display": "standalone"
 }

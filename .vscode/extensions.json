@@ -1,10 +1,10 @@
 {
-  "recommendations": [
-    "stylelint.vscode-stylelint",
-    "dbaeumer.vscode-eslint",
-    "christian-kohler.npm-intellisense",
-    "esbenp.prettier-vscode",
-    "ofhumanbondage.react-proptypes-intellisense",
-    "jpoissonnier.vscode-styled-components"
-  ]
+    "recommendations": [
+        "stylelint.vscode-stylelint",
+        "dbaeumer.vscode-eslint",
+        "christian-kohler.npm-intellisense",
+        "esbenp.prettier-vscode",
+        "ofhumanbondage.react-proptypes-intellisense",
+        "jpoissonnier.vscode-styled-components"
+    ]
 }

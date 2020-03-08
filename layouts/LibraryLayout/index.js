@@ -8,41 +8,41 @@ import { LibraryBanner, LibrarySEO } from './components';
 import EditFAB from '../BlogPostLayout/components/BlogEditPostFAB';
 
 const LibraryLayout = ({ route, children, width }) => {
-  // Get the current blog post from data
-  const library = libraries.find(lib => route.endsWith(lib.name));
+    // Get the current blog post from data
+    const library = libraries.find(lib => route.endsWith(lib.name));
 
-  return (
-    <>
-      <LibrarySEO library={library} route={route} />
-      <PageScrollWrapper>
-        <Container width={width}>
-          <article>
-            <header>
-              <LibraryBanner library={library} />
-            </header>
-            <HorizontalRule />
-            {children}
-            <HorizontalRule />
-            <PageFooter />
-          </article>
-          <EditFAB route={route} />
-        </Container>
-      </PageScrollWrapper>
-    </>
-  );
+    return (
+        <>
+            <LibrarySEO library={library} route={route} />
+            <PageScrollWrapper>
+                <Container width={width}>
+                    <article>
+                        <header>
+                            <LibraryBanner library={library} />
+                        </header>
+                        <HorizontalRule />
+                        {children}
+                        <HorizontalRule />
+                        <PageFooter />
+                    </article>
+                    <EditFAB route={route} />
+                </Container>
+            </PageScrollWrapper>
+        </>
+    );
 };
 
 LibraryLayout.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]).isRequired,
-  route: PropTypes.string.isRequired,
-  width: PropTypes.number
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+    ]).isRequired,
+    route: PropTypes.string.isRequired,
+    width: PropTypes.number
 };
 
 LibraryLayout.defaultProps = {
-  width: null
+    width: null
 };
 
 export default LibraryLayout;

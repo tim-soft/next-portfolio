@@ -9,11 +9,11 @@
 
 ## ✨ Features
 
-- SSR React with [Next.js](https://github.com/zeit/next.js/)
-- Dynamic Theming and Styles via [Styled-Components](https://github.com/styled-components/styled-components)
-- Offline Ready via [Workbox](https://github.com/GoogleChrome/workbox)
-- One Click Production Serverless Deploy to [Now](https://zeit.co/now)
-- [Prettier](https://github.com/prettier/prettier), [ESLint](https://github.com/eslint/eslint) and [StyleLint](https://stylelint.io/) Integration
+-   SSR React with [Next.js](https://github.com/zeit/next.js/)
+-   Dynamic Theming and Styles via [Styled-Components](https://github.com/styled-components/styled-components)
+-   Offline Ready via [Workbox](https://github.com/GoogleChrome/workbox)
+-   One Click Production Serverless Deploy to [Now](https://zeit.co/now)
+-   [Prettier](https://github.com/prettier/prettier), [ESLint](https://github.com/eslint/eslint) and [StyleLint](https://stylelint.io/) Integration
 
 ## How to use
 

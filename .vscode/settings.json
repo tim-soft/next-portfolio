@@ -1,7 +1,6 @@
 {
-  "editor.formatOnSave": true,
-  "files.eol": "\n",
-  "javascript.validate.enable": false,
-  "editor.tabSize": 2,
-  "editor.detectIndentation": false
+    "editor.formatOnSave": true,
+    "javascript.validate.enable": false,
+    "editor.tabSize": 4,
+    "editor.detectIndentation": false
 }
