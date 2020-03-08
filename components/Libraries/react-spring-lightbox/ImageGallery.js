@@ -21,7 +21,8 @@ class ImageGallery extends React.Component {
         ).isRequired,
         LightboxHeader: PropTypes.func,
         LightboxFooter: PropTypes.func,
-        LightboxArrowButton: PropTypes.func
+        LightboxArrowButton: PropTypes.func,
+        LightboxImageOverlay: PropTypes.func
     };
 
     static defaultProps = {
@@ -29,7 +30,8 @@ class ImageGallery extends React.Component {
         imageMasonryDirection: 'column',
         LightboxHeader: () => null,
         LightboxFooter: () => null,
-        LightboxArrowButton: () => null
+        LightboxArrowButton: () => null,
+        LightboxImageOverlay: () => null
     };
 
     constructor() {
@@ -104,7 +106,8 @@ class ImageGallery extends React.Component {
             imageMasonryDirection,
             LightboxHeader,
             LightboxFooter,
-            LightboxArrowButton
+            LightboxArrowButton,
+            LightboxImageOverlay
         } = this.props;
 
         return (
@@ -156,6 +159,7 @@ class ImageGallery extends React.Component {
                             disabled={!canNext}
                         />
                     )}
+                    renderImageOverlay={() => <LightboxImageOverlay />}
                 />
             </GalleryContainer>
         );

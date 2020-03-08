@@ -90,8 +90,9 @@ const LibraryPage = ({ route, theme }) => (
                     available{' '}
                     <BlogCodeInline>{`renderHeader={}`}</BlogCodeInline>,{' '}
                     <BlogCodeInline>{`renderFooter={}`}</BlogCodeInline>,{' '}
-                    <BlogCodeInline>{`renderPrevButton={}`}</BlogCodeInline> and{' '}
-                    <BlogCodeInline>{`renderNextButton={}`}</BlogCodeInline>{' '}
+                    <BlogCodeInline>{`renderPrevButton={}`}</BlogCodeInline>,{' '}
+                    <BlogCodeInline>{`renderNextButton={}`}</BlogCodeInline> and{' '}
+                    <BlogCodeInline>{`renderImageOverlay={}`}</BlogCodeInline>{' '}
                     props, the sky is the limit for total customization.
                 </p>
                 <p>
@@ -103,6 +104,7 @@ const LibraryPage = ({ route, theme }) => (
                 <p>
                     Utilizing the UI props to add a custom fixed header,
                     absolutely positioned footer and left/right arrow buttons
+                    and absolutely positioned image overlay component
                 </p>
                 <LightboxDemoAllControls />
             </section>
@@ -110,12 +112,12 @@ const LibraryPage = ({ route, theme }) => (
                 <h2>Installation</h2>
                 <p>
                     This library is built with hooks and requires React {`>=`}{' '}
-                    16.8.0
+                    16.8.0 and styled-components {`>=`} 5.0.0
                 </p>
                 <BlogCodeBlock
                     path="Terminal"
                     language="bash"
-                    code="yarn add react-spring-lightbox"
+                    code="yarn add react-spring-lightbox styled-components"
                 />
             </section>
             <section>
@@ -168,6 +170,7 @@ const CoolLightbox = () => {
       // renderFooter={() => (<CustomFooter />)}
       // renderPrevButton={() => (<CustomLeftArrowButton />)}
       // renderNextButton={() => (<CustomRightArrowButton />)}
+      // renderImageOverlay={() => (<ImageOverlayComponent >)}
 
       /* Add styling */
       // className="cool-class"

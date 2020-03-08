@@ -2,6 +2,7 @@ import ImageGallery from './ImageGallery';
 import LightboxFooter from './LightboxFooter';
 import LightboxHeader from '../../Blog/BlogImageGallery/components/LightboxHeader';
 import LightboxArrowButton from '../../Blog/BlogImageGallery/components/LightboxArrowButton';
+import LightboxImageOverlay from './LightboxImageOverlay';
 
 const images = [
     {
@@ -45,6 +46,7 @@ export const LightboxDemoAllControls = () => (
         LightboxHeader={LightboxHeader}
         LightboxFooter={LightboxFooter}
         LightboxArrowButton={LightboxArrowButton}
+        LightboxImageOverlay={LightboxImageOverlay}
         images={images}
     />
 );
