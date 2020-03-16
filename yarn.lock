@@ -1644,11 +1644,6 @@
   resolved "https://registry.yarnpkg.com/@icons/material/-/material-0.2.4.tgz#e90c9f71768b3736e76d7dd6783fc6c2afa88bc8"
   integrity sha512-QPcGmICAPbGLGb6F/yNf/KzKqvFx8z5qx3D1yFqVAjoFmXK35EgyW+cJ57Te3CNsmzblwtzakLGFqHPqrfb4Tw==
 
-"@juggle/resize-observer@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@juggle/resize-observer/-/resize-observer-3.1.1.tgz#ade32049ae8e6cd692ef5d760aa4fdbe0db356e2"
-  integrity sha512-zo+xWLZ0FNY4hhFLHyvJ+fOzWUKGkK0wQDdiLkJU6daXvQDEohh9p5rvGl5GpkXAr2Zx6WMRstl8Ulu/QTRKww==
-
 "@next/polyfill-nomodule@9.3.0":
   version "9.3.0"
   resolved "https://registry.yarnpkg.com/@next/polyfill-nomodule/-/polyfill-nomodule-9.3.0.tgz#5d564a6af7f80f95dba30281dd3420a4a170e219"
@@ -3577,11 +3572,6 @@ date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
   integrity sha1-6vQ5/U1ISK105cx9vvIAZyueNFs=
-
-debounce@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/debounce/-/debounce-1.2.0.tgz#44a540abc0ea9943018dc0eaa95cce87f65cd131"
-  integrity sha512-mYtLl1xfZLi1m4RtQYlZgJUNQjl4ZxVnHzIR8nLLgi4q1YT8o/WM+MK/f8yfcc9s5Ir5zRaPZyZU6xs1Syoocg==
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.9:
   version "2.6.9"
@@ -8235,17 +8225,15 @@ react-scrollbars-custom@^4.0.21:
     react-draggable "^3.3.2"
     zoom-level "^1.2.4"
 
-react-spring-lightbox@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/react-spring-lightbox/-/react-spring-lightbox-1.4.1.tgz#d6502fac9f4961576d1ebb917cd4f0e082cf93e9"
-  integrity sha512-u+ueFhgR1d309FFH+mILI7yw+nEM3gUdP9DK6C2Yeah/jn3z0dBxCJesulz09x8yXhea/ttAd8+GUr3b45NmAQ==
+react-spring-lightbox@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/react-spring-lightbox/-/react-spring-lightbox-1.4.2.tgz#f04217dd1c805a674e204ad66cad6ec3a44168f0"
+  integrity sha512-8UeHW3FWAtgZza5bY3hjRpmfYc8ggj+aCXh0a7O+cuTjQ6qTQPMcRvfNJzMiuZmAkHqfXA8HZUfrcTN2NGd4Fw==
   dependencies:
-    "@juggle/resize-observer" "^3.1.1"
     "@react-spring/web" "^9.0.0-beta.34"
     lodash.clamp "^4.0.3"
     lodash.merge "^4.6.2"
     react-use-gesture "^7.0.5"
-    react-use-measure "^2.0.0"
 
 react-spring@^8.0.27:
   version "8.0.27"
@@ -8279,13 +8267,6 @@ react-use-gesture@^7.0.5:
   version "7.0.5"
   resolved "https://registry.yarnpkg.com/react-use-gesture/-/react-use-gesture-7.0.5.tgz#e260ecf03a4e537cc7d9624bc2cff54e943f505a"
   integrity sha512-8/CYG76/fLypdlPgRqxTQ2l987uc0XBQL8ax0cnA/tbeM5jU4KoQH+FG3ya6v4pMqPN1KpJQyc1QYEbKgA0QMQ==
-
-react-use-measure@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/react-use-measure/-/react-use-measure-2.0.0.tgz#f49b5cbde4cc18f5061d726a8a3db9fcd2244998"
-  integrity sha512-aYosukh38+eqjgNExd/OKEM0n5YSbl5niYYq3OAUWywf3deUjpnVfGMnwTmjF32+Owqr1sc3KKZku9n72lAaPA==
-  dependencies:
-    debounce "^1.2.0"
 
 react@^16.13.0:
   version "16.13.0"
