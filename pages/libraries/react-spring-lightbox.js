@@ -179,6 +179,9 @@ const CoolLightbox = () => {
       /* Handle closing */
       // onClose={handleClose}
 
+      /* Use single or double click to zoom */
+      // singleClickToZoom
+
       /* react-spring config for open/close animation */
       // pageTransitionConfig={{
       //   from: { transform: "scale(0.75)", opacity: 0 },
