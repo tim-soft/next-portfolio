@@ -129,6 +129,7 @@ class ImageGallery extends React.Component {
                     onNext={this.gotoNext}
                     images={images}
                     currentIndex={currentImageIndex}
+                    singleClickToZoom
                     renderHeader={() => (
                         <LightboxHeader
                             galleryTitle={galleryTitle}

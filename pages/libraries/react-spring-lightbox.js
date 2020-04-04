@@ -52,7 +52,7 @@ const LibraryPage = ({ route, theme }) => (
                         <span role="img" aria-label="keyboard">
                             🔎
                         </span>
-                        Double-tap or double-click to zoom in/out
+                        Single/double-tap or single/double-click to zoom in/out
                     </li>
                     <li>
                         <span role="img" aria-label="keyboard">
