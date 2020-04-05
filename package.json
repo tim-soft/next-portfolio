@@ -36,7 +36,7 @@
         "react-particles-webgl": "^1.0.10",
         "react-photo-gallery": "^8.0.0",
         "react-scrollbars-custom": "^4.0.21",
-        "react-spring-lightbox": "^1.4.6",
+        "react-spring-lightbox": "^1.4.7",
         "react-switch": "^5.0.1",
         "stringify-object": "^3.3.0",
         "styled-components": "^5.0.1",
