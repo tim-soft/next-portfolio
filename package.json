@@ -39,7 +39,7 @@
         "react-spring-lightbox": "^1.4.7",
         "react-switch": "^5.0.1",
         "stringify-object": "^3.3.0",
-        "styled-components": "^5.0.1",
+        "styled-components": "^5.1.0",
         "styled-normalize": "^8.0.7",
         "three": "^0.114.0",
         "use-double-click": "^1.0.5"
