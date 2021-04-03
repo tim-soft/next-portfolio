@@ -1,6 +1,5 @@
 const withOffline = require('next-offline');
 const path = require('path');
-const webpack = require('webpack');
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -19,9 +18,12 @@ const nextConfig = {
         // Google Analytics tracking ID
         GA_TRACKING_ID: 'UA-137363397-1'
     },
+    future: {
+        webpack5: true
+    },
     // Alias the /components and /layouts folders for imports
     // e.g. import xyz from 'components/xyz'
-    webpack(config) {
+    webpack(config, { webpack }) {
         const newConfig = config;
         newConfig.resolve.alias.components = path.join(__dirname, 'components');
         newConfig.resolve.alias.layouts = path.join(__dirname, 'layouts');
