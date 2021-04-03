@@ -1,4 +1,4 @@
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import { GOOGLE_ANALYTICS_ID } from '../lib/googleAnalytics';
 
@@ -36,7 +36,7 @@ export default class StyledDocument extends Document {
 
     render() {
         return (
-            <html lang="en">
+            <Html lang="en">
                 <Head>
                     {/* Preconnect to the Google domains */}
                     {[
@@ -112,7 +112,7 @@ export default class StyledDocument extends Document {
                     <Main />
                     <NextScript />
                 </body>
-            </html>
+            </Html>
         );
     }
 }
