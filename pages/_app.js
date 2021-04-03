@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import App from 'next/app';
 import Router from 'next/router';
-import { version } from 'next/package.json';
+import appPackage from 'next/package.json';
 import { DefaultSeo } from 'next-seo';
 import { Transition, animated } from '@react-spring/web';
 import styled, { ThemeProvider } from 'styled-components';
@@ -44,7 +44,7 @@ class WebApp extends App {
 
         // eslint-disable-next-line no-console
         console.log(
-            `%cThis web app was built with React@${React.version} and Next.js@${version}`,
+            `%cThis web app was built with React@${React.version} and Next.js@${appPackage.version}`,
             'font-size: 17px;'
         );
     }

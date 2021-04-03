@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { name, version } from '../../package.json';
+import appPackage from '../../package.json';
 
 const SiteVersionFAB = () => (
     <a
@@ -13,9 +13,9 @@ const SiteVersionFAB = () => (
                 alt="Site Logo"
             />
             <FooterText>
-                <code>{name}</code>
+                <code>{appPackage.name}</code>
                 <br />
-                <code>Version {version}</code>
+                <code>Version {appPackage.version}</code>
             </FooterText>
         </SiteVersionContainer>
     </a>
