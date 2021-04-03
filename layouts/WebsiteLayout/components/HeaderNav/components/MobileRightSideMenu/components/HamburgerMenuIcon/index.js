@@ -13,7 +13,7 @@ const HamburgerMenuIcon = ({ menuIsOpen, toggleMenu, theme }) => (
             overflow: 'visible',
             cursor: 'pointer',
             zIndex: 'inherit',
-            WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)'
+            WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
         }}
     >
         <Spring
@@ -23,7 +23,7 @@ const HamburgerMenuIcon = ({ menuIsOpen, toggleMenu, theme }) => (
                 y: menuIsOpen ? 0 : 1,
                 strokeColor: menuIsOpen
                     ? theme.headerNavMobileMenuFontColor
-                    : theme.headerNavHamburgerIconColor
+                    : theme.headerNavHamburgerIconColor,
             }}
             config={config.wobbly}
         >
@@ -39,9 +39,10 @@ const HamburgerMenuIcon = ({ menuIsOpen, toggleMenu, theme }) => (
                     <animated.line
                         transform={to(
                             [x],
-                            xCoord =>
-                                `translate(${xCoord * 12}, ${xCoord *
-                                    -7}) rotate(${xCoord * 45}, 7, 26)`
+                            (xCoord) =>
+                                `translate(${xCoord * 12}, ${
+                                    xCoord * -7
+                                }) rotate(${xCoord * 45}, 7, 26)`
                         )}
                         x1="7"
                         y1="26"
@@ -51,9 +52,10 @@ const HamburgerMenuIcon = ({ menuIsOpen, toggleMenu, theme }) => (
                     <animated.line
                         transform={to(
                             [x],
-                            xCoord =>
-                                `translate(${xCoord * 12}, ${xCoord *
-                                    7}) rotate(${xCoord * -45}, 7, 70)`
+                            (xCoord) =>
+                                `translate(${xCoord * 12}, ${
+                                    xCoord * 7
+                                }) rotate(${xCoord * -45}, 7, 70)`
                         )}
                         x1="7"
                         y1="70"
@@ -63,7 +65,7 @@ const HamburgerMenuIcon = ({ menuIsOpen, toggleMenu, theme }) => (
                     <animated.line
                         transform={to(
                             [x],
-                            xCoord => `translate(${xCoord * -96})`
+                            (xCoord) => `translate(${xCoord * -96})`
                         )}
                         opacity={y}
                         x1="7"
@@ -83,8 +85,8 @@ HamburgerMenuIcon.propTypes = {
     /* App theme variables from styled-components <ThemeProvider /> */
     theme: PropTypes.shape({
         headerNavHamburgerIconColor: PropTypes.string.isRequired,
-        headerNavMobileMenuFontColor: PropTypes.string.isRequired
-    }).isRequired
+        headerNavMobileMenuFontColor: PropTypes.string.isRequired,
+    }).isRequired,
 };
 
 /**

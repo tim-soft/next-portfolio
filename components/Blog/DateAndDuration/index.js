@@ -4,7 +4,7 @@ import { FaCoffee } from 'react-icons/fa';
 
 const CoffeeTimeIndicator = ({ readTime }) => {
     const numCoffees = Math.ceil(readTime / 5);
-    const Coffee = key => <CoffeeLogo key={key} />;
+    const Coffee = (key) => <CoffeeLogo key={key} />;
 
     const coffeeArr = [];
 
@@ -21,7 +21,7 @@ const DateAndDuration = ({ date, readTime }) => (
             {new Date(date).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'short',
-                day: 'numeric'
+                day: 'numeric',
             })}
         </span>
         <DotSeparator>&#8226;</DotSeparator>
@@ -32,7 +32,7 @@ const DateAndDuration = ({ date, readTime }) => (
 
 DateAndDuration.propTypes = {
     date: PropTypes.string.isRequired,
-    readTime: PropTypes.number.isRequired
+    readTime: PropTypes.number.isRequired,
 };
 
 export default DateAndDuration;

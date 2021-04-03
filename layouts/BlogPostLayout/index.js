@@ -11,7 +11,7 @@ import BlogEditPostFAB from './components/BlogEditPostFAB';
 
 const BlogPostLayout = ({ route, children, width }) => {
     // Get the current blog post from data
-    const blogPost = BlogData.find(post => post.href === route);
+    const blogPost = BlogData.find((post) => post.href === route);
 
     return (
         <>
@@ -39,14 +39,14 @@ const BlogPostLayout = ({ route, children, width }) => {
 BlogPostLayout.propTypes = {
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node
+        PropTypes.node,
     ]).isRequired,
     route: PropTypes.string.isRequired,
-    width: PropTypes.number
+    width: PropTypes.number,
 };
 
 BlogPostLayout.defaultProps = {
-    width: null
+    width: null,
 };
 
 export default BlogPostLayout;

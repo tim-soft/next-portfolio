@@ -25,8 +25,8 @@ class MenuItem extends React.Component {
          */
         children: PropTypes.oneOfType([
             PropTypes.arrayOf(PropTypes.element),
-            PropTypes.element
-        ])
+            PropTypes.element,
+        ]),
     };
 
     static defaultProps = {
@@ -34,7 +34,7 @@ class MenuItem extends React.Component {
         menuWidth: 300,
         menuHeight: 500,
         useScroll: false,
-        children: null
+        children: null,
     };
 
     constructor() {
@@ -43,7 +43,7 @@ class MenuItem extends React.Component {
         this.state = {
             isHovering: false,
             rightOffset: null,
-            pageIsVisible: true
+            pageIsVisible: true,
         };
     }
 
@@ -87,12 +87,12 @@ class MenuItem extends React.Component {
         // without overflowing out of window, use right offset
         if (rightWidthBudgetForMenu < menuWidth / 2) {
             this.setState({
-                rightOffset: menuRightSpace * -2
+                rightOffset: menuRightSpace * -2,
             });
         }
     };
 
-    handleHover = isHovering => {
+    handleHover = (isHovering) => {
         this.setState({ isHovering });
     };
 
@@ -105,7 +105,7 @@ class MenuItem extends React.Component {
             menuHeight,
             children,
             useScroll,
-            alwaysShowMenu
+            alwaysShowMenu,
         } = this.props;
 
         return (
@@ -135,7 +135,7 @@ class MenuItem extends React.Component {
                         to={{ opacity: 1, height: `${menuHeight}px` }}
                         reverse={!(isHovering || alwaysShowMenu)}
                     >
-                        {animatedStyles => (
+                        {(animatedStyles) => (
                             <AnimatedContainer
                                 style={animatedStyles}
                                 rightOffset={rightOffset}

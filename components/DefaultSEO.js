@@ -15,14 +15,14 @@ export default {
                 url: `${APP_URL}/static/avatar.png`,
                 width: 140,
                 height: 140,
-                alt: 'Tim Ellenberger (Avatar)'
-            }
+                alt: 'Tim Ellenberger (Avatar)',
+            },
         ],
         profile: {
             firstName: 'Tim',
             lastName: 'Ellenberger',
             username: 'tim-soft',
-            gender: 'male'
-        }
-    }
+            gender: 'male',
+        },
+    },
 };

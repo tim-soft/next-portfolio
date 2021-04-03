@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const HiringCallout = props => (
+const HiringCallout = (props) => (
     <Header {...props}>
         <a href="mailto:timellenberger@gmail.com">
             Need a developer? Drop me a line!

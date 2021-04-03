@@ -9,7 +9,7 @@ const CoursesPage = ({ theme }) => (
         <NextSeo
             title="React and GraphQL Courses | Tim Ellenberger"
             openGraph={{
-                title: 'React and GraphQL Courses | Tim Ellenberger'
+                title: 'React and GraphQL Courses | Tim Ellenberger',
             }}
         />
         <ThemeProvider theme={theme}>
@@ -21,11 +21,11 @@ const CoursesPage = ({ theme }) => (
 );
 
 CoursesPage.propTypes = {
-    theme: PropTypes.object
+    theme: PropTypes.object,
 };
 
 CoursesPage.defaultProps = {
-    theme: {}
+    theme: {},
 };
 
 export default CoursesPage;

@@ -13,7 +13,7 @@ const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
             <MenuContainer
                 style={{
                     opacity,
-                    display: to([opacity], x => (x === 0 ? 'none' : 'flex'))
+                    display: to([opacity], (x) => (x === 0 ? 'none' : 'flex')),
                 }}
             >
                 <Scrollbar
@@ -27,11 +27,11 @@ const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
                                     display: 'flex',
                                     justifyContent: 'center',
                                     alignItems: 'center',
-                                    flexDirection: 'column'
+                                    flexDirection: 'column',
                                 }}
                                 ref={elementRef}
                             />
-                        )
+                        ),
                     }}
                 >
                     <NavMenuContainer>
@@ -92,7 +92,7 @@ const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
 
 FullPageMenu.propTypes = {
     menuIsOpen: PropTypes.bool.isRequired,
-    toggleMenu: PropTypes.func.isRequired
+    toggleMenu: PropTypes.func.isRequired,
 };
 
 export default FullPageMenu;

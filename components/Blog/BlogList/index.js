@@ -8,13 +8,13 @@ const BlogList = ({ children, ...props }) => (
 BlogList.propTypes = {
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node
+        PropTypes.node,
     ]).isRequired,
-    listStyle: PropTypes.string
+    listStyle: PropTypes.string,
 };
 
 BlogList.defaultProps = {
-    listStyle: 'decimal'
+    listStyle: 'decimal',
 };
 
 export default BlogList;

@@ -13,7 +13,7 @@ const ProjectTitle = ({ text, href }) => (
 
 ProjectTitle.propTypes = {
     text: PropTypes.string.isRequired,
-    href: PropTypes.string.isRequired
+    href: PropTypes.string.isRequired,
 };
 
 export default ProjectTitle;

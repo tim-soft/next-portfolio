@@ -23,11 +23,11 @@ class WebApp extends App {
         Component: PropTypes.func.isRequired,
 
         /* Props of the Next.js page */
-        pageProps: PropTypes.object.isRequired
+        pageProps: PropTypes.object.isRequired,
     };
 
     state = {
-        dynamicPageThemes: []
+        dynamicPageThemes: [],
     };
 
     componentDidMount() {
@@ -49,12 +49,12 @@ class WebApp extends App {
         );
     }
 
-    updateTheme = dynamicTheme => {
+    updateTheme = (dynamicTheme) => {
         const { dynamicPageThemes } = this.state;
         const { route } = this.props.router;
 
         const pageIndex = dynamicPageThemes.findIndex(
-            page => page.route === route
+            (page) => page.route === route
         );
 
         if (pageIndex === -1) dynamicPageThemes.push({ route, dynamicTheme });
@@ -63,10 +63,10 @@ class WebApp extends App {
         this.setState({ dynamicPageThemes });
     };
 
-    getDynamicPageTheme = route => {
+    getDynamicPageTheme = (route) => {
         const { dynamicPageThemes } = this.state;
         const dynamicPageTheme = dynamicPageThemes.find(
-            pageTheme => pageTheme.route === route
+            (pageTheme) => pageTheme.route === route
         );
 
         return dynamicPageTheme ? dynamicPageTheme.dynamicTheme : {};
@@ -83,7 +83,7 @@ class WebApp extends App {
             ...appTheme,
             // Add any theme variables provided by the page/route level component
             ...pageTheme,
-            ...dynamicTheme
+            ...dynamicTheme,
         };
 
         // Maintain single element array for route transition
@@ -92,8 +92,8 @@ class WebApp extends App {
                 route: router.route,
                 Component,
                 pageProps,
-                pageTheme
-            }
+                pageTheme,
+            },
         ];
 
         return (
@@ -107,25 +107,25 @@ class WebApp extends App {
                             native
                             unique
                             items={pages}
-                            keys={page => page.route}
+                            keys={(page) => page.route}
                             initial={{
                                 opacity: 1,
-                                transform: 'scale(1) translateY(0px)'
+                                transform: 'scale(1) translateY(0px)',
                             }}
                             from={{
                                 opacity: 0,
-                                transform: 'scale(0.9) translateY(-200px)'
+                                transform: 'scale(0.9) translateY(-200px)',
                             }}
                             enter={{
                                 opacity: 1,
-                                transform: 'scale(1) translateY(0px)'
+                                transform: 'scale(1) translateY(0px)',
                             }}
                             leave={{
                                 opacity: 0,
-                                transform: 'scale(0.9) translateY(-200px)'
+                                transform: 'scale(0.9) translateY(-200px)',
                             }}
                         >
-                            {page => animStyles => (
+                            {(page) => (animStyles) => (
                                 <AnimatedContainer
                                     key={page.route}
                                     style={animStyles}
@@ -138,10 +138,12 @@ class WebApp extends App {
                                         // for this route
                                         theme={{
                                             ...page.pageTheme,
+                                            // eslint-disable-next-line react/no-this-in-sfc
                                             ...this.getDynamicPageTheme(
                                                 page.route
-                                            )
+                                            ),
                                         }}
+                                        // eslint-disable-next-line react/no-this-in-sfc
                                         updateTheme={this.updateTheme}
                                     />
                                 </AnimatedContainer>
@@ -156,7 +158,7 @@ class WebApp extends App {
 
 // Apply Google Analytics to app
 // https://github.com/zeit/next.js/tree/canary/examples/with-google-analytics
-Router.events.on('routeChangeComplete', url => pageview(url));
+Router.events.on('routeChangeComplete', (url) => pageview(url));
 
 export default WebApp;
 

@@ -11,8 +11,8 @@ export default class CreatePortal extends React.Component {
     static propTypes = {
         children: PropTypes.oneOfType([
             PropTypes.arrayOf(PropTypes.element),
-            PropTypes.element
-        ]).isRequired
+            PropTypes.element,
+        ]).isRequired,
     };
 
     // Only executes on the client-side

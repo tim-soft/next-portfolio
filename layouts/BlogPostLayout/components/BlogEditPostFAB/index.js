@@ -21,7 +21,7 @@ const BlogEditPostFAB = ({ route }) => (
 );
 
 BlogEditPostFAB.propTypes = {
-    route: PropTypes.string.isRequired
+    route: PropTypes.string.isRequired,
 };
 
 export default BlogEditPostFAB;

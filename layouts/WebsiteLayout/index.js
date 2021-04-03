@@ -8,11 +8,11 @@ import HeaderNav from './components/HeaderNav';
 export default class WebsiteLayout extends React.Component {
     static propTypes = {
         children: PropTypes.element.isRequired,
-        showBio: PropTypes.bool
+        showBio: PropTypes.bool,
     };
 
     static defaultProps = {
-        showBio: false
+        showBio: false,
     };
 
     render() {

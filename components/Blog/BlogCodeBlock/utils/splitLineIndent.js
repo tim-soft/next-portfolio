@@ -12,7 +12,7 @@
  *
  * @param {array} line Tokenized line of code
  */
-const splitLineIndent = line => {
+const splitLineIndent = (line) => {
     const { content } = line[0];
     const hasIndent = content.charAt(0) === ' ';
 

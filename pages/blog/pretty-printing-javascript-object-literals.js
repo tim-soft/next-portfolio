@@ -6,7 +6,7 @@ import {
     BlogLink,
     BlogCodeBlock,
     BlogQuote,
-    BlogCodeInline
+    BlogCodeInline,
 } from 'components/Blog';
 import BlogPostLayout from 'layouts/BlogPostLayout';
 import { blueTheme } from 'components/AppTheme';
@@ -129,11 +129,11 @@ const configString = stringifyObject(config, {
 
 BlogPage.propTypes = {
     route: PropTypes.string.isRequired,
-    theme: PropTypes.object
+    theme: PropTypes.object,
 };
 
 BlogPage.defaultProps = {
-    theme: {}
+    theme: {},
 };
 
 // Override default app theme for this page

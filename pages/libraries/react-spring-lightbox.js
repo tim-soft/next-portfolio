@@ -6,7 +6,7 @@ import { darkTheme } from 'components/AppTheme';
 import { BlogCodeBlock, BlogCodeInline, BlogLink } from 'components/Blog';
 import {
     LightboxDemoNoUI,
-    LightboxDemoAllControls
+    LightboxDemoAllControls,
 } from 'components/Libraries/react-spring-lightbox/demos';
 
 const LibraryPage = ({ route, theme }) => (
@@ -203,11 +203,11 @@ export default CoolLightbox;
 
 LibraryPage.propTypes = {
     route: PropTypes.string.isRequired,
-    theme: PropTypes.object
+    theme: PropTypes.object,
 };
 
 LibraryPage.defaultProps = {
-    theme: {}
+    theme: {},
 };
 
 LibraryPage.pageTheme = darkTheme;

@@ -16,7 +16,7 @@ import DatUIPane from './components/DatUIPane';
 class DatUI extends React.Component {
     static propTypes = {
         datConfig: PropTypes.object.isRequired,
-        handleDatUpdate: PropTypes.func.isRequired
+        handleDatUpdate: PropTypes.func.isRequired,
     };
 
     constructor(props) {
@@ -24,7 +24,7 @@ class DatUI extends React.Component {
 
         this.state = {
             isOpen: true,
-            showConfig: false
+            showConfig: false,
         };
     }
 
@@ -39,7 +39,7 @@ class DatUI extends React.Component {
                         onClick={() =>
                             this.setState({
                                 showConfig: !showConfig,
-                                isOpen: true
+                                isOpen: true,
                             })
                         }
                     >
@@ -58,12 +58,12 @@ class DatUI extends React.Component {
                     enter={{ opacity: 1 }}
                     leave={{ opacity: 0 }}
                 >
-                    {isOpen =>
+                    {(isOpen) =>
                         isOpen &&
                         (({ opacity }) => (
                             <animated.div
                                 style={{
-                                    opacity
+                                    opacity,
                                 }}
                             >
                                 <StyledScrollbar>
@@ -73,26 +73,26 @@ class DatUI extends React.Component {
                                             items={showConfig}
                                             initial={{
                                                 position: 'absolute',
-                                                opacity: 1
+                                                opacity: 1,
                                             }}
                                             from={{
                                                 position: 'absolute',
-                                                opacity: 0
+                                                opacity: 0,
                                             }}
                                             enter={{ opacity: 1 }}
                                             leave={{ opacity: 0 }}
                                         >
-                                            {showConfig =>
+                                            {(showConfig) =>
                                                 showConfig
                                                     ? ({
                                                           opacity,
-                                                          position
+                                                          position,
                                                       }) => (
                                                           <animated.div
                                                               style={{
                                                                   position,
                                                                   opacity,
-                                                                  width: '100%'
+                                                                  width: '100%',
                                                               }}
                                                           >
                                                               <ConfigViewer
@@ -104,13 +104,13 @@ class DatUI extends React.Component {
                                                       )
                                                     : ({
                                                           opacity,
-                                                          position
+                                                          position,
                                                       }) => (
                                                           <animated.div
                                                               style={{
                                                                   position,
                                                                   opacity,
-                                                                  width: '100%'
+                                                                  width: '100%',
                                                               }}
                                                           >
                                                               <DatUIPane

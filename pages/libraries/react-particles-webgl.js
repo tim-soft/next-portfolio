@@ -7,7 +7,7 @@ import { BlogCodeBlock, BlogCodeInline, BlogLink } from 'components/Blog';
 import {
     DefaultParticles,
     ParticlesJSClone,
-    SnowfallParticles
+    SnowfallParticles,
 } from 'components/Libraries/react-particles-webgl/demos';
 
 const LibraryPage = ({ route, theme }) => (
@@ -208,11 +208,11 @@ export default {
 
 LibraryPage.propTypes = {
     route: PropTypes.string.isRequired,
-    theme: PropTypes.object
+    theme: PropTypes.object,
 };
 
 LibraryPage.defaultProps = {
-    theme: {}
+    theme: {},
 };
 
 LibraryPage.pageTheme = darkTheme;

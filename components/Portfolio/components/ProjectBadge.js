@@ -7,7 +7,7 @@ const ProjectBadge = ({ badgeUrl, linkUrl, ...props }) => {
 
     return (
         <BadgeLink
-            onClick={e => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
             href={linkUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -25,7 +25,7 @@ const ProjectBadge = ({ badgeUrl, linkUrl, ...props }) => {
 
 ProjectBadge.propTypes = {
     badgeUrl: PropTypes.string.isRequired,
-    linkUrl: PropTypes.string.isRequired
+    linkUrl: PropTypes.string.isRequired,
 };
 
 export default ProjectBadge;

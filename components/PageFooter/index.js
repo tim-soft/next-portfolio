@@ -3,7 +3,7 @@ import { GoMarkGithub, GoMail } from 'react-icons/go';
 import { BlogLink } from '../Blog';
 import HiringCallout from '../HiringCallout';
 
-const PageFooter = props => (
+const PageFooter = (props) => (
     <Footer {...props}>
         <HiringCallout />
         <FooterLinkContainer style={{ display: 'flex' }}>

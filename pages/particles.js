@@ -15,13 +15,13 @@ const ThreeParticles = ({ theme, route }) => (
                 {
                     position: 1,
                     name: APP_URL,
-                    item: `${APP_URL}/`
+                    item: `${APP_URL}/`,
                 },
                 {
                     position: 2,
                     name: 'React Particles WebGL',
-                    item: `${APP_URL}${route}`
-                }
+                    item: `${APP_URL}${route}`,
+                },
             ]}
         />
         <NextSeo
@@ -37,10 +37,10 @@ const ThreeParticles = ({ theme, route }) => (
                 images: [
                     {
                         url: `${APP_URL}/static/avatar.png`,
-                        alt: 'Avatar Logo'
-                    }
+                        alt: 'Avatar Logo',
+                    },
                 ],
-                type: 'website'
+                type: 'website',
             }}
             site_name="Coding, Musings and Adventures of Tim Ellenberger"
             locale="en_US"
@@ -48,7 +48,7 @@ const ThreeParticles = ({ theme, route }) => (
                 firstName: 'Tim',
                 lastName: 'Ellenberger',
                 username: 'tim-soft',
-                gender: 'male'
+                gender: 'male',
             }}
         />
         <ThemeProvider theme={theme}>
@@ -61,11 +61,11 @@ const ThreeParticles = ({ theme, route }) => (
 
 ThreeParticles.propTypes = {
     theme: PropTypes.object,
-    route: PropTypes.string.isRequired
+    route: PropTypes.string.isRequired,
 };
 
 ThreeParticles.defaultProps = {
-    theme: {}
+    theme: {},
 };
 
 // Override default app theme for this page
@@ -76,8 +76,8 @@ ThreeParticles.pageTheme = generatePageTheme({
     override: {
         headerNavFontColor: 'gainsboro',
         headerNavHamburgerIconColor: 'gainsboro',
-        popoutMenuBorderColor: 'black'
-    }
+        popoutMenuBorderColor: 'black',
+    },
 });
 
 export default ThreeParticles;

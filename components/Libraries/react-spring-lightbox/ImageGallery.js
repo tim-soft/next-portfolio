@@ -16,13 +16,13 @@ class ImageGallery extends React.Component {
                 caption: PropTypes.string.isRequired,
                 alt: PropTypes.string.isRequired,
                 width: PropTypes.number,
-                height: PropTypes.number
+                height: PropTypes.number,
             })
         ).isRequired,
         LightboxHeader: PropTypes.func,
         LightboxFooter: PropTypes.func,
         LightboxArrowButton: PropTypes.func,
-        LightboxImageOverlay: PropTypes.func
+        LightboxImageOverlay: PropTypes.func,
     };
 
     static defaultProps = {
@@ -31,7 +31,7 @@ class ImageGallery extends React.Component {
         LightboxHeader: () => null,
         LightboxFooter: () => null,
         LightboxArrowButton: () => null,
-        LightboxImageOverlay: () => null
+        LightboxImageOverlay: () => null,
     };
 
     constructor() {
@@ -40,7 +40,7 @@ class ImageGallery extends React.Component {
         this.state = {
             currentImageIndex: 0,
             lightboxIsOpen: false,
-            clientSide: false
+            clientSide: false,
         };
     }
 
@@ -51,13 +51,13 @@ class ImageGallery extends React.Component {
     openLightbox = (e, { index }) => {
         this.setState({
             currentImageIndex: index,
-            lightboxIsOpen: true
+            lightboxIsOpen: true,
         });
     };
 
     closeLightbox = () => {
         this.setState({
-            lightboxIsOpen: false
+            lightboxIsOpen: false,
         });
     };
 
@@ -67,7 +67,7 @@ class ImageGallery extends React.Component {
         // If the current image isn't the first in the list, go to the previous
         if (currentImageIndex > 0) {
             this.setState({
-                currentImageIndex: currentImageIndex - 1
+                currentImageIndex: currentImageIndex - 1,
             });
         }
     };
@@ -79,7 +79,7 @@ class ImageGallery extends React.Component {
         // If the current image isn't the list in the list, go to the next
         if (currentImageIndex + 1 < images.length) {
             this.setState({
-                currentImageIndex: currentImageIndex + 1
+                currentImageIndex: currentImageIndex + 1,
             });
         }
     };
@@ -89,7 +89,7 @@ class ImageGallery extends React.Component {
      *
      * @int containerWidth The current width of the image grid
      */
-    columnConfig = containerWidth => {
+    columnConfig = (containerWidth) => {
         let columns = 1;
         if (containerWidth >= 500) columns = 2;
         if (containerWidth >= 900) columns = 3;
@@ -107,7 +107,7 @@ class ImageGallery extends React.Component {
             LightboxHeader,
             LightboxFooter,
             LightboxArrowButton,
-            LightboxImageOverlay
+            LightboxImageOverlay,
         } = this.props;
 
         return (
@@ -179,10 +179,7 @@ const GalleryContainer = styled.div`
 
 const StyledLightbox = styled(Lightbox)`
     background: ${({ theme }) =>
-        Color(theme.accentColor)
-            .alpha(0.95)
-            .hsl()
-            .string()};
+        Color(theme.accentColor).alpha(0.95).hsl().string()};
     * ::selection {
         background: ${({ theme }) => theme.pageContentSelectionColor};
     }

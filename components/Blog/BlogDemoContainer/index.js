@@ -29,22 +29,22 @@ BlogDemoContainer.propTypes = {
     heading: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.element,
-        PropTypes.bool
+        PropTypes.bool,
     ]),
     subheading: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.element,
-        PropTypes.bool
+        PropTypes.bool,
     ]),
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node
-    ]).isRequired
+        PropTypes.node,
+    ]).isRequired,
 };
 
 BlogDemoContainer.defaultProps = {
     heading: false,
-    subheading: false
+    subheading: false,
 };
 
 export default BlogDemoContainer;

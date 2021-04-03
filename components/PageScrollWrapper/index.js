@@ -16,7 +16,7 @@ const PageScrollWrapper = ({ children, backgroundColor }) => (
                         {...restProps}
                         ref={elementRef}
                     />
-                )
+                ),
             }}
         >
             {children}
@@ -27,13 +27,13 @@ const PageScrollWrapper = ({ children, backgroundColor }) => (
 PageScrollWrapper.propTypes = {
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node
+        PropTypes.node,
     ]).isRequired,
-    backgroundColor: PropTypes.string
+    backgroundColor: PropTypes.string,
 };
 
 PageScrollWrapper.defaultProps = {
-    backgroundColor: null
+    backgroundColor: null,
 };
 
 export default PageScrollWrapper;

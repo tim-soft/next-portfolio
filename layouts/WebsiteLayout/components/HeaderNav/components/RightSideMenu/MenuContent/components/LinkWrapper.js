@@ -25,8 +25,8 @@ LinkWrapper.propTypes = {
     href: PropTypes.string.isRequired,
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node
-    ]).isRequired
+        PropTypes.node,
+    ]).isRequired,
 };
 
 export default LinkWrapper;

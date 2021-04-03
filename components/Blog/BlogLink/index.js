@@ -36,19 +36,19 @@ BlogLink.propTypes = {
     href: PropTypes.string.isRequired,
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node
+        PropTypes.node,
     ]).isRequired,
     className: PropTypes.string,
     inverted: PropTypes.bool,
     paragraph: PropTypes.bool,
-    noWrap: PropTypes.bool
+    noWrap: PropTypes.bool,
 };
 
 BlogLink.defaultProps = {
     className: null,
     inverted: true,
     paragraph: null,
-    noWrap: false
+    noWrap: false,
 };
 
 export default BlogLink;

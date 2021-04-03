@@ -25,5 +25,5 @@ export {
     BlogCodeInline,
     BlogDemoContainer,
     BlogImageGallery,
-    BlogTableOfContents
+    BlogTableOfContents,
 };

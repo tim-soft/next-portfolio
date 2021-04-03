@@ -11,17 +11,17 @@ class LeftSideLogo extends React.Component {
     static propTypes = {
         menuIsOpen: PropTypes.bool.isRequired,
         toggleMenu: PropTypes.func.isRequired,
-        showBio: PropTypes.bool.isRequired
+        showBio: PropTypes.bool.isRequired,
     };
 
     constructor() {
         super();
         this.state = {
-            isHovering: false
+            isHovering: false,
         };
     }
 
-    handleHover = isHovering => this.setState({ isHovering });
+    handleHover = (isHovering) => this.setState({ isHovering });
 
     render() {
         const { isHovering } = this.state;
@@ -64,7 +64,7 @@ class LeftSideLogo extends React.Component {
                     enter={{ opacity: 1, height: '500px' }}
                     leave={{ opacity: 0, height: '0px' }}
                 >
-                    {isOpen =>
+                    {(isOpen) =>
                         isOpen &&
                         // eslint-disable-next-line react/prop-types
                         (({ opacity, height }) => (

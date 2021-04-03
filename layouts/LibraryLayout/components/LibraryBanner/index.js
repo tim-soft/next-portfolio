@@ -12,7 +12,7 @@ const LibraryBanner = ({ library }) => (
                 GitHub
                 <GoMarkGithub size="1.5em" />
             </RepoStyledLink>
-            {library.demoLinks.map(link => (
+            {library.demoLinks.map((link) => (
                 <StyledLink href={link.href} key={link.href}>
                     {link.title}
                 </StyledLink>
@@ -40,16 +40,16 @@ LibraryBanner.propTypes = {
         demoLinks: PropTypes.arrayOf(
             PropTypes.shape({
                 title: PropTypes.string.isRequired,
-                href: PropTypes.string.isRequired
+                href: PropTypes.string.isRequired,
             })
         ).isRequired,
         badges: PropTypes.arrayOf(
             PropTypes.shape({
                 badgeUrl: PropTypes.string.isRequired,
-                linkUrl: PropTypes.string.isRequired
+                linkUrl: PropTypes.string.isRequired,
             })
-        ).isRequired
-    }).isRequired
+        ).isRequired,
+    }).isRequired,
 };
 
 export default LibraryBanner;

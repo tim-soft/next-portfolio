@@ -24,23 +24,23 @@ const BlogPostSEO = ({ blogPost, route }) => (
                             '@type': 'BlogPosting',
                             mainEntityOfPage: {
                                 '@type': 'WebPage',
-                                '@id': `${APP_URL}${route}`
+                                '@id': `${APP_URL}${route}`,
                             },
                             headline: blogPost.title,
                             image: [
                                 `${APP_URL}${blogPost.logo}`,
-                                `${APP_URL}/static/avatar.png`
+                                `${APP_URL}/static/avatar.png`,
                             ],
                             datePublished: blogPost.date,
                             dateModified: blogPost.date,
                             author: {
                                 '@type': 'Person',
-                                name: 'Tim Ellenberger'
+                                name: 'Tim Ellenberger',
                             },
                             creator: {
                                 '@type': 'Person',
                                 name: 'Tim Ellenberger',
-                                url: APP_URL
+                                url: APP_URL,
                             },
                             publisher: {
                                 '@type': 'Organization',
@@ -50,14 +50,14 @@ const BlogPostSEO = ({ blogPost, route }) => (
                                     '@type': 'ImageObject',
                                     url: `${APP_URL}/static/avatar.png`,
                                     width: '140',
-                                    height: '140'
-                                }
+                                    height: '140',
+                                },
                             },
-                            description: blogPost.description
+                            description: blogPost.description,
                         },
                         null,
                         2
-                    )
+                    ),
                 }}
             />
             {/** @see https://schema.org/TechArticle */}
@@ -71,24 +71,24 @@ const BlogPostSEO = ({ blogPost, route }) => (
                             '@type': 'TechArticle',
                             mainEntityOfPage: {
                                 '@type': 'WebPage',
-                                '@id': `${APP_URL}${route}`
+                                '@id': `${APP_URL}${route}`,
                             },
                             headline: blogPost.title,
                             image: [
                                 `${APP_URL}${blogPost.logo}`,
-                                `${APP_URL}/static/avatar.png`
+                                `${APP_URL}/static/avatar.png`,
                             ],
                             datePublished: blogPost.date,
                             dateModified: blogPost.date,
                             proficiencyLevel: 'Beginner',
                             author: {
                                 '@type': 'Person',
-                                name: 'Tim Ellenberger'
+                                name: 'Tim Ellenberger',
                             },
                             creator: {
                                 '@type': 'Person',
                                 name: 'Tim Ellenberger',
-                                url: APP_URL
+                                url: APP_URL,
                             },
                             publisher: {
                                 '@type': 'Organization',
@@ -98,14 +98,14 @@ const BlogPostSEO = ({ blogPost, route }) => (
                                     '@type': 'ImageObject',
                                     url: `${APP_URL}/static/avatar.png`,
                                     width: '140',
-                                    height: '140'
-                                }
+                                    height: '140',
+                                },
                             },
-                            description: blogPost.description
+                            description: blogPost.description,
                         },
                         null,
                         2
-                    )
+                    ),
                 }}
             />
         </Head>
@@ -115,18 +115,18 @@ const BlogPostSEO = ({ blogPost, route }) => (
                 {
                     position: 1,
                     name: APP_URL,
-                    item: `${APP_URL}/`
+                    item: `${APP_URL}/`,
                 },
                 {
                     position: 2,
                     name: 'Blog',
-                    item: `${APP_URL}/blog`
+                    item: `${APP_URL}/blog`,
                 },
                 {
                     position: 3,
                     name: blogPost.title,
-                    item: `${APP_URL}${route}`
-                }
+                    item: `${APP_URL}${route}`,
+                },
             ]}
         />
         <NextSeo
@@ -140,14 +140,14 @@ const BlogPostSEO = ({ blogPost, route }) => (
                 images: [
                     {
                         url: `${APP_URL}${blogPost.logo}`,
-                        alt: 'Blog Post Logo'
-                    }
+                        alt: 'Blog Post Logo',
+                    },
                 ],
                 type: 'article',
                 article: {
                     publishedTime: blogPost.date,
                     section: 'Technology',
-                    authors: [APP_URL]
+                    authors: [APP_URL],
                 },
                 site_name: 'Coding, Musings and Adventures of Tim Ellenberger',
                 locale: 'en_US',
@@ -155,8 +155,8 @@ const BlogPostSEO = ({ blogPost, route }) => (
                     firstName: 'Tim',
                     lastName: 'Ellenberger',
                     username: 'tim-soft',
-                    gender: 'male'
-                }
+                    gender: 'male',
+                },
             }}
         />
     </>
@@ -169,9 +169,9 @@ BlogPostSEO.propTypes = {
         description: PropTypes.string.isRequired,
         logo: PropTypes.string.isRequired,
         readTime: PropTypes.number.isRequired,
-        date: PropTypes.string.isRequired
+        date: PropTypes.string.isRequired,
     }).isRequired,
-    route: PropTypes.string.isRequired
+    route: PropTypes.string.isRequired,
 };
 
 export default BlogPostSEO;

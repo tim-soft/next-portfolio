@@ -38,5 +38,5 @@ export {
     ProjectBadgeList,
     ProjectTitle,
     ProjectList,
-    ProjectListItem
+    ProjectListItem,
 };

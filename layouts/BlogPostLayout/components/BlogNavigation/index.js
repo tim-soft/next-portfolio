@@ -8,7 +8,7 @@ const BlogNavigation = ({ route }) => {
     const sortedPosts = getSortedPosts({ order: 'asc' });
 
     // Get index of current blog post
-    const currPostIndex = sortedPosts.findIndex(post => post.href === route);
+    const currPostIndex = sortedPosts.findIndex((post) => post.href === route);
 
     // Get prev post
     const PrevPost = () => {
@@ -47,7 +47,7 @@ const BlogNavigation = ({ route }) => {
 };
 
 BlogNavigation.propTypes = {
-    route: PropTypes.string.isRequired
+    route: PropTypes.string.isRequired,
 };
 
 export default BlogNavigation;

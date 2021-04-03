@@ -8,8 +8,8 @@ const BlogQuote = ({ children, ...props }) => (
 BlogQuote.propTypes = {
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node
-    ]).isRequired
+        PropTypes.node,
+    ]).isRequired,
 };
 
 export default BlogQuote;

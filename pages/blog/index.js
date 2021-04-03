@@ -23,13 +23,13 @@ const BlogPage = ({ theme, route }) => {
                     {
                         position: 1,
                         name: APP_URL,
-                        item: `${APP_URL}/`
+                        item: `${APP_URL}/`,
                     },
                     {
                         position: 2,
                         name: 'Blog',
-                        item: `${APP_URL}${route}`
-                    }
+                        item: `${APP_URL}${route}`,
+                    },
                 ]}
             />
             <NextSeo
@@ -41,10 +41,10 @@ const BlogPage = ({ theme, route }) => {
                     images: [
                         {
                             url: `${APP_URL}/static/avatar.png`,
-                            alt: 'Blog Post Logo'
-                        }
+                            alt: 'Blog Post Logo',
+                        },
                     ],
-                    type: 'website'
+                    type: 'website',
                 }}
                 site_name="Coding, Musings and Adventures of Tim Ellenberger"
                 locale="en_US"
@@ -52,7 +52,7 @@ const BlogPage = ({ theme, route }) => {
                     firstName: 'Tim',
                     lastName: 'Ellenberger',
                     username: 'tim-soft',
-                    gender: 'male'
+                    gender: 'male',
                 }}
             />
             <BlogJsonLd
@@ -84,7 +84,7 @@ const BlogPage = ({ theme, route }) => {
                                 <p>Building new webs out of the old ones.</p>
                             </BioMetaContainer>
                         </BioContainer>
-                        {sortedPosts.map(post => (
+                        {sortedPosts.map((post) => (
                             <IndexListItem key={post.href} {...post} />
                         ))}
                         <HorizontalRule />
@@ -98,11 +98,11 @@ const BlogPage = ({ theme, route }) => {
 
 BlogPage.propTypes = {
     theme: PropTypes.object,
-    route: PropTypes.string.isRequired
+    route: PropTypes.string.isRequired,
 };
 
 BlogPage.defaultProps = {
-    theme: {}
+    theme: {},
 };
 
 // Override default app theme for this page

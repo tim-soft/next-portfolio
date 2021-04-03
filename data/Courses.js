@@ -3,30 +3,30 @@ export default [
         title: 'React',
         description: 'Coming Soon...',
         logoSrc: '/static/course-logos/react.svg',
-        logoAlt: 'React'
+        logoAlt: 'React',
     },
     {
         title: 'GraphQL',
         description: 'Coming Soon...',
         logoSrc: '/static/course-logos/graphql.svg',
-        logoAlt: 'GraphQL'
+        logoAlt: 'GraphQL',
     },
     {
         title: 'Next.js',
         description: 'Coming Soon...',
         logoSrc: '/static/course-logos/nextjs.svg',
-        logoAlt: 'Next.js'
+        logoAlt: 'Next.js',
     },
     {
         title: 'Publishing to NPM',
         description: 'Coming Soon...',
         logoSrc: '/static/course-logos/npm.svg',
-        logoAlt: 'NPM'
+        logoAlt: 'NPM',
     },
     {
         title: 'JavaScript ES6+',
         description: 'Coming Soon...',
         logoSrc: '/static/course-logos/javascript.svg',
-        logoAlt: 'JavaScript'
-    }
+        logoAlt: 'JavaScript',
+    },
 ];

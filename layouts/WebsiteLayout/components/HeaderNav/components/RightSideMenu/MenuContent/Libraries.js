@@ -11,7 +11,7 @@ import {
     MenuListItem,
     MenuFooter,
     MenuHeader,
-    LinkWrapper
+    LinkWrapper,
 } from './components';
 
 const LibrariesList = () => (

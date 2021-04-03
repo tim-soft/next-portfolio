@@ -13,7 +13,7 @@ const ToggleSwitch = ({ theme, ...props }) => (
 );
 
 ToggleSwitch.propTypes = {
-    theme: PropTypes.object.isRequired
+    theme: PropTypes.object.isRequired,
 };
 
 export default withTheme(ToggleSwitch);

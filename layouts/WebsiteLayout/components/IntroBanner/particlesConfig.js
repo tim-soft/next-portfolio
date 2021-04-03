@@ -10,7 +10,7 @@ export default {
         yMin: 0.1,
         yMax: 0.3,
         zMin: 0,
-        zMax: 0
+        zMax: 0,
     },
     lines: {
         colorMode: 'rainbow',
@@ -19,7 +19,7 @@ export default {
         limitConnections: true,
         maxConnections: 20,
         minDistance: 150,
-        visible: false
+        visible: false,
     },
     particles: {
         colorMode: 'solid',
@@ -30,7 +30,7 @@ export default {
         count: 1000,
         minSize: 3,
         maxSize: 32,
-        visible: true
+        visible: true,
     },
     cameraControls: {
         enabled: true,
@@ -39,6 +39,6 @@ export default {
         enableZoom: true,
         autoRotate: false,
         autoRotateSpeed: 0.3,
-        resetCameraFlag: true
-    }
+        resetCameraFlag: true,
+    },
 };

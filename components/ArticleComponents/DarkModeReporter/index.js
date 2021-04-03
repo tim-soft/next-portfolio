@@ -11,7 +11,7 @@ import Color from 'color';
 class DarkModeReporter extends React.Component {
     static propTypes = {
         updateTheme: PropTypes.func.isRequired,
-        theme: PropTypes.object.isRequired
+        theme: PropTypes.object.isRequired,
     };
 
     constructor(props) {
@@ -19,7 +19,7 @@ class DarkModeReporter extends React.Component {
         this.state = {
             supportsColorScheme: false,
             isDarkMode: false,
-            isLightMode: false
+            isLightMode: false,
         };
     }
 
