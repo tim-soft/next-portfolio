@@ -14,8 +14,8 @@ export default class StyledDocument extends Document {
         try {
             ctx.renderPage = () =>
                 originalRenderPage({
-                    enhanceApp: App => props =>
-                        sheet.collectStyles(<App {...props} />)
+                    enhanceApp: (App) => (props) =>
+                        sheet.collectStyles(<App {...props} />),
                 });
 
             const initialProps = await Document.getInitialProps(ctx);
@@ -27,7 +27,7 @@ export default class StyledDocument extends Document {
                         {initialProps.styles}
                         {sheet.getStyleElement()}
                     </>
-                )
+                ),
             };
         } finally {
             sheet.seal();
@@ -43,8 +43,8 @@ export default class StyledDocument extends Document {
                         'https://fonts.gstatic.com',
                         'https://fonts.googleapis.com',
                         'https://www.googletagmanager.com',
-                        'https://www.google-analytics.com'
-                    ].map(href => (
+                        'https://www.google-analytics.com',
+                    ].map((href) => (
                         <link
                             key={href}
                             rel="preconnect"
@@ -104,7 +104,7 @@ export default class StyledDocument extends Document {
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', '${GOOGLE_ANALYTICS_ID}');
-          `
+          `,
                         }}
                     />
                 </Head>
