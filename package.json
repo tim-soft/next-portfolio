@@ -91,5 +91,8 @@
         "hooks": {
             "pre-commit": "lint-staged"
         }
+    },
+    "resolutions": {
+        "react-color": "2.18.0"
     }
 }
