@@ -125,29 +125,30 @@ class WebApp extends App {
                                 transform: 'scale(0.9) translateY(-200px)',
                             }}
                         >
-                            {(page) => (animStyles) => (
-                                <AnimatedContainer
-                                    key={page.route}
-                                    style={animStyles}
-                                >
-                                    <page.Component
-                                        {...page.pageProps}
-                                        // Pass route from transition data
-                                        route={page.route}
-                                        // Combine page theme from transition with current dynamic page theme
-                                        // for this route
-                                        theme={{
-                                            ...page.pageTheme,
+                            {(page) => (animStyles) =>
+                                (
+                                    <AnimatedContainer
+                                        key={page.route}
+                                        style={animStyles}
+                                    >
+                                        <page.Component
+                                            {...page.pageProps}
+                                            // Pass route from transition data
+                                            route={page.route}
+                                            // Combine page theme from transition with current dynamic page theme
+                                            // for this route
+                                            theme={{
+                                                ...page.pageTheme,
+                                                // eslint-disable-next-line react/no-this-in-sfc
+                                                ...this.getDynamicPageTheme(
+                                                    page.route
+                                                ),
+                                            }}
                                             // eslint-disable-next-line react/no-this-in-sfc
-                                            ...this.getDynamicPageTheme(
-                                                page.route
-                                            ),
-                                        }}
-                                        // eslint-disable-next-line react/no-this-in-sfc
-                                        updateTheme={this.updateTheme}
-                                    />
-                                </AnimatedContainer>
-                            )}
+                                            updateTheme={this.updateTheme}
+                                        />
+                                    </AnimatedContainer>
+                                )}
                         </Transition>
                     </WebsiteLayout>
                 </ThemeProvider>

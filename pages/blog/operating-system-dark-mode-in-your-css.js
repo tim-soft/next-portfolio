@@ -62,16 +62,14 @@ const BlogPage = ({ route, theme, updateTheme }) => {
                     imageMasonryDirection="column"
                     images={[
                         {
-                            src:
-                                '/static/blog-content/dark-mode/win10-dark-mode.jpg',
+                            src: '/static/blog-content/dark-mode/win10-dark-mode.jpg',
                             caption: 'Windows 10 Dark Mode Setting',
                             alt: 'Windows 10 Dark Mode Setting',
                             width: 2848,
                             height: 2035,
                         },
                         {
-                            src:
-                                '/static/blog-content/dark-mode/macos-dark-mode.png',
+                            src: '/static/blog-content/dark-mode/macos-dark-mode.png',
                             caption: 'macOS Mojave Dark Mode Setting',
                             alt: 'macOS Mojave Dark Mode Setting',
                             width: 1200,
@@ -85,8 +83,7 @@ const BlogPage = ({ route, theme, updateTheme }) => {
                         //   height: 750
                         // },
                         {
-                            src:
-                                '/static/blog-content/dark-mode/android-9-dark-mode.jpg',
+                            src: '/static/blog-content/dark-mode/android-9-dark-mode.jpg',
                             caption: 'Android 9.0 Dark Mode Setting',
                             alt: 'Android 9.0 Dark Mode Setting',
                             width: 1280,

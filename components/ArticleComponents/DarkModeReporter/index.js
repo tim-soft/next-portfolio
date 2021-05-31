@@ -42,16 +42,19 @@ class DarkModeReporter extends React.Component {
 
     updateColorMode = () => {
         // true if the browser supports prefers-color-scheme
-        const supportsColorScheme = window.matchMedia('(prefers-color-scheme)')
-            .matches;
+        const supportsColorScheme = window.matchMedia(
+            '(prefers-color-scheme)'
+        ).matches;
 
         // true if there is a system level dark mode preference
-        const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)')
-            .matches;
+        const isDarkMode = window.matchMedia(
+            '(prefers-color-scheme: dark)'
+        ).matches;
 
         // true if there is a system level dark mode preference
-        const isLightMode = window.matchMedia('(prefers-color-scheme: light)')
-            .matches;
+        const isLightMode = window.matchMedia(
+            '(prefers-color-scheme: light)'
+        ).matches;
 
         this.setState({ supportsColorScheme, isDarkMode, isLightMode });
 

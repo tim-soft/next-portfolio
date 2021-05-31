@@ -64,8 +64,7 @@ export default [
             'Tue Sep 03 2019 14:21:15 GMT-0700 (Pacific Daylight Time)',
         demoLinks: [
             {
-                href:
-                    'https://codesandbox.io/s/react-spring-lightbox-mosaic-71hts?fontsize=14&module=%2Fsrc%2FImageGallery%2Findex.js',
+                href: 'https://codesandbox.io/s/react-spring-lightbox-mosaic-71hts?fontsize=14&module=%2Fsrc%2FImageGallery%2Findex.js',
                 title: 'Masonry Lightbox Gallery',
             },
         ],
@@ -106,8 +105,7 @@ export default [
             'Tue Sep 03 2019 14:21:15 GMT-0700 (Pacific Daylight Time)',
         demoLinks: [
             {
-                href:
-                    'https://codesandbox.io/s/use-double-click-f7e33?expanddevtools=1&fontsize=14',
+                href: 'https://codesandbox.io/s/use-double-click-f7e33?expanddevtools=1&fontsize=14',
                 title: 'CodeSandbox',
             },
         ],
