@@ -28,6 +28,7 @@ const nextConfig = {
         newConfig.resolve.alias.components = path.join(__dirname, 'components');
         newConfig.resolve.alias.layouts = path.join(__dirname, 'layouts');
         newConfig.resolve.alias.data = path.join(__dirname, 'data');
+        newConfig.resolve.alias.hooks = path.join(__dirname, 'hooks');
         // Allow proper tree shaking for react-icons lib
         // https://github.com/react-icons/react-icons/issues/154#issuecomment-412774515
         newConfig.resolve.extensions = ['.mjs', '.js', '.jsx', '.json'];
