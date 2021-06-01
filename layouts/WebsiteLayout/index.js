@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Color from 'color';
-import HeaderNav from './components/HeaderNav';
+// import HeaderNav from './components/HeaderNav';
 
 // eslint-disable-next-line react/prefer-stateless-function
 export default class WebsiteLayout extends React.Component {
@@ -16,11 +16,11 @@ export default class WebsiteLayout extends React.Component {
     };
 
     render() {
-        const { children, showBio } = this.props;
+        const { children /* showBio */ } = this.props;
 
         return (
             <StyledContainer>
-                <HeaderNav showBio={showBio} />
+                {/* <HeaderNav showBio={showBio} /> */}
                 {children}
             </StyledContainer>
         );
