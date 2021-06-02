@@ -82,7 +82,6 @@ export default class IntroBanner extends React.Component {
                     alt=""
                     actual={() => (
                         <Spring
-                            native
                             from={{ opacity: 0, transform: 'translateY(100%)' }}
                             to={{ opacity: 1, transform: 'translateY(0px)' }}
                             onRest={this.setBackgroundAnimDone}
