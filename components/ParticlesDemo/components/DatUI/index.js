@@ -52,15 +52,13 @@ class DatUI extends React.Component {
                     </ControlButton>
                 </ControlContainer>
                 <Transition
-                    native
                     items={isOpen}
                     from={{ opacity: 0 }}
                     enter={{ opacity: 1 }}
                     leave={{ opacity: 0 }}
                 >
-                    {(isOpen) =>
-                        isOpen &&
-                        (({ opacity }) => (
+                    {({ opacity }, isOpen) =>
+                        isOpen && (
                             <animated.div
                                 style={{
                                     opacity,
@@ -69,7 +67,6 @@ class DatUI extends React.Component {
                                 <StyledScrollbar>
                                     <ScrollbarContentContainer>
                                         <Transition
-                                            native
                                             items={showConfig}
                                             initial={{
                                                 position: 'absolute',
@@ -82,53 +79,48 @@ class DatUI extends React.Component {
                                             enter={{ opacity: 1 }}
                                             leave={{ opacity: 0 }}
                                         >
-                                            {(showConfig) =>
+                                            {(
+                                                { opacity, position },
                                                 showConfig
-                                                    ? ({
-                                                          opacity,
-                                                          position,
-                                                      }) => (
-                                                          <animated.div
-                                                              style={{
-                                                                  position,
-                                                                  opacity,
-                                                                  width: '100%',
-                                                              }}
-                                                          >
-                                                              <ConfigViewer
-                                                                  datConfig={
-                                                                      datConfig
-                                                                  }
-                                                              />
-                                                          </animated.div>
-                                                      )
-                                                    : ({
-                                                          opacity,
-                                                          position,
-                                                      }) => (
-                                                          <animated.div
-                                                              style={{
-                                                                  position,
-                                                                  opacity,
-                                                                  width: '100%',
-                                                              }}
-                                                          >
-                                                              <DatUIPane
-                                                                  datConfig={
-                                                                      datConfig
-                                                                  }
-                                                                  handleDatUpdate={
-                                                                      handleDatUpdate
-                                                                  }
-                                                              />
-                                                          </animated.div>
-                                                      )
+                                            ) =>
+                                                showConfig ? (
+                                                    <animated.div
+                                                        style={{
+                                                            position,
+                                                            opacity,
+                                                            width: '100%',
+                                                        }}
+                                                    >
+                                                        <ConfigViewer
+                                                            datConfig={
+                                                                datConfig
+                                                            }
+                                                        />
+                                                    </animated.div>
+                                                ) : (
+                                                    <animated.div
+                                                        style={{
+                                                            position,
+                                                            opacity,
+                                                            width: '100%',
+                                                        }}
+                                                    >
+                                                        <DatUIPane
+                                                            datConfig={
+                                                                datConfig
+                                                            }
+                                                            handleDatUpdate={
+                                                                handleDatUpdate
+                                                            }
+                                                        />
+                                                    </animated.div>
+                                                )
                                             }
                                         </Transition>
                                     </ScrollbarContentContainer>
                                 </StyledScrollbar>
                             </animated.div>
-                        ))
+                        )
                     }
                 </Transition>
             </StyledScrollWrapper>

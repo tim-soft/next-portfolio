@@ -15,7 +15,7 @@ const ConfigViewer = ({ datConfig }) => (
             <Highlight className="javascript">
                 {`/**
  * Tim Ellenberger
- * 
+ *
  * `}
                 <StyledCommentLink
                     href="https://github.com/tim-soft/react-particles-webgl#usage"
