@@ -128,7 +128,7 @@ class MenuItem extends React.Component {
                 </MenuLink>
 
                 {/* The pop-out menu content */}
-                {children && pageIsVisible && (
+                {children && pageIsVisible && (isHovering || alwaysShowMenu) && (
                     <Spring
                         from={{ opacity: 0, height: '0px' }}
                         to={{ opacity: 1, height: `${menuHeight}px` }}
