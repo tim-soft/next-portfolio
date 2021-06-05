@@ -112,7 +112,11 @@ class BlogImageGallery extends React.Component {
                     onClose={this.closeLightbox}
                     onPrev={this.gotoPrevious}
                     onNext={this.gotoNext}
-                    images={images}
+                    images={images.map(({ alt, caption, src }) => ({
+                        alt,
+                        caption,
+                        src,
+                    }))}
                     currentIndex={currentImageIndex}
                     renderHeader={() => (
                         <LightboxHeader
