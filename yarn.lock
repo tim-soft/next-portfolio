@@ -933,10 +933,17 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.13", "@babel/runtime@^7.2.0", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.8.4":
+"@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.2.0", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.8.4":
   version "7.13.10"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.13.10.tgz#47d42a57b6095f4468da440388fdbad8bebf0d7d"
   integrity sha512-4QPkjJq6Ns3V/RgpEahRk+AGfL0eO6RHHtTWoNNr5mO49G6B5+X6d6THgWEAvTrznU5xYpbAlVKRYcsCgh/Akw==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
+"@babel/runtime@^7.14.0":
+  version "7.14.0"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.0.tgz#46794bc20b612c5f75e62dd071e24dfd95f1cbe6"
+  integrity sha512-JELkvo/DlpNdJ7dlyw/eY7E0suy5i5GQH+Vlxaq1nsNJ+H7f4Vtv3jMeCEgRhZZQFXTjldYfQgv2qmM6M1v5wA==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -1162,15 +1169,6 @@
   resolved "https://registry.yarnpkg.com/@opentelemetry/context-base/-/context-base-0.14.0.tgz#c67fc20a4d891447ca1a855d7d70fa79a3533001"
   integrity sha512-sDOAZcYwynHFTbLo6n8kIbLiVF3a3BLkrmehJUyEbT9F+Smbi47kLGS2gG2g0fjBLR/Lr1InPD7kXL7FaTqEkw==
 
-"@react-spring/animated@npm:@tim-soft/react-spring-animated@9.0.0-beta.33":
-  version "9.0.0-beta.33"
-  resolved "https://registry.yarnpkg.com/@tim-soft/react-spring-animated/-/react-spring-animated-9.0.0-beta.33.tgz#644247bf3e96b0db3bfc563af4e156bb3e68b6fe"
-  integrity sha512-fXPywLQOWciayrq6nbdl+bAngZxNDDC7ZNigOvYv6Gfhqr9RNNQ0Nkn71bTomjQ4YKRlXjz9gcjzwKS/cW10gA==
-  dependencies:
-    "@babel/runtime" "^7.3.1"
-    "@react-spring/shared" "9.0.0-beta.33"
-    tiny-invariant "^1.0.4"
-
 "@react-spring/animated@~9.2.0":
   version "9.2.1"
   resolved "https://registry.yarnpkg.com/@react-spring/animated/-/animated-9.2.1.tgz#545cc03614f3f8a156fb722c644b3b59ea676a17"
@@ -1178,16 +1176,6 @@
   dependencies:
     "@react-spring/shared" "~9.2.0"
     "@react-spring/types" "~9.2.0"
-
-"@react-spring/core@npm:@tim-soft/react-spring-core@9.0.0-beta.34":
-  version "9.0.0-beta.34"
-  resolved "https://registry.yarnpkg.com/@tim-soft/react-spring-core/-/react-spring-core-9.0.0-beta.34.tgz#06a312daec2cee2dec94200b14a1c44a78d48ee1"
-  integrity sha512-12DdLwQNgq+bFLGlcEaqUqe3tdqchZipbMb2F9H4jYfSIieQ8hQHRQvunS88j3EOMBKv9fdT8NTCZ0Br1Hd4Wg==
-  dependencies:
-    "@babel/runtime" "^7.3.1"
-    "@react-spring/animated" "npm:@tim-soft/react-spring-animated@9.0.0-beta.33"
-    "@react-spring/shared" "9.0.0-beta.33"
-    use-memo-one "^1.1.0"
 
 "@react-spring/core@~9.2.0":
   version "9.2.1"
@@ -1197,14 +1185,6 @@
     "@react-spring/animated" "~9.2.0"
     "@react-spring/shared" "~9.2.0"
     "@react-spring/types" "~9.2.0"
-
-"@react-spring/shared@9.0.0-beta.33":
-  version "9.0.0-beta.33"
-  resolved "https://registry.yarnpkg.com/@react-spring/shared/-/shared-9.0.0-beta.33.tgz#8630cf68f79a7b12f075345bdf23a47dff6ed877"
-  integrity sha512-oGalrGtIg7ZMn9VW5PzLFMDAa8vH5V0XIeC4WFk7JB4hBfhxx6yzPwjMxSJfRrt/Q+WuS2cPoR5qN0RpH+fJOA==
-  dependencies:
-    "@babel/runtime" "^7.3.1"
-    tiny-invariant "^1.0.4"
 
 "@react-spring/shared@~9.2.0":
   version "9.2.1"
@@ -1228,16 +1208,6 @@
     "@react-spring/core" "~9.2.0"
     "@react-spring/shared" "~9.2.0"
     "@react-spring/types" "~9.2.0"
-
-"@react-spring/web@npm:@tim-soft/react-spring-web@9.0.0-beta.36":
-  version "9.0.0-beta.36"
-  resolved "https://registry.yarnpkg.com/@tim-soft/react-spring-web/-/react-spring-web-9.0.0-beta.36.tgz#4c01bda7c83f4a0800919f0297c21242d73a2006"
-  integrity sha512-9qhvnJ/VkIeG59jTB4KgYvq5MH6qW/cPxylnORZlwHjNTA4WWtGB8CO08HDgIEoF6f5VaHWs3QIlthgsiN++Jg==
-  dependencies:
-    "@babel/runtime" "^7.3.1"
-    "@react-spring/animated" "npm:@tim-soft/react-spring-animated@9.0.0-beta.33"
-    "@react-spring/core" "npm:@tim-soft/react-spring-core@9.0.0-beta.34"
-    "@react-spring/shared" "9.0.0-beta.33"
 
 "@rollup/plugin-node-resolve@^7.1.1":
   version "7.1.3"
@@ -5574,14 +5544,14 @@ react-scrollbars-custom@^4.0.25:
     react-draggable "^4.4.2"
     zoom-level "^2.5.0"
 
-react-spring-lightbox@^1.4.10:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/react-spring-lightbox/-/react-spring-lightbox-1.5.0.tgz#eee257019f2356cf192dafc89515e3a5ad9869df"
-  integrity sha512-/MzmJ3cNuFTVvn4A5MG4HQXWxnfGVyZ9FHwFnJvsKLr/X1Vp6iw1ojFBFrrJegoEC2tVzWZ1UK4GJLul/dBMfw==
+react-spring-lightbox@1.6.0-beta.0:
+  version "1.6.0-beta.0"
+  resolved "https://registry.yarnpkg.com/react-spring-lightbox/-/react-spring-lightbox-1.6.0-beta.0.tgz#96acb22086f2e24bb96d28d6fc54e61481ccb820"
+  integrity sha512-84rC3sNqen7k+scI5nOQXa8PAikZHygIzNsXRQWRqiv3c5QoqllKAocVICUEJoKrelzc8C4ceFa+suYt1WcSfQ==
   dependencies:
-    "@babel/runtime" "^7.12.13"
-    "@react-spring/web" "npm:@tim-soft/react-spring-web@9.0.0-beta.36"
-    react-use-gesture "9.0.4"
+    "@babel/runtime" "^7.14.0"
+    "@react-spring/web" "9.2.1"
+    react-use-gesture "9.1.3"
 
 react-spring@^8.0.27:
   version "8.0.27"
@@ -5611,10 +5581,10 @@ react-three-fiber@^2.3.6:
     resize-observer-polyfill "^1.5.1"
     scheduler "0.13.3"
 
-react-use-gesture@9.0.4:
-  version "9.0.4"
-  resolved "https://registry.yarnpkg.com/react-use-gesture/-/react-use-gesture-9.0.4.tgz#7e0428007df31b6d8daae37c2fb01e9f40283623"
-  integrity sha512-G0sbQY+HSm2gSVIlD+LE1unpVpG7YZRTr8TI72vo0Nu1lecJtvjbcY3ZLonEZLTtODJgLL6nBllMRXyy0bRSQA==
+react-use-gesture@9.1.3:
+  version "9.1.3"
+  resolved "https://registry.yarnpkg.com/react-use-gesture/-/react-use-gesture-9.1.3.tgz#92bd143e4f58e69bd424514a5bfccba2a1d62ec0"
+  integrity sha512-CdqA2SmS/fj3kkS2W8ZU8wjTbVBAIwDWaRprX7OKaj7HlGwBasGEFggmk5qNklknqk9zK/h8D355bEJFTpqEMg==
 
 react@^17.0.2:
   version "17.0.2"
@@ -6620,11 +6590,6 @@ timers-browserify@2.0.12, timers-browserify@^2.0.4:
   dependencies:
     setimmediate "^1.0.4"
 
-tiny-invariant@^1.0.4:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.1.0.tgz#634c5f8efdc27714b7f386c35e6760991d230875"
-  integrity sha512-ytxQvrb1cPc9WBEI/HSeYYoGD0kWnGEOR8RY6KomWLBVhqz0RgTwVO9dLrGz7dC+nN9llyI7OKAgRq8Vq4ZBSw==
-
 tinycolor2@^1.4.1:
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/tinycolor2/-/tinycolor2-1.4.2.tgz#3f6a4d1071ad07676d7fa472e1fac40a719d8803"
@@ -6889,11 +6854,6 @@ use-double-click@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/use-double-click/-/use-double-click-1.0.5.tgz#656a3c3c528b5cd3ff40ee548bac0d50b714dfc6"
   integrity sha512-71LUca6NtzpzHYlcfM/dOdmwvmvpMbzeIVQpN87w+DctpLiMCXtZpsN8FNWPgHpPBtNhvucPUHIDh5al8D8C7w==
-
-use-memo-one@^1.1.0:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/use-memo-one/-/use-memo-one-1.1.2.tgz#0c8203a329f76e040047a35a1197defe342fab20"
-  integrity sha512-u2qFKtxLsia/r8qG0ZKkbytbztzRb317XCkT7yP8wxL0tZ/CzK2G+WWie5vWvpyeP7+YoPIwbJoIHJ4Ba4k0oQ==
 
 use-subscription@1.5.1:
   version "1.5.1"
