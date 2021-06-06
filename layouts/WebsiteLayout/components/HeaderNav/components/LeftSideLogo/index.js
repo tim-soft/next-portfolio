@@ -6,18 +6,19 @@ import { GoMarkGithub } from 'react-icons/go';
 import LocationTagline from 'components/LocationTagline';
 import StyledLogo from '../StyledLink';
 
+const closed = { opacity: 0, height: '0px' };
+const opened = { opacity: 1, height: '500px' };
+
 // eslint-disable-next-line react/prop-types
 const LeftSideLogo = ({ menuIsOpen, toggleMenu, showBio }) => {
     const [isHovering, setIsHovering] = React.useState(false);
-    const menuTransition = useTransition(
-        (showBio && !menuIsOpen) || isHovering,
-        {
-            initial: { opacity: 1, height: '500px' },
-            from: { opacity: 0, height: '0px' },
-            enter: { opacity: 1, height: '500px' },
-            leave: { opacity: 0, height: '0px' },
-        }
-    );
+
+    const menuTransition = useTransition(showBio || isHovering, {
+        initial: showBio ? closed : opened,
+        from: closed,
+        enter: opened,
+        leave: closed,
+    });
 
     return (
         <LogoProfileContainer
