@@ -24,7 +24,7 @@ const LibrarySEO = ({ library, route }) => (
                             '@type': 'TechArticle',
                             mainEntityOfPage: {
                                 '@type': 'WebPage',
-                                '@id': `${APP_URL}${route}`
+                                '@id': `${APP_URL}${route}`,
                             },
                             headline: library.tagline,
                             image: [`${APP_URL}/static/avatar.png`],
@@ -33,12 +33,12 @@ const LibrarySEO = ({ library, route }) => (
                             proficiencyLevel: 'Beginner',
                             author: {
                                 '@type': 'Person',
-                                name: 'Tim Ellenberger'
+                                name: 'Tim Ellenberger',
                             },
                             creator: {
                                 '@type': 'Person',
                                 name: 'Tim Ellenberger',
-                                url: APP_URL
+                                url: APP_URL,
                             },
                             publisher: {
                                 '@type': 'Organization',
@@ -48,14 +48,14 @@ const LibrarySEO = ({ library, route }) => (
                                     '@type': 'ImageObject',
                                     url: `${APP_URL}/static/avatar.png`,
                                     width: '140',
-                                    height: '140'
-                                }
+                                    height: '140',
+                                },
                             },
-                            description: library.description
+                            description: library.description,
                         },
                         null,
                         2
-                    )
+                    ),
                 }}
             />
         </Head>
@@ -65,18 +65,18 @@ const LibrarySEO = ({ library, route }) => (
                 {
                     position: 1,
                     name: APP_URL,
-                    item: `${APP_URL}/`
+                    item: `${APP_URL}/`,
                 },
                 {
                     position: 2,
                     name: 'Libraries',
-                    item: `${APP_URL}/libraries`
+                    item: `${APP_URL}/libraries`,
                 },
                 {
                     position: 3,
                     name: library.name,
-                    item: `${APP_URL}${route}`
-                }
+                    item: `${APP_URL}${route}`,
+                },
             ]}
         />
         <NextSeo
@@ -90,14 +90,14 @@ const LibrarySEO = ({ library, route }) => (
                 images: [
                     {
                         url: `${APP_URL}/static/avatar.png`,
-                        alt: 'Blog Post Logo'
-                    }
+                        alt: 'Blog Post Logo',
+                    },
                 ],
                 type: 'article',
                 article: {
                     publishedTime: library.docsPublishedDate,
                     section: 'Technology',
-                    authors: [APP_URL]
+                    authors: [APP_URL],
                 },
                 site_name: 'Coding, Musings and Adventures of Tim Ellenberger',
                 locale: 'en_US',
@@ -105,8 +105,8 @@ const LibrarySEO = ({ library, route }) => (
                     firstName: 'Tim',
                     lastName: 'Ellenberger',
                     username: 'tim-soft',
-                    gender: 'male'
-                }
+                    gender: 'male',
+                },
             }}
         />
     </>
@@ -123,17 +123,17 @@ LibrarySEO.propTypes = {
         demoLinks: PropTypes.arrayOf(
             PropTypes.shape({
                 title: PropTypes.string.isRequired,
-                href: PropTypes.string.isRequired
+                href: PropTypes.string.isRequired,
             })
         ).isRequired,
         badges: PropTypes.arrayOf(
             PropTypes.shape({
                 badgeUrl: PropTypes.string.isRequired,
-                linkUrl: PropTypes.string.isRequired
+                linkUrl: PropTypes.string.isRequired,
             })
-        ).isRequired
+        ).isRequired,
     }).isRequired,
-    route: PropTypes.string.isRequired
+    route: PropTypes.string.isRequired,
 };
 
 export default LibrarySEO;

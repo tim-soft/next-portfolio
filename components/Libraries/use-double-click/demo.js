@@ -13,7 +13,7 @@ const DoubleClickDemo = () => {
         onSingleClick: () => setSingleClick(onSingleClickCount + 1),
         onDoubleClick: () => setDoubleClick(onDoubleClickCount + 1),
         ref: buttonRef,
-        latency: 250
+        latency: 250,
     });
 
     return (

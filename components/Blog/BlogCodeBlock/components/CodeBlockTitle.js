@@ -6,33 +6,35 @@ import { GoTriangleRight } from 'react-icons/go';
 const defaultLogoSrc = [
     {
         language: 'bash',
-        src: '/static/language-logos/terminal.svg'
+        src: '/static/language-logos/terminal.svg',
     },
     {
         language: 'js',
-        src: '/static/language-logos/javascript.svg'
+        src: '/static/language-logos/javascript.svg',
     },
     {
         language: 'jsx',
-        src: '/static/language-logos/react.svg'
+        src: '/static/language-logos/react.svg',
     },
     {
         language: 'json',
-        src: '/static/language-logos/json.svg'
+        src: '/static/language-logos/json.svg',
     },
     {
         language: 'graphql',
-        src: '/static/language-logos/graphql.svg'
+        src: '/static/language-logos/graphql.svg',
     },
     {
         language: 'css',
-        src: '/static/language-logos/css.svg'
-    }
+        src: '/static/language-logos/css.svg',
+    },
 ];
 
 // eslint-disable-next-line react/prop-types
 const LanguageLogo = ({ language }) => {
-    const lookupLogo = defaultLogoSrc.find(logo => logo.language === language);
+    const lookupLogo = defaultLogoSrc.find(
+        (logo) => logo.language === language
+    );
 
     if (lookupLogo) return <LangLogo src={lookupLogo.src} alt={language} />;
 
@@ -70,16 +72,16 @@ const CodeBlockTitle = ({ title, path, language }) => (
 CodeBlockTitle.propTypes = {
     title: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node
+        PropTypes.node,
     ]),
     path: PropTypes.string,
-    language: PropTypes.string
+    language: PropTypes.string,
 };
 
 CodeBlockTitle.defaultProps = {
     title: null,
     path: null,
-    language: null
+    language: null,
 };
 
 export default CodeBlockTitle;

@@ -1,6 +1,5 @@
 const withOffline = require('next-offline');
 const path = require('path');
-const webpack = require('webpack');
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -17,15 +16,19 @@ const nextConfig = {
             ? `http://localhost:${process.env.PORT || 3000}`
             : 'https://timellenberger.com',
         // Google Analytics tracking ID
-        GA_TRACKING_ID: 'UA-137363397-1'
+        GA_TRACKING_ID: 'UA-137363397-1',
+    },
+    future: {
+        webpack5: true,
     },
     // Alias the /components and /layouts folders for imports
     // e.g. import xyz from 'components/xyz'
-    webpack(config) {
+    webpack(config, { webpack }) {
         const newConfig = config;
         newConfig.resolve.alias.components = path.join(__dirname, 'components');
         newConfig.resolve.alias.layouts = path.join(__dirname, 'layouts');
         newConfig.resolve.alias.data = path.join(__dirname, 'data');
+        newConfig.resolve.alias.hooks = path.join(__dirname, 'hooks');
         // Allow proper tree shaking for react-icons lib
         // https://github.com/react-icons/react-icons/issues/154#issuecomment-412774515
         newConfig.resolve.extensions = ['.mjs', '.js', '.jsx', '.json'];
@@ -59,12 +62,12 @@ const nextConfig = {
                 options: {
                     cacheName: 'image-cache',
                     cacheableResponse: {
-                        statuses: [0, 200]
+                        statuses: [0, 200],
                     },
                     expiration: {
-                        maxEntries: 200
-                    }
-                }
+                        maxEntries: 200,
+                    },
+                },
             },
             /**
              * Cache Google Fonts
@@ -76,8 +79,8 @@ const nextConfig = {
                 urlPattern: /^https:\/\/fonts\.googleapis\.com/,
                 handler: 'StaleWhileRevalidate',
                 options: {
-                    cacheName: 'google-fonts-stylesheets'
-                }
+                    cacheName: 'google-fonts-stylesheets',
+                },
             },
             // Cache the Google Fonts webfont files with a cache first strategy for 1 year.
             {
@@ -86,12 +89,12 @@ const nextConfig = {
                 options: {
                     cacheName: 'google-fonts-webfonts',
                     cacheableResponse: {
-                        statuses: [0, 200]
+                        statuses: [0, 200],
                     },
                     expiration: {
-                        maxAgeSeconds: 60 * 60 * 24 * 365
-                    }
-                }
+                        maxAgeSeconds: 60 * 60 * 24 * 365,
+                    },
+                },
             },
             // Cache all other secure content, but try to fetch from network first
             {
@@ -102,15 +105,15 @@ const nextConfig = {
                     networkTimeoutSeconds: 15,
                     expiration: {
                         maxEntries: 200,
-                        maxAgeSeconds: 30 * 24 * 60 * 60 // 1 month
+                        maxAgeSeconds: 30 * 24 * 60 * 60, // 1 month
                     },
                     cacheableResponse: {
-                        statuses: [0, 200]
-                    }
-                }
-            }
-        ]
-    }
+                        statuses: [0, 200],
+                    },
+                },
+            },
+        ],
+    },
 };
 
 // Compose next-offline plugin with next config

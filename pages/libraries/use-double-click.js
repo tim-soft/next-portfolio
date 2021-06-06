@@ -91,11 +91,11 @@ const Button = () => {
 
 LibraryPage.propTypes = {
     route: PropTypes.string.isRequired,
-    theme: PropTypes.object
+    theme: PropTypes.object,
 };
 
 LibraryPage.defaultProps = {
-    theme: {}
+    theme: {},
 };
 
 LibraryPage.pageTheme = darkTheme;

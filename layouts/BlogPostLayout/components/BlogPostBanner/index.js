@@ -34,8 +34,8 @@ BlogPostBanner.propTypes = {
         description: PropTypes.string.isRequired,
         logo: PropTypes.string.isRequired,
         readTime: PropTypes.number.isRequired,
-        date: PropTypes.string.isRequired
-    }).isRequired
+        date: PropTypes.string.isRequired,
+    }).isRequired,
 };
 
 export default BlogPostBanner;

@@ -31,7 +31,7 @@ const BlogCodeBlock = ({
                     style,
                     tokens,
                     getLineProps,
-                    getTokenProps
+                    getTokenProps,
                 }) => (
                     <CodeBlock
                         className={className}
@@ -50,7 +50,7 @@ const BlogCodeBlock = ({
                                     {line.map((token, key) => {
                                         const props = getTokenProps({
                                             token,
-                                            key
+                                            key,
                                         });
 
                                         // if first span is empty, add empty classname
@@ -98,10 +98,10 @@ BlogCodeBlock.propTypes = {
     theme: PropTypes.object,
     title: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node
+        PropTypes.node,
     ]),
     path: PropTypes.string,
-    showLineNumbers: PropTypes.bool
+    showLineNumbers: PropTypes.bool,
 };
 
 BlogCodeBlock.defaultProps = {
@@ -110,7 +110,7 @@ BlogCodeBlock.defaultProps = {
     theme: null,
     title: null,
     path: null,
-    showLineNumbers: true
+    showLineNumbers: true,
 };
 
 export default BlogCodeBlock;

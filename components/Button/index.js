@@ -11,12 +11,12 @@ const Button = ({ children, ...props }) => (
 Button.propTypes = {
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node
-    ])
+        PropTypes.node,
+    ]),
 };
 
 Button.defaultProps = {
-    children: null
+    children: null,
 };
 
 export default Button;

@@ -4,8 +4,8 @@ import styled from 'styled-components';
 const DefaultConfig = {
     particles: {
         count: 250,
-        maxSize: 75
-    }
+        maxSize: 75,
+    },
 };
 
 const ParticlesJSConfig = {
@@ -20,7 +20,7 @@ const ParticlesJSConfig = {
         yMin: -1,
         yMax: 1,
         zMin: -1,
-        zMax: 1
+        zMax: 1,
     },
     lines: {
         colorMode: 'rainbow',
@@ -29,7 +29,7 @@ const ParticlesJSConfig = {
         limitConnections: true,
         maxConnections: 20,
         minDistance: 110,
-        visible: true
+        visible: true,
     },
     particles: {
         colorMode: 'rainbow',
@@ -40,7 +40,7 @@ const ParticlesJSConfig = {
         count: 150,
         minSize: 20,
         maxSize: 50,
-        visible: true
+        visible: true,
     },
     cameraControls: {
         enabled: false,
@@ -49,8 +49,8 @@ const ParticlesJSConfig = {
         enableZoom: true,
         autoRotate: false,
         autoRotateSpeed: 0.3,
-        resetCameraFlag: true
-    }
+        resetCameraFlag: true,
+    },
 };
 
 const SnowfallConfig = {
@@ -65,7 +65,7 @@ const SnowfallConfig = {
         yMin: -1,
         yMax: -0.6,
         zMin: -0.6,
-        zMax: 0.3
+        zMax: 0.3,
     },
     lines: {
         colorMode: 'rainbow',
@@ -74,7 +74,7 @@ const SnowfallConfig = {
         limitConnections: true,
         maxConnections: 20,
         minDistance: 150,
-        visible: false
+        visible: false,
     },
     particles: {
         colorMode: 'solid',
@@ -85,7 +85,7 @@ const SnowfallConfig = {
         count: 1000,
         minSize: 1,
         maxSize: 25,
-        visible: true
+        visible: true,
     },
     cameraControls: {
         enabled: true,
@@ -94,8 +94,8 @@ const SnowfallConfig = {
         enableZoom: true,
         autoRotate: false,
         autoRotateSpeed: 0.3,
-        resetCameraFlag: true
-    }
+        resetCameraFlag: true,
+    },
 };
 
 const ParticleContainer = styled.div`

@@ -10,7 +10,7 @@ import {
     BlogLink,
     BlogQuote,
     BlogCodeInline,
-    BlogDemoContainer
+    BlogDemoContainer,
 } from 'components/Blog';
 import BlogPostLayout from 'layouts/BlogPostLayout';
 import {
@@ -18,7 +18,7 @@ import {
     darkTheme,
     greyTheme,
     blueTheme,
-    greenTheme
+    greenTheme,
 } from 'components/AppTheme';
 import Button from 'components/Button';
 import colors from 'nice-color-palettes/500';
@@ -69,7 +69,7 @@ const generateColorPalette = () => {
             highlightFontColor = bestContrast(
                 currBackground,
                 // eslint-disable-next-line no-loop-func
-                palette.filter(color => color !== fontColor)
+                palette.filter((color) => color !== fontColor)
             );
 
             // Use current palette colors if they meet contrast threshold
@@ -80,7 +80,7 @@ const generateColorPalette = () => {
     return generatePageTheme({
         fontColor,
         highlightFontColor,
-        backgroundColor
+        backgroundColor,
     });
 };
 
@@ -88,7 +88,7 @@ const generateColorPalette = () => {
  * Remove window hash before updating page theme
  * to prevent scrolling to hash id
  */
-const handleThemeChange = callback => {
+const handleThemeChange = (callback) => {
     if (window.location.hash) {
         const href = Router.route;
         const as = href;
@@ -680,17 +680,17 @@ BlogPage.theme = {
     headerNavHamburgerIconColor: fontColor,
     pageBackgroundColor: backgroundColor,
     pageContentFontColor: fontColor,
-    pageContentLinkHoverColor: highlightFontColor
+    pageContentLinkHoverColor: highlightFontColor,
 };
 
 BlogPage.propTypes = {
     theme: PropTypes.object,
     updateTheme: PropTypes.func.isRequired,
-    route: PropTypes.string.isRequired
+    route: PropTypes.string.isRequired,
 };
 
 BlogPage.defaultProps = {
-    theme: {}
+    theme: {},
 };
 
 // Override default app theme for this page

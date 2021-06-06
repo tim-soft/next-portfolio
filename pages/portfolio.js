@@ -9,7 +9,7 @@ import {
     ProjectListItem,
     ProjectTitle,
     ProjectBadge,
-    ProjectBadgeList
+    ProjectBadgeList,
 } from 'components/Portfolio';
 import { BlogLink } from 'components/Blog';
 import PageScrollWrapper from 'components/PageScrollWrapper';
@@ -27,13 +27,13 @@ const PortfolioPage = ({ theme, route }) => (
                 {
                     position: 1,
                     name: APP_URL,
-                    item: `${APP_URL}/`
+                    item: `${APP_URL}/`,
                 },
                 {
                     position: 2,
                     name: 'Portfolio',
-                    item: `${APP_URL}${route}`
-                }
+                    item: `${APP_URL}${route}`,
+                },
             ]}
         />
         <NextSeo
@@ -48,10 +48,10 @@ const PortfolioPage = ({ theme, route }) => (
                 images: [
                     {
                         url: `${APP_URL}/static/avatar.png`,
-                        alt: 'Avatar Logo'
-                    }
+                        alt: 'Avatar Logo',
+                    },
                 ],
-                type: 'website'
+                type: 'website',
             }}
             site_name="Coding, Musings and Adventures of Tim Ellenberger"
             locale="en_US"
@@ -59,7 +59,7 @@ const PortfolioPage = ({ theme, route }) => (
                 firstName: 'Tim',
                 lastName: 'Ellenberger',
                 username: 'tim-soft',
-                gender: 'male'
+                gender: 'male',
             }}
         />
         <ThemeProvider theme={theme}>
@@ -109,14 +109,14 @@ const PortfolioPage = ({ theme, route }) => (
                             of my own.
                         </p>
                         <ProjectList>
-                            {LibraryData.map(library => (
+                            {LibraryData.map((library) => (
                                 <ProjectListItem key={library.name}>
                                     <ProjectTitle
                                         href={library.repoUrl}
                                         text={library.name}
                                     />
                                     <ProjectBadgeList style={{ marginTop: 0 }}>
-                                        {library.badges.map(badge => (
+                                        {library.badges.map((badge) => (
                                             <ProjectBadge
                                                 key={badge.badgeUrl}
                                                 badgeUrl={badge.badgeUrl}
@@ -130,7 +130,7 @@ const PortfolioPage = ({ theme, route }) => (
                                             href={library.href}
                                             style={{
                                                 display: 'inline-flex',
-                                                alignItems: 'center'
+                                                alignItems: 'center',
                                             }}
                                             paragraph
                                         >
@@ -156,11 +156,11 @@ const PortfolioPage = ({ theme, route }) => (
 
 PortfolioPage.propTypes = {
     theme: PropTypes.object,
-    route: PropTypes.string.isRequired
+    route: PropTypes.string.isRequired,
 };
 
 PortfolioPage.defaultProps = {
-    theme: {}
+    theme: {},
 };
 
 PortfolioPage.pageTheme = greyTheme;

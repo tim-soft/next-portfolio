@@ -4,18 +4,18 @@
  * @see https://eslint.org/docs/user-guide/configuring
  */
 module.exports = {
-    parser: 'babel-eslint',
+    parser: '@babel/eslint-parser',
     env: {
         browser: true,
         node: true,
-        es6: true
+        es6: true,
     },
-    extends: ['airbnb', 'prettier', 'prettier/react', 'plugin:import/warnings'],
+    extends: ['airbnb', 'prettier', 'plugin:import/warnings'],
     plugins: ['prettier', 'import', 'jsx-a11y', 'react-hooks'],
     globals: {
         document: true,
         window: true,
-        process: true
+        process: true,
     },
     rules: {
         'react/forbid-prop-types': 0,
@@ -27,20 +27,19 @@ module.exports = {
         'consistent-return': 0,
         'jsx-a11y/anchor-is-valid': 0,
         'import/no-extraneous-dependencies': 0,
-        'prettier/prettier': 'error',
         'react/destructuring-assignment': 0,
         'react/static-property-placement': 0,
         'react/jsx-props-no-spreading': 0,
         'react-hooks/rules-of-hooks': 'error',
-        'react-hooks/exhaustive-deps': 'warn'
+        'react-hooks/exhaustive-deps': 'warn',
     },
     settings: {
         // Resolve modules from the root dir
         // https://github.com/benmosher/eslint-plugin-import
         'import/resolver': {
             node: {
-                moduleDirectory: ['node_modules', `.`]
-            }
-        }
-    }
+                moduleDirectory: ['node_modules', `.`],
+            },
+        },
+    },
 };

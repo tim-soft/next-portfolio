@@ -1,98 +1,100 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Spring, animated, to } from '@react-spring/web';
+import { animated, to, useSpring } from '@react-spring/web';
 import Link from 'next/link';
 import { GoMarkGithub, GoMail } from 'react-icons/go';
 import Scrollbar from 'components/Scrollbar';
 import StyledLink from '../../../StyledLink';
 
-const FullPageMenu = ({ menuIsOpen, toggleMenu }) => (
-    <Spring native to={{ opacity: menuIsOpen ? 1 : 0 }}>
-        {({ opacity }) => (
-            <MenuContainer
-                style={{
-                    opacity,
-                    display: to([opacity], x => (x === 0 ? 'none' : 'flex'))
+const FullPageMenu = ({ menuIsOpen, toggleMenu }) => {
+    const { opacity } = useSpring({
+        to: { opacity: menuIsOpen ? 1 : 0 },
+    });
+
+    return (
+        <MenuContainer
+            style={{
+                opacity,
+                display: to([opacity], (x) => (x === 0 ? 'none' : 'flex')),
+            }}
+        >
+            <Scrollbar
+                contentProps={{
+                    // eslint-disable-next-line react/prop-types
+                    renderer: ({ elementRef, style, ...restProps }) => (
+                        <ScrollbarContent
+                            {...restProps}
+                            style={{
+                                ...style,
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                flexDirection: 'column',
+                            }}
+                            ref={elementRef}
+                        />
+                    ),
                 }}
             >
-                <Scrollbar
-                    contentProps={{
-                        // eslint-disable-next-line react/prop-types
-                        renderer: ({ elementRef, style, ...restProps }) => (
-                            <ScrollbarContent
-                                {...restProps}
-                                style={{
-                                    ...style,
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    flexDirection: 'column'
-                                }}
-                                ref={elementRef}
-                            />
-                        )
-                    }}
-                >
-                    <NavMenuContainer>
-                        <Link passHref href="/">
-                            <MobileStyledLink onClick={toggleMenu}>
-                                <LinkHeading>Home</LinkHeading>
-                            </MobileStyledLink>
-                        </Link>
+                <NavMenuContainer>
+                    <Link passHref href="/">
+                        <MobileStyledLink onClick={toggleMenu}>
+                            <LinkHeading>Home</LinkHeading>
+                        </MobileStyledLink>
+                    </Link>
 
-                        <Link passHref href="/portfolio">
-                            <MobileStyledLink onClick={toggleMenu}>
-                                <LinkHeading>Portfolio</LinkHeading>
-                            </MobileStyledLink>
-                        </Link>
+                    <Link passHref href="/portfolio">
+                        <MobileStyledLink onClick={toggleMenu}>
+                            <LinkHeading>Portfolio</LinkHeading>
+                        </MobileStyledLink>
+                    </Link>
 
-                        <Link passHref href="/particles">
-                            <MobileStyledLink onClick={toggleMenu}>
-                                <LinkHeading>ParticlesGL</LinkHeading>
-                            </MobileStyledLink>
-                        </Link>
+                    <Link passHref href="/particles">
+                        <MobileStyledLink onClick={toggleMenu}>
+                            <LinkHeading>ParticlesGL</LinkHeading>
+                        </MobileStyledLink>
+                    </Link>
 
-                        <Link passHref href="/portfolio">
-                            <MobileStyledLink onClick={toggleMenu}>
-                                <LinkHeading>Libraries</LinkHeading>
-                            </MobileStyledLink>
-                        </Link>
+                    <Link passHref href="/portfolio">
+                        <MobileStyledLink onClick={toggleMenu}>
+                            <LinkHeading>Libraries</LinkHeading>
+                        </MobileStyledLink>
+                    </Link>
 
-                        <Link passHref href="/blog">
-                            <MobileStyledLink onClick={toggleMenu}>
-                                <LinkHeading>Blog</LinkHeading>
-                            </MobileStyledLink>
-                        </Link>
-                    </NavMenuContainer>
-                    <MenuFooterContainer>
-                        <MenuFooter>
-                            <MenuFooterLink
-                                href="https://github.com/tim-soft"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                                <GoMarkGithub size="1.1em" />
-                                <FooterLinkText>@tim-soft</FooterLinkText>
-                            </MenuFooterLink>
-                            <MenuFooterLink
-                                href="mailto:timellenberger@gmail.com"
-                                right
-                            >
-                                <GoMail size="1.1em" />
-                                <FooterLinkText>@gmail</FooterLinkText>
-                            </MenuFooterLink>
-                        </MenuFooter>
-                    </MenuFooterContainer>
-                </Scrollbar>
-            </MenuContainer>
-        )}
-    </Spring>
-);
+                    <Link passHref href="/blog">
+                        <MobileStyledLink onClick={toggleMenu}>
+                            <LinkHeading>Blog</LinkHeading>
+                        </MobileStyledLink>
+                    </Link>
+                </NavMenuContainer>
+                <MenuFooterContainer>
+                    <MenuFooter>
+                        <MenuFooterLink
+                            href="https://github.com/tim-soft"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            <GoMarkGithub size="1.1em" />
+                            <FooterLinkText>@tim-soft</FooterLinkText>
+                        </MenuFooterLink>
+                        <MenuFooterLink
+                            href="mailto:timellenberger@gmail.com"
+                            right
+                        >
+                            <GoMail size="1.1em" />
+                            <FooterLinkText>@gmail</FooterLinkText>
+                        </MenuFooterLink>
+                    </MenuFooter>
+                </MenuFooterContainer>
+            </Scrollbar>
+        </MenuContainer>
+    );
+};
 
 FullPageMenu.propTypes = {
     menuIsOpen: PropTypes.bool.isRequired,
-    toggleMenu: PropTypes.func.isRequired
+    toggleMenu: PropTypes.func.isRequired,
 };
 
 export default FullPageMenu;

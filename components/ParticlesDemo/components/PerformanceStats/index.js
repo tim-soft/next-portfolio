@@ -15,7 +15,7 @@ class FPSStats extends Component {
         this.state = {
             frames: 0,
             prevTime: 0,
-            fps: []
+            fps: [],
         };
     }
 
@@ -44,8 +44,8 @@ class FPSStats extends Component {
         const currentTime = performance.now();
 
         // Add frame for perf snapshot
-        this.setState(state => ({
-            frames: state.frames + 1
+        this.setState((state) => ({
+            frames: state.frames + 1,
         }));
 
         // Calculate FPS every second
@@ -57,7 +57,7 @@ class FPSStats extends Component {
             this.setState({
                 fps,
                 frames: 0,
-                prevTime: currentTime
+                prevTime: currentTime,
             });
         }
     };

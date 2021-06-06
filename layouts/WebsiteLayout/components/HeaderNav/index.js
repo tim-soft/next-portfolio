@@ -9,14 +9,14 @@ import { LeftSideLogo, RightSideMenu, MobileRightSideMenu } from './components';
  */
 export default class HeaderNav extends React.Component {
     static propTypes = {
-        showBio: PropTypes.bool.isRequired
+        showBio: PropTypes.bool.isRequired,
     };
 
     constructor(props) {
         super(props);
 
         this.state = {
-            menuIsOpen: false
+            menuIsOpen: false,
         };
     }
 

@@ -4,7 +4,7 @@ import MenuItem from './MenuItem';
 import BlogPostMenuContent from './MenuContent/Blogs';
 import LibrariesMenuContent from './MenuContent/Libraries';
 
-export default () => (
+const Index = () => (
     <RightSideMenu>
         <MenuItem link="/portfolio" text="Portfolio" />
 
@@ -31,6 +31,8 @@ export default () => (
         </MenuItem>
     </RightSideMenu>
 );
+
+export default Index;
 
 const RightSideMenu = styled.nav`
     position: absolute;

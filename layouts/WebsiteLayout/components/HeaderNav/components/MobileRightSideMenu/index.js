@@ -12,7 +12,7 @@ const MobileMenu = ({ menuIsOpen, toggleMenu }) => (
 
 MobileMenu.propTypes = {
     menuIsOpen: PropTypes.bool.isRequired,
-    toggleMenu: PropTypes.func.isRequired
+    toggleMenu: PropTypes.func.isRequired,
 };
 
 export default MobileMenu;

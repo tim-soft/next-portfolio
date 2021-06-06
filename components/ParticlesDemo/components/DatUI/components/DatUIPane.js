@@ -6,7 +6,7 @@ import DatGui, {
     DatFolder,
     DatSelect,
     DatPresets,
-    DatColor
+    DatColor,
 } from '@tim-soft/react-dat-gui';
 import merge from 'lodash.merge';
 import { defaultConfig } from 'react-particles-webgl';
@@ -21,7 +21,7 @@ import DatContainer from './DatContainer';
 const DatUIPane = ({ datConfig, handleDatUpdate }) => {
     // Extend default preset with new preset settings
     const createPreset = (presetName, nextConfig) => ({
-        [presetName]: merge({}, defaultConfig, nextConfig)
+        [presetName]: merge({}, defaultConfig, nextConfig),
     });
 
     return (
@@ -33,24 +33,24 @@ const DatUIPane = ({ datConfig, handleDatUpdate }) => {
                         createPreset('Oort Cloud Stress Test', {
                             lines: {
                                 minDistance: 300,
-                                visible: true
+                                visible: true,
                             },
                             particles: {
                                 count: 1000,
                                 maxSize: 125,
-                                shape: 'circle'
+                                shape: 'circle',
                             },
                             cameraControls: {
                                 autoRotate: true,
-                                resetCameraFlag: false
-                            }
+                                resetCameraFlag: false,
+                            },
                         }),
                         createPreset('ParticlesJS', {
                             dimension: '2D',
                             showCube: false,
                             lines: {
                                 minDistance: 110,
-                                visible: true
+                                visible: true,
                             },
                             particles: {
                                 count: 300,
@@ -58,28 +58,28 @@ const DatUIPane = ({ datConfig, handleDatUpdate }) => {
                                 minSize: 20,
                                 shape: 'circle',
                                 boundingBox: 'canvas',
-                                visible: true
+                                visible: true,
                             },
                             cameraControls: {
                                 autoRotate: false,
-                                resetCameraFlag: true
-                            }
+                                resetCameraFlag: true,
+                            },
                         }),
                         createPreset('Whirlpool', {
                             velocity: 10,
                             lines: {
-                                visible: false
+                                visible: false,
                             },
                             particles: {
                                 count: 1500,
                                 maxSize: 140,
-                                shape: 'circle'
+                                shape: 'circle',
                             },
                             cameraControls: {
                                 autoRotate: true,
                                 autoRotateSpeed: 3,
-                                resetCameraFlag: false
-                            }
+                                resetCameraFlag: false,
+                            },
                         }),
                         createPreset('Snowfall', {
                             showCube: false,
@@ -92,10 +92,10 @@ const DatUIPane = ({ datConfig, handleDatUpdate }) => {
                                 yMin: -1,
                                 yMax: -0.6,
                                 zMin: -0.6,
-                                zMax: 0.3
+                                zMax: 0.3,
                             },
                             lines: {
-                                visible: false
+                                visible: false,
                             },
                             particles: {
                                 colorMode: 'solid',
@@ -106,13 +106,13 @@ const DatUIPane = ({ datConfig, handleDatUpdate }) => {
                                 count: 2500,
                                 minSize: 1,
                                 maxSize: 25,
-                                visible: true
+                                visible: true,
                             },
                             cameraControls: {
                                 autoRotate: false,
-                                resetCameraFlag: true
-                            }
-                        })
+                                resetCameraFlag: true,
+                            },
+                        }),
                     ]}
                     onUpdate={handleDatUpdate}
                 />
@@ -302,7 +302,7 @@ const DatUIPane = ({ datConfig, handleDatUpdate }) => {
 
 DatUIPane.propTypes = {
     datConfig: PropTypes.object.isRequired,
-    handleDatUpdate: PropTypes.func.isRequired
+    handleDatUpdate: PropTypes.func.isRequired,
 };
 
 export default DatUIPane;

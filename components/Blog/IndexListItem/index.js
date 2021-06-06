@@ -24,7 +24,7 @@ IndexListItem.propTypes = {
     description: PropTypes.string.isRequired,
     href: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
-    readTime: PropTypes.number.isRequired
+    readTime: PropTypes.number.isRequired,
 };
 
 export default IndexListItem;

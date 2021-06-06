@@ -10,6 +10,6 @@
             }
         }
     ],
-    "builds": [{ "src": "next.config.js", "use": "@now/next" }],
+    "builds": [{ "src": "next.config.js", "use": "@vercel/next" }],
     "alias": ["tim-soft.now.sh", "timellenberger.now.sh", "timellenberger.com"]
 }

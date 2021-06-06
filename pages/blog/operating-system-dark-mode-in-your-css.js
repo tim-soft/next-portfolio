@@ -8,7 +8,7 @@ import {
     BlogCodeBlock,
     BlogQuote,
     BlogDemoContainer,
-    BlogImageGallery
+    BlogImageGallery,
 } from 'components/Blog';
 import BlogPostLayout from 'layouts/BlogPostLayout';
 import { darkTheme, greyTheme } from 'components/AppTheme';
@@ -21,7 +21,7 @@ const BlogPage = ({ route, theme, updateTheme }) => {
     const isDarkMode = () => new Color(theme.pageBackgroundColor).isDark();
 
     // Get the current blog post from data
-    const blogPost = BlogData.find(post => post.href === route);
+    const blogPost = BlogData.find((post) => post.href === route);
 
     return (
         <ThemeProvider theme={theme}>
@@ -41,7 +41,7 @@ const BlogPage = ({ route, theme, updateTheme }) => {
                         <ToggleSwitch
                             aria-label="Toggle Light/Dark Mode"
                             checked={isDarkMode()}
-                            onChange={checked => {
+                            onChange={(checked) => {
                                 if (checked) {
                                     updateTheme(darkTheme);
                                 } else {
@@ -62,20 +62,18 @@ const BlogPage = ({ route, theme, updateTheme }) => {
                     imageMasonryDirection="column"
                     images={[
                         {
-                            src:
-                                '/static/blog-content/dark-mode/win10-dark-mode.jpg',
+                            src: '/static/blog-content/dark-mode/win10-dark-mode.jpg',
                             caption: 'Windows 10 Dark Mode Setting',
                             alt: 'Windows 10 Dark Mode Setting',
                             width: 2848,
-                            height: 2035
+                            height: 2035,
                         },
                         {
-                            src:
-                                '/static/blog-content/dark-mode/macos-dark-mode.png',
+                            src: '/static/blog-content/dark-mode/macos-dark-mode.png',
                             caption: 'macOS Mojave Dark Mode Setting',
                             alt: 'macOS Mojave Dark Mode Setting',
                             width: 1200,
-                            height: 1218
+                            height: 1218,
                         },
                         // {
                         //   src: '/static/blog-content/dark-mode/ios-13-dark-mode-crop.jpg',
@@ -85,13 +83,12 @@ const BlogPage = ({ route, theme, updateTheme }) => {
                         //   height: 750
                         // },
                         {
-                            src:
-                                '/static/blog-content/dark-mode/android-9-dark-mode.jpg',
+                            src: '/static/blog-content/dark-mode/android-9-dark-mode.jpg',
                             caption: 'Android 9.0 Dark Mode Setting',
                             alt: 'Android 9.0 Dark Mode Setting',
                             width: 1280,
-                            height: 600
-                        }
+                            height: 600,
+                        },
                     ]}
                 />
                 <BlogParagraph>
@@ -230,11 +227,11 @@ export default DarkModeReporter;
 BlogPage.propTypes = {
     updateTheme: PropTypes.func.isRequired,
     route: PropTypes.string.isRequired,
-    theme: PropTypes.object
+    theme: PropTypes.object,
 };
 
 BlogPage.defaultProps = {
-    theme: {}
+    theme: {},
 };
 
 // Override default app theme for this page

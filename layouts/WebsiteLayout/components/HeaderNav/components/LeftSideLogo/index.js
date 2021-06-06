@@ -1,107 +1,87 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
-import { Transition, animated } from '@react-spring/web';
+import { animated, useTransition } from '@react-spring/web';
 import { GoMarkGithub } from 'react-icons/go';
 import LocationTagline from 'components/LocationTagline';
 import StyledLogo from '../StyledLink';
 
-class LeftSideLogo extends React.Component {
-    static propTypes = {
-        menuIsOpen: PropTypes.bool.isRequired,
-        toggleMenu: PropTypes.func.isRequired,
-        showBio: PropTypes.bool.isRequired
-    };
+const closed = { opacity: 0, height: '0px' };
+const opened = { opacity: 1, height: '500px' };
 
-    constructor() {
-        super();
-        this.state = {
-            isHovering: false
-        };
-    }
+// eslint-disable-next-line react/prop-types
+const LeftSideLogo = ({ menuIsOpen, toggleMenu, showBio }) => {
+    const [isHovering, setIsHovering] = React.useState(false);
 
-    handleHover = isHovering => this.setState({ isHovering });
+    const menuTransition = useTransition(showBio || isHovering, {
+        initial: showBio ? closed : opened,
+        from: closed,
+        enter: opened,
+        leave: closed,
+    });
 
-    render() {
-        const { isHovering } = this.state;
-        const { menuIsOpen, toggleMenu, showBio } = this.props;
-
-        return (
-            <LogoProfileContainer
-                menuIsOpen={menuIsOpen}
-                onMouseEnter={() => this.handleHover(true)}
-                onMouseLeave={() => this.handleHover(false)}
-                onFocus={() => this.handleHover(true)}
-            >
-                <LogoProfile>
-                    <Link passHref href="/">
-                        <Logo
+    return (
+        <LogoProfileContainer
+            menuIsOpen={menuIsOpen}
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+            onFocus={() => setIsHovering(true)}
+        >
+            <LogoProfile>
+                <Link passHref href="/">
+                    <Logo
+                        menuIsOpen={menuIsOpen}
+                        onClick={() => menuIsOpen && toggleMenu()}
+                        isHovering={isHovering}
+                        active={showBio}
+                    >
+                        <MainHeading>Tim Ellenberger</MainHeading>
+                        <SubheadingContainer
                             menuIsOpen={menuIsOpen}
-                            onClick={() => menuIsOpen && toggleMenu()}
                             isHovering={isHovering}
-                            active={showBio}
                         >
-                            <MainHeading>Tim Ellenberger</MainHeading>
-                            <SubheadingContainer
-                                menuIsOpen={menuIsOpen}
-                                isHovering={isHovering}
+                            <SubHeading>React</SubHeading>
+                            <SubHeading> | </SubHeading>
+                            <SubHeading>GraphQL</SubHeading>
+                            <SubHeading> | </SubHeading>
+                            <SubHeading>Consulting</SubHeading>
+                        </SubheadingContainer>
+                    </Logo>
+                </Link>
+            </LogoProfile>
+            {menuTransition(
+                (styles, showMenu) =>
+                    showMenu && (
+                        <AnimatedContainer style={styles}>
+                            <AvatarImage
+                                src="/static/avatar.png"
+                                alt="avatar"
+                            />
+                            <StyledLink
+                                href="https://github.com/tim-soft"
+                                target="_blank"
+                                rel="noopener"
                             >
-                                <SubHeading>React</SubHeading>
-                                <SubHeading> | </SubHeading>
-                                <SubHeading>GraphQL</SubHeading>
-                                <SubHeading> | </SubHeading>
-                                <SubHeading>Consulting</SubHeading>
-                            </SubheadingContainer>
-                        </Logo>
-                    </Link>
-                </LogoProfile>
-                <Transition
-                    native
-                    items={(showBio && !menuIsOpen) || isHovering}
-                    initial={{ opacity: 1, height: '500px' }}
-                    from={{ opacity: 0, height: '0px' }}
-                    enter={{ opacity: 1, height: '500px' }}
-                    leave={{ opacity: 0, height: '0px' }}
-                >
-                    {isOpen =>
-                        isOpen &&
-                        // eslint-disable-next-line react/prop-types
-                        (({ opacity, height }) => (
-                            <AnimatedContainer style={{ opacity, height }}>
-                                <AvatarImage
-                                    src="/static/avatar.png"
-                                    alt="avatar"
-                                />
-                                <StyledLink
-                                    href="https://github.com/tim-soft"
-                                    target="_blank"
-                                    rel="noopener"
-                                >
-                                    <GoMarkGithub size="2.5em" />
-                                    <GitHubUsername>
-                                        GitHub@tim-soft
-                                    </GitHubUsername>
-                                </StyledLink>
-                                <StyledLink href="mailto:timellenberger@gmail.com">
-                                    <span>Email: Click to view</span>
-                                </StyledLink>
-                                <BioParagraph>
-                                    I build super fast web apps with React and
-                                    GraphQL.
-                                </BioParagraph>
-                                {/* Emoji found with https://emojipedia.org/ */}
-                                <BioParagraph>
-                                    <LocationTagline />
-                                </BioParagraph>
-                            </AnimatedContainer>
-                        ))
-                    }
-                </Transition>
-            </LogoProfileContainer>
-        );
-    }
-}
+                                <GoMarkGithub size="2.5em" />
+                                <GitHubUsername>GitHub@tim-soft</GitHubUsername>
+                            </StyledLink>
+                            <StyledLink href="mailto:timellenberger@gmail.com">
+                                <span>Email: Click to view</span>
+                            </StyledLink>
+                            <BioParagraph>
+                                I build super fast web apps with React and
+                                GraphQL.
+                            </BioParagraph>
+                            {/* Emoji found with https://emojipedia.org/ */}
+                            <BioParagraph>
+                                <LocationTagline />
+                            </BioParagraph>
+                        </AnimatedContainer>
+                    )
+            )}
+        </LogoProfileContainer>
+    );
+};
 
 export default LeftSideLogo;
 

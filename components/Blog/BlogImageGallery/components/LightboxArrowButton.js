@@ -6,20 +6,19 @@ import { animated, useTransition } from '@react-spring/web';
 import ButtonControl from './LightboxButtonControl';
 
 const ArrowButton = ({ position, onClick, disabled }) => {
-    const transitions = useTransition(!disabled, null, {
+    const transitions = useTransition(!disabled, {
         from: { opacity: 0 },
         enter: { opacity: 1 },
-        leave: { opacity: 0 }
+        leave: { opacity: 0 },
     });
 
-    return transitions.map(
-        ({ item, key, props }) =>
+    return transitions(
+        (styles, item) =>
             item && (
                 <animated.div
-                    key={key}
                     style={{
-                        ...props,
-                        zIndex: 999
+                        ...styles,
+                        zIndex: 999,
                     }}
                 >
                     <Button position={position} type="button" onClick={onClick}>
@@ -34,11 +33,11 @@ const ArrowButton = ({ position, onClick, disabled }) => {
 ArrowButton.propTypes = {
     position: PropTypes.oneOf(['left', 'right']).isRequired,
     onClick: PropTypes.func.isRequired,
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
 };
 
 ArrowButton.defaultProps = {
-    disabled: false
+    disabled: false,
 };
 
 export default ArrowButton;

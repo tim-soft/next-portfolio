@@ -15,7 +15,7 @@ const ConfigViewer = ({ datConfig }) => (
             <Highlight className="javascript">
                 {`/**
  * Tim Ellenberger
- * 
+ *
  * `}
                 <StyledCommentLink
                     href="https://github.com/tim-soft/react-particles-webgl#usage"
@@ -29,7 +29,7 @@ const ConfigViewer = ({ datConfig }) => (
 
 const config = ${stringifyObject(datConfig, {
                     indent: '  ',
-                    singleQuotes: true
+                    singleQuotes: true,
                 })}
 `}
             </Highlight>
@@ -38,7 +38,7 @@ const config = ${stringifyObject(datConfig, {
 );
 
 ConfigViewer.propTypes = {
-    datConfig: PropTypes.object.isRequired
+    datConfig: PropTypes.object.isRequired,
 };
 
 export default ConfigViewer;

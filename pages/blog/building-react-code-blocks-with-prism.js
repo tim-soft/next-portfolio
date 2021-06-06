@@ -182,11 +182,11 @@ export default BlogCodeBlock;
 
 BlogPage.propTypes = {
     route: PropTypes.string.isRequired,
-    theme: PropTypes.object
+    theme: PropTypes.object,
 };
 
 BlogPage.defaultProps = {
-    theme: {}
+    theme: {},
 };
 
 // Override default app theme for this page

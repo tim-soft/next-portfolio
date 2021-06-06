@@ -12,7 +12,7 @@ export default class IntroBanner extends React.Component {
         this.state = {
             // Assume initial *.webp browser support
             webpSupport: true,
-            backgroundAnimDone: false
+            backgroundAnimDone: false,
         };
     }
 
@@ -69,7 +69,7 @@ export default class IntroBanner extends React.Component {
                     }
                     config={config.slow}
                 >
-                    {animStyles => (
+                    {(animStyles) => (
                         <AnimatedContainer style={animStyles}>
                             <ParticleField config={particlesConfig} />
                         </AnimatedContainer>
@@ -82,12 +82,11 @@ export default class IntroBanner extends React.Component {
                     alt=""
                     actual={() => (
                         <Spring
-                            native
                             from={{ opacity: 0, transform: 'translateY(100%)' }}
                             to={{ opacity: 1, transform: 'translateY(0px)' }}
                             onRest={this.setBackgroundAnimDone}
                         >
-                            {props => (
+                            {(props) => (
                                 <AnimatedSpaceBackgroundImg
                                     style={props}
                                     imgSrc={imgSrc}

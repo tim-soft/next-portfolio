@@ -1,4 +1,4 @@
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import { GOOGLE_ANALYTICS_ID } from '../lib/googleAnalytics';
 
@@ -14,8 +14,8 @@ export default class StyledDocument extends Document {
         try {
             ctx.renderPage = () =>
                 originalRenderPage({
-                    enhanceApp: App => props =>
-                        sheet.collectStyles(<App {...props} />)
+                    enhanceApp: (App) => (props) =>
+                        sheet.collectStyles(<App {...props} />),
                 });
 
             const initialProps = await Document.getInitialProps(ctx);
@@ -27,7 +27,7 @@ export default class StyledDocument extends Document {
                         {initialProps.styles}
                         {sheet.getStyleElement()}
                     </>
-                )
+                ),
             };
         } finally {
             sheet.seal();
@@ -36,15 +36,15 @@ export default class StyledDocument extends Document {
 
     render() {
         return (
-            <html lang="en">
+            <Html lang="en">
                 <Head>
                     {/* Preconnect to the Google domains */}
                     {[
                         'https://fonts.gstatic.com',
                         'https://fonts.googleapis.com',
                         'https://www.googletagmanager.com',
-                        'https://www.google-analytics.com'
-                    ].map(href => (
+                        'https://www.google-analytics.com',
+                    ].map((href) => (
                         <link
                             key={href}
                             rel="preconnect"
@@ -104,7 +104,7 @@ export default class StyledDocument extends Document {
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', '${GOOGLE_ANALYTICS_ID}');
-          `
+          `,
                         }}
                     />
                 </Head>
@@ -112,7 +112,7 @@ export default class StyledDocument extends Document {
                     <Main />
                     <NextScript />
                 </body>
-            </html>
+            </Html>
         );
     }
 }
